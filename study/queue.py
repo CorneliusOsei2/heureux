@@ -38,6 +38,8 @@ def scoped_cards(scope: Optional[dict] = None):
                 CardType.PHRASE_RECOGNITION,
             ]
         )
+    if scope.get("part"):
+        qs = qs.filter(response__theme__task__part__slug=scope["part"])
     if scope.get("task"):
         qs = qs.filter(response__theme__task__slug=scope["task"])
     if scope.get("theme"):

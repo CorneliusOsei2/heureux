@@ -1,0 +1,34 @@
+{% comment %}
+Part/Task filter bar shared by Browse and Stats.
+Expects: filter_base, filter_parts, active_part, active_task,
+active_part_tasks, review_scope_qs, scope_label.
+{% endcomment %}
+<div class="scope-filter">
+  <div class="scope-filter__row">
+    <a class="chip {% if not active_part %}chip--active{% endif %}" href="{{ filter_base }}">Tout</a>
+    {% for p in filter_parts %}
+      <a class="chip {% if p.active %}chip--active{% endif %}{% if not p.count %} chip--muted{% endif %}"
+         href="{{ filter_base }}?part={{ p.slug }}">
+        {{ p.short_name }}{% if p.count %} <span class="chip__n">{{ p.count }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+  {% if active_part_tasks %}
+    <div class="scope-filter__row scope-filter__row--sub">
+      <a class="chip chip--sm {% if not active_task %}chip--active{% endif %}"
+         href="{{ filter_base }}?part={{ active_part }}">Toutes les tâches</a>
+      {% for t in active_part_tasks %}
+        <a class="chip chip--sm {% if t.active %}chip--active{% endif %}{% if not t.count %} chip--muted{% endif %}"
+           href="{{ filter_base }}?task={{ t.slug }}">
+          {{ t.name }}{% if t.count %} <span class="chip__n">{{ t.count }}</span>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if review_scope_qs %}
+    <div class="scope-filter__action">
+      <a class="btn btn--primary btn--sm" href="{% url 'study:review' %}?{{ review_scope_qs }}">Réviser cette sélection</a>
+      <span class="scope-filter__label muted">{{ scope_label }}</span>
+    </div>
+  {% endif %}
+</div>

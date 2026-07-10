@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from study.models import CardState, Rating, ReviewLog, Settings
@@ -15,6 +15,22 @@ class HealthTests(TestCase):
         r = self.client.get("/healthz")
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.json()["status"], "ok")
+
+    @override_settings(ALLOWED_HOSTS=["heureux.onrender.com"])
+    def test_healthz_survives_unknown_host(self):
+        # Render's internal probe hits the service with an unpredictable Host
+        # (often a private IP) over plain HTTP. The health check must still be
+        # 200 rather than a DisallowedHost 400, or the deploy never goes live.
+        r = self.client.get("/healthz", HTTP_HOST="10.222.26.203")
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()["status"], "ok")
+
+    @override_settings(ALLOWED_HOSTS=["heureux.onrender.com"])
+    def test_other_paths_still_validate_host(self):
+        # Host validation must stay active for real traffic — only /healthz is
+        # exempt, so an unknown Host on any other path is still rejected.
+        r = self.client.get("/", HTTP_HOST="attacker.example")
+        self.assertEqual(r.status_code, 400)
 
 
 class PWATests(TestCase):

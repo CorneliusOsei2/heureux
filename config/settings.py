@@ -49,6 +49,23 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
     CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_EXTERNAL_HOSTNAME}")
 
+# Trust any *.onrender.com subdomain too, so the default Render domain keeps
+# working even if RENDER_EXTERNAL_HOSTNAME is not injected for some reason.
+if ".onrender.com" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(".onrender.com")
+if "https://*.onrender.com" not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append("https://*.onrender.com")
+
+# Custom production domain(s). Always trusted so the app works on the public
+# domain regardless of environment configuration; extend via env if needed.
+CUSTOM_DOMAINS = ["heureux.lepta.app", *env_list("CUSTOM_DOMAINS")]
+for _domain in CUSTOM_DOMAINS:
+    if _domain not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(_domain)
+    _origin = f"https://{_domain}"
+    if _origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(_origin)
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,6 +77,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "study.middleware.HealthCheckMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -135,6 +153,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Security hardening — enabled automatically when DEBUG is off.
 if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", True)
+    # Render's platform health check hits the service over the private network
+    # with plain HTTP (no X-Forwarded-Proto), so the HTTPS redirect must never
+    # apply to /healthz — otherwise SecurityMiddleware calls get_host() on an
+    # internal Host it can't validate and returns HTTP 400, failing the probe.
+    SECURE_REDIRECT_EXEMPT = [r"^healthz$"]
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = int(os.environ.get("SECURE_HSTS_SECONDS", "2592000"))

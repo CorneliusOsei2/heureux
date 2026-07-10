@@ -5,8 +5,14 @@
 <div class="page-head">
   <p class="eyebrow">Parcourir</p>
   <h1>Toutes les fiches</h1>
-  <p>167 sujets · 130 réponses uniques · 160 expressions.</p>
+  {% if active_part %}
+    <p>{{ scope_label }} · {{ theme_count }} thème{{ theme_count|pluralize }}.</p>
+  {% else %}
+    <p>167 sujets · 130 réponses uniques · 160 expressions.</p>
+  {% endif %}
 </div>
+
+{% include "study/_scope_filter.html" %}
 
 <h2>Par thème</h2>
 <div class="grid grid--decks">
@@ -26,9 +32,12 @@
         </div>
       </div>
     </a>
+  {% empty %}
+    <p class="muted">Aucun contenu pour cette sélection pour l'instant.</p>
   {% endfor %}
 </div>
 
+{% if not active_part %}
 <h2 style="margin-top:2rem;">Par famille de sujets</h2>
 <div class="qlist">
   {% for family in families %}
@@ -50,4 +59,5 @@
     </a>
   {% endfor %}
 </div>
+{% endif %}
 {% endblock %}

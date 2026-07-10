@@ -7,6 +7,8 @@
   <p>Un aperçu de votre régularité, de votre charge à venir et de votre maîtrise.</p>
 </div>
 
+{% include "study/_scope_filter.html" %}
+
 <div class="grid grid--tiles">
   <div class="tile"><div class="tile__value">{{ overall.mature }}<span class="muted" style="font-size:1rem;">/{{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>
   <div class="tile"><div class="tile__value">{{ streak }}</div><div class="tile__label">Jour{{ streak|pluralize }} de suite</div></div>
@@ -72,6 +74,8 @@
           </span>
         </span>
       </div>
+    {% empty %}
+      <p class="muted">Aucun thème pour cette sélection pour l'instant.</p>
     {% endfor %}
   </div>
 </section>

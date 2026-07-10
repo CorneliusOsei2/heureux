@@ -339,10 +339,81 @@ def review_suspend(request):
 # ---------------------------------------------------------------------------
 
 
+def _scope_filters(request):
+    """Shared part/task filter context for Browse and Stats.
+
+    Parses ``?part=`` / ``?task=`` (a task implies its part), builds the chip
+    data with per-part/task card counts, and returns the effective scope so the
+    page can offer a scoped review.
+    """
+    part_slug = (request.GET.get("part") or "").strip()
+    task_slug = (request.GET.get("task") or "").strip()
+
+    if task_slug:
+        task = Task.objects.select_related("part").filter(slug=task_slug).first()
+        if task:
+            part_slug = task.part.slug
+        else:
+            task_slug = ""
+
+    active = Card.objects.active().filter(card_type=CardType.SPINE)
+    filter_parts = []
+    active_part_tasks = []
+    for part in ExamPart.objects.prefetch_related("tasks"):
+        filter_parts.append(
+            {
+                "slug": part.slug,
+                "short_name": part.short_name,
+                "count": active.filter(response__theme__task__part=part).count(),
+                "active": part_slug == part.slug,
+            }
+        )
+        if part_slug == part.slug:
+            for task in part.tasks.all():
+                active_part_tasks.append(
+                    {
+                        "slug": task.slug,
+                        "name": task.name,
+                        "count": active.filter(response__theme__task=task).count(),
+                        "active": task_slug == task.slug,
+                    }
+                )
+
+    if task_slug:
+        scope = {"task": task_slug}
+        review_qs = f"task={task_slug}"
+    elif part_slug:
+        scope = {"part": part_slug}
+        review_qs = f"part={part_slug}"
+    else:
+        scope = {}
+        review_qs = ""
+
+    return {
+        "filter_base": request.path,
+        "filter_parts": filter_parts,
+        "active_part": part_slug,
+        "active_task": task_slug,
+        "active_part_tasks": active_part_tasks,
+        "review_scope_qs": review_qs,
+        "scope_label": scope_label(scope),
+        "scope": scope,
+    }
+
+
 def browse(request):
     now = timezone.now()
+    filters = _scope_filters(request)
+    scope = filters["scope"]
+
+    theme_qs = Theme.objects.select_related("task__part").all()
+    if scope.get("task"):
+        theme_qs = theme_qs.filter(task__slug=scope["task"])
+    elif scope.get("part"):
+        theme_qs = theme_qs.filter(task__part__slug=scope["part"])
+
     themes = []
-    for theme in Theme.objects.all():
+    for theme in theme_qs:
         stats = deck_stats(
             Card.objects.active().filter(
                 card_type=CardType.SPINE, response__theme=theme
@@ -360,11 +431,14 @@ def browse(request):
     categories = PhraseCategory.objects.annotate(n=Count("phrases")).order_by(
         "order"
     )
-    return render(
-        request,
-        "study/browse.html",
-        {"themes": themes, "families": families, "categories": categories},
-    )
+    context = {
+        "themes": themes,
+        "families": families,
+        "categories": categories,
+        "theme_count": len(themes),
+        **filters,
+    }
+    return render(request, "study/browse.html", context)
 
 
 def theme_detail(request, slug):
@@ -523,9 +597,20 @@ def search(request):
 def stats(request):
     now = timezone.now()
     today = timezone.localtime(now).date()
+    filters = _scope_filters(request)
+    scope = filters["scope"]
+
+    logs_base = ReviewLog.objects.all()
+    if scope.get("task"):
+        logs_base = logs_base.filter(card__response__theme__task__slug=scope["task"])
+    elif scope.get("part"):
+        logs_base = logs_base.filter(
+            card__response__theme__task__part__slug=scope["part"]
+        )
+    active_cards = queue_module.scoped_cards(scope)
 
     since = now - timezone.timedelta(days=90)
-    logs = ReviewLog.objects.filter(reviewed_at__gte=since)
+    logs = logs_base.filter(reviewed_at__gte=since)
     per_day: dict = {}
     for reviewed_at in logs.values_list("reviewed_at", flat=True):
         day = timezone.localtime(reviewed_at).date()
@@ -544,7 +629,7 @@ def stats(request):
         level = min(4, 1 + count // 15) if count else 0
         heat.append({"date": day, "count": count, "level": level})
 
-    mature_logs = ReviewLog.objects.filter(
+    mature_logs = logs_base.filter(
         reviewed_at__gte=now - timezone.timedelta(days=30),
         interval_before__gte=MATURE_DAYS,
     )
@@ -553,7 +638,7 @@ def stats(request):
     retention = round(100 * mature_pass / mature_total) if mature_total else None
 
     forecast = []
-    active = Card.objects.active().filter(
+    active = active_cards.filter(
         state__in=[CardState.REVIEW, CardState.LEARNING, CardState.RELEARNING]
     )
     for offset in range(0, 14):
@@ -569,7 +654,13 @@ def stats(request):
         forecast.append({"date": day, "count": count})
     max_forecast = max((f["count"] for f in forecast), default=0) or 1
 
-    overall = deck_stats(Card.objects.active(), now)
+    overall = deck_stats(active_cards, now)
+
+    theme_qs = Theme.objects.select_related("task__part").all()
+    if scope.get("task"):
+        theme_qs = theme_qs.filter(task__slug=scope["task"])
+    elif scope.get("part"):
+        theme_qs = theme_qs.filter(task__part__slug=scope["part"])
     themes = [
         {
             "theme": theme,
@@ -580,7 +671,7 @@ def stats(request):
                 now,
             ),
         }
-        for theme in Theme.objects.all()
+        for theme in theme_qs
     ]
 
     context = {
@@ -594,8 +685,9 @@ def stats(request):
         "overall": overall,
         "themes": themes,
         "streak": current_streak(now),
-        "total_reviews": ReviewLog.objects.count(),
+        "total_reviews": logs_base.count(),
         "reviews_today": per_day.get(today, 0),
+        **filters,
     }
     return render(request, "study/stats.html", context)
 

@@ -31,7 +31,7 @@ def scope_from_request(request) -> dict:
     kind = data.get("kind")
     if kind in {"spine", "phrase"}:
         scope["kind"] = kind
-    for key in ("task", "theme", "family", "category"):
+    for key in ("part", "task", "theme", "family", "category"):
         value = (data.get(key) or "").strip()
         if value:
             scope[key] = value
@@ -40,7 +40,7 @@ def scope_from_request(request) -> dict:
 
 def scope_label(scope: dict) -> str:
     """Human label for the current study scope."""
-    from .models import Family, PhraseCategory, Task, Theme
+    from .models import ExamPart, Family, PhraseCategory, Task, Theme
 
     if not scope:
         return "Toutes les cartes"
@@ -52,6 +52,10 @@ def scope_label(scope: dict) -> str:
         task = Task.objects.filter(slug=scope["task"]).select_related("part").first()
         if task:
             return f"{task.part.short_name} · {task.name}"
+    if scope.get("part"):
+        part = ExamPart.objects.filter(slug=scope["part"]).first()
+        if part:
+            return part.name
     if scope.get("family"):
         family = Family.objects.filter(slug=scope["family"]).first()
         if family:
