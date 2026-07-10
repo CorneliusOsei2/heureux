@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Réglages · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <h1>Réglages</h1>
+  <p>Ajustez votre rythme d'étude quotidien.</p>
+</div>
+
+{% if saved %}<div class="notice">Réglages enregistrés.</div>{% endif %}
+{% if was_reset %}<div class="notice">Progression réinitialisée. Toutes les cartes sont de nouveau « nouvelles ».</div>{% endif %}
+
+<div class="grid grid--2">
+  <form class="card card--pad" method="post" action="{% url 'study:settings' %}">
+    {% csrf_token %}
+    <h2 class="mt-0">Rythme quotidien</h2>
+    <div class="field">
+      <label for="new_cards_per_day">Nouvelles cartes par jour</label>
+      <input id="new_cards_per_day" type="number" name="new_cards_per_day" min="0" max="200" value="{{ settings.new_cards_per_day }}">
+      <small>Combien de cartes inédites introduire chaque jour.</small>
+    </div>
+    <div class="field">
+      <label for="max_reviews_per_day">Révisions maximum par jour</label>
+      <input id="max_reviews_per_day" type="number" name="max_reviews_per_day" min="0" max="9999" value="{{ settings.max_reviews_per_day }}">
+      <small>Plafond des cartes déjà vues à revoir chaque jour.</small>
+    </div>
+    <button class="btn btn--primary" type="submit" name="action" value="save">Enregistrer</button>
+  </form>
+
+  <form class="card card--pad danger-zone" method="post" action="{% url 'study:settings' %}" onsubmit="return confirm('Réinitialiser toute la progression ? Cette action est irréversible.');">
+    {% csrf_token %}
+    <h2 class="mt-0">Zone sensible</h2>
+    <p class="muted">Remet toutes les cartes à zéro et efface l'historique de révision. Le contenu (réponses, expressions) n'est pas touché.</p>
+    <button class="btn btn--danger" type="submit" name="action" value="reset">Réinitialiser la progression</button>
+  </form>
+</div>
+
+<div class="card card--pad" style="margin-top:1.4rem;">
+  <h2 class="mt-0">À propos</h2>
+  <p class="muted">Répétition espacée (algorithme SM-2, façon Anki). Chaque bonne réponse espace la prochaine révision&nbsp;; un oubli la ramène tôt. Révisez un peu chaque jour&nbsp;: la régularité prime sur l'intensité.</p>
+</div>
+{% endblock %}

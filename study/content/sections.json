@@ -1,0 +1,43 @@
+{
+  "parts": [
+    {
+      "slug": "orale",
+      "name": "Épreuve orale",
+      "short_name": "E. Orale",
+      "emoji": "🎙️",
+      "color": "#7c3aed",
+      "order": 1,
+      "available": true,
+      "tasks": [
+        {
+          "slug": "tache-2",
+          "name": "Tâche 2",
+          "subtitle": "Interaction / point de vue",
+          "emoji": "🗨️",
+          "color": "#a855f7",
+          "order": 1,
+          "available": false
+        },
+        {
+          "slug": "tache-3",
+          "name": "Tâche 3",
+          "subtitle": "Exposé argumenté par thème",
+          "emoji": "🎯",
+          "color": "#7c3aed",
+          "order": 2,
+          "available": true
+        }
+      ]
+    },
+    {
+      "slug": "ecrit",
+      "name": "Épreuve écrite",
+      "short_name": "E. Écrit",
+      "emoji": "✍️",
+      "color": "#0ea5e9",
+      "order": 2,
+      "available": false,
+      "tasks": []
+    }
+  ]
+}

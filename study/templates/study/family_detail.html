@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ family.name }} · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <p class="eyebrow"><a href="{% url 'study:browse' %}">Parcourir</a> · Famille de sujets</p>
+  <div class="row between">
+    <h1 style="margin-bottom:0;">{{ family.name }}</h1>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;family={{ family.slug }}">Réviser cette famille</a>
+  </div>
+  <p>{{ rows|length }} sujet{{ rows|length|pluralize }} à travers les thèmes.</p>
+</div>
+
+<div class="qlist">
+  {% for row in rows %}
+    <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}">
+      <span class="qrow__num">
+        <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{{ row.prompt.theme.emoji }} P{{ row.prompt.number }}</span>
+      </span>
+      <span class="qrow__text">
+        {{ row.prompt.text }}
+        {% if row.is_alias %}<span class="alias-tag" title="Réponse partagée">= {{ row.prompt.response.theme.display_name }} P{{ row.prompt.response.canonical_prompt.number }}</span>{% endif %}
+      </span>
+      <span class="qrow__meta">
+        {% if row.card %}<span class="qrow__state bg-{{ row.card.state }}" title="{{ row.card.get_state_display }}"></span>{% endif %}
+      </span>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

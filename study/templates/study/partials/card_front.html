@@ -1,0 +1,26 @@
+{% if kind == "spine" %}
+  <div class="flashcard__head">
+    <span class="flashcard__type">{{ kind_label }}</span>
+    <span class="chip chip--theme" style="background: {{ theme.color }};">{{ theme.emoji }} {{ theme.display_name }}</span>
+    <span class="chip">{{ family.name|truncatechars:34 }}</span>
+    <span class="chip state-{{ card.state }}">{{ card.get_state_display }}</span>
+  </div>
+  <p class="prompt-text">{{ prompt }}</p>
+  <div class="instruction">
+    {% if aliases %}<div>↔ {{ aliases|length }} formulation{{ aliases|length|pluralize }} équivalente{{ aliases|length|pluralize }}</div>{% endif %}
+    <div>À voix haute : <b>reformulation → position → 3 arguments → nuance → conclusion</b>.</div>
+  </div>
+{% else %}
+  <div class="flashcard__head">
+    <span class="flashcard__type">{{ kind_label }}</span>
+    <span class="chip">{{ category.name|truncatechars:34 }}</span>
+    <span class="chip state-{{ card.state }}">{{ card.get_state_display }}</span>
+  </div>
+  {% if production %}
+    <p class="cue-text">{{ phrase.english_cue }}</p>
+    <p class="cue-hint">Produisez l'expression française, puis complétez :<br>« {{ cloze_example }} »</p>
+  {% else %}
+    <p class="cue-text serif">{{ phrase.expression }}</p>
+    <p class="cue-hint">Que signifie cette expression, et quand l'employer ?</p>
+  {% endif %}
+{% endif %}

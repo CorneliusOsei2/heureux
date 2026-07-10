@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Progression · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <h1>Votre progression</h1>
+  <p>Un aperçu de votre régularité, de votre charge à venir et de votre maîtrise.</p>
+</div>
+
+<div class="grid grid--tiles">
+  <div class="tile"><div class="tile__value">{{ overall.mature }}<span class="muted" style="font-size:1rem;">/{{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>
+  <div class="tile"><div class="tile__value">{{ streak }}</div><div class="tile__label">Jour{{ streak|pluralize }} de suite</div></div>
+  <div class="tile"><div class="tile__value">{{ reviews_today }}</div><div class="tile__label">Révisions aujourd'hui</div></div>
+  <div class="tile"><div class="tile__value">{% if retention %}{{ retention }}%{% else %}—{% endif %}</div><div class="tile__label">Rétention (30 j)</div></div>
+</div>
+
+<section class="card section-card" style="margin-top:1.4rem;">
+  <div class="row between"><h2 class="mb-0">Révisions · 30 jours</h2><span class="muted">{{ total_reviews }} au total</span></div>
+  <div class="bars" style="margin-top:1rem;">
+    {% for d in daily %}
+      <div class="bars__col" title="{{ d.date|date:'j M' }} · {{ d.count }} révision{{ d.count|pluralize }}">
+        <span class="bars__bar" style="height: {% widthratio d.count max_daily 100 %}%;"></span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="card section-card" style="margin-top:1.4rem;">
+  <h2 class="mb-0">Assiduité · 90 jours</h2>
+  <div class="heatmap" style="margin-top:1rem;">
+    {% for cell in heat %}
+      <span class="heat-cell" data-level="{{ cell.level }}" title="{{ cell.date|date:'j M' }} · {{ cell.count }} révision{{ cell.count|pluralize }}"></span>
+    {% endfor %}
+  </div>
+  <div class="legend" style="margin-top:0.8rem;">
+    <span>Moins</span>
+    <span><span class="heat-cell" data-level="0"></span></span>
+    <span><span class="heat-cell" data-level="1"></span></span>
+    <span><span class="heat-cell" data-level="2"></span></span>
+    <span><span class="heat-cell" data-level="3"></span></span>
+    <span><span class="heat-cell" data-level="4"></span></span>
+    <span>Plus</span>
+  </div>
+</section>
+
+<section class="card section-card" style="margin-top:1.4rem;">
+  <div class="row between"><h2 class="mb-0">Charge à venir · 14 jours</h2><span class="muted">cartes déjà vues à revoir</span></div>
+  <div class="bars" style="margin-top:1rem;">
+    {% for f in forecast %}
+      <div class="bars__col" title="{{ f.date|date:'j M' }} · {{ f.count }} à revoir">
+        <span class="bars__bar bars__bar--soft" style="height: {% widthratio f.count max_forecast 100 %}%;"></span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section style="margin-top:1.6rem;">
+  <h2>Maîtrise par thème</h2>
+  <div class="qlist">
+    {% for item in themes %}
+      <div class="qrow">
+        <span class="qrow__num">{{ item.theme.emoji }}</span>
+        <span class="qrow__text" style="flex:1; font-family: var(--font-sans); font-size: 0.95rem;">
+          <span class="row between">
+            <b>{{ item.theme.display_name }}</b>
+            <span class="muted">{{ item.stats.mature }}/{{ item.stats.total }} maîtrisée{{ item.stats.mature|pluralize }}</span>
+          </span>
+          <span class="progress" style="margin-top:.45rem;">
+            <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
+            <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
+            <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
+          </span>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

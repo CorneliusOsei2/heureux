@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}{{ response.prompt|truncatechars:50 }} · Réviser{% endblock %}
+
+{% block content %}
+<div class="detail-head">
+  <p class="eyebrow">
+    <a href="{% url 'study:theme_detail' response.theme.slug %}">{{ response.theme.emoji }} {{ response.theme.display_name }}</a>
+    · <a href="{% url 'study:family_detail' response.family.slug %}">{{ response.family.name }}</a>
+  </p>
+  <h1 class="detail-prompt">{{ response.prompt }}</h1>
+  {% if response.reformulation %}<p class="reform">« {{ response.reformulation }} »</p>{% endif %}
+</div>
+
+<div class="detail-grid">
+  <div class="answer-columns">
+    {% if response.position or response.position_claire %}
+      <section class="card section-card">
+        <div class="spine-label">Position</div>
+        {% if response.position %}<p class="spine-text">{{ response.position }}</p>{% endif %}
+        {% if response.position_claire %}<p class="position-claire"><b>{{ response.position_claire }}</b></p>{% endif %}
+      </section>
+    {% endif %}
+
+    <section class="card section-card">
+      <div class="spine-label">Arguments</div>
+      {% for arg in arguments %}
+        <div class="arg" style="margin-top:0.9rem;">
+          <div class="arg__idea">{{ arg.order }}. {{ arg.idea }}</div>
+          <div class="arg__parts">
+            {% if arg.developpement %}<div class="arg__part"><b>Développement.</b> {{ arg.developpement }}</div>{% endif %}
+            {% if arg.exemple %}<div class="arg__part"><b>Exemple.</b> {{ arg.exemple }}</div>{% endif %}
+            {% if arg.consequence %}<div class="arg__part"><b>Conséquence.</b> {{ arg.consequence }}</div>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+    {% if response.nuance %}
+      <section class="card section-card">
+        <div class="spine-label">Nuance</div>
+        <p class="spine-text">{{ response.nuance }}</p>
+      </section>
+    {% endif %}
+
+    {% if response.conclusion %}
+      <section class="card section-card">
+        <div class="spine-label">Conclusion</div>
+        <p class="spine-text">{{ response.conclusion }}</p>
+      </section>
+    {% endif %}
+
+    {% if response.body_html %}
+      <details class="full-answer">
+        <summary>Réponse complète rédigée</summary>
+        <div class="answer-body">{{ response.body_html|safe }}</div>
+      </details>
+    {% endif %}
+  </div>
+
+  <aside class="detail-side">
+    <div class="card section-card">
+      <div class="spine-label">Cette carte</div>
+      {% if card %}
+        <p class="state-line"><span class="qrow__state bg-{{ card.state }}"></span> <b class="state-{{ card.state }}">{{ card.get_state_display }}</b></p>
+        <dl class="kv">
+          <div><dt>Répétitions</dt><dd>{{ card.reps }}</dd></div>
+          <div><dt>Oublis</dt><dd>{{ card.lapses }}</dd></div>
+          <div><dt>Intervalle</dt><dd>{{ card.interval_days|floatformat:0 }} j</dd></div>
+          <div><dt>Facilité</dt><dd>{{ card.ease|floatformat:2 }}</dd></div>
+          {% if card.due %}<div><dt>Prochaine</dt><dd>{{ card.due|date:"j M Y" }}</dd></div>{% endif %}
+        </dl>
+      {% else %}
+        <p class="muted">Aucune carte associée.</p>
+      {% endif %}
+      <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine&amp;theme={{ response.theme.slug }}">Réviser ce thème</a>
+    </div>
+
+    {% if response.has_aliases %}
+      <div class="card section-card">
+        <div class="spine-label">Sujets équivalents</div>
+        <p class="muted mt-0" style="margin-top:0.4rem;">La même réponse couvre&nbsp;:</p>
+        <ul class="mini-list">
+          {% for p in prompts %}
+            <li><span class="chip chip--theme" style="--chip: {{ p.theme.color }};">{{ p.theme.emoji }} P{{ p.number }}</span> {{ p.text }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if related_phrases %}
+      <div class="card section-card">
+        <div class="spine-label">Expressions liées</div>
+        <ul class="mini-list">
+          {% for phrase in related_phrases %}
+            <li><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}

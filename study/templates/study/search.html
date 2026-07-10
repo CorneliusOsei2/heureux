@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Recherche · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <h1>Recherche</h1>
+  <form class="search-form" method="get" action="{% url 'study:search' %}">
+    <input class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
+    <button class="btn btn--primary" type="submit">Chercher</button>
+  </form>
+</div>
+
+{% if query %}
+  <p class="muted">{{ result_count }} résultat{{ result_count|pluralize }} pour « {{ query }} ».</p>
+
+  {% if prompt_results %}
+    <h2>Sujets &amp; réponses</h2>
+    <div class="qlist">
+      {% for prompt in prompt_results %}
+        <a class="qrow" href="{% url 'study:response_detail' prompt.response_id %}">
+          <span class="qrow__num"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
+          <span class="qrow__text">{{ prompt.text }}</span>
+          <span class="qrow__meta"><span class="muted">{{ prompt.family.name }}</span></span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if phrase_results %}
+    <h2 style="margin-top:1.6rem;">Expressions</h2>
+    <div class="grid grid--phrases">
+      {% for phrase in phrase_results %}
+        <div class="phrase card">
+          <div class="phrase__expr">{{ phrase.expression }}</div>
+          <div class="phrase__cue">{{ phrase.english_cue }}</div>
+          <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if not result_count %}
+    <div class="empty">
+      <p>Aucun résultat. Essayez un autre mot-clé.</p>
+    </div>
+  {% endif %}
+{% else %}
+  <div class="empty">
+    <p>Tapez un mot-clé pour chercher dans les 130 réponses et 160 expressions.</p>
+  </div>
+{% endif %}
+{% endblock %}

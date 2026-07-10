@@ -1,0 +1,73 @@
+<hr class="divider">
+{% if kind == "spine" %}
+  <div class="answer">
+    <div class="spine-block">
+      <div class="spine-label">Reformulation</div>
+      <div class="spine-text">{{ response.reformulation }}</div>
+    </div>
+    <div class="spine-block">
+      <div class="spine-label">Position</div>
+      <div class="spine-text">{{ response.position }}</div>
+    </div>
+    {% for arg in arguments %}
+      <div class="arg">
+        <div class="arg__idea">{{ forloop.counter }}. {{ arg.idea }}</div>
+        <div class="arg__parts">
+          {% if arg.developpement %}<div class="arg__part"><b>Développement.</b> {{ arg.developpement }}</div>{% endif %}
+          {% if arg.exemple %}<div class="arg__part"><b>Exemple.</b> {{ arg.exemple }}</div>{% endif %}
+          {% if arg.consequence %}<div class="arg__part"><b>Conséquence.</b> {{ arg.consequence }}</div>{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="spine-block">
+      <div class="spine-label">Nuance</div>
+      <div class="spine-text">{{ response.nuance }}</div>
+    </div>
+    <div class="spine-block">
+      <div class="spine-label">Conclusion</div>
+      <div class="spine-text">{{ response.conclusion }}</div>
+    </div>
+
+    <details class="full-answer">
+      <summary>Réponse complète rédigée</summary>
+      <div class="answer-body">{{ response.body_html|safe }}</div>
+    </details>
+
+    {% if aliases %}
+      <div class="spine-block" style="margin-top:1rem;">
+        <div class="spine-label">Formulations équivalentes</div>
+        <ul class="muted" style="margin:0.3rem 0 0; padding-left:1.1rem;">
+          {% for a in aliases %}<li><b>{{ a.theme.display_name }} P{{ a.number }}</b> — {{ a.text }}</li>{% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <p style="margin-top:1rem;">
+      <a class="chip" href="{% url 'study:response_detail' response.id %}">Ouvrir la fiche ↗</a>
+    </p>
+  </div>
+{% else %}
+  <div class="answer">
+    {% if production %}
+      <div class="spine-block">
+        <div class="spine-label">Expression</div>
+        <div class="spine-text serif">{{ phrase.expression }}</div>
+      </div>
+    {% else %}
+      <div class="spine-block">
+        <div class="spine-label">Sens / fonction</div>
+        <div class="spine-text">{{ phrase.english_cue }}</div>
+      </div>
+    {% endif %}
+    <div class="example-box">{{ example_html|safe }}</div>
+    {% if phrase.note %}<p class="phrase__note">{{ phrase.note }}</p>{% endif %}
+    {% if sources %}
+      <div class="phrase__foot">
+        <span class="faint">Tiré de :</span>
+        {% for s in sources %}
+          <a class="chip" href="{% url 'study:response_detail' s.response_id %}">{{ s.theme.display_name }} P{{ s.number }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

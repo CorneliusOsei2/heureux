@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Expressions · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <p class="eyebrow">Boîte à outils</p>
+  <div class="row between">
+    <h1 style="margin-bottom:0;">Expressions &amp; tournures</h1>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase{% if selected %}&amp;category={{ selected.slug }}{% endif %}">
+      {% if selected %}Réviser cette catégorie{% else %}Réviser les expressions{% endif %}
+    </a>
+  </div>
+  <p>Des chunks réutilisables pour structurer, nuancer et illustrer à l'oral.</p>
+</div>
+
+<nav class="cat-nav">
+  <a class="chip {% if not selected %}chip--active{% endif %}" href="{% url 'study:phrases' %}">Toutes</a>
+  {% for category in categories %}
+    <a class="chip {% if selected.id == category.id %}chip--active{% endif %}" href="{% url 'study:phrases' %}?category={{ category.slug }}">{{ category.name }}</a>
+  {% endfor %}
+</nav>
+
+{% for group in grouped %}
+  <section class="phrase-group">
+    <h2 id="{{ group.category.slug }}">{{ group.category.name }}</h2>
+    <div class="grid grid--phrases">
+      {% for phrase in group.phrases %}
+        <div class="phrase card">
+          <div class="phrase__expr">{{ phrase.expression }}</div>
+          <div class="phrase__cue">{{ phrase.english_cue }}</div>
+          <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
+          {% if phrase.note %}<p class="phrase__note">{{ phrase.note }}</p>{% endif %}
+          {% if phrase.source_prompts.all %}
+            <div class="phrase__foot">
+              <span class="faint">Tiré de&nbsp;:</span>
+              {% for src in phrase.source_prompts.all %}
+                <a class="chip chip--theme" style="--chip: {{ src.theme.color }};" href="{% url 'study:response_detail' src.response_id %}">{{ src.theme.emoji }} P{{ src.number }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% empty %}
+  <p class="muted">Aucune expression dans cette catégorie.</p>
+{% endfor %}
+{% endblock %}

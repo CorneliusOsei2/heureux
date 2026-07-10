@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ theme.display_name }} · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <p class="eyebrow"><a href="{% url 'study:browse' %}">Parcourir</a> · Thème</p>
+  <div class="row between">
+    <h1 style="margin-bottom:0;">{{ theme.emoji }} {{ theme.display_name }}</h1>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;theme={{ theme.slug }}">Réviser ce thème</a>
+  </div>
+  <p>{{ rows|length }} sujets · {{ stats.total }} réponses uniques · {{ stats.mature }} maîtrisée{{ stats.mature|pluralize }}.</p>
+  <div class="progress" style="height:12px; max-width:520px;">
+    <span class="bg-mature" style="width: {% widthratio stats.mature stats.total 100 %}%;"></span>
+    <span class="bg-review" style="width: {% widthratio stats.review_young stats.total 100 %}%;"></span>
+    <span class="bg-learning" style="width: {% widthratio stats.learning stats.total 100 %}%;"></span>
+  </div>
+</div>
+
+<div class="qlist">
+  {% for row in rows %}
+    <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}">
+      <span class="qrow__num">{{ row.prompt.number }}</span>
+      <span class="qrow__text">
+        {{ row.prompt.text }}
+        {% if row.is_alias %}<span class="alias-tag" title="Réponse identique à un autre sujet">= {{ row.prompt.response.theme.display_name }} P{{ row.prompt.response.canonical_prompt.number }}</span>{% endif %}
+      </span>
+      <span class="qrow__meta">
+        {% if row.card %}<span class="qrow__state bg-{{ row.card.state }}" title="{{ row.card.get_state_display }}"></span>{% endif %}
+      </span>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Révision · {{ scope_label }}{% endblock %}
+
+{% block content %}
+<div id="review-app"
+     class="review"
+     data-next-url="{% url 'study:review_next' %}"
+     data-answer-url="{% url 'study:review_answer' %}"
+     data-csrf="{{ csrf_token }}"
+     data-scope='{{ scope_json }}'>
+
+  <div class="review__top">
+    <div class="review__scope">{{ scope_label }}</div>
+    <div class="review__counters" title="Nouvelles · Apprentissage · Révisions">
+      <span class="c-new" id="c-new">{{ counts.new_available }}</span>
+      <span class="c-learn" id="c-learn">{{ counts.learning_due }}</span>
+      <span class="c-review" id="c-review">{{ counts.review_due }}</span>
+    </div>
+  </div>
+  <div class="review__bar"><span id="progress"></span></div>
+
+  <div id="card-zone">
+    <article class="flashcard">
+      <div id="card-front"></div>
+      <div id="card-back" class="hidden"></div>
+    </article>
+
+    <div class="controls">
+      <button class="reveal-btn" id="reveal">Afficher la réponse</button>
+      <div class="grades hidden" id="grades">
+        <button class="grade grade--again" data-rating="1">
+          <span class="grade__key">1</span>
+          <span class="grade__label">Encore</span>
+          <span class="grade__int" data-int="1"></span>
+        </button>
+        <button class="grade grade--hard" data-rating="2">
+          <span class="grade__key">2</span>
+          <span class="grade__label">Difficile</span>
+          <span class="grade__int" data-int="2"></span>
+        </button>
+        <button class="grade grade--good" data-rating="3">
+          <span class="grade__key">3</span>
+          <span class="grade__label">Correct</span>
+          <span class="grade__int" data-int="3"></span>
+        </button>
+        <button class="grade grade--easy" data-rating="4">
+          <span class="grade__key">4</span>
+          <span class="grade__label">Facile</span>
+          <span class="grade__int" data-int="4"></span>
+        </button>
+      </div>
+      <div class="kbd-hint" id="kbd-hint"></div>
+    </div>
+  </div>
+
+  <div id="done-zone" class="done-state hidden card card--pad">
+    <div class="done-state__emoji">🎉</div>
+    <h2>Session terminée</h2>
+    <p>Vous avez révisé toutes les cartes prévues pour ce lot. Revenez plus tard pour les révisions à venir.</p>
+    <div class="row center" style="justify-content:center; margin-top:1rem;">
+      <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
+      <a class="btn" href="{% url 'study:browse' %}">Parcourir les fiches</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

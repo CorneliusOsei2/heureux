@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Parcourir · Réviser{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <p class="eyebrow">Parcourir</p>
+  <h1>Toutes les fiches</h1>
+  <p>167 sujets · 130 réponses uniques · 160 expressions.</p>
+</div>
+
+<h2>Par thème</h2>
+<div class="grid grid--decks">
+  {% for item in themes %}
+    <a class="deck card" style="--deck-color: {{ item.theme.color }};" href="{% url 'study:theme_detail' item.theme.slug %}">
+      <div class="deck__body">
+        <div class="deck__title">
+          <span class="deck__icon">{{ item.theme.emoji }}</span>
+          <span>{{ item.theme.display_name }}</span>
+          {% if item.stats.due %}<span class="deck__due pill pill--due">{{ item.stats.due }}</span>{% endif %}
+        </div>
+        <div class="deck__meta">{{ item.prompt_count }} sujets · {{ item.stats.total }} réponses</div>
+        <div class="progress">
+          <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
+          <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
+          <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+<h2 style="margin-top:2rem;">Par famille de sujets</h2>
+<div class="qlist">
+  {% for family in families %}
+    <a class="qrow" href="{% url 'study:family_detail' family.slug %}">
+      <span class="qrow__num">{{ family.order }}</span>
+      <span class="qrow__text">{{ family.name }}</span>
+      <span class="qrow__meta"><span class="chip">{{ family.n }} sujet{{ family.n|pluralize }}</span></span>
+    </a>
+  {% endfor %}
+</div>
+
+<h2 style="margin-top:2rem;">Expressions par catégorie</h2>
+<div class="qlist">
+  {% for category in categories %}
+    <a class="qrow" href="{% url 'study:phrases' %}?category={{ category.slug }}">
+      <span class="qrow__num">🗣️</span>
+      <span class="qrow__text">{{ category.name }}</span>
+      <span class="qrow__meta"><span class="chip">{{ category.n }} expression{{ category.n|pluralize }}</span></span>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}
