@@ -1,0 +1,28 @@
+{% load static %}{
+  "name": "Heureux — Oral de français",
+  "short_name": "Heureux",
+  "description": "Révision par répétition espacée pour l'épreuve orale de français.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "{% static 'study/icons/icon-192.png' %}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{% static 'study/icons/icon-512.png' %}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

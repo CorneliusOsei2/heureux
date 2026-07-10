@@ -9,6 +9,8 @@ urlpatterns = [
     path("review/", views.review, name="review"),
     path("review/next/", views.review_next, name="review_next"),
     path("review/answer/", views.review_answer, name="review_answer"),
+    path("review/undo/", views.review_undo, name="review_undo"),
+    path("review/suspend/", views.review_suspend, name="review_suspend"),
     path("epreuve/<slug:part_slug>/", views.part_detail, name="part_detail"),
     path(
         "epreuve/<slug:part_slug>/<slug:task_slug>/",

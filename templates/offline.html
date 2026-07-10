@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Hors ligne · Heureux{% endblock %}
+
+{% block content %}
+<div class="done-state card card--pad" style="max-width:34rem;margin:3rem auto;">
+  <div class="done-state__emoji">📡</div>
+  <h2>Vous êtes hors ligne</h2>
+  <p>Cette page n'est pas encore disponible sans connexion. Les fiches déjà
+     ouvertes restent accessibles ; reconnectez-vous pour réviser de nouvelles
+     cartes.</p>
+  <div class="row center" style="justify-content:center;margin-top:1rem;">
+    <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Réessayer</a>
+  </div>
+</div>
+{% endblock %}

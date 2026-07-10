@@ -30,7 +30,7 @@ from .models import (
     Task,
     Theme,
 )
-from .srs import preview_intervals, review as apply_review
+from .srs import preview_intervals, review as apply_review, undo_last
 
 MATURE_DAYS = 21
 
@@ -220,6 +220,7 @@ def review(request):
         "scope_json": json.dumps(scope),
         "scope_label": scope_label(scope),
         "counts": counts,
+        "can_undo": ReviewLog.objects.exists(),
     }
     return render(request, "study/review.html", context)
 
@@ -249,10 +250,34 @@ def _queue_state(scope: dict, request) -> dict:
     }
 
 
+def _card_state(card, scope: dict, request) -> dict:
+    """Build the review payload for a specific card (used after an undo)."""
+    now = timezone.now()
+    counts = queue_module.queue_counts(scope, now)
+    payload = card_payload(card)
+    front = render_to_string("study/partials/card_front.html", payload, request)
+    back = render_to_string("study/partials/card_back.html", payload, request)
+    previews = preview_intervals(card, now)
+    return {
+        "done": False,
+        "card_id": card.id,
+        "card_type": card.card_type,
+        "state": card.state,
+        "state_label": card.get_state_display(),
+        "is_new": card.is_new,
+        "front_html": front,
+        "back_html": back,
+        "previews": {str(key): value for key, value in previews.items()},
+        "counts": counts,
+    }
+
+
 @require_GET
 def review_next(request):
     scope = scope_from_request(request)
-    return JsonResponse(_queue_state(scope, request))
+    state = _queue_state(scope, request)
+    state["can_undo"] = ReviewLog.objects.exists()
+    return JsonResponse(state)
 
 
 @require_POST
@@ -271,7 +296,42 @@ def review_answer(request):
     apply_review(card, rating, elapsed_ms=elapsed_ms)
 
     scope = scope_from_request(request)
-    return JsonResponse(_queue_state(scope, request))
+    state = _queue_state(scope, request)
+    state["can_undo"] = True
+    return JsonResponse(state)
+
+
+@require_POST
+def review_undo(request):
+    """Revert the most recent review and re-present that card."""
+    scope = scope_from_request(request)
+    card = undo_last()
+    if card is None:
+        state = _queue_state(scope, request)
+        state["can_undo"] = False
+        state["undone"] = False
+        return JsonResponse(state)
+    state = _card_state(card, scope, request)
+    state["can_undo"] = ReviewLog.objects.exists()
+    state["undone"] = True
+    return JsonResponse(state)
+
+
+@require_POST
+def review_suspend(request):
+    """Suspend the current card and advance to the next one."""
+    try:
+        card_id = int(request.POST.get("card_id", ""))
+    except (TypeError, ValueError):
+        return HttpResponseBadRequest("Invalid parameters.")
+    card = get_object_or_404(Card, pk=card_id)
+    card.suspended = True
+    card.save(update_fields=["suspended"])
+
+    scope = scope_from_request(request)
+    state = _queue_state(scope, request)
+    state["can_undo"] = ReviewLog.objects.exists()
+    return JsonResponse(state)
 
 
 # ---------------------------------------------------------------------------
@@ -563,6 +623,9 @@ def settings_view(request):
             )
             ReviewLog.objects.all().delete()
             return redirect(reverse("study:settings") + "?reset=1")
+        if action == "unsuspend_all":
+            Card.objects.filter(suspended=True).update(suspended=False)
+            return redirect(reverse("study:settings") + "?unsuspended=1")
         try:
             settings.new_cards_per_day = max(
                 0, int(request.POST.get("new_cards_per_day", 15))
@@ -582,5 +645,7 @@ def settings_view(request):
             "settings": settings,
             "saved": request.GET.get("saved") == "1",
             "was_reset": request.GET.get("reset") == "1",
+            "was_unsuspended": request.GET.get("unsuspended") == "1",
+            "suspended_count": Card.objects.filter(suspended=True).count(),
         },
     )

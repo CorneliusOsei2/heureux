@@ -94,11 +94,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database — PostgreSQL in production (via DATABASE_URL), SQLite for local dev.
 # Set DATABASE_URL (e.g. postgres://user:pass@host:5432/dbname) in production and
 # Django will use PostgreSQL automatically; without it, a local SQLite file is used.
+_db_url = (
+    os.environ.get("DATABASE_URL") or os.environ.get("POSTGRES_URL") or ""
+).strip()
 _sqlite_path = os.environ.get("DATABASE_PATH", BASE_DIR / "db.sqlite3")
 DATABASES = {
-    "default": dj_database_url.config(
-        env="DATABASE_URL",
-        default=f"sqlite:///{_sqlite_path}",
+    "default": dj_database_url.parse(
+        _db_url or f"sqlite:///{_sqlite_path}",
         conn_max_age=int(os.environ.get("DB_CONN_MAX_AGE", "600")),
         conn_health_checks=True,
     )

@@ -5,7 +5,7 @@
       "name": "Épreuve orale",
       "short_name": "E. Orale",
       "emoji": "🎙️",
-      "color": "#7c3aed",
+      "color": "#2563eb",
       "order": 1,
       "available": true,
       "tasks": [
@@ -14,7 +14,7 @@
           "name": "Tâche 2",
           "subtitle": "Interaction / point de vue",
           "emoji": "🗨️",
-          "color": "#a855f7",
+          "color": "#8a94a6",
           "order": 1,
           "available": false
         },
@@ -23,7 +23,7 @@
           "name": "Tâche 3",
           "subtitle": "Exposé argumenté par thème",
           "emoji": "🎯",
-          "color": "#7c3aed",
+          "color": "#2563eb",
           "order": 2,
           "available": true
         }
@@ -34,7 +34,7 @@
       "name": "Épreuve écrite",
       "short_name": "E. Écrit",
       "emoji": "✍️",
-      "color": "#0ea5e9",
+      "color": "#8a94a6",
       "order": 2,
       "available": false,
       "tasks": []

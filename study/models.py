@@ -390,6 +390,7 @@ class ReviewLog(models.Model):
     ease_before = models.FloatField(default=2.5)
     ease_after = models.FloatField(default=2.5)
     elapsed_ms = models.PositiveIntegerField(default=0)
+    card_before = models.JSONField(default=dict, blank=True)
 
     class Meta:
         ordering = ["-reviewed_at"]

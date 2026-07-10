@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 
 from .models import Card, CardState, Rating, ReviewLog
 
@@ -194,6 +195,24 @@ def _compute_review(
     )
 
 
+def _snapshot(card: Card) -> dict:
+    """Capture a card's full scheduling state so a review can be undone."""
+    return {
+        "state": card.state,
+        "due": card.due.isoformat() if card.due else None,
+        "interval_days": card.interval_days,
+        "ease": card.ease,
+        "reps": card.reps,
+        "lapses": card.lapses,
+        "learning_step": card.learning_step,
+        "last_reviewed": (
+            card.last_reviewed.isoformat() if card.last_reviewed else None
+        ),
+        "last_rating": card.last_rating,
+        "suspended": card.suspended,
+    }
+
+
 def review(
     card: Card, rating: int, now: datetime | None = None, elapsed_ms: int = 0
 ) -> Schedule:
@@ -204,6 +223,7 @@ def review(
     before_state = card.state
     before_interval = card.interval_days
     before_ease = card.ease
+    snapshot = _snapshot(card)
 
     sched = compute(
         state=card.state,
@@ -249,8 +269,63 @@ def review(
         ease_before=before_ease,
         ease_after=sched.ease,
         elapsed_ms=max(0, int(elapsed_ms)),
+        card_before=snapshot,
     )
     return sched
+
+
+def undo_last() -> Card | None:
+    """Revert the most recent review, restoring the card and dropping its log.
+
+    Returns the restored :class:`Card` (so the caller can re-present it), or
+    ``None`` when there is nothing to undo.
+    """
+    log = ReviewLog.objects.order_by("-reviewed_at", "-id").first()
+    if log is None:
+        return None
+
+    card = log.card
+    snap = log.card_before or {}
+    if snap:
+        card.state = snap.get("state", CardState.NEW)
+        card.due = parse_datetime(snap["due"]) if snap.get("due") else None
+        card.interval_days = snap.get("interval_days", 0.0)
+        card.ease = snap.get("ease", STARTING_EASE)
+        card.reps = snap.get("reps", 0)
+        card.lapses = snap.get("lapses", 0)
+        card.learning_step = snap.get("learning_step", 0)
+        card.last_reviewed = (
+            parse_datetime(snap["last_reviewed"])
+            if snap.get("last_reviewed")
+            else None
+        )
+        card.last_rating = snap.get("last_rating")
+        card.suspended = snap.get("suspended", False)
+    else:
+        # Older logs predate the snapshot: restore what the analytic columns hold.
+        card.state = log.state_before
+        card.interval_days = log.interval_before
+        card.ease = log.ease_before
+        card.reps = max(0, card.reps - 1)
+        card.last_reviewed = None
+        card.last_rating = None
+
+    card.save(
+        update_fields=[
+            "state",
+            "due",
+            "interval_days",
+            "ease",
+            "reps",
+            "lapses",
+            "learning_step",
+            "last_reviewed",
+            "last_rating",
+            "suspended",
+        ]
+    )
+    log.delete()
+    return card
 
 
 def format_interval(delta: timedelta) -> str:

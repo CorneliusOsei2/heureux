@@ -6,6 +6,9 @@
      class="review"
      data-next-url="{% url 'study:review_next' %}"
      data-answer-url="{% url 'study:review_answer' %}"
+     data-undo-url="{% url 'study:review_undo' %}"
+     data-suspend-url="{% url 'study:review_suspend' %}"
+     data-can-undo="{{ can_undo|yesno:'1,0' }}"
      data-csrf="{{ csrf_token }}"
      data-scope='{{ scope_json }}'>
 
@@ -51,15 +54,24 @@
       </div>
       <div class="kbd-hint" id="kbd-hint"></div>
     </div>
+
+    <div class="review__actions">
+      <button class="linkbtn" id="undo-btn" type="button"
+              title="Annuler la dernière réponse (u)" disabled>↶ Annuler</button>
+      <button class="linkbtn linkbtn--muted" id="suspend-btn" type="button"
+              title="Suspendre cette carte (s)">Suspendre ⏸</button>
+    </div>
   </div>
 
   <div id="done-zone" class="done-state hidden card card--pad">
     <div class="done-state__emoji">🎉</div>
     <h2>Session terminée</h2>
+    <div class="session-summary" id="session-summary"></div>
     <p>Vous avez révisé toutes les cartes prévues pour ce lot. Revenez plus tard pour les révisions à venir.</p>
     <div class="row center" style="justify-content:center; margin-top:1rem;">
       <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
       <a class="btn" href="{% url 'study:browse' %}">Parcourir les fiches</a>
+      <button class="btn" id="undo-btn-done" type="button" disabled>↶ Annuler la dernière</button>
     </div>
   </div>
 </div>
