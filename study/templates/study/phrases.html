@@ -30,14 +30,17 @@
           <div class="phrase__cue">{{ phrase.english_cue }}</div>
           <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
           {% if phrase.note %}<p class="phrase__note">{{ phrase.note }}</p>{% endif %}
-          {% if phrase.source_prompts.all %}
+          {% with sp=phrase.source_prompts.all %}
+          {% if sp %}
             <div class="phrase__foot">
               <span class="faint">Tiré de&nbsp;:</span>
-              {% for src in phrase.source_prompts.all %}
+              {% for src in sp|slice:":10" %}
                 <a class="chip chip--theme" style="--chip: {{ src.theme.color }};" href="{% url 'study:response_detail' src.response_id %}">{{ src.theme.emoji }} P{{ src.number }}</a>
               {% endfor %}
+              {% with more=sp|slice:"10:"|length %}{% if more %}<span class="chip chip--more" title="Présente aussi dans {{ more }} autre{{ more|pluralize }} réponse{{ more|pluralize }}">+{{ more }}</span>{% endif %}{% endwith %}
             </div>
           {% endif %}
+          {% endwith %}
         </div>
       {% endfor %}
     </div>

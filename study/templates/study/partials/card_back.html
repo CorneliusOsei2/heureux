@@ -64,9 +64,10 @@
     {% if sources %}
       <div class="phrase__foot">
         <span class="faint">Tiré de :</span>
-        {% for s in sources %}
+        {% for s in sources|slice:":6" %}
           <a class="chip" href="{% url 'study:response_detail' s.response_id %}">{{ s.theme.display_name }} P{{ s.number }}</a>
         {% endfor %}
+        {% with more=sources|slice:"6:"|length %}{% if more %}<span class="chip chip--more">+{{ more }}</span>{% endif %}{% endwith %}
       </div>
     {% endif %}
   </div>

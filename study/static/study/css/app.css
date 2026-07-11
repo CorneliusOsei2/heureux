@@ -305,6 +305,7 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 .chip--active { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
 .chip--sm { font-size: 0.72rem; padding: 0.12rem 0.5rem; }
 .chip--muted { opacity: 0.45; }
+.chip--more { background: transparent; color: var(--text-soft); border-style: dashed; opacity: 0.75; }
 .chip__n { font-weight: 700; opacity: 0.85; }
 .chip--active .chip__n { opacity: 1; }
 
