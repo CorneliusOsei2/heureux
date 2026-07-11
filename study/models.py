@@ -216,7 +216,7 @@ class Phrase(models.Model):
     anchor = models.CharField(max_length=300)
     example = models.TextField()
     note = models.TextField(blank=True)
-    sources_raw = models.CharField(max_length=200, blank=True)
+    sources_raw = models.TextField(blank=True)
     source_prompts = models.ManyToManyField(
         Prompt, related_name="phrases", blank=True
     )
