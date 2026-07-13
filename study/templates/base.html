@@ -14,7 +14,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=24">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=25">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -110,19 +110,19 @@
   {% endif %}
 
   <div class="selection-translate hidden" role="toolbar" aria-label="Selected text actions" data-selection-translate>
-    <button class="selection-translate__button selection-translate__button--copy" type="button" data-copy-selection>
+    <button class="selection-translate__button selection-translate__button--copy" type="button" aria-label="Copy selected text" data-copy-selection>
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <rect x="8" y="8" width="11" height="11" rx="2"></rect>
         <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
       </svg>
-      <span aria-live="polite" data-copy-selection-label>Copy</span>
+      <span class="selection-translate__label" aria-live="polite" data-copy-selection-label>Copy</span>
     </button>
-    <button class="selection-translate__button selection-translate__button--translate" type="button" aria-controls="translation-panel" aria-haspopup="dialog" data-translate-selection>
+    <button class="selection-translate__button selection-translate__button--translate" type="button" aria-label="Translate selected text to English" aria-controls="translation-panel" aria-haspopup="dialog" data-translate-selection>
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <circle cx="12" cy="12" r="9"></circle>
         <path d="M3.5 12h17M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3C9.8 5.5 8.7 8.5 8.7 12S9.8 18.5 12 21"></path>
       </svg>
-      <span>Translate to English</span>
+      <span class="selection-translate__label">Translate to English</span>
     </button>
   </div>
 
@@ -155,7 +155,7 @@
   </section>
 
   <script src="{% static 'study/js/app.js' %}?v=22"></script>
-  <script src="{% static 'study/js/translate.js' %}?v=4"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=5"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

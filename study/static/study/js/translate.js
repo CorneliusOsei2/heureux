@@ -110,6 +110,7 @@
     }
     selectedText = details.text;
     selectedRect = details.rect;
+    selectionCopyButton.classList.remove("is-copied");
     selectionCopyLabel.textContent = "Copy";
     positionAction(details.rect);
   }
@@ -247,12 +248,15 @@
     window.clearTimeout(selectionCopyTimer);
     writeClipboard(selectedText)
       .then(function () {
+        selectionCopyButton.classList.add("is-copied");
         selectionCopyLabel.textContent = "Copied ✓";
         selectionCopyTimer = window.setTimeout(function () {
+          selectionCopyButton.classList.remove("is-copied");
           selectionCopyLabel.textContent = "Copy";
         }, 1600);
       })
       .catch(function () {
+        selectionCopyButton.classList.remove("is-copied");
         selectionCopyLabel.textContent = "Copy failed";
         selectionCopyTimer = window.setTimeout(function () {
           selectionCopyLabel.textContent = "Copy";

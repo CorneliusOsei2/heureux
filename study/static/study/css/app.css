@@ -1496,6 +1496,11 @@ kbd {
 .selection-translate__button--copy:hover {
   background: var(--primary-soft);
 }
+.selection-translate__button--copy.is-copied {
+  border-color: var(--success);
+  background: var(--success-soft);
+  color: var(--success);
+}
 .selection-translate__button--translate {
   background: var(--primary);
   color: var(--primary-ink);
@@ -1874,6 +1879,25 @@ kbd {
     left: 50%;
     max-width: calc(100vw - 1.4rem);
     transform: translateX(-50%);
+  }
+  .selection-translate__button {
+    width: 40px;
+    min-height: 40px;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+  .selection-translate__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
   }
 }
 
