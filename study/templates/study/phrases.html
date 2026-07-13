@@ -2,21 +2,28 @@
 {% block title %}Expressions · Heureux{% endblock %}
 
 {% block content %}
+{% if task %}
+  {% url 'study:task_phrases' part.slug task.slug as phrases_url %}
+{% else %}
+  {% url 'study:phrases' as phrases_url %}
+{% endif %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
-  <p class="eyebrow">Boîte à outils</p>
+  <p class="eyebrow">{% if task %}{{ task.name }} · maîtrise lexicale{% else %}Maîtrise lexicale{% endif %}</p>
   <div class="row between">
-    <h1 style="margin-bottom:0;">Expressions &amp; tournures</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase{% if selected %}&amp;category={{ selected.slug }}{% endif %}">
+    <h1 style="margin-bottom:0;">Expressions &amp; vocabulaire</h1>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}{% if selected %}&amp;category={{ selected.slug }}{% endif %}">
       {% if selected %}Réviser cette catégorie{% else %}Réviser les expressions{% endif %}
     </a>
   </div>
-  <p>Vocabulaire, collocations et tournures extraits sujet par sujet pour construire, nuancer et conclure vos réponses.</p>
+  <p>{% if selected %}{{ phrase_count }} expressions dans « {{ selected.name }} ».{% else %}{{ phrase_count }} expressions, collocations et nuances extraites sujet par sujet, rangées selon leur fonction et leur thème.{% endif %}</p>
 </div>
 
+{% if selected %}
 <nav class="cat-nav">
-  <a class="chip {% if not selected %}chip--active{% endif %}" href="{% url 'study:phrases' %}">Toutes</a>
+  <a class="chip" href="{{ phrases_url }}">← Catégories</a>
   {% for category in categories %}
-    <a class="chip {% if selected.id == category.id %}chip--active{% endif %}" href="{% url 'study:phrases' %}?category={{ category.slug }}">{{ category.name }}</a>
+    <a class="chip {% if selected.id == category.id %}chip--active{% endif %}" href="{{ phrases_url }}?category={{ category.slug }}">{{ category.name }}</a>
   {% endfor %}
 </nav>
 
@@ -25,7 +32,7 @@
     <h2 id="{{ group.category.slug }}">{{ group.category.name }}</h2>
     <div class="grid grid--phrases">
       {% for phrase in group.phrases %}
-        <div class="phrase card">
+        <div class="phrase card" id="phrase-{{ phrase.phrase_id }}">
           <div class="phrase__expr">{{ phrase.expression }}</div>
           <div class="phrase__cue">{{ phrase.english_cue }}</div>
           <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
@@ -48,4 +55,39 @@
 {% empty %}
   <p class="muted">Aucune expression dans cette catégorie.</p>
 {% endfor %}
+{% else %}
+<section class="expression-directory">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Outils transversaux</p>
+      <h2>Construire son discours</h2>
+    </div>
+  </div>
+  <div class="qlist">
+    {% for category in functional_categories %}
+      <a class="qrow expression-category" href="{{ phrases_url }}?category={{ category.slug }}">
+        <span class="qrow__num">↗</span>
+        <span class="qrow__text">{{ category.name }}</span>
+        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }}</span></span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="section-heading expression-directory__section">
+    <div>
+      <p class="eyebrow">Lexique ciblé</p>
+      <h2>Vocabulaire par thème</h2>
+    </div>
+  </div>
+  <div class="qlist">
+    {% for category in topic_categories %}
+      <a class="qrow expression-category" href="{{ phrases_url }}?category={{ category.slug }}">
+        <span class="qrow__num">Aa</span>
+        <span class="qrow__text">{{ category.name }}</span>
+        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }}</span></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 {% endblock %}

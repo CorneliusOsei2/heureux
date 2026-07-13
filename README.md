@@ -12,17 +12,22 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
 ## What's inside
 
-- **Réviser** — a distraction-free review session. Reveal with `Space`, then
-  choose `1` (Revoir) or `2` (Correct). Unfinished sessions reopen on the exact
-  card where you stopped.
+- **Expression orale → Tâche 3** — the current corpus has one clear home. Its
+  subjects, argued responses, expression bank, review queue, revisit list,
+  search, and progress are all scoped to this task.
+- **Réviser** — a grouped workspace for responses, expressions, and the revisit
+  list, followed by a distraction-free session. Reveal with `Space`, then choose
+  `1` (Revoir) or `2` (Correct). Unfinished sessions reopen on the exact card
+  where you stopped.
 - **À revoir** — a persistent list for difficult cards, with its own focused
   review pass.
-- **Parcourir** — browse by theme, by topic family, or by expression category.
+- **Sujets & réponses** — browse Tâche 3 by theme or topic family.
 - **Fiche** — a compact speaking spine: reformulation, position, three main
   ideas, nuance, conclusion, equivalent prompts, and related expressions.
-- **Expressions** — reusable chunks with an English cue and a verbatim example
-  from the answer bank, grouped by function and reviewable per response.
-- **Stats** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
+- **Expressions & vocabulaire** — reusable chunks with an English cue and a
+  verbatim example from the answer bank, grouped into accurate topical and
+  functional categories and reviewable per response.
+- **Progression** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
   mature-card retention, streak, and per-theme mastery.
 - **Réglages** — daily new-card / max-review limits, and a full reset.
 
@@ -108,6 +113,7 @@ cp .env.example .env
 | `ALLOWED_HOSTS` | localhost | Comma-separated hostnames. |
 | `CSRF_TRUSTED_ORIGINS` | — | Comma-separated `https://…` origins. |
 | `TIME_ZONE` | `America/Los_Angeles` | Drives "due today" and streaks. |
+| `DATABASE_URL` | — | PostgreSQL connection URL used in production. |
 | `DATABASE_PATH` | `db.sqlite3` | Absolute path for the SQLite file. |
 
 When `DEBUG=False`, security hardening (SSL redirect, HSTS, secure cookies,
@@ -126,9 +132,9 @@ web:     gunicorn config.wsgi --log-file -
 release: python manage.py migrate --noinput && python manage.py import_content
 ```
 
-Set at least `SECRET_KEY`, `DEBUG=False`, `ALLOWED_HOSTS`, and
-`CSRF_TRUSTED_ORIGINS`. Persist the SQLite file (point `DATABASE_PATH` at a
-mounted volume) so review progress survives restarts.
+Set at least `SECRET_KEY`, `DEBUG=False`, `DATABASE_URL`, `ALLOWED_HOSTS`, and
+`CSRF_TRUSTED_ORIGINS`. Production should use persistent PostgreSQL storage;
+SQLite remains the zero-configuration local-development default.
 
 Static files for any non-Procfile host:
 

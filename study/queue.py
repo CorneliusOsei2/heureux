@@ -11,6 +11,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Iterable, Optional
 
+from django.db.models import Q
 from django.utils import timezone
 
 from .models import Card, CardType, CardState, ReviewLog, Settings
@@ -21,9 +22,17 @@ def _today_start(now: datetime) -> datetime:
     return local.replace(hour=0, minute=0, second=0, microsecond=0)
 
 
-def scoped_cards(scope: Optional[dict] = None):
+def scoped_cards(
+    scope: Optional[dict] = None,
+    *,
+    include_suspended: bool = False,
+):
     """Active cards narrowed to an optional deck scope."""
-    qs = Card.objects.active().select_related(
+    qs = (
+        Card.objects.all()
+        if include_suspended
+        else Card.objects.active()
+    ).select_related(
         "response__theme", "response__family", "phrase__category"
     )
     if not scope:
@@ -40,21 +49,41 @@ def scoped_cards(scope: Optional[dict] = None):
         )
     elif kind == "revisit":
         qs = qs.filter(needs_revisit=True)
-    if scope.get("part"):
-        qs = qs.filter(response__theme__task__part__slug=scope["part"])
-    if scope.get("task"):
-        qs = qs.filter(response__theme__task__slug=scope["task"])
-    if scope.get("theme"):
-        qs = qs.filter(response__theme__slug=scope["theme"])
-    if scope.get("family"):
-        qs = qs.filter(response__family__slug=scope["family"])
+    relation_filters = {
+        "part": (
+            "response__theme__task__part__slug",
+            "phrase__source_prompts__theme__task__part__slug",
+        ),
+        "task": (
+            "response__theme__task__slug",
+            "phrase__source_prompts__theme__task__slug",
+        ),
+        "theme": (
+            "response__theme__slug",
+            "phrase__source_prompts__theme__slug",
+        ),
+        "family": (
+            "response__family__slug",
+            "phrase__source_prompts__family__slug",
+        ),
+    }
+    response_scope = Q()
+    phrase_scope = Q()
+    has_relation_scope = False
+    for key, (response_lookup, phrase_lookup) in relation_filters.items():
+        if scope.get(key):
+            has_relation_scope = True
+            response_scope &= Q(**{response_lookup: scope[key]})
+            phrase_scope &= Q(**{phrase_lookup: scope[key]})
+    if has_relation_scope:
+        qs = qs.filter(response_scope | phrase_scope)
     if scope.get("category"):
         qs = qs.filter(phrase__category__slug=scope["category"])
     if scope.get("response"):
         qs = qs.filter(
             phrase__source_prompts__response_id=scope["response"]
         ).distinct()
-    return qs
+    return qs.distinct()
 
 
 def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> dict:
@@ -79,7 +108,11 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
             "revisit_total": revisit_total,
         }
 
-    todays_logs = ReviewLog.objects.filter(reviewed_at__gte=start)
+    limit_cards = scoped_cards(scope, include_suspended=True)
+    todays_logs = ReviewLog.objects.filter(
+        reviewed_at__gte=start,
+        card_id__in=limit_cards.values("pk"),
+    )
     new_done_today = todays_logs.filter(state_before=CardState.NEW).count()
     reviews_done_today = todays_logs.filter(
         state_before__in=[CardState.REVIEW, CardState.RELEARNING]
@@ -110,7 +143,9 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
         "new_done_today": new_done_today,
         "reviews_done_today": reviews_done_today,
         "total_due": due_reviews + new_available,
-        "revisit_total": Card.objects.active().filter(needs_revisit=True).count(),
+        "revisit_total": scoped_cards(
+            {**(scope or {}), "kind": "revisit"}
+        ).count(),
     }
 
 

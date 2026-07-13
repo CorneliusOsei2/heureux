@@ -5,7 +5,7 @@
 <div class="page-head">
   <p class="eyebrow"><a href="{% url 'study:dashboard' %}">Accueil</a> · {{ part.short_name }}</p>
   <h1 style="margin-bottom:.2rem;">{{ part.emoji }} {{ part.name }}</h1>
-  <p class="muted mt-0">Choisissez une tâche à travailler.</p>
+  <p class="muted mt-0">Choisissez une tâche. Tout le contenu disponible est rangé dans son espace dédié.</p>
 </div>
 
 <div class="grid grid--decks">
@@ -19,7 +19,8 @@
             {% if t.stats.due %}<span class="deck__due pill pill--due">{{ t.stats.due }}</span>{% endif %}
           </div>
           <div class="deck__meta">{{ t.task.subtitle }}</div>
-          <div class="deck__meta">{{ t.theme_count }} thème{{ t.theme_count|pluralize }} · {{ t.stats.seen }}/{{ t.stats.total }} vues · {{ t.stats.mature }} maîtrisée{{ t.stats.mature|pluralize }}</div>
+          <div class="deck__meta">{{ t.prompt_count }} sujets · {{ t.response_stats.total }} réponses · {{ t.phrase_count }} expressions</div>
+          <div class="deck__meta">{{ t.stats.seen }}/{{ t.stats.total }} cartes vues · {{ t.stats.mature }} maîtrisée{{ t.stats.mature|pluralize }}</div>
           <div class="progress">
             <span class="bg-mature" style="width: {% widthratio t.stats.mature t.stats.total 100 %}%;"></span>
             <span class="bg-review" style="width: {% widthratio t.stats.review_young t.stats.total 100 %}%;"></span>

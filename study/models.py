@@ -20,7 +20,7 @@ from django.utils import timezone
 
 
 class ExamPart(models.Model):
-    """A top-level exam component, e.g. Épreuve orale or Épreuve écrite."""
+    """A top-level expression component, such as oral or written work."""
 
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=64, unique=True)

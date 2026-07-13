@@ -24,6 +24,14 @@
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
   }
+  document.querySelectorAll("[data-nav-more]").forEach(function (menu) {
+    document.addEventListener("click", function (event) {
+      if (!menu.contains(event.target)) menu.removeAttribute("open");
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") menu.removeAttribute("open");
+    });
+  });
 
   /* ---------- Service worker (PWA) ---------- */
   if ("serviceWorker" in navigator) {

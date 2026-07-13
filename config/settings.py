@@ -1,7 +1,7 @@
 """
 Django settings for the EO T3 flashcards app.
 
-Personal single-user French oral-exam study tool. Configuration is driven by
+Personal single-user French-expression study tool. Configuration is driven by
 environment variables so the same code runs locally and in production.
 """
 

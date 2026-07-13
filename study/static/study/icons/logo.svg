@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Heureux">
+  <rect width="512" height="512" fill="#173f90"/>
+  <path d="M424 0h88v512h-88z" fill="#e3263b"/>
+  <path d="M130 118h62v108h128V118h62v276h-62V284H192v110h-62z" fill="#fff"/>
+</svg>

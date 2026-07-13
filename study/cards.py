@@ -52,7 +52,10 @@ def scope_label(scope: dict) -> str:
         if theme:
             return f"Thème · {theme.display_name}"
     if scope.get("task"):
-        task = Task.objects.filter(slug=scope["task"]).select_related("part").first()
+        tasks = Task.objects.filter(slug=scope["task"]).select_related("part")
+        if scope.get("part"):
+            tasks = tasks.filter(part__slug=scope["part"])
+        task = tasks.first()
         if task:
             return f"{task.part.short_name} · {task.name}"
     if scope.get("part"):

@@ -2,19 +2,26 @@
 {% block title %}Parcourir · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
-  <p class="eyebrow">Parcourir</p>
-  <h1>Toutes les fiches</h1>
-  {% if active_part %}
-    <p>{{ scope_label }} · {{ theme_count }} thème{{ theme_count|pluralize }}.</p>
-  {% else %}
-    <p>167 sujets · 130 réponses uniques · 160 expressions.</p>
-  {% endif %}
+  <p class="eyebrow">{% if task %}{{ task.name }} · contenu argumenté{% else %}Bibliothèque{% endif %}</p>
+  <h1>Sujets &amp; réponses</h1>
+  <p>{{ prompt_count }} sujets · {{ response_count }} réponses uniques · {{ theme_count }} thèmes.</p>
 </div>
 
+{% if not task_locked %}
 {% include "study/_scope_filter.html" %}
+{% endif %}
 
-<h2>Par thème</h2>
+<div class="section-heading">
+  <div>
+    <p class="eyebrow">Première entrée</p>
+    <h2>Par thème</h2>
+  </div>
+  {% if task %}
+    <a href="{% url 'study:task_phrases' part.slug task.slug %}">{{ phrase_count }} expressions associées →</a>
+  {% endif %}
+</div>
 <div class="grid grid--decks">
   {% for item in themes %}
     <a class="deck card" style="--deck-color: {{ item.theme.color }};" href="{% url 'study:theme_detail' item.theme.slug %}">
@@ -37,27 +44,15 @@
   {% endfor %}
 </div>
 
-{% if not active_part %}
 <h2 style="margin-top:2rem;">Par famille de sujets</h2>
+<p class="muted mt-0">Regroupez les formulations proches pour réutiliser les mêmes structures et arguments.</p>
 <div class="qlist">
   {% for family in families %}
-    <a class="qrow" href="{% url 'study:family_detail' family.slug %}">
+    <a class="qrow" href="{% if task %}{% url 'study:task_family_detail' part.slug task.slug family.slug %}{% else %}{% url 'study:family_detail' family.slug %}{% endif %}">
       <span class="qrow__num">{{ family.order }}</span>
       <span class="qrow__text">{{ family.name }}</span>
       <span class="qrow__meta"><span class="chip">{{ family.n }} sujet{{ family.n|pluralize }}</span></span>
     </a>
   {% endfor %}
 </div>
-
-<h2 style="margin-top:2rem;">Expressions par catégorie</h2>
-<div class="qlist">
-  {% for category in categories %}
-    <a class="qrow" href="{% url 'study:phrases' %}?category={{ category.slug }}">
-      <span class="qrow__num">🗣️</span>
-      <span class="qrow__text">{{ category.name }}</span>
-      <span class="qrow__meta"><span class="chip">{{ category.n }} expression{{ category.n|pluralize }}</span></span>
-    </a>
-  {% endfor %}
-</div>
-{% endif %}
 {% endblock %}

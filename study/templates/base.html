@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Heureux{% endblock %}</title>
-  <meta name="description" content="Fiches en répétition espacée pour l'épreuve de français.">
+  <meta name="description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
   <script>
     (function () {
       try {
@@ -17,27 +17,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=4">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=6">
   <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Heureux">
   <link rel="apple-touch-icon" href="{% static 'study/icons/icon-192.png' %}">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563eb'/><text x='50' y='73' font-family='Georgia,%22Book Antiqua%22,Palatino,serif' font-style='italic' font-weight='700' font-size='74' text-anchor='middle' fill='%23c8a23a'>H</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="{% static 'study/icons/logo.svg' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'study/icons/favicon-32.png' %}">
   {# Social sharing (Open Graph + Twitter) #}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Heureux">
   <meta property="og:title" content="{% block og_title %}Heureux{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}Fiches en répétition espacée pour l'épreuve de français.{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Révisions en répétition espacée pour l'expression orale et écrite en français.{% endblock %}">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
   <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Heureux — logo H doré sur fond bleu">
+  <meta property="og:image:alt" content="Heureux — logo blanc, bleu et rouge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% block twitter_title %}Heureux{% endblock %}">
-  <meta name="twitter:description" content="Fiches en répétition espacée pour l'épreuve de français.">
+  <meta name="twitter:description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
   <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
 </head>
 <body>
@@ -45,36 +45,52 @@
   <header class="nav">
     <div class="nav__inner">
       <a class="brand" href="{% url 'study:dashboard' %}">
-        <span class="brand__mark">H</span>
+        <span class="brand__mark" aria-hidden="true"><img src="{% static 'study/icons/logo.svg' %}" alt=""></span>
         <span class="brand__name">Heureux</span>
       </a>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false" data-nav-toggle>
         <span></span><span></span><span></span>
       </button>
       <nav class="nav__links" data-nav-links>
-        <a href="{% url 'study:dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}">Accueil</a>
-        <a href="{% url 'study:review' %}" class="{% if request.resolver_match.url_name == 'review' %}is-active{% endif %}">
+        {% if content_task %}
+        <a href="{% url 'study:task_detail' content_task.part.slug content_task.slug %}"
+           class="nav__primary-link nav__task {% if request.resolver_match.url_name == 'task_detail' or request.resolver_match.url_name == 'task_browse' or request.resolver_match.url_name == 'task_phrases' or request.resolver_match.url_name == 'theme_detail' or request.resolver_match.url_name == 'family_detail' or request.resolver_match.url_name == 'task_family_detail' or request.resolver_match.url_name == 'response_detail' %}is-active{% endif %}">
+          <span>{{ content_task.part.short_name }}</span>
+          <b>{{ content_task.name }}</b>
+        </a>
+        {% endif %}
+        <a href="{% if content_task %}{% url 'study:task_review_hub' content_task.part.slug content_task.slug %}{% else %}{% url 'study:review' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' %}is-active{% endif %}">
           Réviser
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
-        <a href="{% url 'study:revisit_list' %}" class="{% if request.resolver_match.url_name == 'revisit_list' %}is-active{% endif %}">
-          À revoir
-          {% if nav_revisit_count %}<span class="pill pill--revisit">{{ nav_revisit_count }}</span>{% endif %}
-        </a>
-        <a href="{% url 'study:browse' %}" class="{% if request.resolver_match.url_name in 'browse,theme_detail,family_detail,response_detail' %}is-active{% endif %}">Parcourir</a>
-        <a href="{% url 'study:phrases' %}" class="{% if request.resolver_match.url_name == 'phrases' %}is-active{% endif %}">Expressions</a>
-        <a href="{% url 'study:stats' %}" class="{% if request.resolver_match.url_name == 'stats' %}is-active{% endif %}">Stats</a>
-        <form class="nav__search" action="{% url 'study:search' %}" method="get" role="search">
+        <form class="nav__search" action="{% if content_task %}{% url 'study:task_search' content_task.part.slug content_task.slug %}{% else %}{% url 'study:search' %}{% endif %}" method="get" role="search">
           <input type="search" name="q" placeholder="Rechercher…" aria-label="Rechercher" value="{{ query|default:'' }}">
         </form>
-        <a href="{% url 'study:settings' %}" class="nav__icon {% if request.resolver_match.url_name == 'settings' %}is-active{% endif %}" aria-label="Réglages" title="Réglages">⚙</a>
-        <button class="nav__icon" data-theme-toggle aria-label="Basculer le thème" title="Thème clair/sombre">
-          <span class="theme-icon theme-icon--sun">☀</span>
-          <span class="theme-icon theme-icon--moon">☾</span>
-        </button>
-        <button class="nav__install" type="button" data-install-app hidden aria-label="Installer l'application Heureux" title="Installer l'application">
-          <span aria-hidden="true">⬇</span><span>Installer</span>
-        </button>
+        <details class="nav__more {% if request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
+          <summary aria-label="Plus d'options" title="Plus d'options">
+            <span aria-hidden="true">•••</span>
+          </summary>
+          <div class="nav__menu">
+            <a href="{% if content_task %}{% url 'study:task_revisit_list' content_task.part.slug content_task.slug %}{% else %}{% url 'study:revisit_list' %}{% endif %}" class="{% if request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %}is-active{% endif %}">
+              <span>À revoir</span>
+              {% if nav_revisit_count %}<span class="pill pill--revisit">{{ nav_revisit_count }}</span>{% endif %}
+            </a>
+            <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}" class="{% if request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Progression</a>
+            <span class="nav__menu-divider" aria-hidden="true"></span>
+            <a href="{% url 'study:settings' %}" class="{% if request.resolver_match.url_name == 'settings' %}is-active{% endif %}">Réglages</a>
+            <button type="button" data-theme-toggle>
+              <span>Apparence</span>
+              <span class="nav__theme-glyph" aria-hidden="true">
+                <span class="theme-icon theme-icon--sun">☀</span>
+                <span class="theme-icon theme-icon--moon">☾</span>
+              </span>
+            </button>
+            <button class="nav__install" type="button" data-install-app hidden>
+              <span>Installer l'application</span>
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        </details>
       </nav>
     </div>
   </header>
@@ -87,11 +103,11 @@
   <footer class="footer">
     <span>{{ total_cards }} cartes · répétition espacée</span>
     <span class="footer__dot">·</span>
-    <a href="{% url 'study:stats' %}">Progression</a>
+    <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}">Progression</a>
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=4"></script>
+  <script src="{% static 'study/js/app.js' %}?v=6"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

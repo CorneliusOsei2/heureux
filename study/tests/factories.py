@@ -51,7 +51,7 @@ def make_part(slug="orale", available=True) -> ExamPart:
     part, _ = ExamPart.objects.get_or_create(
         slug=slug,
         defaults={
-            "name": f"Épreuve {slug}",
+            "name": f"Expression {slug}",
             "short_name": slug.title(),
             "available": available,
             "order": _uid(),
@@ -133,10 +133,12 @@ def make_content():
     task = make_task(part=part)
     theme = make_theme(task=task)
     family = make_family()
-    make_response(theme=theme, family=family)
+    response = make_response(theme=theme, family=family)
     make_spine_card(theme=theme, family=family)
     category, _ = PhraseCategory.objects.get_or_create(
         slug="nuancer", defaults={"name": "Nuancer", "order": 1}
     )
-    make_phrase_card(phrase=make_phrase(category=category))
+    phrase = make_phrase(category=category)
+    phrase.source_prompts.add(response.prompts.first())
+    make_phrase_card(phrase=phrase)
     return {"part": part, "task": task, "theme": theme, "family": family}

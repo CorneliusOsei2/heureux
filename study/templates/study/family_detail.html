@@ -2,11 +2,12 @@
 {% block title %}{{ family.name }} · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
-  <p class="eyebrow"><a href="{% url 'study:browse' %}">Parcourir</a> · Famille de sujets</p>
+  <p class="eyebrow">{% if task %}<a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>{% else %}<a href="{% url 'study:browse' %}">Parcourir</a>{% endif %} · Famille de sujets</p>
   <div class="row between">
     <h1 style="margin-bottom:0;">{{ family.name }}</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;family={{ family.slug }}">Réviser cette famille</a>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;family={{ family.slug }}">Réviser cette famille</a>
   </div>
   <p>{{ rows|length }} sujet{{ rows|length|pluralize }} à travers les thèmes.</p>
 </div>

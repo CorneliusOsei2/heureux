@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import secrets
+from urllib.parse import urlencode
 
 from django.db import transaction
 from django.db.models import Count, Q
@@ -76,12 +77,13 @@ def deck_stats(qs, now=None) -> dict:
     }
 
 
-def current_streak(now=None) -> int:
+def current_streak(now=None, logs=None) -> int:
     """Consecutive days (up to today) with at least one review."""
     now = now or timezone.now()
+    logs = ReviewLog.objects.all() if logs is None else logs
     days = {
         timezone.localtime(dt).date()
-        for dt in ReviewLog.objects.values_list("reviewed_at", flat=True)
+        for dt in logs.values_list("reviewed_at", flat=True)
     }
     if not days:
         return 0
@@ -112,32 +114,70 @@ def _spine_theme_stats(theme, now):
     )
 
 
+def _task_scope(task) -> dict:
+    return {"part": task.part.slug, "task": task.slug}
+
+
+def _task_cards(task, kind=None):
+    scope = _task_scope(task)
+    if kind:
+        scope["kind"] = kind
+    return queue_module.scoped_cards(scope)
+
+
+def _task_phrases(task):
+    return Phrase.objects.filter(
+        source_prompts__theme__task=task
+    ).distinct()
+
+
+def _route_task(part_slug, task_slug):
+    return get_object_or_404(
+        Task.objects.select_related("part"),
+        slug=task_slug,
+        part__slug=part_slug,
+    )
+
+
 def _task_card(task, now):
     """Build a dashboard/part card for a single task."""
     if task.available:
-        stats = deck_stats(
-            Card.objects.active().filter(
-                card_type=CardType.SPINE, response__theme__task=task
-            ),
-            now,
-        )
+        response_stats = deck_stats(_task_cards(task, "spine"), now)
+        phrase_stats = deck_stats(_task_cards(task, "phrase"), now)
+        stats = deck_stats(_task_cards(task), now)
         theme_count = Theme.objects.filter(task=task).count()
+        prompt_count = Prompt.objects.filter(theme__task=task).count()
+        phrase_count = _task_phrases(task).count()
     else:
+        response_stats = None
+        phrase_stats = None
         stats = None
         theme_count = 0
-    return {"task": task, "stats": stats, "theme_count": theme_count}
+        prompt_count = 0
+        phrase_count = 0
+    return {
+        "task": task,
+        "stats": stats,
+        "response_stats": response_stats,
+        "phrase_stats": phrase_stats,
+        "theme_count": theme_count,
+        "prompt_count": prompt_count,
+        "phrase_count": phrase_count,
+    }
 
 
-def _phrase_deck_stats(now):
-    return deck_stats(
-        Card.objects.active().filter(
+def _phrase_deck_stats(now, task=None):
+    cards = (
+        _task_cards(task, "phrase")
+        if task
+        else Card.objects.active().filter(
             card_type__in=[
                 CardType.PHRASE_PRODUCTION,
                 CardType.PHRASE_RECOGNITION,
             ]
-        ),
-        now,
+        )
     )
+    return deck_stats(cards, now)
 
 
 def dashboard(request):
@@ -154,10 +194,8 @@ def dashboard(request):
     context = {
         "counts": counts,
         "parts": parts,
-        "phrase_stats": _phrase_deck_stats(now),
         "overall": overall,
         "streak": current_streak(now),
-        "phrase_category_count": PhraseCategory.objects.count(),
     }
     return render(request, "study/dashboard.html", context)
 
@@ -202,19 +240,24 @@ def task_detail(request, part_slug, task_slug):
                 "prompt_count": Prompt.objects.filter(theme=theme).count(),
             }
         )
-    task_stats = deck_stats(
-        Card.objects.active().filter(
-            card_type=CardType.SPINE, response__theme__task=task
-        ),
-        now,
-    )
+    scope = _task_scope(task)
+    task_stats = deck_stats(_task_cards(task), now)
+    response_stats = deck_stats(_task_cards(task, "spine"), now)
+    phrase_stats = _phrase_deck_stats(now, task)
     context = {
         "part": task.part,
         "task": task,
         "themes": themes,
         "stats": task_stats,
-        "phrase_stats": _phrase_deck_stats(now),
-        "phrase_category_count": PhraseCategory.objects.count(),
+        "response_stats": response_stats,
+        "phrase_stats": phrase_stats,
+        "counts": queue_module.queue_counts(scope, now),
+        "prompt_count": Prompt.objects.filter(theme__task=task).count(),
+        "phrase_count": _task_phrases(task).count(),
+        "phrase_category_count": _task_phrases(task)
+        .values("category_id")
+        .distinct()
+        .count(),
     }
     return render(request, "study/task_detail.html", context)
 
@@ -387,6 +430,53 @@ def _card_state_locked(
 
 
 @require_GET
+def review_hub(request, part_slug, task_slug):
+    task = _route_task(part_slug, task_slug)
+    part = task.part
+    now = timezone.now()
+    scope = {"part": part.slug, "task": task.slug}
+    cards = _task_cards(task).exclude(suspended=True)
+    response_stats = deck_stats(
+        cards.filter(card_type=CardType.SPINE),
+        now,
+    )
+    phrase_stats = deck_stats(
+        cards.filter(phrase__isnull=False),
+        now,
+    )
+    response_counts = queue_module.queue_counts(
+        {**scope, "kind": "spine"},
+        now,
+    )
+    phrase_counts = queue_module.queue_counts(
+        {**scope, "kind": "phrase"},
+        now,
+    )
+    session = ReviewSession.load()
+    saved_scope = session.scope if isinstance(session.scope, dict) else {}
+    can_resume = bool(
+        session.current_card_id
+        and saved_scope.get("part") == part.slug
+        and saved_scope.get("task") == task.slug
+    )
+    return render(
+        request,
+        "study/review_hub.html",
+        {
+            "part": part,
+            "task": task,
+            "counts": queue_module.queue_counts(scope, now),
+            "response_stats": response_stats,
+            "phrase_stats": phrase_stats,
+            "response_due": response_counts["total_due"],
+            "phrase_due": phrase_counts["total_due"],
+            "revisit_count": cards.filter(needs_revisit=True).count(),
+            "can_resume": can_resume,
+        },
+    )
+
+
+@require_GET
 def review_next(request):
     with transaction.atomic():
         session = _locked_review_session()
@@ -493,8 +583,24 @@ def review_undo(request):
 # ---------------------------------------------------------------------------
 
 
-def revisit_list(request):
+def revisit_list(request, part_slug=None, task_slug=None):
     """Persistent list of cards marked with the Revisit review action."""
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
+    scope = _task_scope(task) if task else {}
+    revisit_scope = {**scope, "kind": "revisit"}
+    revisit_cards = queue_module.scoped_cards(revisit_scope)
+    redirect_url = (
+        reverse(
+            "study:task_revisit_list",
+            args=[task.part.slug, task.slug],
+        )
+        if task
+        else reverse("study:revisit_list")
+    )
     if request.method == "POST":
         action = request.POST.get("action")
         if action == "remove":
@@ -502,22 +608,21 @@ def revisit_list(request):
                 card_id = int(request.POST.get("card_id", ""))
             except (TypeError, ValueError):
                 return HttpResponseBadRequest("Invalid card.")
-            Card.objects.filter(pk=card_id).update(
+            revisit_cards.filter(pk=card_id).update(
                 needs_revisit=False,
                 revisit_added_at=None,
             )
         elif action == "clear":
-            Card.objects.filter(needs_revisit=True).update(
+            revisit_cards.update(
                 needs_revisit=False,
                 revisit_added_at=None,
             )
         else:
             return HttpResponseBadRequest("Invalid action.")
-        return redirect("study:revisit_list")
+        return redirect(redirect_url)
 
     cards = list(
-        Card.objects.active()
-        .filter(needs_revisit=True)
+        revisit_cards
         .select_related(
             "response__theme",
             "response__family",
@@ -551,15 +656,46 @@ def revisit_list(request):
                     "title": card.phrase.expression,
                     "meta": card.phrase.english_cue,
                     "url": (
-                        reverse("study:phrases")
-                        + f"#{card.phrase.category.slug}"
+                        (
+                            reverse(
+                                "study:task_phrases",
+                                args=[task.part.slug, task.slug],
+                            )
+                            if task
+                            else reverse("study:phrases")
+                        )
+                        + f"?category={card.phrase.category.slug}"
+                        + f"#phrase-{card.phrase.phrase_id}"
                     ),
                 }
             )
+    response_items = [item for item in items if item["kind"] == "Réponse"]
+    phrase_items = [item for item in items if item["kind"] == "Expression"]
+    revisit_groups = [
+        {
+            "title": "Réponses argumentées",
+            "description": "Positions et arguments à consolider",
+            "items": response_items,
+        },
+        {
+            "title": "Expressions & vocabulaire",
+            "description": "Tournures et nuances à remémoriser",
+            "items": phrase_items,
+        },
+    ]
     return render(
         request,
         "study/revisit_list.html",
-        {"items": items, "revisit_count": len(items)},
+        {
+            "part": task.part if task else None,
+            "task": task,
+            "items": items,
+            "revisit_groups": [
+                group for group in revisit_groups if group["items"]
+            ],
+            "revisit_count": len(items),
+            "review_scope_qs": urlencode(revisit_scope),
+        },
     )
 
 
@@ -568,7 +704,7 @@ def revisit_list(request):
 # ---------------------------------------------------------------------------
 
 
-def _scope_filters(request):
+def _scope_filters(request, forced_task=None):
     """Shared part/task filter context for Browse and Stats.
 
     Parses ``?part=`` / ``?task=`` (a task implies its part), builds the chip
@@ -577,11 +713,18 @@ def _scope_filters(request):
     """
     part_slug = (request.GET.get("part") or "").strip()
     task_slug = (request.GET.get("task") or "").strip()
+    selected_task = forced_task
+    if forced_task:
+        part_slug = forced_task.part.slug
+        task_slug = forced_task.slug
 
-    if task_slug:
-        task = Task.objects.select_related("part").filter(slug=task_slug).first()
-        if task:
-            part_slug = task.part.slug
+    if task_slug and not forced_task:
+        task_qs = Task.objects.select_related("part").filter(slug=task_slug)
+        if part_slug:
+            task_qs = task_qs.filter(part__slug=part_slug)
+        selected_task = task_qs.first()
+        if selected_task:
+            part_slug = selected_task.part.slug
         else:
             task_slug = ""
 
@@ -609,8 +752,8 @@ def _scope_filters(request):
                 )
 
     if task_slug:
-        scope = {"task": task_slug}
-        review_qs = f"task={task_slug}"
+        scope = {"part": part_slug, "task": task_slug}
+        review_qs = f"part={part_slug}&task={task_slug}"
     elif part_slug:
         scope = {"part": part_slug}
         review_qs = f"part={part_slug}"
@@ -627,17 +770,34 @@ def _scope_filters(request):
         "review_scope_qs": review_qs,
         "scope_label": scope_label(scope),
         "scope": scope,
+        "task": selected_task,
+        "part": selected_task.part if selected_task else None,
+        "task_locked": forced_task is not None,
     }
 
 
-def browse(request):
+def browse(request, part_slug=None, task_slug=None):
     now = timezone.now()
-    filters = _scope_filters(request)
+    forced_task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
+    if forced_task and not forced_task.available:
+        return render(
+            request,
+            "study/coming_soon.html",
+            {"part": forced_task.part, "task": forced_task},
+        )
+    filters = _scope_filters(request, forced_task)
     scope = filters["scope"]
 
     theme_qs = Theme.objects.select_related("task__part").all()
     if scope.get("task"):
-        theme_qs = theme_qs.filter(task__slug=scope["task"])
+        theme_qs = theme_qs.filter(
+            task__slug=scope["task"],
+            task__part__slug=scope["part"],
+        )
     elif scope.get("part"):
         theme_qs = theme_qs.filter(task__part__slug=scope["part"])
 
@@ -656,15 +816,50 @@ def browse(request):
                 "prompt_count": Prompt.objects.filter(theme=theme).count(),
             }
         )
-    families = Family.objects.annotate(n=Count("prompts")).order_by("order")
-    categories = PhraseCategory.objects.annotate(n=Count("phrases")).order_by(
-        "order"
-    )
+    family_qs = Family.objects.all()
+    if scope.get("task"):
+        family_qs = family_qs.filter(
+            prompts__theme__task__slug=scope["task"],
+            prompts__theme__task__part__slug=scope["part"],
+        )
+    elif scope.get("part"):
+        family_qs = family_qs.filter(
+            prompts__theme__task__part__slug=scope["part"]
+        )
+    families = family_qs.annotate(
+        n=Count("prompts", distinct=True)
+    ).order_by("order")
+    prompt_qs = Prompt.objects.all()
+    response_qs = Response.objects.all()
+    phrase_qs = Phrase.objects.all()
+    if scope.get("task"):
+        prompt_qs = prompt_qs.filter(
+            theme__task__slug=scope["task"],
+            theme__task__part__slug=scope["part"],
+        )
+        response_qs = response_qs.filter(
+            theme__task__slug=scope["task"],
+            theme__task__part__slug=scope["part"],
+        )
+        phrase_qs = phrase_qs.filter(
+            source_prompts__theme__task__slug=scope["task"],
+            source_prompts__theme__task__part__slug=scope["part"],
+        ).distinct()
+    elif scope.get("part"):
+        prompt_qs = prompt_qs.filter(theme__task__part__slug=scope["part"])
+        response_qs = response_qs.filter(
+            theme__task__part__slug=scope["part"]
+        )
+        phrase_qs = phrase_qs.filter(
+            source_prompts__theme__task__part__slug=scope["part"]
+        ).distinct()
     context = {
         "themes": themes,
         "families": families,
-        "categories": categories,
         "theme_count": len(themes),
+        "prompt_count": prompt_qs.count(),
+        "response_count": response_qs.count(),
+        "phrase_count": phrase_qs.count(),
         **filters,
     }
     return render(request, "study/browse.html", context)
@@ -703,20 +898,47 @@ def theme_detail(request, slug):
     return render(
         request,
         "study/theme_detail.html",
-        {"theme": theme, "rows": rows, "stats": stats},
+        {
+            "theme": theme,
+            "task": theme.task,
+            "part": theme.task.part if theme.task else None,
+            "rows": rows,
+            "stats": stats,
+        },
     )
 
 
-def family_detail(request, slug):
+def family_detail(
+    request,
+    slug,
+    part_slug=None,
+    task_slug=None,
+):
     family = get_object_or_404(Family, slug=slug)
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else Task.objects.select_related("part")
+        .filter(themes__prompts__family=family)
+        .distinct()
+        .order_by("part__order", "order")
+        .first()
+    )
+    prompt_qs = Prompt.objects.filter(family=family)
+    if part_slug is not None and task_slug is not None:
+        prompt_qs = prompt_qs.filter(theme__task=task)
     prompts = (
-        Prompt.objects.filter(family=family)
+        prompt_qs
         .select_related("response", "theme", "family")
         .order_by("theme__order", "number")
     )
+    response_ids = prompts.values_list("response_id", flat=True)
     spine_cards = {
         card.response_id: card
-        for card in Card.objects.filter(card_type=CardType.SPINE)
+        for card in Card.objects.filter(
+            card_type=CardType.SPINE,
+            response_id__in=response_ids,
+        )
     }
     rows = [
         {
@@ -729,13 +951,22 @@ def family_detail(request, slug):
     return render(
         request,
         "study/family_detail.html",
-        {"family": family, "rows": rows},
+        {
+            "family": family,
+            "task": task,
+            "part": task.part if task else None,
+            "rows": rows,
+        },
     )
 
 
 def response_detail(request, pk):
     response = get_object_or_404(
-        Response.objects.select_related("theme", "family"), pk=pk
+        Response.objects.select_related(
+            "theme__task__part",
+            "family",
+        ),
+        pk=pk,
     )
     arguments = list(response.arguments.all())
     prompts = list(response.prompts.select_related("theme").all())
@@ -752,6 +983,8 @@ def response_detail(request, pk):
         "study/response_detail.html",
         {
             "response": response,
+            "task": response.theme.task,
+            "part": response.theme.task.part if response.theme.task else None,
             "arguments": arguments,
             "prompts": prompts,
             "card": card,
@@ -760,49 +993,125 @@ def response_detail(request, pk):
     )
 
 
-def phrases(request):
+def phrases(request, part_slug=None, task_slug=None):
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
+    if task and not task.available:
+        return render(
+            request,
+            "study/coming_soon.html",
+            {"part": task.part, "task": task},
+        )
     category_slug = request.GET.get("category", "").strip()
-    categories = PhraseCategory.objects.all().order_by("order")
     selected = None
-    phrase_qs = Phrase.objects.select_related("category").prefetch_related(
+    all_phrases = Phrase.objects.select_related("category").prefetch_related(
         "source_prompts__theme"
     )
+    if task:
+        all_phrases = all_phrases.filter(
+            source_prompts__theme__task=task
+        ).distinct()
+    categories = list(
+        PhraseCategory.objects.filter(
+            phrases__in=all_phrases
+        ).distinct().order_by("order")
+    )
+    for category in categories:
+        category.phrase_count = all_phrases.filter(
+            category=category
+        ).count()
+
+    phrase_qs = all_phrases.none()
     if category_slug:
-        selected = get_object_or_404(PhraseCategory, slug=category_slug)
-        phrase_qs = phrase_qs.filter(category=selected)
+        selected = next(
+            (
+                category
+                for category in categories
+                if category.slug == category_slug
+            ),
+            None,
+        )
+        if selected is None:
+            return HttpResponseBadRequest("Unknown phrase category.")
+        phrase_qs = all_phrases.filter(category=selected)
 
     grouped = []
-    for category in categories:
-        items = [p for p in phrase_qs if p.category_id == category.id]
-        if items:
-            grouped.append({"category": category, "phrases": items})
+    if selected:
+        grouped.append(
+            {
+                "category": selected,
+                "phrases": list(phrase_qs),
+            }
+        )
+    functional_names = {
+        "Structurer et prendre position",
+        "Nuancer et comparer",
+        "Cause, conséquence et évaluation",
+        "Schémas d'argumentation",
+    }
 
     return render(
         request,
         "study/phrases.html",
-        {"categories": categories, "grouped": grouped, "selected": selected},
+        {
+            "part": task.part if task else None,
+            "task": task,
+            "categories": categories,
+            "functional_categories": [
+                category
+                for category in categories
+                if category.name in functional_names
+            ],
+            "topic_categories": [
+                category
+                for category in categories
+                if category.name not in functional_names
+            ],
+            "grouped": grouped,
+            "selected": selected,
+            "phrase_count": (
+                selected.phrase_count
+                if selected
+                else sum(category.phrase_count for category in categories)
+            ),
+        },
     )
 
 
-def search(request):
+def search(request, part_slug=None, task_slug=None):
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
     query = request.GET.get("q", "").strip()
     prompt_results = []
     phrase_results = []
     if query:
+        prompt_qs = Prompt.objects.filter(
+            Q(text__icontains=query) | Q(response__body__icontains=query)
+        )
+        phrase_qs = Phrase.objects.filter(
+            Q(expression__icontains=query)
+            | Q(english_cue__icontains=query)
+            | Q(example__icontains=query)
+            | Q(note__icontains=query)
+        )
+        if task:
+            prompt_qs = prompt_qs.filter(theme__task=task)
+            phrase_qs = phrase_qs.filter(
+                source_prompts__theme__task=task
+            ).distinct()
         prompt_results = (
-            Prompt.objects.filter(
-                Q(text__icontains=query) | Q(response__body__icontains=query)
-            )
+            prompt_qs
             .select_related("response", "theme", "family")
             .order_by("theme__order", "number")[:60]
         )
         phrase_results = (
-            Phrase.objects.filter(
-                Q(expression__icontains=query)
-                | Q(english_cue__icontains=query)
-                | Q(example__icontains=query)
-                | Q(note__icontains=query)
-            )
+            phrase_qs
             .select_related("category")
             .order_by("order")[:60]
         )
@@ -810,10 +1119,22 @@ def search(request):
         request,
         "study/search.html",
         {
+            "part": task.part if task else None,
+            "task": task,
             "query": query,
             "prompt_results": prompt_results,
             "phrase_results": phrase_results,
             "result_count": len(prompt_results) + len(phrase_results),
+            "prompt_total": (
+                Prompt.objects.filter(theme__task=task).count()
+                if task
+                else Prompt.objects.count()
+            ),
+            "phrase_total": (
+                _task_phrases(task).count()
+                if task
+                else Phrase.objects.count()
+            ),
         },
     )
 
@@ -823,20 +1144,27 @@ def search(request):
 # ---------------------------------------------------------------------------
 
 
-def stats(request):
+def stats(request, part_slug=None, task_slug=None):
     now = timezone.now()
     today = timezone.localtime(now).date()
-    filters = _scope_filters(request)
+    forced_task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
+    filters = _scope_filters(request, forced_task)
     scope = filters["scope"]
 
+    scoped_history_cards = queue_module.scoped_cards(
+        scope,
+        include_suspended=True,
+    )
+    active_cards = scoped_history_cards.filter(suspended=False)
     logs_base = ReviewLog.objects.all()
-    if scope.get("task"):
-        logs_base = logs_base.filter(card__response__theme__task__slug=scope["task"])
-    elif scope.get("part"):
+    if scope:
         logs_base = logs_base.filter(
-            card__response__theme__task__part__slug=scope["part"]
+            card_id__in=scoped_history_cards.values("pk")
         )
-    active_cards = queue_module.scoped_cards(scope)
 
     since = now - timezone.timedelta(days=90)
     logs = logs_base.filter(reviewed_at__gte=since)
@@ -887,7 +1215,10 @@ def stats(request):
 
     theme_qs = Theme.objects.select_related("task__part").all()
     if scope.get("task"):
-        theme_qs = theme_qs.filter(task__slug=scope["task"])
+        theme_qs = theme_qs.filter(
+            task__slug=scope["task"],
+            task__part__slug=scope["part"],
+        )
     elif scope.get("part"):
         theme_qs = theme_qs.filter(task__part__slug=scope["part"])
     themes = [
@@ -913,7 +1244,7 @@ def stats(request):
         "max_forecast": max_forecast,
         "overall": overall,
         "themes": themes,
-        "streak": current_streak(now),
+        "streak": current_streak(now, logs_base),
         "total_reviews": logs_base.count(),
         "reviews_today": per_day.get(today, 0),
         **filters,

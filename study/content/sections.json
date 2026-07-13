@@ -2,37 +2,46 @@
   "parts": [
     {
       "slug": "orale",
-      "name": "Épreuve orale",
-      "short_name": "E. Orale",
+      "name": "Expression orale",
+      "short_name": "Expr. orale",
       "emoji": "🎙️",
-      "color": "#2563eb",
+      "color": "#173f90",
       "order": 1,
       "available": true,
       "tasks": [
         {
-          "slug": "tache-2",
-          "name": "Tâche 2",
-          "subtitle": "Interaction / point de vue",
-          "emoji": "🗨️",
+          "slug": "tache-1",
+          "name": "Tâche 1",
+          "subtitle": "Entretien dirigé",
+          "emoji": "👋",
           "color": "#8a94a6",
           "order": 1,
           "available": false
         },
         {
+          "slug": "tache-2",
+          "name": "Tâche 2",
+          "subtitle": "Exercice en interaction",
+          "emoji": "🗨️",
+          "color": "#8a94a6",
+          "order": 2,
+          "available": false
+        },
+        {
           "slug": "tache-3",
           "name": "Tâche 3",
-          "subtitle": "Exposé argumenté par thème",
+          "subtitle": "Exprimer un point de vue argumenté",
           "emoji": "🎯",
-          "color": "#2563eb",
-          "order": 2,
+          "color": "#173f90",
+          "order": 3,
           "available": true
         }
       ]
     },
     {
       "slug": "ecrit",
-      "name": "Épreuve écrite",
-      "short_name": "E. Écrit",
+      "name": "Expression écrite",
+      "short_name": "Expr. écrite",
       "emoji": "✍️",
       "color": "#8a94a6",
       "order": 2,

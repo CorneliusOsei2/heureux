@@ -2,6 +2,7 @@
 {% block title %}À revoir · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head row between">
   <div>
     <p class="eyebrow">Mémoire active</p>
@@ -9,31 +10,41 @@
     <p class="muted mt-0">Les cartes marquées « Revoir » restent ici jusqu'à ce que vous répondiez correctement.</p>
   </div>
   {% if items %}
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=revisit">Réviser cette liste</a>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?{{ review_scope_qs }}">Réviser cette liste</a>
   {% endif %}
 </div>
 
 {% if items %}
-  <div class="qlist revisit-list">
-    {% for item in items %}
-      <article class="qrow revisit-row">
-        <div class="revisit-row__body">
-          <div class="row">
-            <span class="chip">{{ item.kind }}</span>
-            <span class="muted">{{ item.meta }}</span>
+  <div class="revisit-groups">
+    {% for group in revisit_groups %}
+      <section class="revisit-group">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">{{ group.description }}</p>
+            <h2>{{ group.title }}</h2>
           </div>
-          <a class="revisit-row__title" href="{{ item.url }}">{{ item.title }}</a>
-          {% if item.card.revisit_added_at %}
-            <span class="faint">Ajoutée {{ item.card.revisit_added_at|timesince }} plus tôt</span>
-          {% endif %}
+          <span class="pill pill--revisit">{{ group.items|length }}</span>
         </div>
-        <form method="post">
-          {% csrf_token %}
-          <input type="hidden" name="action" value="remove">
-          <input type="hidden" name="card_id" value="{{ item.card.id }}">
-          <button class="btn btn--sm" type="submit">Retirer</button>
-        </form>
-      </article>
+        <div class="qlist revisit-list">
+          {% for item in group.items %}
+            <article class="qrow revisit-row">
+              <div class="revisit-row__body">
+                <span class="muted">{{ item.meta }}</span>
+                <a class="revisit-row__title" href="{{ item.url }}">{{ item.title }}</a>
+                {% if item.card.revisit_added_at %}
+                  <span class="faint">Ajoutée {{ item.card.revisit_added_at|timesince }} plus tôt</span>
+                {% endif %}
+              </div>
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove">
+                <input type="hidden" name="card_id" value="{{ item.card.id }}">
+                <button class="btn btn--sm" type="submit">Retirer</button>
+              </form>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
     {% endfor %}
   </div>
   <form method="post" class="center" style="margin-top:1rem;">
@@ -46,7 +57,7 @@
     <div class="done-state__emoji">✓</div>
     <h2>Aucune carte à revoir</h2>
     <p>Lorsque vous hésitez sur une carte, choisissez « Revoir » : elle apparaîtra ici.</p>
-    <a class="btn btn--primary" href="{% url 'study:review' %}">Continuer la révision</a>
+    <a class="btn btn--primary" href="{% url 'study:review' %}{% if task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">Continuer la révision</a>
   </div>
 {% endif %}
 {% endblock %}

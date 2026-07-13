@@ -2,12 +2,16 @@
 {% block title %}Progression · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
+  <p class="eyebrow">{% if task %}{{ task.name }}{% else %}Toutes les cartes{% endif %}</p>
   <h1>Votre progression</h1>
-  <p>Un aperçu de votre régularité, de votre charge à venir et de votre maîtrise.</p>
+  <p>Régularité, charge à venir et maîtrise de vos réponses comme de vos expressions.</p>
 </div>
 
+{% if not task_locked %}
 {% include "study/_scope_filter.html" %}
+{% endif %}
 
 <div class="grid grid--tiles">
   <div class="tile"><div class="tile__value">{{ overall.mature }}<span class="muted" style="font-size:1rem;">/{{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>

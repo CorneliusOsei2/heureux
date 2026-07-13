@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Réviser · {{ task.name }}{% endblock %}
+
+{% block content %}
+{% include "study/_task_nav.html" %}
+
+<header class="task-hero review-hero">
+  <div>
+    <p class="eyebrow">Mémoire active</p>
+    <h1>Réviser {{ task.name }}</h1>
+    <p>Choisissez précisément ce que vous voulez travailler. Votre progression et vos cartes à revoir restent réunies dans cette tâche.</p>
+  </div>
+  <div class="task-hero__numbers" aria-label="Révisions du jour">
+    <span><b>{{ counts.total_due }}</b> à réviser</span>
+    <span><b>{{ revisit_count }}</b> à revoir</span>
+  </div>
+</header>
+
+{% if can_resume %}
+  <a class="resume-review" href="{% url 'study:review' %}">
+    <span class="resume-review__icon" aria-hidden="true">▶</span>
+    <span>
+      <small>Session interrompue</small>
+      <strong>Continuer là où je me suis arrêté</strong>
+    </span>
+    <span aria-hidden="true">→</span>
+  </a>
+{% endif %}
+
+<section class="review-groups" aria-label="Modes de révision">
+  <article class="review-group review-group--all">
+    <div class="review-group__icon" aria-hidden="true">↻</div>
+    <div>
+      <p class="task-module__kicker">Parcours complet</p>
+      <h2>Tout réviser</h2>
+      <p>Alternez réponses et expressions prévues aujourd'hui.</p>
+      <strong>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }}</strong>
+    </div>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?part={{ part.slug }}&amp;task={{ task.slug }}">Commencer</a>
+  </article>
+
+  <article class="review-group review-group--responses">
+    <div class="review-group__icon" aria-hidden="true">🗂️</div>
+    <div>
+      <p class="task-module__kicker">Structurer ses idées</p>
+      <h2>Réponses argumentées</h2>
+      <p>Retrouvez les positions et les trois arguments essentiels de chaque réponse.</p>
+      <strong>{{ response_due }} à réviser · {{ response_stats.mature }}/{{ response_stats.total }} maîtrisées</strong>
+    </div>
+    <a class="btn" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Réviser</a>
+  </article>
+
+  <article class="review-group review-group--phrases">
+    <div class="review-group__icon" aria-hidden="true">🗣️</div>
+    <div>
+      <p class="task-module__kicker">Enrichir son français</p>
+      <h2>Expressions &amp; vocabulaire</h2>
+      <p>Mémorisez les tournures, collocations et nuances extraites des réponses.</p>
+      <strong>{{ phrase_due }} à réviser · {{ phrase_stats.mature }}/{{ phrase_stats.total }} maîtrisées</strong>
+    </div>
+    <a class="btn" href="{% url 'study:review' %}?kind=phrase&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Réviser</a>
+  </article>
+
+  <article class="review-group review-group--revisit">
+    <div class="review-group__icon" aria-hidden="true">★</div>
+    <div>
+      <p class="task-module__kicker">Revenir sur ses hésitations</p>
+      <h2>Ma liste à revoir</h2>
+      <p>Travaillez uniquement les cartes que vous avez volontairement mises de côté.</p>
+      <strong>{{ revisit_count }} carte{{ revisit_count|pluralize }} dans la liste</strong>
+    </div>
+    <a class="btn" href="{% url 'study:task_revisit_list' part.slug task.slug %}">Ouvrir la liste</a>
+  </article>
+</section>
+{% endblock %}

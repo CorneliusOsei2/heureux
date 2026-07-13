@@ -19,25 +19,27 @@
   </div>
 
   <div class="hero__actions">
-    <a class="btn btn--primary btn--lg" href="{% url 'study:review' %}">
+    <a class="btn btn--primary btn--lg" href="{% if content_task %}{% url 'study:task_review_hub' content_task.part.slug content_task.slug %}{% else %}{% url 'study:review' %}{% endif %}">
       {% if counts.total_due %}Continuer la révision{% else %}Étudier{% endif %}
     </a>
     {% if nav_revisit_count %}
       <a class="btn btn--ghost btn--lg" href="{% url 'study:revisit_list' %}">À revoir · {{ nav_revisit_count }}</a>
     {% endif %}
-    <a class="btn btn--ghost btn--lg" href="{% url 'study:browse' %}">Parcourir</a>
+    {% if content_task %}
+      <a class="btn btn--ghost btn--lg" href="{% url 'study:task_detail' content_task.part.slug content_task.slug %}">Ouvrir {{ content_task.name }}</a>
+    {% endif %}
   </div>
 </section>
 
-<h2 style="margin-top:2rem;">Votre parcours d'examen</h2>
-<p class="muted mt-0">Choisissez une épreuve, puis une tâche à travailler.</p>
+<h2 style="margin-top:2rem;">Votre parcours de français</h2>
+<p class="muted mt-0">Choisissez l'expression orale ou écrite, puis une tâche à travailler.</p>
 
 {% for pitem in parts %}
   <section class="exam-part">
     <div class="exam-part__head">
       <span class="exam-part__emoji" style="--deck-color: {{ pitem.part.color }};">{{ pitem.part.emoji }}</span>
       <div class="exam-part__title">
-        <h3>{{ pitem.part.name }}</h3>
+        <h3><a href="{% url 'study:part_detail' pitem.part.slug %}">{{ pitem.part.name }}</a></h3>
         <span class="exam-part__tag">{{ pitem.part.short_name }}</span>
       </div>
       {% if not pitem.part.available %}<span class="badge-soon">À venir</span>{% endif %}
@@ -54,7 +56,8 @@
                 {% if t.stats.due %}<span class="deck__due pill pill--due">{{ t.stats.due }}</span>{% endif %}
               </div>
               <div class="deck__meta">{{ t.task.subtitle }}</div>
-              <div class="deck__meta">{{ t.theme_count }} thème{{ t.theme_count|pluralize }} · {{ t.stats.seen }}/{{ t.stats.total }} vues · {{ t.stats.mature }} maîtrisée{{ t.stats.mature|pluralize }}</div>
+              <div class="deck__meta">{{ t.prompt_count }} sujets · {{ t.response_stats.total }} réponses · {{ t.phrase_count }} expressions</div>
+              <div class="deck__meta">{{ t.stats.seen }}/{{ t.stats.total }} cartes vues · {{ t.stats.mature }} maîtrisée{{ t.stats.mature|pluralize }}</div>
               <div class="progress">
                 <span class="bg-mature" style="width: {% widthratio t.stats.mature t.stats.total 100 %}%;"></span>
                 <span class="bg-review" style="width: {% widthratio t.stats.review_young t.stats.total 100 %}%;"></span>
@@ -90,32 +93,7 @@
   </section>
 {% endfor %}
 
-<section class="toolkit">
-  <div class="row between">
-    <h2 class="mb-0">Boîte à outils</h2>
-    <a class="chip" href="{% url 'study:review' %}?kind=phrase">Réviser ↗</a>
-  </div>
-  <p class="muted mt-0">Vocabulaire, nuances et tournures extraits de chaque réponse.</p>
-  <div class="grid grid--decks">
-    <a class="deck card" style="--deck-color: #c8a23a;" href="{% url 'study:phrases' %}">
-      <div class="deck__body">
-        <div class="deck__title">
-          <span class="deck__icon">🗣️</span>
-          <span>Expressions &amp; tournures</span>
-          {% if phrase_stats.due %}<span class="deck__due pill pill--due">{{ phrase_stats.due }}</span>{% endif %}
-        </div>
-        <div class="deck__meta">{{ phrase_stats.seen }}/{{ phrase_stats.total }} vues · {{ phrase_category_count }} catégories</div>
-        <div class="progress">
-          <span class="bg-mature" style="width: {% widthratio phrase_stats.mature phrase_stats.total 100 %}%;"></span>
-          <span class="bg-review" style="width: {% widthratio phrase_stats.review_young phrase_stats.total 100 %}%;"></span>
-          <span class="bg-learning" style="width: {% widthratio phrase_stats.learning phrase_stats.total 100 %}%;"></span>
-        </div>
-      </div>
-    </a>
-  </div>
-</section>
-
 <p class="center muted" style="margin-top:1.6rem;">
-  <a href="{% url 'study:stats' %}">Voir la progression détaillée →</a>
+  <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}">Voir la progression détaillée →</a>
 </p>
 {% endblock %}

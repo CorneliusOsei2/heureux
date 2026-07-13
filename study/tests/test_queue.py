@@ -10,7 +10,14 @@ from django.utils import timezone
 from study import queue as q, srs
 from study.models import CardState, Rating, Settings
 
-from .factories import make_phrase, make_phrase_card, make_spine_card, make_theme
+from .factories import (
+    make_part,
+    make_phrase,
+    make_phrase_card,
+    make_spine_card,
+    make_task,
+    make_theme,
+)
 
 
 class QueueCountsTests(TestCase):
@@ -53,6 +60,18 @@ class QueueCountsTests(TestCase):
         self.assertEqual(counts["new_done_today"], 1)
         self.assertEqual(counts["new_available"], 1)  # min(3, 2 - 1)
 
+    def test_suspending_reviewed_card_does_not_restore_daily_capacity(self):
+        reviewed = make_spine_card()
+        srs.review(reviewed, Rating.GOOD)
+        reviewed.suspended = True
+        reviewed.save(update_fields=["suspended"])
+        for _ in range(3):
+            make_spine_card()
+
+        counts = q.queue_counts(now=timezone.now())
+        self.assertEqual(counts["new_done_today"], 1)
+        self.assertEqual(counts["new_available"], 1)
+
     def test_theme_scope_filters(self):
         make_spine_card(theme=make_theme(slug="culture", order=1))
         make_spine_card(theme=make_theme(slug="sante", order=2))
@@ -64,6 +83,62 @@ class QueueCountsTests(TestCase):
         make_phrase_card()
         counts = q.queue_counts({"kind": "phrase"}, now=self.now)
         self.assertEqual(counts["new_total"], 1)
+
+    def test_task_scope_includes_responses_and_linked_phrases(self):
+        task = make_task(part=make_part("orale"), slug="tache-3")
+        theme = make_theme(slug="culture", task=task)
+        response_card = make_spine_card(theme=theme)
+        phrase = make_phrase()
+        phrase.source_prompts.add(response_card.response.prompts.first())
+        phrase_card = make_phrase_card(phrase=phrase)
+
+        other_task = make_task(part=make_part("ecrit"), slug="tache-1")
+        make_spine_card(theme=make_theme(slug="economie", task=other_task))
+
+        scope = {"part": "orale", "task": "tache-3"}
+        ids = set(q.scoped_cards(scope).values_list("id", flat=True))
+        self.assertEqual(ids, {response_card.id, phrase_card.id})
+
+    def test_part_and_task_must_match_the_same_phrase_source(self):
+        oral_t1 = make_task(part=make_part("orale"), slug="tache-1")
+        oral_theme = make_theme(slug="culture", task=oral_t1)
+        oral_response = make_spine_card(theme=oral_theme).response
+
+        written_t3 = make_task(part=make_part("ecrit"), slug="tache-3")
+        written_theme = make_theme(slug="economie", task=written_t3)
+        written_response = make_spine_card(theme=written_theme).response
+
+        phrase = make_phrase()
+        phrase.source_prompts.add(
+            oral_response.prompts.first(),
+            written_response.prompts.first(),
+        )
+        phrase_card = make_phrase_card(phrase=phrase)
+
+        self.assertNotIn(
+            phrase_card.id,
+            q.scoped_cards(
+                {"part": "orale", "task": "tache-3"}
+            ).values_list("id", flat=True),
+        )
+
+    def test_task_daily_limit_ignores_reviews_from_other_tasks(self):
+        oral_task = make_task(part=make_part("orale"), slug="tache-3")
+        oral_theme = make_theme(slug="culture", task=oral_task)
+        make_spine_card(theme=oral_theme)
+        make_spine_card(theme=oral_theme)
+
+        other_task = make_task(part=make_part("ecrit"), slug="tache-1")
+        other_card = make_spine_card(
+            theme=make_theme(slug="economie", task=other_task)
+        )
+        srs.review(other_card, Rating.GOOD)
+
+        counts = q.queue_counts(
+            {"part": "orale", "task": "tache-3"},
+            now=timezone.now(),
+        )
+        self.assertEqual(counts["new_available"], 2)
 
     def test_revisit_scope_ignores_due_dates_and_daily_caps(self):
         future = make_spine_card(

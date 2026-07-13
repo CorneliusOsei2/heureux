@@ -2,9 +2,11 @@
 {% block title %}Recherche · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
+  <p class="eyebrow">{% if task %}{{ task.name }}{% else %}Tout le contenu{% endif %}</p>
   <h1>Recherche</h1>
-  <form class="search-form" method="get" action="{% url 'study:search' %}">
+  <form class="search-form" method="get" action="{% if task %}{% url 'study:task_search' part.slug task.slug %}{% else %}{% url 'study:search' %}{% endif %}">
     <input class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
     <button class="btn btn--primary" type="submit">Chercher</button>
   </form>
@@ -46,7 +48,7 @@
   {% endif %}
 {% else %}
   <div class="empty">
-    <p>Tapez un mot-clé pour chercher dans les 130 réponses et 160 expressions.</p>
+    <p>Tapez un mot-clé pour chercher dans {{ prompt_total }} sujets et {{ phrase_total }} expressions.</p>
   </div>
 {% endif %}
 {% endblock %}

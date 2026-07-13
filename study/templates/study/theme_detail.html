@@ -2,15 +2,15 @@
 {% block title %}{{ theme.display_name }} · Heureux{% endblock %}
 
 {% block content %}
+{% include "study/_task_nav.html" %}
 <div class="page-head">
   <p class="eyebrow">
-    <a href="{% url 'study:dashboard' %}">Accueil</a>
-    {% if theme.task %} · <a href="{% url 'study:part_detail' theme.task.part.slug %}">{{ theme.task.part.short_name }}</a> · <a href="{% url 'study:task_detail' theme.task.part.slug theme.task.slug %}">{{ theme.task.name }}</a>{% endif %}
-    · <a href="{% url 'study:browse' %}">Parcourir</a>
+    {% if task %}<a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>{% else %}<a href="{% url 'study:browse' %}">Parcourir</a>{% endif %}
+    · Thème
   </p>
   <div class="row between">
     <h1 style="margin-bottom:0;">{{ theme.emoji }} {{ theme.display_name }}</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;theme={{ theme.slug }}">Réviser ce thème</a>
+    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ theme.slug }}">Réviser ce thème</a>
   </div>
   <p>{{ rows|length }} sujets · {{ stats.total }} réponses uniques · {{ stats.mature }} maîtrisée{{ stats.mature|pluralize }}.</p>
   <div class="progress" style="height:12px; max-width:520px;">

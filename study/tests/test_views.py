@@ -16,7 +16,7 @@ from django.test import (
 from django.urls import reverse
 from django.utils import timezone
 
-from study import views as study_views
+from study import srs, views as study_views
 from study.models import CardState, Rating, ReviewLog, ReviewSession, Settings
 
 from . import factories
@@ -92,6 +92,257 @@ class SmokeTests(TestCase):
             ).status_code,
             200,
         )
+        nested_names = [
+            "study:task_browse",
+            "study:task_phrases",
+            "study:task_review_hub",
+            "study:task_revisit_list",
+            "study:task_stats",
+            "study:task_search",
+        ]
+        for name in nested_names:
+            with self.subTest(name=name):
+                response = self.client.get(
+                    reverse(name, args=["orale", "tache-3"])
+                )
+                self.assertEqual(response.status_code, 200)
+
+        family = factories.make_family()
+        response = self.client.get(
+            reverse(
+                "study:task_family_detail",
+                args=["orale", "tache-3", family.slug],
+            )
+        )
+        self.assertEqual(response.status_code, 200)
+
+    def test_task_hub_organizes_all_content(self):
+        response = self.client.get(
+            reverse("study:task_detail", args=["orale", "tache-3"])
+        )
+        self.assertContains(response, "Sujets &amp; réponses")
+        self.assertContains(response, "Expressions &amp; vocabulaire")
+        self.assertContains(response, "Révision")
+        self.assertContains(
+            response,
+            'class="nav__primary-link',
+            count=2,
+        )
+        self.assertNotContains(response, ">Accueil</a>")
+
+    def test_global_pages_do_not_false_highlight_task_navigation(self):
+        response = self.client.get(reverse("study:browse"))
+        self.assertNotContains(
+            response,
+            'class="nav__task is-active"',
+        )
+
+    def test_hierarchy_uses_expression_paths(self):
+        url = reverse("study:task_detail", args=["orale", "tache-3"])
+        self.assertEqual(url, "/expression/orale/tache-3/")
+        response = self.client.get(
+            "/epreuve/orale/tache-3/?source=bookmark"
+        )
+        self.assertRedirects(
+            response,
+            "/expression/orale/tache-3/?source=bookmark",
+            status_code=301,
+            fetch_redirect_response=False,
+        )
+
+
+class TaskOrganizationTests(TestCase):
+    def setUp(self):
+        Settings.load()
+        self.part = factories.make_part("orale")
+        self.task = factories.make_task(self.part, "tache-3")
+        self.theme = factories.make_theme("culture", task=self.task)
+        self.response_card = factories.make_spine_card(theme=self.theme)
+        self.phrase = factories.make_phrase()
+        self.phrase.english_cue = "oral-task-only"
+        self.phrase.save(update_fields=["english_cue"])
+        self.phrase.source_prompts.add(
+            self.response_card.response.prompts.first()
+        )
+        self.phrase_card = factories.make_phrase_card(phrase=self.phrase)
+
+        other_part = factories.make_part("ecrit")
+        other_task = factories.make_task(other_part, "tache-1")
+        other_theme = factories.make_theme("economie", task=other_task)
+        other_response = factories.make_spine_card(theme=other_theme).response
+        self.other_phrase = factories.make_phrase()
+        self.other_phrase.english_cue = "other-task-only"
+        self.other_phrase.save(update_fields=["english_cue"])
+        self.other_phrase.source_prompts.add(other_response.prompts.first())
+        self.other_phrase_card = factories.make_phrase_card(
+            phrase=self.other_phrase
+        )
+
+    def _task_url(self, name):
+        return reverse(name, args=[self.part.slug, self.task.slug])
+
+    def test_expression_page_is_limited_to_its_task(self):
+        response = self.client.get(
+            self._task_url("study:task_phrases"),
+            {"category": self.phrase.category.slug},
+        )
+        self.assertContains(response, "oral-task-only")
+        self.assertNotContains(response, "other-task-only")
+
+    def test_task_search_is_limited_to_its_task(self):
+        own = self.client.get(
+            self._task_url("study:task_search"),
+            {"q": "oral-task-only"},
+        )
+        other = self.client.get(
+            self._task_url("study:task_search"),
+            {"q": "other-task-only"},
+        )
+        self.assertEqual(own.context["result_count"], 1)
+        self.assertEqual(other.context["result_count"], 0)
+
+    def test_task_progress_and_revisit_include_phrase_cards(self):
+        srs.review(self.phrase_card, Rating.GOOD)
+        srs.review(self.other_phrase_card, Rating.GOOD)
+        self.phrase_card.needs_revisit = True
+        self.phrase_card.revisit_added_at = timezone.now()
+        self.phrase_card.save(
+            update_fields=["needs_revisit", "revisit_added_at"]
+        )
+        self.other_phrase_card.needs_revisit = True
+        self.other_phrase_card.revisit_added_at = timezone.now()
+        self.other_phrase_card.save(
+            update_fields=["needs_revisit", "revisit_added_at"]
+        )
+
+        stats_response = self.client.get(
+            self._task_url("study:task_stats")
+        )
+        revisit_response = self.client.get(
+            self._task_url("study:task_revisit_list")
+        )
+        self.assertEqual(stats_response.context["total_reviews"], 1)
+        self.assertEqual(revisit_response.context["revisit_count"], 1)
+        self.assertContains(revisit_response, "Expressions &amp; vocabulaire")
+        self.assertContains(revisit_response, self.phrase.expression)
+        self.assertNotContains(
+            revisit_response,
+            self.other_phrase.expression,
+        )
+
+    def test_same_task_slug_in_another_part_does_not_leak(self):
+        written_task = factories.make_task(
+            factories.make_part("autre"),
+            "tache-3",
+        )
+        written_theme = factories.make_theme(
+            "technologie",
+            task=written_task,
+        )
+        factories.make_spine_card(theme=written_theme)
+
+        browse_response = self.client.get(
+            self._task_url("study:task_browse")
+        )
+        stats_response = self.client.get(
+            self._task_url("study:task_stats")
+        )
+        self.assertEqual(
+            [
+                item["theme"]
+                for item in browse_response.context["themes"]
+            ],
+            [self.theme],
+        )
+        self.assertNotIn(
+            written_theme,
+            [
+                item["theme"]
+                for item in stats_response.context["themes"]
+            ],
+        )
+
+    def test_task_family_page_keeps_the_originating_task_scope(self):
+        shared_family = factories.make_family("shared-family")
+        own = factories.make_spine_card(
+            theme=self.theme,
+            family=shared_family,
+        )
+        other = factories.make_spine_card(
+            theme=factories.make_theme(
+                "technologie",
+                task=factories.make_task(
+                    factories.make_part("autre"),
+                    "tache-3",
+                ),
+            ),
+            family=shared_family,
+        )
+
+        response = self.client.get(
+            reverse(
+                "study:task_family_detail",
+                args=[self.part.slug, self.task.slug, shared_family.slug],
+            )
+        )
+        prompt_ids = {
+            row["prompt"].id for row in response.context["rows"]
+        }
+        self.assertIn(own.response.prompts.get().id, prompt_ids)
+        self.assertNotIn(other.response.prompts.get().id, prompt_ids)
+
+    def test_task_streak_uses_only_the_task_review_logs(self):
+        srs.review(self.phrase_card, Rating.GOOD)
+        ReviewLog.objects.filter(card=self.phrase_card).update(
+            reviewed_at=timezone.now() - timedelta(days=1)
+        )
+        self.phrase_card.suspended = True
+        self.phrase_card.save(update_fields=["suspended"])
+        srs.review(self.other_phrase_card, Rating.GOOD)
+
+        response = self.client.get(
+            self._task_url("study:task_stats")
+        )
+        self.assertEqual(response.context["streak"], 1)
+
+    def test_review_hub_groups_task_study_modes_and_resume(self):
+        session = ReviewSession.load()
+        session.current_card = self.response_card
+        session.scope = {
+            "part": self.part.slug,
+            "task": self.task.slug,
+        }
+        session.save(update_fields=["current_card", "scope"])
+
+        response = self.client.get(
+            self._task_url("study:task_review_hub")
+        )
+        self.assertContains(response, "Réponses argumentées")
+        self.assertContains(response, "Expressions &amp; vocabulaire")
+        self.assertContains(response, "Ma liste à revoir")
+        self.assertContains(
+            response,
+            "Continuer là où je me suis arrêté",
+        )
+
+    def test_primary_navigation_resolves_same_slug_task_by_part(self):
+        written_task = factories.make_task(
+            factories.make_part("autre"),
+            self.task.slug,
+        )
+        self.task.name = "Parcours oral"
+        self.task.save(update_fields=["name"])
+        written_task.name = "Parcours écrit"
+        written_task.save(update_fields=["name"])
+
+        response = self.client.get(
+            reverse(
+                "study:task_detail",
+                args=[written_task.part.slug, written_task.slug],
+            )
+        )
+        self.assertEqual(response.context["content_task"], written_task)
+        self.assertContains(response, "Parcours écrit")
 
 
 class ReviewFlowTests(TestCase):

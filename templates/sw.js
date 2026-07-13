@@ -1,14 +1,16 @@
 {% load static %}/* Heureux service worker — offline app shell. */
-var CACHE = "heureux-v4";
+var CACHE = "heureux-v6";
 var SHELL = [
   "/",
   "/review/",
+  "{% url 'study:task_detail' 'orale' 'tache-3' %}",
   "{% url 'offline' %}",
-  "{% static 'study/css/app.css' %}?v=4",
-  "{% static 'study/js/app.js' %}?v=4",
+  "{% static 'study/css/app.css' %}?v=6",
+  "{% static 'study/js/app.js' %}?v=6",
   "/manifest.webmanifest",
   "{% static 'study/icons/icon-192.png' %}",
-  "{% static 'study/icons/icon-512.png' %}"
+  "{% static 'study/icons/icon-512.png' %}",
+  "{% static 'study/icons/logo.svg' %}"
 ];
 
 self.addEventListener("install", function (event) {

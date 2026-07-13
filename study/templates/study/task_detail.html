@@ -1,64 +1,84 @@
 {% extends "base.html" %}
-{% block title %}{{ task.name }} · {{ part.short_name }}{% endblock %}
+{% block title %}{{ task.name }} · {{ part.name }}{% endblock %}
 
 {% block content %}
-<div class="page-head">
-  <p class="eyebrow"><a href="{% url 'study:dashboard' %}">Accueil</a> · <a href="{% url 'study:part_detail' part.slug %}">{{ part.short_name }}</a> · {{ task.name }}</p>
-  <div class="row between">
-    <h1 style="margin-bottom:0;">{{ task.emoji }} {{ task.name }}</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?task={{ task.slug }}">Réviser cette tâche</a>
-  </div>
-  <p>{{ task.subtitle }} · {{ themes|length }} thème{{ themes|length|pluralize }} · {{ stats.total }} réponses · {{ stats.mature }} maîtrisée{{ stats.mature|pluralize }}.</p>
-  <div class="progress" style="height:12px; max-width:520px;">
-    <span class="bg-mature" style="width: {% widthratio stats.mature stats.total 100 %}%;"></span>
-    <span class="bg-review" style="width: {% widthratio stats.review_young stats.total 100 %}%;"></span>
-    <span class="bg-learning" style="width: {% widthratio stats.learning stats.total 100 %}%;"></span>
-  </div>
-</div>
+{% include "study/_task_nav.html" %}
 
-<h2 style="margin-top:1.6rem;">Thèmes</h2>
-<div class="grid grid--decks">
-  {% for item in themes %}
-    <a class="deck card" style="--deck-color: {{ item.theme.color }};" href="{% url 'study:theme_detail' item.theme.slug %}">
-      <div class="deck__body">
-        <div class="deck__title">
-          <span class="deck__icon">{{ item.theme.emoji }}</span>
-          <span>{{ item.theme.display_name }}</span>
-          {% if item.stats.due %}<span class="deck__due pill pill--due">{{ item.stats.due }}</span>{% endif %}
-        </div>
-        <div class="deck__meta">{{ item.prompt_count }} sujets · {{ item.stats.seen }}/{{ item.stats.total }} vues · {{ item.stats.mature }} maîtrisée{{ item.stats.mature|pluralize }}</div>
-        <div class="progress">
-          <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
-          <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
-          <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
-        </div>
+<header class="task-hero">
+  <div>
+    <p class="eyebrow">Votre espace de travail</p>
+    <h1>{{ task.emoji }} {{ task.name }}</h1>
+    <p>{{ task.subtitle }}. Les sujets, réponses, expressions et révisions de cette tâche sont réunis ici.</p>
+  </div>
+  <div class="task-hero__numbers" aria-label="Contenu de la tâche">
+    <span><b>{{ prompt_count }}</b> sujets</span>
+    <span><b>{{ response_stats.total }}</b> réponses</span>
+    <span><b>{{ phrase_count }}</b> expressions</span>
+  </div>
+</header>
+
+<section class="task-modules" aria-label="Contenu de {{ task.name }}">
+  <article class="task-module">
+    <div class="task-module__icon task-module__icon--responses">🗂️</div>
+    <div class="task-module__body">
+      <p class="task-module__kicker">Construire ses réponses</p>
+      <h2>Sujets &amp; réponses</h2>
+      <p>{{ prompt_count }} sujets organisés en {{ themes|length }} thèmes, avec {{ response_stats.total }} réponses argumentées uniques.</p>
+      <div class="task-module__meta">{{ response_stats.seen }} vues · {{ response_stats.mature }} maîtrisées</div>
+    </div>
+    <a class="task-module__link" href="{% url 'study:task_browse' part.slug task.slug %}" aria-label="Parcourir les sujets et réponses">Explorer <span aria-hidden="true">→</span></a>
+  </article>
+
+  <article class="task-module">
+    <div class="task-module__icon task-module__icon--expressions">🗣️</div>
+    <div class="task-module__body">
+      <p class="task-module__kicker">Développer son expression</p>
+      <h2>Expressions &amp; vocabulaire</h2>
+      <p>{{ phrase_count }} tournures, collocations et nuances tirées directement des réponses.</p>
+      <div class="task-module__meta">{{ phrase_category_count }} catégories · {{ phrase_stats.seen }}/{{ phrase_stats.total }} cartes vues</div>
+    </div>
+    <a class="task-module__link" href="{% url 'study:task_phrases' part.slug task.slug %}" aria-label="Parcourir les expressions">Explorer <span aria-hidden="true">→</span></a>
+  </article>
+
+  <article class="task-module task-module--review">
+    <div class="task-module__icon task-module__icon--review">↻</div>
+    <div class="task-module__body">
+      <p class="task-module__kicker">Mémoriser durablement</p>
+      <h2>Révision</h2>
+      <p>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} prévue{{ counts.total_due|pluralize }} aujourd'hui dans cette tâche.</p>
+      <div class="task-module__actions">
+        <a href="{% url 'study:task_review_hub' part.slug task.slug %}">Organiser mes révisions <span aria-hidden="true">→</span></a>
       </div>
-    </a>
-  {% endfor %}
-</div>
+    </div>
+  </article>
+</section>
 
-<section class="toolkit">
-  <div class="row between">
-    <h2 class="mb-0">Boîte à outils</h2>
-    <a class="chip" href="{% url 'study:review' %}?kind=phrase">Réviser ↗</a>
+<section class="task-themes">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Explorer le programme</p>
+      <h2>Les {{ themes|length }} thèmes</h2>
+    </div>
+    <a href="{% url 'study:task_browse' part.slug task.slug %}">Voir tous les sujets →</a>
   </div>
-  <p class="muted mt-0">Expressions et tournures utiles pour l'oral.</p>
   <div class="grid grid--decks">
-    <a class="deck card" style="--deck-color: #c8a23a;" href="{% url 'study:phrases' %}">
-      <div class="deck__body">
-        <div class="deck__title">
-          <span class="deck__icon">🗣️</span>
-          <span>Expressions &amp; tournures</span>
-          {% if phrase_stats.due %}<span class="deck__due pill pill--due">{{ phrase_stats.due }}</span>{% endif %}
+    {% for item in themes %}
+      <a class="deck card" style="--deck-color: {{ item.theme.color }};" href="{% url 'study:theme_detail' item.theme.slug %}">
+        <div class="deck__body">
+          <div class="deck__title">
+            <span class="deck__icon">{{ item.theme.emoji }}</span>
+            <span>{{ item.theme.display_name }}</span>
+            {% if item.stats.due %}<span class="deck__due pill pill--due">{{ item.stats.due }}</span>{% endif %}
+          </div>
+          <div class="deck__meta">{{ item.prompt_count }} sujets · {{ item.stats.total }} réponses · {{ item.stats.mature }} maîtrisée{{ item.stats.mature|pluralize }}</div>
+          <div class="progress">
+            <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
+            <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
+            <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
+          </div>
         </div>
-        <div class="deck__meta">{{ phrase_stats.seen }}/{{ phrase_stats.total }} vues · {{ phrase_category_count }} catégories</div>
-        <div class="progress">
-          <span class="bg-mature" style="width: {% widthratio phrase_stats.mature phrase_stats.total 100 %}%;"></span>
-          <span class="bg-review" style="width: {% widthratio phrase_stats.review_young phrase_stats.total 100 %}%;"></span>
-          <span class="bg-learning" style="width: {% widthratio phrase_stats.learning phrase_stats.total 100 %}%;"></span>
-        </div>
-      </div>
-    </a>
+      </a>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}
