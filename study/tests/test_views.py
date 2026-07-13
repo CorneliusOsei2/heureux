@@ -64,7 +64,7 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v24"', body)
+        self.assertIn('var CACHE = "heureux-v25"', body)
         self.assertIn("study/js/translate.js", body)
 
     def test_offline_page(self):

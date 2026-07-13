@@ -25,6 +25,9 @@
   var resultElement = panel.querySelector("[data-translation-result]");
   var copyButton = panel.querySelector("[data-translation-copy]");
   var fallbackLink = panel.querySelector("[data-translation-fallback]");
+  var mobileActionQuery = window.matchMedia(
+    "(max-width: 760px), (hover: none), (pointer: coarse)"
+  );
   var mobilePanelQuery = window.matchMedia("(max-width: 520px)");
   var translatorOptions = {
     sourceLanguage: "fr",
@@ -81,6 +84,12 @@
 
   function positionAction(rect) {
     action.classList.remove("hidden");
+    if (mobileActionQuery.matches) {
+      action.style.left = "";
+      action.style.top = "";
+      return;
+    }
+
     action.style.left = "0";
     action.style.top = "0";
     var actionRect = action.getBoundingClientRect();

@@ -1866,6 +1866,17 @@ kbd {
   .grade__key { display: none; }
 }
 
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  .selection-translate {
+    top: auto;
+    right: auto;
+    bottom: calc(0.9rem + env(safe-area-inset-bottom));
+    left: 50%;
+    max-width: calc(100vw - 1.4rem);
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 520px) {
   .hero { padding: 1.05rem; }
   .hero__stats {
