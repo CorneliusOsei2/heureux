@@ -69,12 +69,20 @@
     {% if is_revisit %}
       <p>Vous avez parcouru cette liste. Les cartes encore marquées « Revoir » y resteront pour votre prochain passage.</p>
     {% else %}
-      <p>Vous avez révisé toutes les cartes prévues pour ce lot. Revenez plus tard pour les révisions à venir.</p>
+      <p>Vous avez terminé toutes les cartes actuellement disponibles dans cette sélection.</p>
     {% endif %}
     <div class="row center" style="justify-content:center; margin-top:1rem;">
-      <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
-      <a class="btn" href="{% url 'study:revisit_list' %}">Ma liste à revoir</a>
-      <a class="btn" href="{% url 'study:browse' %}">Parcourir les fiches</a>
+      {% if next_batch %}
+        <a class="btn btn--primary" href="{{ next_batch.review_url }}">Passer au lot {{ next_batch.number }} <span aria-hidden="true">→</span></a>
+      {% else %}
+        <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
+      {% endif %}
+      {% if batch_index_url %}
+        <a class="btn" href="{{ batch_index_url }}">Voir tous les lots</a>
+      {% else %}
+        <a class="btn" href="{% url 'study:revisit_list' %}">Ma liste à revoir</a>
+        <a class="btn" href="{% url 'study:browse' %}">Parcourir les fiches</a>
+      {% endif %}
     </div>
   </div>
 </div>

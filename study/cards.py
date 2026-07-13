@@ -35,6 +35,9 @@ def scope_from_request(request) -> dict:
         value = (data.get(key) or "").strip()
         if value:
             scope[key] = value
+    batch = (data.get("batch") or "").strip()
+    if batch.isdigit() and int(batch) > 0:
+        scope["batch"] = batch
     response_id = (data.get("response") or "").strip()
     if response_id.isdigit():
         scope["response"] = response_id
@@ -45,44 +48,49 @@ def scope_label(scope: dict) -> str:
     """Human label for the current study scope."""
     from .models import ExamPart, Family, PhraseCategory, Response, Task, Theme
 
+    def with_batch(label: str) -> str:
+        if scope.get("batch"):
+            return f"{label} · Lot {scope['batch']}"
+        return label
+
     if not scope:
         return "Toutes les cartes"
     if scope.get("theme"):
         theme = Theme.objects.filter(slug=scope["theme"]).first()
         if theme:
-            return f"Thème · {theme.display_name}"
+            return with_batch(f"Thème · {theme.display_name}")
+    if scope.get("category"):
+        category = PhraseCategory.objects.filter(slug=scope["category"]).first()
+        if category:
+            return with_batch(f"Expressions · {category.name}")
     if scope.get("task"):
         tasks = Task.objects.filter(slug=scope["task"]).select_related("part")
         if scope.get("part"):
             tasks = tasks.filter(part__slug=scope["part"])
         task = tasks.first()
         if task:
-            return f"{task.part.short_name} · {task.name}"
+            return with_batch(f"{task.part.short_name} · {task.name}")
     if scope.get("part"):
         part = ExamPart.objects.filter(slug=scope["part"]).first()
         if part:
-            return part.name
+            return with_batch(part.name)
     if scope.get("family"):
         family = Family.objects.filter(slug=scope["family"]).first()
         if family:
-            return f"Famille · {family.name}"
-    if scope.get("category"):
-        category = PhraseCategory.objects.filter(slug=scope["category"]).first()
-        if category:
-            return f"Expressions · {category.name}"
+            return with_batch(f"Famille · {family.name}")
     if scope.get("response"):
         response = Response.objects.select_related("theme").filter(
             pk=scope["response"]
         ).first()
         if response:
-            return f"Expressions · {response.theme.display_name}"
+            return with_batch(f"Expressions · {response.theme.display_name}")
     if scope.get("kind") == "spine":
-        return "Réponses argumentées"
+        return with_batch("Réponses argumentées")
     if scope.get("kind") == "phrase":
-        return "Expressions"
+        return with_batch("Expressions")
     if scope.get("kind") == "revisit":
-        return "Liste à revoir"
-    return "Sélection"
+        return with_batch("Liste à revoir")
+    return with_batch("Sélection")
 
 
 def card_payload(card: Card) -> dict:

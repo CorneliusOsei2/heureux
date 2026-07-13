@@ -13,7 +13,7 @@
   <div class="row between">
     <h1 style="margin-bottom:0;">Expressions &amp; vocabulaire</h1>
     <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}{% if selected %}&amp;category={{ selected.slug }}{% endif %}">
-      {% if selected %}Réviser cette catégorie{% else %}Réviser les expressions{% endif %}
+      {% if selected %}Réviser toute la catégorie{% else %}Réviser toutes les expressions{% endif %}
     </a>
   </div>
   <p>{% if selected %}{{ phrase_count }} expressions dans « {{ selected.name }} ».{% else %}{{ phrase_count }} expressions, collocations et nuances extraites sujet par sujet, rangées selon leur fonction et leur thème.{% endif %}</p>
@@ -26,6 +26,30 @@
     <a class="chip {% if selected.id == category.id %}chip--active{% endif %}" href="{{ phrases_url }}?category={{ category.slug }}">{{ category.name }}</a>
   {% endfor %}
 </nav>
+
+{% if review_batches %}
+<section class="review-batches" aria-labelledby="phrase-batches-title">
+  <div class="review-batches__head">
+    <div>
+      <p class="eyebrow">Parcours organisé</p>
+      <h2 id="phrase-batches-title">Lots de {{ batch_size }} cartes</h2>
+    </div>
+    <p>Chaque expression produit une carte de pratique et une carte de compréhension. Choisissez un lot précis ou révisez toute la catégorie sans limite.</p>
+  </div>
+  <div class="batch-grid">
+    {% for batch in review_batches %}
+      <a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
+        <span class="batch-card__top">
+          <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
+          <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
+        </span>
+        <strong>Cartes {{ batch.start }}–{{ batch.end }}</strong>
+        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 
 {% for group in grouped %}
   <section class="phrase-group">
@@ -68,7 +92,7 @@
       <a class="qrow expression-category" href="{{ phrases_url }}?category={{ category.slug }}">
         <span class="qrow__num">↗</span>
         <span class="qrow__text">{{ category.name }}</span>
-        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }}</span></span>
+        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }} · {{ category.batch_count }} lot{{ category.batch_count|pluralize }}</span></span>
       </a>
     {% endfor %}
   </div>
@@ -84,7 +108,7 @@
       <a class="qrow expression-category" href="{{ phrases_url }}?category={{ category.slug }}">
         <span class="qrow__num">Aa</span>
         <span class="qrow__text">{{ category.name }}</span>
-        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }}</span></span>
+        <span class="qrow__meta"><span class="chip">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }} · {{ category.batch_count }} lot{{ category.batch_count|pluralize }}</span></span>
       </a>
     {% endfor %}
   </div>

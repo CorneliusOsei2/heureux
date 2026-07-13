@@ -4,29 +4,18 @@
 {% block content %}
 <div class="page-head">
   <h1>Réglages</h1>
-  <p>Ajustez votre rythme d'étude quotidien.</p>
+  <p>Gérez votre progression et les cartes mises de côté.</p>
 </div>
 
-{% if saved %}<div class="notice">Réglages enregistrés.</div>{% endif %}
 {% if was_reset %}<div class="notice">Progression réinitialisée. Toutes les cartes sont de nouveau « nouvelles ».</div>{% endif %}
 {% if was_unsuspended %}<div class="notice">Cartes réactivées. Elles reviennent dans la file de révision.</div>{% endif %}
 
 <div class="grid grid--2">
-  <form class="card card--pad" method="post" action="{% url 'study:settings' %}">
-    {% csrf_token %}
-    <h2 class="mt-0">Rythme quotidien</h2>
-    <div class="field">
-      <label for="new_cards_per_day">Nouvelles cartes par jour</label>
-      <input id="new_cards_per_day" type="number" name="new_cards_per_day" min="0" max="200" value="{{ settings.new_cards_per_day }}">
-      <small>Combien de cartes inédites introduire chaque jour.</small>
-    </div>
-    <div class="field">
-      <label for="max_reviews_per_day">Révisions maximum par jour</label>
-      <input id="max_reviews_per_day" type="number" name="max_reviews_per_day" min="0" max="9999" value="{{ settings.max_reviews_per_day }}">
-      <small>Plafond des cartes déjà vues à revoir chaque jour.</small>
-    </div>
-    <button class="btn btn--primary" type="submit" name="action" value="save">Enregistrer</button>
-  </form>
+  <section class="card card--pad">
+    <p class="eyebrow">Rythme libre</p>
+    <h2 class="mt-0">Aucun plafond quotidien</h2>
+    <p class="muted">Toutes les nouvelles cartes et toutes les révisions arrivées à échéance restent disponibles. Les lots de 15 servent uniquement à organiser le travail&nbsp;: ils ne limitent jamais votre pratique.</p>
+  </section>
 
   <form class="card card--pad danger-zone" method="post" action="{% url 'study:settings' %}" onsubmit="return confirm('Réinitialiser toute votre progression ? Cette action est irréversible.');">
     {% csrf_token %}

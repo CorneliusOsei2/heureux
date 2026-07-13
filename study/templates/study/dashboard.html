@@ -8,9 +8,9 @@
       <p class="eyebrow">Examen de français · répétition espacée</p>
       <h1>Prêt à réviser&nbsp;?</h1>
       {% if counts.total_due %}
-        <p class="hero__lead">Vous avez <b>{{ counts.total_due }}</b> carte{{ counts.total_due|pluralize }} à travailler aujourd'hui. Un peu chaque jour&nbsp;: c'est ainsi qu'on mémorise durablement.</p>
+        <p class="hero__lead">Vous avez <b>{{ counts.total_due }}</b> carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }} sans plafond quotidien. Avancez à votre rythme, lot après lot.</p>
       {% else %}
-        <p class="hero__lead">Tout est à jour pour aujourd'hui. Explorez vos fiches ou avancez sur de nouvelles cartes.</p>
+        <p class="hero__lead">Tout est à jour. Explorez vos fiches ou avancez sur de nouvelles cartes à votre rythme.</p>
       {% endif %}
     </div>
     <div class="hero__stats">

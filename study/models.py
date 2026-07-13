@@ -456,7 +456,7 @@ class ReviewLog(models.Model):
 
 
 class Settings(models.Model):
-    """Per-user study configuration."""
+    """Legacy per-user study record retained for learner ownership migration."""
 
     user = models.OneToOneField(
         django_settings.AUTH_USER_MODEL,

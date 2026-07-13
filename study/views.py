@@ -44,7 +44,6 @@ from .models import (
     Response,
     ReviewLog,
     ReviewSession,
-    Settings,
     Task,
     Theme,
 )
@@ -59,6 +58,7 @@ REVIEW_SCOPE_KEYS = (
     "family",
     "category",
     "response",
+    "batch",
 )
 
 
@@ -172,6 +172,100 @@ def deck_stats(qs, now=None) -> dict:
         "pct": round(100 * (total - new) / total) if total else 0,
         "mature_pct": round(100 * mature / total) if total else 0,
     }
+
+
+def _review_batches(scope: dict, user) -> list[dict]:
+    """Describe stable 15-card lots and each lot's first-pass progress."""
+    base_scope = {key: value for key, value in scope.items() if key != "batch"}
+    rows = list(
+        queue_module.scoped_cards(
+            base_scope,
+            user=user,
+            include_suspended=True,
+        )
+        .order_by(*queue_module.batch_ordering(base_scope))
+        .values("id", "state", "due", "suspended")
+    )
+    unique_rows = []
+    seen_ids = set()
+    for row in rows:
+        if row["id"] not in seen_ids:
+            seen_ids.add(row["id"])
+            unique_rows.append(row)
+
+    now = timezone.now()
+    batches = []
+    for number, start in enumerate(
+        range(0, len(unique_rows), queue_module.BATCH_SIZE),
+        start=1,
+    ):
+        rows_in_batch = unique_rows[start : start + queue_module.BATCH_SIZE]
+        active_rows = [row for row in rows_in_batch if not row["suspended"]]
+        seen_count = sum(
+            row["state"] != CardState.NEW for row in active_rows
+        )
+        available_now = sum(
+            row["state"] == CardState.NEW
+            or (
+                row["due"] is not None
+                and row["due"] <= now
+                and row["state"]
+                in {
+                    CardState.LEARNING,
+                    CardState.RELEARNING,
+                    CardState.REVIEW,
+                }
+            )
+            for row in active_rows
+        )
+        if not active_rows:
+            status = "unavailable"
+            status_label = "Suspendu"
+        elif seen_count == len(active_rows):
+            status = "complete"
+            status_label = "Terminé"
+        elif seen_count:
+            status = "in-progress"
+            status_label = "En cours"
+        else:
+            status = "not-started"
+            status_label = "À commencer"
+        end = start + len(rows_in_batch)
+        batch_scope = {**base_scope, "batch": str(number)}
+        batches.append(
+            {
+                "number": number,
+                "start": start + 1,
+                "end": end,
+                "card_count": len(rows_in_batch),
+                "active_count": len(active_rows),
+                "seen_count": seen_count,
+                "available_now": available_now,
+                "status": status,
+                "status_label": status_label,
+                "can_review": available_now > 0,
+                "review_url": (
+                    reverse("study:review") + "?" + urlencode(batch_scope)
+                ),
+            }
+        )
+    return batches
+
+
+def _batch_index_url(scope: dict) -> str | None:
+    """Return the category/theme page that owns a batch scope."""
+    if scope.get("category"):
+        if scope.get("part") and scope.get("task"):
+            base = reverse(
+                "study:task_phrases",
+                args=[scope["part"], scope["task"]],
+            )
+        else:
+            base = reverse("study:phrases")
+        return base + "?" + urlencode({"category": scope["category"]})
+    if scope.get("theme"):
+        return reverse("study:theme_detail", args=[scope["theme"]])
+    return None
 
 
 def current_streak(now=None, logs=None, user=None) -> int:
@@ -547,12 +641,30 @@ def review(request):
         ):
             _save_review_session(session, scope, clear_pass=True)
     counts = queue_module.queue_counts(scope, user=request.user)
+    next_batch = None
+    batch_index_url = None
+    if scope.get("batch"):
+        try:
+            current_batch = int(scope["batch"])
+        except (TypeError, ValueError):
+            current_batch = 0
+        next_batch = next(
+            (
+                batch
+                for batch in _review_batches(scope, request.user)
+                if batch["number"] > current_batch and batch["can_review"]
+            ),
+            None,
+        )
+        batch_index_url = _batch_index_url(scope)
     context = {
         "scope": scope,
         "scope_json": json.dumps(scope),
         "scope_label": scope_label(scope),
         "counts": counts,
         "is_revisit": scope.get("kind") == "revisit",
+        "next_batch": next_batch,
+        "batch_index_url": batch_index_url,
     }
     return render(request, "study/review.html", context)
 
@@ -1134,6 +1246,14 @@ def theme_detail(request, slug):
         ),
         now,
     )
+    review_scope = {"kind": "spine", "theme": theme.slug}
+    if theme.task:
+        review_scope.update(
+            {
+                "part": theme.task.part.slug,
+                "task": theme.task.slug,
+            }
+        )
     return render(
         request,
         "study/theme_detail.html",
@@ -1143,6 +1263,7 @@ def theme_detail(request, slug):
             "part": theme.task.part if theme.task else None,
             "rows": rows,
             "stats": stats,
+            "review_batches": _review_batches(review_scope, request.user),
         },
     )
 
@@ -1261,10 +1382,28 @@ def phrases(request, part_slug=None, task_slug=None):
             phrases__in=all_phrases
         ).distinct().order_by("order")
     )
+    phrase_scope = {"kind": "phrase"}
+    if task:
+        phrase_scope.update({"part": task.part.slug, "task": task.slug})
+    category_card_counts = dict(
+        queue_module.scoped_cards(
+            phrase_scope,
+            user=request.user,
+            include_suspended=True,
+        )
+        .order_by()
+        .values("phrase__category_id")
+        .annotate(total=Count("id", distinct=True))
+        .values_list("phrase__category_id", "total")
+    )
     for category in categories:
         category.phrase_count = all_phrases.filter(
             category=category
         ).count()
+        category.card_count = category_card_counts.get(category.id, 0)
+        category.batch_count = (
+            category.card_count + queue_module.BATCH_SIZE - 1
+        ) // queue_module.BATCH_SIZE
 
     phrase_qs = all_phrases.none()
     if category_slug:
@@ -1281,12 +1420,17 @@ def phrases(request, part_slug=None, task_slug=None):
         phrase_qs = all_phrases.filter(category=selected)
 
     grouped = []
+    review_batches = []
     if selected:
         grouped.append(
             {
                 "category": selected,
                 "phrases": list(phrase_qs),
             }
+        )
+        review_batches = _review_batches(
+            {**phrase_scope, "category": selected.slug},
+            request.user,
         )
     functional_names = {
         "Structurer et prendre position",
@@ -1313,6 +1457,8 @@ def phrases(request, part_slug=None, task_slug=None):
                 if category.name not in functional_names
             ],
             "grouped": grouped,
+            "review_batches": review_batches,
+            "batch_size": queue_module.BATCH_SIZE,
             "selected": selected,
             "phrase_count": (
                 selected.phrase_count
@@ -1502,9 +1648,8 @@ def stats(request, part_slug=None, task_slug=None):
 
 
 def settings_view(request):
-    settings = Settings.load(request.user)
     if request.method == "POST":
-        action = request.POST.get("action", "save")
+        action = request.POST.get("action", "")
         if action == "reset":
             with transaction.atomic():
                 session = _locked_review_session(request.user)
@@ -1530,24 +1675,12 @@ def settings_view(request):
                 suspended=True,
             ).update(suspended=False)
             return redirect(reverse("study:settings") + "?unsuspended=1")
-        try:
-            settings.new_cards_per_day = max(
-                0, int(request.POST.get("new_cards_per_day", 15))
-            )
-            settings.max_reviews_per_day = max(
-                0, int(request.POST.get("max_reviews_per_day", 200))
-            )
-            settings.save()
-        except (TypeError, ValueError):
-            return HttpResponseBadRequest("Invalid settings.")
-        return redirect(reverse("study:settings") + "?saved=1")
+        return HttpResponseBadRequest("Invalid settings action.")
 
     return render(
         request,
         "study/settings.html",
         {
-            "settings": settings,
-            "saved": request.GET.get("saved") == "1",
             "was_reset": request.GET.get("reset") == "1",
             "was_unsuspended": request.GET.get("unsuspended") == "1",
             "suspended_count": Card.objects.filter(

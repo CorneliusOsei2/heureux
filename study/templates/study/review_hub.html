@@ -10,7 +10,7 @@
     <h1>Réviser {{ task.name }}</h1>
     <p>Choisissez précisément ce que vous voulez travailler. Votre progression et vos cartes à revoir restent réunies dans cette tâche.</p>
   </div>
-  <div class="task-hero__numbers" aria-label="Révisions du jour">
+  <div class="task-hero__numbers" aria-label="Cartes disponibles">
     <span><b>{{ counts.total_due }}</b> à réviser</span>
     <span><b>{{ revisit_count }}</b> à revoir</span>
   </div>
@@ -33,7 +33,7 @@
     <div>
       <p class="task-module__kicker">Parcours complet</p>
       <h2>Tout réviser</h2>
-      <p>Alternez réponses et expressions prévues aujourd'hui.</p>
+      <p>Alternez toutes les réponses et expressions disponibles, sans plafond quotidien.</p>
       <strong>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }}</strong>
     </div>
     <a class="btn btn--primary" href="{% url 'study:review' %}?part={{ part.slug }}&amp;task={{ task.slug }}">Commencer</a>
@@ -47,7 +47,10 @@
       <p>Retrouvez les positions et les trois arguments essentiels de chaque réponse.</p>
       <strong>{{ response_due }} à réviser · {{ response_stats.mature }}/{{ response_stats.total }} maîtrisées</strong>
     </div>
-    <a class="btn" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Réviser</a>
+    <div class="review-group__actions">
+      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Tout réviser</a>
+      <a class="btn" href="{% url 'study:task_browse' part.slug task.slug %}">Choisir un thème</a>
+    </div>
   </article>
 
   <article class="review-group review-group--phrases">
@@ -58,7 +61,10 @@
       <p>Mémorisez les tournures, collocations et nuances extraites des réponses.</p>
       <strong>{{ phrase_due }} à réviser · {{ phrase_stats.mature }}/{{ phrase_stats.total }} maîtrisées</strong>
     </div>
-    <a class="btn" href="{% url 'study:review' %}?kind=phrase&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Réviser</a>
+    <div class="review-group__actions">
+      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Tout réviser</a>
+      <a class="btn" href="{% url 'study:task_phrases' part.slug task.slug %}">Choisir un lot</a>
+    </div>
   </article>
 
   <article class="review-group review-group--revisit">

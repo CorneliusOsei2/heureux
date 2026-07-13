@@ -45,7 +45,7 @@
     <div class="task-module__body">
       <p class="task-module__kicker">Mémoriser durablement</p>
       <h2>Révision</h2>
-      <p>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} prévue{{ counts.total_due|pluralize }} aujourd'hui dans cette tâche.</p>
+      <p>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }} dans cette tâche, sans plafond quotidien.</p>
       <div class="task-module__actions">
         <a href="{% url 'study:task_review_hub' part.slug task.slug %}">Organiser mes révisions <span aria-hidden="true">→</span></a>
       </div>

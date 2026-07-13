@@ -28,12 +28,15 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
   ideas, nuance, conclusion, equivalent prompts, and related expressions.
 - **Expressions & vocabulaire** — reusable chunks with an English cue and a
   verbatim example from the answer bank, grouped into accurate topical and
-  functional categories and reviewable per response.
+  functional categories, then divided into review lots of 15 cards.
+- **Practice without a daily cap** — every new card and due review stays
+  available; themes and expression categories provide optional 15-card lots
+  with not-started, in-progress, and completed states plus next-lot navigation.
 - **Progression** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
   mature-card retention, streak, and per-theme mastery.
 - **Comptes privés** — a unique username and hashed six-digit PIN protect each
-  learner's cards, history, settings, revisit list, and resumable session.
-- **Réglages** — private daily limits, suspended cards, and progress reset.
+  learner's cards, history, revisit list, and resumable session.
+- **Réglages** — suspended-card recovery and private progress reset.
 
 ### Card model
 

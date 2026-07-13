@@ -1,9 +1,8 @@
-"""Review-queue construction: what to study next, and how much is due.
+"""Review-queue construction: what to study next, and how much is available.
 
-Honors the daily new-card and review limits from :class:`Settings`, always
-lets time-sensitive learning/relearning cards through, supports optional deck
-scoping (a theme, family or phrase category), and reports the counts used by
-the dashboard and nav badges.
+Practice is unrestricted: every new card and every due review remains
+available. Optional scopes narrow the queue to a task, category, or stable
+15-card batch without introducing a daily cap.
 """
 
 from __future__ import annotations
@@ -14,12 +13,26 @@ from typing import Iterable, Optional
 from django.db.models import Q
 from django.utils import timezone
 
-from .models import Card, CardType, CardState, ReviewLog, Settings
+from .models import Card, CardType, CardState, ReviewLog
+
+
+BATCH_SIZE = 15
 
 
 def _today_start(now: datetime) -> datetime:
     local = timezone.localtime(now)
     return local.replace(hour=0, minute=0, second=0, microsecond=0)
+
+
+def batch_ordering(scope: Optional[dict] = None) -> tuple[str, ...]:
+    """Return the canonical ordering used to partition a scoped deck."""
+    scope = scope or {}
+    kind = scope.get("kind")
+    if scope.get("category") or kind == "phrase":
+        return ("card_type", "phrase__order", "phrase_id", "id")
+    if scope.get("theme") or kind == "spine":
+        return ("response__theme__order", "response_id", "id")
+    return ("card_type", "response_id", "phrase_id", "id")
 
 
 def scoped_cards(
@@ -29,15 +42,10 @@ def scoped_cards(
     include_suspended: bool = False,
 ):
     """A user's active cards narrowed to an optional deck scope."""
-    qs = (
-        Card.objects.all()
-        if include_suspended
-        else Card.objects.active()
-    ).filter(user=user).select_related(
+    qs = Card.objects.filter(user=user).select_related(
         "response__theme", "response__family", "phrase__category"
     )
-    if not scope:
-        return qs
+    scope = scope or {}
     kind = scope.get("kind")
     if kind == "spine":
         qs = qs.filter(card_type=CardType.SPINE)
@@ -83,7 +91,24 @@ def scoped_cards(
     if scope.get("response"):
         qs = qs.filter(
             phrase__source_prompts__response_id=scope["response"]
-        ).distinct()
+        )
+
+    qs = qs.distinct()
+    try:
+        batch_number = int(scope.get("batch", 0))
+    except (TypeError, ValueError):
+        batch_number = 0
+    if batch_number > 0:
+        start = (batch_number - 1) * BATCH_SIZE
+        batch_ids = list(
+            qs.order_by(*batch_ordering(scope)).values_list("pk", flat=True)[
+                start : start + BATCH_SIZE
+            ]
+        )
+        qs = qs.filter(pk__in=batch_ids)
+
+    if not include_suspended:
+        qs = qs.filter(suspended=False)
     return qs.distinct()
 
 
@@ -96,7 +121,6 @@ def queue_counts(
     """Counts driving the dashboard, deck pages and navigation badges."""
     now = now or timezone.now()
     start = _today_start(now)
-    settings = Settings.load(user)
     cards = scoped_cards(scope, user=user)
 
     if scope and scope.get("kind") == "revisit":
@@ -136,12 +160,9 @@ def queue_counts(
         state=CardState.REVIEW, due__lte=now
     ).count()
 
-    review_remaining = max(0, settings.max_reviews_per_day - reviews_done_today)
-    review_due = min(review_due_total, review_remaining)
-
     new_total = cards.filter(state=CardState.NEW).count()
-    new_remaining = max(0, settings.new_cards_per_day - new_done_today)
-    new_available = min(new_total, new_remaining)
+    review_due = review_due_total
+    new_available = new_total
 
     due_reviews = learning_due + review_due
     return {
@@ -170,8 +191,8 @@ def next_card(
 ):
     """Pick the next card to study, or ``None`` when nothing is due.
 
-    Order: due learning/relearning (soonest first), then due reviews within the
-    daily cap, then fresh new cards within the daily cap.
+    Order: due learning/relearning (soonest first), then every due review,
+    then every fresh card.
     """
     now = now or timezone.now()
     counts = queue_counts(scope, now, user=user)

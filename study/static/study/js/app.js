@@ -18,20 +18,80 @@
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector("[data-nav-toggle]");
   var links = document.querySelector("[data-nav-links]");
+  var utilityMenu = document.querySelector("[data-nav-more]");
+  var mobileNavQuery = window.matchMedia("(max-width: 760px)");
+
+  function setNavOpen(open, returnFocus) {
+    if (!toggle || !links) return;
+    links.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    root.classList.toggle("nav-open", open && mobileNavQuery.matches);
+    if (!open && utilityMenu) utilityMenu.removeAttribute("open");
+    if (!open && returnFocus) toggle.focus();
+  }
+
   if (toggle && links) {
     toggle.addEventListener("click", function () {
-      var open = links.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setNavOpen(!links.classList.contains("is-open"), false);
+    });
+    links.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setNavOpen(false, false);
+      });
     });
   }
-  document.querySelectorAll("[data-nav-more]").forEach(function (menu) {
-    document.addEventListener("click", function (event) {
-      if (!menu.contains(event.target)) menu.removeAttribute("open");
+
+  if (utilityMenu) {
+    utilityMenu.addEventListener("toggle", function () {
+      if (utilityMenu.open && mobileNavQuery.matches) {
+        window.setTimeout(function () {
+          utilityMenu.scrollIntoView({ block: "nearest" });
+        }, 0);
+      }
     });
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") menu.removeAttribute("open");
-    });
+  }
+
+  document.addEventListener("click", function (event) {
+    if (utilityMenu && !utilityMenu.contains(event.target)) {
+      utilityMenu.removeAttribute("open");
+    }
+    if (
+      toggle &&
+      links &&
+      links.classList.contains("is-open") &&
+      !links.contains(event.target) &&
+      !toggle.contains(event.target)
+    ) {
+      setNavOpen(false, false);
+    } else if (
+      links &&
+      links.classList.contains("is-open") &&
+      event.target === links
+    ) {
+      setNavOpen(false, false);
+    }
   });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (links && links.classList.contains("is-open")) {
+      setNavOpen(false, true);
+    } else if (utilityMenu && utilityMenu.open) {
+      utilityMenu.removeAttribute("open");
+      utilityMenu.querySelector("summary").focus();
+    }
+  });
+
+  function closeNavAboveMobile() {
+    if (!mobileNavQuery.matches) setNavOpen(false, false);
+  }
+
+  if (mobileNavQuery.addEventListener) {
+    mobileNavQuery.addEventListener("change", closeNavAboveMobile);
+  } else {
+    mobileNavQuery.addListener(closeNavAboveMobile);
+  }
 
   /* ---------- Service worker (PWA) ---------- */
   if ("serviceWorker" in navigator) {

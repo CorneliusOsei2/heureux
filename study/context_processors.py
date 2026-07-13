@@ -1,6 +1,6 @@
 """Template context shared across every page (nav badges, app name)."""
 
-from .models import Response, ReviewSession, Settings, Task, Theme
+from .models import Response, ReviewSession, Task, Theme
 from .queue import queue_counts, scoped_cards
 
 
@@ -11,7 +11,6 @@ def _empty_globals():
         "nav_due_total": 0,
         "nav_counts": {},
         "nav_revisit_count": 0,
-        "study_settings": None,
         "total_cards": 0,
     }
 
@@ -113,6 +112,5 @@ def study_globals(request):
         "nav_due_total": counts["due_reviews"] + counts["new_available"],
         "nav_counts": counts,
         "nav_revisit_count": counts["revisit_total"],
-        "study_settings": Settings.load(request.user),
         "total_cards": scoped_cards(scope, user=request.user).count(),
     }

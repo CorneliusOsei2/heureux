@@ -1,4 +1,4 @@
-"""Tests for review-queue construction: caps, ordering, scoping."""
+"""Tests for unrestricted review-queue construction, ordering, and scoping."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from study import queue as q, srs
-from study.models import CardState, Rating, Settings
+from study.models import CardState, Rating
 
 from .factories import (
     make_part,
@@ -23,19 +23,15 @@ from .factories import (
 class QueueCountsTests(TestCase):
     def setUp(self):
         self.now = timezone.now()
-        s = Settings.load()
-        s.new_cards_per_day = 2
-        s.max_reviews_per_day = 5
-        s.save()
 
-    def test_new_cards_are_capped(self):
+    def test_all_new_cards_are_available(self):
         for _ in range(5):
             make_spine_card()
         counts = q.queue_counts(now=self.now)
         self.assertEqual(counts["new_total"], 5)
-        self.assertEqual(counts["new_available"], 2)
+        self.assertEqual(counts["new_available"], 5)
 
-    def test_due_reviews_are_capped(self):
+    def test_all_due_reviews_are_available(self):
         for _ in range(8):
             make_spine_card(
                 state=CardState.REVIEW,
@@ -44,23 +40,23 @@ class QueueCountsTests(TestCase):
             )
         counts = q.queue_counts(now=self.now)
         self.assertEqual(counts["review_due_total"], 8)
-        self.assertEqual(counts["review_due"], 5)
+        self.assertEqual(counts["review_due"], 8)
 
     def test_suspended_cards_are_excluded(self):
         make_spine_card(suspended=True)
         counts = q.queue_counts(now=self.now)
         self.assertEqual(counts["new_total"], 0)
 
-    def test_completed_new_today_reduces_availability(self):
+    def test_completed_new_today_does_not_cap_remaining_cards(self):
         card = make_spine_card()
         srs.review(card, Rating.GOOD)  # logs a NEW review today
         for _ in range(3):
             make_spine_card()
         counts = q.queue_counts(now=timezone.now())
         self.assertEqual(counts["new_done_today"], 1)
-        self.assertEqual(counts["new_available"], 1)  # min(3, 2 - 1)
+        self.assertEqual(counts["new_available"], 3)
 
-    def test_suspending_reviewed_card_does_not_restore_daily_capacity(self):
+    def test_suspending_reviewed_card_does_not_hide_other_new_cards(self):
         reviewed = make_spine_card()
         srs.review(reviewed, Rating.GOOD)
         reviewed.suspended = True
@@ -70,7 +66,7 @@ class QueueCountsTests(TestCase):
 
         counts = q.queue_counts(now=timezone.now())
         self.assertEqual(counts["new_done_today"], 1)
-        self.assertEqual(counts["new_available"], 1)
+        self.assertEqual(counts["new_available"], 3)
 
     def test_theme_scope_filters(self):
         make_spine_card(theme=make_theme(slug="culture", order=1))
@@ -122,7 +118,7 @@ class QueueCountsTests(TestCase):
             ).values_list("id", flat=True),
         )
 
-    def test_task_daily_limit_ignores_reviews_from_other_tasks(self):
+    def test_task_availability_ignores_reviews_from_other_tasks(self):
         oral_task = make_task(part=make_part("orale"), slug="tache-3")
         oral_theme = make_theme(slug="culture", task=oral_task)
         make_spine_card(theme=oral_theme)
@@ -140,7 +136,7 @@ class QueueCountsTests(TestCase):
         )
         self.assertEqual(counts["new_available"], 2)
 
-    def test_revisit_scope_ignores_due_dates_and_daily_caps(self):
+    def test_revisit_scope_ignores_due_dates(self):
         future = make_spine_card(
             state=CardState.REVIEW,
             due=self.now + timedelta(days=30),
@@ -169,11 +165,41 @@ class QueueCountsTests(TestCase):
         self.assertEqual(counts["new_total"], 1)
         self.assertEqual(q.next_card(scope, now=self.now).id, linked_card.id)
 
+    def test_category_batch_scope_contains_at_most_fifteen_cards(self):
+        cards = [make_phrase_card() for _ in range(32)]
+        scope = {
+            "kind": "phrase",
+            "category": cards[0].phrase.category.slug,
+            "batch": "2",
+        }
+
+        batch_ids = list(
+            q.scoped_cards(scope).order_by("id").values_list("id", flat=True)
+        )
+
+        self.assertEqual(batch_ids, [card.id for card in cards[15:30]])
+        self.assertEqual(q.queue_counts(scope, now=self.now)["new_available"], 15)
+
+    def test_batch_membership_does_not_shift_when_a_card_is_suspended(self):
+        cards = [make_phrase_card() for _ in range(20)]
+        cards[0].suspended = True
+        cards[0].save(update_fields=["suspended"])
+        scope = {
+            "kind": "phrase",
+            "category": cards[0].phrase.category.slug,
+            "batch": "2",
+        }
+
+        batch_ids = list(
+            q.scoped_cards(scope).order_by("id").values_list("id", flat=True)
+        )
+
+        self.assertEqual(batch_ids, [card.id for card in cards[15:]])
+
 
 class NextCardTests(TestCase):
     def setUp(self):
         self.now = timezone.now()
-        Settings.load()
 
     def test_due_learning_beats_new(self):
         make_spine_card()  # NEW

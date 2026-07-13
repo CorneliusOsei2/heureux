@@ -20,6 +20,30 @@
   </div>
 </div>
 
+{% if review_batches %}
+<section class="review-batches" aria-labelledby="theme-batches-title">
+  <div class="review-batches__head">
+    <div>
+      <p class="eyebrow">Parcours organisé</p>
+      <h2 id="theme-batches-title">Lots de 15 cartes</h2>
+    </div>
+    <p>Chaque réponse correspond à une carte. Travaillez un lot précis ou révisez le thème complet sans plafond.</p>
+  </div>
+  <div class="batch-grid">
+    {% for batch in review_batches %}
+      <a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
+        <span class="batch-card__top">
+          <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
+          <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
+        </span>
+        <strong>Cartes {{ batch.start }}–{{ batch.end }}</strong>
+        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <div class="qlist">
   {% for row in rows %}
     <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}">

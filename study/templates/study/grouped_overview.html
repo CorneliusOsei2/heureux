@@ -11,7 +11,7 @@
   </div>
   <div class="grouped-overview__metrics" aria-label="Résumé">
     {% if area == "review" %}
-      <span><b>{{ counts.total_due }}</b> disponibles aujourd'hui</span>
+      <span><b>{{ counts.total_due }}</b> cartes disponibles</span>
       <span><b>{{ revisit_count }}</b> dans ma liste</span>
     {% elif area == "expressions" %}
       <span><b>{{ phrase_count }}</b> expressions</span>
@@ -39,7 +39,7 @@
   <div>
     <h2>Choisir une tâche</h2>
     {% if area == "review" %}
-      <p>Sélectionnez ce que vous souhaitez travailler aujourd'hui.</p>
+      <p>Sélectionnez une tâche, puis révisez sans plafond ou choisissez un lot.</p>
     {% elif area == "expressions" %}
       <p>Entrez dans une tâche pour étudier ses tournures, collocations et nuances.</p>
     {% else %}

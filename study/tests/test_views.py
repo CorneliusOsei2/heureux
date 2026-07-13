@@ -17,7 +17,14 @@ from django.urls import reverse
 from django.utils import timezone
 
 from study import srs, views as study_views
-from study.models import CardState, Rating, ReviewLog, ReviewSession, Settings
+from study.models import (
+    Card,
+    CardState,
+    Rating,
+    ReviewLog,
+    ReviewSession,
+    Settings,
+)
 
 from . import factories
 
@@ -380,6 +387,16 @@ class TaskOrganizationTests(TestCase):
             response,
             "Continuer là où je me suis arrêté",
         )
+        self.assertContains(
+            response,
+            "?kind=spine&amp;part=orale&amp;task=tache-3",
+        )
+        self.assertContains(
+            response,
+            "?kind=phrase&amp;part=orale&amp;task=tache-3",
+        )
+        self.assertContains(response, "Choisir un thème")
+        self.assertContains(response, "Choisir un lot")
 
     def test_primary_navigation_resolves_same_slug_task_by_part(self):
         written_task = factories.make_task(
@@ -399,6 +416,132 @@ class TaskOrganizationTests(TestCase):
         )
         self.assertEqual(response.context["content_task"], written_task)
         self.assertContains(response, "Parcours écrit")
+
+
+class CategoryBatchViewsTests(TestCase):
+    def setUp(self):
+        self.user = factories.make_user("batcher")
+        self.client.force_login(self.user)
+        first = factories.make_phrase_card(user=self.user)
+        self.category = first.phrase.category
+        self.phrase_cards = [first]
+        for _ in range(15):
+            phrase = factories.make_phrase(category=self.category)
+            self.phrase_cards.append(
+                factories.make_phrase_card(phrase=phrase, user=self.user)
+            )
+
+    def test_expression_category_displays_fifteen_card_lots(self):
+        response = self.client.get(
+            reverse("study:phrases"),
+            {"category": self.category.slug},
+        )
+
+        self.assertEqual(len(response.context["review_batches"]), 2)
+        self.assertEqual(
+            response.context["review_batches"][0]["card_count"],
+            15,
+        )
+        self.assertEqual(
+            response.context["review_batches"][1]["card_count"],
+            1,
+        )
+        self.assertContains(response, "Lots de 15 cartes")
+        self.assertContains(response, "Lot 02")
+        self.assertContains(response, "batch=2")
+
+    def test_category_batch_review_selects_only_that_lot(self):
+        params = {
+            "kind": "phrase",
+            "category": self.category.slug,
+            "batch": "2",
+        }
+        page = self.client.get(reverse("study:review"), params)
+        state = self.client.get(reverse("study:review_next"), params).json()
+
+        self.assertContains(page, "Lot 2")
+        self.assertEqual(state["card_id"], self.phrase_cards[15].id)
+        self.assertEqual(state["counts"]["new_available"], 1)
+
+    def test_batch_cards_show_in_progress_and_completed_states(self):
+        future = timezone.now() + timedelta(days=5)
+        first_batch = self.phrase_cards[:15]
+        first_batch[0].state = CardState.LEARNING
+        first_batch[0].due = future
+        first_batch[0].save(update_fields=["state", "due"])
+
+        in_progress = self.client.get(
+            reverse("study:phrases"),
+            {"category": self.category.slug},
+        )
+
+        self.assertEqual(
+            in_progress.context["review_batches"][0]["status"],
+            "in-progress",
+        )
+        self.assertContains(in_progress, "En cours")
+
+        Card.objects.filter(
+            pk__in=[card.pk for card in first_batch]
+        ).update(state=CardState.REVIEW, due=future)
+        complete = self.client.get(
+            reverse("study:phrases"),
+            {"category": self.category.slug},
+        )
+
+        completed_batch = complete.context["review_batches"][0]
+        self.assertEqual(completed_batch["status"], "complete")
+        self.assertEqual(completed_batch["seen_count"], 15)
+        self.assertFalse(completed_batch["can_review"])
+        self.assertContains(complete, "✓")
+        self.assertContains(complete, "Terminé")
+
+    def test_suspended_lot_is_visible_but_not_clickable(self):
+        Card.objects.filter(
+            pk__in=[card.pk for card in self.phrase_cards[:15]]
+        ).update(suspended=True)
+
+        response = self.client.get(
+            reverse("study:phrases"),
+            {"category": self.category.slug},
+        )
+
+        first_batch = response.context["review_batches"][0]
+        self.assertEqual(first_batch["status"], "unavailable")
+        self.assertFalse(first_batch["can_review"])
+        self.assertContains(response, 'aria-disabled="true"')
+        self.assertContains(response, "Suspendu")
+
+    def test_finished_batch_offers_the_next_available_lot(self):
+        response = self.client.get(
+            reverse("study:review"),
+            {
+                "kind": "phrase",
+                "category": self.category.slug,
+                "batch": "1",
+            },
+        )
+
+        self.assertEqual(response.context["next_batch"]["number"], 2)
+        self.assertContains(response, "Passer au lot 2")
+        self.assertContains(response, "Voir tous les lots")
+        self.assertContains(response, "batch=2")
+
+    def test_response_theme_displays_fifteen_card_lots(self):
+        theme = factories.make_theme("education")
+        for _ in range(16):
+            factories.make_spine_card(theme=theme, user=self.user)
+
+        response = self.client.get(
+            reverse("study:theme_detail", args=[theme.slug])
+        )
+
+        self.assertEqual(len(response.context["review_batches"]), 2)
+        self.assertEqual(
+            [batch["card_count"] for batch in response.context["review_batches"]],
+            [15, 1],
+        )
+        self.assertContains(response, "Lots de 15 cartes")
 
 
 class ReviewFlowTests(TestCase):
@@ -776,6 +919,13 @@ class SettingsActionTests(TestCase):
         self.assertEqual(r.status_code, 302)
         card.refresh_from_db()
         self.assertFalse(card.suspended)
+
+    def test_settings_explain_unlimited_practice(self):
+        response = self.client.get(reverse("study:settings"))
+
+        self.assertContains(response, "Aucun plafond quotidien")
+        self.assertNotContains(response, "new_cards_per_day")
+        self.assertNotContains(response, "max_reviews_per_day")
 
     def test_reset_clears_progress(self):
         from study import srs

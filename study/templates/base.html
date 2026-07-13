@@ -14,7 +14,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=15">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=20">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,10 +45,10 @@
         <span class="brand__mark" aria-hidden="true"><img src="{% static 'study/icons/logo.svg' %}?v=2" alt=""></span>
         <span class="brand__name">Heureux</span>
       </a>
-      <button class="nav__toggle" aria-label="Menu" aria-expanded="false" data-nav-toggle>
+      <button class="nav__toggle" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle>
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav__links" data-nav-links>
+      <nav class="nav__links" id="primary-navigation" aria-label="Navigation principale" data-nav-links>
         <a href="{% url 'study:dashboard' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}">Accueil</a>
         <a href="{% url 'study:review_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review_overview' or request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' or request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %}is-active{% endif %}">
           Réviser
@@ -109,7 +109,7 @@
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=15"></script>
+  <script src="{% static 'study/js/app.js' %}?v=20"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>
