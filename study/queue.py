@@ -9,7 +9,7 @@ the dashboard and nav badges.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Optional
+from typing import Iterable, Optional
 
 from django.utils import timezone
 
@@ -38,6 +38,8 @@ def scoped_cards(scope: Optional[dict] = None):
                 CardType.PHRASE_RECOGNITION,
             ]
         )
+    elif kind == "revisit":
+        qs = qs.filter(needs_revisit=True)
     if scope.get("part"):
         qs = qs.filter(response__theme__task__part__slug=scope["part"])
     if scope.get("task"):
@@ -48,6 +50,10 @@ def scoped_cards(scope: Optional[dict] = None):
         qs = qs.filter(response__family__slug=scope["family"])
     if scope.get("category"):
         qs = qs.filter(phrase__category__slug=scope["category"])
+    if scope.get("response"):
+        qs = qs.filter(
+            phrase__source_prompts__response_id=scope["response"]
+        ).distinct()
     return qs
 
 
@@ -56,6 +62,22 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
     now = now or timezone.now()
     start = _today_start(now)
     settings = Settings.load()
+    cards = scoped_cards(scope)
+
+    if scope and scope.get("kind") == "revisit":
+        revisit_total = cards.count()
+        return {
+            "due_reviews": revisit_total,
+            "learning_due": 0,
+            "review_due": revisit_total,
+            "review_due_total": revisit_total,
+            "new_available": 0,
+            "new_total": 0,
+            "new_done_today": 0,
+            "reviews_done_today": 0,
+            "total_due": revisit_total,
+            "revisit_total": revisit_total,
+        }
 
     todays_logs = ReviewLog.objects.filter(reviewed_at__gte=start)
     new_done_today = todays_logs.filter(state_before=CardState.NEW).count()
@@ -63,7 +85,6 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
         state_before__in=[CardState.REVIEW, CardState.RELEARNING]
     ).count()
 
-    cards = scoped_cards(scope)
     learning_due = cards.filter(
         state__in=[CardState.LEARNING, CardState.RELEARNING], due__lte=now
     ).count()
@@ -89,10 +110,15 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
         "new_done_today": new_done_today,
         "reviews_done_today": reviews_done_today,
         "total_due": due_reviews + new_available,
+        "revisit_total": Card.objects.active().filter(needs_revisit=True).count(),
     }
 
 
-def next_card(scope: Optional[dict] = None, now: datetime | None = None):
+def next_card(
+    scope: Optional[dict] = None,
+    now: datetime | None = None,
+    exclude_card_ids: Iterable[int] | None = None,
+):
     """Pick the next card to study, or ``None`` when nothing is due.
 
     Order: due learning/relearning (soonest first), then due reviews within the
@@ -101,6 +127,11 @@ def next_card(scope: Optional[dict] = None, now: datetime | None = None):
     now = now or timezone.now()
     counts = queue_counts(scope, now)
     cards = scoped_cards(scope)
+    if exclude_card_ids:
+        cards = cards.exclude(pk__in=list(exclude_card_ids))
+
+    if scope and scope.get("kind") == "revisit":
+        return cards.order_by("revisit_added_at", "id").first()
 
     learning = (
         cards.filter(
@@ -124,4 +155,21 @@ def next_card(scope: Optional[dict] = None, now: datetime | None = None):
     if counts["new_available"] > 0:
         return cards.filter(state=CardState.NEW).order_by("id").first()
 
+    return None
+
+
+def resumable_card(card_id: int | None, scope: Optional[dict], now=None):
+    """Return a saved unfinished card when it is still valid for this scope."""
+    if not card_id:
+        return None
+    now = now or timezone.now()
+    card = scoped_cards(scope).filter(pk=card_id).first()
+    if card is None:
+        return None
+    if scope and scope.get("kind") == "revisit":
+        return card
+    if card.state == CardState.NEW:
+        return card
+    if card.due is not None and card.due <= now:
+        return card
     return None

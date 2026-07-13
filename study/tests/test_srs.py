@@ -122,6 +122,23 @@ class ReviewAndUndoTests(TestCase):
         self.assertIsNone(card.due)
         self.assertEqual(ReviewLog.objects.count(), 0)
 
+    def test_undo_restores_revisit_state(self):
+        card = make_spine_card(
+            needs_revisit=True,
+            revisit_added_at=timezone.now(),
+        )
+        original_added_at = card.revisit_added_at
+        srs.review(card, Rating.GOOD)
+        card.needs_revisit = False
+        card.revisit_added_at = None
+        card.save(update_fields=["needs_revisit", "revisit_added_at"])
+
+        restored = srs.undo_last()
+        self.assertEqual(restored.id, card.id)
+        card.refresh_from_db()
+        self.assertTrue(card.needs_revisit)
+        self.assertEqual(card.revisit_added_at, original_added_at)
+
     def test_undo_is_multi_level(self):
         card = make_spine_card()
         srs.review(card, Rating.GOOD)  # NEW -> LEARNING step 1

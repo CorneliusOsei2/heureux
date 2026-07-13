@@ -7,7 +7,7 @@ source are pruned.
 
 from __future__ import annotations
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from study import content
@@ -36,7 +36,7 @@ class Command(BaseCommand):
         sections = content.load_sections()
         family_map, families = content.parse_families()
         responses = content.parse_responses()
-        phrases = content.parse_phrases()
+        phrases = content.parse_phrases(responses)
 
         task_by_slug = self._import_sections(sections)
         theme_by_name = self._import_themes(themes, task_by_slug)
@@ -227,9 +227,17 @@ class Command(BaseCommand):
                     "order": data.order,
                 },
             )
-            source_objs = [
-                prompt_index[key] for key in data.sources if key in prompt_index
+            missing_sources = [
+                key for key in data.sources if key not in prompt_index
             ]
+            if missing_sources:
+                labels = ", ".join(
+                    f"{theme} P{number}" for theme, number in missing_sources
+                )
+                raise CommandError(
+                    f"Phrase {data.phrase_id} references unknown prompts: {labels}"
+                )
+            source_objs = [prompt_index[key] for key in data.sources]
             phrase.source_prompts.set(source_objs)
             seen_phrases.add(phrase.pk)
 

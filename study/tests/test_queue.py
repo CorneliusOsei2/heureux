@@ -10,7 +10,7 @@ from django.utils import timezone
 from study import queue as q, srs
 from study.models import CardState, Rating, Settings
 
-from .factories import make_phrase_card, make_spine_card, make_theme
+from .factories import make_phrase, make_phrase_card, make_spine_card, make_theme
 
 
 class QueueCountsTests(TestCase):
@@ -64,6 +64,35 @@ class QueueCountsTests(TestCase):
         make_phrase_card()
         counts = q.queue_counts({"kind": "phrase"}, now=self.now)
         self.assertEqual(counts["new_total"], 1)
+
+    def test_revisit_scope_ignores_due_dates_and_daily_caps(self):
+        future = make_spine_card(
+            state=CardState.REVIEW,
+            due=self.now + timedelta(days=30),
+            interval_days=10,
+            needs_revisit=True,
+            revisit_added_at=self.now,
+        )
+        make_spine_card()
+        counts = q.queue_counts({"kind": "revisit"}, now=self.now)
+        self.assertEqual(counts["revisit_total"], 1)
+        self.assertEqual(counts["total_due"], 1)
+        self.assertEqual(
+            q.next_card({"kind": "revisit"}, now=self.now).id,
+            future.id,
+        )
+
+    def test_response_scope_selects_only_its_linked_phrase_cards(self):
+        response = make_spine_card().response
+        linked_phrase = make_phrase()
+        linked_phrase.source_prompts.add(response.prompts.first())
+        linked_card = make_phrase_card(phrase=linked_phrase)
+        make_phrase_card()
+
+        scope = {"kind": "phrase", "response": str(response.id)}
+        counts = q.queue_counts(scope, now=self.now)
+        self.assertEqual(counts["new_total"], 1)
+        self.assertEqual(q.next_card(scope, now=self.now).id, linked_card.id)
 
 
 class NextCardTests(TestCase):

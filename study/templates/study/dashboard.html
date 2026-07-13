@@ -20,8 +20,11 @@
 
   <div class="hero__actions">
     <a class="btn btn--primary btn--lg" href="{% url 'study:review' %}">
-      {% if counts.total_due %}Réviser maintenant{% else %}Étudier{% endif %}
+      {% if counts.total_due %}Continuer la révision{% else %}Étudier{% endif %}
     </a>
+    {% if nav_revisit_count %}
+      <a class="btn btn--ghost btn--lg" href="{% url 'study:revisit_list' %}">À revoir · {{ nav_revisit_count }}</a>
+    {% endif %}
     <a class="btn btn--ghost btn--lg" href="{% url 'study:browse' %}">Parcourir</a>
   </div>
 </section>
@@ -92,7 +95,7 @@
     <h2 class="mb-0">Boîte à outils</h2>
     <a class="chip" href="{% url 'study:review' %}?kind=phrase">Réviser ↗</a>
   </div>
-  <p class="muted mt-0">Expressions et tournures utiles à toutes les tâches.</p>
+  <p class="muted mt-0">Vocabulaire, nuances et tournures extraits de chaque réponse.</p>
   <div class="grid grid--decks">
     <a class="deck card" style="--deck-color: #c8a23a;" href="{% url 'study:phrases' %}">
       <div class="deck__body">

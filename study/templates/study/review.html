@@ -6,18 +6,19 @@
      class="review"
      data-next-url="{% url 'study:review_next' %}"
      data-answer-url="{% url 'study:review_answer' %}"
-     data-undo-url="{% url 'study:review_undo' %}"
-     data-suspend-url="{% url 'study:review_suspend' %}"
-     data-can-undo="{{ can_undo|yesno:'1,0' }}"
      data-csrf="{{ csrf_token }}"
      data-scope='{{ scope_json }}'>
 
   <div class="review__top">
     <div class="review__scope">{{ scope_label }}</div>
-    <div class="review__counters" title="Nouvelles · Apprentissage · Révisions">
+    <div class="review__counters" title="{% if is_revisit %}Cartes dans la liste{% else %}Nouvelles · Apprentissage · Révisions{% endif %}">
+      {% if is_revisit %}
+      <span class="c-review"><span id="c-revisit">{{ counts.revisit_total }}</span> à revoir</span>
+      {% else %}
       <span class="c-new" id="c-new">{{ counts.new_available }}</span>
       <span class="c-learn" id="c-learn">{{ counts.learning_due }}</span>
       <span class="c-review" id="c-review">{{ counts.review_due }}</span>
+      {% endif %}
     </div>
   </div>
   <div class="review__bar"><span id="progress"></span></div>
@@ -31,35 +32,33 @@
     <div class="controls">
       <button class="reveal-btn" id="reveal">Afficher la réponse</button>
       <div class="grades hidden" id="grades">
-        <button class="grade grade--again" data-rating="1">
-          <span class="grade__key">1</span>
-          <span class="grade__label">Encore</span>
-          <span class="grade__int" data-int="1"></span>
+        <button class="grade grade--revisit" type="button" data-action="revisit" aria-keyshortcuts="1 R">
+          <span class="grade__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+              <path d="M3 4v6h6"></path>
+            </svg>
+          </span>
+          <span class="grade__copy">
+            <span class="grade__label">Revoir</span>
+            <span class="grade__description">Ajouter à ma liste</span>
+          </span>
+          <span class="grade__key" aria-hidden="true">1</span>
         </button>
-        <button class="grade grade--hard" data-rating="2">
-          <span class="grade__key">2</span>
-          <span class="grade__label">Difficile</span>
-          <span class="grade__int" data-int="2"></span>
-        </button>
-        <button class="grade grade--good" data-rating="3">
-          <span class="grade__key">3</span>
-          <span class="grade__label">Correct</span>
-          <span class="grade__int" data-int="3"></span>
-        </button>
-        <button class="grade grade--easy" data-rating="4">
-          <span class="grade__key">4</span>
-          <span class="grade__label">Facile</span>
-          <span class="grade__int" data-int="4"></span>
+        <button class="grade grade--correct" type="button" data-action="correct" aria-keyshortcuts="2 C">
+          <span class="grade__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+          </span>
+          <span class="grade__copy">
+            <span class="grade__label">Correct</span>
+            <span class="grade__description">Passer à la suivante</span>
+          </span>
+          <span class="grade__key" aria-hidden="true">2</span>
         </button>
       </div>
       <div class="kbd-hint" id="kbd-hint"></div>
-    </div>
-
-    <div class="review__actions">
-      <button class="linkbtn" id="undo-btn" type="button"
-              title="Annuler la dernière réponse (u)" disabled>↶ Annuler</button>
-      <button class="linkbtn linkbtn--muted" id="suspend-btn" type="button"
-              title="Suspendre cette carte (s)">Suspendre ⏸</button>
     </div>
   </div>
 
@@ -67,11 +66,15 @@
     <div class="done-state__emoji">🎉</div>
     <h2>Session terminée</h2>
     <div class="session-summary" id="session-summary"></div>
-    <p>Vous avez révisé toutes les cartes prévues pour ce lot. Revenez plus tard pour les révisions à venir.</p>
+    {% if is_revisit %}
+      <p>Vous avez parcouru cette liste. Les cartes encore marquées « Revoir » y resteront pour votre prochain passage.</p>
+    {% else %}
+      <p>Vous avez révisé toutes les cartes prévues pour ce lot. Revenez plus tard pour les révisions à venir.</p>
+    {% endif %}
     <div class="row center" style="justify-content:center; margin-top:1rem;">
       <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
+      <a class="btn" href="{% url 'study:revisit_list' %}">Ma liste à revoir</a>
       <a class="btn" href="{% url 'study:browse' %}">Parcourir les fiches</a>
-      <button class="btn" id="undo-btn-done" type="button" disabled>↶ Annuler la dernière</button>
     </div>
   </div>
 </div>

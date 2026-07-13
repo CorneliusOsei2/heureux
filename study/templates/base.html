@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=4">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -57,6 +57,10 @@
           Réviser
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
+        <a href="{% url 'study:revisit_list' %}" class="{% if request.resolver_match.url_name == 'revisit_list' %}is-active{% endif %}">
+          À revoir
+          {% if nav_revisit_count %}<span class="pill pill--revisit">{{ nav_revisit_count }}</span>{% endif %}
+        </a>
         <a href="{% url 'study:browse' %}" class="{% if request.resolver_match.url_name in 'browse,theme_detail,family_detail,response_detail' %}is-active{% endif %}">Parcourir</a>
         <a href="{% url 'study:phrases' %}" class="{% if request.resolver_match.url_name == 'phrases' %}is-active{% endif %}">Expressions</a>
         <a href="{% url 'study:stats' %}" class="{% if request.resolver_match.url_name == 'stats' %}is-active{% endif %}">Stats</a>
@@ -87,7 +91,7 @@
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}"></script>
+  <script src="{% static 'study/js/app.js' %}?v=4"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

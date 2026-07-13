@@ -3,8 +3,8 @@
 A personal, single-user spaced-repetition web app for memorising a French
 oral-exam answer bank. It parses the existing corpus — 167 exam prompts that
 collapse into **130 unique argued answers** across 7 themes and 17 topic
-families, plus **160 reusable expressions** — and turns everything into
-Anki-style flashcards with a real SM-2 scheduler.
+families, plus a source-grounded bank of reusable expressions — and turns
+everything into Anki-style flashcards with a real SM-2 scheduler.
 
 Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
@@ -12,29 +12,29 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
 ## What's inside
 
-- **Réviser** — a distraction-free review session. Reveal with `Space`, grade
-  with `1`–`4` (Encore / Difficile / Correct / Facile). Each button shows the
-  next interval before you click. Study everything, or scope to one theme,
-  family, or expression category.
+- **Réviser** — a distraction-free review session. Reveal with `Space`, then
+  choose `1` (Revoir) or `2` (Correct). Unfinished sessions reopen on the exact
+  card where you stopped.
+- **À revoir** — a persistent list for difficult cards, with its own focused
+  review pass.
 - **Parcourir** — browse by theme, by topic family, or by expression category.
-- **Fiche** — every answer in full: reformulation, position, three structured
-  arguments (idée / développement / exemple / conséquence), nuance, conclusion,
-  equivalent prompts, and related expressions. Shows each card's SRS state.
-- **Expressions** — 160 reusable chunks with an English cue and a grounded
-  example (drawn from the answers themselves), grouped by function.
+- **Fiche** — a compact speaking spine: reformulation, position, three main
+  ideas, nuance, conclusion, equivalent prompts, and related expressions.
+- **Expressions** — reusable chunks with an English cue and a verbatim example
+  from the answer bank, grouped by function and reviewable per response.
 - **Stats** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
   mature-card retention, streak, and per-theme mastery.
 - **Réglages** — daily new-card / max-review limits, and a full reset.
 
 ### Card model
 
-Importing the corpus produces **450 cards**:
+Importing the corpus produces:
 
 | Type | Count | Front → Back |
 |------|-------|--------------|
-| Response spine | 130 | Prompt → full argued answer |
-| Expression — production | 160 | English cue + blanked example → the expression |
-| Expression — recognition | 160 | Expression → meaning + example |
+| Response spine | 130 | Prompt → compact speaking spine |
+| Expression — production | One per expression | English cue + blanked example → the expression |
+| Expression — recognition | One per expression | Expression → meaning + example |
 
 Equivalent prompts (same answer in different themes) share one Response and one
 spine card, so you never memorise the same answer twice.

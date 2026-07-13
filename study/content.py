@@ -26,7 +26,24 @@ SECTIONS_PATH = CONTENT_DIR / "sections.json"
 EXPECTED_PROMPTS = 167
 EXPECTED_UNIQUE = 130
 EXPECTED_FAMILIES = 17
-EXPECTED_PHRASES = 166
+EXPECTED_PHRASES = 1417
+PHRASE_FIELDS = (
+    "id",
+    "category",
+    "english_cue",
+    "expression",
+    "anchor",
+    "example",
+    "sources",
+    "note",
+)
+PHRASE_MAX_LENGTHS = {
+    "id": 16,
+    "category": 120,
+    "english_cue": 200,
+    "expression": 300,
+    "anchor": 300,
+}
 
 # study_sheets label -> responses directory name.
 LABEL_TO_THEME = {
@@ -451,33 +468,133 @@ def parse_responses() -> List[ResponseData]:
     return responses
 
 
-def parse_phrases() -> List[PhraseData]:
+def parse_phrases(
+    responses: Optional[List[ResponseData]] = None,
+) -> List[PhraseData]:
+    if responses is None:
+        responses = parse_responses()
+
+    prompt_bodies = {
+        (prompt.theme, prompt.number): response.body
+        for response in responses
+        for prompt in response.prompts
+    }
+    seen_ids: Dict[str, int] = {}
+    seen_anchors: Dict[str, int] = {}
     phrases: List[PhraseData] = []
     with PHRASES_PATH.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
+        if tuple(reader.fieldnames or ()) != PHRASE_FIELDS:
+            raise ValueError(
+                f"Phrase TSV columns must be {PHRASE_FIELDS}, "
+                f"got {tuple(reader.fieldnames or ())}"
+            )
         for order, row in enumerate(reader, start=1):
-            sources_raw = (row.get("sources") or "").strip()
+            line_number = order + 1
+            if None in row:
+                raise ValueError(
+                    f"Phrase row {line_number} has extra tab-separated fields"
+                )
+
+            values = {field: (row.get(field) or "").strip() for field in PHRASE_FIELDS}
+            for field in PHRASE_FIELDS[:-1]:
+                if not values[field]:
+                    raise ValueError(
+                        f"Phrase row {line_number} has an empty {field!r} field"
+                    )
+            for field, max_length in PHRASE_MAX_LENGTHS.items():
+                if len(values[field]) > max_length:
+                    raise ValueError(
+                        f"Phrase row {line_number} {field!r} exceeds "
+                        f"{max_length} characters"
+                    )
+
+            phrase_id_key = values["id"].casefold()
+            if phrase_id_key in seen_ids:
+                raise ValueError(
+                    f"Duplicate phrase id {values['id']!r} on rows "
+                    f"{seen_ids[phrase_id_key]} and {line_number}"
+                )
+            seen_ids[phrase_id_key] = line_number
+
+            anchor_key = values["anchor"].casefold()
+            if anchor_key in seen_anchors:
+                raise ValueError(
+                    f"Duplicate phrase anchor {values['anchor']!r} on rows "
+                    f"{seen_anchors[anchor_key]} and {line_number}"
+                )
+            seen_anchors[anchor_key] = line_number
+
+            if anchor_key not in values["example"].casefold():
+                raise ValueError(
+                    f"Phrase {values['id']} anchor is not present in its example"
+                )
+
+            sources_raw = values["sources"]
             sources: List[Tuple[str, int]] = []
-            for token in re.split(r"[;,]", sources_raw):
+            seen_sources = set()
+            for token in sources_raw.split(";"):
                 token = token.strip()
                 if not token:
-                    continue
+                    raise ValueError(
+                        f"Phrase {values['id']} has an empty source token"
+                    )
                 match = re.fullmatch(r"(.+?) P(\d+)", token)
                 if not match:
-                    continue
+                    raise ValueError(
+                        f"Phrase {values['id']} has malformed source {token!r}"
+                    )
                 display_theme, number = match.groups()
                 theme = _display_to_theme(display_theme)
-                if theme:
-                    sources.append((theme, int(number)))
+                if theme is None:
+                    raise ValueError(
+                        f"Phrase {values['id']} has unknown source theme "
+                        f"{display_theme!r}"
+                    )
+                source = (theme, int(number))
+                if source not in prompt_bodies:
+                    raise ValueError(
+                        f"Phrase {values['id']} references unknown prompt "
+                        f"{display_theme} P{number}"
+                    )
+                if source in seen_sources:
+                    raise ValueError(
+                        f"Phrase {values['id']} repeats source "
+                        f"{display_theme} P{number}"
+                    )
+                seen_sources.add(source)
+                sources.append(source)
+
+            matching_bodies = [prompt_bodies[source] for source in sources]
+            if not any(values["example"] in body for body in matching_bodies):
+                raise ValueError(
+                    f"Phrase {values['id']} example is not verbatim in a cited "
+                    "response"
+                )
+            missing_anchor_sources = [
+                source
+                for source, body in zip(sources, matching_bodies)
+                if anchor_key not in body.casefold()
+            ]
+            if missing_anchor_sources:
+                labels = ", ".join(
+                    f"{theme} P{number}"
+                    for theme, number in missing_anchor_sources
+                )
+                raise ValueError(
+                    f"Phrase {values['id']} anchor is absent from cited "
+                    f"responses: {labels}"
+                )
+
             phrases.append(
                 PhraseData(
-                    phrase_id=row["id"].strip(),
-                    category=row["category"].strip(),
-                    english_cue=row["english_cue"].strip(),
-                    expression=row["expression"].strip(),
-                    anchor=row["anchor"].strip(),
-                    example=row["example"].strip(),
-                    note=(row.get("note") or "").strip(),
+                    phrase_id=values["id"],
+                    category=values["category"],
+                    english_cue=values["english_cue"],
+                    expression=values["expression"],
+                    anchor=values["anchor"],
+                    example=values["example"],
+                    note=values["note"],
                     sources_raw=sources_raw,
                     sources=tuple(sources),
                     order=order,

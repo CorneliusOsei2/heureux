@@ -29,18 +29,21 @@ def scope_from_request(request) -> dict:
     data = request.POST if request.method == "POST" else request.GET
     scope = {}
     kind = data.get("kind")
-    if kind in {"spine", "phrase"}:
+    if kind in {"spine", "phrase", "revisit"}:
         scope["kind"] = kind
     for key in ("part", "task", "theme", "family", "category"):
         value = (data.get(key) or "").strip()
         if value:
             scope[key] = value
+    response_id = (data.get("response") or "").strip()
+    if response_id.isdigit():
+        scope["response"] = response_id
     return scope
 
 
 def scope_label(scope: dict) -> str:
     """Human label for the current study scope."""
-    from .models import ExamPart, Family, PhraseCategory, Task, Theme
+    from .models import ExamPart, Family, PhraseCategory, Response, Task, Theme
 
     if not scope:
         return "Toutes les cartes"
@@ -64,10 +67,18 @@ def scope_label(scope: dict) -> str:
         category = PhraseCategory.objects.filter(slug=scope["category"]).first()
         if category:
             return f"Expressions · {category.name}"
+    if scope.get("response"):
+        response = Response.objects.select_related("theme").filter(
+            pk=scope["response"]
+        ).first()
+        if response:
+            return f"Expressions · {response.theme.display_name}"
     if scope.get("kind") == "spine":
         return "Réponses argumentées"
     if scope.get("kind") == "phrase":
         return "Expressions"
+    if scope.get("kind") == "revisit":
+        return "Liste à revoir"
     return "Sélection"
 
 

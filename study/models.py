@@ -334,6 +334,8 @@ class Card(models.Model):
     learning_step = models.PositiveSmallIntegerField(default=0)
     last_reviewed = models.DateTimeField(null=True, blank=True)
     last_rating = models.PositiveSmallIntegerField(null=True, blank=True)
+    needs_revisit = models.BooleanField(default=False, db_index=True)
+    revisit_added_at = models.DateTimeField(null=True, blank=True)
     suspended = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
 
@@ -373,6 +375,27 @@ class Card(models.Model):
         if self.state == CardState.NEW:
             return False
         return self.due is not None and self.due <= timezone.now()
+
+
+class ReviewSession(models.Model):
+    """Singleton pointer to the unfinished card and its deck scope."""
+
+    current_card = models.ForeignKey(
+        Card,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
+    scope = models.JSONField(default=dict, blank=True)
+    revisit_seen_card_ids = models.JSONField(default=list, blank=True)
+    presentation_token = models.CharField(max_length=64, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def load(cls) -> "ReviewSession":
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
 
 
 class ReviewLog(models.Model):

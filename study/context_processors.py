@@ -10,6 +10,7 @@ def study_globals(request):
         "app_name": "Heureux",
         "nav_due_total": counts["due_reviews"] + counts["new_available"],
         "nav_counts": counts,
+        "nav_revisit_count": counts["revisit_total"],
         "study_settings": Settings.load(),
         "total_cards": Card.objects.count(),
     }

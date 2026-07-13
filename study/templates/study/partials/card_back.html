@@ -12,11 +12,6 @@
     {% for arg in arguments %}
       <div class="arg">
         <div class="arg__idea">{{ forloop.counter }}. {{ arg.idea }}</div>
-        <div class="arg__parts">
-          {% if arg.developpement %}<div class="arg__part"><b>Développement.</b> {{ arg.developpement }}</div>{% endif %}
-          {% if arg.exemple %}<div class="arg__part"><b>Exemple.</b> {{ arg.exemple }}</div>{% endif %}
-          {% if arg.consequence %}<div class="arg__part"><b>Conséquence.</b> {{ arg.consequence }}</div>{% endif %}
-        </div>
       </div>
     {% endfor %}
     <div class="spine-block">
@@ -27,11 +22,6 @@
       <div class="spine-label">Conclusion</div>
       <div class="spine-text">{{ response.conclusion }}</div>
     </div>
-
-    <details class="full-answer">
-      <summary>Réponse complète rédigée</summary>
-      <div class="answer-body">{{ response.body_html|safe }}</div>
-    </details>
 
     {% if aliases %}
       <div class="spine-block" style="margin-top:1rem;">

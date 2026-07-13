@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import json
+import secrets
 
+from django.db import transaction
 from django.db.models import Count, Q
 from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -26,13 +28,23 @@ from .models import (
     Rating,
     Response,
     ReviewLog,
+    ReviewSession,
     Settings,
     Task,
     Theme,
 )
-from .srs import preview_intervals, review as apply_review, undo_last
+from .srs import review as apply_review, undo_last
 
 MATURE_DAYS = 21
+REVIEW_SCOPE_KEYS = (
+    "kind",
+    "part",
+    "task",
+    "theme",
+    "family",
+    "category",
+    "response",
+)
 
 
 def deck_stats(qs, now=None) -> dict:
@@ -212,30 +224,120 @@ def task_detail(request, part_slug, task_slug):
 # ---------------------------------------------------------------------------
 
 
-def review(request):
+def _locked_review_session() -> ReviewSession:
+    session, _ = ReviewSession.objects.select_for_update().get_or_create(pk=1)
+    return session
+
+
+def _resolved_review_scope(
+    request,
+    session: ReviewSession,
+) -> tuple[dict, bool]:
+    """Use an explicit query scope, otherwise resume the saved one."""
+    if request.GET.get("reset") == "1":
+        return {}, True
     scope = scope_from_request(request)
+    explicit = any(key in request.GET for key in REVIEW_SCOPE_KEYS)
+    if explicit:
+        return scope, True
+    saved = session.scope
+    return (saved if isinstance(saved, dict) else {}), False
+
+
+def _save_review_session(
+    session: ReviewSession,
+    scope: dict,
+    card=None,
+    *,
+    clear_pass=False,
+    rotate_token=False,
+) -> str:
+    same_revisit_pass = (
+        session.scope == scope and scope.get("kind") == "revisit"
+    )
+    same_presentation = (
+        card is not None
+        and session.scope == scope
+        and session.current_card_id == card.id
+        and session.presentation_token
+    )
+    if clear_pass or not same_revisit_pass:
+        session.revisit_seen_card_ids = []
+    session.scope = scope
+    session.current_card = card
+    if card is None:
+        session.presentation_token = ""
+    elif rotate_token or not same_presentation:
+        session.presentation_token = secrets.token_urlsafe(24)
+    session.save(
+        update_fields=[
+            "scope",
+            "current_card",
+            "revisit_seen_card_ids",
+            "presentation_token",
+            "updated_at",
+        ]
+    )
+    return session.presentation_token
+
+
+def review(request):
+    with transaction.atomic():
+        session = _locked_review_session()
+        scope, explicit = _resolved_review_scope(request, session)
+        if explicit and (
+            session.scope != scope or request.GET.get("reset") == "1"
+        ):
+            _save_review_session(session, scope, clear_pass=True)
     counts = queue_module.queue_counts(scope)
     context = {
         "scope": scope,
         "scope_json": json.dumps(scope),
         "scope_label": scope_label(scope),
         "counts": counts,
-        "can_undo": ReviewLog.objects.exists(),
+        "is_revisit": scope.get("kind") == "revisit",
     }
     return render(request, "study/review.html", context)
 
 
-def _queue_state(scope: dict, request) -> dict:
+def _queue_state_locked(
+    scope: dict,
+    request,
+    session: ReviewSession,
+) -> dict:
     now = timezone.now()
-    card = queue_module.next_card(scope, now)
+    card = None
+    if session.scope == scope:
+        card = queue_module.resumable_card(session.current_card_id, scope, now)
+    seen_card_ids = (
+        session.revisit_seen_card_ids
+        if session.scope == scope and scope.get("kind") == "revisit"
+        else []
+    )
+    if card is None:
+        card = queue_module.next_card(
+            scope,
+            now,
+            exclude_card_ids=seen_card_ids,
+        )
     counts = queue_module.queue_counts(scope, now)
     if card is None:
-        return {"done": True, "counts": counts}
+        # A finished scoped deck is no longer something to resume on next launch.
+        _save_review_session(session, {}, clear_pass=True)
+        if scope.get("kind") == "revisit" and seen_card_ids:
+            counts["due_reviews"] = 0
+            counts["review_due"] = 0
+            counts["total_due"] = 0
+        return {
+            "done": True,
+            "counts": counts,
+            "revisit_count": counts["revisit_total"],
+        }
 
+    presentation_token = _save_review_session(session, scope, card)
     payload = card_payload(card)
     front = render_to_string("study/partials/card_front.html", payload, request)
     back = render_to_string("study/partials/card_back.html", payload, request)
-    previews = preview_intervals(card, now)
     return {
         "done": False,
         "card_id": card.id,
@@ -245,19 +347,30 @@ def _queue_state(scope: dict, request) -> dict:
         "is_new": card.is_new,
         "front_html": front,
         "back_html": back,
-        "previews": {str(key): value for key, value in previews.items()},
+        "presentation_token": presentation_token,
         "counts": counts,
+        "revisit_count": counts["revisit_total"],
     }
 
 
-def _card_state(card, scope: dict, request) -> dict:
+def _card_state_locked(
+    card,
+    scope: dict,
+    request,
+    session: ReviewSession,
+) -> dict:
     """Build the review payload for a specific card (used after an undo)."""
     now = timezone.now()
     counts = queue_module.queue_counts(scope, now)
     payload = card_payload(card)
     front = render_to_string("study/partials/card_front.html", payload, request)
     back = render_to_string("study/partials/card_back.html", payload, request)
-    previews = preview_intervals(card, now)
+    presentation_token = _save_review_session(
+        session,
+        scope,
+        card,
+        rotate_token=True,
+    )
     return {
         "done": False,
         "card_id": card.id,
@@ -267,15 +380,18 @@ def _card_state(card, scope: dict, request) -> dict:
         "is_new": card.is_new,
         "front_html": front,
         "back_html": back,
-        "previews": {str(key): value for key, value in previews.items()},
+        "presentation_token": presentation_token,
         "counts": counts,
+        "revisit_count": counts["revisit_total"],
     }
 
 
 @require_GET
 def review_next(request):
-    scope = scope_from_request(request)
-    state = _queue_state(scope, request)
+    with transaction.atomic():
+        session = _locked_review_session()
+        scope, _ = _resolved_review_scope(request, session)
+        state = _queue_state_locked(scope, request, session)
     state["can_undo"] = ReviewLog.objects.exists()
     return JsonResponse(state)
 
@@ -284,20 +400,73 @@ def review_next(request):
 def review_answer(request):
     try:
         card_id = int(request.POST.get("card_id", ""))
-        rating = int(request.POST.get("rating", ""))
         elapsed_ms = int(request.POST.get("elapsed_ms", "0") or 0)
     except (TypeError, ValueError):
         return HttpResponseBadRequest("Invalid parameters.")
 
+    action = (request.POST.get("action") or "").strip()
+    if action:
+        ratings = {"revisit": Rating.AGAIN, "correct": Rating.GOOD}
+        rating = ratings.get(action)
+        if rating is None:
+            return HttpResponseBadRequest("Invalid action.")
+    else:
+        try:
+            rating = int(request.POST.get("rating", ""))
+        except (TypeError, ValueError):
+            return HttpResponseBadRequest("Invalid parameters.")
+
     if rating not in Rating.values:
         return HttpResponseBadRequest("Invalid rating.")
 
-    card = get_object_or_404(Card, pk=card_id)
-    apply_review(card, rating, elapsed_ms=elapsed_ms)
-
     scope = scope_from_request(request)
-    state = _queue_state(scope, request)
+    presentation_token = request.POST.get("presentation_token", "")
+    with transaction.atomic():
+        session = _locked_review_session()
+        if (
+            not presentation_token
+            or session is None
+            or session.current_card_id != card_id
+            or session.scope != scope
+            or not secrets.compare_digest(
+                session.presentation_token,
+                presentation_token,
+            )
+        ):
+            return JsonResponse(
+                {"error": "Cette carte a déjà été traitée ou remplacée."},
+                status=409,
+            )
+
+        card = get_object_or_404(Card.objects.select_for_update(), pk=card_id)
+        if scope.get("kind") == "revisit":
+            seen = list(session.revisit_seen_card_ids or [])
+            if card.id not in seen:
+                seen.append(card.id)
+            session.revisit_seen_card_ids = seen
+        session.current_card = None
+        session.presentation_token = ""
+        session.save(
+            update_fields=[
+                "current_card",
+                "revisit_seen_card_ids",
+                "presentation_token",
+                "updated_at",
+            ]
+        )
+        apply_review(card, rating, elapsed_ms=elapsed_ms)
+        if action == "revisit" or (not action and rating == Rating.AGAIN):
+            card.needs_revisit = True
+            card.revisit_added_at = timezone.now()
+            card.save(update_fields=["needs_revisit", "revisit_added_at"])
+        elif action == "correct" or (not action and rating == Rating.GOOD):
+            card.needs_revisit = False
+            card.revisit_added_at = None
+            card.save(update_fields=["needs_revisit", "revisit_added_at"])
+
+        state = _queue_state_locked(scope, request, session)
     state["can_undo"] = True
+    state["action"] = action or str(rating)
     return JsonResponse(state)
 
 
@@ -305,33 +474,93 @@ def review_answer(request):
 def review_undo(request):
     """Revert the most recent review and re-present that card."""
     scope = scope_from_request(request)
-    card = undo_last()
-    if card is None:
-        state = _queue_state(scope, request)
-        state["can_undo"] = False
-        state["undone"] = False
-        return JsonResponse(state)
-    state = _card_state(card, scope, request)
+    with transaction.atomic():
+        session = _locked_review_session()
+        card = undo_last()
+        if card is None:
+            state = _queue_state_locked(scope, request, session)
+            state["can_undo"] = False
+            state["undone"] = False
+            return JsonResponse(state)
+        state = _card_state_locked(card, scope, request, session)
     state["can_undo"] = ReviewLog.objects.exists()
     state["undone"] = True
     return JsonResponse(state)
 
 
-@require_POST
-def review_suspend(request):
-    """Suspend the current card and advance to the next one."""
-    try:
-        card_id = int(request.POST.get("card_id", ""))
-    except (TypeError, ValueError):
-        return HttpResponseBadRequest("Invalid parameters.")
-    card = get_object_or_404(Card, pk=card_id)
-    card.suspended = True
-    card.save(update_fields=["suspended"])
+# ---------------------------------------------------------------------------
+# Revisit list
+# ---------------------------------------------------------------------------
 
-    scope = scope_from_request(request)
-    state = _queue_state(scope, request)
-    state["can_undo"] = ReviewLog.objects.exists()
-    return JsonResponse(state)
+
+def revisit_list(request):
+    """Persistent list of cards marked with the Revisit review action."""
+    if request.method == "POST":
+        action = request.POST.get("action")
+        if action == "remove":
+            try:
+                card_id = int(request.POST.get("card_id", ""))
+            except (TypeError, ValueError):
+                return HttpResponseBadRequest("Invalid card.")
+            Card.objects.filter(pk=card_id).update(
+                needs_revisit=False,
+                revisit_added_at=None,
+            )
+        elif action == "clear":
+            Card.objects.filter(needs_revisit=True).update(
+                needs_revisit=False,
+                revisit_added_at=None,
+            )
+        else:
+            return HttpResponseBadRequest("Invalid action.")
+        return redirect("study:revisit_list")
+
+    cards = list(
+        Card.objects.active()
+        .filter(needs_revisit=True)
+        .select_related(
+            "response__theme",
+            "response__family",
+            "phrase__category",
+        )
+        .prefetch_related("response__prompts")
+        .order_by("revisit_added_at", "id")
+    )
+    items = []
+    for card in cards:
+        if card.response_id:
+            canonical = card.response.canonical_prompt
+            items.append(
+                {
+                    "card": card,
+                    "kind": "Réponse",
+                    "title": canonical.text if canonical else card.response.prompt,
+                    "meta": (
+                        f"{card.response.theme.emoji} "
+                        f"{card.response.theme.display_name} · "
+                        f"{card.response.family.name}"
+                    ),
+                    "url": reverse("study:response_detail", args=[card.response_id]),
+                }
+            )
+        else:
+            items.append(
+                {
+                    "card": card,
+                    "kind": "Expression",
+                    "title": card.phrase.expression,
+                    "meta": card.phrase.english_cue,
+                    "url": (
+                        reverse("study:phrases")
+                        + f"#{card.phrase.category.slug}"
+                    ),
+                }
+            )
+    return render(
+        request,
+        "study/revisit_list.html",
+        {"items": items, "revisit_count": len(items)},
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -702,18 +931,23 @@ def settings_view(request):
     if request.method == "POST":
         action = request.POST.get("action", "save")
         if action == "reset":
-            Card.objects.update(
-                state=CardState.NEW,
-                due=None,
-                interval_days=0.0,
-                ease=2.5,
-                reps=0,
-                lapses=0,
-                learning_step=0,
-                last_reviewed=None,
-                last_rating=None,
-            )
-            ReviewLog.objects.all().delete()
+            with transaction.atomic():
+                session = _locked_review_session()
+                Card.objects.update(
+                    state=CardState.NEW,
+                    due=None,
+                    interval_days=0.0,
+                    ease=2.5,
+                    reps=0,
+                    lapses=0,
+                    learning_step=0,
+                    last_reviewed=None,
+                    last_rating=None,
+                    needs_revisit=False,
+                    revisit_added_at=None,
+                )
+                ReviewLog.objects.all().delete()
+                _save_review_session(session, {}, clear_pass=True)
             return redirect(reverse("study:settings") + "?reset=1")
         if action == "unsuspend_all":
             Card.objects.filter(suspended=True).update(suspended=False)

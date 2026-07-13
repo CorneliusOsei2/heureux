@@ -209,6 +209,10 @@ def _snapshot(card: Card) -> dict:
             card.last_reviewed.isoformat() if card.last_reviewed else None
         ),
         "last_rating": card.last_rating,
+        "needs_revisit": card.needs_revisit,
+        "revisit_added_at": (
+            card.revisit_added_at.isoformat() if card.revisit_added_at else None
+        ),
         "suspended": card.suspended,
     }
 
@@ -300,6 +304,12 @@ def undo_last() -> Card | None:
             else None
         )
         card.last_rating = snap.get("last_rating")
+        card.needs_revisit = snap.get("needs_revisit", False)
+        card.revisit_added_at = (
+            parse_datetime(snap["revisit_added_at"])
+            if snap.get("revisit_added_at")
+            else None
+        )
         card.suspended = snap.get("suspended", False)
     else:
         # Older logs predate the snapshot: restore what the analytic columns hold.
@@ -321,6 +331,8 @@ def undo_last() -> Card | None:
             "learning_step",
             "last_reviewed",
             "last_rating",
+            "needs_revisit",
+            "revisit_added_at",
             "suspended",
         ]
     )

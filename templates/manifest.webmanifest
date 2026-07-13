@@ -2,7 +2,7 @@
   "name": "Heureux",
   "short_name": "Heureux",
   "description": "Fiches en répétition espacée pour l'épreuve de français.",
-  "start_url": "/",
+  "start_url": "/review/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",

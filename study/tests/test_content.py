@@ -1,0 +1,90 @@
+"""Validation tests for the bundled phrase bank."""
+
+from __future__ import annotations
+
+import csv
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
+
+from django.test import SimpleTestCase
+
+from study import content
+
+
+class PhraseParserTests(SimpleTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.responses = content.parse_responses()
+        cls.response = cls.responses[0]
+        cls.prompt = cls.response.prompts[0]
+
+    def valid_row(self, phrase_id="TEST1", **overrides):
+        example = self.response.position_claire
+        row = {
+            "id": phrase_id,
+            "category": "Test",
+            "english_cue": "Test cue",
+            "expression": example[:30],
+            "anchor": example[:30],
+            "example": example,
+            "sources": f"{self.prompt.theme} P{self.prompt.number}",
+            "note": "",
+        }
+        row.update(overrides)
+        return row
+
+    def parse_rows(self, rows):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "phrases.tsv"
+            with path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(
+                    handle,
+                    fieldnames=content.PHRASE_FIELDS,
+                    delimiter="\t",
+                    lineterminator="\n",
+                )
+                writer.writeheader()
+                writer.writerows(rows)
+            with (
+                patch.object(content, "PHRASES_PATH", path),
+                patch.object(content, "EXPECTED_PHRASES", len(rows)),
+            ):
+                return content.parse_phrases(self.responses)
+
+    def test_accepts_verbatim_phrase(self):
+        phrases = self.parse_rows([self.valid_row()])
+        self.assertEqual(phrases[0].phrase_id, "TEST1")
+
+    def test_rejects_anchor_missing_from_example(self):
+        with self.assertRaisesRegex(ValueError, "anchor is not present"):
+            self.parse_rows([self.valid_row(anchor="not in the response")])
+
+    def test_rejects_non_verbatim_example(self):
+        row = self.valid_row()
+        row["example"] = f"{row['example']} This was not in the source."
+        with self.assertRaisesRegex(ValueError, "example is not verbatim"):
+            self.parse_rows([row])
+
+    def test_rejects_values_too_long_for_database_fields(self):
+        with self.assertRaisesRegex(ValueError, "english_cue.*exceeds 200"):
+            self.parse_rows([self.valid_row(english_cue="x" * 201)])
+
+    def test_rejects_malformed_or_unknown_sources(self):
+        for source, error in (
+            ("Culture #1", "malformed source"),
+            ("Unknown P1", "unknown source theme"),
+            ("Culture P999", "unknown prompt"),
+        ):
+            with self.subTest(source=source):
+                with self.assertRaisesRegex(ValueError, error):
+                    self.parse_rows([self.valid_row(sources=source)])
+
+    def test_rejects_duplicate_ids_and_anchors(self):
+        first = self.valid_row()
+        with self.assertRaisesRegex(ValueError, "Duplicate phrase id"):
+            self.parse_rows([first, self.valid_row()])
+
+        with self.assertRaisesRegex(ValueError, "Duplicate phrase anchor"):
+            self.parse_rows([first, self.valid_row(phrase_id="TEST2")])
