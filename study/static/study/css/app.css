@@ -207,6 +207,25 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 [data-theme="light"] .theme-icon--moon { opacity: 0; transform: rotate(-90deg); }
 [data-theme="dark"] .theme-icon--sun { opacity: 0; transform: rotate(90deg); }
 
+.nav__install {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 36px;
+  padding: 0 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.nav__install:hover { background: var(--primary); color: var(--primary-ink); }
+.nav__install[hidden] { display: none; }
+
 .nav__toggle { display: none; }
 
 .pill {

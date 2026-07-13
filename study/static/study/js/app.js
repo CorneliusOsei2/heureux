@@ -32,6 +32,45 @@
     });
   }
 
+  /* ---------- Install prompt (PWA) ---------- */
+  (function () {
+    var installBtn = document.querySelector("[data-install-app]");
+    if (!installBtn) return;
+    function isStandalone() {
+      return window.matchMedia("(display-mode: standalone)").matches ||
+        navigator.standalone === true;
+    }
+    function isIOS() {
+      return /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    }
+    if (isStandalone()) { return; } // already installed — nothing to offer
+
+    var deferred = null;
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      deferred = e;
+      installBtn.hidden = false;
+    });
+    window.addEventListener("appinstalled", function () {
+      deferred = null;
+      installBtn.hidden = true;
+    });
+    installBtn.addEventListener("click", function () {
+      if (deferred) {
+        deferred.prompt();
+        deferred.userChoice.then(function () {
+          deferred = null;
+          installBtn.hidden = true;
+        });
+      } else if (isIOS()) {
+        alert("Pour installer Heureux : appuyez sur le bouton Partager, puis « Sur l'écran d'accueil ».");
+      }
+    });
+    // iOS Safari never fires beforeinstallprompt — surface manual instructions.
+    if (isIOS()) { installBtn.hidden = false; }
+  })();
+
   /* ---------- Review session ---------- */
   var app = document.getElementById("review-app");
   if (!app) return;
