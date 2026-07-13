@@ -15,10 +15,12 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expression orale → Tâche 3** — the current corpus has one clear home. Its
   subjects, argued responses, expression bank, review queue, revisit list,
   search, and progress are all scoped to this task.
-- **Réviser** — a grouped workspace for responses, expressions, and the revisit
-  list, followed by a distraction-free session. Reveal with `Space`, then choose
-  `1` (Revoir) or `2` (Correct). Unfinished sessions reopen on the exact card
-  where you stopped.
+- **Réviser, Expressions, Stats** — each top-level tab first follows the same
+  Expression orale/écrite → Tâches hierarchy as Accueil, then opens the chosen
+  task's focused workspace.
+- **Sessions** — review responses, expressions, or the revisit list without
+  distractions. Reveal with `Space`, then choose `1` (Revoir) or `2` (Correct).
+  Unfinished sessions reopen on the exact card where you stopped.
 - **À revoir** — a persistent list for difficult cards, with its own focused
   review pass.
 - **Sujets & réponses** — browse Tâche 3 by theme or topic family.

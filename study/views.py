@@ -243,6 +243,19 @@ def _task_card(task, now, user):
         response_stats = deck_stats(_task_cards(task, user, "spine"), now)
         phrase_stats = deck_stats(_task_cards(task, user, "phrase"), now)
         stats = deck_stats(_task_cards(task, user), now)
+        counts = queue_module.queue_counts(
+            _task_scope(task),
+            now,
+            user=user,
+        )
+        phrase_counts = queue_module.queue_counts(
+            {**_task_scope(task), "kind": "phrase"},
+            now,
+            user=user,
+        )
+        revisit_count = _task_cards(task, user).filter(
+            needs_revisit=True
+        ).count()
         theme_count = Theme.objects.filter(task=task).count()
         prompt_count = Prompt.objects.filter(theme__task=task).count()
         phrase_count = _task_phrases(task).count()
@@ -250,6 +263,9 @@ def _task_card(task, now, user):
         response_stats = None
         phrase_stats = None
         stats = None
+        counts = None
+        phrase_counts = None
+        revisit_count = 0
         theme_count = 0
         prompt_count = 0
         phrase_count = 0
@@ -258,10 +274,26 @@ def _task_card(task, now, user):
         "stats": stats,
         "response_stats": response_stats,
         "phrase_stats": phrase_stats,
+        "counts": counts,
+        "phrase_counts": phrase_counts,
+        "revisit_count": revisit_count,
         "theme_count": theme_count,
         "prompt_count": prompt_count,
         "phrase_count": phrase_count,
     }
+
+
+def _parts_with_task_cards(now, user):
+    return [
+        {
+            "part": part,
+            "tasks": [
+                _task_card(task, now, user)
+                for task in part.tasks.all()
+            ],
+        }
+        for part in ExamPart.objects.prefetch_related("tasks")
+    ]
 
 
 def _phrase_deck_stats(now, user=None, task=None):
@@ -282,22 +314,92 @@ def _phrase_deck_stats(now, user=None, task=None):
 def dashboard(request):
     now = timezone.now()
     counts = queue_module.queue_counts(now=now, user=request.user)
-
-    parts = []
-    for part in ExamPart.objects.prefetch_related("tasks"):
-        tasks = [_task_card(task, now, request.user) for task in part.tasks.all()]
-        parts.append({"part": part, "tasks": tasks})
-
     user_cards = Card.objects.active().filter(user=request.user)
     overall = deck_stats(user_cards, now)
 
     context = {
         "counts": counts,
-        "parts": parts,
+        "parts": _parts_with_task_cards(now, request.user),
         "overall": overall,
         "streak": current_streak(now, user=request.user),
     }
     return render(request, "study/dashboard.html", context)
+
+
+def _grouped_overview(request, area):
+    now = timezone.now()
+    user_cards = Card.objects.active().filter(user=request.user)
+    context = {
+        "area": area,
+        "parts": _parts_with_task_cards(now, request.user),
+        "overall": deck_stats(user_cards, now),
+        "streak": current_streak(now, user=request.user),
+    }
+    if area == "review":
+        session = ReviewSession.load(request.user)
+        context.update(
+            {
+                "title": "Réviser",
+                "eyebrow": "Mémoire active",
+                "description": (
+                    "Choisissez d'abord votre épreuve et votre tâche, "
+                    "puis le type de cartes à travailler."
+                ),
+                "counts": queue_module.queue_counts(
+                    now=now,
+                    user=request.user,
+                ),
+                "revisit_count": user_cards.filter(
+                    needs_revisit=True
+                ).count(),
+                "can_resume": bool(session.current_card_id),
+            }
+        )
+    elif area == "expressions":
+        context.update(
+            {
+                "title": "Expressions",
+                "eyebrow": "Précision lexicale",
+                "description": (
+                    "Choisissez une tâche pour retrouver ses expressions, "
+                    "son vocabulaire et ses nuances."
+                ),
+                "phrase_count": Phrase.objects.count(),
+                "phrase_stats": _phrase_deck_stats(now, request.user),
+                "phrase_counts": queue_module.queue_counts(
+                    {"kind": "phrase"},
+                    now,
+                    user=request.user,
+                ),
+            }
+        )
+    else:
+        context.update(
+            {
+                "title": "Stats",
+                "eyebrow": "Progression",
+                "description": (
+                    "Choisissez une tâche pour consulter sa maîtrise, "
+                    "son activité et ses prochaines révisions."
+                ),
+            }
+        )
+    return render(request, "study/grouped_overview.html", context)
+
+
+@require_GET
+def review_overview(request):
+    return _grouped_overview(request, "review")
+
+
+@require_GET
+def expressions_overview(request):
+    return _grouped_overview(request, "expressions")
+
+
+@require_GET
+def stats_overview(request):
+    return _grouped_overview(request, "stats")
 
 
 def part_detail(request, part_slug):

@@ -10,6 +10,13 @@ urlpatterns = [
     path("register/", views.register_view, name="register"),
     path("logout/", views.logout_view, name="logout"),
     path("", views.dashboard, name="dashboard"),
+    path("reviser/", views.review_overview, name="review_overview"),
+    path(
+        "expressions/",
+        views.expressions_overview,
+        name="expressions_overview",
+    ),
+    path("progression/", views.stats_overview, name="stats_overview"),
     path("review/", views.review, name="review"),
     path("review/next/", views.review_next, name="review_next"),
     path("review/answer/", views.review_answer, name="review_answer"),

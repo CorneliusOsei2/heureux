@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=8">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=14">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -53,12 +53,12 @@
       </button>
       <nav class="nav__links" data-nav-links>
         <a href="{% url 'study:dashboard' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}">Accueil</a>
-        <a href="{% if content_task %}{% url 'study:task_review_hub' content_task.part.slug content_task.slug %}{% else %}{% url 'study:review' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' %}is-active{% endif %}">
+        <a href="{% url 'study:review_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review_overview' or request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' or request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %}is-active{% endif %}">
           Réviser
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
-        <a href="{% if content_task %}{% url 'study:task_phrases' content_task.part.slug content_task.slug %}{% else %}{% url 'study:phrases' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}">Expressions</a>
-        <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Stats</a>
+        <a href="{% url 'study:expressions_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'expressions_overview' or request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}">Expressions</a>
+        <a href="{% url 'study:stats_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'stats_overview' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Stats</a>
         <details class="nav__more {% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
           <summary aria-label="Plus d'options" title="Plus d'options">
             <span aria-hidden="true">•••</span>
@@ -106,13 +106,13 @@
       </div>
       <div class="footer__meta">
         <span>{{ total_cards }} cartes</span>
-        <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}">Voir les statistiques</a>
+        <a href="{% url 'study:stats_overview' %}">Voir les statistiques</a>
       </div>
     </div>
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=8"></script>
+  <script src="{% static 'study/js/app.js' %}?v=14"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

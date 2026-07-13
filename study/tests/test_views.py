@@ -71,6 +71,9 @@ class SmokeTests(TestCase):
     def test_core_pages_render(self):
         names = [
             "study:dashboard",
+            "study:review_overview",
+            "study:expressions_overview",
+            "study:stats_overview",
             "study:review",
             "study:browse",
             "study:phrases",
@@ -117,6 +120,53 @@ class SmokeTests(TestCase):
             )
         )
         self.assertEqual(response.status_code, 200)
+
+    def test_top_level_tabs_group_content_by_part_and_task(self):
+        written = factories.make_part("ecrite", available=False)
+        written.name = "Expression écrite"
+        written.save(update_fields=["name"])
+        factories.make_task(written, "ecrit", available=False)
+        destinations = (
+            ("study:review_overview", "study:task_review_hub"),
+            ("study:expressions_overview", "study:task_phrases"),
+            ("study:stats_overview", "study:task_stats"),
+        )
+
+        for overview, destination in destinations:
+            with self.subTest(overview=overview):
+                response = self.client.get(reverse(overview))
+                self.assertContains(response, "Expression orale")
+                self.assertContains(response, "Expression écrite")
+                self.assertContains(response, "Tache 3")
+                self.assertContains(response, "À venir")
+                self.assertContains(
+                    response,
+                    reverse(destination, args=["orale", "tache-3"]),
+                )
+                self.assertIsNone(response.context["content_task"])
+
+    def test_primary_navigation_opens_grouped_hubs(self):
+        response = self.client.get(
+            reverse("study:task_detail", args=["orale", "tache-3"])
+        )
+
+        for name in (
+            "study:review_overview",
+            "study:expressions_overview",
+            "study:stats_overview",
+        ):
+            self.assertContains(response, f'href="{reverse(name)}"')
+
+    def test_review_overview_preserves_resume_shortcut(self):
+        card = self.user.study_cards.first()
+        session = ReviewSession.load(self.user)
+        session.current_card = card
+        session.scope = {"part": "orale", "task": "tache-3"}
+        session.save(update_fields=["current_card", "scope"])
+
+        response = self.client.get(reverse("study:review_overview"))
+
+        self.assertContains(response, "Continuer là où je me suis arrêté")
 
     def test_task_hub_organizes_all_content(self):
         response = self.client.get(

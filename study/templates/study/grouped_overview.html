@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="grouped-overview">
+<header class="grouped-overview__head">
+  <div>
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+  </div>
+  <div class="grouped-overview__metrics" aria-label="Résumé">
+    {% if area == "review" %}
+      <span><b>{{ counts.total_due }}</b> disponibles aujourd'hui</span>
+      <span><b>{{ revisit_count }}</b> dans ma liste</span>
+    {% elif area == "expressions" %}
+      <span><b>{{ phrase_count }}</b> expressions</span>
+      <span><b>{{ phrase_stats.mature }}/{{ phrase_stats.total }}</b> cartes maîtrisées</span>
+    {% else %}
+      <span><b>{{ overall.seen }}/{{ overall.total }}</b> cartes vues</span>
+      <span><b>{{ overall.mature }}</b> cartes maîtrisées</span>
+      <span><b>{{ streak }}</b> jour{{ streak|pluralize }}</span>
+    {% endif %}
+  </div>
+</header>
+
+{% if area == "review" and can_resume %}
+  <a class="resume-review resume-review--overview" href="{% url 'study:review' %}">
+    <span class="resume-review__icon" aria-hidden="true">▶</span>
+    <span>
+      <small>Session interrompue</small>
+      <strong>Continuer là où je me suis arrêté</strong>
+    </span>
+    <span aria-hidden="true">→</span>
+  </a>
+{% endif %}
+
+<div class="grouped-overview__section-head">
+  <div>
+    <h2>Choisir une tâche</h2>
+    {% if area == "review" %}
+      <p>Sélectionnez ce que vous souhaitez travailler aujourd'hui.</p>
+    {% elif area == "expressions" %}
+      <p>Entrez dans une tâche pour étudier ses tournures, collocations et nuances.</p>
+    {% else %}
+      <p>Consultez votre avancement et votre régularité tâche par tâche.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% include "study/_task_groups.html" %}
+</div>
+{% endblock %}

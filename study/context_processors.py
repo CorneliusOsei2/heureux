@@ -91,7 +91,11 @@ def study_globals(request):
         content_task = Task.objects.select_related("part").filter(
             pk=content_task
         ).first()
-    elif content_task is None:
+    elif (
+        content_task is None
+        and request.resolver_match
+        and request.resolver_match.url_name == "dashboard"
+    ):
         content_task = (
             Task.objects.select_related("part")
             .filter(available=True, themes__isnull=False)
