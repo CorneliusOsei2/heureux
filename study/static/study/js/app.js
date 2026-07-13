@@ -315,7 +315,15 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if (
+      e.target &&
+      e.target.closest &&
+      e.target.closest(
+        "input, textarea, select, button, a, [contenteditable='true'], [data-translation-panel]"
+      )
+    ) {
+      return;
+    }
     if (!revealed && (e.code === "Space" || e.code === "Enter")) {
       e.preventDefault();
       reveal();

@@ -63,7 +63,9 @@ class PWATests(TestCase):
     def test_service_worker(self):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
-        self.assertIn("CACHE", r.content.decode())
+        body = r.content.decode()
+        self.assertIn('var CACHE = "heureux-v24"', body)
+        self.assertIn("study/js/translate.js", body)
 
     def test_offline_page(self):
         self.assertEqual(self.client.get("/offline/").status_code, 200)
@@ -92,6 +94,15 @@ class SmokeTests(TestCase):
         for name in names:
             with self.subTest(name=name):
                 self.assertEqual(self.client.get(reverse(name)).status_code, 200)
+
+    def test_authenticated_pages_include_selection_translation_controls(self):
+        response = self.client.get(reverse("study:dashboard"))
+
+        self.assertContains(response, "Translate to English")
+        self.assertContains(response, "data-copy-selection")
+        self.assertContains(response, 'id="translation-panel"')
+        self.assertContains(response, "study/js/translate.js")
+        self.assertContains(response, 'rel="noopener noreferrer"')
 
     def test_hierarchy_pages_render(self):
         self.assertEqual(

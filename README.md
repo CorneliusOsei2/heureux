@@ -29,6 +29,9 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expressions & vocabulaire** — reusable chunks with an English cue and a
   verbatim example from the answer bank, grouped into accurate topical and
   functional categories, then divided into review lots of 15 cards.
+- **Highlight tools** — select French text to copy it or translate it inline
+  with the browser's local English model, with an explicit Google Translate
+  fallback when local translation is unavailable.
 - **Practice without a daily cap** — every new card and due review stays
   available; themes and expression categories provide optional 15-card lots
   with not-started, in-progress, and completed states plus next-lot navigation.

@@ -14,7 +14,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=20">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=23">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,53 @@
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=20"></script>
+  <div class="selection-translate hidden" role="toolbar" aria-label="Selected text actions" data-selection-translate>
+    <button class="selection-translate__button selection-translate__button--copy" type="button" data-copy-selection>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+        <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
+      </svg>
+      <span aria-live="polite" data-copy-selection-label>Copy</span>
+    </button>
+    <button class="selection-translate__button selection-translate__button--translate" type="button" aria-controls="translation-panel" aria-haspopup="dialog" data-translate-selection>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M3.5 12h17M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3C9.8 5.5 8.7 8.5 8.7 12S9.8 18.5 12 21"></path>
+      </svg>
+      <span>Translate to English</span>
+    </button>
+  </div>
+
+  <section class="translation-panel hidden" id="translation-panel" role="dialog" aria-labelledby="translation-panel-title" tabindex="-1" data-translation-panel>
+    <header class="translation-panel__header">
+      <div>
+        <span class="translation-panel__eyebrow">Français → English</span>
+        <h2 id="translation-panel-title">English translation</h2>
+      </div>
+      <button class="translation-panel__close" type="button" aria-label="Close translation" data-translation-close>×</button>
+    </header>
+    <div class="translation-panel__body">
+      <div class="translation-panel__source">
+        <span>Selected text</span>
+        <p data-translation-source></p>
+      </div>
+      <div class="translation-panel__status" role="status" aria-live="polite" data-translation-status>
+        <span class="translation-panel__spinner hidden" aria-hidden="true" data-translation-spinner></span>
+        <span data-translation-status-text></span>
+      </div>
+      <div class="translation-panel__result hidden" data-translation-output>
+        <span>English</span>
+        <p data-translation-result></p>
+      </div>
+    </div>
+    <footer class="translation-panel__actions">
+      <button class="btn hidden" type="button" data-translation-copy>Copy</button>
+      <a class="btn" href="https://translate.google.com/" target="_blank" rel="noopener noreferrer" data-translation-fallback>Google Translate ↗</a>
+    </footer>
+  </section>
+
+  <script src="{% static 'study/js/app.js' %}?v=22"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=3"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>
