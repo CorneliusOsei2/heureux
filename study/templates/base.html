@@ -14,24 +14,21 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=14">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=15">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Heureux">
-  <link rel="apple-touch-icon" href="{% static 'study/icons/icon-192.png' %}">
-  <link rel="icon" type="image/svg+xml" href="{% static 'study/icons/logo.svg' %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'study/icons/favicon-32.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'study/icons/icon-192.png' %}?v=2">
+  <link rel="icon" type="image/svg+xml" href="{% static 'study/icons/logo.svg' %}?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'study/icons/favicon-32.png' %}?v=2">
   {# Social sharing (Open Graph + Twitter) #}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Heureux">
   <meta property="og:title" content="{% block og_title %}Heureux{% endblock %}">
   <meta property="og:description" content="{% block og_description %}Révisions en répétition espacée pour l'expression orale et écrite en français.{% endblock %}">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Heureux — logo blanc, bleu et rouge">
@@ -45,7 +42,7 @@
   <header class="nav">
     <div class="nav__inner">
       <a class="brand" href="{% url 'study:dashboard' %}">
-        <span class="brand__mark" aria-hidden="true"><img src="{% static 'study/icons/logo.svg' %}" alt=""></span>
+        <span class="brand__mark" aria-hidden="true"><img src="{% static 'study/icons/logo.svg' %}?v=2" alt=""></span>
         <span class="brand__name">Heureux</span>
       </a>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false" data-nav-toggle>
@@ -112,7 +109,7 @@
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=14"></script>
+  <script src="{% static 'study/js/app.js' %}?v=15"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

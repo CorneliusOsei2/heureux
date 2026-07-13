@@ -154,7 +154,7 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 .brand__mark {
   width: 30px;
   height: 30px;
-  border-radius: 9px;
+  border-radius: 50%;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
@@ -1408,7 +1408,7 @@ kbd {
 .auth-brand img {
   width: 42px;
   height: 42px;
-  border-radius: 12px;
+  border-radius: 50%;
 }
 .auth-brand div { display: grid; line-height: 1.2; }
 .auth-brand strong { font-size: 1.2rem; letter-spacing: -0.02em; }
