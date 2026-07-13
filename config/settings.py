@@ -1,8 +1,8 @@
 """
 Django settings for the EO T3 flashcards app.
 
-Personal single-user French-expression study tool. Configuration is driven by
-environment variables so the same code runs locally and in production.
+Multi-user French-expression study tool. Configuration is driven by environment
+variables so the same code runs locally and in production.
 """
 
 from pathlib import Path
@@ -41,6 +41,10 @@ DEBUG = env_bool("DEBUG", True)
 ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0,[::1]")
 
 CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
+
+# Only enable this when every request reaches Django through a trusted proxy
+# that appends the connecting client address to X-Forwarded-For.
+TRUST_X_FORWARDED_FOR = env_bool("TRUST_X_FORWARDED_FOR", False)
 
 # Render provides the public hostname at runtime — trust it automatically so
 # the app works without manually listing the *.onrender.com domain.
@@ -89,6 +93,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "study.middleware.AuthenticationRequiredMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -154,6 +159,7 @@ STORAGES = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+LOGIN_URL = "/login/"
 
 # Security hardening — enabled automatically when DEBUG is off.
 if not DEBUG:

@@ -25,14 +25,15 @@ def _today_start(now: datetime) -> datetime:
 def scoped_cards(
     scope: Optional[dict] = None,
     *,
+    user=None,
     include_suspended: bool = False,
 ):
-    """Active cards narrowed to an optional deck scope."""
+    """A user's active cards narrowed to an optional deck scope."""
     qs = (
         Card.objects.all()
         if include_suspended
         else Card.objects.active()
-    ).select_related(
+    ).filter(user=user).select_related(
         "response__theme", "response__family", "phrase__category"
     )
     if not scope:
@@ -86,12 +87,17 @@ def scoped_cards(
     return qs.distinct()
 
 
-def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> dict:
+def queue_counts(
+    scope: Optional[dict] = None,
+    now: datetime | None = None,
+    *,
+    user=None,
+) -> dict:
     """Counts driving the dashboard, deck pages and navigation badges."""
     now = now or timezone.now()
     start = _today_start(now)
-    settings = Settings.load()
-    cards = scoped_cards(scope)
+    settings = Settings.load(user)
+    cards = scoped_cards(scope, user=user)
 
     if scope and scope.get("kind") == "revisit":
         revisit_total = cards.count()
@@ -108,8 +114,13 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
             "revisit_total": revisit_total,
         }
 
-    limit_cards = scoped_cards(scope, include_suspended=True)
+    limit_cards = scoped_cards(
+        scope,
+        user=user,
+        include_suspended=True,
+    )
     todays_logs = ReviewLog.objects.filter(
+        user=user,
         reviewed_at__gte=start,
         card_id__in=limit_cards.values("pk"),
     )
@@ -144,7 +155,8 @@ def queue_counts(scope: Optional[dict] = None, now: datetime | None = None) -> d
         "reviews_done_today": reviews_done_today,
         "total_due": due_reviews + new_available,
         "revisit_total": scoped_cards(
-            {**(scope or {}), "kind": "revisit"}
+            {**(scope or {}), "kind": "revisit"},
+            user=user,
         ).count(),
     }
 
@@ -153,6 +165,8 @@ def next_card(
     scope: Optional[dict] = None,
     now: datetime | None = None,
     exclude_card_ids: Iterable[int] | None = None,
+    *,
+    user=None,
 ):
     """Pick the next card to study, or ``None`` when nothing is due.
 
@@ -160,8 +174,8 @@ def next_card(
     daily cap, then fresh new cards within the daily cap.
     """
     now = now or timezone.now()
-    counts = queue_counts(scope, now)
-    cards = scoped_cards(scope)
+    counts = queue_counts(scope, now, user=user)
+    cards = scoped_cards(scope, user=user)
     if exclude_card_ids:
         cards = cards.exclude(pk__in=list(exclude_card_ids))
 
@@ -193,12 +207,18 @@ def next_card(
     return None
 
 
-def resumable_card(card_id: int | None, scope: Optional[dict], now=None):
+def resumable_card(
+    card_id: int | None,
+    scope: Optional[dict],
+    now=None,
+    *,
+    user=None,
+):
     """Return a saved unfinished card when it is still valid for this scope."""
     if not card_id:
         return None
     now = now or timezone.now()
-    card = scoped_cards(scope).filter(pk=card_id).first()
+    card = scoped_cards(scope, user=user).filter(pk=card_id).first()
     if card is None:
         return None
     if scope and scope.get("kind") == "revisit":

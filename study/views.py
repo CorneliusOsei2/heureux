@@ -6,17 +6,31 @@ import json
 import secrets
 from urllib.parse import urlencode
 
+from django.contrib.auth import (
+    get_user_model,
+    login as auth_login,
+    logout as auth_logout,
+)
 from django.db import transaction
+from django.db.utils import IntegrityError
 from django.db.models import Count, Q
 from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_GET, require_POST
 
 from . import queue as queue_module
+from .accounts import (
+    authenticate_with_throttle,
+    login_throttle_key,
+    provision_user_study_data,
+    reserve_throttled_action,
+)
 from .cards import card_payload, scope_from_request, scope_label
+from .forms import RegistrationForm, UsernamePinForm
 from .models import (
     Card,
     CardState,
@@ -48,6 +62,89 @@ REVIEW_SCOPE_KEYS = (
 )
 
 
+def _auth_redirect(request):
+    candidate = request.POST.get("next") or request.GET.get("next")
+    if candidate and url_has_allowed_host_and_scheme(
+        candidate,
+        allowed_hosts={request.get_host()},
+        require_https=request.is_secure(),
+    ):
+        return candidate
+    return reverse("study:dashboard")
+
+
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect(_auth_redirect(request))
+    form = UsernamePinForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        username = form.cleaned_data["username"]
+        pin = form.cleaned_data["pin"]
+        user, _ = authenticate_with_throttle(request, username, pin)
+        if user is None:
+            form.add_error(
+                None,
+                "Connexion impossible. Vérifiez vos identifiants ou réessayez plus tard.",
+            )
+        else:
+            provision_user_study_data(user)
+            auth_login(request, user)
+            return redirect(_auth_redirect(request))
+    return render(
+        request,
+        "study/auth/login.html",
+        {"form": form, "next": request.GET.get("next", "")},
+    )
+
+
+def register_view(request):
+    if request.user.is_authenticated:
+        return redirect("study:dashboard")
+    form = RegistrationForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        throttle_key = login_throttle_key(
+            request,
+            "",
+            purpose="registration",
+        )
+        if reserve_throttled_action(throttle_key):
+            form.add_error(
+                None,
+                "Création temporairement indisponible. Réessayez plus tard.",
+            )
+        else:
+            try:
+                with transaction.atomic():
+                    user = get_user_model().objects.create_user(
+                        username=form.cleaned_data["username"],
+                        password=form.cleaned_data["pin"],
+                    )
+                    provision_user_study_data(user)
+            except IntegrityError:
+                form.add_error(
+                    "username",
+                    "Ce nom d'utilisateur est déjà utilisé.",
+                )
+            else:
+                auth_login(
+                    request,
+                    user,
+                    backend="django.contrib.auth.backends.ModelBackend",
+                )
+                return redirect("study:dashboard")
+    return render(
+        request,
+        "study/auth/register.html",
+        {"form": form},
+    )
+
+
+@require_POST
+def logout_view(request):
+    auth_logout(request)
+    return redirect("study:login")
+
+
 def deck_stats(qs, now=None) -> dict:
     now = now or timezone.now()
     total = qs.count()
@@ -77,10 +174,10 @@ def deck_stats(qs, now=None) -> dict:
     }
 
 
-def current_streak(now=None, logs=None) -> int:
+def current_streak(now=None, logs=None, user=None) -> int:
     """Consecutive days (up to today) with at least one review."""
     now = now or timezone.now()
-    logs = ReviewLog.objects.all() if logs is None else logs
+    logs = ReviewLog.objects.filter(user=user) if logs is None else logs
     days = {
         timezone.localtime(dt).date()
         for dt in logs.values_list("reviewed_at", flat=True)
@@ -105,9 +202,10 @@ def current_streak(now=None, logs=None) -> int:
 # ---------------------------------------------------------------------------
 
 
-def _spine_theme_stats(theme, now):
+def _spine_theme_stats(theme, now, user):
     return deck_stats(
         Card.objects.active().filter(
+            user=user,
             card_type=CardType.SPINE, response__theme=theme
         ),
         now,
@@ -118,11 +216,11 @@ def _task_scope(task) -> dict:
     return {"part": task.part.slug, "task": task.slug}
 
 
-def _task_cards(task, kind=None):
+def _task_cards(task, user=None, kind=None):
     scope = _task_scope(task)
     if kind:
         scope["kind"] = kind
-    return queue_module.scoped_cards(scope)
+    return queue_module.scoped_cards(scope, user=user)
 
 
 def _task_phrases(task):
@@ -139,12 +237,12 @@ def _route_task(part_slug, task_slug):
     )
 
 
-def _task_card(task, now):
+def _task_card(task, now, user):
     """Build a dashboard/part card for a single task."""
     if task.available:
-        response_stats = deck_stats(_task_cards(task, "spine"), now)
-        phrase_stats = deck_stats(_task_cards(task, "phrase"), now)
-        stats = deck_stats(_task_cards(task), now)
+        response_stats = deck_stats(_task_cards(task, user, "spine"), now)
+        phrase_stats = deck_stats(_task_cards(task, user, "phrase"), now)
+        stats = deck_stats(_task_cards(task, user), now)
         theme_count = Theme.objects.filter(task=task).count()
         prompt_count = Prompt.objects.filter(theme__task=task).count()
         phrase_count = _task_phrases(task).count()
@@ -166,11 +264,12 @@ def _task_card(task, now):
     }
 
 
-def _phrase_deck_stats(now, task=None):
+def _phrase_deck_stats(now, user=None, task=None):
     cards = (
-        _task_cards(task, "phrase")
+        _task_cards(task, user, "phrase")
         if task
         else Card.objects.active().filter(
+            user=user,
             card_type__in=[
                 CardType.PHRASE_PRODUCTION,
                 CardType.PHRASE_RECOGNITION,
@@ -182,20 +281,21 @@ def _phrase_deck_stats(now, task=None):
 
 def dashboard(request):
     now = timezone.now()
-    counts = queue_module.queue_counts(now=now)
+    counts = queue_module.queue_counts(now=now, user=request.user)
 
     parts = []
     for part in ExamPart.objects.prefetch_related("tasks"):
-        tasks = [_task_card(task, now) for task in part.tasks.all()]
+        tasks = [_task_card(task, now, request.user) for task in part.tasks.all()]
         parts.append({"part": part, "tasks": tasks})
 
-    overall = deck_stats(Card.objects.active(), now)
+    user_cards = Card.objects.active().filter(user=request.user)
+    overall = deck_stats(user_cards, now)
 
     context = {
         "counts": counts,
         "parts": parts,
         "overall": overall,
-        "streak": current_streak(now),
+        "streak": current_streak(now, user=request.user),
     }
     return render(request, "study/dashboard.html", context)
 
@@ -203,7 +303,10 @@ def dashboard(request):
 def part_detail(request, part_slug):
     part = get_object_or_404(ExamPart.objects.prefetch_related("tasks"), slug=part_slug)
     now = timezone.now()
-    tasks = [_task_card(task, now) for task in part.tasks.all()]
+    tasks = [
+        _task_card(task, now, request.user)
+        for task in part.tasks.all()
+    ]
     if not part.available or not tasks:
         return render(
             request,
@@ -236,14 +339,17 @@ def task_detail(request, part_slug, task_slug):
         themes.append(
             {
                 "theme": theme,
-                "stats": _spine_theme_stats(theme, now),
+                "stats": _spine_theme_stats(theme, now, request.user),
                 "prompt_count": Prompt.objects.filter(theme=theme).count(),
             }
         )
     scope = _task_scope(task)
-    task_stats = deck_stats(_task_cards(task), now)
-    response_stats = deck_stats(_task_cards(task, "spine"), now)
-    phrase_stats = _phrase_deck_stats(now, task)
+    task_stats = deck_stats(_task_cards(task, request.user), now)
+    response_stats = deck_stats(
+        _task_cards(task, request.user, "spine"),
+        now,
+    )
+    phrase_stats = _phrase_deck_stats(now, request.user, task)
     context = {
         "part": task.part,
         "task": task,
@@ -251,7 +357,11 @@ def task_detail(request, part_slug, task_slug):
         "stats": task_stats,
         "response_stats": response_stats,
         "phrase_stats": phrase_stats,
-        "counts": queue_module.queue_counts(scope, now),
+        "counts": queue_module.queue_counts(
+            scope,
+            now,
+            user=request.user,
+        ),
         "prompt_count": Prompt.objects.filter(theme__task=task).count(),
         "phrase_count": _task_phrases(task).count(),
         "phrase_category_count": _task_phrases(task)
@@ -267,8 +377,10 @@ def task_detail(request, part_slug, task_slug):
 # ---------------------------------------------------------------------------
 
 
-def _locked_review_session() -> ReviewSession:
-    session, _ = ReviewSession.objects.select_for_update().get_or_create(pk=1)
+def _locked_review_session(user) -> ReviewSession:
+    session, _ = ReviewSession.objects.select_for_update().get_or_create(
+        user=user
+    )
     return session
 
 
@@ -326,13 +438,13 @@ def _save_review_session(
 
 def review(request):
     with transaction.atomic():
-        session = _locked_review_session()
+        session = _locked_review_session(request.user)
         scope, explicit = _resolved_review_scope(request, session)
         if explicit and (
             session.scope != scope or request.GET.get("reset") == "1"
         ):
             _save_review_session(session, scope, clear_pass=True)
-    counts = queue_module.queue_counts(scope)
+    counts = queue_module.queue_counts(scope, user=request.user)
     context = {
         "scope": scope,
         "scope_json": json.dumps(scope),
@@ -351,7 +463,12 @@ def _queue_state_locked(
     now = timezone.now()
     card = None
     if session.scope == scope:
-        card = queue_module.resumable_card(session.current_card_id, scope, now)
+        card = queue_module.resumable_card(
+            session.current_card_id,
+            scope,
+            now,
+            user=request.user,
+        )
     seen_card_ids = (
         session.revisit_seen_card_ids
         if session.scope == scope and scope.get("kind") == "revisit"
@@ -362,8 +479,9 @@ def _queue_state_locked(
             scope,
             now,
             exclude_card_ids=seen_card_ids,
+            user=request.user,
         )
-    counts = queue_module.queue_counts(scope, now)
+    counts = queue_module.queue_counts(scope, now, user=request.user)
     if card is None:
         # A finished scoped deck is no longer something to resume on next launch.
         _save_review_session(session, {}, clear_pass=True)
@@ -404,7 +522,7 @@ def _card_state_locked(
 ) -> dict:
     """Build the review payload for a specific card (used after an undo)."""
     now = timezone.now()
-    counts = queue_module.queue_counts(scope, now)
+    counts = queue_module.queue_counts(scope, now, user=request.user)
     payload = card_payload(card)
     front = render_to_string("study/partials/card_front.html", payload, request)
     back = render_to_string("study/partials/card_back.html", payload, request)
@@ -435,7 +553,7 @@ def review_hub(request, part_slug, task_slug):
     part = task.part
     now = timezone.now()
     scope = {"part": part.slug, "task": task.slug}
-    cards = _task_cards(task).exclude(suspended=True)
+    cards = _task_cards(task, request.user).exclude(suspended=True)
     response_stats = deck_stats(
         cards.filter(card_type=CardType.SPINE),
         now,
@@ -447,12 +565,14 @@ def review_hub(request, part_slug, task_slug):
     response_counts = queue_module.queue_counts(
         {**scope, "kind": "spine"},
         now,
+        user=request.user,
     )
     phrase_counts = queue_module.queue_counts(
         {**scope, "kind": "phrase"},
         now,
+        user=request.user,
     )
-    session = ReviewSession.load()
+    session = ReviewSession.load(request.user)
     saved_scope = session.scope if isinstance(session.scope, dict) else {}
     can_resume = bool(
         session.current_card_id
@@ -465,7 +585,11 @@ def review_hub(request, part_slug, task_slug):
         {
             "part": part,
             "task": task,
-            "counts": queue_module.queue_counts(scope, now),
+            "counts": queue_module.queue_counts(
+                scope,
+                now,
+                user=request.user,
+            ),
             "response_stats": response_stats,
             "phrase_stats": phrase_stats,
             "response_due": response_counts["total_due"],
@@ -479,10 +603,10 @@ def review_hub(request, part_slug, task_slug):
 @require_GET
 def review_next(request):
     with transaction.atomic():
-        session = _locked_review_session()
+        session = _locked_review_session(request.user)
         scope, _ = _resolved_review_scope(request, session)
         state = _queue_state_locked(scope, request, session)
-    state["can_undo"] = ReviewLog.objects.exists()
+    state["can_undo"] = ReviewLog.objects.filter(user=request.user).exists()
     return JsonResponse(state)
 
 
@@ -512,7 +636,7 @@ def review_answer(request):
     scope = scope_from_request(request)
     presentation_token = request.POST.get("presentation_token", "")
     with transaction.atomic():
-        session = _locked_review_session()
+        session = _locked_review_session(request.user)
         if (
             not presentation_token
             or session is None
@@ -528,7 +652,11 @@ def review_answer(request):
                 status=409,
             )
 
-        card = get_object_or_404(Card.objects.select_for_update(), pk=card_id)
+        card = get_object_or_404(
+            Card.objects.select_for_update(),
+            pk=card_id,
+            user=request.user,
+        )
         if scope.get("kind") == "revisit":
             seen = list(session.revisit_seen_card_ids or [])
             if card.id not in seen:
@@ -565,15 +693,15 @@ def review_undo(request):
     """Revert the most recent review and re-present that card."""
     scope = scope_from_request(request)
     with transaction.atomic():
-        session = _locked_review_session()
-        card = undo_last()
+        session = _locked_review_session(request.user)
+        card = undo_last(request.user)
         if card is None:
             state = _queue_state_locked(scope, request, session)
             state["can_undo"] = False
             state["undone"] = False
             return JsonResponse(state)
         state = _card_state_locked(card, scope, request, session)
-    state["can_undo"] = ReviewLog.objects.exists()
+    state["can_undo"] = ReviewLog.objects.filter(user=request.user).exists()
     state["undone"] = True
     return JsonResponse(state)
 
@@ -592,7 +720,10 @@ def revisit_list(request, part_slug=None, task_slug=None):
     )
     scope = _task_scope(task) if task else {}
     revisit_scope = {**scope, "kind": "revisit"}
-    revisit_cards = queue_module.scoped_cards(revisit_scope)
+    revisit_cards = queue_module.scoped_cards(
+        revisit_scope,
+        user=request.user,
+    )
     redirect_url = (
         reverse(
             "study:task_revisit_list",
@@ -728,7 +859,10 @@ def _scope_filters(request, forced_task=None):
         else:
             task_slug = ""
 
-    active = Card.objects.active().filter(card_type=CardType.SPINE)
+    active = Card.objects.active().filter(
+        user=request.user,
+        card_type=CardType.SPINE,
+    )
     filter_parts = []
     active_part_tasks = []
     for part in ExamPart.objects.prefetch_related("tasks"):
@@ -805,6 +939,7 @@ def browse(request, part_slug=None, task_slug=None):
     for theme in theme_qs:
         stats = deck_stats(
             Card.objects.active().filter(
+                user=request.user,
                 card_type=CardType.SPINE, response__theme=theme
             ),
             now,
@@ -878,6 +1013,7 @@ def theme_detail(request, slug):
     spine_cards = {
         card.response_id: card
         for card in Card.objects.filter(
+            user=request.user,
             card_type=CardType.SPINE, response__theme=theme
         )
     }
@@ -891,6 +1027,7 @@ def theme_detail(request, slug):
     ]
     stats = deck_stats(
         Card.objects.active().filter(
+            user=request.user,
             card_type=CardType.SPINE, response__theme=theme
         ),
         now,
@@ -936,6 +1073,7 @@ def family_detail(
     spine_cards = {
         card.response_id: card
         for card in Card.objects.filter(
+            user=request.user,
             card_type=CardType.SPINE,
             response_id__in=response_ids,
         )
@@ -971,7 +1109,9 @@ def response_detail(request, pk):
     arguments = list(response.arguments.all())
     prompts = list(response.prompts.select_related("theme").all())
     card = Card.objects.filter(
-        card_type=CardType.SPINE, response=response
+        user=request.user,
+        card_type=CardType.SPINE,
+        response=response,
     ).first()
     related_phrases = (
         Phrase.objects.filter(source_prompts__response=response)
@@ -1157,10 +1297,11 @@ def stats(request, part_slug=None, task_slug=None):
 
     scoped_history_cards = queue_module.scoped_cards(
         scope,
+        user=request.user,
         include_suspended=True,
     )
     active_cards = scoped_history_cards.filter(suspended=False)
-    logs_base = ReviewLog.objects.all()
+    logs_base = ReviewLog.objects.filter(user=request.user)
     if scope:
         logs_base = logs_base.filter(
             card_id__in=scoped_history_cards.values("pk")
@@ -1226,6 +1367,7 @@ def stats(request, part_slug=None, task_slug=None):
             "theme": theme,
             "stats": deck_stats(
                 Card.objects.active().filter(
+                    user=request.user,
                     card_type=CardType.SPINE, response__theme=theme
                 ),
                 now,
@@ -1244,7 +1386,7 @@ def stats(request, part_slug=None, task_slug=None):
         "max_forecast": max_forecast,
         "overall": overall,
         "themes": themes,
-        "streak": current_streak(now, logs_base),
+        "streak": current_streak(now, logs_base, request.user),
         "total_reviews": logs_base.count(),
         "reviews_today": per_day.get(today, 0),
         **filters,
@@ -1258,13 +1400,13 @@ def stats(request, part_slug=None, task_slug=None):
 
 
 def settings_view(request):
-    settings = Settings.load()
+    settings = Settings.load(request.user)
     if request.method == "POST":
         action = request.POST.get("action", "save")
         if action == "reset":
             with transaction.atomic():
-                session = _locked_review_session()
-                Card.objects.update(
+                session = _locked_review_session(request.user)
+                Card.objects.filter(user=request.user).update(
                     state=CardState.NEW,
                     due=None,
                     interval_days=0.0,
@@ -1277,11 +1419,14 @@ def settings_view(request):
                     needs_revisit=False,
                     revisit_added_at=None,
                 )
-                ReviewLog.objects.all().delete()
+                ReviewLog.objects.filter(user=request.user).delete()
                 _save_review_session(session, {}, clear_pass=True)
             return redirect(reverse("study:settings") + "?reset=1")
         if action == "unsuspend_all":
-            Card.objects.filter(suspended=True).update(suspended=False)
+            Card.objects.filter(
+                user=request.user,
+                suspended=True,
+            ).update(suspended=False)
             return redirect(reverse("study:settings") + "?unsuspended=1")
         try:
             settings.new_cards_per_day = max(
@@ -1303,6 +1448,9 @@ def settings_view(request):
             "saved": request.GET.get("saved") == "1",
             "was_reset": request.GET.get("reset") == "1",
             "was_unsuspended": request.GET.get("unsuspended") == "1",
-            "suspended_count": Card.objects.filter(suspended=True).count(),
+            "suspended_count": Card.objects.filter(
+                user=request.user,
+                suspended=True,
+            ).count(),
         },
     )

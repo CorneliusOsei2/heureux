@@ -140,6 +140,16 @@
     return m + " min";
   }
 
+  function readJson(r) {
+    return r.json().catch(function () { return {}; }).then(function (data) {
+      if (r.status === 401 && data.login_url) {
+        window.location.assign(data.login_url);
+      }
+      if (!r.ok) throw new Error(data.error || "Erreur de révision.");
+      return data;
+    });
+  }
+
   function showDone(c) {
     cardZone.classList.add("hidden");
     doneZone.classList.remove("hidden");
@@ -207,16 +217,12 @@
       method: "POST",
       headers: {
         "X-CSRFToken": csrf,
+        "X-Requested-With": "fetch",
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: body.toString()
     })
-      .then(function (r) {
-        return r.json().then(function (data) {
-          if (!r.ok) throw new Error(data.error || "Erreur de révision.");
-          return data;
-        });
-      })
+      .then(readJson)
       .then(function (data) {
         reviewed += 1;
         if (action === "revisit") revisited += 1;
@@ -234,10 +240,10 @@
     fetch(nextUrl + "?" + params().toString(), {
       headers: { "X-Requested-With": "fetch" }
     })
-      .then(function (r) { return r.json(); })
+      .then(readJson)
       .then(handleState)
-      .catch(function () {
-        kbdHint.textContent = "Erreur de chargement.";
+      .catch(function (error) {
+        kbdHint.textContent = error.message;
       });
   }
 

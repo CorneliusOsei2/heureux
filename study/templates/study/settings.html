@@ -28,10 +28,10 @@
     <button class="btn btn--primary" type="submit" name="action" value="save">Enregistrer</button>
   </form>
 
-  <form class="card card--pad danger-zone" method="post" action="{% url 'study:settings' %}" onsubmit="return confirm('Réinitialiser toute la progression ? Cette action est irréversible.');">
+  <form class="card card--pad danger-zone" method="post" action="{% url 'study:settings' %}" onsubmit="return confirm('Réinitialiser toute votre progression ? Cette action est irréversible.');">
     {% csrf_token %}
     <h2 class="mt-0">Zone sensible</h2>
-    <p class="muted">Remet toutes les cartes à zéro et efface l'historique de révision. Le contenu (réponses, expressions) n'est pas touché.</p>
+    <p class="muted">Remet toutes vos cartes à zéro et efface votre historique de révision. Le contenu (réponses, expressions) n'est pas touché.</p>
     <button class="btn btn--danger" type="submit" name="action" value="reset">Réinitialiser la progression</button>
   </form>
 </div>

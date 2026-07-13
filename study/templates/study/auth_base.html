@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Heureux{% endblock %}</title>
+  <meta name="theme-color" content="#173f90">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=8">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="{% static 'study/icons/logo.svg' %}">
+</head>
+<body class="auth-shell">
+  <main class="auth-page">
+    <header class="auth-brand">
+      <img src="{% static 'study/icons/logo.svg' %}" alt="">
+      <div>
+        <strong>Heureux</strong>
+        <span>Expression française</span>
+      </div>
+    </header>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

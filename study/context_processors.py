@@ -4,6 +4,18 @@ from .models import Response, ReviewSession, Settings, Task, Theme
 from .queue import queue_counts, scoped_cards
 
 
+def _empty_globals():
+    return {
+        "app_name": "Heureux",
+        "content_task": None,
+        "nav_due_total": 0,
+        "nav_counts": {},
+        "nav_revisit_count": 0,
+        "study_settings": None,
+        "total_cards": 0,
+    }
+
+
 def _request_task(request):
     match = request.resolver_match
     kwargs = match.kwargs if match else {}
@@ -15,7 +27,7 @@ def _request_task(request):
     task_slug = task_slug or (data.get("task") or "").strip()
 
     if not task_slug and match and match.url_name == "review":
-        saved_scope = ReviewSession.load().scope
+        saved_scope = ReviewSession.load(request.user).scope
         if isinstance(saved_scope, dict):
             part_slug = saved_scope.get("part")
             task_slug = saved_scope.get("task")
@@ -65,6 +77,13 @@ def _request_task(request):
 
 
 def study_globals(request):
+    match = request.resolver_match
+    if (
+        not request.user.is_authenticated
+        or not match
+        or match.namespace != "study"
+    ):
+        return _empty_globals()
     content_task = _request_task(request)
     if content_task is False:
         content_task = None
@@ -83,13 +102,13 @@ def study_globals(request):
     scope = {}
     if content_task:
         scope = {"part": content_task.part.slug, "task": content_task.slug}
-    counts = queue_counts(scope)
+    counts = queue_counts(scope, user=request.user)
     return {
         "app_name": "Heureux",
         "content_task": content_task,
         "nav_due_total": counts["due_reviews"] + counts["new_available"],
         "nav_counts": counts,
         "nav_revisit_count": counts["revisit_total"],
-        "study_settings": Settings.load(),
-        "total_cards": scoped_cards(scope).count(),
+        "study_settings": Settings.load(request.user),
+        "total_cards": scoped_cards(scope, user=request.user).count(),
     }

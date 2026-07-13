@@ -1,0 +1,36 @@
+{% extends "study/auth_base.html" %}
+{% block title %}Créer un profil · Heureux{% endblock %}
+
+{% block content %}
+<section class="auth-panel">
+  <p class="eyebrow">Votre espace personnel</p>
+  <h1>Créer un profil</h1>
+  <p class="auth-panel__lead">Votre progression, vos révisions et votre liste à revoir resteront privées.</p>
+
+  <form method="post" class="auth-form" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+      <div class="auth-error">{{ form.non_field_errors|striptags }}</div>
+    {% endif %}
+    <div class="auth-field">
+      <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+      {{ form.username }}
+      <small>3 à 30 caractères, sans espace</small>
+      {% for error in form.username.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <div class="auth-field">
+      <label for="{{ form.pin.id_for_label }}">{{ form.pin.label }}</label>
+      {{ form.pin }}
+      {% for error in form.pin.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <div class="auth-field">
+      <label for="{{ form.pin_confirm.id_for_label }}">{{ form.pin_confirm.label }}</label>
+      {{ form.pin_confirm }}
+      {% for error in form.pin_confirm.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <button class="btn btn--primary btn--block" type="submit">Créer mon profil</button>
+  </form>
+
+  <p class="auth-switch">Vous avez déjà un profil ? <a href="{% url 'study:login' %}">Se connecter</a></p>
+</section>
+{% endblock %}

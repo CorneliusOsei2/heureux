@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=6">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=8">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,31 +52,24 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav__links" data-nav-links>
-        {% if content_task %}
-        <a href="{% url 'study:task_detail' content_task.part.slug content_task.slug %}"
-           class="nav__primary-link nav__task {% if request.resolver_match.url_name == 'task_detail' or request.resolver_match.url_name == 'task_browse' or request.resolver_match.url_name == 'task_phrases' or request.resolver_match.url_name == 'theme_detail' or request.resolver_match.url_name == 'family_detail' or request.resolver_match.url_name == 'task_family_detail' or request.resolver_match.url_name == 'response_detail' %}is-active{% endif %}">
-          <span>{{ content_task.part.short_name }}</span>
-          <b>{{ content_task.name }}</b>
-        </a>
-        {% endif %}
+        <a href="{% url 'study:dashboard' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}">Accueil</a>
         <a href="{% if content_task %}{% url 'study:task_review_hub' content_task.part.slug content_task.slug %}{% else %}{% url 'study:review' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' %}is-active{% endif %}">
           Réviser
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
-        <form class="nav__search" action="{% if content_task %}{% url 'study:task_search' content_task.part.slug content_task.slug %}{% else %}{% url 'study:search' %}{% endif %}" method="get" role="search">
-          <input type="search" name="q" placeholder="Rechercher…" aria-label="Rechercher" value="{{ query|default:'' }}">
-        </form>
-        <details class="nav__more {% if request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
+        <a href="{% if content_task %}{% url 'study:task_phrases' content_task.part.slug content_task.slug %}{% else %}{% url 'study:phrases' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}">Expressions</a>
+        <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}" class="nav__primary-link {% if request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Stats</a>
+        <details class="nav__more {% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
           <summary aria-label="Plus d'options" title="Plus d'options">
             <span aria-hidden="true">•••</span>
           </summary>
           <div class="nav__menu">
-            <a href="{% if content_task %}{% url 'study:task_revisit_list' content_task.part.slug content_task.slug %}{% else %}{% url 'study:revisit_list' %}{% endif %}" class="{% if request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %}is-active{% endif %}">
-              <span>À revoir</span>
-              {% if nav_revisit_count %}<span class="pill pill--revisit">{{ nav_revisit_count }}</span>{% endif %}
-            </a>
-            <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}" class="{% if request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Progression</a>
+            <div class="nav__account">
+              <small>Connecté</small>
+              <strong>@{{ request.user.username }}</strong>
+            </div>
             <span class="nav__menu-divider" aria-hidden="true"></span>
+            <a href="{% if content_task %}{% url 'study:task_search' content_task.part.slug content_task.slug %}{% else %}{% url 'study:search' %}{% endif %}" class="{% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' %}is-active{% endif %}">Rechercher</a>
             <a href="{% url 'study:settings' %}" class="{% if request.resolver_match.url_name == 'settings' %}is-active{% endif %}">Réglages</a>
             <button type="button" data-theme-toggle>
               <span>Apparence</span>
@@ -89,6 +82,11 @@
               <span>Installer l'application</span>
               <span aria-hidden="true">↓</span>
             </button>
+            <span class="nav__menu-divider" aria-hidden="true"></span>
+            <form method="post" action="{% url 'study:logout' %}">
+              {% csrf_token %}
+              <button type="submit">Se déconnecter</button>
+            </form>
           </div>
         </details>
       </nav>
@@ -101,13 +99,20 @@
 
   {% if request.resolver_match.url_name != 'review' %}
   <footer class="footer">
-    <span>{{ total_cards }} cartes · répétition espacée</span>
-    <span class="footer__dot">·</span>
-    <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}">Progression</a>
+    <div class="footer__inner">
+      <div class="footer__identity">
+        <strong>Heureux</strong>
+        <span>Expression française, maîtrisée durablement.</span>
+      </div>
+      <div class="footer__meta">
+        <span>{{ total_cards }} cartes</span>
+        <a href="{% if content_task %}{% url 'study:task_stats' content_task.part.slug content_task.slug %}{% else %}{% url 'study:stats' %}{% endif %}">Voir les statistiques</a>
+      </div>
+    </div>
   </footer>
   {% endif %}
 
-  <script src="{% static 'study/js/app.js' %}?v=6"></script>
+  <script src="{% static 'study/js/app.js' %}?v=8"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

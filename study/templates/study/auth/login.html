@@ -1,0 +1,32 @@
+{% extends "study/auth_base.html" %}
+{% block title %}Connexion · Heureux{% endblock %}
+
+{% block content %}
+<section class="auth-panel">
+  <p class="eyebrow">Bon retour</p>
+  <h1>Se connecter</h1>
+  <p class="auth-panel__lead">Retrouvez exactement votre progression et votre dernière carte.</p>
+
+  <form method="post" class="auth-form" novalidate>
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% if form.non_field_errors %}
+      <div class="auth-error">{{ form.non_field_errors|striptags }}</div>
+    {% endif %}
+    <div class="auth-field">
+      <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+      {{ form.username }}
+      {% for error in form.username.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <div class="auth-field">
+      <label for="{{ form.pin.id_for_label }}">{{ form.pin.label }}</label>
+      {{ form.pin }}
+      <small>Exactement 6 chiffres</small>
+      {% for error in form.pin.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <button class="btn btn--primary btn--block" type="submit">Continuer</button>
+  </form>
+
+  <p class="auth-switch">Nouveau sur Heureux ? <a href="{% url 'study:register' %}">Créer un profil</a></p>
+</section>
+{% endblock %}

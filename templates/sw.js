@@ -1,12 +1,9 @@
 {% load static %}/* Heureux service worker — offline app shell. */
-var CACHE = "heureux-v6";
+var CACHE = "heureux-v8";
 var SHELL = [
-  "/",
-  "/review/",
-  "{% url 'study:task_detail' 'orale' 'tache-3' %}",
   "{% url 'offline' %}",
-  "{% static 'study/css/app.css' %}?v=6",
-  "{% static 'study/js/app.js' %}?v=6",
+  "{% static 'study/css/app.css' %}?v=8",
+  "{% static 'study/js/app.js' %}?v=8",
   "/manifest.webmanifest",
   "{% static 'study/icons/icon-192.png' %}",
   "{% static 'study/icons/icon-512.png' %}",
@@ -16,7 +13,7 @@ var SHELL = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(SHELL).catch(function () {});
+      return cache.addAll(SHELL);
     }).then(function () { return self.skipWaiting(); })
   );
 });
@@ -56,17 +53,11 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
-  // Network-first for page navigations; fall back to cache then offline page.
+  // Never persist account-specific pages in a cache shared by browser users.
   if (req.mode === "navigate") {
     event.respondWith(
-      fetch(req).then(function (res) {
-        var copy = res.clone();
-        caches.open(CACHE).then(function (c) { c.put(req, copy); });
-        return res;
-      }).catch(function () {
-        return caches.match(req).then(function (hit) {
-          return hit || caches.match("{% url 'offline' %}");
-        });
+      fetch(req, { cache: "no-store" }).catch(function () {
+        return caches.match("{% url 'offline' %}");
       })
     );
   }

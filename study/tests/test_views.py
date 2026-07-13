@@ -64,6 +64,8 @@ class PWATests(TestCase):
 
 class SmokeTests(TestCase):
     def setUp(self):
+        self.user = factories.make_user("smoke")
+        self.client.force_login(self.user)
         factories.make_content()
 
     def test_core_pages_render(self):
@@ -126,9 +128,11 @@ class SmokeTests(TestCase):
         self.assertContains(
             response,
             'class="nav__primary-link',
-            count=2,
+            count=4,
         )
-        self.assertNotContains(response, ">Accueil</a>")
+        for label in ("Accueil", "Réviser", "Expressions", "Stats"):
+            self.assertContains(response, f">{label}</a>")
+        self.assertContains(response, 'class="footer__inner"')
 
     def test_global_pages_do_not_false_highlight_task_navigation(self):
         response = self.client.get(reverse("study:browse"))
@@ -153,7 +157,9 @@ class SmokeTests(TestCase):
 
 class TaskOrganizationTests(TestCase):
     def setUp(self):
-        Settings.load()
+        self.user = factories.make_user("organizer")
+        self.client.force_login(self.user)
+        Settings.load(self.user)
         self.part = factories.make_part("orale")
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
@@ -306,7 +312,7 @@ class TaskOrganizationTests(TestCase):
         self.assertEqual(response.context["streak"], 1)
 
     def test_review_hub_groups_task_study_modes_and_resume(self):
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         session.current_card = self.response_card
         session.scope = {
             "part": self.part.slug,
@@ -347,7 +353,9 @@ class TaskOrganizationTests(TestCase):
 
 class ReviewFlowTests(TestCase):
     def setUp(self):
-        s = Settings.load()
+        self.user = factories.make_user("reviewer")
+        self.client.force_login(self.user)
+        s = Settings.load(self.user)
         s.new_cards_per_day = 10
         s.max_reviews_per_day = 100
         s.save()
@@ -419,7 +427,7 @@ class ReviewFlowTests(TestCase):
         self.assertFalse(self.card.needs_revisit)
         self.assertIsNone(self.card.revisit_added_at)
         self.assertEqual(self.card.last_rating, Rating.GOOD)
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         self.assertEqual(session.scope, {})
         self.assertIsNone(session.current_card_id)
 
@@ -443,7 +451,7 @@ class ReviewFlowTests(TestCase):
         self.client.get(reverse("study:review") + "?kind=phrase")
         first = self.client.get(reverse("study:review_next") + "?kind=phrase")
         self.assertEqual(first.json()["card_id"], phrase_card.id)
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         self.assertEqual(session.scope, {"kind": "phrase"})
         self.assertEqual(session.current_card_id, phrase_card.id)
 
@@ -526,7 +534,7 @@ class ReviewFlowTests(TestCase):
             },
         ).json()
 
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         self.assertEqual(answered["card_id"], second_card.id)
         self.assertEqual(session.current_card_id, second_card.id)
         self.assertEqual(
@@ -590,7 +598,9 @@ class ReviewFlowTests(TestCase):
 @skipUnlessDBFeature("has_select_for_update")
 class ReviewConcurrencyTests(TransactionTestCase):
     def setUp(self):
-        settings = Settings.load()
+        self.user = factories.make_user("concurrent")
+        self.client.force_login(self.user)
+        settings = Settings.load(self.user)
         settings.new_cards_per_day = 10
         settings.max_reviews_per_day = 100
         settings.save()
@@ -623,17 +633,19 @@ class ReviewConcurrencyTests(TransactionTestCase):
                 **kwargs,
             )
 
-        def observed_locked_session():
+        def observed_locked_session(user):
             if threading.current_thread().name == "answer":
                 answer_attempted_lock.set()
-            session = original_locked_session()
+            session = original_locked_session(user)
             if threading.current_thread().name == "answer":
                 answer_acquired_lock.set()
             return session
 
         def stale_next():
             try:
-                responses["stale"] = Client().get(
+                client = Client()
+                client.force_login(self.user)
+                responses["stale"] = client.get(
                     reverse("study:review_next")
                 )
             except BaseException as exc:  # pragma: no cover - thread handoff
@@ -641,7 +653,9 @@ class ReviewConcurrencyTests(TransactionTestCase):
 
         def answer():
             try:
-                responses["answer"] = Client().post(
+                client = Client()
+                client.force_login(self.user)
+                responses["answer"] = client.post(
                     reverse("study:review_answer"),
                     {
                         "card_id": self.card.id,
@@ -685,7 +699,7 @@ class ReviewConcurrencyTests(TransactionTestCase):
         self.assertEqual(responses["answer"].status_code, 200)
         self.assertEqual(ReviewLog.objects.count(), 1)
 
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         self.assertEqual(session.current_card_id, self.next_card.id)
         duplicate = self.client.post(
             reverse("study:review_answer"),
@@ -700,6 +714,10 @@ class ReviewConcurrencyTests(TransactionTestCase):
 
 
 class SettingsActionTests(TestCase):
+    def setUp(self):
+        self.user = factories.make_user("settings")
+        self.client.force_login(self.user)
+
     def test_unsuspend_all(self):
         card = factories.make_spine_card(suspended=True)
         r = self.client.post(
@@ -717,7 +735,7 @@ class SettingsActionTests(TestCase):
             revisit_added_at=timezone.now(),
         )
         srs.review(card, Rating.GOOD)
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         session.current_card = card
         session.scope = {"kind": "spine"}
         session.save()
@@ -727,7 +745,7 @@ class SettingsActionTests(TestCase):
         self.assertEqual(card.state, CardState.NEW)
         self.assertEqual(ReviewLog.objects.count(), 0)
         self.assertFalse(card.needs_revisit)
-        session = ReviewSession.load()
+        session = ReviewSession.load(self.user)
         self.assertEqual(session.scope, {})
         self.assertIsNone(session.current_card_id)
         self.assertEqual(session.presentation_token, "")

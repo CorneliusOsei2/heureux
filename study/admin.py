@@ -4,11 +4,13 @@ from .models import (
     Argument,
     Card,
     Family,
+    LoginThrottle,
     Phrase,
     PhraseCategory,
     Prompt,
     Response,
     ReviewLog,
+    ReviewSession,
     Settings,
     Theme,
 )
@@ -73,6 +75,7 @@ class PhraseAdmin(admin.ModelAdmin):
 class CardAdmin(admin.ModelAdmin):
     list_display = (
         "id",
+        "user",
         "card_type",
         "state",
         "due",
@@ -82,16 +85,27 @@ class CardAdmin(admin.ModelAdmin):
         "lapses",
         "suspended",
     )
-    list_filter = ("card_type", "state", "suspended")
+    list_filter = ("user", "card_type", "state", "suspended")
 
 
 @admin.register(ReviewLog)
 class ReviewLogAdmin(admin.ModelAdmin):
-    list_display = ("card", "reviewed_at", "rating", "state_before", "state_after")
-    list_filter = ("rating", "state_after")
+    list_display = (
+        "user",
+        "card",
+        "reviewed_at",
+        "rating",
+        "state_before",
+        "state_after",
+    )
+    list_filter = ("user", "rating", "state_after")
     date_hierarchy = "reviewed_at"
 
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ("new_cards_per_day", "max_reviews_per_day")
+    list_display = ("user", "new_cards_per_day", "max_reviews_per_day")
+
+
+admin.site.register(ReviewSession)
+admin.site.register(LoginThrottle)

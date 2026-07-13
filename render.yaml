@@ -12,6 +12,8 @@ services:
         value: 3.11.9
       - key: DEBUG
         value: "False"
+      - key: TRUST_X_FORWARDED_FOR
+        value: "True"
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY

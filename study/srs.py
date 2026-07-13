@@ -263,6 +263,7 @@ def review(
     )
 
     ReviewLog.objects.create(
+        user=card.user,
         card=card,
         reviewed_at=now,
         rating=rating,
@@ -278,13 +279,18 @@ def review(
     return sched
 
 
-def undo_last() -> Card | None:
+def undo_last(user=None) -> Card | None:
     """Revert the most recent review, restoring the card and dropping its log.
 
     Returns the restored :class:`Card` (so the caller can re-present it), or
     ``None`` when there is nothing to undo.
     """
-    log = ReviewLog.objects.order_by("-reviewed_at", "-id").first()
+    log = (
+        ReviewLog.objects.filter(user=user)
+        .select_related("card")
+        .order_by("-reviewed_at", "-id")
+        .first()
+    )
     if log is None:
         return None
 

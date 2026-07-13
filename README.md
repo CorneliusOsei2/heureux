@@ -1,10 +1,10 @@
 # Heureux · Fiches de révision (French oral-exam flashcards)
 
-A personal, single-user spaced-repetition web app for memorising a French
-oral-exam answer bank. It parses the existing corpus — 167 exam prompts that
-collapse into **130 unique argued answers** across 7 themes and 17 topic
-families, plus a source-grounded bank of reusable expressions — and turns
-everything into Anki-style flashcards with a real SM-2 scheduler.
+A multi-user spaced-repetition web app for memorising a French oral-exam answer
+bank. It parses the existing corpus — 167 exam prompts that collapse into
+**130 unique argued answers** across 7 themes and 17 topic families, plus a
+source-grounded bank of reusable expressions — and turns everything into
+Anki-style flashcards with an SM-2 scheduler.
 
 Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
@@ -29,7 +29,9 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
   functional categories and reviewable per response.
 - **Progression** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
   mature-card retention, streak, and per-theme mastery.
-- **Réglages** — daily new-card / max-review limits, and a full reset.
+- **Comptes privés** — a unique username and hashed six-digit PIN protect each
+  learner's cards, history, settings, revisit list, and resumable session.
+- **Réglages** — private daily limits, suspended cards, and progress reset.
 
 ### Card model
 
@@ -65,7 +67,9 @@ python3 -m venv .venv
 ./.venv/bin/python manage.py runserver
 ```
 
-Open http://127.0.0.1:8000/.
+Open http://127.0.0.1:8000/ and create an account with a unique username and
+six-digit PIN. On an upgraded installation, the first account automatically
+claims the existing study progress.
 
 Optional — the Django admin (browse/edit raw data):
 
@@ -82,8 +86,8 @@ The app ships a self-contained snapshot of the answer bank in
 `study/content/` so it deploys without the rest of the repo.
 
 - `import_content` — (re)builds the database from that snapshot. **Idempotent**:
-  re-running upserts content and *preserves your review progress* (cards are
-  matched by natural keys, orphans pruned).
+  re-running upserts shared content and preserves every learner's private review
+  progress (cards are matched by natural keys and orphans are pruned).
 - `sync_content --from <path-to-t3>` — refreshes the snapshot from the live
   `t3/` tree (response batches, `study_sheets.md`, `anki/data/phrases.tsv`).
   Run `import_content` afterwards to load the changes.
@@ -112,6 +116,7 @@ cp .env.example .env
 | `DEBUG` | `True` | Turn **off** in production. |
 | `ALLOWED_HOSTS` | localhost | Comma-separated hostnames. |
 | `CSRF_TRUSTED_ORIGINS` | — | Comma-separated `https://…` origins. |
+| `TRUST_X_FORWARDED_FOR` | `False` | Trust the rightmost forwarded client address; enable only behind a trusted proxy. |
 | `TIME_ZONE` | `America/Los_Angeles` | Drives "due today" and streaks. |
 | `DATABASE_URL` | — | PostgreSQL connection URL used in production. |
 | `DATABASE_PATH` | `db.sqlite3` | Absolute path for the SQLite file. |
@@ -149,11 +154,11 @@ DEBUG=False ./.venv/bin/python manage.py collectstatic --noinput
 Anki-style SM-2 (`study/srs.py`):
 
 - **Learning steps** 1 min → 10 min, then graduates to **1 day** (or **4 days**
-  on *Facile*).
-- Reviews multiply by ease (start 2.5, floor 1.3); *Difficile* ×1.2, *Facile*
-  gets a ×1.3 bonus.
-- A lapse (*Encore*) sends the card to relearning (10 min) and trims the
-  interval.
+  internally for the highest rating).
+- The streamlined interface exposes two decisions: **Revoir** returns the card
+  to learning; **Correct** advances it through the schedule.
+- Review intervals scale with ease (start 2.5, floor 1.3), while a lapse sends
+  the card to relearning and trims the interval.
 - A card is **mature** once its interval reaches 21 days.
 
 Every grade is written to `ReviewLog`, which powers the stats page.
@@ -169,6 +174,8 @@ flashcards/
 │   ├── models.py           # Theme, Family, Response, Argument, Prompt,
 │   │                       #   Phrase, Card, ReviewLog, Settings
 │   ├── content.py          # Pure parser for the answer bank
+│   ├── accounts.py · forms.py · middleware.py
+│   │                       # Account provisioning, PIN auth, access control
 │   ├── srs.py              # SM-2 scheduler
 │   ├── queue.py            # Daily study queue (+ scope)
 │   ├── cards.py            # Card → front/back presentation
@@ -181,4 +188,4 @@ flashcards/
 └── manage.py
 ```
 
-Personal study tool — no user accounts; scheduling state lives on the cards.
+Shared learning content; private scheduling state and progress per account.

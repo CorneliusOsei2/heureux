@@ -5,15 +5,15 @@ Two layers:
 * Content — imported from the markdown/TSV answer bank and treated as the
   source of truth: Theme, Family, Response (a unique argued answer), its
   Arguments, the Prompts that map onto it, and reusable Phrases.
-* Study — a single reviewable ``Card`` per studyable item carrying its own
-  SM-2 spaced-repetition state (personal single-user app), plus a ``ReviewLog``
-  that records every grade for statistics.
+* Study — one reviewable ``Card`` per user and studyable item, carrying isolated
+  SM-2 spaced-repetition state, plus a ``ReviewLog`` for every grade.
 """
 
 from __future__ import annotations
 
 from datetime import timedelta
 
+from django.conf import settings as django_settings
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
@@ -307,6 +307,13 @@ class CardQuerySet(models.QuerySet):
 class Card(models.Model):
     """A reviewable item with its own SM-2 scheduling state."""
 
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="study_cards",
+        null=True,
+        blank=True,
+    )
     card_type = models.CharField(max_length=16, choices=CardType.choices)
     response = models.ForeignKey(
         Response,
@@ -351,8 +358,17 @@ class Card(models.Model):
                     | Q(response__isnull=True, phrase__isnull=False)
                 ),
             ),
+            models.UniqueConstraint(
+                fields=["user", "card_type", "response"],
+                name="unique_user_response_card",
+            ),
+            models.UniqueConstraint(
+                fields=["user", "card_type", "phrase"],
+                name="unique_user_phrase_card",
+            ),
         ]
         indexes = [
+            models.Index(fields=["user", "state", "due"]),
             models.Index(fields=["state", "due"]),
             models.Index(fields=["card_type"]),
         ]
@@ -378,8 +394,15 @@ class Card(models.Model):
 
 
 class ReviewSession(models.Model):
-    """Singleton pointer to the unfinished card and its deck scope."""
+    """Per-user pointer to the unfinished card and its deck scope."""
 
+    user = models.OneToOneField(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="review_session",
+        null=True,
+        blank=True,
+    )
     current_card = models.ForeignKey(
         Card,
         on_delete=models.SET_NULL,
@@ -393,14 +416,24 @@ class ReviewSession(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     @classmethod
-    def load(cls) -> "ReviewSession":
-        obj, _ = cls.objects.get_or_create(pk=1)
-        return obj
+    def load(cls, user=None) -> "ReviewSession":
+        if user is not None and getattr(user, "is_authenticated", False):
+            obj, _ = cls.objects.get_or_create(user=user)
+            return obj
+        obj = cls.objects.filter(user__isnull=True).order_by("pk").first()
+        return obj or cls.objects.create()
 
 
 class ReviewLog(models.Model):
     """One recorded grade, enabling retention and workload statistics."""
 
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="study_review_logs",
+        null=True,
+        blank=True,
+    )
     card = models.ForeignKey(
         Card, on_delete=models.CASCADE, related_name="reviews"
     )
@@ -423,8 +456,15 @@ class ReviewLog(models.Model):
 
 
 class Settings(models.Model):
-    """Singleton study configuration (row id = 1)."""
+    """Per-user study configuration."""
 
+    user = models.OneToOneField(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="study_settings",
+        null=True,
+        blank=True,
+    )
     new_cards_per_day = models.PositiveIntegerField(default=15)
     max_reviews_per_day = models.PositiveIntegerField(default=200)
 
@@ -434,11 +474,20 @@ class Settings(models.Model):
     def __str__(self) -> str:
         return "Study settings"
 
-    def save(self, *args, **kwargs):
-        self.pk = 1
-        super().save(*args, **kwargs)
-
     @classmethod
-    def load(cls) -> "Settings":
-        obj, _ = cls.objects.get_or_create(pk=1)
-        return obj
+    def load(cls, user=None) -> "Settings":
+        if user is not None and getattr(user, "is_authenticated", False):
+            obj, _ = cls.objects.get_or_create(user=user)
+            return obj
+        obj = cls.objects.filter(user__isnull=True).order_by("pk").first()
+        return obj or cls.objects.create()
+
+
+class LoginThrottle(models.Model):
+    """Database-backed rate-limit counter without storing raw identifiers."""
+
+    key_hash = models.CharField(max_length=64, primary_key=True)
+    failures = models.PositiveSmallIntegerField(default=0)
+    window_started_at = models.DateTimeField(default=timezone.now)
+    locked_until = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, db_index=True)

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from django.contrib.auth import get_user_model
+
 from study.models import (
     Argument,
     Card,
@@ -22,6 +24,19 @@ _seq = {"n": 0}
 def _uid() -> int:
     _seq["n"] += 1
     return _seq["n"]
+
+
+def make_user(username=None, pin="123456"):
+    username = username or f"user{_uid()}"
+    return get_user_model().objects.create_user(
+        username=username,
+        password=pin,
+    )
+
+
+def _default_user():
+    users = list(get_user_model().objects.order_by("pk")[:2])
+    return users[0] if len(users) == 1 else None
 
 
 def make_theme(slug="culture", order=1, task=None) -> Theme:
@@ -99,9 +114,13 @@ def make_response(theme=None, family=None) -> Response:
 def make_spine_card(**overrides) -> Card:
     theme = overrides.pop("theme", None)
     family = overrides.pop("family", None)
+    user = overrides.pop("user", _default_user())
     response = make_response(theme=theme, family=family)
     return Card.objects.create(
-        card_type=CardType.SPINE, response=response, **overrides
+        user=user,
+        card_type=CardType.SPINE,
+        response=response,
+        **overrides,
     )
 
 
@@ -124,7 +143,13 @@ def make_phrase(category=None) -> Phrase:
 
 def make_phrase_card(card_type=CardType.PHRASE_PRODUCTION, **overrides) -> Card:
     phrase = overrides.pop("phrase", None) or make_phrase()
-    return Card.objects.create(card_type=card_type, phrase=phrase, **overrides)
+    user = overrides.pop("user", _default_user())
+    return Card.objects.create(
+        user=user,
+        card_type=card_type,
+        phrase=phrase,
+        **overrides,
+    )
 
 
 def make_content():

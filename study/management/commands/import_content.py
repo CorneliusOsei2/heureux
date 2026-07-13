@@ -11,6 +11,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from study import content
+from study.accounts import provision_user_study_data, users_with_study_state
 from study.models import (
     Argument,
     Card,
@@ -48,8 +49,13 @@ class Command(BaseCommand):
             responses, response_by_hash, theme_by_name, family_by_name
         )
         self._import_phrases(phrases, prompt_index)
-        self._sync_cards(response_by_hash)
-        Settings.load()
+        users = list(users_with_study_state())
+        if users:
+            for user in users:
+                provision_user_study_data(user)
+        else:
+            self._sync_cards(response_by_hash)
+            Settings.load()
 
         self.stdout.write(
             self.style.SUCCESS(
@@ -246,18 +252,24 @@ class Command(BaseCommand):
             pk__in=[c.pk for c in seen_categories.values()]
         ).delete()
 
-    def _sync_cards(self, response_by_hash):
+    def _sync_cards(self, response_by_hash, user=None):
         """Create one card per studyable item; never reset existing state."""
         for response in response_by_hash.values():
             Card.objects.get_or_create(
-                card_type=CardType.SPINE, response=response
+                user=user,
+                card_type=CardType.SPINE,
+                response=response,
             )
         for phrase in Phrase.objects.all():
             Card.objects.get_or_create(
-                card_type=CardType.PHRASE_PRODUCTION, phrase=phrase
+                user=user,
+                card_type=CardType.PHRASE_PRODUCTION,
+                phrase=phrase,
             )
             Card.objects.get_or_create(
-                card_type=CardType.PHRASE_RECOGNITION, phrase=phrase
+                user=user,
+                card_type=CardType.PHRASE_RECOGNITION,
+                phrase=phrase,
             )
 
         # Prune cards whose target no longer exists.
