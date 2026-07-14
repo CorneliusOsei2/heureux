@@ -15,14 +15,14 @@
 <div class="qlist">
   {% for row in rows %}
     <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}">
-      <span class="qrow__num">
+      <span class="qrow__num qrow__num--tag">
         <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{{ row.prompt.theme.emoji }} P{{ row.prompt.number }}</span>
       </span>
       <span class="qrow__text">
         {{ row.prompt.text }}
         {% if row.is_alias %}<span class="alias-tag" title="Réponse partagée">= {{ row.prompt.response.theme.display_name }} P{{ row.prompt.response.canonical_prompt.number }}</span>{% endif %}
       </span>
-      <span class="qrow__meta">
+      <span class="qrow__meta qrow__meta--state">
         {% if row.card %}<span class="qrow__state bg-{{ row.card.state }}" title="{{ row.card.get_state_display }}"></span>{% endif %}
       </span>
     </a>

@@ -52,7 +52,7 @@
         {{ row.prompt.text }}
         {% if row.is_alias %}<span class="alias-tag" title="Réponse identique à un autre sujet">= {{ row.prompt.response.theme.display_name }} P{{ row.prompt.response.canonical_prompt.number }}</span>{% endif %}
       </span>
-      <span class="qrow__meta">
+      <span class="qrow__meta qrow__meta--state">
         {% if row.card %}<span class="qrow__state bg-{{ row.card.state }}" title="{{ row.card.get_state_display }}"></span>{% endif %}
       </span>
     </a>

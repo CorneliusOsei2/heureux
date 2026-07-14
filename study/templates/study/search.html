@@ -20,7 +20,7 @@
     <div class="qlist">
       {% for prompt in prompt_results %}
         <a class="qrow" href="{% url 'study:response_detail' prompt.response_id %}">
-          <span class="qrow__num"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
+          <span class="qrow__num qrow__num--tag"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
           <span class="qrow__text">{{ prompt.text }}</span>
           <span class="qrow__meta"><span class="muted">{{ prompt.family.name }}</span></span>
         </a>
