@@ -161,6 +161,13 @@
     panel.style.top = Math.round(top) + "px";
   }
 
+  function repositionPanel() {
+    if (!selectedRect || panel.classList.contains("hidden")) return;
+    window.requestAnimationFrame(function () {
+      positionPanel(selectedRect);
+    });
+  }
+
   function closePanel() {
     requestNumber += 1;
     panel.classList.add("hidden");
@@ -172,6 +179,7 @@
     setStatus(message, false);
     fallbackLink.textContent = "Continue with Google Translate ↗";
     fallbackLink.classList.add("btn--primary");
+    repositionPanel();
   }
 
   function updateDownloadProgress(event) {
@@ -222,6 +230,7 @@
     output.classList.remove("hidden");
     copyButton.classList.remove("hidden");
     setStatus("Translated locally on this device.", false);
+    repositionPanel();
   }
 
   function writeClipboard(text) {
@@ -350,6 +359,7 @@
       closePanel();
     }
   });
+  window.addEventListener("resize", repositionPanel);
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && !panel.classList.contains("hidden")) {
       closePanel();

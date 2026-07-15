@@ -64,7 +64,7 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v31"', body)
+        self.assertIn('var CACHE = "heureux-v34"', body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
 
@@ -672,16 +672,30 @@ class ReviewFlowTests(TestCase):
         resumed = self.client.get(reverse("study:review_next"))
         self.assertEqual(resumed.json()["card_id"], phrase_card.id)
 
-    def test_response_surfaces_show_only_argument_main_points(self):
+    def test_learning_response_is_full_but_review_card_stays_concise(self):
+        argument = self.card.response.arguments.get()
+        argument.developpement = "Développement détaillé pour apprendre."
+        argument.exemple = "Exemple concret pour apprendre."
+        argument.consequence = "Conséquence logique pour apprendre."
+        argument.save(
+            update_fields=["developpement", "exemple", "consequence"]
+        )
+
         detail = self.client.get(
             reverse("study:response_detail", args=[self.card.response_id])
         )
-        self.assertContains(detail, self.card.response.arguments.get().idea)
-        self.assertNotContains(detail, "Exemple.")
+        self.assertContains(detail, argument.idea)
+        self.assertContains(detail, argument.developpement)
+        self.assertContains(detail, argument.exemple)
+        self.assertContains(detail, argument.consequence)
+        self.assertContains(detail, "Arguments développés")
+        self.assertContains(detail, "Exemple concret")
 
         payload = self.client.get(reverse("study:review_next")).json()
-        self.assertIn(self.card.response.arguments.get().idea, payload["back_html"])
-        self.assertNotIn("Exemple.", payload["back_html"])
+        self.assertIn(argument.idea, payload["back_html"])
+        self.assertNotIn(argument.developpement, payload["back_html"])
+        self.assertNotIn(argument.exemple, payload["back_html"])
+        self.assertNotIn(argument.consequence, payload["back_html"])
 
     def test_invalid_rating_rejected(self):
         presented = self._present()

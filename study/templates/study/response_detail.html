@@ -24,11 +24,34 @@
     {% endif %}
 
     <section class="card section-card">
-      <div class="spine-label">Arguments</div>
+      <div class="spine-label">Arguments développés</div>
       {% for arg in arguments %}
-        <div class="arg" style="margin-top:0.9rem;">
-          <div class="arg__idea">{{ arg.order }}. {{ arg.idea }}</div>
-        </div>
+        <article class="arg arg--full">
+          <h2 class="arg__idea">
+            <span class="arg__number">{{ arg.order }}</span>
+            <span>{{ arg.idea }}</span>
+          </h2>
+          <div class="arg__parts">
+            {% if arg.developpement %}
+              <div class="arg__part">
+                <div class="arg__part-label">Développement</div>
+                <p>{{ arg.developpement }}</p>
+              </div>
+            {% endif %}
+            {% if arg.exemple %}
+              <div class="arg__part">
+                <div class="arg__part-label">Exemple concret</div>
+                <p>{{ arg.exemple }}</p>
+              </div>
+            {% endif %}
+            {% if arg.consequence %}
+              <div class="arg__part">
+                <div class="arg__part-label">Conséquence</div>
+                <p>{{ arg.consequence }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </article>
       {% endfor %}
     </section>
 

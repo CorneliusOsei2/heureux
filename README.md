@@ -25,8 +25,10 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **À revoir** — a persistent list for difficult cards, with its own focused
   review pass.
 - **Sujets & réponses** — browse Tâche 3 by theme or topic family.
-- **Fiche** — a compact speaking spine: reformulation, position, three main
-  ideas, nuance, conclusion, equivalent prompts, and related expressions.
+- **Fiche complète** — the learning view includes the reformulation, position,
+  each argument's development, concrete example and consequence, then the
+  nuance, conclusion, equivalent prompts, and related expressions. Flashcard
+  practice deliberately keeps only each argument's main idea.
 - **Expressions & vocabulaire** — reusable chunks with an English cue and a
   verbatim example from the answer bank, grouped into accurate topical and
   functional categories, then divided into review lots of 15 cards.

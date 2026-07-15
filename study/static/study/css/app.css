@@ -771,7 +771,7 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
-.annotation-card--highlight .annotation-card__kind { color: var(--warning); }
+.annotation-card--highlight .annotation-card__kind { color: var(--success); }
 .annotation-card__head time {
   color: var(--text-faint);
   font-size: 0.7rem;
@@ -791,8 +791,8 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
   line-height: 1.5;
 }
 .annotation-card--highlight blockquote {
-  border-left-color: var(--warning);
-  background: var(--warning-soft);
+  border-left-color: var(--success);
+  background: var(--success-soft);
 }
 .annotation-card--highlight mark {
   background: transparent;
@@ -1330,6 +1330,52 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 .arg__parts { margin-top: 0.35rem; display: grid; gap: 0.3rem; }
 .arg__part { font-size: 0.93rem; color: var(--text-soft); }
 .arg__part b { color: var(--text); font-weight: 600; }
+.arg--full {
+  margin: 1rem 0 0;
+  padding: 1rem 1rem 1rem 1.1rem;
+  border-left-color: var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--surface-2);
+}
+.arg--full .arg__idea {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+.arg__number {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.arg--full .arg__parts {
+  gap: 0.8rem;
+  margin: 0.85rem 0 0 2.35rem;
+}
+.arg--full .arg__part {
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.arg__part-label {
+  margin-bottom: 0.15rem;
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.arg--full .arg__part p { margin: 0; }
 
 .example-box {
   background: var(--surface-2);
@@ -1759,12 +1805,12 @@ kbd {
 }
 .selection-translate__button--note:hover { background: var(--accent-soft); }
 .selection-translate__button--highlight {
-  border: 1px solid color-mix(in srgb, var(--warning) 50%, var(--border));
-  background: var(--warning-soft);
-  color: var(--warning);
+  border: 1px solid color-mix(in srgb, var(--success) 50%, var(--border));
+  background: var(--success-soft);
+  color: var(--success);
 }
 .selection-translate__button--highlight:hover {
-  border-color: var(--warning);
+  border-color: var(--success);
 }
 .selection-translate__button:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--primary) 28%, transparent);
@@ -1810,6 +1856,7 @@ kbd {
   transform: translate(-50%, -50%);
 }
 .translation-panel__header {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1844,9 +1891,11 @@ kbd {
 }
 .translation-panel__close:hover { color: var(--text); }
 .translation-panel__body {
+  flex: 1 1 auto;
   min-height: 0;
   padding: 0.8rem 0.85rem;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .translation-panel__source,
 .translation-panel__result {
@@ -1900,6 +1949,7 @@ kbd {
   line-height: 1.5;
 }
 .translation-panel__actions {
+  flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
   gap: 0.45rem;
@@ -1963,14 +2013,14 @@ kbd {
   margin: 0;
   padding: 0.04em 0.08em;
   border-radius: 3px;
-  background: #ffe67a;
+  background: #b8f2cb;
   color: inherit;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
 [data-theme="dark"] .user-highlight {
-  background: #735f16;
-  color: #fff7cf;
+  background: #23643f;
+  color: #effff4;
 }
 
 /* ---------- Footer ---------- */
@@ -2388,6 +2438,12 @@ kbd {
   .grid--tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .section-card,
   .card--pad { padding: 1.05rem; }
+  .arg--full {
+    padding: 0.85rem;
+  }
+  .arg--full .arg__parts {
+    margin-left: 0;
+  }
   .bars { height: 105px; }
   .search-form { flex-direction: column; }
   .search-form .btn { width: 100%; }
