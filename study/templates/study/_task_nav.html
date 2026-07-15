@@ -11,6 +11,8 @@
      href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>
   <a class="{% if request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}"
      href="{% url 'study:task_phrases' part.slug task.slug %}">Expressions</a>
+  <a class="{% if request.resolver_match.url_name == 'task_notes' %}is-active{% endif %}"
+     href="{% url 'study:task_notes' part.slug task.slug %}">Notes</a>
   <a class="{% if request.resolver_match.url_name == 'task_review_hub' %}is-active{% endif %}"
      href="{% url 'study:task_review_hub' part.slug task.slug %}">Réviser</a>
 </nav>

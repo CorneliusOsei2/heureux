@@ -14,6 +14,7 @@ from __future__ import annotations
 from datetime import timedelta
 
 from django.conf import settings as django_settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
@@ -260,6 +261,80 @@ class Phrase(models.Model):
         return f"{escaped[:start]}<mark>{escaped[start:end]}</mark>{escaped[end:]}"
 
 
+class AnnotationKind(models.TextChoices):
+    NOTE = "note", "Note"
+    HIGHLIGHT = "highlight", "Highlight"
+
+
+class Annotation(models.Model):
+    """A private note or persistent page highlight owned by one learner."""
+
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="study_annotations",
+    )
+    task = models.ForeignKey(
+        Task,
+        on_delete=models.CASCADE,
+        related_name="annotations",
+        null=True,
+        blank=True,
+    )
+    kind = models.CharField(max_length=12, choices=AnnotationKind.choices)
+    title = models.CharField(max_length=160, blank=True)
+    body = models.TextField(blank=True)
+    quote = models.TextField(blank=True)
+    source_path = models.CharField(max_length=500, blank=True)
+    source_title = models.CharField(max_length=300, blank=True)
+    start_offset = models.PositiveIntegerField(null=True, blank=True)
+    end_offset = models.PositiveIntegerField(null=True, blank=True)
+    prefix = models.CharField(max_length=160, blank=True)
+    suffix = models.CharField(max_length=160, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at", "-id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "user",
+                    "source_path",
+                    "start_offset",
+                    "end_offset",
+                ],
+                condition=Q(kind=AnnotationKind.HIGHLIGHT),
+                name="unique_user_page_highlight",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "task", "kind", "updated_at"]),
+            models.Index(fields=["user", "source_path", "kind"]),
+        ]
+
+    def clean(self):
+        super().clean()
+        if self.kind == AnnotationKind.NOTE:
+            if not self.body.strip() and not self.quote.strip():
+                raise ValidationError("A note must contain text or a selected excerpt.")
+            return
+        if self.kind == AnnotationKind.HIGHLIGHT:
+            if (
+                not self.quote
+                or self.start_offset is None
+                or self.end_offset is None
+                or self.end_offset <= self.start_offset
+            ):
+                raise ValidationError(
+                    "A highlight requires selected text and valid page offsets."
+                )
+
+    def __str__(self) -> str:
+        text = self.title or self.body or self.quote
+        return f"{self.get_kind_display()}: {text[:60]}"
+
+
 # --------------------------------------------------------------------------
 # Study layer: spaced repetition
 # --------------------------------------------------------------------------
@@ -404,6 +479,13 @@ class ReviewSession(models.Model):
         blank=True,
     )
     current_card = models.ForeignKey(
+        Card,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
+    previous_card = models.ForeignKey(
         Card,
         on_delete=models.SET_NULL,
         null=True,

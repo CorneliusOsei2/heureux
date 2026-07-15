@@ -7,6 +7,7 @@
   var selectionCopyLabel = document.querySelector("[data-copy-selection-label]");
   var translateButton = document.querySelector("[data-translate-selection]");
   var panel = document.querySelector("[data-translation-panel]");
+  var notePanel = document.querySelector("[data-note-panel]");
   if (
     !action ||
     !selectionCopyButton ||
@@ -102,7 +103,12 @@
   }
 
   function updateSelectionAction() {
-    if (!panel.classList.contains("hidden")) return;
+    if (
+      !panel.classList.contains("hidden") ||
+      (notePanel && !notePanel.classList.contains("hidden"))
+    ) {
+      return;
+    }
     var details = selectionDetails();
     if (!details) {
       hideAction();
@@ -237,7 +243,7 @@
       : Promise.reject(new Error("Copy failed"));
   }
 
-  [selectionCopyButton, translateButton].forEach(function (button) {
+  action.querySelectorAll("button").forEach(function (button) {
     button.addEventListener("pointerdown", function (event) {
       event.preventDefault();
     });

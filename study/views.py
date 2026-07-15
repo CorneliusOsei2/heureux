@@ -4,13 +4,14 @@ from __future__ import annotations
 
 import json
 import secrets
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit
 
 from django.contrib.auth import (
     get_user_model,
     login as auth_login,
     logout as auth_logout,
 )
+from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.utils import IntegrityError
 from django.db.models import Count, Q
@@ -30,8 +31,10 @@ from .accounts import (
     reserve_throttled_action,
 )
 from .cards import card_payload, scope_from_request, scope_label
-from .forms import RegistrationForm, UsernamePinForm
+from .forms import NoteForm, RegistrationForm, UsernamePinForm
 from .models import (
+    Annotation,
+    AnnotationKind,
     Card,
     CardState,
     CardType,
@@ -60,6 +63,8 @@ REVIEW_SCOPE_KEYS = (
     "response",
     "batch",
 )
+MAX_ANNOTATION_QUOTE_LENGTH = 5000
+MAX_ANNOTATION_BODY_LENGTH = 20000
 
 
 def _auth_redirect(request):
@@ -496,6 +501,281 @@ def stats_overview(request):
     return _grouped_overview(request, "stats")
 
 
+# ---------------------------------------------------------------------------
+# Notes and highlights
+# ---------------------------------------------------------------------------
+
+
+def _annotation_counts(user):
+    rows = (
+        Annotation.objects.filter(user=user)
+        .values("task_id", "kind")
+        .annotate(total=Count("id"))
+    )
+    counts = {}
+    for row in rows:
+        task_counts = counts.setdefault(
+            row["task_id"],
+            {"notes": 0, "highlights": 0, "total": 0},
+        )
+        key = (
+            "highlights"
+            if row["kind"] == AnnotationKind.HIGHLIGHT
+            else "notes"
+        )
+        task_counts[key] = row["total"]
+        task_counts["total"] += row["total"]
+    return counts
+
+
+@require_GET
+def notes_overview(request):
+    counts = _annotation_counts(request.user)
+    parts = []
+    for part in ExamPart.objects.prefetch_related("tasks"):
+        tasks = []
+        for task in part.tasks.all():
+            tasks.append(
+                {
+                    "task": task,
+                    "counts": counts.get(
+                        task.id,
+                        {"notes": 0, "highlights": 0, "total": 0},
+                    ),
+                }
+            )
+        parts.append({"part": part, "tasks": tasks})
+    general_counts = counts.get(
+        None,
+        {"notes": 0, "highlights": 0, "total": 0},
+    )
+    return render(
+        request,
+        "study/notes_overview.html",
+        {
+            "parts": parts,
+            "general_counts": general_counts,
+            "total_annotations": sum(
+                item["total"] for item in counts.values()
+            ),
+        },
+    )
+
+
+def _annotation_scope_url(task=None):
+    if task:
+        return reverse(
+            "study:task_notes",
+            args=[task.part.slug, task.slug],
+        )
+    return reverse("study:general_notes")
+
+
+def _notes_scope(request, task=None):
+    annotations = Annotation.objects.filter(user=request.user, task=task)
+    if request.method == "POST":
+        instance = Annotation(
+            user=request.user,
+            task=task,
+            kind=AnnotationKind.NOTE,
+        )
+        form = NoteForm(request.POST, instance=instance)
+        if form.is_valid():
+            note = form.save()
+            return redirect(_annotation_scope_url(task) + f"#note-{note.id}")
+    else:
+        form = NoteForm()
+    return render(
+        request,
+        "study/notes_list.html",
+        {
+            "part": task.part if task else None,
+            "task": task,
+            "scope_title": task.name if task else "Notes générales",
+            "notes": annotations.filter(kind=AnnotationKind.NOTE),
+            "highlights": annotations.filter(
+                kind=AnnotationKind.HIGHLIGHT
+            ),
+            "form": form,
+        },
+    )
+
+
+def task_notes(request, part_slug, task_slug):
+    return _notes_scope(request, _route_task(part_slug, task_slug))
+
+
+def general_notes(request):
+    return _notes_scope(request)
+
+
+def _safe_source_path(value):
+    value = (value or "").strip()
+    parsed = urlsplit(value)
+    if (
+        not value
+        or parsed.scheme
+        or parsed.netloc
+        or not parsed.path.startswith("/")
+    ):
+        raise ValueError("Invalid source path.")
+    path = parsed.path
+    if parsed.query:
+        path += "?" + parsed.query
+    return path[:500]
+
+
+def _annotation_task(value):
+    if not value:
+        return None
+    try:
+        task_id = int(value)
+    except (TypeError, ValueError) as error:
+        raise ValueError("Invalid task.") from error
+    return get_object_or_404(Task.objects.select_related("part"), pk=task_id)
+
+
+@require_GET
+def annotations_for_source(request):
+    try:
+        source_path = _safe_source_path(request.GET.get("source_path"))
+    except ValueError:
+        return HttpResponseBadRequest("Invalid source path.")
+    highlights = Annotation.objects.filter(
+        user=request.user,
+        kind=AnnotationKind.HIGHLIGHT,
+        source_path=source_path,
+    ).values(
+        "id",
+        "quote",
+        "start_offset",
+        "end_offset",
+        "prefix",
+        "suffix",
+    )
+    return JsonResponse({"highlights": list(highlights)})
+
+
+@require_POST
+def annotation_create(request):
+    kind = (request.POST.get("kind") or "").strip()
+    if kind not in AnnotationKind.values:
+        return HttpResponseBadRequest("Invalid annotation kind.")
+    quote = request.POST.get("quote") or ""
+    body = (request.POST.get("body") or "").strip()
+    if not quote.strip():
+        return JsonResponse(
+            {"error": "Sélectionnez du texte avant de continuer."},
+            status=400,
+        )
+    if len(quote) > MAX_ANNOTATION_QUOTE_LENGTH:
+        return JsonResponse(
+            {"error": "La sélection est trop longue."},
+            status=400,
+        )
+    if len(body) > MAX_ANNOTATION_BODY_LENGTH:
+        return JsonResponse(
+            {"error": "La note est trop longue."},
+            status=400,
+        )
+    try:
+        task = _annotation_task(request.POST.get("task_id"))
+        source_path = _safe_source_path(request.POST.get("source_path"))
+        start_offset = int(request.POST.get("start_offset", ""))
+        end_offset = int(request.POST.get("end_offset", ""))
+    except (TypeError, ValueError):
+        return HttpResponseBadRequest("Invalid annotation data.")
+    if start_offset < 0 or end_offset <= start_offset:
+        return HttpResponseBadRequest("Invalid annotation offsets.")
+
+    values = {
+        "task": task,
+        "quote": quote,
+        "source_title": (request.POST.get("source_title") or "")[:300],
+        "prefix": (request.POST.get("prefix") or "")[-160:],
+        "suffix": (request.POST.get("suffix") or "")[:160],
+        "body": body,
+    }
+    try:
+        if kind == AnnotationKind.HIGHLIGHT:
+            annotation, created = Annotation.objects.get_or_create(
+                user=request.user,
+                kind=kind,
+                source_path=source_path,
+                start_offset=start_offset,
+                end_offset=end_offset,
+                defaults=values,
+            )
+        else:
+            annotation = Annotation(
+                user=request.user,
+                kind=kind,
+                source_path=source_path,
+                start_offset=start_offset,
+                end_offset=end_offset,
+                **values,
+            )
+            annotation.full_clean()
+            annotation.save()
+            created = True
+    except ValidationError as error:
+        return JsonResponse(
+            {"error": " ".join(error.messages)},
+            status=400,
+        )
+    return JsonResponse(
+        {
+            "id": annotation.id,
+            "created": created,
+            "notes_url": _annotation_scope_url(task),
+        },
+        status=201 if created else 200,
+    )
+
+
+def _annotation_redirect(request, annotation):
+    candidate = request.POST.get("next")
+    if candidate and url_has_allowed_host_and_scheme(
+        candidate,
+        allowed_hosts={request.get_host()},
+        require_https=request.is_secure(),
+    ):
+        return candidate
+    return _annotation_scope_url(annotation.task)
+
+
+@require_POST
+def annotation_update(request, pk):
+    annotation = get_object_or_404(
+        Annotation,
+        pk=pk,
+        user=request.user,
+        kind=AnnotationKind.NOTE,
+    )
+    form = NoteForm(request.POST, instance=annotation)
+    if not form.is_valid():
+        return JsonResponse(
+            {"error": "Corrigez la note avant de l'enregistrer."},
+            status=400,
+        )
+    form.save()
+    return redirect(_annotation_redirect(request, annotation) + f"#note-{pk}")
+
+
+@require_POST
+def annotation_delete(request, pk):
+    annotation = get_object_or_404(
+        Annotation,
+        pk=pk,
+        user=request.user,
+    )
+    target = _annotation_redirect(request, annotation)
+    annotation.delete()
+    if request.headers.get("X-Requested-With") == "fetch":
+        return JsonResponse({"deleted": True})
+    return redirect(target)
+
+
 def part_detail(request, part_slug):
     part = get_object_or_404(ExamPart.objects.prefetch_related("tasks"), slug=part_slug)
     now = timezone.now()
@@ -603,6 +883,7 @@ def _save_review_session(
     clear_pass=False,
     rotate_token=False,
 ) -> str:
+    scope_changed = session.scope != scope
     same_revisit_pass = (
         session.scope == scope and scope.get("kind") == "revisit"
     )
@@ -614,6 +895,8 @@ def _save_review_session(
     )
     if clear_pass or not same_revisit_pass:
         session.revisit_seen_card_ids = []
+    if clear_pass or scope_changed:
+        session.previous_card = None
     session.scope = scope
     session.current_card = card
     if card is None:
@@ -624,6 +907,7 @@ def _save_review_session(
         update_fields=[
             "scope",
             "current_card",
+            "previous_card",
             "revisit_seen_card_ids",
             "presentation_token",
             "updated_at",
@@ -707,6 +991,7 @@ def _queue_state_locked(
             "done": True,
             "counts": counts,
             "revisit_count": counts["revisit_total"],
+            "can_previous": bool(session.previous_card_id),
         }
 
     presentation_token = _save_review_session(session, scope, card)
@@ -725,6 +1010,7 @@ def _queue_state_locked(
         "presentation_token": presentation_token,
         "counts": counts,
         "revisit_count": counts["revisit_total"],
+        "can_previous": bool(session.previous_card_id),
     }
 
 
@@ -758,6 +1044,7 @@ def _card_state_locked(
         "presentation_token": presentation_token,
         "counts": counts,
         "revisit_count": counts["revisit_total"],
+        "can_previous": bool(session.previous_card_id),
     }
 
 
@@ -824,6 +1111,41 @@ def review_next(request):
     return JsonResponse(state)
 
 
+@require_GET
+def review_previous(request):
+    scope = scope_from_request(request)
+    with transaction.atomic():
+        session = _locked_review_session(request.user)
+        if session.scope != scope or not session.previous_card_id:
+            return JsonResponse(
+                {"error": "Aucune carte précédente dans cette session."},
+                status=404,
+            )
+        card = get_object_or_404(
+            Card,
+            pk=session.previous_card_id,
+            user=request.user,
+        )
+        payload = card_payload(card)
+        front = render_to_string(
+            "study/partials/card_front.html",
+            payload,
+            request,
+        )
+        back = render_to_string(
+            "study/partials/card_back.html",
+            payload,
+            request,
+        )
+    return JsonResponse(
+        {
+            "card_id": card.id,
+            "front_html": front,
+            "back_html": back,
+        }
+    )
+
+
 @require_POST
 def review_answer(request):
     try:
@@ -876,11 +1198,13 @@ def review_answer(request):
             if card.id not in seen:
                 seen.append(card.id)
             session.revisit_seen_card_ids = seen
+        session.previous_card = card
         session.current_card = None
         session.presentation_token = ""
         session.save(
             update_fields=[
                 "current_card",
+                "previous_card",
                 "revisit_seen_card_ids",
                 "presentation_token",
                 "updated_at",
@@ -914,6 +1238,8 @@ def review_undo(request):
             state["can_undo"] = False
             state["undone"] = False
             return JsonResponse(state)
+        if session.previous_card_id == card.id:
+            session.previous_card = None
         state = _card_state_locked(card, scope, request, session)
     state["can_undo"] = ReviewLog.objects.filter(user=request.user).exists()
     state["undone"] = True

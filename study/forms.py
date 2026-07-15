@@ -5,6 +5,8 @@ import re
 from django import forms
 from django.contrib.auth import get_user_model
 
+from .models import Annotation
+
 USERNAME_RE = re.compile(r"^[a-z0-9][a-z0-9._-]{2,29}$")
 PIN_RE = re.compile(r"^\d{6}$")
 
@@ -91,4 +93,36 @@ class RegistrationForm(UsernamePinForm):
                 "pin_confirm",
                 "Le code PIN doit contenir exactement 6 chiffres.",
             )
+        return cleaned
+
+
+class NoteForm(forms.ModelForm):
+    class Meta:
+        model = Annotation
+        fields = ("title", "body")
+        labels = {
+            "title": "Titre (facultatif)",
+            "body": "Votre note",
+        }
+        widgets = {
+            "title": forms.TextInput(
+                attrs={"placeholder": "Ex. Connecteurs pour nuancer"}
+            ),
+            "body": forms.Textarea(
+                attrs={
+                    "rows": 5,
+                    "placeholder": "Écrivez ce que vous voulez retenir…",
+                }
+            ),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["body"].required = False
+
+    def clean(self):
+        cleaned = super().clean()
+        body = (cleaned.get("body") or "").strip()
+        if not body and not self.instance.quote.strip():
+            self.add_error("body", "Écrivez une note avant de l'enregistrer.")
         return cleaned

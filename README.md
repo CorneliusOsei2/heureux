@@ -15,12 +15,13 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expression orale → Tâche 3** — the current corpus has one clear home. Its
   subjects, argued responses, expression bank, review queue, revisit list,
   search, and progress are all scoped to this task.
-- **Réviser, Expressions, Stats** — each top-level tab first follows the same
+- **Réviser, Expressions, Notes, Stats** — each top-level tab first follows the same
   Expression orale/écrite → Tâches hierarchy as Accueil, then opens the chosen
   task's focused workspace.
 - **Sessions** — review responses, expressions, or the revisit list without
   distractions. Reveal with `Space`, then choose `1` (Revoir) or `2` (Correct).
-  Unfinished sessions reopen on the exact card where you stopped.
+  Unfinished sessions reopen on the exact card where you stopped, and the
+  immediately preceding card remains available in a read-only view.
 - **À revoir** — a persistent list for difficult cards, with its own focused
   review pass.
 - **Sujets & réponses** — browse Tâche 3 by theme or topic family.
@@ -29,9 +30,11 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expressions & vocabulaire** — reusable chunks with an English cue and a
   verbatim example from the answer bank, grouped into accurate topical and
   functional categories, then divided into review lots of 15 cards.
-- **Highlight tools** — select French text to copy it or translate it inline
-  with the browser's local English model, with an explicit Google Translate
-  fallback when local translation is unavailable.
+- **Private notes & highlights** — notes follow the same Expression
+  orale/écrite → Tâche hierarchy, with a dedicated highlights subsection.
+  Select text anywhere to copy it, translate it, save it to Notes, or highlight
+  it persistently. Translation uses the browser's local English model with an
+  explicit Google Translate fallback when local translation is unavailable.
 - **Practice without a daily cap** — every new card and due review stays
   available; themes and expression categories provide optional 15-card lots
   with not-started, in-progress, and completed states plus next-lot navigation.

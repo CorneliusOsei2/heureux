@@ -14,7 +14,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=27">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=28">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,7 +37,10 @@
   <meta name="twitter:description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
   <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
 </head>
-<body>
+<body
+  data-annotation-task-id="{% if annotation_task %}{{ annotation_task.id }}{% endif %}"
+  data-annotation-source-url="{% url 'study:annotations_for_source' %}"
+  data-annotation-create-url="{% url 'study:annotation_create' %}">
   <a class="skip-link" href="#main">Aller au contenu</a>
   <header class="nav">
     <div class="nav__inner">
@@ -55,6 +58,7 @@
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
         <a href="{% url 'study:expressions_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'expressions_overview' or request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}">Expressions</a>
+        <a href="{% url 'study:notes_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'notes_overview' or request.resolver_match.url_name == 'general_notes' or request.resolver_match.url_name == 'task_notes' %}is-active{% endif %}">Notes</a>
         <a href="{% url 'study:stats_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'stats_overview' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Stats</a>
         <details class="nav__more {% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
           <summary aria-label="Plus d'options" title="Plus d'options">
@@ -124,6 +128,20 @@
       </svg>
       <span class="selection-translate__label">Translate to English</span>
     </button>
+    <button class="selection-translate__button selection-translate__button--note" type="button" aria-label="Add selected text to Notes" aria-controls="selection-note-panel" aria-haspopup="dialog" data-note-selection>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 3h9l3 3v15H6z"></path>
+        <path d="M15 3v4h4M9 13h6M12 10v6"></path>
+      </svg>
+      <span class="selection-translate__label">Add to Notes</span>
+    </button>
+    <button class="selection-translate__button selection-translate__button--highlight" type="button" aria-label="Highlight selected text" data-highlight-selection>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m14 4 6 6-9 9H5v-6z"></path>
+        <path d="m12 6 6 6M4 21h16"></path>
+      </svg>
+      <span class="selection-translate__label">Highlight</span>
+    </button>
   </div>
 
   <section class="translation-panel hidden" id="translation-panel" role="dialog" aria-labelledby="translation-panel-title" tabindex="-1" data-translation-panel>
@@ -154,8 +172,37 @@
     </footer>
   </section>
 
-  <script src="{% static 'study/js/app.js' %}?v=22"></script>
-  <script src="{% static 'study/js/translate.js' %}?v=5"></script>
+  <section class="selection-note-panel hidden" id="selection-note-panel" role="dialog" aria-labelledby="selection-note-title" tabindex="-1" data-note-panel>
+    <header class="translation-panel__header">
+      <div>
+        <span class="translation-panel__eyebrow">Notes personnelles</span>
+        <h2 id="selection-note-title">Ajouter à mes notes</h2>
+      </div>
+      <button class="translation-panel__close" type="button" aria-label="Close note" data-note-close>×</button>
+    </header>
+    <div class="translation-panel__body">
+      <div class="translation-panel__source">
+        <span>Texte sélectionné</span>
+        <p data-note-source></p>
+      </div>
+      <label class="selection-note-panel__field">
+        <span>Votre note (facultatif)</span>
+        <textarea rows="4" maxlength="20000" placeholder="Ajoutez une explication, un rappel ou une idée…" data-note-body></textarea>
+      </label>
+      <p class="selection-note-panel__status" role="status" aria-live="polite" data-note-status></p>
+    </div>
+    <footer class="translation-panel__actions">
+      <a class="btn hidden" href="{% url 'study:notes_overview' %}" data-note-view>Voir mes notes</a>
+      <button class="btn" type="button" data-note-cancel>Annuler</button>
+      <button class="btn btn--primary" type="button" data-note-save>Enregistrer</button>
+    </footer>
+  </section>
+
+  <div class="annotation-toast hidden" role="status" aria-live="polite" data-annotation-toast></div>
+
+  <script src="{% static 'study/js/app.js' %}?v=24"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=6"></script>
+  <script src="{% static 'study/js/annotations.js' %}?v=2"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

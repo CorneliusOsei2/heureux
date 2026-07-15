@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Notes · Heureux{% endblock %}
+
+{% block content %}
+<div class="grouped-overview notes-overview">
+  <header class="grouped-overview__head">
+    <div>
+      <p class="eyebrow">Votre espace personnel</p>
+      <h1>Notes &amp; surlignages</h1>
+      <p>Retrouvez ce que vous avez écrit ou surligné, organisé par expression orale, expression écrite et tâche.</p>
+    </div>
+    <div class="grouped-overview__metrics" aria-label="Résumé">
+      <span><b>{{ total_annotations }}</b> élément{{ total_annotations|pluralize }}</span>
+    </div>
+  </header>
+
+  <a class="notes-general card" href="{% url 'study:general_notes' %}">
+    <span class="notes-general__icon" aria-hidden="true">✎</span>
+    <span>
+      <small>Hors d'une tâche</small>
+      <strong>Notes générales</strong>
+      <span>{{ general_counts.notes }} note{{ general_counts.notes|pluralize }} · {{ general_counts.highlights }} surlignage{{ general_counts.highlights|pluralize }}</span>
+    </span>
+    <span aria-hidden="true">→</span>
+  </a>
+
+  <div class="grouped-overview__section-head">
+    <div>
+      <h2>Choisir une tâche</h2>
+      <p>Chaque espace réunit ses notes et une section dédiée au contenu surligné.</p>
+    </div>
+  </div>
+
+  {% for pitem in parts %}
+    <section class="exam-part exam-part--grouped" style="--deck-color: {{ pitem.part.color }};">
+      <div class="exam-part__head">
+        <span class="exam-part__emoji" style="--deck-color: {{ pitem.part.color }};">{{ pitem.part.emoji }}</span>
+        <div class="exam-part__title">
+          <h3>{{ pitem.part.name }}</h3>
+          <span class="exam-part__tag">{{ pitem.part.short_name }}</span>
+        </div>
+      </div>
+      <div class="grid grid--decks">
+        {% for item in pitem.tasks %}
+          <a class="deck card grouped-task-card notes-task-card" style="--deck-color: {{ item.task.color }};" href="{% url 'study:task_notes' pitem.part.slug item.task.slug %}">
+            <div class="deck__body">
+              <div class="deck__title">
+                <span class="deck__icon">{{ item.task.emoji }}</span>
+                <span>{{ item.task.name }}</span>
+                {% if item.counts.total %}<span class="deck__due pill">{{ item.counts.total }}</span>{% endif %}
+              </div>
+              <div class="deck__meta">{{ item.counts.notes }} note{{ item.counts.notes|pluralize }} · {{ item.counts.highlights }} surlignage{{ item.counts.highlights|pluralize }}</div>
+              <span class="grouped-task-card__action">Ouvrir mes notes <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>
+{% endblock %}

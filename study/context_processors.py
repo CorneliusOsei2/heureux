@@ -7,6 +7,7 @@ from .queue import queue_counts, scoped_cards
 def _empty_globals():
     return {
         "app_name": "Heureux",
+        "annotation_task": None,
         "content_task": None,
         "nav_due_total": 0,
         "nav_counts": {},
@@ -84,12 +85,15 @@ def study_globals(request):
     ):
         return _empty_globals()
     content_task = _request_task(request)
+    annotation_task = content_task
     if content_task is False:
         content_task = None
+        annotation_task = None
     elif isinstance(content_task, int):
         content_task = Task.objects.select_related("part").filter(
             pk=content_task
         ).first()
+        annotation_task = content_task
     elif (
         content_task is None
         and request.resolver_match
@@ -108,6 +112,7 @@ def study_globals(request):
     counts = queue_counts(scope, user=request.user)
     return {
         "app_name": "Heureux",
+        "annotation_task": annotation_task,
         "content_task": content_task,
         "nav_due_total": counts["due_reviews"] + counts["new_available"],
         "nav_counts": counts,

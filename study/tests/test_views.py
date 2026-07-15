@@ -64,8 +64,9 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v28"', body)
+        self.assertIn('var CACHE = "heureux-v31"', body)
         self.assertIn("study/js/translate.js", body)
+        self.assertIn("study/js/annotations.js", body)
 
     def test_offline_page(self):
         self.assertEqual(self.client.get("/offline/").status_code, 200)
@@ -82,6 +83,8 @@ class SmokeTests(TestCase):
             "study:dashboard",
             "study:review_overview",
             "study:expressions_overview",
+            "study:notes_overview",
+            "study:general_notes",
             "study:stats_overview",
             "study:review",
             "study:browse",
@@ -100,8 +103,12 @@ class SmokeTests(TestCase):
 
         self.assertContains(response, "Translate to English")
         self.assertContains(response, "data-copy-selection")
+        self.assertContains(response, "data-note-selection")
+        self.assertContains(response, "data-highlight-selection")
         self.assertContains(response, 'id="translation-panel"')
+        self.assertContains(response, 'id="selection-note-panel"')
         self.assertContains(response, "study/js/translate.js")
+        self.assertContains(response, "study/js/annotations.js")
         self.assertContains(response, 'rel="noopener noreferrer"')
 
     def test_hierarchy_pages_render(self):
@@ -196,9 +203,9 @@ class SmokeTests(TestCase):
         self.assertContains(
             response,
             'class="nav__primary-link',
-            count=4,
+            count=5,
         )
-        for label in ("Accueil", "Réviser", "Expressions", "Stats"):
+        for label in ("Accueil", "Réviser", "Expressions", "Notes", "Stats"):
             self.assertContains(response, f">{label}</a>")
         self.assertContains(response, 'class="footer__inner"')
 
@@ -595,6 +602,7 @@ class ReviewFlowTests(TestCase):
         self.assertNotContains(r, "Difficile")
         self.assertNotContains(r, "Facile")
         self.assertNotContains(r, "Suspendre")
+        self.assertContains(r, 'id="previous-card"')
 
     def test_revisit_marks_card_and_uses_again_schedule(self):
         presented = self._present()
@@ -752,6 +760,56 @@ class ReviewFlowTests(TestCase):
             repeated["presentation_token"],
             answered["presentation_token"],
         )
+
+    def test_previous_card_is_read_only_and_preserves_current_card(self):
+        second_card = factories.make_spine_card()
+        presented = self._present()
+        unavailable = self.client.get(reverse("study:review_previous"))
+        self.assertEqual(unavailable.status_code, 404)
+
+        answered = self.client.post(
+            reverse("study:review_answer"),
+            {
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        ).json()
+        self.assertEqual(answered["card_id"], second_card.id)
+        self.assertTrue(answered["can_previous"])
+
+        session = ReviewSession.load(self.user)
+        current_token = session.presentation_token
+        previous = self.client.get(reverse("study:review_previous"))
+        self.assertEqual(previous.status_code, 200)
+        self.assertEqual(previous.json()["card_id"], self.card.id)
+        self.assertIn(self.card.response.prompt, previous.json()["front_html"])
+
+        session.refresh_from_db()
+        self.assertEqual(session.current_card_id, second_card.id)
+        self.assertEqual(session.presentation_token, current_token)
+        self.assertEqual(ReviewLog.objects.count(), 1)
+
+    def test_undo_clears_previous_card_pointer(self):
+        factories.make_spine_card()
+        presented = self._present()
+        self.client.post(
+            reverse("study:review_answer"),
+            {
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        )
+        self.assertEqual(
+            ReviewSession.load(self.user).previous_card_id,
+            self.card.id,
+        )
+
+        undone = self.client.post(reverse("study:review_undo"))
+        self.assertTrue(undone.json()["undone"])
+        self.assertFalse(undone.json()["can_previous"])
+        self.assertIsNone(ReviewSession.load(self.user).previous_card_id)
 
     def test_revisit_pass_visits_each_marked_card_once(self):
         now = timezone.now()

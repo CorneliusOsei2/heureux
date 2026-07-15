@@ -5,6 +5,7 @@
 <div id="review-app"
      class="review"
      data-next-url="{% url 'study:review_next' %}"
+     data-previous-url="{% url 'study:review_previous' %}"
      data-answer-url="{% url 'study:review_answer' %}"
      data-csrf="{{ csrf_token }}"
      data-scope='{{ scope_json }}'>
@@ -22,6 +23,11 @@
     </div>
   </div>
   <div class="review__bar"><span id="progress"></span></div>
+  <div class="review__history">
+    <button class="linkbtn" id="previous-card" type="button" disabled>← Carte précédente</button>
+    <span class="review__history-label hidden" id="previous-card-label">Carte précédente · consultation uniquement</span>
+    <button class="linkbtn hidden" id="current-card" type="button">Retour à la carte actuelle →</button>
+  </div>
 
   <div id="card-zone">
     <article class="flashcard">

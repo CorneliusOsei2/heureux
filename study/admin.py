@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import (
+    Annotation,
     Argument,
     Card,
     Family,
@@ -109,3 +110,4 @@ class SettingsAdmin(admin.ModelAdmin):
 
 admin.site.register(ReviewSession)
 admin.site.register(LoginThrottle)
+admin.site.register(Annotation)

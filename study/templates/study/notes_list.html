@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}{{ scope_title }} · Notes · Heureux{% endblock %}
+
+{% block content %}
+{% include "study/_task_nav.html" %}
+<header class="task-hero notes-hero">
+  <div>
+    <p class="eyebrow"><a href="{% url 'study:notes_overview' %}">Notes</a>{% if part %} · {{ part.short_name }}{% endif %}</p>
+    <h1>{{ scope_title }}</h1>
+    <p>Vos idées personnelles et les passages que vous avez choisis de surligner.</p>
+  </div>
+  <div class="task-hero__numbers" aria-label="Contenu des notes">
+    <span><b>{{ notes|length }}</b> note{{ notes|length|pluralize }}</span>
+    <span><b>{{ highlights|length }}</b> surlignage{{ highlights|length|pluralize }}</span>
+  </div>
+</header>
+
+<details class="card notes-compose" {% if form.errors %}open{% endif %}>
+  <summary><span aria-hidden="true">＋</span> Nouvelle note</summary>
+  <form method="post">
+    {% csrf_token %}
+    <div class="notes-form-field">
+      <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+      {{ form.title }}
+      {% for error in form.title.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <div class="notes-form-field">
+      <label for="{{ form.body.id_for_label }}">{{ form.body.label }}</label>
+      {{ form.body }}
+      {% for error in form.body.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+    </div>
+    <button class="btn btn--primary" type="submit">Enregistrer la note</button>
+  </form>
+</details>
+
+<section class="annotations-section" aria-labelledby="notes-heading">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Vos idées</p>
+      <h2 id="notes-heading">Notes</h2>
+    </div>
+    <span class="pill">{{ notes|length }}</span>
+  </div>
+  <div class="annotations-grid">
+    {% for note in notes %}
+      <article class="card annotation-card annotation-card--note" id="note-{{ note.id }}">
+        <header class="annotation-card__head">
+          <span class="annotation-card__kind">Note</span>
+          <time datetime="{{ note.updated_at|date:'c' }}">{{ note.updated_at|date:"j M Y · H:i" }}</time>
+        </header>
+        {% if note.title %}<h3>{{ note.title }}</h3>{% endif %}
+        {% if note.quote %}<blockquote>{{ note.quote }}</blockquote>{% endif %}
+        {% if note.body %}<p class="annotation-card__body">{{ note.body }}</p>{% endif %}
+        {% if note.source_path %}
+          <a class="annotation-card__source" href="{{ note.source_path }}">↗ {{ note.source_title|default:"Voir la source" }}</a>
+        {% endif %}
+        <footer class="annotation-card__actions">
+          <details>
+            <summary>Modifier</summary>
+            <form method="post" action="{% url 'study:annotation_update' note.id %}">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <label>
+                <span>Titre</span>
+                <input type="text" name="title" maxlength="160" value="{{ note.title }}">
+              </label>
+              <label>
+                <span>Note</span>
+                <textarea name="body" rows="4">{{ note.body }}</textarea>
+              </label>
+              <button class="btn btn--primary btn--sm" type="submit">Enregistrer</button>
+            </form>
+          </details>
+          <form method="post" action="{% url 'study:annotation_delete' note.id %}" onsubmit="return confirm('Supprimer cette note ?');">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
+          </form>
+        </footer>
+      </article>
+    {% empty %}
+      <div class="empty annotation-empty">
+        <p>Aucune note ici. Écrivez-en une ou sélectionnez du texte ailleurs dans l'application.</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="annotations-section" aria-labelledby="highlights-heading">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Passages retenus</p>
+      <h2 id="highlights-heading">Surlignages</h2>
+    </div>
+    <span class="pill">{{ highlights|length }}</span>
+  </div>
+  <div class="annotations-grid">
+    {% for highlight in highlights %}
+      <article class="card annotation-card annotation-card--highlight" id="highlight-{{ highlight.id }}">
+        <header class="annotation-card__head">
+          <span class="annotation-card__kind">Surlignage</span>
+          <time datetime="{{ highlight.updated_at|date:'c' }}">{{ highlight.updated_at|date:"j M Y · H:i" }}</time>
+        </header>
+        <blockquote><mark>{{ highlight.quote }}</mark></blockquote>
+        {% if highlight.source_path %}
+          <a class="annotation-card__source" href="{{ highlight.source_path }}">↗ {{ highlight.source_title|default:"Voir la source" }}</a>
+        {% endif %}
+        <footer class="annotation-card__actions">
+          <form method="post" action="{% url 'study:annotation_delete' highlight.id %}" onsubmit="return confirm('Supprimer ce surlignage ?');">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
+          </form>
+        </footer>
+      </article>
+    {% empty %}
+      <div class="empty annotation-empty">
+        <p>Aucun surlignage ici. Sélectionnez un passage, puis choisissez l'icône de surlignage.</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

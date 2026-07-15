@@ -144,6 +144,7 @@
   if (!app) return;
 
   var nextUrl = app.dataset.nextUrl;
+  var previousUrl = app.dataset.previousUrl;
   var answerUrl = app.dataset.answerUrl;
   var csrf = app.dataset.csrf;
   var scope = {};
@@ -158,6 +159,9 @@
   var doneZone = document.getElementById("done-zone");
   var progressEl = document.getElementById("progress");
   var summaryEl = document.getElementById("session-summary");
+  var previousButton = document.getElementById("previous-card");
+  var currentButton = document.getElementById("current-card");
+  var previousLabel = document.getElementById("previous-card-label");
   var counters = {
     new: document.getElementById("c-new"),
     learn: document.getElementById("c-learn"),
@@ -173,6 +177,9 @@
   var revisited = 0;
   var sumElapsed = 0;
   var busy = false;
+  var currentData = null;
+  var currentView = null;
+  var viewingPrevious = false;
 
   function params(extra) {
     var p = new URLSearchParams();
@@ -215,6 +222,9 @@
     doneZone.classList.remove("hidden");
     currentId = null;
     presentationToken = "";
+    currentData = null;
+    viewingPrevious = false;
+    if (previousButton) previousButton.disabled = true;
     if (summaryEl) {
       if (reviewed === 0) {
         summaryEl.textContent = "Aucune carte révisée dans cette session.";
@@ -233,6 +243,7 @@
   }
 
   function renderCard(data) {
+    currentData = data;
     currentId = data.card_id;
     presentationToken = data.presentation_token;
     revealed = false;
@@ -243,6 +254,11 @@
     gradesEl.classList.add("hidden");
     updateCounters(data.counts);
     kbdHint.innerHTML = "Appuyez sur <kbd>Espace</kbd> pour révéler la réponse";
+    if (previousButton) previousButton.disabled = !data.can_previous;
+    if (previousButton) previousButton.classList.remove("hidden");
+    if (currentButton) currentButton.classList.add("hidden");
+    if (previousLabel) previousLabel.classList.add("hidden");
+    viewingPrevious = false;
     startTime = Date.now();
   }
 
@@ -254,7 +270,7 @@
   }
 
   function reveal() {
-    if (revealed) return;
+    if (revealed || viewingPrevious) return;
     revealed = true;
     backEl.classList.remove("hidden");
     revealBtn.classList.add("hidden");
@@ -264,7 +280,7 @@
   }
 
   function grade(action) {
-    if (!revealed || busy || currentId === null) return;
+    if (!revealed || viewingPrevious || busy || currentId === null) return;
     busy = true;
     var elapsed = Date.now() - startTime;
     var body = params({
@@ -307,21 +323,83 @@
       });
   }
 
+  function viewPrevious() {
+    if (
+      busy ||
+      viewingPrevious ||
+      !previousUrl ||
+      !currentData ||
+      previousButton.disabled
+    ) {
+      return;
+    }
+    busy = true;
+    fetch(previousUrl + "?" + params().toString(), {
+      headers: { "X-Requested-With": "fetch" }
+    })
+      .then(readJson)
+      .then(function (data) {
+        currentView = {
+          revealed: revealed,
+          startTime: startTime
+        };
+        viewingPrevious = true;
+        frontEl.innerHTML = data.front_html;
+        backEl.innerHTML = data.back_html;
+        backEl.classList.remove("hidden");
+        revealBtn.classList.add("hidden");
+        gradesEl.classList.add("hidden");
+        previousButton.classList.add("hidden");
+        currentButton.classList.remove("hidden");
+        previousLabel.classList.remove("hidden");
+        kbdHint.textContent = "Consultation uniquement · votre carte actuelle est conservée.";
+        busy = false;
+      })
+      .catch(function (error) {
+        busy = false;
+        kbdHint.textContent = error.message;
+      });
+  }
+
+  function returnToCurrent() {
+    if (!viewingPrevious || !currentData || !currentView) return;
+    frontEl.innerHTML = currentData.front_html;
+    backEl.innerHTML = currentData.back_html;
+    revealed = currentView.revealed;
+    startTime = currentView.startTime;
+    backEl.classList.toggle("hidden", !revealed);
+    revealBtn.classList.toggle("hidden", revealed);
+    gradesEl.classList.toggle("hidden", !revealed);
+    previousButton.classList.remove("hidden");
+    currentButton.classList.add("hidden");
+    previousLabel.classList.add("hidden");
+    kbdHint.innerHTML = revealed
+      ? "<kbd>1</kbd> Revoir &nbsp; <kbd>2</kbd> Correct"
+      : "Appuyez sur <kbd>Espace</kbd> pour révéler la réponse";
+    viewingPrevious = false;
+    currentView = null;
+  }
+
   revealBtn.addEventListener("click", reveal);
   gradesEl.querySelectorAll(".grade").forEach(function (btn) {
     btn.addEventListener("click", function () {
       grade(btn.dataset.action);
     });
   });
+  if (previousButton) previousButton.addEventListener("click", viewPrevious);
+  if (currentButton) currentButton.addEventListener("click", returnToCurrent);
 
   document.addEventListener("keydown", function (e) {
     if (
       e.target &&
       e.target.closest &&
       e.target.closest(
-        "input, textarea, select, button, a, [contenteditable='true'], [data-translation-panel]"
+        "input, textarea, select, button, a, [contenteditable='true'], [data-translation-panel], [data-note-panel]"
       )
     ) {
+      return;
+    }
+    if (viewingPrevious) {
       return;
     }
     if (!revealed && (e.code === "Space" || e.code === "Enter")) {
