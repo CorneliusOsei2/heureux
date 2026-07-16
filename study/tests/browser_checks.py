@@ -16,6 +16,8 @@ from study.models import (
     CardType,
     PhraseCategory,
     Rating,
+    ReviewLog,
+    ReviewSession,
 )
 
 from . import factories
@@ -153,6 +155,87 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             highlights.values("source_key").distinct().count(),
             2,
         )
+
+    def test_mobile_review_recovers_a_rotated_presentation_token(self):
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:review")
+            + "?kind=spine&reset=1"
+        )
+        prompt = self.page.locator("#card-front .prompt-text")
+        prompt.wait_for()
+        first_prompt = prompt.text_content()
+        self.page.locator("#reveal").click()
+
+        session = ReviewSession.load(self.user)
+        active_card = session.current_card
+        session.presentation_token = "replacement-token"
+        session.save(update_fields=["presentation_token"])
+
+        self.page.locator('[data-action="revisit"]').click()
+        self.page.wait_for_function(
+            """
+            previous => {
+              const current = document.querySelector("#card-front .prompt-text");
+              return current && current.textContent !== previous;
+            }
+            """,
+            arg=first_prompt,
+        )
+
+        active_card.refresh_from_db()
+        self.assertTrue(active_card.needs_revisit)
+        self.assertEqual(
+            ReviewLog.objects.filter(card=active_card).count(),
+            1,
+        )
+
+    def test_mobile_highlights_use_two_source_groups(self):
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Passage retenu dans une réponse.",
+            source_path=reverse(
+                "study:response_detail",
+                args=[self.first.response_id],
+            ),
+            source_key="response:culture:p1:back",
+            start_offset=1,
+            end_offset=33,
+        )
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Passage retenu dans une expression.",
+            source_path=reverse("study:review") + "?kind=phrase",
+            source_key="phrase:expr-1:phrase_production:back",
+            start_offset=1,
+            end_offset=35,
+        )
+
+        self.page.goto(
+            self.live_server_url
+            + reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+
+        response_group = self.page.locator(
+            '[aria-labelledby="highlights-responses-heading"]'
+        )
+        expression_group = self.page.locator(
+            '[aria-labelledby="highlights-expressions-heading"]'
+        )
+        response_group.get_by_text(
+            "Passage retenu dans une réponse."
+        ).wait_for()
+        expression_group.get_by_text(
+            "Passage retenu dans une expression."
+        ).wait_for()
+        self.assert_no_horizontal_overflow()
 
     def test_mobile_annotation_search_study_and_weak_drill(self):
         Annotation.objects.create(

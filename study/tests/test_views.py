@@ -65,7 +65,7 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v37"', body)
+        self.assertIn('var CACHE = "heureux-v38"', body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
         self.assertIn("SKIP_WAITING", body)
@@ -296,6 +296,14 @@ class TaskOrganizationTests(TestCase):
         self.assertEqual(other.context["result_count"], 0)
 
     def test_task_progress_and_revisit_include_phrase_cards(self):
+        local_phrase = factories.make_phrase(tier="response")
+        local_phrase.source_prompts.add(
+            self.response_card.response.prompts.first()
+        )
+        local_card = factories.make_phrase_card(
+            phrase=local_phrase,
+            user=self.user,
+        )
         srs.review(self.phrase_card, Rating.GOOD)
         srs.review(self.other_phrase_card, Rating.GOOD)
         self.phrase_card.needs_revisit = True
@@ -308,6 +316,11 @@ class TaskOrganizationTests(TestCase):
         self.other_phrase_card.save(
             update_fields=["needs_revisit", "revisit_added_at"]
         )
+        local_card.needs_revisit = True
+        local_card.revisit_added_at = timezone.now()
+        local_card.save(
+            update_fields=["needs_revisit", "revisit_added_at"]
+        )
 
         stats_response = self.client.get(
             self._task_url("study:task_stats")
@@ -315,10 +328,23 @@ class TaskOrganizationTests(TestCase):
         revisit_response = self.client.get(
             self._task_url("study:task_revisit_list")
         )
+        dashboard_response = self.client.get(reverse("study:dashboard"))
+        review_hub_response = self.client.get(
+            self._task_url("study:task_review_hub")
+        )
+        task_summary = next(
+            task
+            for part in dashboard_response.context["parts"]
+            for task in part["tasks"]
+            if task["task"] == self.task
+        )
         self.assertEqual(stats_response.context["total_reviews"], 1)
-        self.assertEqual(revisit_response.context["revisit_count"], 1)
+        self.assertEqual(revisit_response.context["revisit_count"], 2)
+        self.assertEqual(task_summary["revisit_count"], 2)
+        self.assertEqual(review_hub_response.context["revisit_count"], 2)
         self.assertContains(revisit_response, "Expressions &amp; vocabulaire")
         self.assertContains(revisit_response, self.phrase.expression)
+        self.assertContains(revisit_response, local_phrase.expression)
         self.assertNotContains(
             revisit_response,
             self.other_phrase.expression,
@@ -477,7 +503,7 @@ class CategoryBatchViewsTests(TestCase):
             card for pair in self.phrase_pairs for card in pair
         ]
 
-    def test_expression_category_displays_fifteen_card_lots(self):
+    def test_expression_category_displays_fifteen_expression_lots(self):
         response = self.client.get(
             reverse("study:phrases"),
             {"category": self.category.slug},
@@ -499,6 +525,33 @@ class CategoryBatchViewsTests(TestCase):
         self.assertContains(response, "Lots de 15 expressions maximum")
         self.assertContains(response, "Lot 02")
         self.assertContains(response, "batch=2")
+
+    def test_shared_category_does_not_mix_in_response_vocabulary(self):
+        local_phrase = factories.make_phrase(
+            category=self.category,
+            tier="response",
+        )
+        local_phrase.english_cue = "response-only-vocabulary"
+        local_phrase.save(update_fields=["english_cue"])
+        factories.make_phrase_card(
+            phrase=local_phrase,
+            user=self.user,
+        )
+
+        response = self.client.get(
+            reverse("study:phrases"),
+            {"category": self.category.slug},
+        )
+
+        self.assertEqual(response.context["phrase_count"], 16)
+        self.assertEqual(
+            [
+                batch["phrase_count"]
+                for batch in response.context["review_batches"]
+            ],
+            [15, 1],
+        )
+        self.assertNotContains(response, "response-only-vocabulary")
 
     def test_category_batch_review_selects_only_that_lot(self):
         params = {
@@ -841,6 +894,45 @@ class ReviewFlowTests(TestCase):
         second = self.client.post(reverse("study:review_answer"), payload)
         self.assertEqual(first.status_code, 200)
         self.assertEqual(second.status_code, 409)
+        self.assertEqual(second.json()["code"], "stale_presentation")
+        self.assertEqual(ReviewLog.objects.count(), 1)
+
+    def test_stale_token_can_recover_the_same_active_card(self):
+        presented = self._present()
+        session = ReviewSession.load(self.user)
+        session.presentation_token = "replacement-token"
+        session.save(update_fields=["presentation_token"])
+
+        response = self.client.post(
+            reverse("study:review_answer"),
+            {
+                "card_id": self.card.id,
+                "action": "revisit",
+                "presentation_token": presented["presentation_token"],
+            },
+        )
+
+        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.json()["code"], "stale_presentation")
+        self.assertEqual(response.json()["current_card_id"], self.card.id)
+        self.assertEqual(
+            response.json()["presentation_token"],
+            "replacement-token",
+        )
+        self.assertEqual(ReviewLog.objects.count(), 0)
+
+        recovered = self.client.post(
+            reverse("study:review_answer"),
+            {
+                "card_id": self.card.id,
+                "action": "revisit",
+                "presentation_token": response.json()["presentation_token"],
+            },
+        )
+
+        self.assertEqual(recovered.status_code, 200)
+        self.card.refresh_from_db()
+        self.assertTrue(self.card.needs_revisit)
         self.assertEqual(ReviewLog.objects.count(), 1)
 
     def test_repeated_next_preserves_the_active_presentation(self):

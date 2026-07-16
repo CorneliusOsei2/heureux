@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 import secrets
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import parse_qs, urlencode, urlsplit
 
 from django.contrib.auth import (
     get_user_model,
@@ -777,6 +777,40 @@ def _annotation_scope_url(task=None):
     return reverse("study:general_notes")
 
 
+def _highlight_groups(highlights):
+    groups = {
+        "responses": {
+            "key": "responses",
+            "title": "Sujets & réponses",
+            "description": "Passages retenus dans les fiches et cartes de réponses.",
+            "items": [],
+        },
+        "expressions": {
+            "key": "expressions",
+            "title": "Expressions",
+            "description": "Passages retenus dans les fiches et cartes d'expressions.",
+            "items": [],
+        },
+    }
+    for highlight in highlights:
+        source_key = highlight.source_key or ""
+        if source_key.startswith("phrase:"):
+            group_key = "expressions"
+        elif source_key.startswith("response:"):
+            group_key = "responses"
+        else:
+            source = urlsplit(highlight.source_path or "")
+            source_query = parse_qs(source.query)
+            is_expression = (
+                source.path.endswith("/expressions/")
+                or source.path == reverse("study:phrases")
+                or source_query.get("kind") == ["phrase"]
+            )
+            group_key = "expressions" if is_expression else "responses"
+        groups[group_key]["items"].append(highlight)
+    return [groups["responses"], groups["expressions"]]
+
+
 def _notes_scope(request, task=None):
     annotations = Annotation.objects.filter(user=request.user, task=task)
     if request.method == "POST":
@@ -791,6 +825,8 @@ def _notes_scope(request, task=None):
             return redirect(_annotation_scope_url(task) + f"#note-{note.id}")
     else:
         form = NoteForm()
+    notes = list(annotations.filter(kind=AnnotationKind.NOTE))
+    highlights = list(annotations.filter(kind=AnnotationKind.HIGHLIGHT))
     return render(
         request,
         "study/notes_list.html",
@@ -798,10 +834,9 @@ def _notes_scope(request, task=None):
             "part": task.part if task else None,
             "task": task,
             "scope_title": task.name if task else "Notes générales",
-            "notes": annotations.filter(kind=AnnotationKind.NOTE),
-            "highlights": annotations.filter(
-                kind=AnnotationKind.HIGHLIGHT
-            ),
+            "notes": notes,
+            "highlights": highlights,
+            "highlight_groups": _highlight_groups(highlights),
             "study_count": annotations.filter(study_later=True).count(),
             "form": form,
         },
@@ -1557,8 +1592,19 @@ def review_answer(request):
                 presentation_token,
             )
         ):
+            conflict = {
+                "error": "Cette carte a déjà été traitée ou remplacée.",
+                "code": "stale_presentation",
+                "current_card_id": session.current_card_id,
+            }
+            if (
+                session.current_card_id == card_id
+                and session.scope == scope
+                and session.presentation_token
+            ):
+                conflict["presentation_token"] = session.presentation_token
             return JsonResponse(
-                {"error": "Cette carte a déjà été traitée ou remplacée."},
+                conflict,
                 status=409,
             )
 

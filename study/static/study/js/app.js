@@ -264,7 +264,12 @@
       if (r.status === 401 && data.login_url) {
         window.location.assign(data.login_url);
       }
-      if (!r.ok) throw new Error(data.error || "Erreur de révision.");
+      if (!r.ok) {
+        var error = new Error(data.error || "Erreur de révision.");
+        error.status = r.status;
+        error.data = data;
+        throw error;
+      }
       return data;
     });
   }
@@ -336,15 +341,69 @@
       "<kbd>1</kbd> Revoir &nbsp; <kbd>2</kbd> Correct";
   }
 
-  function grade(action) {
-    if (!revealed || viewingPrevious || busy || currentId === null) return;
-    busy = true;
-    var elapsed = Date.now() - startTime;
+  function gradeError(error) {
+    busy = false;
+    kbdHint.textContent = error.message + " Rechargez la page.";
+  }
+
+  function fetchCurrentState() {
+    return fetch(nextUrl + "?" + params().toString(), {
+      headers: { "X-Requested-With": "fetch" }
+    }).then(readJson);
+  }
+
+  function recoverGradeConflict(
+    action,
+    cardId,
+    attemptedToken,
+    elapsed,
+    error,
+    canRetry
+  ) {
+    var conflict = error.data || {};
+    var replacementToken = conflict.presentation_token || "";
+    if (
+      canRetry &&
+      conflict.current_card_id === cardId &&
+      replacementToken &&
+      replacementToken !== attemptedToken
+    ) {
+      presentationToken = replacementToken;
+      submitGrade(action, cardId, replacementToken, elapsed, false);
+      return;
+    }
+
+    fetchCurrentState()
+      .then(function (data) {
+        if (
+          canRetry &&
+          !data.done &&
+          data.card_id === cardId &&
+          data.presentation_token &&
+          data.presentation_token !== attemptedToken
+        ) {
+          presentationToken = data.presentation_token;
+          submitGrade(
+            action,
+            cardId,
+            data.presentation_token,
+            elapsed,
+            false
+          );
+          return;
+        }
+        busy = false;
+        handleState(data);
+      })
+      .catch(gradeError);
+  }
+
+  function submitGrade(action, cardId, token, elapsed, canRetry) {
     var body = params({
-      card_id: currentId,
+      card_id: cardId,
       action: action,
       elapsed_ms: elapsed,
-      presentation_token: presentationToken
+      presentation_token: token
     });
     fetch(answerUrl, {
       method: "POST",
@@ -364,16 +423,35 @@
         handleState(data);
       })
       .catch(function (error) {
-        busy = false;
-        kbdHint.textContent = error.message + " Rechargez la page.";
+        if (error.status === 409) {
+          recoverGradeConflict(
+            action,
+            cardId,
+            token,
+            elapsed,
+            error,
+            canRetry
+          );
+          return;
+        }
+        gradeError(error);
       });
   }
 
+  function grade(action) {
+    if (!revealed || viewingPrevious || busy || currentId === null) return;
+    busy = true;
+    submitGrade(
+      action,
+      currentId,
+      presentationToken,
+      Date.now() - startTime,
+      true
+    );
+  }
+
   function loadNext() {
-    fetch(nextUrl + "?" + params().toString(), {
-      headers: { "X-Requested-With": "fetch" }
-    })
-      .then(readJson)
+    fetchCurrentState()
       .then(handleState)
       .catch(function (error) {
         kbdHint.textContent = error.message;
@@ -496,4 +574,9 @@
   });
 
   loadNext();
+  window.addEventListener("pageshow", function (event) {
+    if (!event.persisted) return;
+    busy = false;
+    loadNext();
+  });
 })();

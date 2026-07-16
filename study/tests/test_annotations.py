@@ -64,6 +64,71 @@ class AnnotationTests(TestCase):
         self.assertContains(detail, "Réutiliser cette structure.")
         self.assertContains(detail, "Passage important")
 
+    def test_highlights_are_grouped_by_responses_and_expressions(self):
+        response_highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Passage d'une réponse",
+            source_path=self.source_path,
+            source_key="response:culture:p1:back",
+            start_offset=1,
+            end_offset=21,
+        )
+        legacy_response_highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Ancien passage de réponse",
+            source_path=self.source_path,
+            start_offset=22,
+            end_offset=47,
+        )
+        expression_highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Passage d'une expression",
+            source_path=reverse("study:review") + "?kind=phrase",
+            source_key="phrase:expr-1:phrase_production:back",
+            start_offset=1,
+            end_offset=25,
+        )
+        legacy_expression_highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Ancien passage d'expression",
+            source_path=reverse(
+                "study:task_phrases",
+                args=[self.part.slug, self.task.slug],
+            ),
+            start_offset=1,
+            end_offset=28,
+        )
+
+        response = self.client.get(
+            reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+
+        groups = {
+            group["key"]: {item.id for item in group["items"]}
+            for group in response.context["highlight_groups"]
+        }
+        self.assertEqual(
+            groups["responses"],
+            {response_highlight.id, legacy_response_highlight.id},
+        )
+        self.assertEqual(
+            groups["expressions"],
+            {expression_highlight.id, legacy_expression_highlight.id},
+        )
+        self.assertContains(response, "Sujets &amp; réponses")
+        self.assertContains(response, "Expressions")
+
     def test_freeform_notes_are_categorized_by_task_or_general(self):
         task_url = reverse(
             "study:task_notes",

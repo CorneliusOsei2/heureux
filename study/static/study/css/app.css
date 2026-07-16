@@ -754,6 +754,32 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
   resize: vertical;
 }
 .annotations-section { margin-top: 1.8rem; }
+.highlight-source-groups {
+  display: grid;
+  gap: 1.5rem;
+}
+.highlight-source-group { min-width: 0; }
+.highlight-source-group__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+.highlight-source-group__head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.highlight-source-group__head p {
+  margin: 0.15rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+.highlight-source-groups__hint {
+  margin-top: -0.5rem;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+}
 .annotations-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

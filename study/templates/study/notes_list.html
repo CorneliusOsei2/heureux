@@ -111,37 +111,55 @@
     </div>
     <span class="pill">{{ highlights|length }}</span>
   </div>
-  <div class="annotations-grid">
-    {% for highlight in highlights %}
-      <article class="card annotation-card annotation-card--highlight" id="highlight-{{ highlight.id }}">
-        <header class="annotation-card__head">
-          <span class="annotation-card__kind">Surlignage</span>
-          {% if highlight.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
-          <time datetime="{{ highlight.updated_at|date:'c' }}">{{ highlight.updated_at|date:"j M Y · H:i" }}</time>
-        </header>
-        <blockquote><mark>{{ highlight.quote }}</mark></blockquote>
-        {% if highlight.source_path %}
-          <a class="annotation-card__source" href="{{ highlight.source_path }}">↗ {{ highlight.source_title|default:"Voir la source" }}</a>
-        {% endif %}
-        <footer class="annotation-card__actions">
-          <form method="post" action="{% url 'study:annotation_study_toggle' highlight.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.get_full_path }}">
-            <input type="hidden" name="study_later" value="{% if highlight.study_later %}0{% else %}1{% endif %}">
-            <button class="linkbtn" type="submit">{% if highlight.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
-          </form>
-          <form method="post" action="{% url 'study:annotation_delete' highlight.id %}" data-confirm="Supprimer ce surlignage ?">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.get_full_path }}">
-            <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
-          </form>
-        </footer>
-      </article>
-    {% empty %}
-      <div class="empty annotation-empty">
-        <p>Aucun surlignage ici. Sélectionnez un passage, puis choisissez l'icône de surlignage.</p>
-      </div>
+  <div class="highlight-source-groups">
+    {% for group in highlight_groups %}
+      <section class="highlight-source-group" aria-labelledby="highlights-{{ group.key }}-heading">
+        <div class="highlight-source-group__head">
+          <div>
+            <h3 id="highlights-{{ group.key }}-heading">{{ group.title }}</h3>
+            <p>{{ group.description }}</p>
+          </div>
+          <span class="pill">{{ group.items|length }}</span>
+        </div>
+        <div class="annotations-grid">
+          {% for highlight in group.items %}
+            <article class="card annotation-card annotation-card--highlight" id="highlight-{{ highlight.id }}">
+              <header class="annotation-card__head">
+                <span class="annotation-card__kind">Surlignage</span>
+                {% if highlight.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
+                <time datetime="{{ highlight.updated_at|date:'c' }}">{{ highlight.updated_at|date:"j M Y · H:i" }}</time>
+              </header>
+              <blockquote><mark>{{ highlight.quote }}</mark></blockquote>
+              {% if highlight.source_path %}
+                <a class="annotation-card__source" href="{{ highlight.source_path }}">↗ {{ highlight.source_title|default:"Voir la source" }}</a>
+              {% endif %}
+              <footer class="annotation-card__actions">
+                <form method="post" action="{% url 'study:annotation_study_toggle' highlight.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                  <input type="hidden" name="study_later" value="{% if highlight.study_later %}0{% else %}1{% endif %}">
+                  <button class="linkbtn" type="submit">{% if highlight.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
+                </form>
+                <form method="post" action="{% url 'study:annotation_delete' highlight.id %}" data-confirm="Supprimer ce surlignage ?">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                  <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
+                </form>
+              </footer>
+            </article>
+          {% empty %}
+            <div class="empty annotation-empty">
+              <p>Aucun surlignage dans ce groupe.</p>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
     {% endfor %}
+    {% if not highlights %}
+      <div class="highlight-source-groups__hint">
+        Sélectionnez un passage, puis choisissez l'icône de surlignage.
+      </div>
+    {% endif %}
   </div>
 </section>
 {% endblock %}
