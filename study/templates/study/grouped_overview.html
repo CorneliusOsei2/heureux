@@ -13,13 +13,26 @@
     {% if area == "review" %}
       <span><b>{{ counts.total_due }}</b> cartes disponibles</span>
       <span><b>{{ revisit_count }}</b> dans ma liste</span>
+      <span><b>{{ weak_count }}</b> à renforcer</span>
     {% elif area == "expressions" %}
-      <span><b>{{ phrase_count }}</b> expressions</span>
+      <span><b>{{ phrase_count }}</b> expressions partagées</span>
+      <span><b>{{ response_phrase_count }}</b> expressions liées aux réponses</span>
       <span><b>{{ phrase_stats.mature }}/{{ phrase_stats.total }}</b> cartes maîtrisées</span>
     {% else %}
       <span><b>{{ overall.seen }}/{{ overall.total }}</b> cartes vues</span>
       <span><b>{{ overall.mature }}</b> cartes maîtrisées</span>
       <span><b>{{ streak }}</b> jour{{ streak|pluralize }}</span>
+    {% endif %}
+
+    {% if area == "review" and weak_count %}
+      <a class="resume-review resume-review--overview weak-review-callout" href="{% url 'study:review' %}?kind=weak">
+        <span class="resume-review__icon" aria-hidden="true">↗</span>
+        <span>
+          <small>Entraînement ciblé</small>
+          <strong>Renforcer {{ weak_count }} carte{{ weak_count|pluralize }} fragile{{ weak_count|pluralize }}</strong>
+        </span>
+        <span aria-hidden="true">→</span>
+      </a>
     {% endif %}
   </div>
 </header>
@@ -41,7 +54,7 @@
     {% if area == "review" %}
       <p>Sélectionnez une tâche, puis révisez sans plafond ou choisissez un lot.</p>
     {% elif area == "expressions" %}
-      <p>Entrez dans une tâche pour étudier ses tournures, collocations et nuances.</p>
+      <p>Étudiez le catalogue partagé par catégorie, ou ouvrez une réponse pour son vocabulaire propre.</p>
     {% else %}
       <p>Consultez votre avancement et votre régularité tâche par tâche.</p>
     {% endif %}

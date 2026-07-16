@@ -9,6 +9,7 @@
 
   <form method="post" class="auth-form" novalidate>
     {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
     {% if form.non_field_errors %}
       <div class="auth-error">{{ form.non_field_errors|striptags }}</div>
     {% endif %}
@@ -31,6 +32,6 @@
     <button class="btn btn--primary btn--block" type="submit">Créer mon profil</button>
   </form>
 
-  <p class="auth-switch">Vous avez déjà un profil ? <a href="{% url 'study:login' %}">Se connecter</a></p>
+  <p class="auth-switch">Vous avez déjà un profil ? <a href="{% url 'study:login' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Se connecter</a></p>
 </section>
 {% endblock %}

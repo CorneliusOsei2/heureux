@@ -8,7 +8,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from study import queue as q, srs
-from study.models import CardState, Rating
+from study.models import CardState, CardType, PhraseTier, Rating, ReviewLog
 
 from .factories import (
     make_part,
@@ -153,6 +153,58 @@ class QueueCountsTests(TestCase):
             future.id,
         )
 
+    def test_weak_scope_uses_current_and_repeated_recent_difficulty(self):
+        current_difficulty = make_spine_card(
+            state=CardState.REVIEW,
+            due=self.now + timedelta(days=30),
+            interval_days=10,
+            reps=3,
+            last_rating=Rating.AGAIN,
+        )
+        repeated_difficulty = make_spine_card(
+            state=CardState.REVIEW,
+            due=self.now + timedelta(days=30),
+            interval_days=10,
+            reps=5,
+            last_rating=Rating.GOOD,
+        )
+        recovered = make_spine_card(
+            state=CardState.REVIEW,
+            due=self.now + timedelta(days=30),
+            interval_days=10,
+            reps=3,
+            last_rating=Rating.GOOD,
+        )
+        make_spine_card()
+
+        for card, failures in (
+            (repeated_difficulty, 2),
+            (recovered, 1),
+        ):
+            for offset in range(failures):
+                ReviewLog.objects.create(
+                    card=card,
+                    reviewed_at=self.now - timedelta(days=offset + 1),
+                    rating=Rating.AGAIN,
+                    state_before=CardState.REVIEW,
+                    state_after=CardState.RELEARNING,
+                )
+
+        weak_ids = set(
+            q.scoped_cards({"kind": "weak"}).values_list("id", flat=True)
+        )
+        self.assertEqual(
+            weak_ids,
+            {current_difficulty.id, repeated_difficulty.id},
+        )
+        counts = q.queue_counts({"kind": "weak"}, now=self.now)
+        self.assertEqual(counts["weak_total"], 2)
+        self.assertEqual(counts["total_due"], 2)
+        self.assertEqual(
+            q.next_card({"kind": "weak"}, now=self.now).id,
+            repeated_difficulty.id,
+        )
+
     def test_response_scope_selects_only_its_linked_phrase_cards(self):
         response = make_spine_card().response
         linked_phrase = make_phrase()
@@ -164,6 +216,25 @@ class QueueCountsTests(TestCase):
         counts = q.queue_counts(scope, now=self.now)
         self.assertEqual(counts["new_total"], 1)
         self.assertEqual(q.next_card(scope, now=self.now).id, linked_card.id)
+
+    def test_response_local_vocabulary_only_enters_its_response_deck(self):
+        response = make_spine_card().response
+        phrase = make_phrase(tier=PhraseTier.RESPONSE)
+        phrase.source_prompts.add(response.prompts.first())
+        production = make_phrase_card(phrase=phrase)
+        recognition = make_phrase_card(
+            phrase=phrase,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+
+        self.assertFalse(
+            q.scoped_cards({"kind": "phrase"}).filter(pk=production.pk).exists()
+        )
+        response_cards = q.scoped_cards(
+            {"kind": "phrase", "response": str(response.pk)}
+        )
+        self.assertTrue(response_cards.filter(pk=production.pk).exists())
+        self.assertFalse(response_cards.filter(pk=recognition.pk).exists())
 
     def test_category_batch_scope_contains_at_most_fifteen_cards(self):
         cards = [make_phrase_card() for _ in range(32)]
@@ -195,6 +266,81 @@ class QueueCountsTests(TestCase):
         )
 
         self.assertEqual(batch_ids, [card.id for card in cards[15:]])
+
+    def test_phrase_lot_contains_fifteen_expressions_and_keeps_twins_together(self):
+        phrases = [make_phrase() for _ in range(16)]
+        pairs = [
+            (
+                make_phrase_card(phrase=phrase),
+                make_phrase_card(
+                    phrase=phrase,
+                    card_type=CardType.PHRASE_RECOGNITION,
+                ),
+            )
+            for phrase in phrases
+        ]
+        scope = {
+            "kind": "phrase",
+            "category": phrases[0].category.slug,
+            "batch": "1",
+        }
+
+        lot = q.scoped_cards(scope)
+
+        self.assertEqual(lot.values("phrase_id").distinct().count(), 15)
+        self.assertEqual(lot.count(), 30)
+        self.assertEqual(
+            set(lot.values_list("pk", flat=True)),
+            {card.pk for pair in pairs[:15] for card in pair},
+        )
+
+    def test_phrase_lot_membership_uses_stable_lot_order(self):
+        phrases = [make_phrase() for _ in range(16)]
+        cards = [make_phrase_card(phrase=phrase) for phrase in phrases]
+        scope = {
+            "kind": "phrase",
+            "category": phrases[0].category.slug,
+            "batch": "1",
+        }
+        expected = set(
+            q.scoped_cards(scope).values_list("pk", flat=True)
+        )
+
+        for index, phrase in enumerate(reversed(phrases), start=1):
+            phrase.order = index
+            phrase.save(update_fields=["order"])
+
+        self.assertEqual(
+            set(q.scoped_cards(scope).values_list("pk", flat=True)),
+            expected,
+        )
+        self.assertNotIn(cards[-1].pk, expected)
+
+    def test_new_phrase_twins_are_presented_next_to_each_other(self):
+        first = make_phrase()
+        second = make_phrase(category=first.category)
+        first_production = make_phrase_card(phrase=first)
+        first_recognition = make_phrase_card(
+            phrase=first,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+        make_phrase_card(phrase=second)
+        make_phrase_card(
+            phrase=second,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+        scope = {
+            "kind": "phrase",
+            "category": first.category.slug,
+            "batch": "1",
+        }
+
+        self.assertEqual(q.next_card(scope).pk, first_production.pk)
+        first_production.state = CardState.REVIEW
+        first_production.due = self.now + timedelta(days=1)
+        first_production.save(update_fields=["state", "due"])
+
+        self.assertEqual(q.next_card(scope).pk, first_recognition.pk)
 
 
 class NextCardTests(TestCase):

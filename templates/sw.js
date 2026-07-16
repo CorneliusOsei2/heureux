@@ -1,11 +1,12 @@
 {% load static %}/* Heureux service worker — offline app shell. */
-var CACHE = "heureux-v34";
+var CACHE = "heureux-v36";
 var SHELL = [
   "{% url 'offline' %}",
-  "{% static 'study/css/app.css' %}?v=31",
-  "{% static 'study/js/app.js' %}?v=24",
-  "{% static 'study/js/translate.js' %}?v=7",
-  "{% static 'study/js/annotations.js' %}?v=2",
+  "{% static 'study/css/app.css' %}?v=33",
+  "{% static 'study/js/theme-init.js' %}?v=1",
+  "{% static 'study/js/app.js' %}?v=25",
+  "{% static 'study/js/translate.js' %}?v=8",
+  "{% static 'study/js/annotations.js' %}?v=4",
   "/manifest.webmanifest",
   "{% static 'study/icons/icon-192.png' %}?v=2",
   "{% static 'study/icons/icon-512.png' %}?v=2",
@@ -16,8 +17,14 @@ self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
       return cache.addAll(SHELL);
-    }).then(function () { return self.skipWaiting(); })
+    })
   );
+});
+
+self.addEventListener("message", function (event) {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", function (event) {

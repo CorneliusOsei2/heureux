@@ -11,8 +11,14 @@
     </div>
     <div class="grouped-overview__metrics" aria-label="Résumé">
       <span><b>{{ total_annotations }}</b> élément{{ total_annotations|pluralize }}</span>
+      <span><b>{{ study_count }}</b> à étudier</span>
     </div>
   </header>
+
+  <div class="notes-tools">
+    <a class="btn" href="{% url 'study:annotation_search' %}">Rechercher dans mes notes</a>
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">Étudier ma sélection{% if study_count %} · {{ study_count }}{% endif %}</a>
+  </div>
 
   <a class="notes-general card" href="{% url 'study:general_notes' %}">
     <span class="notes-general__icon" aria-hidden="true">✎</span>
@@ -49,7 +55,7 @@
                 <span>{{ item.task.name }}</span>
                 {% if item.counts.total %}<span class="deck__due pill">{{ item.counts.total }}</span>{% endif %}
               </div>
-              <div class="deck__meta">{{ item.counts.notes }} note{{ item.counts.notes|pluralize }} · {{ item.counts.highlights }} surlignage{{ item.counts.highlights|pluralize }}</div>
+              <div class="deck__meta">{{ item.counts.notes }} note{{ item.counts.notes|pluralize }} · {{ item.counts.highlights }} surlignage{{ item.counts.highlights|pluralize }}{% if item.counts.study %} · {{ item.counts.study }} à étudier{% endif %}</div>
               <span class="grouped-task-card__action">Ouvrir mes notes <span aria-hidden="true">→</span></span>
             </div>
           </a>

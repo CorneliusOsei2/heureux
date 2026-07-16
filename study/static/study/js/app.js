@@ -93,10 +93,55 @@
     mobileNavQuery.addListener(closeNavAboveMobile);
   }
 
+  document.querySelectorAll("form[data-confirm]").forEach(function (form) {
+    form.addEventListener("submit", function (event) {
+      if (!window.confirm(form.dataset.confirm)) event.preventDefault();
+    });
+  });
+
   /* ---------- Service worker (PWA) ---------- */
   if ("serviceWorker" in navigator) {
+    var updateBanner = document.querySelector("[data-pwa-update-banner]");
+    var updateButton = document.querySelector("[data-pwa-update]");
+    var waitingRegistration = null;
+    var reloadingForUpdate = false;
+    var reloadOnControllerChange = false;
+
+    function showWorkerUpdate(registration) {
+      if (!navigator.serviceWorker.controller || !registration.waiting) return;
+      waitingRegistration = registration;
+      if (updateBanner) updateBanner.classList.remove("hidden");
+    }
+
+    if (updateButton) {
+      updateButton.addEventListener("click", function () {
+        if (!waitingRegistration || !waitingRegistration.waiting) return;
+        updateButton.disabled = true;
+        reloadOnControllerChange = true;
+        waitingRegistration.waiting.postMessage({ type: "SKIP_WAITING" });
+      });
+    }
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!reloadOnControllerChange || reloadingForUpdate) return;
+      reloadingForUpdate = true;
+      window.location.reload();
+    });
     window.addEventListener("load", function () {
-      navigator.serviceWorker.register("/sw.js").catch(function () {});
+      navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" })
+        .then(function (registration) {
+          showWorkerUpdate(registration);
+          registration.addEventListener("updatefound", function () {
+            var worker = registration.installing;
+            if (!worker) return;
+            worker.addEventListener("statechange", function () {
+              if (worker.state === "installed") {
+                showWorkerUpdate(registration);
+              }
+            });
+          });
+          registration.update().catch(function () {});
+        })
+        .catch(function () {});
     });
   }
 
@@ -207,6 +252,13 @@
     return m + " min";
   }
 
+  function setAnnotationRoots(sourceKey) {
+    frontEl.dataset.annotationRoot = "";
+    backEl.dataset.annotationRoot = "";
+    frontEl.dataset.annotationSourceKey = sourceKey + ":front";
+    backEl.dataset.annotationSourceKey = sourceKey + ":back";
+  }
+
   function readJson(r) {
     return r.json().catch(function () { return {}; }).then(function (data) {
       if (r.status === 401 && data.login_url) {
@@ -217,14 +269,18 @@
     });
   }
 
-  function showDone(c) {
+  function showDone(data) {
+    var c = data.counts;
     cardZone.classList.add("hidden");
     doneZone.classList.remove("hidden");
     currentId = null;
     presentationToken = "";
     currentData = null;
     viewingPrevious = false;
-    if (previousButton) previousButton.disabled = true;
+    if (previousButton) previousButton.disabled = !data.can_previous;
+    if (previousButton) previousButton.classList.remove("hidden");
+    if (currentButton) currentButton.classList.add("hidden");
+    if (previousLabel) previousLabel.classList.add("hidden");
     if (summaryEl) {
       if (reviewed === 0) {
         summaryEl.textContent = "Aucune carte révisée dans cette session.";
@@ -249,6 +305,7 @@
     revealed = false;
     frontEl.innerHTML = data.front_html;
     backEl.innerHTML = data.back_html;
+    setAnnotationRoots(data.annotation_source_key);
     backEl.classList.add("hidden");
     revealBtn.classList.remove("hidden");
     gradesEl.classList.add("hidden");
@@ -263,7 +320,7 @@
   }
 
   function handleState(data) {
-    if (data.done) { showDone(data.counts); return; }
+    if (data.done) { showDone(data); return; }
     cardZone.classList.remove("hidden");
     doneZone.classList.add("hidden");
     renderCard(data);
@@ -324,11 +381,12 @@
   }
 
   function viewPrevious() {
+    var fromDone = !doneZone.classList.contains("hidden");
     if (
       busy ||
       viewingPrevious ||
       !previousUrl ||
-      !currentData ||
+      (!currentData && !fromDone) ||
       previousButton.disabled
     ) {
       return;
@@ -340,17 +398,27 @@
       .then(readJson)
       .then(function (data) {
         currentView = {
+          done: fromDone,
           revealed: revealed,
-          startTime: startTime
+          startTime: startTime,
+          pausedAt: Date.now()
         };
         viewingPrevious = true;
+        if (fromDone) {
+          doneZone.classList.add("hidden");
+          cardZone.classList.remove("hidden");
+        }
         frontEl.innerHTML = data.front_html;
         backEl.innerHTML = data.back_html;
+        setAnnotationRoots(data.annotation_source_key);
         backEl.classList.remove("hidden");
         revealBtn.classList.add("hidden");
         gradesEl.classList.add("hidden");
         previousButton.classList.add("hidden");
         currentButton.classList.remove("hidden");
+        currentButton.textContent = fromDone
+          ? "Retour au résumé →"
+          : "Retour à la carte actuelle →";
         previousLabel.classList.remove("hidden");
         kbdHint.textContent = "Consultation uniquement · votre carte actuelle est conservée.";
         busy = false;
@@ -362,11 +430,24 @@
   }
 
   function returnToCurrent() {
-    if (!viewingPrevious || !currentData || !currentView) return;
+    if (!viewingPrevious || !currentView) return;
+    if (currentView.done) {
+      cardZone.classList.add("hidden");
+      doneZone.classList.remove("hidden");
+      previousButton.classList.remove("hidden");
+      currentButton.classList.add("hidden");
+      currentButton.textContent = "Retour à la carte actuelle →";
+      previousLabel.classList.add("hidden");
+      viewingPrevious = false;
+      currentView = null;
+      return;
+    }
+    if (!currentData) return;
     frontEl.innerHTML = currentData.front_html;
     backEl.innerHTML = currentData.back_html;
+    setAnnotationRoots(currentData.annotation_source_key);
     revealed = currentView.revealed;
-    startTime = currentView.startTime;
+    startTime = currentView.startTime + (Date.now() - currentView.pausedAt);
     backEl.classList.toggle("hidden", !revealed);
     revealBtn.classList.toggle("hidden", revealed);
     gradesEl.classList.toggle("hidden", !revealed);

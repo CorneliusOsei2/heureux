@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import secrets
 from urllib.parse import urlencode, urlsplit
 
@@ -10,28 +11,43 @@ from django.contrib.auth import (
     get_user_model,
     login as auth_login,
     logout as auth_logout,
+    update_session_auth_hash,
 )
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.utils import IntegrityError
-from django.db.models import Count, Q
+from django.db.models import Count, Prefetch, Q
 from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
+from django.views.decorators.cache import never_cache
+from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.http import require_GET, require_POST
 
 from . import queue as queue_module
 from .accounts import (
     authenticate_with_throttle,
+    generate_recovery_codes,
     login_throttle_key,
     provision_user_study_data,
+    reset_pin_with_recovery,
     reserve_throttled_action,
 )
 from .cards import card_payload, scope_from_request, scope_label
-from .forms import NoteForm, RegistrationForm, UsernamePinForm
+from .forms import (
+    ChangePinForm,
+    CurrentPinForm,
+    DeleteAccountForm,
+    NoteForm,
+    PersonalResponseForm,
+    RecoveryForm,
+    RegistrationForm,
+    ResetProgressForm,
+    UsernamePinForm,
+)
 from .models import (
     Annotation,
     AnnotationKind,
@@ -42,14 +58,18 @@ from .models import (
     Family,
     Phrase,
     PhraseCategory,
+    PhraseTier,
+    PersonalResponse,
     Prompt,
     Rating,
     Response,
     ReviewLog,
     ReviewSession,
+    Settings,
     Task,
     Theme,
 )
+from .personalization import effective_response
 from .srs import review as apply_review, undo_last
 
 MATURE_DAYS = 21
@@ -65,6 +85,9 @@ REVIEW_SCOPE_KEYS = (
 )
 MAX_ANNOTATION_QUOTE_LENGTH = 5000
 MAX_ANNOTATION_BODY_LENGTH = 20000
+ANNOTATION_SOURCE_KEY_RE = re.compile(r"^[A-Za-z0-9:._-]{0,200}$")
+FOCUSED_REVIEW_KINDS = {"revisit", "weak"}
+RECENT_SESSION_GAP = timezone.timedelta(minutes=30)
 
 
 def _auth_redirect(request):
@@ -78,6 +101,12 @@ def _auth_redirect(request):
     return reverse("study:dashboard")
 
 
+def _auth_next_value(request):
+    return request.POST.get("next") or request.GET.get("next", "")
+
+
+@never_cache
+@sensitive_post_parameters("pin")
 def login_view(request):
     if request.user.is_authenticated:
         return redirect(_auth_redirect(request))
@@ -98,13 +127,15 @@ def login_view(request):
     return render(
         request,
         "study/auth/login.html",
-        {"form": form, "next": request.GET.get("next", "")},
+        {"form": form, "next": _auth_next_value(request)},
     )
 
 
+@never_cache
+@sensitive_post_parameters("pin", "pin_confirm")
 def register_view(request):
     if request.user.is_authenticated:
-        return redirect("study:dashboard")
+        return redirect(_auth_redirect(request))
     form = RegistrationForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         throttle_key = login_throttle_key(
@@ -125,6 +156,7 @@ def register_view(request):
                         password=form.cleaned_data["pin"],
                     )
                     provision_user_study_data(user)
+                    recovery_codes = generate_recovery_codes(user)
             except IntegrityError:
                 form.add_error(
                     "username",
@@ -136,11 +168,68 @@ def register_view(request):
                     user,
                     backend="django.contrib.auth.backends.ModelBackend",
                 )
-                return redirect("study:dashboard")
+                request.session["new_recovery_codes"] = recovery_codes
+                request.session["post_recovery_redirect"] = _auth_redirect(
+                    request
+                )
+                return redirect("study:recovery_codes")
     return render(
         request,
         "study/auth/register.html",
-        {"form": form},
+        {"form": form, "next": _auth_next_value(request)},
+    )
+
+
+@never_cache
+@sensitive_post_parameters(
+    "recovery_code",
+    "new_pin",
+    "new_pin_confirm",
+)
+def recover_account(request):
+    if request.user.is_authenticated:
+        return redirect(_auth_redirect(request))
+    form = RecoveryForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        user, recovery_codes, _ = reset_pin_with_recovery(
+            request,
+            form.cleaned_data["username"],
+            form.cleaned_data["recovery_code"],
+            form.cleaned_data["new_pin"],
+        )
+        if user is None:
+            form.add_error(
+                None,
+                "Récupération impossible. Vérifiez les informations ou "
+                "réessayez plus tard.",
+            )
+        else:
+            auth_login(
+                request,
+                user,
+                backend="django.contrib.auth.backends.ModelBackend",
+            )
+            request.session["new_recovery_codes"] = recovery_codes
+            request.session["post_recovery_redirect"] = _auth_redirect(request)
+            return redirect("study:recovery_codes")
+    return render(
+        request,
+        "study/auth/recover.html",
+        {"form": form, "next": _auth_next_value(request)},
+    )
+
+
+@never_cache
+def recovery_codes_view(request):
+    codes = request.session.pop("new_recovery_codes", [])
+    next_url = request.session.pop(
+        "post_recovery_redirect",
+        reverse("study:dashboard"),
+    )
+    return render(
+        request,
+        "study/auth/recovery_codes.html",
+        {"recovery_codes": codes, "next_url": next_url},
     )
 
 
@@ -180,7 +269,7 @@ def deck_stats(qs, now=None) -> dict:
 
 
 def _review_batches(scope: dict, user) -> list[dict]:
-    """Describe stable 15-card lots and each lot's first-pass progress."""
+    """Describe stable lots and each lot's first-pass progress."""
     base_scope = {key: value for key, value in scope.items() if key != "batch"}
     rows = list(
         queue_module.scoped_cards(
@@ -189,25 +278,36 @@ def _review_batches(scope: dict, user) -> list[dict]:
             include_suspended=True,
         )
         .order_by(*queue_module.batch_ordering(base_scope))
-        .values("id", "state", "due", "suspended")
+        .values("id", "phrase_id", "state", "due", "suspended")
     )
-    unique_rows = []
-    seen_ids = set()
-    for row in rows:
-        if row["id"] not in seen_ids:
-            seen_ids.add(row["id"])
-            unique_rows.append(row)
+    phrase_batches = queue_module._uses_phrase_batches(base_scope)
+    if phrase_batches:
+        grouped_rows = {}
+        for row in rows:
+            grouped_rows.setdefault(row["phrase_id"], []).append(row)
+        units = list(grouped_rows.values())
+    else:
+        units = [[row] for row in rows]
 
     now = timezone.now()
     batches = []
     for number, start in enumerate(
-        range(0, len(unique_rows), queue_module.BATCH_SIZE),
+        range(0, len(units), queue_module.BATCH_SIZE),
         start=1,
     ):
-        rows_in_batch = unique_rows[start : start + queue_module.BATCH_SIZE]
-        active_rows = [row for row in rows_in_batch if not row["suspended"]]
-        seen_count = sum(
-            row["state"] != CardState.NEW for row in active_rows
+        units_in_batch = units[start : start + queue_module.BATCH_SIZE]
+        active_units = [
+            [row for row in unit if not row["suspended"]]
+            for unit in units_in_batch
+        ]
+        active_units = [unit for unit in active_units if unit]
+        started_count = sum(
+            any(row["state"] != CardState.NEW for row in unit)
+            for unit in active_units
+        )
+        completed_count = sum(
+            all(row["state"] != CardState.NEW for row in unit)
+            for unit in active_units
         )
         available_now = sum(
             row["state"] == CardState.NEW
@@ -221,31 +321,37 @@ def _review_batches(scope: dict, user) -> list[dict]:
                     CardState.REVIEW,
                 }
             )
-            for row in active_rows
+            for unit in active_units
+            for row in unit
         )
-        if not active_rows:
+        if not active_units:
             status = "unavailable"
             status_label = "Suspendu"
-        elif seen_count == len(active_rows):
+        elif completed_count == len(active_units):
             status = "complete"
             status_label = "Terminé"
-        elif seen_count:
+        elif started_count:
             status = "in-progress"
             status_label = "En cours"
         else:
             status = "not-started"
             status_label = "À commencer"
-        end = start + len(rows_in_batch)
+        end = start + len(units_in_batch)
         batch_scope = {**base_scope, "batch": str(number)}
         batches.append(
             {
                 "number": number,
                 "start": start + 1,
                 "end": end,
-                "card_count": len(rows_in_batch),
-                "active_count": len(active_rows),
-                "seen_count": seen_count,
+                "card_count": sum(len(unit) for unit in units_in_batch),
+                "phrase_count": (
+                    len(units_in_batch) if phrase_batches else None
+                ),
+                "active_count": len(active_units),
+                "seen_count": completed_count,
+                "started_count": started_count,
                 "available_now": available_now,
+                "phrase_batch": phrase_batches,
                 "status": status,
                 "status_label": status_label,
                 "can_review": available_now > 0,
@@ -259,6 +365,8 @@ def _review_batches(scope: dict, user) -> list[dict]:
 
 def _batch_index_url(scope: dict) -> str | None:
     """Return the category/theme page that owns a batch scope."""
+    if scope.get("response"):
+        return reverse("study:response_detail", args=[scope["response"]])
     if scope.get("category"):
         if scope.get("part") and scope.get("task"):
             base = reverse(
@@ -296,6 +404,65 @@ def current_streak(now=None, logs=None, user=None) -> int:
     return streak
 
 
+def recent_review_sessions(logs, *, limit=8) -> list[dict]:
+    """Group recent review logs into focused sessions separated by 30 minutes."""
+    recent_logs = list(
+        logs.select_related(
+            "card__response__theme",
+            "card__phrase",
+        ).order_by("-reviewed_at")[:400]
+    )
+    sessions = []
+    current = None
+    for log in recent_logs:
+        if (
+            current is None
+            or current["started_at"] - log.reviewed_at > RECENT_SESSION_GAP
+        ):
+            if len(sessions) >= limit:
+                break
+            current = {
+                "started_at": log.reviewed_at,
+                "ended_at": log.reviewed_at,
+                "review_count": 0,
+                "correct_count": 0,
+                "revisit_count": 0,
+                "response_count": 0,
+                "phrase_count": 0,
+                "elapsed_ms": 0,
+                "topics_set": set(),
+            }
+            sessions.append(current)
+
+        current["started_at"] = log.reviewed_at
+        current["review_count"] += 1
+        current["elapsed_ms"] += log.elapsed_ms
+        if log.rating == Rating.AGAIN:
+            current["revisit_count"] += 1
+        else:
+            current["correct_count"] += 1
+        if log.card.response_id:
+            current["response_count"] += 1
+            current["topics_set"].add(log.card.response.theme.display_name)
+        else:
+            current["phrase_count"] += 1
+            current["topics_set"].add("Expressions")
+
+    for session in sessions:
+        session["accuracy"] = round(
+            100 * session["correct_count"] / session["review_count"]
+        )
+        session["study_minutes"] = (
+            max(1, round(session["elapsed_ms"] / 60000))
+            if session["elapsed_ms"]
+            else None
+        )
+        topics = sorted(session.pop("topics_set"))
+        session["topics"] = topics[:3]
+        session["extra_topics"] = max(0, len(topics) - 3)
+    return sessions
+
+
 # ---------------------------------------------------------------------------
 # Dashboard
 # ---------------------------------------------------------------------------
@@ -324,7 +491,11 @@ def _task_cards(task, user=None, kind=None):
 
 def _task_phrases(task):
     return Phrase.objects.filter(
-        source_prompts__theme__task=task
+        is_active=True,
+        tier=PhraseTier.SHARED,
+        source_prompts__is_active=True,
+        source_prompts__theme__is_active=True,
+        source_prompts__theme__task=task,
     ).distinct()
 
 
@@ -333,6 +504,8 @@ def _route_task(part_slug, task_slug):
         Task.objects.select_related("part"),
         slug=task_slug,
         part__slug=part_slug,
+        is_active=True,
+        part__is_active=True,
     )
 
 
@@ -355,8 +528,11 @@ def _task_card(task, now, user):
         revisit_count = _task_cards(task, user).filter(
             needs_revisit=True
         ).count()
-        theme_count = Theme.objects.filter(task=task).count()
-        prompt_count = Prompt.objects.filter(theme__task=task).count()
+        theme_count = Theme.objects.filter(task=task, is_active=True).count()
+        prompt_count = Prompt.objects.filter(
+            theme__task=task,
+            is_active=True,
+        ).count()
         phrase_count = _task_phrases(task).count()
     else:
         response_stats = None
@@ -391,7 +567,9 @@ def _parts_with_task_cards(now, user):
                 for task in part.tasks.all()
             ],
         }
-        for part in ExamPart.objects.prefetch_related("tasks")
+        for part in ExamPart.objects.filter(is_active=True).prefetch_related(
+            Prefetch("tasks", queryset=Task.objects.filter(is_active=True))
+        )
     ]
 
 
@@ -399,13 +577,7 @@ def _phrase_deck_stats(now, user=None, task=None):
     cards = (
         _task_cards(task, user, "phrase")
         if task
-        else Card.objects.active().filter(
-            user=user,
-            card_type__in=[
-                CardType.PHRASE_PRODUCTION,
-                CardType.PHRASE_RECOGNITION,
-            ]
-        )
+        else queue_module.scoped_cards({"kind": "phrase"}, user=user)
     )
     return deck_stats(cards, now)
 
@@ -413,7 +585,7 @@ def _phrase_deck_stats(now, user=None, task=None):
 def dashboard(request):
     now = timezone.now()
     counts = queue_module.queue_counts(now=now, user=request.user)
-    user_cards = Card.objects.active().filter(user=request.user)
+    user_cards = queue_module.scoped_cards(user=request.user)
     overall = deck_stats(user_cards, now)
 
     context = {
@@ -421,13 +593,18 @@ def dashboard(request):
         "parts": _parts_with_task_cards(now, request.user),
         "overall": overall,
         "streak": current_streak(now, user=request.user),
+        "weak_count": queue_module.queue_counts(
+            {"kind": "weak"},
+            now,
+            user=request.user,
+        )["weak_total"],
     }
     return render(request, "study/dashboard.html", context)
 
 
 def _grouped_overview(request, area):
     now = timezone.now()
-    user_cards = Card.objects.active().filter(user=request.user)
+    user_cards = queue_module.scoped_cards(user=request.user)
     context = {
         "area": area,
         "parts": _parts_with_task_cards(now, request.user),
@@ -448,9 +625,15 @@ def _grouped_overview(request, area):
                     now=now,
                     user=request.user,
                 ),
-                "revisit_count": user_cards.filter(
-                    needs_revisit=True
+                "revisit_count": queue_module.scoped_cards(
+                    {"kind": "revisit"},
+                    user=request.user,
                 ).count(),
+                "weak_count": queue_module.queue_counts(
+                    {"kind": "weak"},
+                    now,
+                    user=request.user,
+                )["weak_total"],
                 "can_resume": bool(session.current_card_id),
             }
         )
@@ -463,7 +646,14 @@ def _grouped_overview(request, area):
                     "Choisissez une tâche pour retrouver ses expressions, "
                     "son vocabulaire et ses nuances."
                 ),
-                "phrase_count": Phrase.objects.count(),
+                "phrase_count": Phrase.objects.filter(
+                    is_active=True,
+                    tier=PhraseTier.SHARED,
+                ).count(),
+                "response_phrase_count": Phrase.objects.filter(
+                    is_active=True,
+                    tier=PhraseTier.RESPONSE,
+                ).count(),
                 "phrase_stats": _phrase_deck_stats(now, request.user),
                 "phrase_counts": queue_module.queue_counts(
                     {"kind": "phrase"},
@@ -509,21 +699,23 @@ def stats_overview(request):
 def _annotation_counts(user):
     rows = (
         Annotation.objects.filter(user=user)
-        .values("task_id", "kind")
+        .values("task_id", "kind", "study_later")
         .annotate(total=Count("id"))
     )
     counts = {}
     for row in rows:
         task_counts = counts.setdefault(
             row["task_id"],
-            {"notes": 0, "highlights": 0, "total": 0},
+            {"notes": 0, "highlights": 0, "study": 0, "total": 0},
         )
         key = (
             "highlights"
             if row["kind"] == AnnotationKind.HIGHLIGHT
             else "notes"
         )
-        task_counts[key] = row["total"]
+        task_counts[key] += row["total"]
+        if row["study_later"]:
+            task_counts["study"] += row["total"]
         task_counts["total"] += row["total"]
     return counts
 
@@ -532,7 +724,17 @@ def _annotation_counts(user):
 def notes_overview(request):
     counts = _annotation_counts(request.user)
     parts = []
-    for part in ExamPart.objects.prefetch_related("tasks"):
+    visible_tasks = Task.objects.filter(
+        Q(is_active=True) | Q(annotations__user=request.user)
+    ).distinct()
+    visible_parts = (
+        ExamPart.objects.filter(
+            Q(is_active=True) | Q(tasks__in=visible_tasks)
+        )
+        .distinct()
+        .prefetch_related(Prefetch("tasks", queryset=visible_tasks))
+    )
+    for part in visible_parts:
         tasks = []
         for task in part.tasks.all():
             tasks.append(
@@ -540,14 +742,19 @@ def notes_overview(request):
                     "task": task,
                     "counts": counts.get(
                         task.id,
-                        {"notes": 0, "highlights": 0, "total": 0},
+                        {
+                            "notes": 0,
+                            "highlights": 0,
+                            "study": 0,
+                            "total": 0,
+                        },
                     ),
                 }
             )
         parts.append({"part": part, "tasks": tasks})
     general_counts = counts.get(
         None,
-        {"notes": 0, "highlights": 0, "total": 0},
+        {"notes": 0, "highlights": 0, "study": 0, "total": 0},
     )
     return render(
         request,
@@ -558,6 +765,7 @@ def notes_overview(request):
             "total_annotations": sum(
                 item["total"] for item in counts.values()
             ),
+            "study_count": sum(item["study"] for item in counts.values()),
         },
     )
 
@@ -596,6 +804,7 @@ def _notes_scope(request, task=None):
             "highlights": annotations.filter(
                 kind=AnnotationKind.HIGHLIGHT
             ),
+            "study_count": annotations.filter(study_later=True).count(),
             "form": form,
         },
     )
@@ -607,6 +816,105 @@ def task_notes(request, part_slug, task_slug):
 
 def general_notes(request):
     return _notes_scope(request)
+
+
+def _annotation_anchor(annotation):
+    prefix = (
+        "highlight"
+        if annotation.kind == AnnotationKind.HIGHLIGHT
+        else "note"
+    )
+    return f"{prefix}-{annotation.id}"
+
+
+@require_GET
+def annotation_search(request):
+    query = (request.GET.get("q") or "").strip()
+    kind = (request.GET.get("kind") or "").strip()
+    study_only = request.GET.get("study") == "1"
+    task_id = (request.GET.get("task") or "").strip()
+
+    annotations = Annotation.objects.filter(user=request.user).select_related(
+        "task__part"
+    )
+    if query:
+        annotations = annotations.filter(
+            Q(title__icontains=query)
+            | Q(body__icontains=query)
+            | Q(quote__icontains=query)
+            | Q(source_title__icontains=query)
+        )
+    if kind in AnnotationKind.values:
+        annotations = annotations.filter(kind=kind)
+    else:
+        kind = ""
+    if study_only:
+        annotations = annotations.filter(study_later=True)
+    if task_id.isdigit():
+        task_id = int(task_id)
+        annotations = annotations.filter(task_id=task_id)
+    else:
+        task_id = None
+
+    result_count = annotations.count()
+    results = list(annotations[:100])
+    for annotation in results:
+        annotation.notes_url = (
+            _annotation_scope_url(annotation.task)
+            + "#"
+            + _annotation_anchor(annotation)
+        )
+    task_options = (
+        Task.objects.filter(annotations__user=request.user)
+        .select_related("part")
+        .distinct()
+        .order_by("part__order", "order", "name")
+    )
+    return render(
+        request,
+        "study/annotation_search.html",
+        {
+            "query": query,
+            "selected_kind": kind,
+            "study_only": study_only,
+            "selected_task_id": task_id,
+            "task_options": task_options,
+            "results": results,
+            "result_count": result_count,
+            "result_limit_reached": result_count > len(results),
+        },
+    )
+
+
+@require_GET
+def annotation_study(request, part_slug=None, task_slug=None):
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug is not None and task_slug is not None
+        else None
+    )
+    annotations = Annotation.objects.filter(
+        user=request.user,
+        study_later=True,
+    ).select_related("task__part")
+    if task:
+        annotations = annotations.filter(task=task)
+    items = list(annotations.order_by("-updated_at", "-id"))
+    return render(
+        request,
+        "study/annotation_study.html",
+        {
+            "part": task.part if task else None,
+            "task": task,
+            "items": items,
+            "scope_title": task.name if task else "Toutes mes notes",
+            "back_url": (
+                _annotation_scope_url(task)
+                if task
+                else reverse("study:notes_overview")
+            ),
+        },
+    )
 
 
 def _safe_source_path(value):
@@ -632,7 +940,18 @@ def _annotation_task(value):
         task_id = int(value)
     except (TypeError, ValueError) as error:
         raise ValueError("Invalid task.") from error
-    return get_object_or_404(Task.objects.select_related("part"), pk=task_id)
+    return get_object_or_404(
+        Task.objects.select_related("part"),
+        pk=task_id,
+        is_active=True,
+    )
+
+
+def _annotation_source_key(value):
+    value = (value or "").strip()
+    if not ANNOTATION_SOURCE_KEY_RE.fullmatch(value):
+        raise ValueError("Invalid annotation source key.")
+    return value
 
 
 @require_GET
@@ -648,6 +967,7 @@ def annotations_for_source(request):
     ).values(
         "id",
         "quote",
+        "source_key",
         "start_offset",
         "end_offset",
         "prefix",
@@ -681,6 +1001,7 @@ def annotation_create(request):
     try:
         task = _annotation_task(request.POST.get("task_id"))
         source_path = _safe_source_path(request.POST.get("source_path"))
+        source_key = _annotation_source_key(request.POST.get("source_key"))
         start_offset = int(request.POST.get("start_offset", ""))
         end_offset = int(request.POST.get("end_offset", ""))
     except (TypeError, ValueError):
@@ -698,10 +1019,11 @@ def annotation_create(request):
     }
     try:
         if kind == AnnotationKind.HIGHLIGHT:
-            annotation, created = Annotation.objects.get_or_create(
+            annotation, created = Annotation.objects.update_or_create(
                 user=request.user,
                 kind=kind,
                 source_path=source_path,
+                source_key=source_key,
                 start_offset=start_offset,
                 end_offset=end_offset,
                 defaults=values,
@@ -711,6 +1033,7 @@ def annotation_create(request):
                 user=request.user,
                 kind=kind,
                 source_path=source_path,
+                source_key=source_key,
                 start_offset=start_offset,
                 end_offset=end_offset,
                 **values,
@@ -763,6 +1086,21 @@ def annotation_update(request, pk):
 
 
 @require_POST
+def annotation_study_toggle(request, pk):
+    annotation = get_object_or_404(
+        Annotation,
+        pk=pk,
+        user=request.user,
+    )
+    value = request.POST.get("study_later")
+    if value not in {"0", "1"}:
+        return HttpResponseBadRequest("Invalid study status.")
+    annotation.study_later = value == "1"
+    annotation.save(update_fields=["study_later", "updated_at"])
+    return redirect(_annotation_redirect(request, annotation))
+
+
+@require_POST
 def annotation_delete(request, pk):
     annotation = get_object_or_404(
         Annotation,
@@ -777,7 +1115,12 @@ def annotation_delete(request, pk):
 
 
 def part_detail(request, part_slug):
-    part = get_object_or_404(ExamPart.objects.prefetch_related("tasks"), slug=part_slug)
+    part = get_object_or_404(
+        ExamPart.objects.filter(is_active=True).prefetch_related(
+            Prefetch("tasks", queryset=Task.objects.filter(is_active=True))
+        ),
+        slug=part_slug,
+    )
     now = timezone.now()
     tasks = [
         _task_card(task, now, request.user)
@@ -801,6 +1144,8 @@ def task_detail(request, part_slug, task_slug):
         Task.objects.select_related("part"),
         slug=task_slug,
         part__slug=part_slug,
+        is_active=True,
+        part__is_active=True,
     )
     now = timezone.now()
     if not task.available:
@@ -811,12 +1156,15 @@ def task_detail(request, part_slug, task_slug):
         )
 
     themes = []
-    for theme in Theme.objects.filter(task=task):
+    for theme in Theme.objects.filter(task=task, is_active=True):
         themes.append(
             {
                 "theme": theme,
                 "stats": _spine_theme_stats(theme, now, request.user),
-                "prompt_count": Prompt.objects.filter(theme=theme).count(),
+                "prompt_count": Prompt.objects.filter(
+                    theme=theme,
+                    is_active=True,
+                ).count(),
             }
         )
     scope = _task_scope(task)
@@ -838,7 +1186,10 @@ def task_detail(request, part_slug, task_slug):
             now,
             user=request.user,
         ),
-        "prompt_count": Prompt.objects.filter(theme__task=task).count(),
+        "prompt_count": Prompt.objects.filter(
+            theme__task=task,
+            is_active=True,
+        ).count(),
         "phrase_count": _task_phrases(task).count(),
         "phrase_category_count": _task_phrases(task)
         .values("category_id")
@@ -884,8 +1235,9 @@ def _save_review_session(
     rotate_token=False,
 ) -> str:
     scope_changed = session.scope != scope
-    same_revisit_pass = (
-        session.scope == scope and scope.get("kind") == "revisit"
+    same_focused_pass = (
+        session.scope == scope
+        and scope.get("kind") in FOCUSED_REVIEW_KINDS
     )
     same_presentation = (
         card is not None
@@ -893,10 +1245,11 @@ def _save_review_session(
         and session.current_card_id == card.id
         and session.presentation_token
     )
-    if clear_pass or not same_revisit_pass:
+    if clear_pass or not same_focused_pass:
         session.revisit_seen_card_ids = []
     if clear_pass or scope_changed:
         session.previous_card = None
+        session.previous_review = None
     session.scope = scope
     session.current_card = card
     if card is None:
@@ -908,6 +1261,7 @@ def _save_review_session(
             "scope",
             "current_card",
             "previous_card",
+            "previous_review",
             "revisit_seen_card_ids",
             "presentation_token",
             "updated_at",
@@ -922,6 +1276,10 @@ def review(request):
         scope, explicit = _resolved_review_scope(request, session)
         if explicit and (
             session.scope != scope or request.GET.get("reset") == "1"
+            or (
+                scope.get("kind") in FOCUSED_REVIEW_KINDS
+                and not session.current_card_id
+            )
         ):
             _save_review_session(session, scope, clear_pass=True)
     counts = queue_module.queue_counts(scope, user=request.user)
@@ -947,6 +1305,8 @@ def review(request):
         "scope_label": scope_label(scope),
         "counts": counts,
         "is_revisit": scope.get("kind") == "revisit",
+        "is_weak": scope.get("kind") == "weak",
+        "is_focused_drill": scope.get("kind") in FOCUSED_REVIEW_KINDS,
         "next_batch": next_batch,
         "batch_index_url": batch_index_url,
     }
@@ -969,7 +1329,10 @@ def _queue_state_locked(
         )
     seen_card_ids = (
         session.revisit_seen_card_ids
-        if session.scope == scope and scope.get("kind") == "revisit"
+        if (
+            session.scope == scope
+            and scope.get("kind") in FOCUSED_REVIEW_KINDS
+        )
         else []
     )
     if card is None:
@@ -981,9 +1344,8 @@ def _queue_state_locked(
         )
     counts = queue_module.queue_counts(scope, now, user=request.user)
     if card is None:
-        # A finished scoped deck is no longer something to resume on next launch.
-        _save_review_session(session, {}, clear_pass=True)
-        if scope.get("kind") == "revisit" and seen_card_ids:
+        _save_review_session(session, scope)
+        if scope.get("kind") in FOCUSED_REVIEW_KINDS and seen_card_ids:
             counts["due_reviews"] = 0
             counts["review_due"] = 0
             counts["total_due"] = 0
@@ -1007,6 +1369,7 @@ def _queue_state_locked(
         "is_new": card.is_new,
         "front_html": front,
         "back_html": back,
+        "annotation_source_key": payload["annotation_source_key"],
         "presentation_token": presentation_token,
         "counts": counts,
         "revisit_count": counts["revisit_total"],
@@ -1041,6 +1404,7 @@ def _card_state_locked(
         "is_new": card.is_new,
         "front_html": front,
         "back_html": back,
+        "annotation_source_key": payload["annotation_source_key"],
         "presentation_token": presentation_token,
         "counts": counts,
         "revisit_count": counts["revisit_total"],
@@ -1073,6 +1437,11 @@ def review_hub(request, part_slug, task_slug):
         now,
         user=request.user,
     )
+    weak_counts = queue_module.queue_counts(
+        {**scope, "kind": "weak"},
+        now,
+        user=request.user,
+    )
     session = ReviewSession.load(request.user)
     saved_scope = session.scope if isinstance(session.scope, dict) else {}
     can_resume = bool(
@@ -1096,6 +1465,7 @@ def review_hub(request, part_slug, task_slug):
             "response_due": response_counts["total_due"],
             "phrase_due": phrase_counts["total_due"],
             "revisit_count": cards.filter(needs_revisit=True).count(),
+            "weak_count": weak_counts["weak_total"],
             "can_resume": can_resume,
         },
     )
@@ -1107,7 +1477,9 @@ def review_next(request):
         session = _locked_review_session(request.user)
         scope, _ = _resolved_review_scope(request, session)
         state = _queue_state_locked(scope, request, session)
-    state["can_undo"] = ReviewLog.objects.filter(user=request.user).exists()
+    state["can_undo"] = bool(
+        session.scope == scope and session.previous_review_id
+    )
     return JsonResponse(state)
 
 
@@ -1142,6 +1514,7 @@ def review_previous(request):
             "card_id": card.id,
             "front_html": front,
             "back_html": back,
+            "annotation_source_key": payload["annotation_source_key"],
         }
     )
 
@@ -1193,24 +1566,31 @@ def review_answer(request):
             pk=card_id,
             user=request.user,
         )
-        if scope.get("kind") == "revisit":
+        if scope.get("kind") in FOCUSED_REVIEW_KINDS:
             seen = list(session.revisit_seen_card_ids or [])
             if card.id not in seen:
                 seen.append(card.id)
             session.revisit_seen_card_ids = seen
-        session.previous_card = card
         session.current_card = None
         session.presentation_token = ""
+        _, review_log = apply_review(
+            card,
+            rating,
+            elapsed_ms=elapsed_ms,
+            return_log=True,
+        )
+        session.previous_card = card
+        session.previous_review = review_log
         session.save(
             update_fields=[
                 "current_card",
                 "previous_card",
+                "previous_review",
                 "revisit_seen_card_ids",
                 "presentation_token",
                 "updated_at",
             ]
         )
-        apply_review(card, rating, elapsed_ms=elapsed_ms)
         if action == "revisit" or (not action and rating == Rating.AGAIN):
             card.needs_revisit = True
             card.revisit_added_at = timezone.now()
@@ -1228,20 +1608,31 @@ def review_answer(request):
 
 @require_POST
 def review_undo(request):
-    """Revert the most recent review and re-present that card."""
+    """Revert this session's exact previous review and re-present its card."""
     scope = scope_from_request(request)
     with transaction.atomic():
         session = _locked_review_session(request.user)
-        card = undo_last(request.user)
+        if session.scope != scope:
+            return JsonResponse(
+                {"error": "Cette session de révision a changé."},
+                status=409,
+            )
+        card = None
+        if session.previous_review_id and session.previous_card_id:
+            card = undo_last(
+                request.user,
+                log_id=session.previous_review_id,
+                card_id=session.previous_card_id,
+            )
         if card is None:
             state = _queue_state_locked(scope, request, session)
             state["can_undo"] = False
             state["undone"] = False
             return JsonResponse(state)
-        if session.previous_card_id == card.id:
-            session.previous_card = None
+        session.previous_card = None
+        session.previous_review = None
         state = _card_state_locked(card, scope, request, session)
-    state["can_undo"] = ReviewLog.objects.filter(user=request.user).exists()
+    state["can_undo"] = False
     state["undone"] = True
     return JsonResponse(state)
 
@@ -1390,7 +1781,11 @@ def _scope_filters(request, forced_task=None):
         task_slug = forced_task.slug
 
     if task_slug and not forced_task:
-        task_qs = Task.objects.select_related("part").filter(slug=task_slug)
+        task_qs = Task.objects.select_related("part").filter(
+            slug=task_slug,
+            is_active=True,
+            part__is_active=True,
+        )
         if part_slug:
             task_qs = task_qs.filter(part__slug=part_slug)
         selected_task = task_qs.first()
@@ -1405,7 +1800,9 @@ def _scope_filters(request, forced_task=None):
     )
     filter_parts = []
     active_part_tasks = []
-    for part in ExamPart.objects.prefetch_related("tasks"):
+    for part in ExamPart.objects.filter(is_active=True).prefetch_related(
+        Prefetch("tasks", queryset=Task.objects.filter(is_active=True))
+    ):
         filter_parts.append(
             {
                 "slug": part.slug,
@@ -1466,7 +1863,7 @@ def browse(request, part_slug=None, task_slug=None):
     filters = _scope_filters(request, forced_task)
     scope = filters["scope"]
 
-    theme_qs = Theme.objects.select_related("task__part").all()
+    theme_qs = Theme.objects.select_related("task__part").filter(is_active=True)
     if scope.get("task"):
         theme_qs = theme_qs.filter(
             task__slug=scope["task"],
@@ -1488,25 +1885,34 @@ def browse(request, part_slug=None, task_slug=None):
             {
                 "theme": theme,
                 "stats": stats,
-                "prompt_count": Prompt.objects.filter(theme=theme).count(),
+                "prompt_count": Prompt.objects.filter(
+                    theme=theme,
+                    is_active=True,
+                ).count(),
             }
         )
-    family_qs = Family.objects.all()
+    family_qs = Family.objects.filter(is_active=True)
     if scope.get("task"):
         family_qs = family_qs.filter(
+            prompts__is_active=True,
             prompts__theme__task__slug=scope["task"],
             prompts__theme__task__part__slug=scope["part"],
         )
     elif scope.get("part"):
         family_qs = family_qs.filter(
+            prompts__is_active=True,
             prompts__theme__task__part__slug=scope["part"]
         )
     families = family_qs.annotate(
-        n=Count("prompts", distinct=True)
+        n=Count(
+            "prompts",
+            filter=Q(prompts__is_active=True),
+            distinct=True,
+        )
     ).order_by("order")
-    prompt_qs = Prompt.objects.all()
-    response_qs = Response.objects.all()
-    phrase_qs = Phrase.objects.all()
+    prompt_qs = Prompt.objects.filter(is_active=True)
+    response_qs = Response.objects.filter(is_active=True)
+    phrase_qs = Phrase.objects.filter(is_active=True)
     if scope.get("task"):
         prompt_qs = prompt_qs.filter(
             theme__task__slug=scope["task"],
@@ -1542,11 +1948,13 @@ def browse(request, part_slug=None, task_slug=None):
 
 def theme_detail(request, slug):
     theme = get_object_or_404(
-        Theme.objects.select_related("task__part"), slug=slug
+        Theme.objects.select_related("task__part"),
+        slug=slug,
+        is_active=True,
     )
     now = timezone.now()
     prompts = (
-        Prompt.objects.filter(theme=theme)
+        Prompt.objects.filter(theme=theme, is_active=True)
         .select_related("response", "response__theme", "family")
         .order_by("number")
     )
@@ -1600,17 +2008,22 @@ def family_detail(
     part_slug=None,
     task_slug=None,
 ):
-    family = get_object_or_404(Family, slug=slug)
+    family = get_object_or_404(Family, slug=slug, is_active=True)
     task = (
         _route_task(part_slug, task_slug)
         if part_slug is not None and task_slug is not None
         else Task.objects.select_related("part")
-        .filter(themes__prompts__family=family)
+        .filter(
+            is_active=True,
+            themes__is_active=True,
+            themes__prompts__is_active=True,
+            themes__prompts__family=family,
+        )
         .distinct()
         .order_by("part__order", "order")
         .first()
     )
-    prompt_qs = Prompt.objects.filter(family=family)
+    prompt_qs = Prompt.objects.filter(family=family, is_active=True)
     if part_slug is not None and task_slug is not None:
         prompt_qs = prompt_qs.filter(theme__task=task)
     prompts = (
@@ -1655,17 +2068,26 @@ def response_detail(request, pk):
         ),
         pk=pk,
     )
-    arguments = list(response.arguments.all())
-    prompts = list(response.prompts.select_related("theme").all())
+    response_content = effective_response(response, request.user)
+    prompts = list(
+        response.prompts.filter(is_active=True).select_related("theme")
+    )
     card = Card.objects.filter(
         user=request.user,
         card_type=CardType.SPINE,
         response=response,
     ).first()
     related_phrases = (
-        Phrase.objects.filter(source_prompts__response=response)
+        Phrase.objects.filter(
+            source_prompts__response=response,
+            is_active=True,
+        )
         .distinct()
         .select_related("category")
+    )
+    phrase_batches = _review_batches(
+        {"kind": "phrase", "response": str(response.pk)},
+        request.user,
     )
     return render(
         request,
@@ -1674,10 +2096,83 @@ def response_detail(request, pk):
             "response": response,
             "task": response.theme.task,
             "part": response.theme.task.part if response.theme.task else None,
-            "arguments": arguments,
+            "response_content": response_content,
+            "arguments": response_content.arguments,
             "prompts": prompts,
             "card": card,
             "related_phrases": related_phrases,
+            "phrase_batches": phrase_batches,
+            "can_edit_response": response.prompts.filter(
+                is_active=True,
+                theme__task__slug="tache-3",
+                theme__task__part__slug="orale",
+            ).exists(),
+            "personal_saved": request.GET.get("saved") == "1",
+            "personal_reset": request.GET.get("reset") == "1",
+        },
+    )
+
+
+def edit_response(request, pk):
+    response = get_object_or_404(
+        Response.objects.filter(
+            is_active=True,
+            prompts__is_active=True,
+            prompts__theme__task__slug="tache-3",
+            prompts__theme__task__part__slug="orale",
+        )
+        .select_related("theme__task__part", "family")
+        .prefetch_related("arguments")
+        .distinct(),
+        pk=pk,
+    )
+    personal = PersonalResponse.objects.filter(
+        user=request.user,
+        response=response,
+    ).first()
+    if request.method == "POST" and request.POST.get("action") == "reset":
+        if personal is not None:
+            personal.delete()
+        return redirect(
+            reverse("study:response_detail", args=[response.pk]) + "?reset=1"
+        )
+
+    form = PersonalResponseForm(
+        response,
+        request.user,
+        request.POST or None,
+    )
+    if request.method == "POST" and form.is_valid():
+        PersonalResponse.objects.update_or_create(
+            user=request.user,
+            response=response,
+            defaults=form.personal_defaults(),
+        )
+        return redirect(
+            reverse("study:response_detail", args=[response.pk]) + "?saved=1"
+        )
+
+    argument_fields = []
+    for order in form.argument_orders:
+        argument_fields.append(
+            {
+                "order": order,
+                "fields": [
+                    form[f"argument_{order}_{key}"]
+                    for key, _label, _rows in form.argument_parts
+                ],
+            }
+        )
+    return render(
+        request,
+        "study/response_edit.html",
+        {
+            "response": response,
+            "task": response.theme.task,
+            "part": response.theme.task.part,
+            "form": form,
+            "argument_fields": argument_fields,
+            "has_personal_response": personal is not None,
         },
     )
 
@@ -1696,8 +2191,13 @@ def phrases(request, part_slug=None, task_slug=None):
         )
     category_slug = request.GET.get("category", "").strip()
     selected = None
-    all_phrases = Phrase.objects.select_related("category").prefetch_related(
-        "source_prompts__theme"
+    all_phrases = (
+        Phrase.objects.filter(
+            is_active=True,
+            tier=PhraseTier.SHARED,
+        )
+        .select_related("category")
+        .prefetch_related("source_prompts__theme")
     )
     if task:
         all_phrases = all_phrases.filter(
@@ -1705,6 +2205,7 @@ def phrases(request, part_slug=None, task_slug=None):
         ).distinct()
     categories = list(
         PhraseCategory.objects.filter(
+            is_active=True,
             phrases__in=all_phrases
         ).distinct().order_by("order")
     )
@@ -1728,7 +2229,7 @@ def phrases(request, part_slug=None, task_slug=None):
         ).count()
         category.card_count = category_card_counts.get(category.id, 0)
         category.batch_count = (
-            category.card_count + queue_module.BATCH_SIZE - 1
+            category.phrase_count + queue_module.BATCH_SIZE - 1
         ) // queue_module.BATCH_SIZE
 
     phrase_qs = all_phrases.none()
@@ -1805,10 +2306,11 @@ def search(request, part_slug=None, task_slug=None):
     prompt_results = []
     phrase_results = []
     if query:
-        prompt_qs = Prompt.objects.filter(
+        prompt_qs = Prompt.objects.filter(is_active=True).filter(
             Q(text__icontains=query) | Q(response__body__icontains=query)
         )
         phrase_qs = Phrase.objects.filter(
+            Q(is_active=True),
             Q(expression__icontains=query)
             | Q(english_cue__icontains=query)
             | Q(example__icontains=query)
@@ -1840,14 +2342,17 @@ def search(request, part_slug=None, task_slug=None):
             "phrase_results": phrase_results,
             "result_count": len(prompt_results) + len(phrase_results),
             "prompt_total": (
-                Prompt.objects.filter(theme__task=task).count()
+                Prompt.objects.filter(
+                    theme__task=task,
+                    is_active=True,
+                ).count()
                 if task
-                else Prompt.objects.count()
+                else Prompt.objects.filter(is_active=True).count()
             ),
             "phrase_total": (
                 _task_phrases(task).count()
                 if task
-                else Phrase.objects.count()
+                else Phrase.objects.filter(is_active=True).count()
             ),
         },
     )
@@ -1928,7 +2433,7 @@ def stats(request, part_slug=None, task_slug=None):
 
     overall = deck_stats(active_cards, now)
 
-    theme_qs = Theme.objects.select_related("task__part").all()
+    theme_qs = Theme.objects.select_related("task__part").filter(is_active=True)
     if scope.get("task"):
         theme_qs = theme_qs.filter(
             task__slug=scope["task"],
@@ -1963,6 +2468,7 @@ def stats(request, part_slug=None, task_slug=None):
         "streak": current_streak(now, logs_base, request.user),
         "total_reviews": logs_base.count(),
         "reviews_today": per_day.get(today, 0),
+        "recent_sessions": recent_review_sessions(logs_base),
         **filters,
     }
     return render(request, "study/stats.html", context)
@@ -1973,28 +2479,36 @@ def stats(request, part_slug=None, task_slug=None):
 # ---------------------------------------------------------------------------
 
 
+def _settings_context(request, **overrides):
+    context = {
+        "was_reset": request.GET.get("reset") == "1",
+        "was_unsuspended": request.GET.get("unsuspended") == "1",
+        "pin_changed": request.GET.get("pin_changed") == "1",
+        "suspended_count": Card.objects.filter(
+            user=request.user,
+            suspended=True,
+        ).count(),
+        "change_pin_form": ChangePinForm(request.user),
+        "recovery_codes_form": CurrentPinForm(request.user),
+        "reset_form": ResetProgressForm(request.user),
+        "delete_account_form": DeleteAccountForm(request.user),
+    }
+    context.update(overrides)
+    return context
+
+
+def _render_settings(request, *, status=200, **overrides):
+    return render(
+        request,
+        "study/settings.html",
+        _settings_context(request, **overrides),
+        status=status,
+    )
+
+
 def settings_view(request):
     if request.method == "POST":
         action = request.POST.get("action", "")
-        if action == "reset":
-            with transaction.atomic():
-                session = _locked_review_session(request.user)
-                Card.objects.filter(user=request.user).update(
-                    state=CardState.NEW,
-                    due=None,
-                    interval_days=0.0,
-                    ease=2.5,
-                    reps=0,
-                    lapses=0,
-                    learning_step=0,
-                    last_reviewed=None,
-                    last_rating=None,
-                    needs_revisit=False,
-                    revisit_added_at=None,
-                )
-                ReviewLog.objects.filter(user=request.user).delete()
-                _save_review_session(session, {}, clear_pass=True)
-            return redirect(reverse("study:settings") + "?reset=1")
         if action == "unsuspend_all":
             Card.objects.filter(
                 user=request.user,
@@ -2002,16 +2516,210 @@ def settings_view(request):
             ).update(suspended=False)
             return redirect(reverse("study:settings") + "?unsuspended=1")
         return HttpResponseBadRequest("Invalid settings action.")
+    return _render_settings(request)
 
-    return render(
-        request,
-        "study/settings.html",
-        {
-            "was_reset": request.GET.get("reset") == "1",
-            "was_unsuspended": request.GET.get("unsuspended") == "1",
-            "suspended_count": Card.objects.filter(
-                user=request.user,
-                suspended=True,
-            ).count(),
-        },
+
+@require_POST
+@sensitive_post_parameters("current_pin", "new_pin", "new_pin_confirm")
+def change_pin(request):
+    form = ChangePinForm(request.user, request.POST)
+    if not form.is_valid():
+        return _render_settings(
+            request,
+            status=400,
+            change_pin_form=form,
+        )
+    request.user.set_password(form.cleaned_data["new_pin"])
+    request.user.save(update_fields=["password"])
+    update_session_auth_hash(request, request.user)
+    return redirect(reverse("study:settings") + "?pin_changed=1")
+
+
+@require_POST
+@sensitive_post_parameters("current_pin")
+def regenerate_recovery_codes(request):
+    form = CurrentPinForm(request.user, request.POST)
+    if not form.is_valid():
+        return _render_settings(
+            request,
+            status=400,
+            recovery_codes_form=form,
+        )
+    request.session["new_recovery_codes"] = generate_recovery_codes(
+        request.user
     )
+    request.session["post_recovery_redirect"] = reverse("study:settings")
+    return redirect("study:recovery_codes")
+
+
+@require_POST
+@sensitive_post_parameters("current_pin")
+def reset_progress(request):
+    form = ResetProgressForm(request.user, request.POST)
+    if not form.is_valid():
+        return _render_settings(
+            request,
+            status=400,
+            reset_form=form,
+        )
+    with transaction.atomic():
+        session = _locked_review_session(request.user)
+        Card.objects.filter(user=request.user).update(
+            state=CardState.NEW,
+            due=None,
+            interval_days=0.0,
+            ease=2.5,
+            reps=0,
+            lapses=0,
+            learning_step=0,
+            last_reviewed=None,
+            last_rating=None,
+            needs_revisit=False,
+            revisit_added_at=None,
+            suspended=False,
+        )
+        ReviewLog.objects.filter(user=request.user).delete()
+        _save_review_session(session, {}, clear_pass=True)
+    return redirect(reverse("study:settings") + "?reset=1")
+
+
+@require_GET
+def export_account(request):
+    cards = []
+    for card in (
+        Card.objects.filter(user=request.user)
+        .select_related("response", "phrase")
+        .order_by("pk")
+    ):
+        cards.append(
+            {
+                "id": card.pk,
+                "card_type": card.card_type,
+                "response_key": (
+                    card.response.content_key if card.response_id else None
+                ),
+                "phrase_id": (
+                    card.phrase.phrase_id if card.phrase_id else None
+                ),
+                "state": card.state,
+                "due": card.due,
+                "interval_days": card.interval_days,
+                "ease": card.ease,
+                "reps": card.reps,
+                "lapses": card.lapses,
+                "learning_step": card.learning_step,
+                "last_reviewed": card.last_reviewed,
+                "last_rating": card.last_rating,
+                "needs_revisit": card.needs_revisit,
+                "revisit_added_at": card.revisit_added_at,
+                "suspended": card.suspended,
+                "created_at": card.created_at,
+            }
+        )
+    review_logs = list(
+        ReviewLog.objects.filter(user=request.user)
+        .order_by("reviewed_at", "pk")
+        .values(
+            "card_id",
+            "reviewed_at",
+            "rating",
+            "state_before",
+            "state_after",
+            "interval_before",
+            "interval_after",
+            "ease_before",
+            "ease_after",
+            "elapsed_ms",
+            "card_before",
+        )
+    )
+    annotations = list(
+        Annotation.objects.filter(user=request.user)
+        .order_by("created_at", "pk")
+        .values(
+            "id",
+            "task_id",
+            "kind",
+            "title",
+            "body",
+            "quote",
+            "source_path",
+            "source_key",
+            "source_title",
+            "start_offset",
+            "end_offset",
+            "prefix",
+            "suffix",
+            "study_later",
+            "created_at",
+            "updated_at",
+        )
+    )
+    personal_responses = [
+        {
+            "response_key": personal.response.content_key,
+            "reformulation": personal.reformulation,
+            "position": personal.position,
+            "position_claire": personal.position_claire,
+            "arguments": personal.arguments,
+            "nuance": personal.nuance,
+            "conclusion": personal.conclusion,
+            "created_at": personal.created_at,
+            "updated_at": personal.updated_at,
+        }
+        for personal in PersonalResponse.objects.filter(
+            user=request.user
+        ).select_related("response")
+    ]
+    session = ReviewSession.load(request.user)
+    settings = Settings.load(request.user)
+    payload = {
+        "format": "heureux-account-export",
+        "version": 1,
+        "exported_at": timezone.now(),
+        "account": {
+            "username": request.user.get_username(),
+            "date_joined": request.user.date_joined,
+        },
+        "settings": {
+            "new_cards_per_day": settings.new_cards_per_day,
+            "max_reviews_per_day": settings.max_reviews_per_day,
+        },
+        "review_session": {
+            "current_card_id": session.current_card_id,
+            "previous_card_id": session.previous_card_id,
+            "previous_review_id": session.previous_review_id,
+            "scope": session.scope,
+            "revisit_seen_card_ids": session.revisit_seen_card_ids,
+            "updated_at": session.updated_at,
+        },
+        "cards": cards,
+        "review_logs": review_logs,
+        "annotations": annotations,
+        "personal_responses": personal_responses,
+    }
+    response = JsonResponse(
+        payload,
+        json_dumps_params={"ensure_ascii": False, "indent": 2},
+    )
+    response["Content-Disposition"] = (
+        f'attachment; filename="heureux-{request.user.get_username()}.json"'
+    )
+    return response
+
+
+@require_POST
+@sensitive_post_parameters("current_pin")
+def delete_account(request):
+    form = DeleteAccountForm(request.user, request.POST)
+    if not form.is_valid():
+        return _render_settings(
+            request,
+            status=400,
+            delete_account_form=form,
+        )
+    user = request.user
+    with transaction.atomic():
+        user.delete()
+    auth_logout(request)
+    return redirect(reverse("study:login") + "?deleted=1")

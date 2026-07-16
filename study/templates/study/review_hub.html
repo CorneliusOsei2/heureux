@@ -77,5 +77,16 @@
     </div>
     <a class="btn" href="{% url 'study:task_revisit_list' part.slug task.slug %}">Ouvrir la liste</a>
   </article>
+
+  <article class="review-group review-group--weak">
+    <div class="review-group__icon" aria-hidden="true">↗</div>
+    <div>
+      <p class="task-module__kicker">Cibler les difficultés récentes</p>
+      <h2>Points à renforcer</h2>
+      <p>Heureux repère les cartes revues plusieurs fois ou encore hésitantes au cours des 30 derniers jours.</p>
+      <strong>{{ weak_count }} carte{{ weak_count|pluralize }} à renforcer</strong>
+    </div>
+    <a class="btn {% if weak_count %}btn--primary{% endif %}" href="{% url 'study:review' %}?kind=weak&amp;part={{ part.slug }}&amp;task={{ task.slug }}">{% if weak_count %}Lancer l'entraînement{% else %}Voir le parcours{% endif %}</a>
+  </article>
 </section>
 {% endblock %}

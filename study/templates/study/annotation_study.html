@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Étudier mes notes · Heureux{% endblock %}
+
+{% block content %}
+{% if task %}{% include "study/_task_nav.html" %}{% endif %}
+<header class="page-head">
+  <p class="eyebrow"><a href="{{ back_url }}">Notes</a> · Rappel actif</p>
+  <h1>Étudier · {{ scope_title }}</h1>
+  <p>Révélez chaque note ou passage à votre rythme. Seuls les éléments marqués « À étudier » apparaissent ici.</p>
+</header>
+
+{% if items %}
+<section class="annotation-study" data-annotation-study>
+  <div class="annotation-study__top">
+    <span data-study-progress>1 / {{ items|length }}</span>
+    <a href="{% url 'study:annotation_search' %}?study=1">Gérer la sélection</a>
+  </div>
+  <div class="annotation-study__cards">
+    {% for item in items %}
+      <article class="flashcard annotation-study__card {% if not forloop.first %}hidden{% endif %}" data-study-card>
+        <div class="annotation-study__front" data-study-front>
+          <p class="eyebrow">{% if item.kind == "highlight" %}Passage surligné{% else %}Note personnelle{% endif %}</p>
+          {% if item.kind == "highlight" %}
+            <h2>Quel passage avez-vous retenu&nbsp;?</h2>
+          {% elif item.title %}
+            <h2>{{ item.title }}</h2>
+          {% else %}
+            <h2>Retrouvez l'idée que vous aviez notée.</h2>
+          {% endif %}
+          <p class="muted">{% if item.source_title %}{{ item.source_title }}{% elif item.task %}{{ item.task.part.short_name }} · {{ item.task.name }}{% else %}Notes générales{% endif %}</p>
+        </div>
+        <div class="annotation-study__back hidden" data-study-back>
+          {% if item.quote %}<blockquote{% if item.kind == "highlight" %} class="annotation-study__highlight"{% endif %}>{{ item.quote }}</blockquote>{% endif %}
+          {% if item.body %}<p>{{ item.body }}</p>{% endif %}
+          {% if item.source_path %}<a href="{{ item.source_path }}">Voir la source →</a>{% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="annotation-study__controls">
+    <button class="btn" type="button" data-study-previous disabled>← Précédente</button>
+    <button class="btn btn--primary" type="button" data-study-reveal>Afficher</button>
+    <button class="btn hidden" type="button" data-study-next>Suivante →</button>
+  </div>
+  <div class="card done-state annotation-study__done hidden" data-study-done>
+    <div class="done-state__emoji">✓</div>
+    <h2>Parcours terminé</h2>
+    <p>Vous avez revu {{ items|length }} élément{{ items|length|pluralize }} de votre sélection personnelle.</p>
+    <div class="row center">
+      <button class="btn btn--primary" type="button" data-study-restart>Recommencer</button>
+      <a class="btn" href="{{ back_url }}">Retour aux notes</a>
+    </div>
+  </div>
+</section>
+{% else %}
+  <div class="empty">
+    <p>Aucun élément n'est encore marqué « À étudier » dans cette sélection.</p>
+    <a class="btn btn--primary" href="{% url 'study:annotation_search' %}">Choisir des notes et surlignages</a>
+  </div>
+{% endif %}
+{% endblock %}

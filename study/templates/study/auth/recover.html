@@ -1,0 +1,28 @@
+{% extends "study/auth_base.html" %}
+{% block title %}Récupérer le profil · Heureux{% endblock %}
+
+{% block content %}
+<section class="auth-panel">
+  <p class="eyebrow">Accès au profil</p>
+  <h1>Récupérer mon profil</h1>
+  <p class="auth-panel__lead">Utilisez l'un des codes enregistrés lors de la création du profil. Le code sera remplacé après utilisation.</p>
+
+  <form method="post" class="auth-form" novalidate>
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% if form.non_field_errors %}
+      <div class="auth-error">{{ form.non_field_errors|striptags }}</div>
+    {% endif %}
+    {% for field in form %}
+      <div class="auth-field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+      </div>
+    {% endfor %}
+    <button class="btn btn--primary btn--block" type="submit">Choisir ce nouveau PIN</button>
+  </form>
+
+  <p class="auth-switch"><a href="{% url 'study:login' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Retour à la connexion</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Rechercher dans mes notes · Heureux{% endblock %}
+
+{% block content %}
+<header class="page-head">
+  <p class="eyebrow"><a href="{% url 'study:notes_overview' %}">Notes</a> · Recherche privée</p>
+  <h1>Rechercher dans mes notes</h1>
+  <p>Retrouvez un mot, une idée ou un passage parmi vos notes et surlignages.</p>
+</header>
+
+<form class="card annotation-search" method="get" role="search">
+  <label class="annotation-search__query">
+    <span>Mot ou expression</span>
+    <input type="search" name="q" value="{{ query }}" placeholder="Ex. cependant, transport, nuance…" autofocus>
+  </label>
+  <label>
+    <span>Type</span>
+    <select name="kind">
+      <option value="">Tout</option>
+      <option value="note" {% if selected_kind == "note" %}selected{% endif %}>Notes</option>
+      <option value="highlight" {% if selected_kind == "highlight" %}selected{% endif %}>Surlignages</option>
+    </select>
+  </label>
+  <label>
+    <span>Tâche</span>
+    <select name="task">
+      <option value="">Toutes</option>
+      {% for option in task_options %}
+        <option value="{{ option.id }}" {% if selected_task_id == option.id %}selected{% endif %}>{{ option.part.short_name }} · {{ option.name }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label class="annotation-search__check">
+    <input type="checkbox" name="study" value="1" {% if study_only %}checked{% endif %}>
+    <span>À étudier uniquement</span>
+  </label>
+  <button class="btn btn--primary" type="submit">Rechercher</button>
+</form>
+
+<div class="section-heading annotation-results-heading">
+  <div>
+    <p class="eyebrow">Résultats</p>
+    <h2>{{ result_count }} élément{{ result_count|pluralize }}</h2>
+  </div>
+  <a class="btn btn--sm" href="{% url 'study:annotation_study' %}">Étudier ma sélection</a>
+</div>
+
+<div class="annotations-grid">
+  {% for annotation in results %}
+    <article class="card annotation-card {% if annotation.kind == 'highlight' %}annotation-card--highlight{% else %}annotation-card--note{% endif %}" id="annotation-{{ annotation.id }}">
+      <header class="annotation-card__head">
+        <span class="annotation-card__kind">{{ annotation.get_kind_display }}</span>
+        {% if annotation.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
+        <time datetime="{{ annotation.updated_at|date:'c' }}">{{ annotation.updated_at|date:"j M Y · H:i" }}</time>
+      </header>
+      {% if annotation.title %}<h3>{{ annotation.title }}</h3>{% endif %}
+      {% if annotation.quote %}<blockquote>{% if annotation.kind == "highlight" %}<mark>{{ annotation.quote }}</mark>{% else %}{{ annotation.quote }}{% endif %}</blockquote>{% endif %}
+      {% if annotation.body %}<p class="annotation-card__body">{{ annotation.body }}</p>{% endif %}
+      <p class="annotation-card__scope">{% if annotation.task %}{{ annotation.task.part.short_name }} · {{ annotation.task.name }}{% else %}Notes générales{% endif %}</p>
+      <footer class="annotation-card__actions">
+        <a class="linkbtn" href="{{ annotation.notes_url }}">Ouvrir</a>
+        {% if annotation.source_path %}<a class="linkbtn" href="{{ annotation.source_path }}">Voir la source</a>{% endif %}
+        <form method="post" action="{% url 'study:annotation_study_toggle' annotation.id %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <input type="hidden" name="study_later" value="{% if annotation.study_later %}0{% else %}1{% endif %}">
+          <button class="linkbtn" type="submit">{% if annotation.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
+        </form>
+      </footer>
+    </article>
+  {% empty %}
+    <div class="empty annotation-empty">
+      <p>Aucun élément ne correspond à cette recherche.</p>
+    </div>
+  {% endfor %}
+</div>
+{% if result_limit_reached %}<p class="center muted">Les 100 résultats les plus récents sont affichés. Affinez votre recherche pour aller plus loin.</p>{% endif %}
+{% endblock %}

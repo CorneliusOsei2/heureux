@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import hashlib
 import ipaddress
+import secrets
 from datetime import timedelta
 
 from django.conf import settings as django_settings
@@ -9,12 +9,15 @@ from django.contrib.auth import authenticate, get_user_model
 from django.db import transaction
 from django.db.models import Q
 from django.utils import timezone
+from django.utils.crypto import salted_hmac
 
 from .models import (
+    AccountRecoveryCode,
     Card,
     CardType,
     LoginThrottle,
     Phrase,
+    PhraseTier,
     Response,
     ReviewLog,
     ReviewSession,
@@ -25,7 +28,12 @@ LOGIN_WINDOW = timedelta(minutes=15)
 LOGIN_LOCK = timedelta(minutes=15)
 LOGIN_FAILURE_LIMIT = 5
 IP_ATTEMPT_LIMIT = 30
-THROTTLE_RETENTION = timedelta(hours=1)
+ACCOUNT_FAILURE_LIMIT = 8
+ACCOUNT_WINDOW = timedelta(hours=24)
+ACCOUNT_LOCK_MAX = timedelta(hours=4)
+THROTTLE_RETENTION = timedelta(days=2)
+RECOVERY_CODE_COUNT = 8
+RECOVERY_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
 
 
 def provision_user_study_data(user) -> None:
@@ -80,6 +88,10 @@ def provision_user_study_data(user) -> None:
             if legacy_session:
                 if existing_session:
                     existing_session.current_card = legacy_session.current_card
+                    existing_session.previous_card = legacy_session.previous_card
+                    existing_session.previous_review = (
+                        legacy_session.previous_review
+                    )
                     existing_session.scope = legacy_session.scope
                     existing_session.revisit_seen_card_ids = (
                         legacy_session.revisit_seen_card_ids
@@ -90,6 +102,8 @@ def provision_user_study_data(user) -> None:
                     existing_session.save(
                         update_fields=[
                             "current_card",
+                            "previous_card",
+                            "previous_review",
                             "scope",
                             "revisit_seen_card_ids",
                             "presentation_token",
@@ -110,15 +124,27 @@ def provision_user_study_data(user) -> None:
         Card.objects.bulk_create(
             [
                 Card(user=user, card_type=CardType.SPINE, response=response)
-                for response in Response.objects.exclude(pk__in=existing_responses)
+                for response in Response.objects.filter(is_active=True).exclude(
+                    pk__in=existing_responses
+                )
             ],
             ignore_conflicts=True,
         )
 
-        for card_type in (
-            CardType.PHRASE_PRODUCTION,
-            CardType.PHRASE_RECOGNITION,
-        ):
+        phrase_card_types = (
+            (
+                CardType.PHRASE_PRODUCTION,
+                Phrase.objects.filter(is_active=True),
+            ),
+            (
+                CardType.PHRASE_RECOGNITION,
+                Phrase.objects.filter(
+                    is_active=True,
+                    tier=PhraseTier.SHARED,
+                ),
+            ),
+        )
+        for card_type, phrases in phrase_card_types:
             existing_phrases = set(
                 Card.objects.filter(
                     user=user,
@@ -128,7 +154,7 @@ def provision_user_study_data(user) -> None:
             Card.objects.bulk_create(
                 [
                     Card(user=user, card_type=card_type, phrase=phrase)
-                    for phrase in Phrase.objects.exclude(pk__in=existing_phrases)
+                    for phrase in phrases.exclude(pk__in=existing_phrases)
                 ],
                 ignore_conflicts=True,
             )
@@ -155,23 +181,61 @@ def users_with_study_state():
 
 def _client_address(request) -> str:
     remote_addr = request.META.get("REMOTE_ADDR", "unknown")
-    candidate = remote_addr
+    candidate = None
     if django_settings.TRUST_X_FORWARDED_FOR:
         forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR", "")
         if forwarded_for:
-            candidate = forwarded_for.rsplit(",", 1)[-1].strip()
+            try:
+                forwarded = [
+                    ipaddress.ip_address(value.strip())
+                    for value in forwarded_for.split(",")
+                ]
+                trusted_networks = [
+                    ipaddress.ip_network(value)
+                    for value in django_settings.TRUSTED_PROXY_CIDRS
+                ]
+            except ValueError:
+                forwarded = []
+                trusted_networks = []
+            if forwarded:
+                candidate = forwarded[-1]
+                if trusted_networks:
+                    candidate = next(
+                        (
+                            address
+                            for address in reversed(forwarded)
+                            if not any(
+                                address in network
+                                for network in trusted_networks
+                            )
+                        ),
+                        None,
+                    )
+    if candidate is not None:
+        return candidate.compressed
     try:
-        return ipaddress.ip_address(candidate).compressed
+        return ipaddress.ip_address(remote_addr).compressed
     except ValueError:
-        try:
-            return ipaddress.ip_address(remote_addr).compressed
-        except ValueError:
-            return "unknown"
+        return "unknown"
 
 
 def login_throttle_key(request, username: str, *, purpose: str = "login") -> str:
-    value = f"{purpose}|{username.lower()}|{_client_address(request)}".encode()
-    return hashlib.sha256(value).hexdigest()
+    value = f"{purpose}|{username.lower()}|{_client_address(request)}"
+    return salted_hmac(
+        "study.login-throttle",
+        value,
+        secret=django_settings.SECRET_KEY,
+        algorithm="sha256",
+    ).hexdigest()
+
+
+def account_throttle_key(username: str, *, purpose: str = "login") -> str:
+    return salted_hmac(
+        "study.account-throttle",
+        f"{purpose}|{username.lower()}",
+        secret=django_settings.SECRET_KEY,
+        algorithm="sha256",
+    ).hexdigest()
 
 
 def _prune_stale_throttles(now) -> None:
@@ -180,14 +244,14 @@ def _prune_stale_throttles(now) -> None:
     ).delete()
 
 
-def _locked_throttle(key_hash: str, now):
+def _locked_throttle(key_hash: str, now, *, window=LOGIN_WINDOW):
     throttle, _ = LoginThrottle.objects.select_for_update().get_or_create(
         pk=key_hash,
         defaults={"window_started_at": now},
     )
     if throttle.locked_until and throttle.locked_until > now:
         return throttle, True
-    if throttle.window_started_at <= now - LOGIN_WINDOW:
+    if throttle.window_started_at <= now - window:
         throttle.failures = 0
         throttle.window_started_at = now
         throttle.locked_until = None
@@ -199,10 +263,15 @@ def _record_throttled_attempt(
     now,
     *,
     limit=LOGIN_FAILURE_LIMIT,
+    progressive=False,
 ) -> None:
     throttle.failures += 1
     if throttle.failures >= limit:
-        throttle.locked_until = now + LOGIN_LOCK
+        lock = LOGIN_LOCK
+        if progressive:
+            multiplier = 2 ** (throttle.failures - limit)
+            lock = min(LOGIN_LOCK * multiplier, ACCOUNT_LOCK_MAX)
+        throttle.locked_until = now + lock
     throttle.save(
         update_fields=[
             "failures",
@@ -214,20 +283,16 @@ def _record_throttled_attempt(
 
 
 def authenticate_with_throttle(request, username: str, pin: str):
-    """Serialize attempts per username/address and authenticate below the cap."""
+    """Authenticate under per-address, pair, and account-wide failure caps."""
     now = timezone.now()
     _prune_stale_throttles(now)
     ip_key = login_throttle_key(request, "", purpose="login-ip")
     username_key = login_throttle_key(request, username)
+    account_key = account_throttle_key(username)
     with transaction.atomic():
         ip_throttle, ip_locked = _locked_throttle(ip_key, now)
         if ip_locked:
             return None, True
-        _record_throttled_attempt(
-            ip_throttle,
-            now,
-            limit=IP_ATTEMPT_LIMIT,
-        )
 
         username_throttle, username_locked = _locked_throttle(
             username_key,
@@ -235,11 +300,32 @@ def authenticate_with_throttle(request, username: str, pin: str):
         )
         if username_locked:
             return None, True
+        account_throttle, account_locked = _locked_throttle(
+            account_key,
+            now,
+            window=ACCOUNT_WINDOW,
+        )
+        if account_locked:
+            return None, True
+
         user = authenticate(request, username=username, password=pin)
         if user is not None:
             username_throttle.delete()
+            account_throttle.delete()
             return user, False
+
+        _record_throttled_attempt(
+            ip_throttle,
+            now,
+            limit=IP_ATTEMPT_LIMIT,
+        )
         _record_throttled_attempt(username_throttle, now)
+        _record_throttled_attempt(
+            account_throttle,
+            now,
+            limit=ACCOUNT_FAILURE_LIMIT,
+            progressive=True,
+        )
         return None, False
 
 
@@ -253,3 +339,114 @@ def reserve_throttled_action(key_hash: str, now=None) -> bool:
             return True
         _record_throttled_attempt(throttle, now)
         return False
+
+
+def _normalize_recovery_code(code: str) -> str:
+    return "".join(character for character in code.upper() if character.isalnum())
+
+
+def _recovery_code_digest(code: str) -> str:
+    return salted_hmac(
+        "study.account-recovery",
+        _normalize_recovery_code(code),
+        secret=django_settings.SECRET_KEY,
+        algorithm="sha256",
+    ).hexdigest()
+
+
+def _new_recovery_code() -> str:
+    raw = "".join(
+        secrets.choice(RECOVERY_CODE_ALPHABET) for _ in range(12)
+    )
+    return "-".join(raw[index : index + 4] for index in range(0, 12, 4))
+
+
+def generate_recovery_codes(user) -> list[str]:
+    """Replace a learner's codes and return the one-time plaintext values."""
+    codes = []
+    while len(codes) < RECOVERY_CODE_COUNT:
+        code = _new_recovery_code()
+        if code not in codes:
+            codes.append(code)
+    with transaction.atomic():
+        AccountRecoveryCode.objects.filter(user=user).delete()
+        AccountRecoveryCode.objects.bulk_create(
+            [
+                AccountRecoveryCode(
+                    user=user,
+                    token_digest=_recovery_code_digest(code),
+                )
+                for code in codes
+            ]
+        )
+    return codes
+
+
+def reset_pin_with_recovery(
+    request,
+    username: str,
+    recovery_code: str,
+    new_pin: str,
+):
+    """Consume a recovery code and rotate both the PIN and recovery codes."""
+    now = timezone.now()
+    _prune_stale_throttles(now)
+    ip_key = login_throttle_key(request, "", purpose="recovery-ip")
+    pair_key = login_throttle_key(request, username, purpose="recovery")
+    account_key = account_throttle_key(username, purpose="recovery")
+    with transaction.atomic():
+        ip_throttle, ip_locked = _locked_throttle(ip_key, now)
+        if ip_locked:
+            return None, [], True
+        pair_throttle, pair_locked = _locked_throttle(pair_key, now)
+        if pair_locked:
+            return None, [], True
+        account_throttle, account_locked = _locked_throttle(
+            account_key,
+            now,
+            window=ACCOUNT_WINDOW,
+        )
+        if account_locked:
+            return None, [], True
+
+        user = (
+            get_user_model()
+            .objects.select_for_update()
+            .filter(username__iexact=username)
+            .order_by("pk")
+            .first()
+        )
+        recovery = None
+        if user is not None:
+            recovery = (
+                AccountRecoveryCode.objects.select_for_update()
+                .filter(
+                    user=user,
+                    token_digest=_recovery_code_digest(recovery_code),
+                    used_at__isnull=True,
+                )
+                .first()
+            )
+        if recovery is None:
+            _record_throttled_attempt(
+                ip_throttle,
+                now,
+                limit=IP_ATTEMPT_LIMIT,
+            )
+            _record_throttled_attempt(pair_throttle, now)
+            _record_throttled_attempt(
+                account_throttle,
+                now,
+                limit=ACCOUNT_FAILURE_LIMIT,
+                progressive=True,
+            )
+            return None, [], False
+
+        recovery.used_at = now
+        recovery.save(update_fields=["used_at"])
+        user.set_password(new_pin)
+        user.save(update_fields=["password"])
+        pair_throttle.delete()
+        account_throttle.delete()
+        codes = generate_recovery_codes(user)
+        return user, codes, False

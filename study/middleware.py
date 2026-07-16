@@ -5,6 +5,7 @@ from __future__ import annotations
 from django.db import connection
 from django.http import JsonResponse
 from django.contrib.auth.views import redirect_to_login
+from django.conf import settings
 from django.utils.cache import patch_cache_control
 
 HEALTH_CHECK_PATH = "/healthz"
@@ -38,12 +39,33 @@ class HealthCheckMiddleware:
         return self.get_response(request)
 
 
+class SecurityHeadersMiddleware:
+    """Apply the app's CSP and browser capability policy to every real page."""
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        response.setdefault(
+            "Content-Security-Policy",
+            settings.CONTENT_SECURITY_POLICY,
+        )
+        response.setdefault(
+            "Permissions-Policy",
+            "camera=(), geolocation=(), microphone=(), payment=(), "
+            "usb=(), clipboard-write=(self)",
+        )
+        return response
+
+
 class AuthenticationRequiredMiddleware:
     """Require an authenticated account for every private study surface."""
 
     public_paths = {
         "/login/",
         "/register/",
+        "/recover/",
         "/healthz",
         "/manifest.webmanifest",
         "/sw.js",

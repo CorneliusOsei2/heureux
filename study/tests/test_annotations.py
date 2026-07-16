@@ -144,6 +144,68 @@ class AnnotationTests(TestCase):
         )
         self.assertEqual(response.json()["highlights"], [])
 
+    def test_dynamic_card_source_keys_prevent_offset_collisions(self):
+        first = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "source_key": "response:culture:p1:front",
+            },
+        )
+        second = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "quote": "Un autre passage aux mêmes positions.",
+                "source_key": "response:economie:p1:front",
+            },
+        )
+
+        self.assertEqual(first.status_code, 201)
+        self.assertEqual(second.status_code, 201)
+        self.assertNotEqual(first.json()["id"], second.json()["id"])
+        self.assertEqual(Annotation.objects.count(), 2)
+        restored = self.client.get(
+            reverse("study:annotations_for_source"),
+            {"source_path": self.source_path},
+        ).json()["highlights"]
+        keys = {item["source_key"] for item in restored}
+        self.assertEqual(
+            keys,
+            {
+                "response:culture:p1:front",
+                "response:economie:p1:front",
+            },
+        )
+
+    def test_changed_text_updates_the_same_highlight_anchor(self):
+        payload = {
+            **self.selection,
+            "kind": AnnotationKind.HIGHLIGHT,
+            "source_key": "response:culture:p1:back",
+        }
+        first = self.client.post(reverse("study:annotation_create"), payload)
+        second = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **payload,
+                "quote": "Le passage a été légèrement corrigé.",
+                "prefix": "Nouveau contexte ",
+            },
+        )
+
+        self.assertEqual(first.status_code, 201)
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(first.json()["id"], second.json()["id"])
+        annotation = Annotation.objects.get()
+        self.assertEqual(
+            annotation.quote,
+            "Le passage a été légèrement corrigé.",
+        )
+        self.assertEqual(annotation.prefix, "Nouveau contexte ")
+
     def test_annotation_validation_rejects_empty_or_external_selection(self):
         empty = self.client.post(
             reverse("study:annotation_create"),
@@ -160,6 +222,17 @@ class AnnotationTests(TestCase):
             },
         )
         self.assertEqual(external.status_code, 400)
+        self.assertFalse(Annotation.objects.exists())
+
+        invalid_source_key = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "source_key": "<script>",
+            },
+        )
+        self.assertEqual(invalid_source_key.status_code, 400)
         self.assertFalse(Annotation.objects.exists())
 
     def test_note_can_be_updated_and_highlight_deleted(self):
@@ -211,4 +284,94 @@ class AnnotationTests(TestCase):
         self.assertContains(
             task_page,
             f'data-annotation-task-id="{self.task.id}"',
+        )
+
+    def test_private_annotation_search_filters_content_and_kind(self):
+        matching_note = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            title="Connecteurs",
+            body="Employer cependant pour nuancer.",
+            study_later=True,
+        )
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Cependant, cette difficulté n'est pas une fatalité.",
+            source_path=self.source_path,
+            start_offset=1,
+            end_offset=53,
+        )
+        Annotation.objects.create(
+            user=self.other,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            body="Cependant, ceci est privé.",
+        )
+
+        response = self.client.get(
+            reverse("study:annotation_search"),
+            {"q": "cependant", "kind": "note", "study": "1"},
+        )
+
+        self.assertEqual(response.context["result_count"], 1)
+        self.assertContains(response, matching_note.body)
+        self.assertNotContains(response, "cette difficulté")
+        self.assertNotContains(response, "ceci est privé")
+
+    def test_annotations_can_be_marked_and_studied_by_task(self):
+        note = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            title="Nuance",
+            body="Le mot toujours est trop fort.",
+        )
+        other_task = factories.make_task(
+            part=factories.make_part(slug="ecrite"),
+            slug="tache-1",
+        )
+        other_note = Annotation.objects.create(
+            user=self.user,
+            task=other_task,
+            kind=AnnotationKind.NOTE,
+            body="Une autre tâche.",
+            study_later=True,
+        )
+
+        detail_url = reverse(
+            "study:task_notes",
+            args=[self.part.slug, self.task.slug],
+        )
+        response = self.client.post(
+            reverse("study:annotation_study_toggle", args=[note.id]),
+            {"study_later": "1", "next": detail_url},
+        )
+        self.assertRedirects(response, detail_url)
+        note.refresh_from_db()
+        self.assertTrue(note.study_later)
+
+        study = self.client.get(
+            reverse(
+                "study:task_annotation_study",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+        self.assertContains(study, "Le mot toujours est trop fort.")
+        self.assertNotContains(study, other_note.body)
+        self.assertContains(study, "data-annotation-study")
+
+        self.client.force_login(self.other)
+        self.assertEqual(
+            self.client.post(
+                reverse("study:annotation_study_toggle", args=[note.id]),
+                {"study_later": "0"},
+            ).status_code,
+            404,
+        )
+        self.assertNotContains(
+            self.client.get(reverse("study:annotation_study")),
+            note.body,
         )

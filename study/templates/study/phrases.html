@@ -16,7 +16,7 @@
       {% if selected %}Réviser toute la catégorie{% else %}Réviser toutes les expressions{% endif %}
     </a>
   </div>
-  <p>{% if selected %}{{ phrase_count }} expressions dans « {{ selected.name }} ».{% else %}{{ phrase_count }} expressions, collocations et nuances extraites sujet par sujet, rangées selon leur fonction et leur thème.{% endif %}</p>
+  <p>{% if selected %}{{ phrase_count }} expressions réutilisables dans « {{ selected.name }} ».{% else %}{{ phrase_count }} expressions réutilisables, rangées selon leur fonction et leur thème. Le vocabulaire propre à chaque réponse reste avec son sujet.{% endif %}</p>
 </div>
 
 {% if selected %}
@@ -32,9 +32,9 @@
   <div class="review-batches__head">
     <div>
       <p class="eyebrow">Parcours organisé</p>
-      <h2 id="phrase-batches-title">Lots de {{ batch_size }} cartes</h2>
+      <h2 id="phrase-batches-title">Lots de {{ batch_size }} expressions maximum</h2>
     </div>
-    <p>Chaque expression produit une carte de pratique et une carte de compréhension. Choisissez un lot précis ou révisez toute la catégorie sans limite.</p>
+    <p>Les deux sens d'une même expression restent réunis dans le même lot. Choisissez un lot précis ou révisez toute la catégorie sans limite.</p>
   </div>
   <div class="batch-grid">
     {% for batch in review_batches %}
@@ -43,8 +43,8 @@
           <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
           <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
         </span>
-        <strong>Cartes {{ batch.start }}–{{ batch.end }}</strong>
-        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
+        <strong>Expressions {{ batch.start }}–{{ batch.end }}</strong>
+        <span>{{ batch.seen_count }}/{{ batch.active_count }} terminées{% if batch.available_now %} · {{ batch.available_now }} carte{{ batch.available_now|pluralize }} à travailler{% else %} · à jour{% endif %}</span>
       </a>
     {% endfor %}
   </div>

@@ -67,8 +67,8 @@ class PhraseCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Phrase)
 class PhraseAdmin(admin.ModelAdmin):
-    list_display = ("phrase_id", "category", "expression")
-    list_filter = ("category",)
+    list_display = ("phrase_id", "tier", "category", "expression")
+    list_filter = ("tier", "category")
     search_fields = ("expression", "english_cue", "example")
 
 

@@ -4,31 +4,69 @@
 {% block content %}
 <div class="page-head">
   <h1>Réglages</h1>
-  <p>Gérez votre progression et les cartes mises de côté.</p>
+  <p>Gérez votre sécurité, vos données et votre progression.</p>
 </div>
 
-{% if was_reset %}<div class="notice">Progression réinitialisée. Toutes les cartes sont de nouveau « nouvelles ».</div>{% endif %}
+{% if was_reset %}<div class="notice">Progression réinitialisée. Toutes les cartes sont de nouveau « nouvelles » et actives.</div>{% endif %}
 {% if was_unsuspended %}<div class="notice">Cartes réactivées. Elles reviennent dans la file de révision.</div>{% endif %}
+{% if pin_changed %}<div class="notice">Code PIN modifié. Vos autres sessions ont été déconnectées.</div>{% endif %}
 
 <div class="grid grid--2">
   <section class="card card--pad">
     <p class="eyebrow">Rythme libre</p>
     <h2 class="mt-0">Aucun plafond quotidien</h2>
-    <p class="muted">Toutes les nouvelles cartes et toutes les révisions arrivées à échéance restent disponibles. Les lots de 15 servent uniquement à organiser le travail&nbsp;: ils ne limitent jamais votre pratique.</p>
+    <p class="muted">Toutes les nouvelles cartes et toutes les révisions arrivées à échéance restent disponibles. Les lots de 15 organisent le travail sans limiter votre pratique.</p>
   </section>
 
-  <form class="card card--pad danger-zone" method="post" action="{% url 'study:settings' %}" onsubmit="return confirm('Réinitialiser toute votre progression ? Cette action est irréversible.');">
-    {% csrf_token %}
-    <h2 class="mt-0">Zone sensible</h2>
-    <p class="muted">Remet toutes vos cartes à zéro et efface votre historique de révision. Le contenu (réponses, expressions) n'est pas touché.</p>
-    <button class="btn btn--danger" type="submit" name="action" value="reset">Réinitialiser la progression</button>
-  </form>
+  <section class="card card--pad">
+    <p class="eyebrow">Sécurité</p>
+    <h2 class="mt-0">Modifier le code PIN</h2>
+    <p class="muted">Le changement conserve cette session et déconnecte les autres appareils.</p>
+    <form method="post" action="{% url 'study:change_pin' %}" class="settings-form" novalidate>
+      {% csrf_token %}
+      {% if change_pin_form.non_field_errors %}<div class="auth-error">{{ change_pin_form.non_field_errors|striptags }}</div>{% endif %}
+      {% for field in change_pin_form %}
+        <div class="auth-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+        </div>
+      {% endfor %}
+      <button class="btn btn--primary" type="submit">Modifier mon PIN</button>
+    </form>
+  </section>
 </div>
 
-<div class="card card--pad" style="margin-top:1.4rem;">
+<div class="grid grid--2 settings-grid">
+  <section class="card card--pad">
+    <p class="eyebrow">Accès de secours</p>
+    <h2 class="mt-0">Codes de récupération</h2>
+    <p class="muted">Créez huit nouveaux codes à usage unique. Les anciens seront immédiatement invalidés.</p>
+    <form method="post" action="{% url 'study:regenerate_recovery_codes' %}" class="settings-form" novalidate>
+      {% csrf_token %}
+      {% for field in recovery_codes_form %}
+        <div class="auth-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+        </div>
+      {% endfor %}
+      <button class="btn" type="submit">Créer de nouveaux codes</button>
+    </form>
+  </section>
+
+  <section class="card card--pad">
+    <p class="eyebrow">Vos données</p>
+    <h2 class="mt-0">Exporter le profil</h2>
+    <p class="muted">Téléchargez un fichier JSON privé avec vos cartes, révisions, notes, highlights et votre session en cours. Aucun secret d'authentification n'y figure.</p>
+    <a class="btn" href="{% url 'study:export_account' %}">Télécharger mes données</a>
+  </section>
+</div>
+
+<section class="card card--pad settings-section">
   <h2 class="mt-0">Cartes suspendues</h2>
   {% if suspended_count %}
-    <p class="muted">{{ suspended_count }} carte{{ suspended_count|pluralize }} suspendue{{ suspended_count|pluralize }} — retirée{{ suspended_count|pluralize }} de la file de révision. Vous pouvez toutes les réactiver.</p>
+    <p class="muted">{{ suspended_count }} carte{{ suspended_count|pluralize }} suspendue{{ suspended_count|pluralize }} — retirée{{ suspended_count|pluralize }} de la file de révision.</p>
     <form method="post" action="{% url 'study:settings' %}">
       {% csrf_token %}
       <button class="btn" type="submit" name="action" value="unsuspend_all">Réactiver toutes les cartes</button>
@@ -36,10 +74,45 @@
   {% else %}
     <p class="muted">Aucune carte suspendue.</p>
   {% endif %}
-</div>
+</section>
 
-<div class="card card--pad" style="margin-top:1.4rem;">
+<section class="card card--pad danger-zone settings-section">
+  <p class="eyebrow">Zone sensible</p>
+  <h2 class="mt-0">Réinitialiser la progression</h2>
+  <p class="muted">Remet toutes les cartes à zéro, réactive les cartes suspendues et efface l'historique de révision. Les réponses, notes et highlights restent intacts.</p>
+  <form method="post" action="{% url 'study:reset_progress' %}" class="settings-form settings-form--compact" novalidate>
+    {% csrf_token %}
+    {% if reset_form.non_field_errors %}<div class="auth-error">{{ reset_form.non_field_errors|striptags }}</div>{% endif %}
+    {% for field in reset_form %}
+      <div class="auth-field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+      </div>
+    {% endfor %}
+    <button class="btn btn--danger" type="submit">Réinitialiser définitivement</button>
+  </form>
+</section>
+
+<section class="card card--pad danger-zone danger-zone--account settings-section">
+  <h2 class="mt-0">Supprimer le profil</h2>
+  <p class="muted">Supprime définitivement le profil, les cartes, l'historique, les notes et les highlights. Exportez vos données avant de continuer.</p>
+  <form method="post" action="{% url 'study:delete_account' %}" class="settings-form settings-form--compact" novalidate>
+    {% csrf_token %}
+    {% if delete_account_form.non_field_errors %}<div class="auth-error">{{ delete_account_form.non_field_errors|striptags }}</div>{% endif %}
+    {% for field in delete_account_form %}
+      <div class="auth-field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+      </div>
+    {% endfor %}
+    <button class="btn btn--danger" type="submit">Supprimer définitivement mon profil</button>
+  </form>
+</section>
+
+<section class="card card--pad settings-section">
   <h2 class="mt-0">À propos</h2>
-  <p class="muted">Répétition espacée (algorithme SM-2, façon Anki). Chaque bonne réponse espace la prochaine révision&nbsp;; un oubli la ramène tôt. Révisez un peu chaque jour&nbsp;: la régularité prime sur l'intensité.</p>
-</div>
+  <p class="muted">Répétition espacée (algorithme SM-2, façon Anki). Chaque bonne réponse espace la prochaine révision&nbsp;; un oubli la ramène tôt. La régularité prime sur l'intensité.</p>
+</section>
 {% endblock %}

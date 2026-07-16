@@ -28,6 +28,9 @@
     {% if nav_revisit_count %}
       <a class="btn btn--ghost btn--lg" href="{% url 'study:revisit_list' %}">À revoir · {{ nav_revisit_count }}</a>
     {% endif %}
+    {% if weak_count %}
+      <a class="btn btn--ghost btn--lg" href="{% url 'study:review' %}?kind=weak">Points à renforcer · {{ weak_count }}</a>
+    {% endif %}
     {% if content_task %}
       <a class="btn btn--ghost btn--lg" href="{% url 'study:task_detail' content_task.part.slug content_task.slug %}">Ouvrir {{ content_task.name }}</a>
     {% endif %}

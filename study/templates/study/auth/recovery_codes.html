@@ -1,0 +1,19 @@
+{% extends "study/auth_base.html" %}
+{% block title %}Codes de récupération · Heureux{% endblock %}
+
+{% block content %}
+<section class="auth-panel auth-panel--wide">
+  <p class="eyebrow">Sécurité du profil</p>
+  <h1>Conservez vos codes</h1>
+  {% if recovery_codes %}
+    <div class="notice">Ces codes ne seront affichés qu'une fois. Enregistrez-les dans un endroit sûr, séparé de votre code PIN.</div>
+    <ol class="recovery-codes" aria-label="Codes de récupération">
+      {% for code in recovery_codes %}<li><code>{{ code }}</code></li>{% endfor %}
+    </ol>
+    <button class="btn btn--block" type="button" data-print-recovery>Imprimer ou enregistrer en PDF</button>
+  {% else %}
+    <div class="auth-error">Ces codes ont déjà été affichés. Vous pouvez en créer de nouveaux depuis Réglages après avoir confirmé votre PIN.</div>
+  {% endif %}
+  <a class="btn btn--primary btn--block" href="{{ next_url }}">J'ai enregistré mes codes</a>
+</section>
+{% endblock %}

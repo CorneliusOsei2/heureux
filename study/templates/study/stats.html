@@ -83,4 +83,37 @@
     {% endfor %}
   </div>
 </section>
+
+<section class="recent-sessions" style="margin-top:1.6rem;" aria-labelledby="recent-sessions-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Historique récent</p>
+      <h2 id="recent-sessions-title">Dernières sessions</h2>
+    </div>
+  </div>
+  <div class="session-list">
+    {% for session in recent_sessions %}
+      <article class="card session-card">
+        <header>
+          <div>
+            <strong>{{ session.ended_at|date:"j M Y" }}</strong>
+            <span>{{ session.started_at|time:"H:i" }}{% if session.started_at != session.ended_at %}–{{ session.ended_at|time:"H:i" }}{% endif %}</span>
+          </div>
+          <span class="session-card__score">{{ session.accuracy }}% correct</span>
+        </header>
+        <div class="session-card__metrics">
+          <span><b>{{ session.review_count }}</b> carte{{ session.review_count|pluralize }}</span>
+          {% if session.response_count %}<span><b>{{ session.response_count }}</b> réponse{{ session.response_count|pluralize }}</span>{% endif %}
+          {% if session.phrase_count %}<span><b>{{ session.phrase_count }}</b> expression{{ session.phrase_count|pluralize }}</span>{% endif %}
+          {% if session.study_minutes %}<span><b>{{ session.study_minutes }}</b> min d'étude</span>{% endif %}
+        </div>
+        {% if session.topics %}
+          <p>{% for topic in session.topics %}<span class="pill">{{ topic }}</span>{% endfor %}{% if session.extra_topics %}<span class="pill">+{{ session.extra_topics }}</span>{% endif %}</p>
+        {% endif %}
+      </article>
+    {% empty %}
+      <div class="empty"><p>Vos prochaines révisions apparaîtront ici, regroupées par session.</p></div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}

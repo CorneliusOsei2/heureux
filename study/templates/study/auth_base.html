@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="theme-color" content="#173f90">
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=31">
+  <script src="{% static 'study/js/theme-init.js' %}?v=1"></script>
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=33">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="{% static 'study/icons/logo.svg' %}?v=2">
 </head>
@@ -21,5 +22,6 @@
     </header>
     {% block content %}{% endblock %}
   </main>
+  <script src="{% static 'study/js/auth.js' %}?v=1"></script>
 </body>
 </html>

@@ -24,9 +24,10 @@
       <small>Exactement 6 chiffres</small>
       {% for error in form.pin.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
     </div>
+    <p class="auth-help"><a href="{% url 'study:recover_account' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Code PIN oublié&nbsp;?</a></p>
     <button class="btn btn--primary btn--block" type="submit">Continuer</button>
   </form>
 
-  <p class="auth-switch">Nouveau sur Heureux ? <a href="{% url 'study:register' %}">Créer un profil</a></p>
+  <p class="auth-switch">Nouveau sur Heureux ? <a href="{% url 'study:register' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Créer un profil</a></p>
 </section>
 {% endblock %}

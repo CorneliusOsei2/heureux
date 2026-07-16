@@ -20,6 +20,7 @@ from study import srs, views as study_views
 from study.models import (
     Card,
     CardState,
+    CardType,
     Rating,
     ReviewLog,
     ReviewSession,
@@ -64,9 +65,21 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v34"', body)
+        self.assertIn('var CACHE = "heureux-v36"', body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
+        self.assertIn("SKIP_WAITING", body)
+        self.assertIn("no-store", r["Cache-Control"])
+        self.assertEqual(r["Service-Worker-Allowed"], "/")
+
+    def test_security_headers_block_inline_scripts_and_sensitive_capabilities(self):
+        response = self.client.get("/login/")
+
+        policy = response["Content-Security-Policy"]
+        self.assertIn("script-src 'self'", policy)
+        self.assertNotIn("'unsafe-inline'", policy.split("script-src", 1)[1].split(";", 1)[0])
+        self.assertIn("frame-ancestors 'none'", policy)
+        self.assertIn("camera=()", response["Permissions-Policy"])
 
     def test_offline_page(self):
         self.assertEqual(self.client.get("/offline/").status_code, 200)
@@ -442,12 +455,27 @@ class CategoryBatchViewsTests(TestCase):
         self.client.force_login(self.user)
         first = factories.make_phrase_card(user=self.user)
         self.category = first.phrase.category
-        self.phrase_cards = [first]
+        first_recognition = factories.make_phrase_card(
+            phrase=first.phrase,
+            user=self.user,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+        self.phrase_pairs = [(first, first_recognition)]
         for _ in range(15):
             phrase = factories.make_phrase(category=self.category)
-            self.phrase_cards.append(
-                factories.make_phrase_card(phrase=phrase, user=self.user)
+            self.phrase_pairs.append(
+                (
+                    factories.make_phrase_card(phrase=phrase, user=self.user),
+                    factories.make_phrase_card(
+                        phrase=phrase,
+                        user=self.user,
+                        card_type=CardType.PHRASE_RECOGNITION,
+                    ),
+                )
             )
+        self.phrase_cards = [
+            card for pair in self.phrase_pairs for card in pair
+        ]
 
     def test_expression_category_displays_fifteen_card_lots(self):
         response = self.client.get(
@@ -457,14 +485,18 @@ class CategoryBatchViewsTests(TestCase):
 
         self.assertEqual(len(response.context["review_batches"]), 2)
         self.assertEqual(
-            response.context["review_batches"][0]["card_count"],
+            response.context["review_batches"][0]["phrase_count"],
             15,
         )
         self.assertEqual(
-            response.context["review_batches"][1]["card_count"],
+            response.context["review_batches"][1]["phrase_count"],
             1,
         )
-        self.assertContains(response, "Lots de 15 cartes")
+        self.assertEqual(
+            [batch["card_count"] for batch in response.context["review_batches"]],
+            [30, 2],
+        )
+        self.assertContains(response, "Lots de 15 expressions maximum")
         self.assertContains(response, "Lot 02")
         self.assertContains(response, "batch=2")
 
@@ -478,12 +510,14 @@ class CategoryBatchViewsTests(TestCase):
         state = self.client.get(reverse("study:review_next"), params).json()
 
         self.assertContains(page, "Lot 2")
-        self.assertEqual(state["card_id"], self.phrase_cards[15].id)
-        self.assertEqual(state["counts"]["new_available"], 1)
+        self.assertEqual(state["card_id"], self.phrase_pairs[15][0].id)
+        self.assertEqual(state["counts"]["new_available"], 2)
 
     def test_batch_cards_show_in_progress_and_completed_states(self):
         future = timezone.now() + timedelta(days=5)
-        first_batch = self.phrase_cards[:15]
+        first_batch = [
+            card for pair in self.phrase_pairs[:15] for card in pair
+        ]
         first_batch[0].state = CardState.LEARNING
         first_batch[0].due = future
         first_batch[0].save(update_fields=["state", "due"])
@@ -516,7 +550,9 @@ class CategoryBatchViewsTests(TestCase):
 
     def test_suspended_lot_is_visible_but_not_clickable(self):
         Card.objects.filter(
-            pk__in=[card.pk for card in self.phrase_cards[:15]]
+            pk__in=[
+                card.pk for pair in self.phrase_pairs[:15] for card in pair
+            ]
         ).update(suspended=True)
 
         response = self.client.get(
@@ -561,6 +597,31 @@ class CategoryBatchViewsTests(TestCase):
         )
         self.assertContains(response, "Lots de 15 cartes")
 
+    def test_response_sheet_splits_local_vocabulary_into_expression_lots(self):
+        response = factories.make_response()
+        prompt = response.prompts.first()
+        for _ in range(16):
+            phrase = factories.make_phrase(tier="response")
+            phrase.source_prompts.add(prompt)
+            factories.make_phrase_card(
+                phrase=phrase,
+                user=self.user,
+            )
+
+        page = self.client.get(
+            reverse("study:response_detail", args=[response.pk])
+        )
+
+        self.assertEqual(
+            [
+                batch["phrase_count"]
+                for batch in page.context["phrase_batches"]
+            ],
+            [15, 1],
+        )
+        self.assertContains(page, "Lot 1 · 15 expressions")
+        self.assertContains(page, "Lot 2 · 1 expression")
+
 
 class ReviewFlowTests(TestCase):
     def setUp(self):
@@ -580,6 +641,10 @@ class ReviewFlowTests(TestCase):
 
     def test_answer_advances_and_logs(self):
         presented = self._present()
+        self.assertEqual(
+            presented["annotation_source_key"],
+            f"response:{self.card.response.content_key}",
+        )
         r = self.client.post(
             reverse("study:review_answer"),
             {
@@ -620,6 +685,45 @@ class ReviewFlowTests(TestCase):
         self.assertIsNotNone(self.card.revisit_added_at)
         self.assertEqual(self.card.last_rating, Rating.AGAIN)
         self.assertEqual(ReviewLog.objects.get().rating, Rating.AGAIN)
+
+    def test_weak_area_drill_reviews_future_fragile_cards_once_per_pass(self):
+        self.card.state = CardState.REVIEW
+        self.card.due = timezone.now() + timedelta(days=30)
+        self.card.interval_days = 10
+        self.card.reps = 3
+        self.card.last_rating = Rating.AGAIN
+        self.card.save(
+            update_fields=[
+                "state",
+                "due",
+                "interval_days",
+                "reps",
+                "last_rating",
+            ]
+        )
+        scope = "?kind=weak"
+        page = self.client.get(reverse("study:review") + scope)
+        self.assertContains(page, "Points à renforcer")
+
+        presented = self._present(scope)
+        self.assertEqual(presented["card_id"], self.card.id)
+        result = self.client.post(
+            reverse("study:review_answer"),
+            {
+                "kind": "weak",
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        )
+
+        self.assertEqual(result.status_code, 200)
+        self.assertTrue(result.json()["done"])
+        self.assertTrue(result.json()["can_previous"])
+        self.assertEqual(
+            ReviewSession.load(self.user).revisit_seen_card_ids,
+            [self.card.id],
+        )
 
     def test_correct_clears_revisit_mark(self):
         self.card.needs_revisit = True
@@ -797,12 +901,38 @@ class ReviewFlowTests(TestCase):
         previous = self.client.get(reverse("study:review_previous"))
         self.assertEqual(previous.status_code, 200)
         self.assertEqual(previous.json()["card_id"], self.card.id)
+        self.assertEqual(
+            previous.json()["annotation_source_key"],
+            f"response:{self.card.response.content_key}",
+        )
         self.assertIn(self.card.response.prompt, previous.json()["front_html"])
 
         session.refresh_from_db()
         self.assertEqual(session.current_card_id, second_card.id)
         self.assertEqual(session.presentation_token, current_token)
         self.assertEqual(ReviewLog.objects.count(), 1)
+
+    def test_previous_card_remains_available_when_session_finishes(self):
+        presented = self._present()
+
+        finished = self.client.post(
+            reverse("study:review_answer"),
+            {
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        ).json()
+
+        self.assertTrue(finished["done"])
+        self.assertTrue(finished["can_previous"])
+        session = ReviewSession.load(self.user)
+        self.assertEqual(session.scope, {})
+        self.assertEqual(session.previous_card_id, self.card.id)
+        self.assertIsNotNone(session.previous_review_id)
+        previous = self.client.get(reverse("study:review_previous"))
+        self.assertEqual(previous.status_code, 200)
+        self.assertEqual(previous.json()["card_id"], self.card.id)
 
     def test_undo_clears_previous_card_pointer(self):
         factories.make_spine_card()
@@ -824,6 +954,59 @@ class ReviewFlowTests(TestCase):
         self.assertTrue(undone.json()["undone"])
         self.assertFalse(undone.json()["can_previous"])
         self.assertIsNone(ReviewSession.load(self.user).previous_card_id)
+        self.assertIsNone(ReviewSession.load(self.user).previous_review_id)
+
+    def test_undo_cannot_cross_review_scopes(self):
+        phrase_card = factories.make_phrase_card(user=self.user)
+        presented = self._present("?kind=spine")
+        self.client.post(
+            reverse("study:review_answer"),
+            {
+                "kind": "spine",
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        )
+        self.card.refresh_from_db()
+        reviewed_state = self.card.state
+
+        switched = self.client.get(
+            reverse("study:review_next") + "?kind=phrase"
+        ).json()
+        self.assertEqual(switched["card_id"], phrase_card.id)
+        undone = self.client.post(
+            reverse("study:review_undo"),
+            {"kind": "phrase"},
+        )
+
+        self.assertEqual(undone.status_code, 200)
+        self.assertFalse(undone.json()["undone"])
+        self.card.refresh_from_db()
+        self.assertEqual(self.card.state, reviewed_state)
+        self.assertEqual(ReviewLog.objects.filter(card=self.card).count(), 1)
+
+    def test_stale_scope_cannot_undo_active_session(self):
+        presented = self._present("?kind=spine")
+        self.client.post(
+            reverse("study:review_answer"),
+            {
+                "kind": "spine",
+                "card_id": self.card.id,
+                "action": "correct",
+                "presentation_token": presented["presentation_token"],
+            },
+        )
+
+        response = self.client.post(
+            reverse("study:review_undo"),
+            {"kind": "phrase"},
+        )
+
+        self.assertEqual(response.status_code, 409)
+        self.card.refresh_from_db()
+        self.assertNotEqual(self.card.state, CardState.NEW)
+        self.assertEqual(ReviewLog.objects.count(), 1)
 
     def test_revisit_pass_visits_each_marked_card_once(self):
         now = timezone.now()
@@ -989,6 +1172,51 @@ class ReviewConcurrencyTests(TransactionTestCase):
         self.assertEqual(ReviewLog.objects.count(), 1)
 
 
+class RecentSessionTests(TestCase):
+    def setUp(self):
+        self.user = factories.make_user("activity-owner")
+        self.other = factories.make_user("activity-other")
+        self.client.force_login(self.user)
+        self.card = factories.make_spine_card(user=self.user)
+
+    def _log(self, reviewed_at, rating=Rating.GOOD, *, user=None):
+        card = (
+            self.card
+            if user is None or user == self.user
+            else factories.make_spine_card(user=user)
+        )
+        return ReviewLog.objects.create(
+            user=user or self.user,
+            card=card,
+            reviewed_at=reviewed_at,
+            rating=rating,
+            state_before=CardState.REVIEW,
+            state_after=(
+                CardState.RELEARNING
+                if rating == Rating.AGAIN
+                else CardState.REVIEW
+            ),
+            elapsed_ms=60000,
+        )
+
+    def test_stats_groups_recent_activity_and_keeps_it_private(self):
+        now = timezone.now()
+        self._log(now - timedelta(minutes=5))
+        self._log(now - timedelta(minutes=20), Rating.AGAIN)
+        self._log(now - timedelta(hours=2))
+        self._log(now - timedelta(minutes=10), user=self.other)
+
+        response = self.client.get(reverse("study:stats"))
+        sessions = response.context["recent_sessions"]
+
+        self.assertEqual(len(sessions), 2)
+        self.assertEqual(sessions[0]["review_count"], 2)
+        self.assertEqual(sessions[0]["accuracy"], 50)
+        self.assertEqual(sessions[0]["study_minutes"], 2)
+        self.assertEqual(sessions[1]["review_count"], 1)
+        self.assertContains(response, "Dernières sessions")
+
+
 class SettingsActionTests(TestCase):
     def setUp(self):
         self.user = factories.make_user("settings")
@@ -1014,21 +1242,50 @@ class SettingsActionTests(TestCase):
         from study import srs
 
         card = factories.make_spine_card(
+            user=self.user,
             needs_revisit=True,
             revisit_added_at=timezone.now(),
+            suspended=True,
         )
         srs.review(card, Rating.GOOD)
         session = ReviewSession.load(self.user)
         session.current_card = card
         session.scope = {"kind": "spine"}
         session.save()
-        r = self.client.post(reverse("study:settings"), {"action": "reset"})
+        r = self.client.post(
+            reverse("study:reset_progress"),
+            {
+                "current_pin": "123456",
+                "confirmation": "REINITIALISER",
+            },
+        )
         self.assertEqual(r.status_code, 302)
         card.refresh_from_db()
         self.assertEqual(card.state, CardState.NEW)
         self.assertEqual(ReviewLog.objects.count(), 0)
         self.assertFalse(card.needs_revisit)
+        self.assertFalse(card.suspended)
         session = ReviewSession.load(self.user)
         self.assertEqual(session.scope, {})
         self.assertIsNone(session.current_card_id)
         self.assertEqual(session.presentation_token, "")
+
+    def test_reset_rejects_missing_server_side_confirmation(self):
+        card = factories.make_spine_card(
+            user=self.user,
+            state=CardState.REVIEW,
+            reps=4,
+        )
+
+        response = self.client.post(
+            reverse("study:reset_progress"),
+            {
+                "current_pin": "123456",
+                "confirmation": "non",
+            },
+        )
+
+        self.assertEqual(response.status_code, 400)
+        card.refresh_from_db()
+        self.assertEqual(card.state, CardState.REVIEW)
+        self.assertEqual(card.reps, 4)

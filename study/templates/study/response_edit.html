@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Modifier ma réponse · Heureux{% endblock %}
+
+{% block content %}
+{% include "study/_task_nav.html" %}
+<div class="page-head response-edit__head">
+  <div>
+    <p class="eyebrow">Version personnelle · Expression orale · Tâche 3</p>
+    <h1>Modifier ma réponse</h1>
+    <p>Seule votre réponse change. Le sujet officiel reste toujours intact.</p>
+  </div>
+  <a class="btn" href="{% url 'study:response_detail' response.id %}">Retour à la fiche</a>
+</div>
+
+<section class="card card--pad response-edit__prompt" aria-labelledby="immutable-prompt">
+  <div class="spine-label" id="immutable-prompt">Sujet non modifiable</div>
+  <p class="detail-prompt">{{ response.prompt }}</p>
+</section>
+
+<form method="post" class="response-edit" novalidate>
+  {% csrf_token %}
+  {% if form.non_field_errors %}<div class="auth-error">{{ form.non_field_errors|striptags }}</div>{% endif %}
+
+  <section class="card card--pad response-edit__section">
+    <h2 class="mt-0">Introduction et position</h2>
+    {% for field in form %}
+      {% if field.name == "reformulation" or field.name == "position" or field.name == "position_claire" %}
+        <div class="response-edit-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <section class="card card--pad response-edit__section">
+    <h2 class="mt-0">Arguments développés</h2>
+    <p class="muted">Gardez trois idées distinctes, chacune soutenue par un développement, un exemple concret et une conséquence.</p>
+    <div class="response-edit__arguments">
+      {% for argument in argument_fields %}
+        <fieldset class="response-edit__argument">
+          <legend>Argument {{ argument.order }}</legend>
+          {% for field in argument.fields %}
+            <div class="response-edit-field">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+              {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+            </div>
+          {% endfor %}
+        </fieldset>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card card--pad response-edit__section">
+    <h2 class="mt-0">Nuance et conclusion</h2>
+    {% for field in form %}
+      {% if field.name == "nuance" or field.name == "conclusion" %}
+        <div class="response-edit-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% for error in field.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <div class="response-edit__actions">
+    <a class="btn" href="{% url 'study:response_detail' response.id %}">Annuler</a>
+    <button class="btn btn--primary" type="submit" name="action" value="save">Enregistrer ma version</button>
+  </div>
+</form>
+
+{% if has_personal_response %}
+  <section class="card card--pad danger-zone response-edit__reset">
+    <h2 class="mt-0">Revenir à la réponse d'origine</h2>
+    <p class="muted">Supprime uniquement votre version personnelle. Le sujet, votre progression et vos annotations sont conservés.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn--danger" type="submit" name="action" value="reset">Utiliser de nouveau la version d'origine</button>
+    </form>
+  </section>
+{% endif %}
+{% endblock %}

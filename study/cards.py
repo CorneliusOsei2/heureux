@@ -6,22 +6,10 @@ card-detail pages.
 
 from __future__ import annotations
 
-import html
-import re
 from typing import Optional
 
 from .models import Card, CardType
-
-
-def _highlight(example: str, anchor: str) -> str:
-    escaped = html.escape(example)
-    if not anchor:
-        return escaped
-    match = re.search(re.escape(html.escape(anchor)), escaped, flags=re.IGNORECASE)
-    if not match:
-        return escaped
-    start, end = match.span()
-    return f"{escaped[:start]}<mark>{escaped[start:end]}</mark>{escaped[end:]}"
+from .personalization import effective_response
 
 
 def scope_from_request(request) -> dict:
@@ -29,7 +17,7 @@ def scope_from_request(request) -> dict:
     data = request.POST if request.method == "POST" else request.GET
     scope = {}
     kind = data.get("kind")
-    if kind in {"spine", "phrase", "revisit"}:
+    if kind in {"spine", "phrase", "revisit", "weak"}:
         scope["kind"] = kind
     for key in ("part", "task", "theme", "family", "category"):
         value = (data.get(key) or "").strip()
@@ -56,40 +44,62 @@ def scope_label(scope: dict) -> str:
     if not scope:
         return "Toutes les cartes"
     if scope.get("theme"):
-        theme = Theme.objects.filter(slug=scope["theme"]).first()
+        theme = Theme.objects.filter(
+            slug=scope["theme"],
+            is_active=True,
+        ).first()
         if theme:
             return with_batch(f"Thème · {theme.display_name}")
     if scope.get("category"):
-        category = PhraseCategory.objects.filter(slug=scope["category"]).first()
+        category = PhraseCategory.objects.filter(
+            slug=scope["category"],
+            is_active=True,
+        ).first()
         if category:
             return with_batch(f"Expressions · {category.name}")
+    if scope.get("response"):
+        response = Response.objects.select_related("theme").filter(
+            pk=scope["response"],
+            is_active=True,
+        ).first()
+        if response:
+            return with_batch(
+                f"Expressions · {response.theme.display_name} "
+                f"· P{response.canonical_prompt.number}"
+            )
     if scope.get("task"):
-        tasks = Task.objects.filter(slug=scope["task"]).select_related("part")
+        tasks = Task.objects.filter(
+            slug=scope["task"],
+            is_active=True,
+            part__is_active=True,
+        ).select_related("part")
         if scope.get("part"):
             tasks = tasks.filter(part__slug=scope["part"])
         task = tasks.first()
         if task:
             return with_batch(f"{task.part.short_name} · {task.name}")
     if scope.get("part"):
-        part = ExamPart.objects.filter(slug=scope["part"]).first()
+        part = ExamPart.objects.filter(
+            slug=scope["part"],
+            is_active=True,
+        ).first()
         if part:
             return with_batch(part.name)
     if scope.get("family"):
-        family = Family.objects.filter(slug=scope["family"]).first()
+        family = Family.objects.filter(
+            slug=scope["family"],
+            is_active=True,
+        ).first()
         if family:
             return with_batch(f"Famille · {family.name}")
-    if scope.get("response"):
-        response = Response.objects.select_related("theme").filter(
-            pk=scope["response"]
-        ).first()
-        if response:
-            return with_batch(f"Expressions · {response.theme.display_name}")
     if scope.get("kind") == "spine":
         return with_batch("Réponses argumentées")
     if scope.get("kind") == "phrase":
         return with_batch("Expressions")
     if scope.get("kind") == "revisit":
         return with_batch("Liste à revoir")
+    if scope.get("kind") == "weak":
+        return with_batch("Points à renforcer")
     return with_batch("Sélection")
 
 
@@ -102,8 +112,13 @@ def card_payload(card: Card) -> dict:
 
 def _spine_payload(card: Card) -> dict:
     response = card.response
+    content = effective_response(response, card.user)
     canonical = response.canonical_prompt
-    aliases = [p for p in response.prompts.all() if not p.is_canonical]
+    aliases = [
+        prompt
+        for prompt in response.prompts.filter(is_active=True)
+        if not prompt.is_canonical
+    ]
     return {
         "card": card,
         "kind": "spine",
@@ -113,7 +128,9 @@ def _spine_payload(card: Card) -> dict:
         "prompt": canonical.text if canonical else response.prompt,
         "aliases": aliases,
         "response": response,
-        "arguments": list(response.arguments.all()),
+        "response_content": content,
+        "arguments": content.arguments,
+        "annotation_source_key": f"response:{response.content_key}",
     }
 
 
@@ -129,7 +146,12 @@ def _phrase_payload(card: Card) -> dict:
         ),
         "phrase": phrase,
         "category": phrase.category,
-        "example_html": _highlight(phrase.example, phrase.anchor),
+        "example_html": phrase.example_html,
         "cloze_example": phrase.cloze_example,
-        "sources": list(phrase.source_prompts.select_related("theme").all()),
+        "sources": list(
+            phrase.source_prompts.filter(is_active=True).select_related("theme")
+        ),
+        "annotation_source_key": (
+            f"phrase:{phrase.phrase_id}:{card.card_type}"
+        ),
     }

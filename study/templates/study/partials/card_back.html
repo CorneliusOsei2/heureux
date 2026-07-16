@@ -3,11 +3,11 @@
   <div class="answer">
     <div class="spine-block">
       <div class="spine-label">Reformulation</div>
-      <div class="spine-text">{{ response.reformulation }}</div>
+      <div class="spine-text">{{ response_content.reformulation }}</div>
     </div>
     <div class="spine-block">
       <div class="spine-label">Position</div>
-      <div class="spine-text">{{ response.position }}</div>
+      <div class="spine-text">{{ response_content.position }}</div>
     </div>
     {% for arg in arguments %}
       <div class="arg">
@@ -16,11 +16,11 @@
     {% endfor %}
     <div class="spine-block">
       <div class="spine-label">Nuance</div>
-      <div class="spine-text">{{ response.nuance }}</div>
+      <div class="spine-text">{{ response_content.nuance }}</div>
     </div>
     <div class="spine-block">
       <div class="spine-label">Conclusion</div>
-      <div class="spine-text">{{ response.conclusion }}</div>
+      <div class="spine-text">{{ response_content.conclusion }}</div>
     </div>
 
     {% if aliases %}

@@ -8,6 +8,12 @@ app_name = "study"
 urlpatterns = [
     path("login/", views.login_view, name="login"),
     path("register/", views.register_view, name="register"),
+    path("recover/", views.recover_account, name="recover_account"),
+    path(
+        "recovery-codes/",
+        views.recovery_codes_view,
+        name="recovery_codes",
+    ),
     path("logout/", views.logout_view, name="logout"),
     path("", views.dashboard, name="dashboard"),
     path("reviser/", views.review_overview, name="review_overview"),
@@ -17,11 +23,26 @@ urlpatterns = [
         name="expressions_overview",
     ),
     path("notes/", views.notes_overview, name="notes_overview"),
+    path(
+        "notes/recherche/",
+        views.annotation_search,
+        name="annotation_search",
+    ),
+    path(
+        "notes/etudier/",
+        views.annotation_study,
+        name="annotation_study",
+    ),
     path("notes/general/", views.general_notes, name="general_notes"),
     path(
         "notes/<slug:part_slug>/<slug:task_slug>/",
         views.task_notes,
         name="task_notes",
+    ),
+    path(
+        "notes/<slug:part_slug>/<slug:task_slug>/etudier/",
+        views.annotation_study,
+        name="task_annotation_study",
     ),
     path(
         "annotations/source/",
@@ -37,6 +58,11 @@ urlpatterns = [
         "annotations/<int:pk>/update/",
         views.annotation_update,
         name="annotation_update",
+    ),
+    path(
+        "annotations/<int:pk>/study/",
+        views.annotation_study_toggle,
+        name="annotation_study_toggle",
     ),
     path(
         "annotations/<int:pk>/delete/",
@@ -95,10 +121,32 @@ urlpatterns = [
     path("theme/<slug:slug>/", views.theme_detail, name="theme_detail"),
     path("family/<slug:slug>/", views.family_detail, name="family_detail"),
     path("response/<int:pk>/", views.response_detail, name="response_detail"),
+    path(
+        "response/<int:pk>/edit/",
+        views.edit_response,
+        name="edit_response",
+    ),
     path("phrases/", views.phrases, name="phrases"),
     path("search/", views.search, name="search"),
     path("stats/", views.stats, name="stats"),
     path("settings/", views.settings_view, name="settings"),
+    path("settings/pin/", views.change_pin, name="change_pin"),
+    path(
+        "settings/recovery-codes/",
+        views.regenerate_recovery_codes,
+        name="regenerate_recovery_codes",
+    ),
+    path(
+        "settings/progress/reset/",
+        views.reset_progress,
+        name="reset_progress",
+    ),
+    path("settings/export/", views.export_account, name="export_account"),
+    path(
+        "settings/account/delete/",
+        views.delete_account,
+        name="delete_account",
+    ),
     path(
         "epreuve/<path:remainder>",
         RedirectView.as_view(

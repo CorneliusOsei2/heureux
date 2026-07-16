@@ -6,15 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem("theme");
-        if (saved) document.documentElement.setAttribute("data-theme", saved);
-      } catch (e) {}
-    })();
-  </script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=31">
+  <script src="{% static 'study/js/theme-init.js' %}?v=1"></script>
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=33">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -58,7 +51,7 @@
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}
         </a>
         <a href="{% url 'study:expressions_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'expressions_overview' or request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %}is-active{% endif %}">Expressions</a>
-        <a href="{% url 'study:notes_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'notes_overview' or request.resolver_match.url_name == 'general_notes' or request.resolver_match.url_name == 'task_notes' %}is-active{% endif %}">Notes</a>
+        <a href="{% url 'study:notes_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'notes_overview' or request.resolver_match.url_name == 'general_notes' or request.resolver_match.url_name == 'task_notes' or request.resolver_match.url_name == 'annotation_search' or request.resolver_match.url_name == 'annotation_study' or request.resolver_match.url_name == 'task_annotation_study' %}is-active{% endif %}">Notes</a>
         <a href="{% url 'study:stats_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'stats_overview' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %}is-active{% endif %}">Stats</a>
         <details class="nav__more {% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' or request.resolver_match.url_name == 'settings' %}is-active{% endif %}" data-nav-more>
           <summary aria-label="Plus d'options" title="Plus d'options">
@@ -199,10 +192,14 @@
   </section>
 
   <div class="annotation-toast hidden" role="status" aria-live="polite" data-annotation-toast></div>
+  <div class="pwa-update hidden" role="status" aria-live="polite" data-pwa-update-banner>
+    <span>Une nouvelle version de Heureux est prête.</span>
+    <button class="btn btn--primary" type="button" data-pwa-update>Mettre à jour</button>
+  </div>
 
-  <script src="{% static 'study/js/app.js' %}?v=24"></script>
-  <script src="{% static 'study/js/translate.js' %}?v=7"></script>
-  <script src="{% static 'study/js/annotations.js' %}?v=2"></script>
+  <script src="{% static 'study/js/app.js' %}?v=25"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=8"></script>
+  <script src="{% static 'study/js/annotations.js' %}?v=4"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

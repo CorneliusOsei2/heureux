@@ -24,27 +24,37 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
   immediately preceding card remains available in a read-only view.
 - **À revoir** — a persistent list for difficult cards, with its own focused
   review pass.
+- **Points à renforcer** — an automatic drill built from cards that are still
+  hesitant or were missed repeatedly during the last 30 days. It works across
+  the whole collection or inside one task.
 - **Sujets & réponses** — browse Tâche 3 by theme or topic family.
 - **Fiche complète** — the learning view includes the reformulation, position,
   each argument's development, concrete example and consequence, then the
   nuance, conclusion, equivalent prompts, and related expressions. Flashcard
   practice deliberately keeps only each argument's main idea.
-- **Expressions & vocabulaire** — reusable chunks with an English cue and a
-  verbatim example from the answer bank, grouped into accurate topical and
-  functional categories, then divided into review lots of 15 cards.
+- **Expressions & vocabulaire** — 226 reusable chunks form a curated shared
+  catalog with accurate topical and functional categories. The remaining 1,184
+  source-grounded chunks stay with their response, preserving at least 12 useful
+  expressions per answer without mixing local vocabulary into global decks.
+  Every review lot contains at most 15 unique expressions.
 - **Private notes & highlights** — notes follow the same Expression
   orale/écrite → Tâche hierarchy, with a dedicated highlights subsection.
   Select text anywhere to copy it, translate it, save it to Notes, or highlight
-  it persistently. Translation uses the browser's local English model with an
-  explicit Google Translate fallback when local translation is unavailable.
+  it persistently. Search the complete private annotation library, mark chosen
+  notes or passages “À étudier”, then review that selection as a simple
+  active-recall deck. Translation uses the browser's local English model with
+  an explicit Google Translate fallback when local translation is unavailable.
 - **Practice without a daily cap** — every new card and due review stays
-  available; themes and expression categories provide optional 15-card lots
+  available; themes and expression categories provide optional 15-expression lots
   with not-started, in-progress, and completed states plus next-lot navigation.
 - **Progression** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
-  mature-card retention, streak, and per-theme mastery.
+  mature-card retention, streak, per-theme mastery, and a private recent-session
+  timeline grouped by natural study breaks.
 - **Comptes privés** — a unique username and hashed six-digit PIN protect each
-  learner's cards, history, revisit list, and resumable session.
-- **Réglages** — suspended-card recovery and private progress reset.
+  learner's cards, history, revisit list, and resumable session. One-time
+  recovery codes allow safe PIN recovery without requiring an email address.
+- **Réglages** — PIN rotation, recovery-code regeneration, private JSON export,
+  suspended-card recovery, guarded progress reset, and account deletion.
 
 ### Card model
 
@@ -53,17 +63,19 @@ Importing the corpus produces:
 | Type | Count | Front → Back |
 |------|-------|--------------|
 | Response spine | 130 | Prompt → compact speaking spine |
-| Expression — production | One per expression | English cue + blanked example → the expression |
-| Expression — recognition | One per expression | Expression → meaning + example |
+| Expression — production | 1,410 | English cue + blanked example → the expression |
+| Expression — recognition | 226 shared expressions | Expression → meaning + example |
 
 Equivalent prompts (same answer in different themes) share one Response and one
-spine card, so you never memorise the same answer twice.
+spine card, so you never memorise the same answer twice. Response-local
+vocabulary uses production cards only and appears from its response sheet;
+shared production and recognition twins always remain in the same lot.
 
 ---
 
 ## Run it locally
 
-Requires Python 3.11 (see `runtime.txt`; 3.9+ works too).
+Requires Python 3.11 or newer (see `runtime.txt`).
 
 ```bash
 cd flashcards
@@ -100,7 +112,8 @@ The app ships a self-contained snapshot of the answer bank in
 
 - `import_content` — (re)builds the database from that snapshot. **Idempotent**:
   re-running upserts shared content and preserves every learner's private review
-  progress (cards are matched by natural keys and orphans are pruned).
+  progress. Source items that disappear are archived, not deleted, so their
+  cards, review history, notes, and highlights remain intact.
 - `sync_content --from <path-to-t3>` — refreshes the snapshot from the live
   `t3/` tree (response batches, `study_sheets.md`, `anki/data/phrases.tsv`).
   Run `import_content` afterwards to load the changes.
@@ -111,6 +124,14 @@ So the normal loop after editing the answer bank is:
 ./.venv/bin/python manage.py sync_content
 ./.venv/bin/python manage.py import_content
 ```
+
+The identifiers in `study/content/themes.json` and the `id` column in
+`study/content/phrases.tsv` are persistent database identities. Do not change
+them when editing display text. Prompt identity is the theme slug plus prompt
+number, so renumbering a prompt is a content migration rather than a wording
+edit. Response edits keep the same row through that prompt identity; response
+splits copy the prior schedule to the new card, while merges retain the most
+recent schedule.
 
 ---
 
@@ -130,6 +151,7 @@ cp .env.example .env
 | `ALLOWED_HOSTS` | localhost | Comma-separated hostnames. |
 | `CSRF_TRUSTED_ORIGINS` | — | Comma-separated `https://…` origins. |
 | `TRUST_X_FORWARDED_FOR` | `False` | Trust the rightmost forwarded client address; enable only behind a trusted proxy. |
+| `TRUSTED_PROXY_CIDRS` | — | Comma-separated trusted proxy networks to skip right-to-left when resolving the client address. |
 | `TIME_ZONE` | `America/Los_Angeles` | Drives "due today" and streaks. |
 | `DATABASE_URL` | — | PostgreSQL connection URL used in production. |
 | `DATABASE_PATH` | `db.sqlite3` | Absolute path for the SQLite file. |
@@ -153,6 +175,15 @@ release: python manage.py migrate --noinput && python manage.py import_content
 Set at least `SECRET_KEY`, `DEBUG=False`, `DATABASE_URL`, `ALLOWED_HOSTS`, and
 `CSRF_TRUSTED_ORIGINS`. Production should use persistent PostgreSQL storage;
 SQLite remains the zero-configuration local-development default.
+
+Take a restorable database backup before deploying migrations that alter the
+content schema or importer. Run migrations and `import_content` exactly once per
+release; the importer uses a PostgreSQL transaction lock to prevent overlap.
+The included free-plan Render Blueprint runs both commands at process startup
+before Gunicorn because Render pre-deploy commands are available only on paid
+web services. Cold starts still perform Django's inexpensive migration check,
+but `import_content --if-changed` fingerprints the bundled corpus and importer
+code, so the full import runs only when a release actually changes them.
 
 Static files for any non-Procfile host:
 

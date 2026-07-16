@@ -33,7 +33,11 @@ def _request_task(request):
             task_slug = saved_scope.get("task")
 
     if task_slug:
-        tasks = Task.objects.select_related("part").filter(slug=task_slug)
+        tasks = Task.objects.select_related("part").filter(
+            slug=task_slug,
+            is_active=True,
+            part__is_active=True,
+        )
         if part_slug:
             tasks = tasks.filter(part__slug=part_slug)
         task = tasks.first()
@@ -42,19 +46,26 @@ def _request_task(request):
 
     if match and match.url_name == "theme_detail":
         return (
-            Theme.objects.filter(slug=kwargs.get("slug"))
+            Theme.objects.filter(
+                slug=kwargs.get("slug"),
+                is_active=True,
+            )
             .values_list("task_id", flat=True)
             .first()
         )
     if match and match.url_name == "response_detail":
         return (
-            Response.objects.filter(pk=kwargs.get("pk"))
+            Response.objects.filter(pk=kwargs.get("pk"), is_active=True)
             .values_list("theme__task_id", flat=True)
             .first()
         )
     if match and match.url_name == "family_detail":
         return (
             Task.objects.filter(
+                is_active=True,
+                part__is_active=True,
+                themes__is_active=True,
+                themes__prompts__is_active=True,
                 themes__prompts__family__slug=kwargs.get("slug")
             )
             .values_list("pk", flat=True)
@@ -66,6 +77,9 @@ def _request_task(request):
             Task.objects.filter(
                 part__slug=kwargs.get("part_slug"),
                 available=True,
+                is_active=True,
+                part__is_active=True,
+                themes__is_active=True,
                 themes__isnull=False,
             )
             .values_list("pk", flat=True)
@@ -91,7 +105,8 @@ def study_globals(request):
         annotation_task = None
     elif isinstance(content_task, int):
         content_task = Task.objects.select_related("part").filter(
-            pk=content_task
+            pk=content_task,
+            is_active=True,
         ).first()
         annotation_task = content_task
     elif (
@@ -101,7 +116,12 @@ def study_globals(request):
     ):
         content_task = (
             Task.objects.select_related("part")
-            .filter(available=True, themes__isnull=False)
+            .filter(
+                available=True,
+                is_active=True,
+                part__is_active=True,
+                themes__is_active=True,
+            )
             .distinct()
             .order_by("part__order", "order")
             .first()

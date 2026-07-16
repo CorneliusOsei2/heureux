@@ -1,9 +1,9 @@
 {
-  "Culture":       {"display": "Culture",       "order": 1, "color": "#173f90", "emoji": "🎭", "task": "tache-3"},
-  "Famille":       {"display": "Famille",       "order": 2, "color": "#d3263a", "emoji": "👪", "task": "tache-3"},
-  "Education":     {"display": "Éducation",     "order": 3, "color": "#2d63b8", "emoji": "🎓", "task": "tache-3"},
-  "Sante":         {"display": "Santé",         "order": 4, "color": "#b5162b", "emoji": "🩺", "task": "tache-3"},
-  "Technologie":   {"display": "Technologie",   "order": 5, "color": "#244a85", "emoji": "💻", "task": "tache-3"},
-  "Environnement": {"display": "Environnement", "order": 6, "color": "#3976c4", "emoji": "🌍", "task": "tache-3"},
-  "Economie":      {"display": "Économie",      "order": 7, "color": "#e04452", "emoji": "💶", "task": "tache-3"}
+  "Culture":       {"slug": "culture",       "display": "Culture",       "order": 1, "color": "#173f90", "emoji": "🎭", "task": "tache-3"},
+  "Famille":       {"slug": "famille",       "display": "Famille",       "order": 2, "color": "#d3263a", "emoji": "👪", "task": "tache-3"},
+  "Education":     {"slug": "education",     "display": "Éducation",     "order": 3, "color": "#2d63b8", "emoji": "🎓", "task": "tache-3"},
+  "Sante":         {"slug": "sante",         "display": "Santé",         "order": 4, "color": "#b5162b", "emoji": "🩺", "task": "tache-3"},
+  "Technologie":   {"slug": "technologie",   "display": "Technologie",   "order": 5, "color": "#244a85", "emoji": "💻", "task": "tache-3"},
+  "Environnement": {"slug": "environnement", "display": "Environnement", "order": 6, "color": "#3976c4", "emoji": "🌍", "task": "tache-3"},
+  "Economie":      {"slug": "economie",      "display": "Économie",      "order": 7, "color": "#e04452", "emoji": "💶", "task": "tache-3"}
 }

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import tempfile
+from collections import Counter
 from pathlib import Path
 from unittest.mock import patch
 
@@ -24,6 +25,7 @@ class PhraseParserTests(SimpleTestCase):
         example = self.response.position_claire
         row = {
             "id": phrase_id,
+            "tier": "shared",
             "category": "Test",
             "english_cue": "Test cue",
             "expression": example[:30],
@@ -56,16 +58,54 @@ class PhraseParserTests(SimpleTestCase):
     def test_accepts_verbatim_phrase(self):
         phrases = self.parse_rows([self.valid_row()])
         self.assertEqual(phrases[0].phrase_id, "TEST1")
+        self.assertEqual(phrases[0].tier, "shared")
+
+    def test_rejects_unknown_tier(self):
+        with self.assertRaisesRegex(ValueError, "invalid tier"):
+            self.parse_rows([self.valid_row(tier="global")])
 
     def test_rejects_anchor_missing_from_example(self):
         with self.assertRaisesRegex(ValueError, "anchor is not present"):
             self.parse_rows([self.valid_row(anchor="not in the response")])
+
+    def test_rejects_partial_highlight_for_a_literal_expression(self):
+        row = self.valid_row()
+        row["anchor"] = row["expression"][:10]
+        with self.assertRaisesRegex(ValueError, "does not cover its full"):
+            self.parse_rows([row])
+
+    def test_rejects_ambiguous_repeated_highlight_target(self):
+        with self.assertRaisesRegex(ValueError, "occurs more than once"):
+            self.parse_rows(
+                [
+                    self.valid_row(
+                        expression="[…] certaines habitudes […]",
+                        anchor="certaines habitudes",
+                    )
+                ]
+            )
 
     def test_rejects_non_verbatim_example(self):
         row = self.valid_row()
         row["example"] = f"{row['example']} This was not in the source."
         with self.assertRaisesRegex(ValueError, "example is not verbatim"):
             self.parse_rows([row])
+
+    def test_accepts_reuse_with_a_different_surface_form(self):
+        row = self.valid_row()
+        other_prompt = next(
+            prompt
+            for response in self.responses[1:]
+            for prompt in response.prompts
+            if row["anchor"].casefold() not in response.body.casefold()
+        )
+        row["sources"] += (
+            f"; {other_prompt.theme} P{other_prompt.number}"
+        )
+
+        phrases = self.parse_rows([row])
+
+        self.assertEqual(len(phrases[0].sources), 2)
 
     def test_rejects_values_too_long_for_database_fields(self):
         with self.assertRaisesRegex(ValueError, "english_cue.*exceeds 200"):
@@ -88,3 +128,24 @@ class PhraseParserTests(SimpleTestCase):
 
         with self.assertRaisesRegex(ValueError, "Duplicate phrase anchor"):
             self.parse_rows([first, self.valid_row(phrase_id="TEST2")])
+
+    def test_bundled_bank_keeps_rich_coverage_outside_the_shared_catalog(self):
+        phrases = content.parse_phrases(self.responses)
+        prompt_to_response = {
+            (prompt.theme, prompt.number): response.content_key
+            for response in self.responses
+            for prompt in response.prompts
+        }
+        coverage = Counter()
+        for phrase in phrases:
+            for response_key in {
+                prompt_to_response[source] for source in phrase.sources
+            }:
+                coverage[response_key] += 1
+
+        self.assertEqual(
+            Counter(phrase.tier for phrase in phrases),
+            {"response": 1184, "shared": 226},
+        )
+        self.assertEqual(len(coverage), 130)
+        self.assertGreaterEqual(min(coverage.values()), 12)

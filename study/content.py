@@ -26,9 +26,10 @@ SECTIONS_PATH = CONTENT_DIR / "sections.json"
 EXPECTED_PROMPTS = 167
 EXPECTED_UNIQUE = 130
 EXPECTED_FAMILIES = 17
-EXPECTED_PHRASES = 1412
+EXPECTED_PHRASES = 1410
 PHRASE_FIELDS = (
     "id",
+    "tier",
     "category",
     "english_cue",
     "expression",
@@ -39,6 +40,7 @@ PHRASE_FIELDS = (
 )
 PHRASE_MAX_LENGTHS = {
     "id": 16,
+    "tier": 8,
     "category": 120,
     "english_cue": 200,
     "expression": 300,
@@ -102,6 +104,7 @@ class ArgumentData:
 
 @dataclass(frozen=True)
 class PromptData:
+    content_key: str
     theme: str
     number: int
     text: str
@@ -111,6 +114,7 @@ class PromptData:
 
 @dataclass
 class ResponseData:
+    content_key: str
     body_hash: str
     theme: str
     family: str
@@ -129,6 +133,7 @@ class ResponseData:
 @dataclass(frozen=True)
 class PhraseData:
     phrase_id: str
+    tier: str
     category: str
     english_cue: str
     expression: str
@@ -153,6 +158,18 @@ def _slugify(value: str) -> str:
     return value[:110] or "x"
 
 
+def prompt_content_key(theme_slug: str, number: int) -> str:
+    return f"{theme_slug}:p{number}"
+
+
+def family_content_key(order: int) -> str:
+    return f"family:{order:02d}"
+
+
+def phrase_category_content_key(name: str) -> str:
+    return f"phrase-category:{_slugify(name)}"
+
+
 def _normalize(value: str) -> str:
     value = value.replace("\r\n", "\n").replace("\r", "\n")
     return "\n".join(line.rstrip() for line in value.strip().splitlines())
@@ -167,7 +184,7 @@ def load_themes() -> List[ThemeData]:
     raw = json.loads(THEMES_PATH.read_text(encoding="utf-8"))
     themes = [
         ThemeData(
-            slug=_slugify(name),
+            slug=meta.get("slug") or _slugify(name),
             name=name,
             display=meta["display"],
             order=meta["order"],
@@ -383,7 +400,7 @@ def _parse_theme_file(path: Path, theme: str, family_map) -> List[_RawPrompt]:
         body_start = block.find("`Reformulation`")
         body = _normalize(block[body_start:])
         body = re.sub(r"\n---\s*$", "", body).strip()
-        body_hash = hashlib.sha256(body.encode("utf-8")).hexdigest()[:16]
+        body_hash = hashlib.sha256(body.encode("utf-8")).hexdigest()
 
         family = family_map.get((theme, number))
         if family is None:
@@ -411,8 +428,10 @@ def _parse_theme_file(path: Path, theme: str, family_map) -> List[_RawPrompt]:
 
 def parse_responses() -> List[ResponseData]:
     family_map, _ = parse_families()
-    order_map = theme_order_map()
-    themes = [t.name for t in load_themes()]
+    theme_data = load_themes()
+    order_map = {theme.name: theme.order for theme in theme_data}
+    slug_map = {theme.name: theme.slug for theme in theme_data}
+    themes = [theme.name for theme in theme_data]
 
     raws: List[_RawPrompt] = []
     for theme in themes:
@@ -438,6 +457,10 @@ def parse_responses() -> List[ResponseData]:
         canonical = members[0]
         prompts = [
             PromptData(
+                content_key=prompt_content_key(
+                    slug_map[member.theme],
+                    member.number,
+                ),
                 theme=member.theme,
                 number=member.number,
                 text=member.prompt,
@@ -448,6 +471,10 @@ def parse_responses() -> List[ResponseData]:
         ]
         responses.append(
             ResponseData(
+                content_key=prompt_content_key(
+                    slug_map[canonical.theme],
+                    canonical.number,
+                ),
                 body_hash=body_hash,
                 theme=canonical.theme,
                 family=canonical.family,
@@ -517,6 +544,12 @@ def parse_phrases(
                 )
             seen_ids[phrase_id_key] = line_number
 
+            if values["tier"] not in {"shared", "response"}:
+                raise ValueError(
+                    f"Phrase {values['id']} has invalid tier "
+                    f"{values['tier']!r}"
+                )
+
             anchor_key = values["anchor"].casefold()
             if anchor_key in seen_anchors:
                 raise ValueError(
@@ -525,9 +558,25 @@ def parse_phrases(
                 )
             seen_anchors[anchor_key] = line_number
 
-            if anchor_key not in values["example"].casefold():
+            anchor_count = values["example"].casefold().count(anchor_key)
+            if anchor_count == 0:
                 raise ValueError(
                     f"Phrase {values['id']} anchor is not present in its example"
+                )
+            if anchor_count > 1:
+                raise ValueError(
+                    f"Phrase {values['id']} anchor occurs more than once in "
+                    "its example"
+                )
+            expression_key = values["expression"].casefold()
+            if (
+                "[" not in values["expression"]
+                and expression_key in values["example"].casefold()
+                and anchor_key != expression_key
+            ):
+                raise ValueError(
+                    f"Phrase {values['id']} anchor does not cover its full "
+                    "literal expression"
                 )
 
             sources_raw = values["sources"]
@@ -571,24 +620,10 @@ def parse_phrases(
                     f"Phrase {values['id']} example is not verbatim in a cited "
                     "response"
                 )
-            missing_anchor_sources = [
-                source
-                for source, body in zip(sources, matching_bodies)
-                if anchor_key not in body.casefold()
-            ]
-            if missing_anchor_sources:
-                labels = ", ".join(
-                    f"{theme} P{number}"
-                    for theme, number in missing_anchor_sources
-                )
-                raise ValueError(
-                    f"Phrase {values['id']} anchor is absent from cited "
-                    f"responses: {labels}"
-                )
-
             phrases.append(
                 PhraseData(
                     phrase_id=values["id"],
+                    tier=values["tier"],
                     category=values["category"],
                     english_cue=values["english_cue"],
                     expression=values["expression"],

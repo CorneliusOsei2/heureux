@@ -1,0 +1,336 @@
+from __future__ import annotations
+
+from datetime import timedelta
+from io import StringIO
+
+from django.core.management import call_command
+from django.test import TestCase
+from django.utils import timezone
+
+from study import content, queue, srs
+from study.management.commands.import_content import Command
+from study.models import (
+    Annotation,
+    AnnotationKind,
+    Card,
+    CardState,
+    ContentImportState,
+    Prompt,
+    Rating,
+    ReviewLog,
+    Theme,
+)
+
+from . import factories
+
+
+class NonDestructiveImportTests(TestCase):
+    def _response_data(self, response, *, body_hash="b" * 64, body="Updated"):
+        prompt = response.prompts.get(is_canonical=True)
+        argument = response.arguments.get(order=1)
+        return content.ResponseData(
+            content_key=response.content_key,
+            body_hash=body_hash,
+            theme=response.theme.name,
+            family=response.family.name,
+            prompt=prompt.text,
+            reformulation=response.reformulation,
+            position=response.position,
+            position_claire=response.position_claire,
+            nuance=response.nuance,
+            conclusion=response.conclusion,
+            body=body,
+            body_html=f"<p>{body}</p>",
+            arguments=[
+                content.ArgumentData(
+                    order=argument.order,
+                    idea=argument.idea,
+                    developpement=argument.developpement,
+                    exemple=argument.exemple,
+                    consequence=argument.consequence,
+                )
+            ],
+            prompts=[
+                content.PromptData(
+                    content_key=prompt.content_key,
+                    theme=prompt.theme.name,
+                    number=prompt.number,
+                    text=prompt.text,
+                    family=prompt.family.name,
+                    is_canonical=True,
+                )
+            ],
+        )
+
+    def test_response_text_edit_preserves_card_and_review_history(self):
+        user = factories.make_user("import-user")
+        card = factories.make_spine_card(user=user)
+        srs.review(card, Rating.GOOD)
+        response = card.response
+        response_id = response.pk
+        card_id = card.pk
+        log_id = ReviewLog.objects.get().pk
+        data = self._response_data(response)
+
+        imported = Command()._import_responses(
+            [data],
+            {response.theme.name: response.theme},
+            {response.family.name: response.family},
+        )
+
+        response.refresh_from_db()
+        card.refresh_from_db()
+        self.assertEqual(imported[data.content_key].pk, response_id)
+        self.assertEqual(response.body, "Updated")
+        self.assertEqual(card.pk, card_id)
+        self.assertEqual(card.reps, 1)
+        self.assertTrue(ReviewLog.objects.filter(pk=log_id, card=card).exists())
+
+    def test_removed_response_is_archived_without_deleting_private_state(self):
+        user = factories.make_user("archive-user")
+        card = factories.make_spine_card(user=user)
+        srs.review(card, Rating.GOOD)
+        response = card.response
+
+        Command()._import_responses([], {}, {})
+
+        response.refresh_from_db()
+        self.assertFalse(response.is_active)
+        self.assertTrue(Card.objects.filter(pk=card.pk).exists())
+        self.assertTrue(ReviewLog.objects.filter(card_id=card.pk).exists())
+        self.assertFalse(
+            queue.scoped_cards(user=user).filter(pk=card.pk).exists()
+        )
+
+    def test_response_split_copies_existing_schedule_to_new_card(self):
+        user = factories.make_user("split-user")
+        source_card = factories.make_spine_card(user=user)
+        source_card.state = CardState.REVIEW
+        source_card.reps = 7
+        source_card.interval_days = 12
+        source_card.last_reviewed = timezone.now()
+        source_card.save()
+        response = source_card.response
+        canonical = response.prompts.get(is_canonical=True)
+        split_prompt = Prompt.objects.create(
+            content_key=f"{response.theme.slug}:p999",
+            theme=response.theme,
+            number=999,
+            response=response,
+            family=response.family,
+            text="Split prompt",
+        )
+        first = self._response_data(response)
+        first.prompts = [
+            content.PromptData(
+                content_key=canonical.content_key,
+                theme=canonical.theme.name,
+                number=canonical.number,
+                text=canonical.text,
+                family=canonical.family.name,
+                is_canonical=True,
+            )
+        ]
+        second = self._response_data(response)
+        second.content_key = split_prompt.content_key
+        second.prompt = split_prompt.text
+        second.prompts = [
+            content.PromptData(
+                content_key=split_prompt.content_key,
+                theme=split_prompt.theme.name,
+                number=split_prompt.number,
+                text=split_prompt.text,
+                family=split_prompt.family.name,
+                is_canonical=True,
+            )
+        ]
+        command = Command()
+        theme_map = {response.theme.name: response.theme}
+        family_map = {response.family.name: response.family}
+
+        response_map = command._import_responses(
+            [first, second], theme_map, family_map
+        )
+        command._import_prompts(
+            [first, second], response_map, theme_map, family_map
+        )
+        command._sync_cards(response_map, user=user)
+        command._reconcile_response_cards(response_map)
+
+        split_card = Card.objects.get(
+            user=user,
+            response=response_map[second.content_key],
+        )
+        self.assertNotEqual(split_card.response_id, response.pk)
+        self.assertEqual(split_card.state, CardState.REVIEW)
+        self.assertEqual(split_card.reps, 7)
+        self.assertEqual(split_card.interval_days, 12)
+
+    def test_response_merge_keeps_most_recent_schedule(self):
+        user = factories.make_user("merge-user")
+        target_card = factories.make_spine_card(user=user)
+        source_card = factories.make_spine_card(user=user)
+        now = timezone.now()
+        Card.objects.filter(pk=target_card.pk).update(
+            state=CardState.REVIEW,
+            reps=3,
+            interval_days=4,
+            last_reviewed=now - timedelta(days=2),
+        )
+        Card.objects.filter(pk=source_card.pk).update(
+            state=CardState.REVIEW,
+            reps=9,
+            interval_days=21,
+            last_reviewed=now,
+        )
+        target_card.refresh_from_db()
+        source_card.refresh_from_db()
+        target_response = target_card.response
+        source_response = source_card.response
+        data = self._response_data(target_response)
+        data.prompts.append(
+            content.PromptData(
+                content_key=source_response.prompts.get(
+                    is_canonical=True
+                ).content_key,
+                theme=source_response.theme.name,
+                number=source_response.prompts.get(is_canonical=True).number,
+                text=source_response.prompt,
+                family=source_response.family.name,
+                is_canonical=False,
+            )
+        )
+        command = Command()
+        theme_map = {
+            target_response.theme.name: target_response.theme,
+            source_response.theme.name: source_response.theme,
+        }
+        family_map = {
+            target_response.family.name: target_response.family,
+            source_response.family.name: source_response.family,
+        }
+
+        response_map = command._import_responses(
+            [data], theme_map, family_map
+        )
+        command._import_prompts(
+            [data], response_map, theme_map, family_map
+        )
+        command._sync_cards(response_map, user=user)
+        command._reconcile_response_cards(response_map)
+
+        target_card.refresh_from_db()
+        source_response.refresh_from_db()
+        self.assertEqual(target_card.reps, 9)
+        self.assertEqual(target_card.interval_days, 21)
+        self.assertFalse(source_response.is_active)
+
+    def test_phrase_merge_keeps_the_strongest_existing_schedule(self):
+        user = factories.make_user("phrase-merge-user")
+        target_phrase = factories.make_phrase()
+        target_phrase.phrase_id = "ED15"
+        target_phrase.save(update_fields=["phrase_id"])
+        source_phrase = factories.make_phrase(
+            category=target_phrase.category,
+            tier="response",
+        )
+        source_phrase.phrase_id = "W25"
+        source_phrase.save(update_fields=["phrase_id"])
+        target_card = factories.make_phrase_card(
+            user=user,
+            phrase=target_phrase,
+        )
+        source_card = factories.make_phrase_card(
+            user=user,
+            phrase=source_phrase,
+            state=CardState.REVIEW,
+            reps=8,
+            interval_days=19,
+            last_reviewed=timezone.now(),
+            needs_revisit=True,
+        )
+
+        Command()._reconcile_phrase_cards()
+
+        target_card.refresh_from_db()
+        source_card.refresh_from_db()
+        self.assertEqual(target_card.reps, 8)
+        self.assertEqual(target_card.interval_days, 19)
+        self.assertTrue(target_card.needs_revisit)
+        self.assertEqual(source_card.reps, 8)
+
+    def test_local_phrase_keeps_recognition_progress_on_production_card(self):
+        user = factories.make_user("direction-merge-user")
+        phrase = factories.make_phrase(tier="response")
+        production = factories.make_phrase_card(user=user, phrase=phrase)
+        recognition = factories.make_phrase_card(
+            user=user,
+            phrase=phrase,
+            card_type="phrase_recog",
+            state=CardState.REVIEW,
+            reps=11,
+            interval_days=24,
+            last_reviewed=timezone.now(),
+            needs_revisit=True,
+        )
+
+        Command()._reconcile_local_phrase_directions()
+
+        production.refresh_from_db()
+        recognition.refresh_from_db()
+        self.assertEqual(production.reps, 11)
+        self.assertEqual(production.interval_days, 24)
+        self.assertTrue(production.needs_revisit)
+        self.assertEqual(recognition.reps, 11)
+
+    def test_archived_task_keeps_notes_and_manual_delete_uncategorizes_them(self):
+        user = factories.make_user("note-owner")
+        part = factories.make_part()
+        task = factories.make_task(part)
+        annotation = Annotation.objects.create(
+            user=user,
+            task=task,
+            kind=AnnotationKind.NOTE,
+            body="Keep this note.",
+        )
+
+        Command()._import_sections([])
+
+        task.refresh_from_db()
+        annotation.refresh_from_db()
+        self.assertFalse(task.is_active)
+        self.assertEqual(annotation.task_id, task.pk)
+
+        task.delete()
+        annotation.refresh_from_db()
+        self.assertIsNone(annotation.task_id)
+
+    def test_parser_emits_unique_immutable_keys_and_full_hashes(self):
+        responses = content.parse_responses()
+        prompt_keys = [
+            prompt.content_key
+            for response in responses
+            for prompt in response.prompts
+        ]
+
+        self.assertEqual(len({item.content_key for item in responses}), 130)
+        self.assertEqual(len(set(prompt_keys)), 167)
+        self.assertTrue(all(len(item.body_hash) == 64 for item in responses))
+
+
+class ImportFingerprintTests(TestCase):
+    def test_if_changed_skips_an_already_loaded_bundle(self):
+        call_command("import_content", stdout=StringIO())
+        marker = ContentImportState.objects.get(pk="bundled")
+        self.assertEqual(marker.fingerprint, Command._source_fingerprint())
+
+        theme = Theme.objects.get(slug="culture")
+        theme.display_name = "Local sentinel"
+        theme.save(update_fields=["display_name"])
+        output = StringIO()
+
+        call_command("import_content", if_changed=True, stdout=output)
+
+        theme.refresh_from_db()
+        self.assertEqual(theme.display_name, "Local sentinel")
+        self.assertIn("import skipped", output.getvalue())

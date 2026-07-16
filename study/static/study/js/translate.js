@@ -68,12 +68,16 @@
       !element ||
       !main.contains(element) ||
       action.contains(element) ||
-      panel.contains(element)
+      panel.contains(element) ||
+      element.closest(
+        "button, input, textarea, select, [contenteditable='true'], " +
+        "[data-note-panel]"
+      )
     ) {
       return null;
     }
 
-    var text = normalizeSelection(selection.toString());
+    var text = normalizeSelection(range.cloneContents().textContent || "");
     var rect = range.getBoundingClientRect();
     if (!text || (!rect.width && !rect.height)) return null;
     return { text: text, rect: rect };

@@ -45,6 +45,7 @@ CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
 # Only enable this when every request reaches Django through a trusted proxy
 # that appends the connecting client address to X-Forwarded-For.
 TRUST_X_FORWARDED_FOR = env_bool("TRUST_X_FORWARDED_FOR", False)
+TRUSTED_PROXY_CIDRS = env_list("TRUSTED_PROXY_CIDRS")
 
 # Render provides the public hostname at runtime — trust it automatically so
 # the app works without manually listing the *.onrender.com domain.
@@ -88,6 +89,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "study.middleware.HealthCheckMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "study.middleware.SecurityHeadersMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -161,6 +163,24 @@ STORAGES = {
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "/login/"
 
+_csp_directives = [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "connect-src 'self'",
+    "font-src 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "img-src 'self' data:",
+    "manifest-src 'self'",
+    "object-src 'none'",
+    "script-src 'self'",
+    "style-src 'self' 'unsafe-inline'",
+    "worker-src 'self'",
+]
+if not DEBUG:
+    _csp_directives.append("upgrade-insecure-requests")
+CONTENT_SECURITY_POLICY = "; ".join(_csp_directives)
+
 # Security hardening — enabled automatically when DEBUG is off.
 if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", True)
@@ -176,3 +196,4 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"

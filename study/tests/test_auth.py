@@ -5,19 +5,24 @@ from io import StringIO
 
 from django.contrib.auth import get_user_model
 from django.core.management import call_command
-from django.test import RequestFactory, TestCase, override_settings
+from django.test import Client, RequestFactory, TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
 from study import queue, srs
 from study.accounts import (
+    ACCOUNT_FAILURE_LIMIT,
     IP_ATTEMPT_LIMIT,
+    generate_recovery_codes,
     login_throttle_key,
     provision_user_study_data,
     reserve_throttled_action,
     users_with_study_state,
 )
 from study.models import (
+    AccountRecoveryCode,
+    Annotation,
+    AnnotationKind,
     Card,
     CardState,
     LoginThrottle,
@@ -71,7 +76,7 @@ class AuthenticationTests(TestCase):
             },
         )
 
-        self.assertRedirects(response, reverse("study:dashboard"))
+        self.assertRedirects(response, reverse("study:recovery_codes"))
         user = get_user_model().objects.get()
         self.assertEqual(user.username, "alice.smith")
         self.assertNotEqual(user.password, "482731")
@@ -84,6 +89,10 @@ class AuthenticationTests(TestCase):
         self.assertEqual(legacy_settings.user, user)
         self.assertEqual(legacy_session.user, user)
         self.assertEqual(legacy_session.current_card, legacy_card)
+        self.assertEqual(
+            AccountRecoveryCode.objects.filter(user=user).count(),
+            8,
+        )
 
     def test_registration_rejects_duplicate_username_case_insensitively(self):
         factories.make_user("alice")
@@ -176,7 +185,7 @@ class AuthenticationTests(TestCase):
                     "pin_confirm": "482731",
                 },
             )
-            self.assertRedirects(response, reverse("study:dashboard"))
+            self.assertRedirects(response, reverse("study:recovery_codes"))
             self.client.post(reverse("study:logout"))
 
         throttle = LoginThrottle.objects.get()
@@ -210,6 +219,218 @@ class AuthenticationTests(TestCase):
 
         self.assertEqual(LoginThrottle.objects.count(), row_count)
 
+    def test_account_lock_cannot_be_bypassed_with_multiple_addresses(self):
+        factories.make_user("global-lock", pin="482731")
+        for number in range(ACCOUNT_FAILURE_LIMIT):
+            self.client.post(
+                reverse("study:login"),
+                {"username": "global-lock", "pin": "000000"},
+                REMOTE_ADDR=f"198.51.100.{number + 1}",
+            )
+
+        response = self.client.post(
+            reverse("study:login"),
+            {"username": "global-lock", "pin": "482731"},
+            REMOTE_ADDR="203.0.113.99",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn("_auth_user_id", self.client.session)
+        self.assertContains(response, "réessayez plus tard")
+
+    def test_successful_logins_do_not_consume_shared_address_limit(self):
+        factories.make_user("successful", pin="482731")
+        for _ in range(IP_ATTEMPT_LIMIT + 1):
+            response = self.client.post(
+                reverse("study:login"),
+                {"username": "successful", "pin": "482731"},
+                REMOTE_ADDR="198.51.100.40",
+            )
+            self.assertEqual(response.status_code, 302)
+            self.client.post(reverse("study:logout"))
+
+        request = RequestFactory().get(
+            "/login/",
+            REMOTE_ADDR="198.51.100.40",
+        )
+        throttle = LoginThrottle.objects.get(
+            pk=login_throttle_key(request, "", purpose="login-ip")
+        )
+        self.assertEqual(throttle.failures, 0)
+        self.assertIsNone(throttle.locked_until)
+
+    def test_registration_preserves_safe_next_through_recovery_codes(self):
+        response = self.client.post(
+            reverse("study:register"),
+            {
+                "username": "next-user",
+                "pin": "482731",
+                "pin_confirm": "482731",
+                "next": "/stats/",
+            },
+        )
+        self.assertRedirects(
+            response,
+            reverse("study:recovery_codes"),
+            fetch_redirect_response=False,
+        )
+
+        codes_page = self.client.get(reverse("study:recovery_codes"))
+
+        self.assertContains(codes_page, 'href="/stats/"')
+
+    def test_recovery_codes_are_displayed_once(self):
+        self.client.post(
+            reverse("study:register"),
+            {
+                "username": "codes-user",
+                "pin": "482731",
+                "pin_confirm": "482731",
+            },
+        )
+        codes = self.client.session["new_recovery_codes"]
+
+        first = self.client.get(reverse("study:recovery_codes"))
+        second = self.client.get(reverse("study:recovery_codes"))
+
+        self.assertEqual(len(codes), 8)
+        self.assertContains(first, codes[0])
+        self.assertNotContains(second, codes[0])
+
+    def test_recovery_code_rotates_pin_and_all_codes(self):
+        user = factories.make_user("recover-me", pin="482731")
+        original_codes = generate_recovery_codes(user)
+        original_digests = set(
+            AccountRecoveryCode.objects.filter(user=user).values_list(
+                "token_digest",
+                flat=True,
+            )
+        )
+
+        response = self.client.post(
+            reverse("study:recover_account"),
+            {
+                "username": "RECOVER-ME",
+                "recovery_code": original_codes[0].lower(),
+                "new_pin": "731284",
+                "new_pin_confirm": "731284",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("study:recovery_codes"),
+            fetch_redirect_response=False,
+        )
+        user.refresh_from_db()
+        self.assertTrue(user.check_password("731284"))
+        self.assertFalse(user.check_password("482731"))
+        replacement_digests = set(
+            AccountRecoveryCode.objects.filter(user=user).values_list(
+                "token_digest",
+                flat=True,
+            )
+        )
+        self.assertEqual(len(replacement_digests), 8)
+        self.assertFalse(original_digests & replacement_digests)
+
+        self.client.post(reverse("study:logout"))
+        reused = self.client.post(
+            reverse("study:recover_account"),
+            {
+                "username": "recover-me",
+                "recovery_code": original_codes[0],
+                "new_pin": "111222",
+                "new_pin_confirm": "111222",
+            },
+        )
+        self.assertContains(reused, "Récupération impossible")
+
+    def test_pin_change_keeps_current_session_and_invalidates_another(self):
+        user = factories.make_user("pin-change", pin="482731")
+        other_client = Client()
+        self.client.force_login(user)
+        other_client.force_login(user)
+
+        response = self.client.post(
+            reverse("study:change_pin"),
+            {
+                "current_pin": "482731",
+                "new_pin": "731284",
+                "new_pin_confirm": "731284",
+            },
+        )
+
+        self.assertRedirects(
+            response,
+            reverse("study:settings") + "?pin_changed=1",
+            fetch_redirect_response=False,
+        )
+        self.assertEqual(
+            self.client.get(reverse("study:dashboard")).status_code,
+            200,
+        )
+        self.assertRedirects(
+            other_client.get(reverse("study:dashboard")),
+            reverse("study:login") + "?next=/",
+            fetch_redirect_response=False,
+        )
+
+    def test_account_export_contains_private_data_but_no_credentials(self):
+        user = factories.make_user("export-user", pin="482731")
+        provision_user_study_data(user)
+        task = factories.make_task()
+        Annotation.objects.create(
+            user=user,
+            task=task,
+            kind=AnnotationKind.NOTE,
+            body="A private note",
+            study_later=True,
+        )
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("study:export_account"))
+        payload = response.json()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("attachment;", response["Content-Disposition"])
+        self.assertEqual(payload["account"]["username"], "export-user")
+        self.assertEqual(payload["annotations"][0]["body"], "A private note")
+        self.assertTrue(payload["annotations"][0]["study_later"])
+        body = response.content.decode()
+        self.assertNotIn("password", body)
+        self.assertNotIn("token_digest", body)
+        self.assertNotIn(user.password, body)
+
+    def test_account_deletion_requires_pin_and_typed_username(self):
+        user = factories.make_user("delete-user", pin="482731")
+        provision_user_study_data(user)
+        self.client.force_login(user)
+
+        rejected = self.client.post(
+            reverse("study:delete_account"),
+            {
+                "current_pin": "000000",
+                "username_confirmation": "delete-user",
+            },
+        )
+        self.assertEqual(rejected.status_code, 400)
+        self.assertTrue(get_user_model().objects.filter(pk=user.pk).exists())
+
+        deleted = self.client.post(
+            reverse("study:delete_account"),
+            {
+                "current_pin": "482731",
+                "username_confirmation": "delete-user",
+            },
+        )
+        self.assertRedirects(
+            deleted,
+            reverse("study:login") + "?deleted=1",
+            fetch_redirect_response=False,
+        )
+        self.assertFalse(get_user_model().objects.filter(pk=user.pk).exists())
+
     @override_settings(TRUST_X_FORWARDED_FOR=True)
     def test_throttle_uses_rightmost_address_from_trusted_proxy(self):
         factory = RequestFactory()
@@ -238,6 +459,47 @@ class AuthenticationTests(TestCase):
             login_throttle_key(other_client, "alice"),
         )
 
+    @override_settings(
+        TRUST_X_FORWARDED_FOR=True,
+        TRUSTED_PROXY_CIDRS=[
+            "10.0.0.0/8",
+            "173.245.48.0/20",
+        ],
+    )
+    def test_throttle_skips_only_configured_proxy_hops(self):
+        factory = RequestFactory()
+        cloudflare_request = factory.get(
+            "/login/",
+            REMOTE_ADDR="10.0.0.8",
+            HTTP_X_FORWARDED_FOR=(
+                "192.0.2.99, 198.51.100.2, 173.245.48.4, 10.0.0.9"
+            ),
+        )
+        direct_request = factory.get(
+            "/login/",
+            REMOTE_ADDR="10.0.0.8",
+            HTTP_X_FORWARDED_FOR=(
+                "192.0.2.99, 203.0.113.7, 10.0.0.9"
+            ),
+        )
+        cloudflare_client = factory.get(
+            "/login/",
+            REMOTE_ADDR="198.51.100.2",
+        )
+        direct_client = factory.get(
+            "/login/",
+            REMOTE_ADDR="203.0.113.7",
+        )
+
+        self.assertEqual(
+            login_throttle_key(cloudflare_request, "alice"),
+            login_throttle_key(cloudflare_client, "alice"),
+        )
+        self.assertEqual(
+            login_throttle_key(direct_request, "alice"),
+            login_throttle_key(direct_client, "alice"),
+        )
+
     @override_settings(TRUST_X_FORWARDED_FOR=False)
     def test_untrusted_forwarded_address_is_ignored(self):
         factory = RequestFactory()
@@ -260,7 +522,7 @@ class AuthenticationTests(TestCase):
     def test_stale_throttle_rows_are_pruned(self):
         old = LoginThrottle.objects.create(key_hash="a" * 64)
         LoginThrottle.objects.filter(pk=old.pk).update(
-            updated_at=timezone.now() - timedelta(hours=2)
+            updated_at=timezone.now() - timedelta(days=3)
         )
 
         reserve_throttled_action("b" * 64)
@@ -284,7 +546,7 @@ class AuthenticationTests(TestCase):
 
         self.assertFalse(users_with_study_state().filter(pk=admin.pk).exists())
         self.assertEqual(Card.objects.filter(user=admin).count(), 0)
-        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 2954)
+        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 1766)
 
         learner = get_user_model().objects.create_user(
             username="learner",
@@ -292,7 +554,14 @@ class AuthenticationTests(TestCase):
         )
         provision_user_study_data(learner)
 
-        self.assertEqual(Card.objects.filter(user=learner).count(), 2954)
+        self.assertEqual(Card.objects.filter(user=learner).count(), 1766)
+        self.assertFalse(
+            Card.objects.filter(
+                user=learner,
+                card_type="phrase_recog",
+                phrase__tier="response",
+            ).exists()
+        )
         self.assertFalse(Card.objects.filter(user__isnull=True).exists())
 
     def test_legacy_claim_merges_preexisting_user_rows(self):
@@ -469,7 +738,13 @@ class UserProgressIsolationTests(TestCase):
         srs.review(second_card, Rating.GOOD)
         self.client.force_login(self.first)
 
-        self.client.post(reverse("study:settings"), {"action": "reset"})
+        self.client.post(
+            reverse("study:reset_progress"),
+            {
+                "current_pin": "123456",
+                "confirmation": "REINITIALISER",
+            },
+        )
 
         first_card.refresh_from_db()
         second_card.refresh_from_db()

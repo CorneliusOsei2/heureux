@@ -1,0 +1,223 @@
+from __future__ import annotations
+
+import os
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.test import override_settings
+from django.urls import reverse
+from playwright.sync_api import sync_playwright
+
+from django.utils import timezone
+
+from study.models import Annotation, AnnotationKind, CardState, Rating
+
+from . import factories
+
+
+@override_settings(
+    PASSWORD_HASHERS=["django.contrib.auth.hashers.MD5PasswordHasher"]
+)
+class MobileBrowserChecks(StaticLiveServerTestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.previous_async_unsafe = os.environ.get("DJANGO_ALLOW_ASYNC_UNSAFE")
+        os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+        super().setUpClass()
+        cls.playwright = sync_playwright().start()
+        cls.browser = cls.playwright.chromium.launch()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.close()
+        cls.playwright.stop()
+        super().tearDownClass()
+        if cls.previous_async_unsafe is None:
+            os.environ.pop("DJANGO_ALLOW_ASYNC_UNSAFE", None)
+        else:
+            os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = cls.previous_async_unsafe
+
+    def setUp(self):
+        self.user = factories.make_user("browser-user", pin="482731")
+        self.part = factories.make_part("orale")
+        self.task = factories.make_task(self.part, "tache-3")
+        self.theme = factories.make_theme("culture", task=self.task)
+        self.first = factories.make_spine_card(
+            user=self.user,
+            theme=self.theme,
+        )
+        self.second = factories.make_spine_card(
+            user=self.user,
+            theme=self.theme,
+        )
+        self.context = self.browser.new_context(
+            viewport={"width": 390, "height": 844},
+            device_scale_factor=2,
+            is_mobile=True,
+            has_touch=True,
+        )
+        self.page = self.context.new_page()
+        self.page.goto(self.live_server_url + reverse("study:login"))
+        self.page.locator("#id_username").fill("browser-user")
+        self.page.locator("#id_pin").fill("482731")
+        self.page.get_by_role("button", name="Continuer").click()
+        self.page.wait_for_url(self.live_server_url + "/")
+
+    def tearDown(self):
+        self.context.close()
+
+    def assert_no_horizontal_overflow(self):
+        fits = self.page.evaluate(
+            "document.documentElement.scrollWidth <= "
+            "document.documentElement.clientWidth + 1"
+        )
+        self.assertTrue(fits, self.page.url)
+
+    def save_current_prompt_highlight(self):
+        prompt = self.page.locator("#card-front .prompt-text")
+        prompt.evaluate(
+            """
+            element => {
+              const range = document.createRange();
+              range.selectNodeContents(element);
+              const selection = window.getSelection();
+              selection.removeAllRanges();
+              selection.addRange(range);
+              document.dispatchEvent(new Event("selectionchange"));
+            }
+            """
+        )
+        self.page.locator("[data-highlight-selection]").wait_for(
+            state="visible"
+        )
+        with self.page.expect_response(
+            lambda response: "/annotations/create/" in response.url
+        ) as response_info:
+            self.page.locator("[data-highlight-selection]").click()
+        self.assertIn(response_info.value.status, (200, 201))
+
+    def test_mobile_review_highlights_and_final_previous(self):
+        for path in (
+            reverse("study:dashboard"),
+            reverse("study:settings"),
+            reverse("study:response_detail", args=[self.first.response_id]),
+            reverse("study:edit_response", args=[self.first.response_id]),
+        ):
+            self.page.goto(self.live_server_url + path)
+            self.assert_no_horizontal_overflow()
+
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:review")
+            + "?kind=spine&reset=1"
+        )
+        self.page.locator("#card-front .prompt-text").wait_for()
+        first_prompt = self.page.locator(
+            "#card-front .prompt-text"
+        ).text_content()
+        self.save_current_prompt_highlight()
+        self.page.locator("#reveal").click()
+        self.page.locator('[data-action="correct"]').click()
+        self.page.wait_for_function(
+            """
+            previous => {
+              const prompt = document.querySelector("#card-front .prompt-text");
+              return prompt && prompt.textContent !== previous;
+            }
+            """,
+            arg=first_prompt,
+        )
+        self.save_current_prompt_highlight()
+
+        self.page.locator("#reveal").click()
+        self.page.locator('[data-action="correct"]').click()
+        self.page.locator("#done-zone:not(.hidden)").wait_for()
+        previous = self.page.locator("#previous-card")
+        self.assertTrue(previous.is_enabled())
+        previous.click()
+        self.page.locator("#previous-card-label:not(.hidden)").wait_for()
+        self.assert_no_horizontal_overflow()
+
+        highlights = Annotation.objects.filter(
+            user=self.user,
+            kind=AnnotationKind.HIGHLIGHT,
+        )
+        self.assertEqual(highlights.count(), 2)
+        self.assertEqual(
+            highlights.values("source_key").distinct().count(),
+            2,
+        )
+
+    def test_mobile_annotation_search_study_and_weak_drill(self):
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            title="Nuance utile",
+            body="Le mot toujours est trop fort.",
+            study_later=True,
+        )
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Cependant, il faut reconnaître cette limite.",
+            source_path=reverse(
+                "study:response_detail",
+                args=[self.first.response_id],
+            ),
+            start_offset=0,
+            end_offset=45,
+            study_later=True,
+        )
+        self.first.state = CardState.REVIEW
+        self.first.due = timezone.now() + timezone.timedelta(days=20)
+        self.first.interval_days = 8
+        self.first.reps = 3
+        self.first.last_rating = Rating.AGAIN
+        self.first.save(
+            update_fields=[
+                "state",
+                "due",
+                "interval_days",
+                "reps",
+                "last_rating",
+            ]
+        )
+        self.page.set_viewport_size({"width": 320, "height": 568})
+
+        self.page.goto(
+            self.live_server_url + reverse("study:annotation_search")
+        )
+        self.assert_no_horizontal_overflow()
+        self.page.locator('input[name="q"]').fill("toujours")
+        self.page.get_by_role("button", name="Rechercher").click()
+        self.page.wait_for_url("**?q=toujours**")
+        self.page.get_by_text("Le mot toujours est trop fort.").wait_for()
+        self.assert_no_horizontal_overflow()
+
+        self.page.goto(
+            self.live_server_url + reverse("study:annotation_study")
+        )
+        self.page.locator("[data-study-card]:not(.hidden)").wait_for()
+        self.assert_no_horizontal_overflow()
+        for _ in range(2):
+            self.page.locator("[data-study-reveal]").click()
+            self.page.locator(
+                "[data-study-card]:not(.hidden) [data-study-back]:not(.hidden)"
+            ).wait_for()
+            self.page.locator("[data-study-next]").click()
+        self.page.locator("[data-study-done]:not(.hidden)").wait_for()
+        self.assert_no_horizontal_overflow()
+
+        self.page.goto(
+            self.live_server_url
+            + reverse(
+                "study:task_review_hub",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+        self.page.get_by_text("Points à renforcer").wait_for()
+        self.assert_no_horizontal_overflow()
+        self.page.get_by_role("link", name="Lancer l'entraînement").click()
+        self.page.locator("#card-front .prompt-text").wait_for()
+        self.assert_no_horizontal_overflow()

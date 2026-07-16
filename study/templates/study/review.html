@@ -12,9 +12,11 @@
 
   <div class="review__top">
     <div class="review__scope">{{ scope_label }}</div>
-    <div class="review__counters" title="{% if is_revisit %}Cartes dans la liste{% else %}Nouvelles · Apprentissage · Révisions{% endif %}">
+    <div class="review__counters" title="{% if is_revisit %}Cartes dans la liste{% elif is_weak %}Cartes fragiles{% else %}Nouvelles · Apprentissage · Révisions{% endif %}">
       {% if is_revisit %}
       <span class="c-review"><span id="c-revisit">{{ counts.revisit_total }}</span> à revoir</span>
+      {% elif is_weak %}
+      <span class="c-review"><span id="c-review">{{ counts.weak_total }}</span> à renforcer</span>
       {% else %}
       <span class="c-new" id="c-new">{{ counts.new_available }}</span>
       <span class="c-learn" id="c-learn">{{ counts.learning_due }}</span>
@@ -74,10 +76,15 @@
     <div class="session-summary" id="session-summary"></div>
     {% if is_revisit %}
       <p>Vous avez parcouru cette liste. Les cartes encore marquées « Revoir » y resteront pour votre prochain passage.</p>
+    {% elif is_weak %}
+      <p>Vous avez travaillé vos difficultés récentes. Cette sélection se recalculera automatiquement à partir de vos prochains résultats.</p>
     {% else %}
       <p>Vous avez terminé toutes les cartes actuellement disponibles dans cette sélection.</p>
     {% endif %}
     <div class="row center" style="justify-content:center; margin-top:1rem;">
+      {% if is_focused_drill %}
+        <a class="btn" href="{{ request.get_full_path }}">Refaire ce parcours</a>
+      {% endif %}
       {% if next_batch %}
         <a class="btn btn--primary" href="{{ next_batch.review_url }}">Passer au lot {{ next_batch.number }} <span aria-hidden="true">→</span></a>
       {% else %}

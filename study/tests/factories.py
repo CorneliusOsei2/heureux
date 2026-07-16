@@ -57,7 +57,12 @@ def make_theme(slug="culture", order=1, task=None) -> Theme:
 
 def make_family(slug="famille-1") -> Family:
     family, _ = Family.objects.get_or_create(
-        slug=slug, defaults={"name": f"Family {slug}", "order": _uid()}
+        slug=slug,
+        defaults={
+            "name": f"Family {slug}",
+            "content_key": f"test-family:{slug}",
+            "order": _uid(),
+        },
     )
     return family
 
@@ -90,6 +95,7 @@ def make_response(theme=None, family=None) -> Response:
     family = family or make_family()
     n = _uid()
     response = Response.objects.create(
+        content_key=f"test-response:{n}",
         body_hash=f"hash{n:028d}",
         theme=theme,
         family=family,
@@ -98,6 +104,7 @@ def make_response(theme=None, family=None) -> Response:
         body_html=f"<p>Corps de la réponse {n}.</p>",
     )
     Prompt.objects.create(
+        content_key=f"test-prompt:{n}",
         response=response,
         theme=theme,
         family=family,
@@ -124,20 +131,28 @@ def make_spine_card(**overrides) -> Card:
     )
 
 
-def make_phrase(category=None) -> Phrase:
+def make_phrase(category=None, **overrides) -> Phrase:
     if category is None:
         category, _ = PhraseCategory.objects.get_or_create(
-            slug="nuancer", defaults={"name": "Nuancer", "order": _uid()}
+            slug="nuancer",
+            defaults={
+                "name": "Nuancer",
+                "content_key": "test-category:nuancer",
+                "order": _uid(),
+            },
         )
     n = _uid()
     return Phrase.objects.create(
         phrase_id=f"p{n}",
+        tier=overrides.pop("tier", "shared"),
         category=category,
         english_cue=f"cue {n}",
         expression=f"expression {n}",
         anchor=f"expression {n}",
         example=f"Voici une expression {n} en contexte.",
         order=n,
+        lot_order=overrides.pop("lot_order", n),
+        **overrides,
     )
 
 
@@ -161,7 +176,12 @@ def make_content():
     response = make_response(theme=theme, family=family)
     make_spine_card(theme=theme, family=family)
     category, _ = PhraseCategory.objects.get_or_create(
-        slug="nuancer", defaults={"name": "Nuancer", "order": 1}
+        slug="nuancer",
+        defaults={
+            "name": "Nuancer",
+            "content_key": "test-category:nuancer",
+            "order": 1,
+        },
     )
     phrase = make_phrase(category=category)
     phrase.source_prompts.add(response.prompts.first())

@@ -10,13 +10,21 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Iterable, Optional
 
-from django.db.models import Q
+from django.db.models import Count, Q
 from django.utils import timezone
 
-from .models import Card, CardType, CardState, ReviewLog
+from .models import (
+    Card,
+    CardState,
+    CardType,
+    PhraseTier,
+    Rating,
+    ReviewLog,
+)
 
 
 BATCH_SIZE = 15
+WEAK_LOOKBACK_DAYS = 30
 
 
 def _today_start(now: datetime) -> datetime:
@@ -28,11 +36,20 @@ def batch_ordering(scope: Optional[dict] = None) -> tuple[str, ...]:
     """Return the canonical ordering used to partition a scoped deck."""
     scope = scope or {}
     kind = scope.get("kind")
-    if scope.get("category") or kind == "phrase":
-        return ("card_type", "phrase__order", "phrase_id", "id")
+    if _uses_phrase_batches(scope):
+        return ("phrase__lot_order", "phrase_id", "card_type", "id")
     if scope.get("theme") or kind == "spine":
         return ("response__theme__order", "response_id", "id")
     return ("card_type", "response_id", "phrase_id", "id")
+
+
+def _uses_phrase_batches(scope: Optional[dict]) -> bool:
+    scope = scope or {}
+    return bool(
+        scope.get("kind") == "phrase"
+        or scope.get("category")
+        or scope.get("response")
+    )
 
 
 def scoped_cards(
@@ -42,8 +59,14 @@ def scoped_cards(
     include_suspended: bool = False,
 ):
     """A user's active cards narrowed to an optional deck scope."""
-    qs = Card.objects.filter(user=user).select_related(
-        "response__theme", "response__family", "phrase__category"
+    qs = (
+        Card.objects.current_content()
+        .filter(user=user)
+        .select_related(
+            "response__theme",
+            "response__family",
+            "phrase__category",
+        )
     )
     scope = scope or {}
     kind = scope.get("kind")
@@ -58,6 +81,28 @@ def scoped_cards(
         )
     elif kind == "revisit":
         qs = qs.filter(needs_revisit=True)
+    elif kind == "weak":
+        recent_cutoff = timezone.now() - timezone.timedelta(
+            days=WEAK_LOOKBACK_DAYS
+        )
+        qs = (
+            qs.exclude(state=CardState.NEW)
+            .annotate(
+                recent_failures=Count(
+                    "reviews",
+                    filter=Q(
+                        reviews__rating=Rating.AGAIN,
+                        reviews__reviewed_at__gte=recent_cutoff,
+                    ),
+                    distinct=True,
+                )
+            )
+            .filter(
+                Q(needs_revisit=True)
+                | Q(last_rating=Rating.AGAIN)
+                | Q(recent_failures__gte=2)
+            )
+        )
     relation_filters = {
         "part": (
             "response__theme__task__part__slug",
@@ -93,6 +138,18 @@ def scoped_cards(
             phrase__source_prompts__response_id=scope["response"]
         )
 
+    shared_or_spine = Q(phrase__isnull=True) | Q(
+        phrase__tier=PhraseTier.SHARED
+    )
+    local_production = Q(
+        phrase__tier=PhraseTier.RESPONSE,
+        card_type=CardType.PHRASE_PRODUCTION,
+    )
+    if scope.get("response") or kind in {"revisit", "weak"}:
+        qs = qs.filter(shared_or_spine | local_production)
+    else:
+        qs = qs.filter(shared_or_spine)
+
     qs = qs.distinct()
     try:
         batch_number = int(scope.get("batch", 0))
@@ -100,12 +157,20 @@ def scoped_cards(
         batch_number = 0
     if batch_number > 0:
         start = (batch_number - 1) * BATCH_SIZE
-        batch_ids = list(
-            qs.order_by(*batch_ordering(scope)).values_list("pk", flat=True)[
-                start : start + BATCH_SIZE
-            ]
-        )
-        qs = qs.filter(pk__in=batch_ids)
+        if _uses_phrase_batches(scope):
+            phrase_ids = list(
+                qs.filter(phrase_id__isnull=False)
+                .order_by("phrase__lot_order", "phrase_id")
+                .values_list("phrase_id", flat=True)
+                .distinct()[start : start + BATCH_SIZE]
+            )
+            qs = qs.filter(phrase_id__in=phrase_ids)
+        else:
+            batch_ids = list(
+                qs.order_by(*batch_ordering(scope))
+                .values_list("pk", flat=True)[start : start + BATCH_SIZE]
+            )
+            qs = qs.filter(pk__in=batch_ids)
 
     if not include_suspended:
         qs = qs.filter(suspended=False)
@@ -136,6 +201,21 @@ def queue_counts(
             "reviews_done_today": 0,
             "total_due": revisit_total,
             "revisit_total": revisit_total,
+        }
+    if scope and scope.get("kind") == "weak":
+        weak_total = cards.count()
+        return {
+            "due_reviews": weak_total,
+            "learning_due": 0,
+            "review_due": weak_total,
+            "review_due_total": weak_total,
+            "new_available": 0,
+            "new_total": 0,
+            "new_done_today": 0,
+            "reviews_done_today": 0,
+            "total_due": weak_total,
+            "revisit_total": cards.filter(needs_revisit=True).count(),
+            "weak_total": weak_total,
         }
 
     limit_cards = scoped_cards(
@@ -202,6 +282,15 @@ def next_card(
 
     if scope and scope.get("kind") == "revisit":
         return cards.order_by("revisit_added_at", "id").first()
+    if scope and scope.get("kind") == "weak":
+        return cards.order_by(
+            "-recent_failures",
+            "last_rating",
+            "-lapses",
+            "ease",
+            "last_reviewed",
+            "id",
+        ).first()
 
     learning = (
         cards.filter(
@@ -223,7 +312,10 @@ def next_card(
             return review
 
     if counts["new_available"] > 0:
-        return cards.filter(state=CardState.NEW).order_by("id").first()
+        new_cards = cards.filter(state=CardState.NEW)
+        if _uses_phrase_batches(scope):
+            return new_cards.order_by(*batch_ordering(scope)).first()
+        return new_cards.order_by("id").first()
 
     return None
 
@@ -242,7 +334,7 @@ def resumable_card(
     card = scoped_cards(scope, user=user).filter(pk=card_id).first()
     if card is None:
         return None
-    if scope and scope.get("kind") == "revisit":
+    if scope and scope.get("kind") in {"revisit", "weak"}:
         return card
     if card.state == CardState.NEW:
         return card

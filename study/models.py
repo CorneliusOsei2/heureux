@@ -30,6 +30,7 @@ class ExamPart(models.Model):
     color = models.CharField(max_length=7, default="#6366f1")
     order = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["order", "name"]
@@ -51,6 +52,7 @@ class Task(models.Model):
     color = models.CharField(max_length=7, default="#6366f1")
     order = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["part__order", "order", "name"]
@@ -69,6 +71,7 @@ class Theme(models.Model):
     order = models.PositiveIntegerField(default=0)
     color = models.CharField(max_length=7, default="#6366f1")
     emoji = models.CharField(max_length=8, default="📘")
+    is_active = models.BooleanField(default=True, db_index=True)
     task = models.ForeignKey(
         Task,
         on_delete=models.SET_NULL,
@@ -89,7 +92,9 @@ class Family(models.Model):
 
     slug = models.SlugField(unique=True, max_length=120)
     name = models.CharField(max_length=200, unique=True)
+    content_key = models.CharField(max_length=120, unique=True)
     order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["order", "name"]
@@ -106,7 +111,8 @@ class Response(models.Model):
     one Response and appear as its aliases.
     """
 
-    body_hash = models.CharField(max_length=32, unique=True)
+    content_key = models.CharField(max_length=120, unique=True)
+    body_hash = models.CharField(max_length=64, db_index=True)
     theme = models.ForeignKey(
         Theme, on_delete=models.CASCADE, related_name="responses"
     )
@@ -121,6 +127,7 @@ class Response(models.Model):
     conclusion = models.TextField(blank=True)
     body = models.TextField()
     body_html = models.TextField()
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["theme__order", "id"]
@@ -130,16 +137,22 @@ class Response(models.Model):
 
     @property
     def canonical_prompt(self) -> "Prompt | None":
-        return self.prompts.filter(is_canonical=True).first()
+        return self.prompts.filter(
+            is_active=True,
+            is_canonical=True,
+        ).first()
 
     @property
     def alias_prompts(self):
         """Prompts other than the canonical one."""
-        return self.prompts.filter(is_canonical=False)
+        return self.prompts.filter(
+            is_active=True,
+            is_canonical=False,
+        )
 
     @property
     def has_aliases(self) -> bool:
-        return self.prompts.count() > 1
+        return self.prompts.filter(is_active=True).count() > 1
 
 
 class Argument(models.Model):
@@ -162,12 +175,48 @@ class Argument(models.Model):
         return f"Arg {self.order}: {self.idea[:50]}"
 
 
+class PersonalResponse(models.Model):
+    """A learner-owned response version; the shared exam prompt never changes."""
+
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="personal_responses",
+    )
+    response = models.ForeignKey(
+        Response,
+        on_delete=models.CASCADE,
+        related_name="personal_versions",
+    )
+    reformulation = models.TextField(blank=True)
+    position = models.TextField(blank=True)
+    position_claire = models.TextField(blank=True)
+    arguments = models.JSONField(default=list)
+    nuance = models.TextField(blank=True)
+    conclusion = models.TextField(blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at", "-id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "response"],
+                name="unique_user_personal_response",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "updated_at"]),
+        ]
+
+
 class Prompt(models.Model):
     """A prompt as numbered inside a theme; maps onto exactly one Response."""
 
     response = models.ForeignKey(
         Response, on_delete=models.CASCADE, related_name="prompts"
     )
+    content_key = models.CharField(max_length=120, unique=True)
     theme = models.ForeignKey(
         Theme, on_delete=models.CASCADE, related_name="prompts"
     )
@@ -177,6 +226,7 @@ class Prompt(models.Model):
     number = models.PositiveIntegerField()
     text = models.TextField()
     is_canonical = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["theme__order", "number"]
@@ -195,7 +245,9 @@ class PhraseCategory(models.Model):
 
     slug = models.SlugField(unique=True, max_length=120)
     name = models.CharField(max_length=120, unique=True)
+    content_key = models.CharField(max_length=120, unique=True)
     order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["order", "name"]
@@ -205,10 +257,21 @@ class PhraseCategory(models.Model):
         return self.name
 
 
+class PhraseTier(models.TextChoices):
+    SHARED = "shared", "Shared catalog"
+    RESPONSE = "response", "Response vocabulary"
+
+
 class Phrase(models.Model):
     """A reusable French chunk with an English cue and a grounded example."""
 
     phrase_id = models.CharField(max_length=16, unique=True)
+    tier = models.CharField(
+        max_length=8,
+        choices=PhraseTier.choices,
+        default=PhraseTier.RESPONSE,
+        db_index=True,
+    )
     category = models.ForeignKey(
         PhraseCategory, on_delete=models.CASCADE, related_name="phrases"
     )
@@ -222,6 +285,8 @@ class Phrase(models.Model):
         Prompt, related_name="phrases", blank=True
     )
     order = models.PositiveIntegerField(default=0)
+    lot_order = models.PositiveIntegerField(default=0, db_index=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["order", "phrase_id"]
@@ -261,6 +326,14 @@ class Phrase(models.Model):
         return f"{escaped[:start]}<mark>{escaped[start:end]}</mark>{escaped[end:]}"
 
 
+class ContentImportState(models.Model):
+    """Fingerprint of the bundled content most recently imported."""
+
+    key = models.CharField(max_length=32, primary_key=True)
+    fingerprint = models.CharField(max_length=64)
+    imported_at = models.DateTimeField(auto_now=True)
+
+
 class AnnotationKind(models.TextChoices):
     NOTE = "note", "Note"
     HIGHLIGHT = "highlight", "Highlight"
@@ -276,7 +349,7 @@ class Annotation(models.Model):
     )
     task = models.ForeignKey(
         Task,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="annotations",
         null=True,
         blank=True,
@@ -286,11 +359,13 @@ class Annotation(models.Model):
     body = models.TextField(blank=True)
     quote = models.TextField(blank=True)
     source_path = models.CharField(max_length=500, blank=True)
+    source_key = models.CharField(max_length=200, blank=True)
     source_title = models.CharField(max_length=300, blank=True)
     start_offset = models.PositiveIntegerField(null=True, blank=True)
     end_offset = models.PositiveIntegerField(null=True, blank=True)
     prefix = models.CharField(max_length=160, blank=True)
     suffix = models.CharField(max_length=160, blank=True)
+    study_later = models.BooleanField(default=False, db_index=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -301,11 +376,12 @@ class Annotation(models.Model):
                 fields=[
                     "user",
                     "source_path",
+                    "source_key",
                     "start_offset",
                     "end_offset",
                 ],
                 condition=Q(kind=AnnotationKind.HIGHLIGHT),
-                name="unique_user_page_highlight",
+                name="unique_user_source_highlight",
             ),
         ]
         indexes = [
@@ -361,8 +437,13 @@ class Rating(models.IntegerChoices):
 
 
 class CardQuerySet(models.QuerySet):
+    def current_content(self):
+        return self.filter(
+            Q(response__is_active=True) | Q(phrase__is_active=True)
+        )
+
     def active(self):
-        return self.filter(suspended=False)
+        return self.current_content().filter(suspended=False)
 
     def due_reviews(self, now=None):
         now = now or timezone.now()
@@ -492,6 +573,13 @@ class ReviewSession(models.Model):
         blank=True,
         related_name="+",
     )
+    previous_review = models.ForeignKey(
+        "ReviewLog",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+    )
     scope = models.JSONField(default=dict, blank=True)
     revisit_seen_card_ids = models.JSONField(default=list, blank=True)
     presentation_token = models.CharField(max_length=64, blank=True)
@@ -573,3 +661,22 @@ class LoginThrottle(models.Model):
     window_started_at = models.DateTimeField(default=timezone.now)
     locked_until = models.DateTimeField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True)
+
+
+class AccountRecoveryCode(models.Model):
+    """A one-time, high-entropy account recovery code stored as a keyed digest."""
+
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="recovery_codes",
+    )
+    token_digest = models.CharField(max_length=64, unique=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    used_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["created_at", "id"]
+        indexes = [
+            models.Index(fields=["user", "used_at"]),
+        ]

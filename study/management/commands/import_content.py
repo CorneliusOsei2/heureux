@@ -1,21 +1,27 @@
 """Import the bundled answer bank into the database.
 
-Idempotent: content is upserted by natural keys and cards keep their
-spaced-repetition state across re-imports. Orphans no longer present in the
-source are pruned.
+Idempotent and non-destructive: content is upserted by immutable keys, learner
+cards keep their spaced-repetition state, and removed source items are archived
+instead of cascading into private progress or review history.
 """
 
 from __future__ import annotations
 
+import hashlib
+from collections import defaultdict
+from pathlib import Path
+
 from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction
+from django.db import connection, transaction
 
 from study import content
 from study.accounts import provision_user_study_data, users_with_study_state
 from study.models import (
     Argument,
     Card,
+    CardState,
     CardType,
+    ContentImportState,
     ExamPart,
     Family,
     Phrase,
@@ -27,12 +33,36 @@ from study.models import (
     Theme,
 )
 
+PHRASE_ID_MERGES = {
+    "N83": "I15",
+    "W25": "ED15",
+}
+
 
 class Command(BaseCommand):
     help = "Import themes, families, responses, prompts and phrases."
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--if-changed",
+            action="store_true",
+            help="Skip the import when this bundled content is already loaded.",
+        )
+
     @transaction.atomic
     def handle(self, *args, **options):
+        self._acquire_import_lock()
+        fingerprint = self._source_fingerprint()
+        if (
+            options["if_changed"]
+            and ContentImportState.objects.filter(
+                pk="bundled",
+                fingerprint=fingerprint,
+            ).exists()
+        ):
+            self.stdout.write("Bundled content unchanged; import skipped.")
+            return
+
         themes = content.load_themes()
         sections = content.load_sections()
         family_map, families = content.parse_families()
@@ -42,11 +72,11 @@ class Command(BaseCommand):
         task_by_slug = self._import_sections(sections)
         theme_by_name = self._import_themes(themes, task_by_slug)
         family_by_name = self._import_families(families)
-        response_by_hash = self._import_responses(
+        response_by_key = self._import_responses(
             responses, theme_by_name, family_by_name
         )
         prompt_index = self._import_prompts(
-            responses, response_by_hash, theme_by_name, family_by_name
+            responses, response_by_key, theme_by_name, family_by_name
         )
         self._import_phrases(phrases, prompt_index)
         users = list(users_with_study_state())
@@ -54,22 +84,74 @@ class Command(BaseCommand):
             for user in users:
                 provision_user_study_data(user)
         else:
-            self._sync_cards(response_by_hash)
+            self._sync_cards(response_by_key)
             Settings.load()
+        self._reconcile_response_cards(response_by_key)
+        self._reconcile_phrase_cards()
+        self._reconcile_local_phrase_directions()
+        ContentImportState.objects.update_or_create(
+            pk="bundled",
+            defaults={"fingerprint": fingerprint},
+        )
 
         self.stdout.write(
             self.style.SUCCESS(
                 "Imported {t} themes, {f} families, {r} responses, "
                 "{p} prompts, {ph} phrases, {c} cards.".format(
-                    t=Theme.objects.count(),
-                    f=Family.objects.count(),
-                    r=Response.objects.count(),
-                    p=Prompt.objects.count(),
-                    ph=Phrase.objects.count(),
+                    t=Theme.objects.filter(is_active=True).count(),
+                    f=Family.objects.filter(is_active=True).count(),
+                    r=Response.objects.filter(is_active=True).count(),
+                    p=Prompt.objects.filter(is_active=True).count(),
+                    ph=Phrase.objects.filter(is_active=True).count(),
                     c=Card.objects.count(),
                 )
             )
         )
+
+    @staticmethod
+    def _acquire_import_lock():
+        if connection.vendor == "postgresql":
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT pg_advisory_xact_lock(%s)",
+                    [20341866963359064],
+                )
+
+    @staticmethod
+    def _source_fingerprint():
+        command_path = Path(__file__).resolve()
+        parser_path = Path(content.__file__).resolve()
+        files = [
+            ("import_content.py", command_path),
+            ("content.py", parser_path),
+        ]
+        study_dir = content.CONTENT_DIR.parent
+        files.extend(
+            (name, study_dir / name)
+            for name in ("accounts.py", "models.py")
+        )
+        files.extend(
+            (
+                f"migrations/{path.name}",
+                path,
+            )
+            for path in (study_dir / "migrations").glob("*.py")
+        )
+        files.extend(
+            (
+                f"content/{path.relative_to(content.CONTENT_DIR).as_posix()}",
+                path,
+            )
+            for path in content.CONTENT_DIR.rglob("*")
+            if path.is_file()
+        )
+        digest = hashlib.sha256()
+        for label, path in sorted(files):
+            digest.update(label.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(path.read_bytes())
+            digest.update(b"\0")
+        return digest.hexdigest()
 
     def _import_sections(self, sections):
         seen_parts = set()
@@ -85,6 +167,7 @@ class Command(BaseCommand):
                     "color": part.color,
                     "order": part.order,
                     "available": part.available,
+                    "is_active": True,
                 },
             )
             seen_parts.add(part_obj.pk)
@@ -99,12 +182,13 @@ class Command(BaseCommand):
                         "color": task.color,
                         "order": task.order,
                         "available": task.available,
+                        "is_active": True,
                     },
                 )
                 task_by_slug[task.slug] = task_obj
                 seen_tasks.add(task_obj.pk)
-        Task.objects.exclude(pk__in=seen_tasks).delete()
-        ExamPart.objects.exclude(pk__in=seen_parts).delete()
+        Task.objects.exclude(pk__in=seen_tasks).update(is_active=False)
+        ExamPart.objects.exclude(pk__in=seen_parts).update(is_active=False)
         return task_by_slug
 
     def _import_themes(self, themes, task_by_slug):
@@ -112,19 +196,20 @@ class Command(BaseCommand):
         mapping = {}
         for theme in themes:
             obj, _ = Theme.objects.update_or_create(
-                name=theme.name,
+                slug=theme.slug,
                 defaults={
-                    "slug": theme.slug,
+                    "name": theme.name,
                     "display_name": theme.display,
                     "order": theme.order,
                     "color": theme.color,
                     "emoji": theme.emoji,
                     "task": task_by_slug.get(theme.task),
+                    "is_active": True,
                 },
             )
             mapping[theme.name] = obj
             seen.add(obj.pk)
-        Theme.objects.exclude(pk__in=seen).delete()
+        Theme.objects.exclude(pk__in=seen).update(is_active=False)
         return mapping
 
     def _import_families(self, families):
@@ -132,35 +217,75 @@ class Command(BaseCommand):
         mapping = {}
         for name, order in families:
             obj, _ = Family.objects.update_or_create(
-                name=name,
-                defaults={"slug": content._slugify(name), "order": order},
+                content_key=content.family_content_key(order),
+                defaults={
+                    "name": name,
+                    "slug": content._slugify(name),
+                    "order": order,
+                    "is_active": True,
+                },
             )
             mapping[name] = obj
             seen.add(obj.pk)
-        Family.objects.exclude(pk__in=seen).delete()
+        Family.objects.exclude(pk__in=seen).update(is_active=False)
         return mapping
 
     def _import_responses(self, responses, theme_by_name, family_by_name):
         seen = set()
         mapping = {}
+        claimed = set()
+        incoming_keys = {data.content_key for data in responses}
+        prompt_response_ids = dict(
+            Prompt.objects.exclude(content_key="")
+            .exclude(content_key__isnull=True)
+            .values_list("content_key", "response_id")
+        )
+        response_sources = {}
         for data in responses:
-            obj, _ = Response.objects.update_or_create(
-                body_hash=data.body_hash,
-                defaults={
-                    "theme": theme_by_name[data.theme],
-                    "family": family_by_name[data.family],
-                    "prompt": data.prompt,
-                    "reformulation": data.reformulation,
-                    "position": data.position,
-                    "position_claire": data.position_claire,
-                    "nuance": data.nuance,
-                    "conclusion": data.conclusion,
-                    "body": data.body,
-                    "body_html": data.body_html,
-                },
-            )
-            mapping[data.body_hash] = obj
+            source_ids = {
+                prompt_response_ids[prompt.content_key]
+                for prompt in data.prompts
+                if prompt.content_key in prompt_response_ids
+            }
+            obj = Response.objects.filter(content_key=data.content_key).first()
+            if obj is None:
+                prompt_keys = [prompt.content_key for prompt in data.prompts]
+                obj = (
+                    Response.objects.filter(
+                        prompts__content_key__in=prompt_keys,
+                    )
+                    .exclude(pk__in=claimed)
+                    .exclude(content_key__in=incoming_keys)
+                    .distinct()
+                    .order_by("pk")
+                    .first()
+                )
+            values = {
+                "content_key": data.content_key,
+                "body_hash": data.body_hash,
+                "theme": theme_by_name[data.theme],
+                "family": family_by_name[data.family],
+                "prompt": data.prompt,
+                "reformulation": data.reformulation,
+                "position": data.position,
+                "position_claire": data.position_claire,
+                "nuance": data.nuance,
+                "conclusion": data.conclusion,
+                "body": data.body,
+                "body_html": data.body_html,
+                "is_active": True,
+            }
+            if obj is None:
+                obj = Response.objects.create(**values)
+            else:
+                source_ids.add(obj.pk)
+                for field, value in values.items():
+                    setattr(obj, field, value)
+                obj.save(update_fields=list(values))
+            mapping[data.content_key] = obj
+            response_sources[data.content_key] = source_ids
             seen.add(obj.pk)
+            claimed.add(obj.pk)
 
             arg_orders = set()
             for arg in data.arguments:
@@ -177,52 +302,71 @@ class Command(BaseCommand):
                 arg_orders.add(arg.order)
             obj.arguments.exclude(order__in=arg_orders).delete()
 
-        Response.objects.exclude(pk__in=seen).delete()
+        Response.objects.exclude(pk__in=seen).update(is_active=False)
+        self._response_sources = response_sources
         return mapping
 
     def _import_prompts(
-        self, responses, response_by_hash, theme_by_name, family_by_name
+        self, responses, response_by_key, theme_by_name, family_by_name
     ):
         seen = set()
         index = {}
         for data in responses:
-            response = response_by_hash[data.body_hash]
+            response = response_by_key[data.content_key]
             for prompt in data.prompts:
                 obj, _ = Prompt.objects.update_or_create(
-                    theme=theme_by_name[prompt.theme],
-                    number=prompt.number,
+                    content_key=prompt.content_key,
                     defaults={
+                        "theme": theme_by_name[prompt.theme],
+                        "number": prompt.number,
                         "response": response,
                         "family": family_by_name[prompt.family],
                         "text": prompt.text,
                         "is_canonical": prompt.is_canonical,
+                        "is_active": True,
                     },
                 )
                 index[(prompt.theme, prompt.number)] = obj
                 seen.add(obj.pk)
-        Prompt.objects.exclude(pk__in=seen).delete()
+        Prompt.objects.exclude(pk__in=seen).update(is_active=False)
         return index
 
     def _import_phrases(self, phrases, prompt_index):
         seen_categories = {}
         seen_phrases = set()
         order = 0
+        lot_orders = dict(
+            Phrase.objects.values_list("phrase_id", "lot_order")
+        )
+        next_lot_order = max(lot_orders.values(), default=0) + 1
         for data in phrases:
             if data.category not in seen_categories:
                 order += 1
                 category, _ = PhraseCategory.objects.update_or_create(
-                    name=data.category,
+                    content_key=content.phrase_category_content_key(
+                        data.category
+                    ),
                     defaults={
+                        "name": data.category,
                         "slug": content._slugify(data.category),
                         "order": order,
+                        "is_active": True,
                     },
                 )
                 seen_categories[data.category] = category
             category = seen_categories[data.category]
 
+            existing_lot_order = lot_orders.get(data.phrase_id)
+            if existing_lot_order is None:
+                lot_order = next_lot_order
+                next_lot_order += 1
+                lot_orders[data.phrase_id] = lot_order
+            else:
+                lot_order = existing_lot_order
             phrase, _ = Phrase.objects.update_or_create(
                 phrase_id=data.phrase_id,
                 defaults={
+                    "tier": data.tier,
                     "category": category,
                     "english_cue": data.english_cue,
                     "expression": data.expression,
@@ -231,6 +375,8 @@ class Command(BaseCommand):
                     "note": data.note,
                     "sources_raw": data.sources_raw,
                     "order": data.order,
+                    "lot_order": lot_order,
+                    "is_active": True,
                 },
             )
             missing_sources = [
@@ -247,39 +393,208 @@ class Command(BaseCommand):
             phrase.source_prompts.set(source_objs)
             seen_phrases.add(phrase.pk)
 
-        Phrase.objects.exclude(pk__in=seen_phrases).delete()
+        Phrase.objects.exclude(pk__in=seen_phrases).update(is_active=False)
         PhraseCategory.objects.exclude(
             pk__in=[c.pk for c in seen_categories.values()]
-        ).delete()
+        ).update(is_active=False)
 
-    def _sync_cards(self, response_by_hash, user=None):
+    @staticmethod
+    def _card_progress_rank(card):
+        reviewed_at = (
+            card.last_reviewed.timestamp() if card.last_reviewed else 0
+        )
+        return (
+            reviewed_at,
+            card.reps,
+            card.interval_days,
+            card.state != CardState.NEW,
+            card.needs_revisit,
+            card.suspended,
+            -card.pk,
+        )
+
+    def _reconcile_response_cards(self, response_by_key):
+        source_plan = getattr(self, "_response_sources", {})
+        response_ids = {
+            response_id
+            for source_ids in source_plan.values()
+            for response_id in source_ids
+        }
+        response_ids.update(
+            response.pk for response in response_by_key.values()
+        )
+        if not response_ids:
+            return
+
+        cards_by_response = defaultdict(dict)
+        cards = Card.objects.filter(
+            card_type=CardType.SPINE,
+            response_id__in=response_ids,
+            user_id__isnull=False,
+        )
+        for card in cards:
+            cards_by_response[card.response_id][card.user_id] = card
+
+        schedule_fields = (
+            "state",
+            "due",
+            "interval_days",
+            "ease",
+            "reps",
+            "lapses",
+            "learning_step",
+            "last_reviewed",
+            "last_rating",
+            "needs_revisit",
+            "revisit_added_at",
+            "suspended",
+        )
+        changed = []
+        for content_key, target_response in response_by_key.items():
+            source_ids = source_plan.get(content_key, set())
+            target_cards = cards_by_response.get(target_response.pk, {})
+            user_ids = {
+                user_id
+                for response_id in source_ids
+                for user_id in cards_by_response.get(response_id, {})
+            }
+            for user_id in user_ids:
+                target_card = target_cards.get(user_id)
+                if target_card is None:
+                    continue
+                candidates = [
+                    cards_by_response[response_id][user_id]
+                    for response_id in source_ids
+                    if user_id in cards_by_response.get(response_id, {})
+                ]
+                source_card = max(
+                    candidates,
+                    key=self._card_progress_rank,
+                    default=target_card,
+                )
+                if self._card_progress_rank(
+                    source_card
+                ) <= self._card_progress_rank(target_card):
+                    continue
+                for field in schedule_fields:
+                    setattr(target_card, field, getattr(source_card, field))
+                changed.append(target_card)
+
+        if changed:
+            Card.objects.bulk_update(changed, schedule_fields)
+
+    def _reconcile_phrase_cards(self):
+        phrase_ids = set(PHRASE_ID_MERGES)
+        phrase_ids.update(PHRASE_ID_MERGES.values())
+        phrases = {
+            phrase.phrase_id: phrase
+            for phrase in Phrase.objects.filter(phrase_id__in=phrase_ids)
+        }
+        cards = Card.objects.filter(
+            phrase__phrase_id__in=phrase_ids,
+            user_id__isnull=False,
+        ).select_related("phrase")
+        cards_by_key = {
+            (card.phrase.phrase_id, card.user_id, card.card_type): card
+            for card in cards
+        }
+        schedule_fields = (
+            "state",
+            "due",
+            "interval_days",
+            "ease",
+            "reps",
+            "lapses",
+            "learning_step",
+            "last_reviewed",
+            "last_rating",
+            "needs_revisit",
+            "revisit_added_at",
+            "suspended",
+        )
+        changed = []
+        for source_id, target_id in PHRASE_ID_MERGES.items():
+            if source_id not in phrases or target_id not in phrases:
+                continue
+            source_cards = [
+                card
+                for (phrase_id, _user_id, _card_type), card in cards_by_key.items()
+                if phrase_id == source_id
+            ]
+            for source_card in source_cards:
+                target_card = cards_by_key.get(
+                    (target_id, source_card.user_id, source_card.card_type)
+                )
+                if target_card is None or self._card_progress_rank(
+                    source_card
+                ) <= self._card_progress_rank(target_card):
+                    continue
+                for field in schedule_fields:
+                    setattr(target_card, field, getattr(source_card, field))
+                changed.append(target_card)
+        if changed:
+            Card.objects.bulk_update(changed, schedule_fields)
+
+    def _reconcile_local_phrase_directions(self):
+        cards = Card.objects.filter(
+            phrase__tier="response",
+            user_id__isnull=False,
+            card_type__in=[
+                CardType.PHRASE_PRODUCTION,
+                CardType.PHRASE_RECOGNITION,
+            ],
+        )
+        cards_by_key = {
+            (card.phrase_id, card.user_id, card.card_type): card
+            for card in cards
+        }
+        schedule_fields = (
+            "state",
+            "due",
+            "interval_days",
+            "ease",
+            "reps",
+            "lapses",
+            "learning_step",
+            "last_reviewed",
+            "last_rating",
+            "needs_revisit",
+            "revisit_added_at",
+        )
+        changed = []
+        for (phrase_id, user_id, card_type), source_card in cards_by_key.items():
+            if card_type != CardType.PHRASE_RECOGNITION:
+                continue
+            target_card = cards_by_key.get(
+                (phrase_id, user_id, CardType.PHRASE_PRODUCTION)
+            )
+            if target_card is None or self._card_progress_rank(
+                source_card
+            ) <= self._card_progress_rank(target_card):
+                continue
+            for field in schedule_fields:
+                setattr(target_card, field, getattr(source_card, field))
+            changed.append(target_card)
+        if changed:
+            Card.objects.bulk_update(changed, schedule_fields)
+
+    def _sync_cards(self, response_by_key, user=None):
         """Create one card per studyable item; never reset existing state."""
-        for response in response_by_hash.values():
+        for response in response_by_key.values():
             Card.objects.get_or_create(
                 user=user,
                 card_type=CardType.SPINE,
                 response=response,
             )
-        for phrase in Phrase.objects.all():
+        for phrase in Phrase.objects.filter(is_active=True):
             Card.objects.get_or_create(
                 user=user,
                 card_type=CardType.PHRASE_PRODUCTION,
                 phrase=phrase,
             )
-            Card.objects.get_or_create(
-                user=user,
-                card_type=CardType.PHRASE_RECOGNITION,
-                phrase=phrase,
-            )
-
-        # Prune cards whose target no longer exists.
-        Card.objects.filter(
-            card_type=CardType.SPINE, response__isnull=True
-        ).delete()
-        Card.objects.filter(
-            card_type__in=[
-                CardType.PHRASE_PRODUCTION,
-                CardType.PHRASE_RECOGNITION,
-            ],
-            phrase__isnull=True,
-        ).delete()
+            if phrase.tier == "shared":
+                Card.objects.get_or_create(
+                    user=user,
+                    card_type=CardType.PHRASE_RECOGNITION,
+                    phrase=phrase,
+                )

@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
+from django.db import transaction
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 
@@ -218,8 +219,13 @@ def _snapshot(card: Card) -> dict:
 
 
 def review(
-    card: Card, rating: int, now: datetime | None = None, elapsed_ms: int = 0
-) -> Schedule:
+    card: Card,
+    rating: int,
+    now: datetime | None = None,
+    elapsed_ms: int = 0,
+    *,
+    return_log: bool = False,
+) -> Schedule | tuple[Schedule, ReviewLog]:
     """Apply a rating to a card, persist it, and log the review."""
     now = now or timezone.now()
     rating = int(rating)
@@ -262,7 +268,7 @@ def review(
         ]
     )
 
-    ReviewLog.objects.create(
+    log = ReviewLog.objects.create(
         user=card.user,
         card=card,
         reviewed_at=now,
@@ -276,25 +282,41 @@ def review(
         elapsed_ms=max(0, int(elapsed_ms)),
         card_before=snapshot,
     )
-    return sched
+    return (sched, log) if return_log else sched
 
 
-def undo_last(user=None) -> Card | None:
+@transaction.atomic
+def undo_last(user=None, *, log_id=None, card_id=None) -> Card | None:
     """Revert the most recent review, restoring the card and dropping its log.
 
     Returns the restored :class:`Card` (so the caller can re-present it), or
     ``None`` when there is nothing to undo.
     """
-    log = (
-        ReviewLog.objects.filter(user=user)
-        .select_related("card")
-        .order_by("-reviewed_at", "-id")
-        .first()
-    )
+    logs = ReviewLog.objects.select_for_update().filter(user=user)
+    if log_id is not None:
+        logs = logs.filter(pk=log_id)
+    if card_id is not None:
+        logs = logs.filter(card_id=card_id)
+    log = logs.order_by("-reviewed_at", "-id").first()
     if log is None:
         return None
 
-    card = log.card
+    card = (
+        Card.objects.select_for_update()
+        .filter(pk=log.card_id, user=user)
+        .first()
+    )
+    if card is None:
+        return None
+    latest_log_id = (
+        ReviewLog.objects.filter(user=user, card=card)
+        .order_by("-reviewed_at", "-id")
+        .values_list("pk", flat=True)
+        .first()
+    )
+    if latest_log_id != log.pk:
+        return None
+
     snap = log.card_before or {}
     if snap:
         card.state = snap.get("state", CardState.NEW)

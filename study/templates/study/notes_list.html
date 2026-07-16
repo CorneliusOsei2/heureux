@@ -12,8 +12,18 @@
   <div class="task-hero__numbers" aria-label="Contenu des notes">
     <span><b>{{ notes|length }}</b> note{{ notes|length|pluralize }}</span>
     <span><b>{{ highlights|length }}</b> surlignage{{ highlights|length|pluralize }}</span>
+    <span><b>{{ study_count }}</b> à étudier</span>
   </div>
 </header>
+
+<div class="notes-tools">
+  <a class="btn" href="{% url 'study:annotation_search' %}">Rechercher</a>
+  {% if task %}
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:task_annotation_study' part.slug task.slug %}">Étudier cette sélection{% if study_count %} · {{ study_count }}{% endif %}</a>
+  {% else %}
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">Étudier ma sélection{% if study_count %} · {{ study_count }}{% endif %}</a>
+  {% endif %}
+</div>
 
 <details class="card notes-compose" {% if form.errors %}open{% endif %}>
   <summary><span aria-hidden="true">＋</span> Nouvelle note</summary>
@@ -46,6 +56,7 @@
       <article class="card annotation-card annotation-card--note" id="note-{{ note.id }}">
         <header class="annotation-card__head">
           <span class="annotation-card__kind">Note</span>
+          {% if note.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
           <time datetime="{{ note.updated_at|date:'c' }}">{{ note.updated_at|date:"j M Y · H:i" }}</time>
         </header>
         {% if note.title %}<h3>{{ note.title }}</h3>{% endif %}
@@ -55,6 +66,12 @@
           <a class="annotation-card__source" href="{{ note.source_path }}">↗ {{ note.source_title|default:"Voir la source" }}</a>
         {% endif %}
         <footer class="annotation-card__actions">
+          <form method="post" action="{% url 'study:annotation_study_toggle' note.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <input type="hidden" name="study_later" value="{% if note.study_later %}0{% else %}1{% endif %}">
+            <button class="linkbtn" type="submit">{% if note.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
+          </form>
           <details>
             <summary>Modifier</summary>
             <form method="post" action="{% url 'study:annotation_update' note.id %}">
@@ -71,7 +88,7 @@
               <button class="btn btn--primary btn--sm" type="submit">Enregistrer</button>
             </form>
           </details>
-          <form method="post" action="{% url 'study:annotation_delete' note.id %}" onsubmit="return confirm('Supprimer cette note ?');">
+          <form method="post" action="{% url 'study:annotation_delete' note.id %}" data-confirm="Supprimer cette note ?">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.get_full_path }}">
             <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
@@ -99,6 +116,7 @@
       <article class="card annotation-card annotation-card--highlight" id="highlight-{{ highlight.id }}">
         <header class="annotation-card__head">
           <span class="annotation-card__kind">Surlignage</span>
+          {% if highlight.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
           <time datetime="{{ highlight.updated_at|date:'c' }}">{{ highlight.updated_at|date:"j M Y · H:i" }}</time>
         </header>
         <blockquote><mark>{{ highlight.quote }}</mark></blockquote>
@@ -106,7 +124,13 @@
           <a class="annotation-card__source" href="{{ highlight.source_path }}">↗ {{ highlight.source_title|default:"Voir la source" }}</a>
         {% endif %}
         <footer class="annotation-card__actions">
-          <form method="post" action="{% url 'study:annotation_delete' highlight.id %}" onsubmit="return confirm('Supprimer ce surlignage ?');">
+          <form method="post" action="{% url 'study:annotation_study_toggle' highlight.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <input type="hidden" name="study_later" value="{% if highlight.study_later %}0{% else %}1{% endif %}">
+            <button class="linkbtn" type="submit">{% if highlight.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
+          </form>
+          <form method="post" action="{% url 'study:annotation_delete' highlight.id %}" data-confirm="Supprimer ce surlignage ?">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.get_full_path }}">
             <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>

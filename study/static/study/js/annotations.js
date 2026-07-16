@@ -47,6 +47,11 @@
     return node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
   }
 
+  function rootForNode(node) {
+    var element = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    return element ? element.closest("[data-annotation-root]") : null;
+  }
+
   function captureSelection() {
     var selection = window.getSelection();
     if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
@@ -54,6 +59,10 @@
     }
     var range = selection.getRangeAt(0);
     var element = selectionElement(range);
+    var startRoot = rootForNode(range.startContainer);
+    var endRoot = rootForNode(range.endContainer);
+    if (startRoot !== endRoot) return null;
+    var root = startRoot || main;
     if (
       !element ||
       !main.contains(element) ||
@@ -68,13 +77,13 @@
     if (!quote.trim()) return null;
 
     var before = range.cloneRange();
-    before.selectNodeContents(main);
+    before.selectNodeContents(root);
     before.setEnd(range.startContainer, range.startOffset);
     var start = (before.cloneContents().textContent || "").length;
     var end = start + quote.length;
-    var pageText = main.textContent || "";
+    var pageText = root.textContent || "";
     var intersectsHighlight = Array.from(
-      main.querySelectorAll("[data-user-highlight]")
+      root.querySelectorAll("[data-user-highlight]")
     ).some(function (mark) {
       try {
         return range.intersectsNode(mark);
@@ -88,7 +97,8 @@
       end: end,
       prefix: pageText.slice(Math.max(0, start - 160), start),
       suffix: pageText.slice(end, end + 160),
-      intersectsHighlight: intersectsHighlight
+      intersectsHighlight: intersectsHighlight,
+      sourceKey: root.dataset.annotationSourceKey || ""
     };
   }
 
@@ -136,6 +146,7 @@
     values.set("prefix", details.prefix);
     values.set("suffix", details.suffix);
     values.set("source_path", sourcePath);
+    values.set("source_key", details.sourceKey || "");
     values.set("source_title", document.title);
     values.set("body", body || "");
     var taskId = document.body.dataset.annotationTaskId;
@@ -196,8 +207,8 @@
       });
   }
 
-  function bestOffsets(item) {
-    var text = main.textContent || "";
+  function bestOffsets(item, root) {
+    var text = root.textContent || "";
     if (
       item.start_offset >= 0 &&
       item.end_offset > item.start_offset &&
@@ -226,8 +237,8 @@
     return best;
   }
 
-  function textSegments(start, end) {
-    var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+  function textSegments(root, start, end) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     var segments = [];
     var offset = 0;
     var node;
@@ -238,6 +249,10 @@
         var parent = node.parentElement;
         if (
           parent &&
+          !(
+            root === main &&
+            parent.closest("[data-annotation-root]")
+          ) &&
           !parent.closest(
             "script, style, button, textarea, select, option, " +
             "[data-user-highlight]"
@@ -269,17 +284,32 @@
     mark.appendChild(selected);
   }
 
+  function highlightRoot(item) {
+    if (!item.source_key) return main;
+    var roots = main.querySelectorAll(
+      "[data-annotation-root][data-annotation-source-key]"
+    );
+    for (var index = 0; index < roots.length; index += 1) {
+      if (roots[index].dataset.annotationSourceKey === item.source_key) {
+        return roots[index];
+      }
+    }
+    return null;
+  }
+
   function applyHighlight(item) {
+    var root = highlightRoot(item);
+    if (!root) return false;
     if (
-      main.querySelector(
+      root.querySelector(
         '[data-highlight-id="' + String(item.id).replace(/"/g, "") + '"]'
       )
     ) {
       return true;
     }
-    var offsets = bestOffsets(item);
+    var offsets = bestOffsets(item, root);
     if (!offsets) return false;
-    var segments = textSegments(offsets.start, offsets.end);
+    var segments = textSegments(root, offsets.start, offsets.end);
     if (!segments.length) return false;
     segments.reverse().forEach(function (segment) {
       wrapSegment(segment, item.id);
@@ -323,8 +353,12 @@
           start_offset: details.start,
           end_offset: details.end,
           prefix: details.prefix,
-          suffix: details.suffix
+          suffix: details.suffix,
+          source_key: details.sourceKey || ""
         };
+        highlights = highlights.filter(function (saved) {
+          return saved.id !== item.id;
+        });
         highlights.push(item);
         clearBrowserSelection();
         hideAction();
@@ -338,6 +372,90 @@
         showToast(error.message);
         highlightButton.disabled = false;
       });
+  }
+
+  function setupStudyDeck() {
+    var deck = document.querySelector("[data-annotation-study]");
+    if (!deck) return;
+    var cards = Array.from(deck.querySelectorAll("[data-study-card]"));
+    var progress = deck.querySelector("[data-study-progress]");
+    var previous = deck.querySelector("[data-study-previous]");
+    var reveal = deck.querySelector("[data-study-reveal]");
+    var next = deck.querySelector("[data-study-next]");
+    var restart = deck.querySelector("[data-study-restart]");
+    var done = deck.querySelector("[data-study-done]");
+    var controls = deck.querySelector(".annotation-study__controls");
+    var index = 0;
+    var revealed = false;
+
+    function render() {
+      cards.forEach(function (card, cardIndex) {
+        card.classList.toggle("hidden", cardIndex !== index);
+      });
+      var card = cards[index];
+      if (!card) return;
+      card.querySelector("[data-study-back]").classList.add("hidden");
+      revealed = false;
+      reveal.classList.remove("hidden");
+      next.classList.add("hidden");
+      next.textContent = index === cards.length - 1 ? "Terminer" : "Suivante →";
+      previous.disabled = index === 0;
+      controls.classList.remove("hidden");
+      done.classList.add("hidden");
+      progress.textContent = String(index + 1) + " / " + String(cards.length);
+    }
+
+    function showAnswer() {
+      if (revealed) return;
+      cards[index].querySelector("[data-study-back]").classList.remove("hidden");
+      revealed = true;
+      reveal.classList.add("hidden");
+      next.classList.remove("hidden");
+    }
+
+    function advance() {
+      if (!revealed) return;
+      if (index < cards.length - 1) {
+        index += 1;
+        render();
+        return;
+      }
+      cards[index].classList.add("hidden");
+      controls.classList.add("hidden");
+      done.classList.remove("hidden");
+      progress.textContent = String(cards.length) + " / " + String(cards.length);
+    }
+
+    previous.addEventListener("click", function () {
+      if (index > 0) {
+        index -= 1;
+        render();
+      }
+    });
+    reveal.addEventListener("click", showAnswer);
+    next.addEventListener("click", advance);
+    restart.addEventListener("click", function () {
+      index = 0;
+      render();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.target.closest("input, textarea, select, button, a") ||
+        done.classList.contains("hidden") === false
+      ) {
+        return;
+      }
+      if (event.key === " " && !revealed) {
+        event.preventDefault();
+        showAnswer();
+      } else if (event.key === "ArrowRight" && revealed) {
+        advance();
+      } else if (event.key === "ArrowLeft" && index > 0) {
+        index -= 1;
+        render();
+      }
+    });
+    render();
   }
 
   action.querySelectorAll("button").forEach(function (button) {
@@ -379,5 +497,6 @@
   window.addEventListener("pagehide", function () {
     observer.disconnect();
   });
+  setupStudyDeck();
   fetchHighlights();
 })();
