@@ -9,7 +9,14 @@ from playwright.sync_api import sync_playwright
 
 from django.utils import timezone
 
-from study.models import Annotation, AnnotationKind, CardState, Rating
+from study.models import (
+    Annotation,
+    AnnotationKind,
+    CardState,
+    CardType,
+    PhraseCategory,
+    Rating,
+)
 
 from . import factories
 
@@ -220,4 +227,77 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
         self.page.get_by_role("link", name="Lancer l'entraînement").click()
         self.page.locator("#card-front .prompt-text").wait_for()
+        self.assert_no_horizontal_overflow()
+
+    def test_mobile_expression_lots_and_highlighted_answers(self):
+        category = PhraseCategory.objects.create(
+            slug="browser-vocab",
+            name="Vocabulaire mobile",
+            content_key="test-category:browser-vocab",
+            order=1,
+        )
+        prompt = self.first.response.prompts.get(is_canonical=True)
+        for _ in range(16):
+            phrase = factories.make_phrase(
+                category=category,
+                tier="response",
+            )
+            phrase.source_prompts.add(prompt)
+            factories.make_phrase_card(user=self.user, phrase=phrase)
+
+        shared_phrases = []
+        for _ in range(16):
+            phrase = factories.make_phrase(
+                category=category,
+                tier="shared",
+            )
+            shared_phrases.append(phrase)
+            factories.make_phrase_card(user=self.user, phrase=phrase)
+            factories.make_phrase_card(
+                user=self.user,
+                phrase=phrase,
+                card_type=CardType.PHRASE_RECOGNITION,
+            )
+
+        self.page.set_viewport_size({"width": 320, "height": 568})
+        response_url = reverse(
+            "study:response_detail",
+            args=[self.first.response_id],
+        )
+        self.page.goto(self.live_server_url + response_url)
+        self.page.get_by_role(
+            "link",
+            name="Lot 1 · 15 expressions",
+        ).wait_for()
+        self.page.get_by_role(
+            "link",
+            name="Lot 2 · 1 expression",
+        ).wait_for()
+        self.assert_no_horizontal_overflow()
+
+        category_url = (
+            reverse("study:phrases") + f"?category={category.slug}"
+        )
+        self.page.goto(self.live_server_url + category_url)
+        self.page.get_by_text("Lots de 15 expressions maximum").wait_for()
+        self.assertEqual(
+            self.page.locator(".batch-card").count(),
+            2,
+        )
+        self.assertEqual(
+            self.page.locator(".phrase__ex mark").count(),
+            len(shared_phrases),
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.locator(".batch-card").first.click()
+        self.page.locator("#card-front").wait_for()
+        self.assert_no_horizontal_overflow()
+        self.page.locator("#reveal").click()
+        highlighted = self.page.locator("#card-back mark")
+        highlighted.wait_for()
+        self.assertEqual(
+            highlighted.text_content(),
+            shared_phrases[0].anchor,
+        )
         self.assert_no_horizontal_overflow()

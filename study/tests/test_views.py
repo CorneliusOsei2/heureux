@@ -65,7 +65,7 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v36"', body)
+        self.assertIn('var CACHE = "heureux-v37"', body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
         self.assertIn("SKIP_WAITING", body)

@@ -1,8 +1,8 @@
 """Review-queue construction: what to study next, and how much is available.
 
-Practice is unrestricted: every new card and every due review remains
-available. Optional scopes narrow the queue to a task, category, or stable
-15-card batch without introducing a daily cap.
+Practice is unrestricted: every eligible new card and every due review remains
+available. Optional scopes narrow the queue to a task, category, or stable lot
+of at most 15 unique expressions without introducing a daily cap.
 """
 
 from __future__ import annotations

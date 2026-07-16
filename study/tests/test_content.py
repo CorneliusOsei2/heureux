@@ -149,3 +149,31 @@ class PhraseParserTests(SimpleTestCase):
         )
         self.assertEqual(len(coverage), 130)
         self.assertGreaterEqual(min(coverage.values()), 12)
+
+    def test_response_vocabulary_uses_its_semantic_topic_category(self):
+        categories = {
+            phrase.phrase_id: phrase.category
+            for phrase in content.parse_phrases(self.responses)
+        }
+        expected = {
+            "A34": "Santé",
+            "C55": "Famille et relations",
+            "C102": "Éducation et apprentissage",
+            "C116": "Éducation et apprentissage",
+            "C149": "Famille et relations",
+            "H18": "Travail et économie",
+            "A149": "Éducation et apprentissage",
+            "A182": "Environnement et transports",
+            "A183": "Environnement et transports",
+            "A184": "Environnement et transports",
+            "A246": "Environnement et transports",
+            "C251": "Famille et relations",
+            "C258": "Famille et relations",
+            "C338": "Environnement et transports",
+            "C360": "Travail et économie",
+            "N145": "Famille et relations",
+        }
+        self.assertEqual(
+            {phrase_id: categories[phrase_id] for phrase_id in expected},
+            expected,
+        )

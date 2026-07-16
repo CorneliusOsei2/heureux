@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import importlib
 from datetime import timedelta
 from io import StringIO
 
+from django.apps import apps
 from django.core.management import call_command
 from django.test import TestCase
 from django.utils import timezone
@@ -18,10 +20,52 @@ from study.models import (
     Prompt,
     Rating,
     ReviewLog,
+    ReviewSession,
     Theme,
 )
 
 from . import factories
+
+
+class PhraseLotMigrationTests(TestCase):
+    def test_retiering_clears_only_saved_phrase_batch_sessions(self):
+        phrase_user = factories.make_user("phrase-session")
+        phrase_card = factories.make_phrase_card(user=phrase_user)
+        phrase_session = ReviewSession.objects.create(
+            user=phrase_user,
+            current_card=phrase_card,
+            previous_card=phrase_card,
+            scope={"kind": "phrase", "category": "liaisons", "batch": "2"},
+            revisit_seen_card_ids=[phrase_card.pk],
+            presentation_token="stale-token",
+        )
+        response_user = factories.make_user("response-session")
+        response_card = factories.make_spine_card(user=response_user)
+        response_session = ReviewSession.objects.create(
+            user=response_user,
+            current_card=response_card,
+            scope={"kind": "spine", "theme": "culture", "batch": "2"},
+            presentation_token="valid-token",
+        )
+
+        migration = importlib.import_module(
+            "study.migrations.0017_reset_phrase_batch_sessions"
+        )
+        migration.reset_phrase_batch_sessions(apps, None)
+
+        phrase_session.refresh_from_db()
+        response_session.refresh_from_db()
+        self.assertEqual(phrase_session.scope, {})
+        self.assertIsNone(phrase_session.current_card_id)
+        self.assertIsNone(phrase_session.previous_card_id)
+        self.assertEqual(phrase_session.revisit_seen_card_ids, [])
+        self.assertEqual(phrase_session.presentation_token, "")
+        self.assertEqual(
+            response_session.scope,
+            {"kind": "spine", "theme": "culture", "batch": "2"},
+        )
+        self.assertEqual(response_session.current_card_id, response_card.pk)
+        self.assertEqual(response_session.presentation_token, "valid-token")
 
 
 class NonDestructiveImportTests(TestCase):

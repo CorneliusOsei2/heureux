@@ -525,9 +525,7 @@ def _task_card(task, now, user):
             now,
             user=user,
         )
-        revisit_count = _task_cards(task, user).filter(
-            needs_revisit=True
-        ).count()
+        revisit_count = _task_cards(task, user, "revisit").count()
         theme_count = Theme.objects.filter(task=task, is_active=True).count()
         prompt_count = Prompt.objects.filter(
             theme__task=task,
@@ -1464,7 +1462,10 @@ def review_hub(request, part_slug, task_slug):
             "phrase_stats": phrase_stats,
             "response_due": response_counts["total_due"],
             "phrase_due": phrase_counts["total_due"],
-            "revisit_count": cards.filter(needs_revisit=True).count(),
+            "revisit_count": queue_module.scoped_cards(
+                {**scope, "kind": "revisit"},
+                user=request.user,
+            ).count(),
             "weak_count": weak_counts["weak_total"],
             "can_resume": can_resume,
         },
