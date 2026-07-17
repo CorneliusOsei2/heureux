@@ -2,11 +2,18 @@
 {% block title %}Progression · Heureux{% endblock %}
 
 {% block content %}
-{% include "study/_task_nav.html" %}
-<div class="page-head">
-  <p class="eyebrow">{% if task %}{{ task.name }}{% else %}Toutes les cartes{% endif %}</p>
-  <h1>Votre progression</h1>
-</div>
+<header class="area-hero stats-hero">
+  <div class="area-hero__copy">
+    <p class="eyebrow">Pilotage de l’apprentissage{% if task %} · {{ task.name }}{% endif %}</p>
+    <h1>Progression</h1>
+    <p>Observe ce qui évolue, puis relance directement l’activité qui mérite ton attention.</p>
+  </div>
+  <dl class="area-hero__metrics" aria-label="Résumé de progression">
+    <div><dt>Maîtrisées</dt><dd>{{ overall.mature }}/{{ overall.total }}</dd></div>
+    <div><dt>Série</dt><dd>{{ streak }} j</dd></div>
+    <div><dt>Rétention</dt><dd>{% if retention %}{{ retention }} %{% else %}—{% endif %}</dd></div>
+  </dl>
+</header>
 
 {% if not task_locked %}
 {% include "study/_scope_filter.html" %}
@@ -19,11 +26,24 @@
   <div class="tile"><div class="tile__value">{% if retention %}{{ retention }}%{% else %}—{% endif %}</div><div class="tile__label">Rétention (30 j)</div></div>
 </div>
 
+<section class="stats-action-grid" aria-label="Actions recommandées">
+  <a class="card" href="{% url 'study:review' %}?kind=weak&amp;content=spine{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+    <span><b>{{ expression_weak_count }}</b> réponses fragiles</span>
+    <small>Renforcer mon expression</small>
+    <span aria-hidden="true">→</span>
+  </a>
+  <a class="card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+    <span><b>{{ vocabulary_weak_count }}</b> cartes lexicales fragiles</span>
+    <small>Renforcer mon vocabulaire</small>
+    <span aria-hidden="true">→</span>
+  </a>
+</section>
+
 <section class="card section-card" style="margin-top:1.4rem;">
   <div class="row between"><h2 class="mb-0">Révisions · 30 jours</h2><span class="muted">{{ total_reviews }} au total</span></div>
   <div class="bars" style="margin-top:1rem;">
     {% for d in daily %}
-      <div class="bars__col" title="{{ d.date|date:'j M' }} · {{ d.count }} révision{{ d.count|pluralize }}">
+      <div class="bars__col" role="img" aria-label="{{ d.date|date:'j M' }} : {{ d.count }} révision{{ d.count|pluralize }}" title="{{ d.date|date:'j M' }} · {{ d.count }} révision{{ d.count|pluralize }}">
         <span class="bars__bar" style="height: {% widthratio d.count max_daily 100 %}%;"></span>
       </div>
     {% endfor %}
@@ -34,7 +54,7 @@
   <h2 class="mb-0">Assiduité · 90 jours</h2>
   <div class="heatmap" style="margin-top:1rem;">
     {% for cell in heat %}
-      <span class="heat-cell" data-level="{{ cell.level }}" title="{{ cell.date|date:'j M' }} · {{ cell.count }} révision{{ cell.count|pluralize }}"></span>
+      <span class="heat-cell" data-level="{{ cell.level }}" role="img" aria-label="{{ cell.date|date:'j M' }} : {{ cell.count }} révision{{ cell.count|pluralize }}" title="{{ cell.date|date:'j M' }} · {{ cell.count }} révision{{ cell.count|pluralize }}"></span>
     {% endfor %}
   </div>
   <div class="legend" style="margin-top:0.8rem;">
@@ -52,7 +72,7 @@
   <div class="row between"><h2 class="mb-0">Charge à venir · 14 jours</h2><span class="muted">cartes déjà vues à revoir</span></div>
   <div class="bars" style="margin-top:1rem;">
     {% for f in forecast %}
-      <div class="bars__col" title="{{ f.date|date:'j M' }} · {{ f.count }} à revoir">
+      <div class="bars__col" role="img" aria-label="{{ f.date|date:'j M' }} : {{ f.count }} à revoir" title="{{ f.date|date:'j M' }} · {{ f.count }} à revoir">
         <span class="bars__bar bars__bar--soft" style="height: {% widthratio f.count max_forecast 100 %}%;"></span>
       </div>
     {% endfor %}
@@ -63,7 +83,7 @@
   <h2>Maîtrise par thème</h2>
   <div class="qlist">
     {% for item in themes %}
-      <div class="qrow">
+      <a class="qrow" href="{% url 'study:review' %}?kind=spine&amp;theme={{ item.theme.slug }}">
         <span class="qrow__num">{{ item.theme.emoji }}</span>
         <span class="qrow__text" style="flex:1; font-family: var(--font-sans); font-size: 0.95rem;">
           <span class="row between">
@@ -76,7 +96,7 @@
             <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
           </span>
         </span>
-      </div>
+      </a>
     {% empty %}
       <p class="muted">Aucun thème pour cette sélection pour l'instant.</p>
     {% endfor %}

@@ -122,7 +122,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "page",
         )
         navigation.get_by_text("Vue d'ensemble", exact=True).wait_for()
-        navigation.get_by_text("Vocabulaire ciblé", exact=True).wait_for()
+        navigation.get_by_text("Tous les mots et tournures", exact=True).wait_for()
         navigation.get_by_text("Notes et surlignages", exact=True).wait_for()
         navigation.get_by_text("Suivre mes progrès", exact=True).wait_for()
         self.assert_no_horizontal_overflow()
@@ -136,7 +136,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 self.page.set_viewport_size({"width": width, "height": 768})
                 navigation.get_by_role(
                     "link",
-                    name="Expressions",
+                    name="Vocabulaire",
                     exact=True,
                 ).wait_for()
                 self.assertFalse(toggle.is_visible())
@@ -156,10 +156,8 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         self.page.goto(
             self.live_server_url
-            + reverse(
-                "study:task_phrases",
-                args=[self.part.slug, self.task.slug],
-            )
+            + reverse("study:vocabulary")
+            + f"?part={self.part.slug}&task={self.task.slug}"
         )
 
         self.page.get_by_role(
@@ -597,9 +595,10 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             end_offset=35,
         )
 
-        notes_url = self.live_server_url + reverse(
-            "study:task_notes",
-            args=[self.part.slug, self.task.slug],
+        notes_url = (
+            self.live_server_url
+            + reverse("study:notes_overview")
+            + f"?part={self.part.slug}&task={self.task.slug}"
         )
         self.page.goto(notes_url)
         self.page.locator(
@@ -616,7 +615,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
 
         self.page.locator("#highlights-tab").click()
-        self.page.wait_for_url("**?tab=highlights")
+        self.page.wait_for_url("**tab=highlights")
         self.assertEqual(
             self.page.locator("#highlights-tab").get_attribute(
                 "aria-selected"
@@ -696,7 +695,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             self.page.locator(
                 "[data-study-card]:not(.hidden) [data-study-back]:not(.hidden)"
             ).wait_for()
-            self.page.locator("[data-study-next]").click()
+            self.page.locator("[data-study-keep]").click()
         self.page.locator("[data-study-done]:not(.hidden)").wait_for()
         self.assert_no_horizontal_overflow()
 
@@ -707,9 +706,9 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 args=[self.part.slug, self.task.slug],
             )
         )
-        self.page.get_by_text("Points à renforcer").wait_for()
+        self.page.get_by_text("Réponses fragiles").wait_for()
         self.assert_no_horizontal_overflow()
-        self.page.get_by_role("link", name="Lancer l'entraînement").click()
+        self.page.get_by_role("link", name="Entraîner").click()
         self.page.locator("#card-front .prompt-text").wait_for()
         self.assert_no_horizontal_overflow()
 
@@ -760,10 +759,13 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
 
         category_url = (
-            reverse("study:phrases") + f"?category={category.slug}"
+            reverse("study:vocabulary") + f"?category={category.slug}"
         )
         self.page.goto(self.live_server_url + category_url)
-        self.page.get_by_text("Lots de 10 expressions maximum").wait_for()
+        self.page.get_by_role(
+            "heading",
+            name="Choisir un lot de 10",
+        ).wait_for()
         self.assertEqual(
             self.page.locator(".batch-card").count(),
             2,
@@ -786,24 +788,24 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         self.assert_no_horizontal_overflow()
 
-    def test_home_learning_path_cards_stay_compact(self):
+    def test_home_daily_activity_cards_stay_compact(self):
         factories.make_comprehension_test()
         dashboard_url = self.live_server_url + reverse("study:dashboard")
 
         self.page.set_viewport_size({"width": 1110, "height": 700})
         self.page.goto(dashboard_url)
-        desktop_heights = self.page.locator(".learning-path-card").evaluate_all(
+        desktop_heights = self.page.locator(".daily-card").evaluate_all(
             "cards => cards.map(card => card.getBoundingClientRect().height)"
         )
         self.assertTrue(desktop_heights)
-        self.assertLessEqual(max(desktop_heights), 110)
+        self.assertLessEqual(max(desktop_heights), 300)
         self.assert_no_horizontal_overflow()
 
         self.page.set_viewport_size({"width": 320, "height": 568})
-        mobile_heights = self.page.locator(".learning-path-card").evaluate_all(
+        mobile_heights = self.page.locator(".daily-card").evaluate_all(
             "cards => cards.map(card => card.getBoundingClientRect().height)"
         )
-        self.assertLessEqual(max(mobile_heights), 135)
+        self.assertLessEqual(max(mobile_heights), 320)
         self.assert_no_horizontal_overflow()
 
     def test_mobile_comprehension_quiz_correction_and_results(self):
@@ -811,14 +813,6 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.page.set_viewport_size({"width": 320, "height": 568})
 
         self.page.goto(self.live_server_url + reverse("study:dashboard"))
-        comprehension_domain = self.page.locator(
-            'section[aria-labelledby="comprehension-domain-title"]'
-        )
-        comprehension_domain.get_by_role(
-            "heading",
-            name="Compréhension",
-            exact=True,
-        ).wait_for()
         self.page.get_by_role("button", name="Ouvrir le menu").click()
         self.page.get_by_role(
             "link",

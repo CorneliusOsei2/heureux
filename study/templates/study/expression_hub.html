@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Expression · Heureux{% endblock %}
+
+{% block content %}
+<div class="area-page expression-hub">
+  <header class="area-hero">
+    <div class="area-hero__copy">
+      <p class="eyebrow">Produire en français</p>
+      <h1>Expression</h1>
+      <p>Travaille tes réponses orales et écrites, sujet par sujet, puis entraîne-toi à les restituer avec clarté.</p>
+    </div>
+    <dl class="area-hero__metrics" aria-label="Progression en expression">
+      <div><dt>Sujets</dt><dd>{{ prompt_count }}</dd></div>
+      <div><dt>Cartes vues</dt><dd>{{ card_seen }}/{{ card_total }}</dd></div>
+      <div><dt>À pratiquer</dt><dd>{{ card_due }}</dd></div>
+    </dl>
+  </header>
+
+  <section class="area-section" aria-labelledby="expression-paths-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Deux compétences</p>
+        <h2 id="expression-paths-title">Choisir un parcours</h2>
+      </div>
+      <p>L’oral et l’écrit gardent leurs propres tâches, sujets et entraînements.</p>
+    </div>
+
+    <div class="expression-paths">
+      {% for path in paths %}
+        {% if path.available %}
+          <a class="expression-path card" href="{% url 'study:part_detail' path.part.slug %}">
+        {% else %}
+          <article class="expression-path expression-path--soon card" aria-disabled="true">
+        {% endif %}
+            <span class="expression-path__icon" aria-hidden="true">{{ path.part.emoji }}</span>
+            <span class="expression-path__copy">
+              <span class="eyebrow">{{ path.part.short_name }}</span>
+              <strong>{{ path.part.name }}</strong>
+              {% if path.available %}
+                <small>{{ path.available_task_count }} tâche{{ path.available_task_count|pluralize }} · {{ path.prompt_count }} sujets · {{ path.seen }}/{{ path.total }} cartes vues</small>
+              {% else %}
+                <small>Parcours en préparation</small>
+              {% endif %}
+            </span>
+            <span class="expression-path__action">
+              {% if path.available %}Ouvrir <span aria-hidden="true">→</span>{% else %}<span class="badge-soon">À venir</span>{% endif %}
+            </span>
+        {% if path.available %}</a>{% else %}</article>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

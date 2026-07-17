@@ -1,55 +1,58 @@
 {% extends "base.html" %}
-{% block title %}{% if selected %}{{ selected.name }}{% else %}Expressions &amp; vocabulaire{% endif %} · Heureux{% endblock %}
+{% block title %}{% if selected %}{{ selected.name }}{% elif selected_test %}{{ selected_test.title }}{% else %}Vocabulaire{% endif %} · Heureux{% endblock %}
 
 {% block content %}
-{% if task %}
-  {% url 'study:task_phrases' part.slug task.slug as phrases_url %}
-{% else %}
-  {% url 'study:phrases' as phrases_url %}
-{% endif %}
-{% include "study/_task_nav.html" %}
-
-{% if selected %}
-<nav class="phrase-category-back" aria-label="Retour aux catégories">
-  <a href="{{ phrases_url }}">← Toutes les expressions et tous les sujets</a>
+{% if selected or selected_test %}
+<nav class="phrase-category-back" aria-label="Retour au vocabulaire">
+  <a href="{% url 'study:vocabulary' %}{% if task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
 </nav>
 
 <header class="phrase-category-hero card">
   <div>
-    <p class="eyebrow">{% if selected.is_functional %}Expression transversale{% else %}Expressions partagées{% endif %}</p>
-    <h1>{{ selected.name }}</h1>
-    <p>{{ selected.learning_description }}</p>
+    <p class="eyebrow">{% if selected_test %}Compréhension écrite · vocabulaire du test{% else %}Expression · tournures transversales{% endif %}</p>
+    <h1>{% if selected_test %}{{ selected_test.title }}{% else %}{{ selected.name }}{% endif %}</h1>
+    <p>
+      {% if selected_test %}
+        Cinquante mots, expressions, reformulations et phrases modèles tirés directement des questions de ce test.
+      {% else %}
+        {{ selected.learning_description }}
+      {% endif %}
+    </p>
     <div class="phrase-category-hero__meta">
-      <span><b>{{ phrase_count }}</b> expression{{ phrase_count|pluralize }}</span>
-      <span><b>{{ selected.batch_count }}</b> lot{{ selected.batch_count|pluralize }} de {{ batch_size }} maximum</span>
+      <span><b>{{ phrase_count }}</b> entrée{{ phrase_count|pluralize }}</span>
+      <span><b>{{ review_batches|length }}</b> lot{{ review_batches|length|pluralize }} de {{ batch_size }}</span>
     </div>
   </div>
   <div class="phrase-category-hero__actions">
     {% if first_review_batch %}
       <a class="btn btn--primary" href="{{ first_review_batch.review_url }}">Pratiquer le lot {{ first_review_batch.number }}</a>
     {% endif %}
-    <a class="btn" href="{% url 'study:review' %}?kind=phrase{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;category={{ selected.slug }}">Révision mélangée</a>
+    {% if selected_test %}
+      <a class="btn" href="{% url 'study:review' %}?kind=vocab&amp;test={{ selected_test.slug }}">Mélanger les 50 cartes</a>
+    {% else %}
+      <a class="btn" href="{% url 'study:review' %}?kind=phrase{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;category={{ selected.slug }}">Révision mélangée</a>
+    {% endif %}
   </div>
 </header>
 
 {% if review_batches %}
-<section class="review-batches" aria-labelledby="phrase-batches-title">
+<section class="review-batches" aria-labelledby="vocabulary-batches-title">
   <div class="review-batches__head">
     <div>
       <p class="eyebrow">Pratiquer</p>
-      <h2 id="phrase-batches-title">Choisir un lot de {{ batch_size }}</h2>
+      <h2 id="vocabulary-batches-title">Choisir un lot de {{ batch_size }}</h2>
     </div>
-    <p>Commence par un petit lot. Les cartes de production et de compréhension d'une même expression restent ensemble.</p>
+    <p>Travaille un petit ensemble stable, puis passe au suivant quand les cartes deviennent familières.</p>
   </div>
   <div class="batch-grid">
     {% for batch in review_batches %}
       <a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
         <span class="batch-card__top">
           <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
-          <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
+          <span class="batch-card__status">{{ batch.status_label }}</span>
         </span>
-        <strong>Expressions {{ batch.start }}–{{ batch.end }}</strong>
-        <span>{{ batch.seen_count }}/{{ batch.active_count }} terminées{% if batch.available_now %} · {{ batch.available_now }} carte{{ batch.available_now|pluralize }} à travailler{% else %} · à jour{% endif %}</span>
+        <strong>Entrées {{ batch.start }}–{{ batch.end }}</strong>
+        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
       </a>
     {% endfor %}
   </div>
@@ -60,155 +63,203 @@
   <div class="section-heading">
     <div>
       <p class="eyebrow">Étudier</p>
-      <h2 id="phrase-catalog-title">Voir les expressions en contexte</h2>
+      <h2 id="phrase-catalog-title">Voir les entrées en contexte</h2>
     </div>
-    <p>Chaque fiche donne le sens anglais, un exemple réel et les sujets où la tournure est utile.</p>
+    <p>Le sens anglais, un exemple et la source te permettent de comprendre chaque emploi avant le rappel actif.</p>
   </div>
-{% for group in grouped %}
-  <div class="phrase-group">
-    <div class="grid grid--phrases">
-      {% for phrase in group.phrases %}
-        <div class="phrase card" id="phrase-{{ phrase.phrase_id }}">
-          <div class="phrase__expr">{{ phrase.expression }}</div>
-          <div class="phrase__cue">{{ phrase.english_cue }}</div>
-          <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
-          {% if phrase.note %}<p class="phrase__note">{{ phrase.note }}</p>{% endif %}
-          {% with sp=phrase.source_prompts.all %}
-          {% if sp %}
-            <div class="phrase__foot">
-              <span class="faint">Tiré de&nbsp;:</span>
-              {% for src in sp|slice:":10" %}
-                <a class="chip chip--theme" style="--chip: {{ src.theme.color }};" href="{% url 'study:response_detail' src.response_id %}?prompt={{ src.pk }}">{{ src.theme.emoji }} P{{ src.number }}</a>
-              {% endfor %}
-              {% with more=sp|slice:"10:"|length %}{% if more %}<span class="chip chip--more" title="Présente aussi dans {{ more }} autre{{ more|pluralize }} réponse{{ more|pluralize }}">+{{ more }}</span>{% endif %}{% endwith %}
-            </div>
-          {% endif %}
-          {% endwith %}
+  {% for group in grouped %}
+    <div class="phrase-group">
+      {% if selected_test %}<h3>{{ group.category.name|cut:"Compréhension · " }}</h3>{% endif %}
+      <div class="grid grid--phrases">
+        {% for phrase in group.phrases %}
+          <article class="phrase card" id="phrase-{{ phrase.phrase_id }}">
+            <div class="phrase__expr">{{ phrase.expression }}</div>
+            <div class="phrase__cue">{{ phrase.english_cue }}</div>
+            <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
+            {% if phrase.note %}<p class="phrase__note">{{ phrase.note }}</p>{% endif %}
+            {% with prompts=phrase.source_prompts.all %}
+              {% if prompts %}
+                <div class="phrase__foot">
+                  <span class="faint">Tiré de&nbsp;:</span>
+                  {% for source in prompts|slice:":10" %}
+                    <a class="chip chip--theme" style="--chip: {{ source.theme.color }};" href="{% url 'study:response_detail' source.response_id %}?prompt={{ source.pk }}">{{ source.theme.emoji }} P{{ source.number }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            {% with questions=phrase.source_questions.all %}
+              {% if questions %}
+                <div class="phrase__foot">
+                  <span class="faint">Tiré de&nbsp;:</span>
+                  {% for source in questions %}
+                    <a class="chip" href="{% url 'study:comprehension_question_study' source.test.slug source.number %}">{{ source.test.title }} · Q{{ source.number }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  {% empty %}
+    <div class="empty"><p>Aucune entrée n’est disponible dans cette collection.</p></div>
+  {% endfor %}
+</section>
+
+{% else %}
+<div class="vocabulary-hub">
+  <header class="area-hero vocabulary-hero">
+    <div class="area-hero__copy">
+      <p class="eyebrow">Bibliothèque lexicale</p>
+      <h1>Vocabulaire</h1>
+      <p>Tous tes mots, expressions et phrases modèles sont réunis ici, sans mélanger les réponses d’expression avec les cartes lexicales.</p>
+      {% if task %}
+        <div class="active-filter">
+          <span>Filtre actif · {{ part.short_name }} · {{ task.name }}</span>
+          <a href="{% url 'study:vocabulary' %}">Effacer</a>
         </div>
+      {% endif %}
+    </div>
+    <dl class="area-hero__metrics" aria-label="Bibliothèque de vocabulaire">
+      <div><dt>Expression</dt><dd>{{ subject_vocabulary_count|add:functional_phrase_count }}</dd></div>
+      <div><dt>Compréhension</dt><dd>{{ comprehension_vocabulary_count }}</dd></div>
+      <div><dt>Cartes maîtrisées</dt><dd>{{ vocabulary_stats.mature }}/{{ vocabulary_stats.total }}</dd></div>
+    </dl>
+  </header>
+
+  <section class="vocabulary-status-grid" aria-label="Votre vocabulaire à travailler">
+    <a class="vocabulary-status card" href="{% url 'study:review' %}?content=vocabulary">
+      <span class="vocabulary-status__value">{{ vocabulary_counts.total_due }}</span>
+      <span><strong>Disponibles maintenant</strong><small>{{ vocabulary_counts.due_reviews }} à revoir · {{ vocabulary_counts.new_available }} nouvelles</small></span>
+      <span aria-hidden="true">→</span>
+    </a>
+    <a class="vocabulary-status card" href="{% url 'study:revisit_list' %}?content=vocabulary">
+      <span class="vocabulary-status__value">{{ vocabulary_revisit_count }}</span>
+      <span><strong>Marquées à revoir</strong><small>Ta sélection personnelle de mots et tournures</small></span>
+      <span aria-hidden="true">→</span>
+    </a>
+    <a class="vocabulary-status card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">
+      <span class="vocabulary-status__value">{{ vocabulary_weak_count }}</span>
+      <span><strong>Points à renforcer</strong><small>Cartes oubliées ou encore fragiles</small></span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="expression-directory area-section" id="expression-vocabulary" aria-labelledby="expression-vocabulary-title">
+    <div class="section-heading expression-directory__heading">
+      <div>
+        <p class="eyebrow">Expression</p>
+        <h2 id="expression-vocabulary-title">Construire et enrichir ses réponses</h2>
+      </div>
+      <p>Commence par les tournures réutilisables, puis ouvre le deck riche de 50 vocabs du sujet que tu prépares.</p>
+    </div>
+
+    <div class="expression-category-grid">
+      {% for category in functional_categories %}
+        <a class="expression-category-card card" href="{% url 'study:vocabulary' %}?{% if task %}part={{ part.slug }}&amp;task={{ task.slug }}&amp;{% endif %}category={{ category.slug }}">
+          <span class="expression-category-card__icon" aria-hidden="true">“</span>
+          <span class="expression-category-card__copy">
+            <strong>{{ category.name }}</strong>
+            <small>{{ category.learning_description }}</small>
+          </span>
+          <span class="expression-category-card__meta">{{ category.phrase_count }} expressions · {{ category.batch_count }} lots</span>
+          <span class="expression-category-card__action">Ouvrir →</span>
+        </a>
+      {% empty %}
+        <p class="muted">Aucune expression transversale n’est encore disponible.</p>
       {% endfor %}
     </div>
-  </div>
-{% empty %}
-  <p class="muted">Aucune expression dans cette catégorie.</p>
-{% endfor %}
-</section>
-{% else %}
-<header class="phrase-library-hero card">
-  <div class="phrase-library-hero__copy">
-    <p class="eyebrow">{% if task %}{{ task.name }} · maîtrise lexicale{% else %}Maîtrise lexicale{% endif %}</p>
-    <h1>Expressions &amp; vocabulaire</h1>
-    <p>Cette page réunit deux outils complémentaires&nbsp;: des tournures réutilisables pour mieux construire tes réponses, puis les decks riches de 50 vocabs extraits de chaque sujet.</p>
-    <div class="phrase-library-hero__actions">
-      {% if first_category %}
-        <a class="btn btn--primary" href="{{ phrases_url }}?category={{ first_category.slug }}">Commencer par les expressions</a>
-      {% endif %}
-      {% if subject_theme_groups %}
-        <a class="btn" href="#vocabulaire-par-sujet">Trouver le vocabulaire d'un sujet</a>
-      {% endif %}
-    </div>
-  </div>
-  <dl class="phrase-library-hero__metrics">
-    <div>
-      <dt>Expressions transversales</dt>
-      <dd>{{ functional_phrase_count }}</dd>
-    </div>
-    <div>
-      <dt>Sujets équipés</dt>
-      <dd>{{ subject_prompt_count }}</dd>
-    </div>
-    <div>
-      <dt>Vocabs uniques</dt>
-      <dd>{{ subject_vocabulary_count }}</dd>
-    </div>
-  </dl>
-</header>
+  </section>
 
-<section class="expression-directory" id="expressions-transversales" aria-labelledby="expressions-transversales-title">
-  <div class="section-heading expression-directory__heading">
-    <div>
-      <p class="eyebrow">Bibliothèque 1 · Réutilisable partout</p>
-      <h2 id="expressions-transversales-title">Construire son discours</h2>
-    </div>
-    <p>Choisis une fonction pour apprendre des tournures qui servent dans de nombreux sujets, puis pratique-les par lots de 10.</p>
-  </div>
-  <div class="expression-category-grid">
-    {% for category in functional_categories %}
-      <a class="expression-category-card card" href="{{ phrases_url }}?category={{ category.slug }}">
-        <span class="expression-category-card__icon" aria-hidden="true">“</span>
-        <span class="expression-category-card__copy">
-          <strong>{{ category.name }}</strong>
-          <small>{{ category.learning_description }}</small>
-        </span>
-        <span class="expression-category-card__meta">{{ category.phrase_count }} expression{{ category.phrase_count|pluralize }} · {{ category.batch_count }} lot{{ category.batch_count|pluralize }}</span>
-        <span class="expression-category-card__action">Ouvrir →</span>
-      </a>
-    {% empty %}
-      <p class="muted">Aucune expression transversale n'est encore disponible.</p>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="subject-vocabulary-directory" id="vocabulaire-par-sujet" aria-labelledby="subject-vocabulary-title">
-  <div class="section-heading subject-vocabulary-directory__heading">
-    <div>
-      <p class="eyebrow">Bibliothèque 2 · 50 vocabs par sujet</p>
-      <h2 id="subject-vocabulary-title">Vocabulaire par sujet</h2>
-    </div>
-    <p>Ouvre un thème, retrouve ton sujet exact, puis lance l'un de ses cinq lots de 10 mots, collocations, idiomes, tournures et phrases modèles.</p>
-  </div>
-
-  {% if subject_theme_groups %}
-    <div class="subject-vocabulary-tools">
-      <label class="subject-vocabulary-search">
-        <span>Rechercher un sujet</span>
-        <input type="search" placeholder="Ex. réseaux sociaux, travail, voyage…" autocomplete="off" data-subject-vocabulary-search>
-      </label>
-      <p role="status" aria-live="polite" data-subject-vocabulary-status>{{ subject_prompt_count }} sujets · {{ subject_response_count }} decks uniques</p>
+  <section class="subject-vocabulary-directory area-section" id="vocabulaire-par-sujet" aria-labelledby="subject-vocabulary-title">
+    <div class="section-heading subject-vocabulary-directory__heading">
+      <div>
+        <p class="eyebrow">Expression · 50 vocabs par sujet</p>
+        <h2 id="subject-vocabulary-title">Vocabulaire par sujet</h2>
+      </div>
+      <p>Retrouve un sujet exact et travaille ses cinq lots de dix entrées extraites de la réponse.</p>
     </div>
 
-    <div class="subject-theme-list" data-subject-vocabulary-directory>
-    {% for group in subject_theme_groups %}
-      <details class="subject-theme card" data-subject-theme>
-        <summary>
-          <span class="subject-theme__identity">
-            <span class="subject-theme__emoji" aria-hidden="true">{{ group.theme.emoji }}</span>
-            <span>
-              <strong>{{ group.theme.display_name|default:group.theme.name }}</strong>
-              <small>{{ group.prompts|length }} sujets · {{ group.deck_count }} decks uniques</small>
-            </span>
-          </span>
-          <span class="subject-theme__action">Voir les sujets</span>
-          <span class="subject-theme__chevron" aria-hidden="true">⌄</span>
-        </summary>
-        <div class="subject-vocabulary-list">
-          {% for prompt in group.prompts %}
-            <article class="subject-vocabulary-row" data-subject-vocabulary-row>
-              <span class="subject-vocabulary-row__number">P{{ prompt.number }}</span>
-              <div class="subject-vocabulary-row__copy">
-                <h3>{{ prompt.text }}</h3>
-                <p>
-                  {{ prompt.vocabulary_count }} vocabs · {{ prompt.vocabulary_batch_count }} lot{{ prompt.vocabulary_batch_count|pluralize }}
-                  {% if not prompt.is_canonical %}<span class="alias-tag">deck partagé</span>{% endif %}
-                </p>
-              </div>
-              <div class="subject-vocabulary-row__actions">
-                <a class="btn btn--sm btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;response={{ prompt.response_id }}&amp;batch=1">Pratiquer</a>
-                <a class="btn btn--sm" href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}#subject-vocabulary">Voir les lots</a>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      </details>
-    {% endfor %}
+    {% if subject_theme_groups %}
+      <div class="subject-vocabulary-tools">
+        <label class="subject-vocabulary-search">
+          <span>Rechercher un sujet</span>
+          <input type="search" placeholder="Ex. réseaux sociaux, travail, voyage…" autocomplete="off" data-subject-vocabulary-search>
+        </label>
+        <p role="status" aria-live="polite" data-subject-vocabulary-status>{{ subject_prompt_count }} sujets · {{ subject_response_count }} decks uniques</p>
+      </div>
+
+      <div class="subject-theme-list" data-subject-vocabulary-directory>
+        {% for group in subject_theme_groups %}
+          <details class="subject-theme card" data-subject-theme>
+            <summary>
+              <span class="subject-theme__identity">
+                <span class="subject-theme__emoji" aria-hidden="true">{{ group.theme.emoji }}</span>
+                <span>
+                  <strong>{{ group.theme.display_name|default:group.theme.name }}</strong>
+                  <small>{{ group.prompts|length }} sujets · {{ group.deck_count }} decks uniques</small>
+                </span>
+              </span>
+              <span class="subject-theme__action">Voir les sujets</span>
+              <span class="subject-theme__chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="subject-vocabulary-list">
+              {% for prompt in group.prompts %}
+                <article class="subject-vocabulary-row" data-subject-vocabulary-row>
+                  <span class="subject-vocabulary-row__number">P{{ prompt.number }}</span>
+                  <div class="subject-vocabulary-row__copy">
+                    <h3>{{ prompt.text }}</h3>
+                    <p>{{ prompt.vocabulary_count }} vocabs · {{ prompt.vocabulary_batch_count }} lots{% if not prompt.is_canonical %} <span class="alias-tag">deck partagé</span>{% endif %}</p>
+                  </div>
+                  <div class="subject-vocabulary-row__actions">
+                    <a class="btn btn--sm btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;response={{ prompt.response_id }}&amp;batch=1">Pratiquer</a>
+                    <a class="btn btn--sm" href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}#subject-vocabulary">Voir les lots</a>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
+          </details>
+        {% endfor %}
+      </div>
+      <div class="empty subject-vocabulary-empty" hidden data-subject-vocabulary-empty>
+        <p>Aucun sujet ne correspond à cette recherche.</p>
+      </div>
+    {% else %}
+      <div class="empty"><p>Aucun deck de sujet ne correspond à ce filtre.</p></div>
+    {% endif %}
+  </section>
+
+  {% if not task %}
+  <section class="area-section comprehension-vocabulary" id="comprehension-vocabulary" aria-labelledby="comprehension-vocabulary-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Compréhension</p>
+        <h2 id="comprehension-vocabulary-title">Vocabulaire des tests</h2>
+      </div>
+      <p>Chaque test écrit possède 50 entrées reliées aux questions où elles apparaissent.</p>
     </div>
-    <div class="empty subject-vocabulary-empty" hidden data-subject-vocabulary-empty>
-      <p>Aucun sujet ne correspond à cette recherche.</p>
+    <div class="comprehension-vocabulary-grid">
+      {% for deck in comprehension_decks %}
+        <article class="comprehension-vocabulary-card card">
+          <div class="comprehension-vocabulary-card__head">
+            <span>CE {{ deck.test.number|stringformat:"02d" }}</span>
+            {% if deck.counts.total_due %}<span class="pill pill--due">{{ deck.counts.total_due }} disponibles</span>{% endif %}
+          </div>
+          <div>
+            <h3>{{ deck.test.title }}</h3>
+            <p>{{ deck.vocabulary_count }} entrées · {{ deck.batch_count }} lots · {{ deck.stats.mature }} maîtrisées</p>
+          </div>
+          <div class="comprehension-vocabulary-card__actions">
+            <a class="btn btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;test={{ deck.test.slug }}&amp;batch=1">Pratiquer</a>
+            <a class="btn" href="{% url 'study:vocabulary' %}?test={{ deck.test.slug }}">Voir les 50 entrées</a>
+          </div>
+        </article>
+      {% empty %}
+        <div class="empty"><p>Les decks de compréhension apparaîtront ici après l’import du contenu.</p></div>
+      {% endfor %}
     </div>
-  {% else %}
-    <div class="empty">
-      <p>Les decks de vocabulaire par sujet apparaîtront ici dès qu'ils seront disponibles.</p>
-    </div>
+  </section>
   {% endif %}
-</section>
+</div>
 {% endif %}
 {% endblock %}

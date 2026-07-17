@@ -100,7 +100,8 @@
       {% if can_edit_response %}
         <a class="btn btn--block" href="{% url 'study:edit_response' response.id %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
       {% endif %}
-      <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ selected_prompt.theme.slug }}">Réviser ce thème</a>
+      <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;response={{ response.pk }}">Pratiquer cette réponse</a>
+      <a class="btn btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ selected_prompt.theme.slug }}">Pratiquer ce thème</a>
       {% if vocabulary_review_url %}
         <a class="btn btn--block" href="{{ vocabulary_review_url }}">Pratiquer les vocabs</a>
       {% endif %}

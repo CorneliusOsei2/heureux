@@ -1,16 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Réviser · {{ task.name }}{% endblock %}
+{% block title %}Pratiquer · {{ task.name }}{% endblock %}
 
 {% block content %}
 {% include "study/_task_nav.html" %}
 
 <header class="task-hero review-hero">
   <div>
-    <h1>Réviser {{ task.name }}</h1>
+    <p class="eyebrow">Expression · rappel actif</p>
+    <h1>Pratiquer {{ task.name }}</h1>
+    <p>Restitue la position, l’introduction et les trois arguments de chaque réponse sans regarder la fiche.</p>
   </div>
-  <div class="task-hero__numbers" aria-label="Cartes disponibles">
-    <span><b>{{ counts.total_due }}</b> à réviser</span>
-    <span><b>{{ revisit_count }}</b> à revoir</span>
+  <div class="task-hero__numbers" aria-label="Progression des réponses">
+    <span><b>{{ response_stats.seen }}/{{ response_stats.total }}</b> vues</span>
+    <span><b>{{ response_stats.mature }}</b> maîtrisées</span>
+    <span><b>{{ response_due }}</b> disponibles</span>
   </div>
 </header>
 
@@ -19,62 +22,55 @@
     <span class="resume-review__icon" aria-hidden="true">▶</span>
     <span>
       <small>Session interrompue</small>
-      <strong>Continuer là où je me suis arrêté</strong>
+      <strong>Reprendre l’entraînement en cours</strong>
     </span>
     <span aria-hidden="true">→</span>
   </a>
 {% endif %}
 
-<section class="review-groups" aria-label="Modes de révision">
-  <article class="review-group review-group--all">
-    <div class="review-group__icon" aria-hidden="true">↻</div>
-    <div>
-      <h2>Tout réviser</h2>
-      <strong>{{ counts.total_due }} carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }}</strong>
-    </div>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?part={{ part.slug }}&amp;task={{ task.slug }}">Commencer</a>
-  </article>
+<section class="practice-launcher card" aria-labelledby="all-responses-title">
+  <div>
+    <p class="eyebrow">Toutes les réponses</p>
+    <h2 id="all-responses-title">Entraînement mélangé</h2>
+    <p>{{ counts.due_reviews }} à revoir · {{ counts.new_available }} nouvelles · aucun vocabulaire mélangé dans cette session.</p>
+  </div>
+  <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Commencer</a>
+</section>
 
-  <article class="review-group review-group--responses">
-    <div class="review-group__icon" aria-hidden="true">🗂️</div>
+<section class="area-section" aria-labelledby="practice-theme-title">
+  <div class="section-heading">
     <div>
-      <h2>Réponses argumentées</h2>
-      <strong>{{ response_due }} à réviser · {{ response_stats.mature }}/{{ response_stats.total }} maîtrisées</strong>
+      <p class="eyebrow">Entraînement ciblé</p>
+      <h2 id="practice-theme-title">Choisir un thème</h2>
     </div>
-    <div class="review-group__actions">
-      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Tout réviser</a>
-      <a class="btn" href="{% url 'study:task_browse' part.slug task.slug %}">Choisir un thème</a>
-    </div>
-  </article>
+    <p>Travaille un ensemble cohérent de réponses avant de tout mélanger.</p>
+  </div>
+  <div class="practice-theme-grid">
+    {% for item in themes %}
+      <a class="practice-theme-card card" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}&amp;theme={{ item.theme.slug }}">
+        <span class="practice-theme-card__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
+        <span>
+          <strong>{{ item.theme.display_name }}</strong>
+          <small>{{ item.stats.mature }}/{{ item.stats.total }} maîtrisées · {{ item.counts.total_due }} disponibles</small>
+        </span>
+        <span aria-hidden="true">→</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
 
-  <article class="review-group review-group--phrases">
-    <div class="review-group__icon" aria-hidden="true">🗣️</div>
-    <div>
-      <h2>Expressions &amp; vocabulaire</h2>
-      <strong>{{ phrase_due }} à réviser · {{ phrase_stats.mature }}/{{ phrase_stats.total }} maîtrisées</strong>
-    </div>
-    <div class="review-group__actions">
-      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=phrase&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Tout réviser</a>
-      <a class="btn" href="{% url 'study:task_phrases' part.slug task.slug %}">Choisir un lot</a>
-    </div>
+<section class="review-focus-grid" aria-label="Sélections personnelles">
+  <article class="card">
+    <p class="eyebrow">Marquées</p>
+    <h2>Ma liste à revoir</h2>
+    <p>{{ revisit_count }} réponse{{ revisit_count|pluralize }} enregistrée{{ revisit_count|pluralize }}.</p>
+    <a class="btn" href="{% url 'study:task_revisit_list' part.slug task.slug %}?content=spine">Ouvrir la liste</a>
   </article>
-
-  <article class="review-group review-group--revisit">
-    <div class="review-group__icon" aria-hidden="true">★</div>
-    <div>
-      <h2>Ma liste à revoir</h2>
-      <strong>{{ revisit_count }} carte{{ revisit_count|pluralize }} dans la liste</strong>
-    </div>
-    <a class="btn" href="{% url 'study:task_revisit_list' part.slug task.slug %}">Ouvrir la liste</a>
-  </article>
-
-  <article class="review-group review-group--weak">
-    <div class="review-group__icon" aria-hidden="true">↗</div>
-    <div>
-      <h2>Points à renforcer</h2>
-      <strong>{{ weak_count }} carte{{ weak_count|pluralize }} à renforcer</strong>
-    </div>
-    <a class="btn {% if weak_count %}btn--primary{% endif %}" href="{% url 'study:review' %}?kind=weak&amp;part={{ part.slug }}&amp;task={{ task.slug }}">{% if weak_count %}Lancer l'entraînement{% else %}Voir le parcours{% endif %}</a>
+  <article class="card">
+    <p class="eyebrow">À renforcer</p>
+    <h2>Réponses fragiles</h2>
+    <p>{{ weak_count }} réponse{{ weak_count|pluralize }} repérée{{ weak_count|pluralize }} par tes révisions.</p>
+    <a class="btn{% if weak_count %} btn--primary{% endif %}" href="{% url 'study:review' %}?kind=weak&amp;content=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Entraîner</a>
   </article>
 </section>
 {% endblock %}

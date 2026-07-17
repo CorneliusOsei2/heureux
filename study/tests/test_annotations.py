@@ -21,6 +21,13 @@ class AnnotationTests(TestCase):
             "study:task_detail",
             args=[self.part.slug, self.task.slug],
         )
+        self.task_notes_url = (
+            reverse("study:notes_overview")
+            + f"?part={self.part.slug}&task={self.task.slug}"
+        )
+        self.general_notes_url = (
+            reverse("study:notes_overview") + "?scope=general"
+        )
         self.selection = {
             "quote": "Il faut nuancer cette affirmation.",
             "start_offset": "24",
@@ -50,17 +57,12 @@ class AnnotationTests(TestCase):
         )
 
         overview = self.client.get(reverse("study:notes_overview"))
-        self.assertContains(overview, self.part.name)
+        self.assertContains(overview, self.part.short_name)
         self.assertContains(overview, self.task.name)
-        self.assertContains(overview, "1 note")
-        self.assertContains(overview, "1 surlignage")
+        self.assertEqual(len(overview.context["notes"]), 1)
+        self.assertEqual(len(overview.context["highlights"]), 1)
 
-        notes_tab = self.client.get(
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            )
-        )
+        notes_tab = self.client.get(self.task_notes_url)
         self.assertContains(notes_tab, 'role="tablist"')
         self.assertContains(
             notes_tab,
@@ -71,11 +73,7 @@ class AnnotationTests(TestCase):
         self.assertNotContains(notes_tab, "Passage important")
 
         highlights_tab = self.client.get(
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            ),
-            {"tab": "highlights"},
+            self.task_notes_url + "&tab=highlights"
         )
         self.assertEqual(highlights_tab.context["active_tab"], "highlights")
         self.assertContains(highlights_tab, "Passage important")
@@ -125,11 +123,7 @@ class AnnotationTests(TestCase):
         )
 
         response = self.client.get(
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            ),
-            {"tab": "highlights"},
+            self.task_notes_url + "&tab=highlights"
         )
 
         groups = {
@@ -148,10 +142,7 @@ class AnnotationTests(TestCase):
         self.assertContains(response, "Expressions")
 
     def test_freeform_notes_are_categorized_by_task_or_general(self):
-        task_url = reverse(
-            "study:task_notes",
-            args=[self.part.slug, self.task.slug],
-        )
+        task_url = self.task_notes_url
         response = self.client.post(
             task_url,
             {"title": "Connecteurs", "body": "Employer cependant et pourtant."},
@@ -159,13 +150,13 @@ class AnnotationTests(TestCase):
         task_note = Annotation.objects.get(title="Connecteurs")
         self.assertRedirects(
             response,
-            task_url + f"?tab=notes#note-{task_note.id}",
+            task_url + f"&tab=notes#note-{task_note.id}",
         )
         self.assertEqual(task_note.user, self.user)
         self.assertEqual(task_note.task, self.task)
         self.assertEqual(task_note.kind, AnnotationKind.NOTE)
 
-        general_url = reverse("study:general_notes")
+        general_url = self.general_notes_url
         response = self.client.post(
             general_url,
             {"title": "", "body": "Objectif de la semaine."},
@@ -173,7 +164,7 @@ class AnnotationTests(TestCase):
         general_note = Annotation.objects.get(body="Objectif de la semaine.")
         self.assertRedirects(
             response,
-            general_url + f"?tab=notes#note-{general_note.id}",
+            general_url + f"&tab=notes#note-{general_note.id}",
         )
         self.assertIsNone(general_note.task)
 
@@ -191,20 +182,11 @@ class AnnotationTests(TestCase):
         self.assertEqual(note.source_path, self.source_path)
         self.assertEqual(
             response.json()["notes_url"],
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            )
-            + f"?tab=notes#note-{note.id}",
+            self.task_notes_url + f"&tab=notes#note-{note.id}",
         )
 
         self.client.force_login(self.other)
-        other_page = self.client.get(
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            )
-        )
+        other_page = self.client.get(self.task_notes_url)
         self.assertNotContains(other_page, "À mémoriser.")
         self.assertEqual(
             self.client.post(
@@ -228,11 +210,8 @@ class AnnotationTests(TestCase):
         self.assertEqual(Annotation.objects.count(), 1)
         self.assertEqual(
             first.json()["notes_url"],
-            reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            )
-            + f"?tab=highlights#highlight-{first.json()['id']}",
+            self.task_notes_url
+            + f"&tab=highlights#highlight-{first.json()['id']}",
         )
 
         response = self.client.get(
@@ -602,10 +581,7 @@ class AnnotationTests(TestCase):
             start_offset=1,
             end_offset=15,
         )
-        detail_url = reverse(
-            "study:task_notes",
-            args=[self.part.slug, self.task.slug],
-        )
+        detail_url = self.task_notes_url
 
         response = self.client.post(
             reverse("study:annotation_update", args=[note.id]),
@@ -692,10 +668,7 @@ class AnnotationTests(TestCase):
             study_later=True,
         )
 
-        detail_url = reverse(
-            "study:task_notes",
-            args=[self.part.slug, self.task.slug],
-        )
+        detail_url = self.task_notes_url
         response = self.client.post(
             reverse("study:annotation_study_toggle", args=[note.id]),
             {"study_later": "1", "next": detail_url},
@@ -726,3 +699,42 @@ class AnnotationTests(TestCase):
             self.client.get(reverse("study:annotation_study")),
             note.body,
         )
+
+    def test_study_decisions_update_the_queue_without_a_redirect(self):
+        note = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            body="Décision à mémoriser.",
+            study_later=True,
+        )
+        page = self.client.get(reverse("study:annotation_study"))
+        self.assertContains(page, "Je le connais")
+        self.assertContains(page, "À revoir encore")
+
+        learned = self.client.post(
+            reverse("study:annotation_study_toggle", args=[note.pk]),
+            {"study_later": "0"},
+            HTTP_X_REQUESTED_WITH="fetch",
+        )
+
+        self.assertEqual(learned.status_code, 200)
+        self.assertEqual(
+            learned.json(),
+            {"study_later": False, "id": note.pk},
+        )
+        note.refresh_from_db()
+        self.assertFalse(note.study_later)
+        self.assertNotContains(
+            self.client.get(reverse("study:annotation_study")),
+            note.body,
+        )
+
+        keep = self.client.post(
+            reverse("study:annotation_study_toggle", args=[note.pk]),
+            {"study_later": "1"},
+            HTTP_X_REQUESTED_WITH="fetch",
+        )
+        self.assertEqual(keep.json()["study_later"], True)
+        note.refresh_from_db()
+        self.assertTrue(note.study_later)

@@ -23,7 +23,7 @@
       <span>sur {{ attempt.total_questions }}</span>
     </div>
     <div class="ce-results-hero__copy">
-      <p class="eyebrow">{{ test.title }} · Terminé</p>
+      <p class="eyebrow">{{ test.title }} · {% if is_error_practice %}Entraînement ciblé terminé{% else %}Terminé{% endif %}</p>
       <h1>
         {% if attempt.percentage >= 85 %}
           Excellente compréhension
@@ -43,15 +43,24 @@
       </div>
     </div>
     <div class="ce-results-hero__actions">
+      {% if wrong_count and test.is_active and test.is_published %}
+      <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="errors">
+        <input type="hidden" name="attempt_id" value="{{ attempt.pk }}">
+        <button class="btn btn--primary" type="submit">Repratiquer mes {{ wrong_count }} erreur{{ wrong_count|pluralize }}</button>
+      </form>
+      {% endif %}
       {% if test.is_active and test.is_published %}
       <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
         {% csrf_token %}
         <input type="hidden" name="action" value="continue">
-        <button class="btn btn--primary" type="submit">Refaire ce test</button>
+        <button class="btn{% if not wrong_count %} btn--primary{% endif %}" type="submit">Refaire le test complet</button>
       </form>
       {% else %}
         <span class="ce-results-archived">Ce test n’est plus disponible et ne peut pas être recommencé.</span>
       {% endif %}
+      <a class="btn" href="{% url 'study:vocabulary' %}?test={{ test.slug }}">Pratiquer le vocabulaire</a>
       <a class="btn" href="{% url 'study:comprehension_group' group_number %}">Retour au groupe</a>
     </div>
   </header>

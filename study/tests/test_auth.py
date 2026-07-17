@@ -562,7 +562,7 @@ class AuthenticationTests(TestCase):
 
         self.assertFalse(users_with_study_state().filter(pk=admin.pk).exists())
         self.assertEqual(Card.objects.filter(user=admin).count(), 0)
-        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 8266)
+        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 8516)
 
         learner = get_user_model().objects.create_user(
             username="learner",
@@ -570,12 +570,12 @@ class AuthenticationTests(TestCase):
         )
         provision_user_study_data(learner)
 
-        self.assertEqual(Card.objects.filter(user=learner).count(), 8266)
+        self.assertEqual(Card.objects.filter(user=learner).count(), 8516)
         self.assertFalse(
             Card.objects.filter(
                 user=learner,
                 card_type="phrase_recog",
-                phrase__tier__in=["response", "subject"],
+                phrase__tier__in=["response", "subject", "comprehension"],
             ).exists()
         )
         self.assertFalse(Card.objects.filter(user__isnull=True).exists())

@@ -1,0 +1,456 @@
+{
+  "test_slug": "test-5",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE05V001",
+      "kind": "mot-cle",
+      "french": "heures d'ouverture",
+      "english": "opening hours",
+      "example": "Les heures d'ouverture du service consulaire sont affichées à l'entrée : lundis, mercredis et jeudis de 8 h à 14 h.",
+      "usage": "Fem. plural set noun phrase; standard for shops, offices, museums; often paired with « afficher », « consulter » or « respecter ».",
+      "questions": [1]
+    },
+    {
+      "id": "CE05V002",
+      "kind": "mot-cle",
+      "french": "restaurant d'entreprise",
+      "english": "company canteen / staff restaurant",
+      "example": "La Table est le restaurant d'entreprise ouvert du lundi au vendredi, avec un service de 12 h à 14 h.",
+      "usage": "Masc. noun; workplace canteen for employees; contrast with « cantine scolaire » (school) and « restaurant public » (open to all).",
+      "questions": [2]
+    },
+    {
+      "id": "CE05V003",
+      "kind": "mot-cle",
+      "french": "service clientèle",
+      "english": "customer service (department)",
+      "example": "Sophie Leloux, du service clientèle, répond au courrier de la cliente en envoyant le catalogue des produits.",
+      "usage": "Masc. noun (also « service client »); customer-service department; typically signed at the bottom of business letters.",
+      "questions": [3]
+    },
+    {
+      "id": "CE05V004",
+      "kind": "mot-cle",
+      "french": "départ à la retraite",
+      "english": "retirement (leaving one's job)",
+      "example": "Les employés vont préparer une fête pour le départ à la retraite de Mme Fournival.",
+      "usage": "Masc. noun phrase; fixed collocation for retirement events; verb form: « partir à la retraite ». Distinguish from « la retraite » (pension/state of being retired).",
+      "questions": [9]
+    },
+    {
+      "id": "CE05V005",
+      "kind": "mot-cle",
+      "french": "dossier de candidature",
+      "english": "application file / application packet",
+      "example": "Sélim Néri joint son dossier de candidature complet pour intégrer le master 1 d'informatique de Paris XII.",
+      "usage": "Masc. noun; core term for job or university applications; typically « déposer », « constituer » or « envoyer un dossier de candidature ».",
+      "questions": [13]
+    },
+    {
+      "id": "CE05V006",
+      "kind": "mot-cle",
+      "french": "écran tactile",
+      "english": "touchscreen",
+      "example": "Pour piloter un appareil à écran tactile en hiver, il faut souvent enlever ses gants.",
+      "usage": "Masc. noun (l'écran est tactile); pairs with « appareil », « téléphone », « tablette »; « tactile » is invariable in gender but agrees in number.",
+      "questions": [17]
+    },
+    {
+      "id": "CE05V007",
+      "kind": "mot-cle",
+      "french": "prêt à domicile",
+      "english": "home lending / home delivery service",
+      "example": "La bibliothèque universitaire propose désormais un service de prêt à domicile pour les étudiants qui ne peuvent pas se déplacer.",
+      "usage": "Masc. noun; formal service term (esp. libraries, pharmacies); « à domicile » = at home; contrast with « sur place » (on-site).",
+      "questions": [19]
+    },
+    {
+      "id": "CE05V008",
+      "kind": "mot-cle",
+      "french": "appel d'offre",
+      "english": "call for tenders / public bid",
+      "example": "En 2002, l'Égypte a lancé un appel d'offre pour la construction du Grand Musée près du Nil.",
+      "usage": "Masc. noun (also spelt « appel d'offres »); formal procurement term; « lancer / remporter un appel d'offre »; register: administratif.",
+      "questions": [25]
+    },
+    {
+      "id": "CE05V009",
+      "kind": "mot-cle",
+      "french": "langue maternelle",
+      "english": "mother tongue / native language",
+      "example": "Nous prenons des décisions différemment lorsque nous n'utilisons pas notre langue maternelle.",
+      "usage": "Fem. noun phrase; contrast with « langue étrangère » (foreign) or « langue seconde » (L2); core sociolinguistic term.",
+      "questions": [31]
+    },
+    {
+      "id": "CE05V010",
+      "kind": "mot-cle",
+      "french": "syndrome d'épuisement professionnel",
+      "english": "burnout syndrome",
+      "example": "Les nouvelles méthodes de travail seraient à l'origine de l'augmentation du syndrome d'épuisement professionnel en France.",
+      "usage": "Masc. noun phrase; formal French for « burn-out »; register: journalistique/médical; used in workplace-health discussions.",
+      "questions": [33]
+    },
+    {
+      "id": "CE05V011",
+      "kind": "verbe-action",
+      "french": "reportée",
+      "english": "postponed (fem. sing.)",
+      "example": "La réunion parents-professeurs prévue pour ce samedi est reportée au samedi prochain à midi.",
+      "usage": "Past participle (fem. sing.) of « reporter » = to postpone; passive « être reporté(e) à + date »; agrees in gender/number; contrast « annulée » (cancelled) and « avancée » (brought forward).",
+      "questions": [10]
+    },
+    {
+      "id": "CE05V012",
+      "kind": "verbe-action",
+      "french": "animer",
+      "english": "to run / host / liven up",
+      "example": "La directrice a besoin d'adultes bénévoles pour animer les stands lors de la fête annuelle de l'école.",
+      "usage": "Transitive verb; run a stand/workshop/debate/party; also « animer un débat », « animer une soirée »; agent noun « animateur/animatrice ».",
+      "questions": [6]
+    },
+    {
+      "id": "CE05V013",
+      "kind": "verbe-action",
+      "french": "déclenche",
+      "english": "triggers / sets off (3rd sing.)",
+      "example": "D'après le texte, se présenter au restaurant avec un enfant en bas âge déclenche souvent la fâcheuse impression d'être persona non grata.",
+      "usage": "3rd sing. present of « déclencher » = to trigger/set off a reaction, alarm, polemic, crisis; frequent journalistic verb; subject is typically an event or action.",
+      "questions": [26]
+    },
+    {
+      "id": "CE05V014",
+      "kind": "verbe-action",
+      "french": "concocter",
+      "english": "to whip up / cook up / devise",
+      "example": "Les grands chefs ont pris l'initiative de concocter un menu destiné aux gastronomes en culottes courtes.",
+      "usage": "Transitive verb; register: familier-journalistique; used for menus, plans, surprises, cocktails; slightly playful tone.",
+      "questions": [26]
+    },
+    {
+      "id": "CE05V015",
+      "kind": "verbe-action",
+      "french": "sillonnent",
+      "english": "criss-cross / travel through (3rd pl.)",
+      "example": "Chaque 10 août, une procession de cuisinières vêtues de leurs plus beaux madras sillonnent la ville de Pointe-à-Pitre.",
+      "usage": "3rd plural present of « sillonner » = to crisscross/traverse a territory; used for processions, travelers, roads, rivers; register: journalistique.",
+      "questions": [30]
+    },
+    {
+      "id": "CE05V016",
+      "kind": "verbe-action",
+      "french": "convier",
+      "english": "to invite (formally)",
+      "example": "Après la messe, les cordons bleus vont convier la population à un grand festin composé des meilleurs plats créoles.",
+      "usage": "Transitive verb; formal register for « inviter »; structure « convier qqn à qqch »; typical in official invitations and press.",
+      "questions": [30]
+    },
+    {
+      "id": "CE05V017",
+      "kind": "verbe-action",
+      "french": "renonce à",
+      "english": "gives up on / forgoes (3rd sing.)",
+      "example": "Selon le texte, un Français sur quatre renonce à se soigner faute de moyens financiers.",
+      "usage": "3rd sing. of « renoncer à » + inf. or noun = to give up on / forgo; register: neutre-soutenu; stronger than « arrêter » — implies deliberate abandonment.",
+      "questions": [28]
+    },
+    {
+      "id": "CE05V018",
+      "kind": "verbe-action",
+      "french": "craquent",
+      "english": "crack / break down (3rd pl.)",
+      "example": "Les salariés s'imaginent, quand ils craquent, qu'un collègue plus solide aurait résisté à leur place.",
+      "usage": "3rd plural present of « craquer » = to crack/break down under pressure; register: familier; also « craquer pour qqch » = to fall for something.",
+      "questions": [33]
+    },
+    {
+      "id": "CE05V019",
+      "kind": "verbe-action",
+      "french": "s'aggravent",
+      "english": "worsen / get worse (3rd pl.)",
+      "example": "D'après l'article, les inégalités face aux soins s'aggravent nettement depuis vingt ans en France.",
+      "usage": "3rd plural of « s'aggraver » (pronominal); subject = situations, crises, maladies, inégalités; frequent press verb; opposite « s'améliorent ».",
+      "questions": [28]
+    },
+    {
+      "id": "CE05V020",
+      "kind": "verbe-action",
+      "french": "subi",
+      "english": "undergone / suffered (past participle)",
+      "example": "Notre esprit a visiblement subi l'influence des conditions nouvelles de vie, historiques, géographiques et sociales.",
+      "usage": "Past participle of « subir » (3rd group); « avoir subi + noun » (une influence, une pression, un examen, une opération); implies passive endurance.",
+      "questions": [38]
+    },
+    {
+      "id": "CE05V021",
+      "kind": "expression",
+      "french": "en culottes courtes",
+      "english": "as youngsters / from childhood",
+      "example": "Les grands chefs ont conçu un menu destiné aux gastronomes en culottes courtes.",
+      "usage": "Idiomatic prep. phrase = « (still) in short trousers » → as youngsters / when little; register: familier-littéraire; often follows a noun designating people.",
+      "questions": [26]
+    },
+    {
+      "id": "CE05V022",
+      "kind": "expression",
+      "french": "au dernier cri",
+      "english": "in the very latest style / cutting edge (fashion)",
+      "example": "L'article rappelle que bien se vêtir ne se résume pas à succomber au dernier cri de la mode.",
+      "usage": "Idiomatic phrase = the latest trend/fashion; typically « au dernier cri (de la mode) » or « le dernier cri »; register: familier-neutre.",
+      "questions": [16]
+    },
+    {
+      "id": "CE05V023",
+      "kind": "expression",
+      "french": "aura lieu",
+      "english": "will take place / will be held",
+      "example": "Notre prochaine réunion de service aura lieu mercredi 12 octobre à 13 h en salle 3.",
+      "usage": "3rd sing. future of « avoir lieu » = to take place; standard for scheduled events; alt. « se tiendra », « se déroulera »; register: neutre-formel.",
+      "questions": [9]
+    },
+    {
+      "id": "CE05V024",
+      "kind": "expression",
+      "french": "à domicile",
+      "english": "at home / home-based",
+      "example": "Jean-Émile Nodier propose des cours de cuisine à domicile pour une à quatre personnes.",
+      "usage": "Adverbial phrase; standard commercial term: « livraison à domicile », « travail à domicile », « soins à domicile »; formal-neutral.",
+      "questions": [8]
+    },
+    {
+      "id": "CE05V025",
+      "kind": "expression",
+      "french": "être à la page",
+      "english": "to be up to date / in the know",
+      "example": "Avec ces gants tactiles à 370 euros, on peut être à la page côté technologie sans se geler les mains.",
+      "usage": "Idiomatic expression; register: familier-neutre; synonym « être dans le coup », « être à la pointe »; opposite « être dépassé ».",
+      "questions": [17]
+    },
+    {
+      "id": "CE05V026",
+      "kind": "expression",
+      "french": "à la pointe de",
+      "english": "at the cutting edge of",
+      "example": "Ces gants haut de gamme permettent d'être à la pointe de la technologie et de la mode en même temps.",
+      "usage": "Prepositional expression; laudatory tone; « à la pointe de la technologie / recherche / mode / innovation »; register: journalistique.",
+      "questions": [17]
+    },
+    {
+      "id": "CE05V027",
+      "kind": "expression",
+      "french": "plus de peur que de mal",
+      "english": "more fright than harm / no real harm done",
+      "example": "Plus de peur que de mal pour ce petit garçon de Lorient qui a failli s'étouffer avec un bout de plastique.",
+      "usage": "Fixed idiom; typical news-brief opener to summarize a near-miss incident; conveys reassurance.",
+      "questions": [20]
+    },
+    {
+      "id": "CE05V028",
+      "kind": "expression",
+      "french": "faire connaissance avec",
+      "english": "to get to know / meet (someone)",
+      "example": "Pour les deux journalistes, le roquefort était surtout un moyen de faire connaissance avec les habitants des pays visités.",
+      "usage": "Set expression « faire connaissance avec qqn »; slightly more formal than « rencontrer »; implies establishing a personal link.",
+      "questions": [21]
+    },
+    {
+      "id": "CE05V029",
+      "kind": "expression",
+      "french": "haute en couleur",
+      "english": "colorful / lively / picturesque (fem. sing.)",
+      "example": "L'Auberge de la Vieille Tour est un lieu idéal pour assister à cette manifestation haute en couleur.",
+      "usage": "Fem. sing. form of « haut en couleur » (agrees: haut/haute, hauts/hautes); used for events, characters, stories, récits; register: journalistique.",
+      "questions": [30]
+    },
+    {
+      "id": "CE05V030",
+      "kind": "expression",
+      "french": "le mal du siècle",
+      "english": "the scourge of the century",
+      "example": "Selon l'article, le syndrome d'épuisement professionnel est le mal du siècle et pourtant il n'est pas encore reconnu.",
+      "usage": "Fixed noun phrase; rhetorical/dramatic; used to characterize widespread modern problems (burnout, obesity, addictions).",
+      "questions": [33]
+    },
+    {
+      "id": "CE05V031",
+      "kind": "reformulation",
+      "french": "téléphoner à",
+      "english": "to call / phone (someone)",
+      "example": "Pour avoir de ses nouvelles, Karim doit téléphoner à sa sœur ce soir.",
+      "usage": "Verb + « à » (indirect object); direct synonym of « appeler qqn »; contrast structure: « appeler qqn » (direct) vs « téléphoner à qqn ».",
+      "questions": [4]
+    },
+    {
+      "id": "CE05V032",
+      "kind": "reformulation",
+      "french": "se rendre en",
+      "english": "to go to (formal)",
+      "example": "Monsieur Lereux doit se rendre en magasin pour retirer son bulletin de participation.",
+      "usage": "Pronominal + « en » (with article-less place noun); formal alternative to « aller »; « se rendre en magasin, en réunion, en ville »; register: administratif.",
+      "questions": [22]
+    },
+    {
+      "id": "CE05V033",
+      "kind": "reformulation",
+      "french": "des volontaires",
+      "english": "volunteers",
+      "example": "La directrice cherche des volontaires parmi les parents pour animer les stands et surveiller les jeux.",
+      "usage": "Masc./fem. plural noun; unpaid helpers; typical reformulation of « adultes qui aident bénévolement »; distinguish from « bénévoles » (near-synonym).",
+      "questions": [6]
+    },
+    {
+      "id": "CE05V034",
+      "kind": "reformulation",
+      "french": "assister à",
+      "english": "to attend (an event)",
+      "example": "La carte Scène+ permet d'assister à des spectacles dans une quarantaine de théâtres parisiens.",
+      "usage": "Verb + « à »; « assister à un spectacle, un cours, une réunion »; false friend — NOT « to assist someone » (= « aider »).",
+      "questions": [14]
+    },
+    {
+      "id": "CE05V035",
+      "kind": "reformulation",
+      "french": "se remettre à",
+      "english": "to resume / get back to",
+      "example": "L'auteur conseille au nouveau sportif de se remettre à bouger de façon régulière et progressive.",
+      "usage": "Pronominal + « à » + inf. or noun; implies restarting after a pause: « se remettre au sport, au travail, à fumer ».",
+      "questions": [15]
+    },
+    {
+      "id": "CE05V036",
+      "kind": "reformulation",
+      "french": "tissus non traités",
+      "english": "untreated / chemical-free fabrics",
+      "example": "Fibris vend des vêtements en tissus non traités, issus de cultures biologiques.",
+      "usage": "Masc. plural noun phrase; « non traité » = without chemical treatment; useful paraphrase of « fibre sans produits chimiques »; alt. « tissus bio ».",
+      "questions": [16]
+    },
+    {
+      "id": "CE05V037",
+      "kind": "reformulation",
+      "french": "moments de partage",
+      "english": "shared moments / bonding times",
+      "example": "Les parents doivent faire des écrans et des jeux vidéo des moments de partage familial.",
+      "usage": "Masc. plural noun phrase; positive collocation reformulating « objets d'échange familial »; common in parenting, wellness, and lifestyle articles.",
+      "questions": [18]
+    },
+    {
+      "id": "CE05V038",
+      "kind": "reformulation",
+      "french": "dormir efficacement",
+      "english": "to sleep effectively / manage one's sleep well",
+      "example": "Selon le journaliste, savoir dormir efficacement est la clé pour remporter la Route du Rhum.",
+      "usage": "Verb + adverb collocation; paraphrases « bien gérer ses phases de repos »; B2 register; useful in health, sports, productivity topics.",
+      "questions": [23]
+    },
+    {
+      "id": "CE05V039",
+      "kind": "reformulation",
+      "french": "sortir de la crise",
+      "english": "to come out of the crisis",
+      "example": "L'Islande espérait sortir de la crise économique en adhérant à l'Union européenne et en adoptant l'euro.",
+      "usage": "Verbal expression; reformulates « stabiliser son économie après l'effondrement »; frequent in economic/political press.",
+      "questions": [32]
+    },
+    {
+      "id": "CE05V040",
+      "kind": "reformulation",
+      "french": "solliciter davantage la raison",
+      "english": "to engage reason more",
+      "example": "Utiliser une langue autre que la langue maternelle permet de solliciter davantage la raison plutôt que les émotions.",
+      "usage": "Verbal phrase; register: soutenu; reformulates « le résultat est plus réfléchi, moins dicté par les émotions »; « davantage » = more (adverb, invariable).",
+      "questions": [31]
+    },
+    {
+      "id": "CE05V041",
+      "kind": "phrase-modele",
+      "french": "Suite à votre courrier du 17 juin dernier, je vous envoie le catalogue de nos produits.",
+      "english": "Following your letter of June 17, I am sending you the catalogue of our products.",
+      "example": "Suite à votre courrier du 17 juin dernier, je vous envoie le catalogue de nos produits.",
+      "usage": "Formal customer-service reply template: « Suite à + [document/date], je vous envoie/adresse... »; register: soutenu; alt. « Faisant suite à... ».",
+      "questions": [3]
+    },
+    {
+      "id": "CE05V042",
+      "kind": "phrase-modele",
+      "french": "Vous trouverez, ci-joint, mon dossier de candidature complet.",
+      "english": "Please find enclosed my complete application file.",
+      "example": "Vous trouverez, ci-joint, mon dossier de candidature complet.",
+      "usage": "Cover-letter template introducing an attachment; « ci-joint » invariable when placed before the noun; alt. « Veuillez trouver ci-joint... ».",
+      "questions": [13]
+    },
+    {
+      "id": "CE05V043",
+      "kind": "phrase-modele",
+      "french": "En espérant que ma candidature saura retenir votre attention",
+      "english": "Hoping that my application will hold your attention",
+      "example": "En espérant que ma candidature saura retenir votre attention, je vous adresse ci-joint mon dossier complet.",
+      "usage": "Standard formal closing prelude for job/university applications; futur « saura » conveys polite hope; precedes the final salutation formula.",
+      "questions": [13]
+    },
+    {
+      "id": "CE05V044",
+      "kind": "phrase-modele",
+      "french": "je vous prie de croire, Monsieur, à l'expression de ma salutation distinguée",
+      "english": "please accept, Sir, the expression of my distinguished regards",
+      "example": "En espérant votre bienveillance, je vous prie de croire, Monsieur, à l'expression de ma salutation distinguée.",
+      "usage": "Formulaic closing for formal letters; register: soutenu/officiel; alt. « Veuillez agréer, Monsieur, mes salutations distinguées ».",
+      "questions": [13]
+    },
+    {
+      "id": "CE05V045",
+      "kind": "phrase-modele",
+      "french": "J'ai l'honneur de vous informer que",
+      "english": "I am pleased to inform you that",
+      "example": "J'ai l'honneur de vous informer que votre nom a été sélectionné pour « Magasins en fête ».",
+      "usage": "Highly formal announcement opener; register: soutenu/officiel; use for prizes, appointments, awards; neutral alt. « Nous vous informons que... ».",
+      "questions": [22]
+    },
+    {
+      "id": "CE05V046",
+      "kind": "phrase-modele",
+      "french": "Nous vous informons que",
+      "english": "We inform you that",
+      "example": "Chers collègues, nous vous informons que la réunion parents-professeurs est reportée au samedi prochain à midi.",
+      "usage": "Neutral-formal announcement opener (school, admin, business); less solemn than « J'ai l'honneur de vous informer »; introduces news or changes.",
+      "questions": [10]
+    },
+    {
+      "id": "CE05V047",
+      "kind": "phrase-modele",
+      "french": "Votre présence est obligatoire.",
+      "english": "Your attendance is mandatory.",
+      "example": "La direction du lycée conclut son message par une consigne claire : votre présence est obligatoire.",
+      "usage": "Formal mandatory-attendance statement; use in official notices; opposite « facultative »; alt. « La présence de chacun est requise ».",
+      "questions": [10]
+    },
+    {
+      "id": "CE05V048",
+      "kind": "phrase-modele",
+      "french": "Faites-nous part de vos disponibilités.",
+      "english": "Let us know your availability.",
+      "example": "Pour finaliser l'organisation de la fête, la directrice écrit aux parents : faites-nous part de vos disponibilités.",
+      "usage": "Polite imperative asking for availability; builds on « faire part de » = to share/inform; standard in scheduling requests to a group.",
+      "questions": [6]
+    },
+    {
+      "id": "CE05V049",
+      "kind": "phrase-modele",
+      "french": "Pense à appeler ta sœur pour avoir de ses nouvelles.",
+      "english": "Remember to call your sister to get her news.",
+      "example": "Pense à appeler ta sœur pour avoir de ses nouvelles.",
+      "usage": "Familiar reminder template: « Pense à + inf. » = « remember to... »; use with peers on « tu »; formal alt. « N'oubliez pas de... ».",
+      "questions": [4]
+    },
+    {
+      "id": "CE05V050",
+      "kind": "phrase-modele",
+      "french": "S'il te plaît, viens dans mon bureau après la réunion.",
+      "english": "Please come to my office after the meeting.",
+      "example": "S'il te plaît, viens dans mon bureau après la réunion.",
+      "usage": "Informal internal note between colleagues on « tu » terms; polite request; more formal alt. « Pourrais-tu passer dans mon bureau après la réunion ? ».",
+      "questions": [5]
+    }
+  ]
+}

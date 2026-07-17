@@ -1,0 +1,456 @@
+{
+  "test_slug": "test-4",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE04V001",
+      "kind": "mot-cle",
+      "french": "devoirs de mathématiques",
+      "english": "math homework",
+      "example": "Patrick fait ses devoirs de mathématiques chez Louise.",
+      "usage": "Expression scolaire courante pour parler du travail à faire à la maison.",
+      "questions": [1]
+    },
+    {
+      "id": "CE04V002",
+      "kind": "mot-cle",
+      "french": "courants marins",
+      "english": "sea currents",
+      "example": "La croisière suit le mouvement des courants marins.",
+      "usage": "Terme de géographie et de navigation, généralement employé au pluriel.",
+      "questions": [5]
+    },
+    {
+      "id": "CE04V003",
+      "kind": "mot-cle",
+      "french": "hébergement",
+      "english": "accommodation",
+      "example": "Certaines personnes âgées ont besoin d'un hébergement en maison médicalisée.",
+      "usage": "Nom administratif ou neutre pour désigner un logement ou une structure d'accueil.",
+      "questions": [13]
+    },
+    {
+      "id": "CE04V004",
+      "kind": "mot-cle",
+      "french": "fréquentation touristique",
+      "english": "tourist attendance",
+      "example": "La fréquentation touristique a légèrement progressé pendant l'été.",
+      "usage": "Collocation de presse pour mesurer le nombre de visiteurs dans un lieu.",
+      "questions": [14]
+    },
+    {
+      "id": "CE04V005",
+      "kind": "mot-cle",
+      "french": "curiosité",
+      "english": "curiosity",
+      "example": "La curiosité des enfants favorise la découverte d'une langue étrangère.",
+      "usage": "Qualité positive désignant l'envie de découvrir et de comprendre.",
+      "questions": [15]
+    },
+    {
+      "id": "CE04V006",
+      "kind": "mot-cle",
+      "french": "motivation",
+      "english": "motivation",
+      "example": "Pour un employeur, la motivation compte beaucoup chez un jeune sans expérience.",
+      "usage": "Nom fréquent dans le contexte professionnel et scolaire, souvent avec montrer ou démontrer.",
+      "questions": [17]
+    },
+    {
+      "id": "CE04V007",
+      "kind": "mot-cle",
+      "french": "intégration",
+      "english": "integration",
+      "example": "Le mode de vie des néo-ruraux ne facilite pas leur intégration.",
+      "usage": "Fait de trouver sa place dans un groupe ou une communauté.",
+      "questions": [19]
+    },
+    {
+      "id": "CE04V008",
+      "kind": "mot-cle",
+      "french": "vocation",
+      "english": "calling",
+      "example": "Stéphanie a trouvé sa vocation dans la restauration de meubles.",
+      "usage": "Projet professionnel ressenti comme une véritable aspiration personnelle.",
+      "questions": [20]
+    },
+    {
+      "id": "CE04V009",
+      "kind": "mot-cle",
+      "french": "développement durable",
+      "english": "sustainable development",
+      "example": "La discothèque veut sensibiliser les jeunes au développement durable.",
+      "usage": "Expression institutionnelle liée à l'environnement et à la responsabilité à long terme.",
+      "questions": [22, 26, 39]
+    },
+    {
+      "id": "CE04V010",
+      "kind": "mot-cle",
+      "french": "écosystème",
+      "english": "ecosystem",
+      "example": "L'équipage observe l'écosystème des grands fleuves sud-américains.",
+      "usage": "Terme scientifique désignant un milieu et les êtres vivants qui y interagissent.",
+      "questions": [39]
+    },
+    {
+      "id": "CE04V011",
+      "kind": "verbe-action",
+      "french": "stationner",
+      "english": "to park",
+      "example": "Pendant les travaux, il est interdit de stationner devant le supermarché.",
+      "usage": "Verbe formel des règlements et panneaux, plus précis que garer dans ce contexte.",
+      "questions": [4]
+    },
+    {
+      "id": "CE04V012",
+      "kind": "verbe-action",
+      "french": "Renseignez-vous",
+      "english": "find out",
+      "example": "Renseignez-vous la veille sur les horaires de la marée.",
+      "usage": "Verbe pronominal suivi de sur ou auprès de pour obtenir des informations.",
+      "questions": [5]
+    },
+    {
+      "id": "CE04V013",
+      "kind": "verbe-action",
+      "french": "respecter",
+      "english": "to respect",
+      "example": "Les élèves apprennent à connaître et à respecter la nature.",
+      "usage": "S'emploie pour suivre une règle ou traiter dignement une personne ou un milieu.",
+      "questions": [6]
+    },
+    {
+      "id": "CE04V014",
+      "kind": "verbe-action",
+      "french": "prévenir",
+      "english": "to notify",
+      "example": "Pierre demande à Ahmed de prévenir les personnes des services concernés.",
+      "usage": "Dans ce sens, signifie avertir ou informer; ne pas confondre avec empêcher.",
+      "questions": [9]
+    },
+    {
+      "id": "CE04V015",
+      "kind": "verbe-action",
+      "french": "S'aventurent",
+      "english": "venture into",
+      "example": "Les Européens s'aventurent dans des pays lointains.",
+      "usage": "Verbe souvent employé pour un déplacement audacieux ou vers un lieu peu familier.",
+      "questions": [12]
+    },
+    {
+      "id": "CE04V016",
+      "kind": "verbe-action",
+      "french": "utiliser",
+      "english": "to use",
+      "example": "Les consommateurs peuvent utiliser les bouteilles comme monnaie.",
+      "usage": "Ici, signifie collecter en vue du réemploi ou du recyclage.",
+      "questions": [16]
+    },
+    {
+      "id": "CE04V017",
+      "kind": "verbe-action",
+      "french": "décrocher",
+      "english": "to land or get",
+      "example": "Un jeune doit montrer qu'il veut vraiment décrocher un job d'été.",
+      "usage": "Familier dans décrocher un emploi, obtenir quelque chose après des efforts.",
+      "questions": [17]
+    },
+    {
+      "id": "CE04V018",
+      "kind": "verbe-action",
+      "french": "s'affranchir",
+      "english": "to free oneself",
+      "example": "Écrire cette lettre permet à Annie Ernaux de s'affranchir d'un vieux tourment.",
+      "usage": "Verbe soutenu construit avec de, pour se libérer d'une contrainte ou d'un passé.",
+      "questions": [36]
+    },
+    {
+      "id": "CE04V019",
+      "kind": "verbe-action",
+      "french": "diagnostiquer",
+      "english": "to diagnose",
+      "example": "L'entrée précoce à l'école aide à diagnostiquer certains problèmes psychologiques.",
+      "usage": "Verbe médical ou spécialisé: identifier un trouble à partir d'indices.",
+      "questions": [37]
+    },
+    {
+      "id": "CE04V020",
+      "kind": "verbe-action",
+      "french": "observer",
+      "english": "to observe",
+      "example": "Le voilier part observer la biosphère des grands fleuves.",
+      "usage": "Verbe de recherche pour examiner attentivement un phénomène ou un milieu.",
+      "questions": [39]
+    },
+    {
+      "id": "CE04V021",
+      "kind": "expression",
+      "french": "au gré de",
+      "english": "according to the course of",
+      "example": "Les passagers se laissent guider au gré des vents et des courants marins.",
+      "usage": "Locution indiquant que l'on suit les circonstances ou un mouvement naturel.",
+      "questions": [5]
+    },
+    {
+      "id": "CE04V022",
+      "kind": "expression",
+      "french": "à sa rencontre",
+      "english": "to meet him or her",
+      "example": "Des artistes viennent à sa rencontre pour redonner le sourire au petit malade.",
+      "usage": "Locution signifiant aller vers quelqu'un pour le rencontrer ou l'aider.",
+      "questions": [21]
+    },
+    {
+      "id": "CE04V023",
+      "kind": "expression",
+      "french": "prendre conscience de",
+      "english": "to become aware of",
+      "example": "Les chercheurs ont fini par prendre conscience des bénéfices du partage.",
+      "usage": "Construction très fréquente pour exprimer une prise de conscience progressive.",
+      "questions": [23, 29]
+    },
+    {
+      "id": "CE04V024",
+      "kind": "expression",
+      "french": "en contrepartie",
+      "english": "in exchange for",
+      "example": "Le secteur de la pêche reçoit une aide en contrepartie de nouvelles restrictions.",
+      "usage": "Locution formelle qui introduit ce que l'on reçoit en échange d'une action.",
+      "questions": [24]
+    },
+    {
+      "id": "CE04V025",
+      "kind": "expression",
+      "french": "mises au banc des accusés",
+      "english": "to be put in the dock",
+      "example": "Après les scandales des traders, les grandes écoles ont été mises au banc des accusés.",
+      "usage": "Expression figurée de la presse: être publiquement rendu responsable ou critiqué.",
+      "questions": [26]
+    },
+    {
+      "id": "CE04V026",
+      "kind": "expression",
+      "french": "se laisse progressivement porter par",
+      "english": "to let oneself be carried along by",
+      "example": "Le spectateur se laisse progressivement porter par la réalisation décalée du cinéaste.",
+      "usage": "Expression pour suivre agréablement une ambiance, une musique ou une histoire.",
+      "questions": [27]
+    },
+    {
+      "id": "CE04V027",
+      "kind": "expression",
+      "french": "se départir",
+      "english": "to retain without losing",
+      "example": "Le film reste original sans se départir d'une certaine simplicité.",
+      "usage": "Locution soutenue: conserver une qualité ou une attitude malgré un changement.",
+      "questions": [27]
+    },
+    {
+      "id": "CE04V028",
+      "kind": "expression",
+      "french": "mettre en commun",
+      "english": "to pool or share",
+      "example": "Les chercheurs veulent mettre en commun leurs données scientifiques.",
+      "usage": "Collocation utile pour partager des ressources, des informations ou des compétences.",
+      "questions": [29]
+    },
+    {
+      "id": "CE04V029",
+      "kind": "expression",
+      "french": "un parcours du combattant",
+      "english": "an obstacle course",
+      "example": "Trouver un logement étudiant est souvent un parcours du combattant.",
+      "usage": "Expression imagée pour une démarche longue, difficile et pleine d'obstacles.",
+      "questions": [30]
+    },
+    {
+      "id": "CE04V030",
+      "kind": "expression",
+      "french": "le portrait craché du",
+      "english": "the spitting image of",
+      "example": "Dans la cour, Christian était le portrait craché du caporal de la bande dessinée.",
+      "usage": "Expression familière pour dire qu'une personne ressemble énormément à une autre.",
+      "questions": [32]
+    },
+    {
+      "id": "CE04V031",
+      "kind": "reformulation",
+      "french": "Il informe les enfants sur la nature",
+      "english": "It teaches children about nature",
+      "example": "Il informe les enfants sur la nature pendant leur séjour au centre de Branféré.",
+      "usage": "Reformulation de apprendre à connaître et respecter la nature, sans réduire le sens à une simple visite.",
+      "questions": [6]
+    },
+    {
+      "id": "CE04V032",
+      "kind": "reformulation",
+      "french": "Une promenade en mer",
+      "english": "a sea excursion",
+      "example": "Le document propose une promenade en mer de deux heures et demie.",
+      "usage": "Reformulation globale de la croisière guidée sur le bassin d'Arcachon.",
+      "questions": [5]
+    },
+    {
+      "id": "CE04V033",
+      "kind": "reformulation",
+      "french": "S'informer sur le monde professionnel",
+      "english": "learn about the working world",
+      "example": "Au salon, les jeunes peuvent s'informer sur le monde professionnel.",
+      "usage": "Reformulation de rencontrer des employeurs et de découvrir les formations existantes.",
+      "questions": [11]
+    },
+    {
+      "id": "CE04V034",
+      "kind": "reformulation",
+      "french": "La méfiance des propriétaires",
+      "english": "Landlords screen applicants harshly",
+      "example": "La méfiance des propriétaires complique l'accès au logement étudiant.",
+      "usage": "Reformule la sélection très stricte fondée notamment sur les revenus des garants.",
+      "questions": [30]
+    },
+    {
+      "id": "CE04V035",
+      "kind": "reformulation",
+      "french": "chez eux",
+      "english": "French holidaymakers stay in their country",
+      "example": "Les vacanciers français ont trouvé le bonheur chez eux.",
+      "usage": "Reformulation de trouver le bonheur chez eux, c'est-à-dire de passer les vacances en France.",
+      "questions": [14]
+    },
+    {
+      "id": "CE04V036",
+      "kind": "reformulation",
+      "french": "échange des bouteilles en plastique vides contre un objet recyclé",
+      "english": "Bottles serve as currency",
+      "example": "Le consommateur échange des bouteilles en plastique vides contre un objet recyclé.",
+      "usage": "Reformule l'échange de bouteilles vides contre un stylo, un vêtement ou une couverture.",
+      "questions": [16]
+    },
+    {
+      "id": "CE04V037",
+      "kind": "reformulation",
+      "french": "Intégrer des valeurs sociales et environnementales",
+      "english": "Schools integrate social and environmental values",
+      "example": "Les grandes écoles cherchent à intégrer des valeurs sociales et environnementales.",
+      "usage": "Reformulation de la nouvelle place donnée à l'éthique, au social business et au développement durable.",
+      "questions": [26]
+    },
+    {
+      "id": "CE04V038",
+      "kind": "reformulation",
+      "french": "Le film tombe dans les stéréotypes du genre",
+      "english": "The film uses genre stereotypes",
+      "example": "Selon cette critique, le film tombe dans les stéréotypes du genre.",
+      "usage": "Reformule la critique négative portant sur les stéréotypes habituels du film.",
+      "questions": [27]
+    },
+    {
+      "id": "CE04V039",
+      "kind": "reformulation",
+      "french": "Mettre en commun les données",
+      "english": "Researchers share their data",
+      "example": "Les chercheurs veulent mettre en commun les données pour favoriser le travail collaboratif.",
+      "usage": "Reformulation de mettre en commun les données, objectif nouveau mais encore difficile à réaliser.",
+      "questions": [29]
+    },
+    {
+      "id": "CE04V040",
+      "kind": "reformulation",
+      "french": "Observer l'écosystème dans une région de grands fleuves",
+      "english": "The sailboat studies the biosphere of great rivers",
+      "example": "L'équipage doit observer l'écosystème dans une région de grands fleuves.",
+      "usage": "Reformulation de l'observation scientifique de l'écosystème en Amérique du Sud.",
+      "questions": [39]
+    },
+    {
+      "id": "CE04V041",
+      "kind": "phrase-modele",
+      "french": "Il est interdit de",
+      "english": "It is forbidden to",
+      "example": "Pendant les travaux, il est interdit de stationner devant l'entrée.",
+      "usage": "Structure impersonnelle des interdictions, suivie directement d'un infinitif.",
+      "questions": [4]
+    },
+    {
+      "id": "CE04V042",
+      "kind": "phrase-modele",
+      "french": "Merci d'utiliser",
+      "english": "Please use",
+      "example": "Merci d'utiliser le parking situé derrière la poste.",
+      "usage": "Formule polie pour donner une consigne ou demander un service dans un avis.",
+      "questions": [4]
+    },
+    {
+      "id": "CE04V043",
+      "kind": "phrase-modele",
+      "french": "La séance peut durer longtemps",
+      "english": "The session may last a long time",
+      "example": "Prévoyez une pause, car la séance peut durer longtemps.",
+      "usage": "Modèle utile pour signaler une durée incertaine mais potentiellement importante.",
+      "questions": [9]
+    },
+    {
+      "id": "CE04V044",
+      "kind": "phrase-modele",
+      "french": "Plus on est jeune, plus on a d'appétit pour découvrir le monde",
+      "english": "The younger one is, the more eager one is to discover the world",
+      "example": "Plus on est jeune, plus on a d'appétit pour découvrir le monde et apprendre une langue.",
+      "usage": "Structure corrélative plus..., plus... pour relier deux évolutions parallèles.",
+      "questions": [15]
+    },
+    {
+      "id": "CE04V045",
+      "kind": "phrase-modele",
+      "french": "Il faut montrer qu'on a vraiment envie de",
+      "english": "One must show that one really wants to",
+      "example": "Pour obtenir un job d'été, il faut montrer qu'on a vraiment envie de travailler.",
+      "usage": "Modèle de conseil ou d'obligation, suivi d'un infinitif.",
+      "questions": [17]
+    },
+    {
+      "id": "CE04V046",
+      "kind": "phrase-modele",
+      "french": "pas d'attente vis-à-vis de",
+      "english": "not to have expectations of",
+      "example": "L'entreprise n'a pas d'attente vis-à-vis de ses compétences professionnelles.",
+      "usage": "Construction utile pour exprimer les exigences ou attentes d'une personne envers une autre.",
+      "questions": [17]
+    },
+    {
+      "id": "CE04V047",
+      "kind": "phrase-modele",
+      "french": "Pour que le petit malade puisse oublier un peu ses souffrances",
+      "english": "So that the sick child can forget the suffering",
+      "example": "Les artistes interviennent pour que le petit malade puisse oublier un peu ses souffrances.",
+      "usage": "Pour que exige le subjonctif et introduit un objectif.",
+      "questions": [21]
+    },
+    {
+      "id": "CE04V048",
+      "kind": "phrase-modele",
+      "french": "n'est pas d'encourager l'usage des portables, mais d'inciter chacun à réfléchir",
+      "english": "The idea is not to encourage phone use but to prompt reflection",
+      "example": "L'idée de ce marquage n'est pas d'encourager l'usage des portables, mais d'inciter chacun à réfléchir à ses habitudes.",
+      "usage": "Tour contrastif pour corriger une interprétation et présenter le véritable objectif.",
+      "questions": [23]
+    },
+    {
+      "id": "CE04V049",
+      "kind": "phrase-modele",
+      "french": "On ne peut que",
+      "english": "One can only",
+      "example": "Devant ce travail original, on ne peut que saluer le réalisateur.",
+      "usage": "Locution suivie d'un infinitif pour exprimer une réaction pratiquement inévitable.",
+      "questions": [27]
+    },
+    {
+      "id": "CE04V050",
+      "kind": "phrase-modele",
+      "french": "trop tôt pour",
+      "english": "It is too early to",
+      "example": "Il est encore trop tôt pour savoir ce que l'auteur a réellement apporté.",
+      "usage": "Structure qui repousse un jugement ou une conclusion jusqu'à plus tard.",
+      "questions": [35]
+    }
+  ]
+}

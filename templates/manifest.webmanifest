@@ -2,7 +2,7 @@
   "name": "Heureux",
   "short_name": "Heureux",
   "description": "Révisions en répétition espacée pour l'expression orale et écrite en français.",
-  "start_url": "/review/",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",

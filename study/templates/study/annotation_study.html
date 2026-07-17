@@ -17,7 +17,7 @@
   </div>
   <div class="annotation-study__cards">
     {% for item in items %}
-      <article class="flashcard annotation-study__card {% if not forloop.first %}hidden{% endif %}" data-study-card>
+      <article class="flashcard annotation-study__card {% if not forloop.first %}hidden{% endif %}" data-study-card data-study-toggle-url="{% url 'study:annotation_study_toggle' item.id %}">
         <div class="annotation-study__front" data-study-front>
           <p class="eyebrow">{% if item.kind == "highlight" %}Passage surligné{% else %}Note personnelle{% endif %}</p>
           {% if item.kind == "highlight" %}
@@ -40,12 +40,13 @@
   <div class="annotation-study__controls">
     <button class="btn" type="button" data-study-previous disabled>← Précédente</button>
     <button class="btn btn--primary" type="button" data-study-reveal>Afficher</button>
-    <button class="btn hidden" type="button" data-study-next>Suivante →</button>
+    <button class="btn hidden" type="button" data-study-keep>À revoir encore</button>
+    <button class="btn btn--primary hidden" type="button" data-study-learned>Je le connais</button>
   </div>
   <div class="card done-state annotation-study__done hidden" data-study-done>
     <div class="done-state__emoji">✓</div>
     <h2>Parcours terminé</h2>
-    <p>Vous avez revu {{ items|length }} élément{{ items|length|pluralize }} de votre sélection personnelle.</p>
+    <p>Vous avez pris une décision pour {{ items|length }} élément{{ items|length|pluralize }} de votre sélection personnelle.</p>
     <div class="row center">
       <button class="btn btn--primary" type="button" data-study-restart>Recommencer</button>
       <a class="btn" href="{{ back_url }}">Retour aux notes</a>

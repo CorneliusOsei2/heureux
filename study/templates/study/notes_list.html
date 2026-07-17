@@ -2,13 +2,47 @@
 {% block title %}{{ scope_title }} · Notes · Heureux{% endblock %}
 
 {% block content %}
-{% include "study/_task_nav.html" %}
-<header class="task-hero notes-hero">
+<header class="area-hero notes-hero">
   <div>
-    <p class="eyebrow"><a href="{% url 'study:notes_overview' %}">Notes</a>{% if part %} · {{ part.short_name }}{% endif %}</p>
-    <h1>{{ scope_title }}</h1>
+    <p class="eyebrow">Mémoire personnelle</p>
+    <h1>Notes &amp; surlignages</h1>
+    <p>Retrouve ce que tu as écrit ou retenu, puis transforme ta sélection en rappel actif.</p>
+  </div>
+  <div class="task-hero__numbers" aria-label="Résumé des notes">
+    <span><b>{{ notes|length }}</b> note{{ notes|length|pluralize }}</span>
+    <span><b>{{ highlights|length }}</b> surlignage{{ highlights|length|pluralize }}</span>
+    <span><b>{{ study_count }}</b> à étudier</span>
   </div>
 </header>
+
+<nav class="notes-scope-nav" aria-label="Filtrer les notes">
+  <a class="{% if aggregate %}is-active{% endif %}" href="{% url 'study:notes_overview' %}">Toutes</a>
+  <a class="{% if not aggregate and not task %}is-active{% endif %}" href="{% url 'study:notes_overview' %}?scope=general">Générales <span>{{ general_count }}</span></a>
+  {% for item in task_filters %}
+    <a class="{% if task.pk == item.task.pk %}is-active{% endif %}" href="{% url 'study:notes_overview' %}?part={{ item.task.part.slug }}&amp;task={{ item.task.slug }}">{{ item.task.part.short_name }} · {{ item.task.name }} <span>{{ item.count }}</span></a>
+  {% endfor %}
+</nav>
+
+<div class="notes-toolbar">
+  <form class="search-form" method="get" action="{% url 'study:notes_overview' %}">
+    {% if task %}
+      <input type="hidden" name="part" value="{{ part.slug }}">
+      <input type="hidden" name="task" value="{{ task.slug }}">
+    {% elif not aggregate %}
+      <input type="hidden" name="scope" value="general">
+    {% endif %}
+    <label class="sr-only" for="notes-search">Rechercher dans les notes et surlignages</label>
+    <input id="notes-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Rechercher dans mes notes…">
+    <button class="btn" type="submit">Rechercher</button>
+  </form>
+  {% if task %}
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:task_annotation_study' part.slug task.slug %}">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
+  {% elif aggregate %}
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
+  {% else %}
+    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}?scope=general">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
+  {% endif %}
+</div>
 
 <nav class="notes-tabs" role="tablist" aria-label="Type de contenu">
   <a
@@ -17,7 +51,7 @@
     role="tab"
     aria-selected="{% if active_tab == 'notes' %}true{% else %}false{% endif %}"
     aria-controls="notes-panel"
-    href="?tab=notes">
+    href="{{ tab_url_prefix }}tab=notes">
     <span>Notes</span>
     <span class="notes-tab__count">{{ notes|length }}</span>
   </a>
@@ -27,20 +61,11 @@
     role="tab"
     aria-selected="{% if active_tab == 'highlights' %}true{% else %}false{% endif %}"
     aria-controls="highlights-panel"
-    href="?tab=highlights">
+    href="{{ tab_url_prefix }}tab=highlights">
     <span>Surlignages</span>
     <span class="notes-tab__count">{{ highlights|length }}</span>
   </a>
 </nav>
-
-<div class="notes-tools">
-  <a class="btn" href="{% url 'study:annotation_search' %}">Rechercher</a>
-  {% if task %}
-    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:task_annotation_study' part.slug task.slug %}">Étudier cette sélection{% if study_count %} · {{ study_count }}{% endif %}</a>
-  {% else %}
-    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">Étudier ma sélection{% if study_count %} · {{ study_count }}{% endif %}</a>
-  {% endif %}
-</div>
 
 {% if active_tab == "notes" %}
 <div class="notes-tab-panel" id="notes-panel" role="tabpanel" aria-labelledby="notes-tab">

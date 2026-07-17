@@ -2,21 +2,28 @@
 {% block title %}Recherche · Heureux{% endblock %}
 
 {% block content %}
-{% include "study/_task_nav.html" %}
-<div class="page-head">
-  <p class="eyebrow">{% if task %}{{ task.name }}{% else %}Tout le contenu{% endif %}</p>
+<div class="page-head search-page-head">
+  <p class="eyebrow">{% if task %}Recherche filtrée · {{ task.name }}{% else %}Tout le contenu{% endif %}</p>
   <h1>Recherche</h1>
-  <form class="search-form" method="get" action="{% if task %}{% url 'study:task_search' part.slug task.slug %}{% else %}{% url 'study:search' %}{% endif %}">
-    <input class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
+  <p>Retrouve un sujet, une expression, un mot ou une question de compréhension.</p>
+  <form class="search-form" method="get" action="{% url 'study:search' %}">
+    {% if task %}<input type="hidden" name="part" value="{{ part.slug }}"><input type="hidden" name="task" value="{{ task.slug }}">{% endif %}
+    <label class="sr-only" for="global-search">Rechercher dans le contenu</label>
+    <input id="global-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
     <button class="btn btn--primary" type="submit">Chercher</button>
   </form>
 </div>
 
 {% if query %}
-  <p class="muted">{{ result_count }} résultat{{ result_count|pluralize }} pour « {{ query }} ».</p>
+  <div class="search-summary">
+    <p><b>{{ result_count }}</b> résultat{{ result_count|pluralize }} pour « {{ query }} ».</p>
+    {% if results_truncated %}
+      <p class="muted">Les {{ visible_result_count }} premiers sont affichés. Précise ta recherche pour cibler un mot, un sujet ou une expression.</p>
+    {% endif %}
+  </div>
 
   {% if prompt_results %}
-    <h2>Sujets &amp; réponses</h2>
+    <h2 class="search-section-heading">Sujets &amp; réponses <span>{{ prompt_result_count }}</span></h2>
     <div class="qlist">
       {% for prompt in prompt_results %}
         <a class="qrow" href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}">
@@ -29,7 +36,7 @@
   {% endif %}
 
   {% if phrase_results %}
-    <h2 style="margin-top:1.6rem;">Expressions</h2>
+    <h2 class="search-section-heading">Expressions <span>{{ phrase_result_count }}</span></h2>
     <div class="grid grid--phrases">
       {% for phrase in phrase_results %}
         <div class="phrase card">
@@ -37,6 +44,19 @@
           <div class="phrase__cue">{{ phrase.english_cue }}</div>
           <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
         </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if comprehension_results %}
+    <h2 class="search-section-heading">Compréhension <span>{{ comprehension_result_count }}</span></h2>
+    <div class="qlist">
+      {% for question in comprehension_results %}
+        <a class="qrow" href="{% url 'study:comprehension_question_study' question.test.slug question.number %}">
+          <span class="qrow__num qrow__num--tag"><span class="chip">{{ question.test.title }} · Q{{ question.number }}</span></span>
+          <span class="qrow__text">{{ question.prompt_fr }}</span>
+          <span class="qrow__meta"><span class="muted">Voir la correction →</span></span>
+        </a>
       {% endfor %}
     </div>
   {% endif %}

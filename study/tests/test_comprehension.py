@@ -13,12 +13,16 @@ from django.urls import reverse
 from study import content
 from study.management.commands.import_content import Command
 from study.models import (
+    Card,
+    CardType,
     ComprehensionAnswer,
     ComprehensionAttempt,
     ComprehensionAttemptStatus,
     ComprehensionChoice,
     ComprehensionQuestion,
     ComprehensionTest,
+    Phrase,
+    PhraseTier,
 )
 
 from . import factories
@@ -178,6 +182,74 @@ class ComprehensionImportTests(TestCase):
         self.assertTrue(
             ComprehensionAttempt.objects.filter(pk=attempt.pk).exists()
         )
+
+    def test_vocabulary_import_links_sources_and_preserves_card_progress(self):
+        tests = content.load_comprehension_tests()
+        vocabulary = content.parse_comprehension_vocabulary(tests)
+        command = Command()
+        command._import_phrases(
+            [item.phrase for item in vocabulary],
+            {},
+        )
+        command._import_comprehension_tests(tests)
+        command._link_comprehension_vocabulary(vocabulary)
+
+        self.assertEqual(
+            Phrase.objects.filter(
+                tier=PhraseTier.COMPREHENSION,
+                is_active=True,
+            ).count(),
+            250,
+        )
+        first_item = vocabulary[0]
+        first_phrase = Phrase.objects.get(
+            phrase_id=first_item.phrase.phrase_id
+        )
+        self.assertEqual(
+            set(
+                first_phrase.source_questions.values_list(
+                    "test__slug",
+                    "number",
+                )
+            ),
+            {
+                (first_item.test_slug, number)
+                for number in first_item.question_numbers
+            },
+        )
+        self.assertFalse(
+            Phrase.objects.filter(
+                tier=PhraseTier.COMPREHENSION,
+                source_questions__isnull=True,
+            ).exists()
+        )
+
+        user = factories.make_user("ce-vocabulary-import")
+        command._sync_cards({}, user=user)
+        cards = Card.objects.filter(
+            user=user,
+            phrase__tier=PhraseTier.COMPREHENSION,
+        )
+        self.assertEqual(cards.count(), 250)
+        self.assertEqual(
+            set(cards.values_list("card_type", flat=True)),
+            {CardType.PHRASE_PRODUCTION},
+        )
+        card = cards.get(phrase=first_phrase)
+        card.reps = 7
+        card.interval_days = 18
+        card.save(update_fields=["reps", "interval_days"])
+
+        command._import_phrases(
+            [item.phrase for item in vocabulary],
+            {},
+        )
+        command._link_comprehension_vocabulary(vocabulary)
+        command._sync_cards({}, user=user)
+
+        card.refresh_from_db()
+        self.assertEqual(card.reps, 7)
+        self.assertEqual(card.interval_days, 18)
 
 
 class ComprehensionModelTests(TestCase):
@@ -537,6 +609,60 @@ class ComprehensionFlowTests(TestCase):
             ).count(),
             2,
         )
+
+    def test_completed_attempt_can_retrain_only_its_wrong_answers(self):
+        source = self.start()
+        self.submit(source, 1, "B")
+        self.submit(source, 2, "A")
+        self.submit(source, 3, "B")
+        source.refresh_from_db()
+
+        response = self.client.post(
+            reverse("study:comprehension_start", args=[self.test.slug]),
+            {
+                "action": "errors",
+                "attempt_id": source.pk,
+            },
+        )
+
+        focused = ComprehensionAttempt.objects.exclude(pk=source.pk).get(
+            user=self.user,
+            test=self.test,
+        )
+        self.assertRedirects(
+            response,
+            reverse(
+                "study:comprehension_question",
+                args=[self.test.slug, focused.pk, 1],
+            ),
+            fetch_redirect_response=False,
+        )
+        self.assertEqual(focused.total_questions, 2)
+        self.assertEqual(
+            [
+                question["number"]
+                for question in focused.content_snapshot["questions"]
+            ],
+            [1, 3],
+        )
+        self.assertEqual(
+            focused.content_snapshot["source_attempt_id"],
+            source.pk,
+        )
+
+        self.submit(focused, 1, "A")
+        self.submit(focused, 3, "A")
+        focused.refresh_from_db()
+        self.assertEqual(focused.score, 2)
+        self.assertEqual(focused.total_questions, 2)
+        results = self.client.get(
+            reverse(
+                "study:comprehension_results",
+                args=[self.test.slug, focused.pk],
+            )
+        )
+        self.assertTrue(results.context["is_error_practice"])
+        self.assertContains(results, "Entraînement ciblé terminé")
 
     def test_completed_results_keep_the_original_question_and_answer_key(self):
         attempt = self.start()

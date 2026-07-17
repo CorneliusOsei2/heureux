@@ -530,7 +530,8 @@
     var progress = deck.querySelector("[data-study-progress]");
     var previous = deck.querySelector("[data-study-previous]");
     var reveal = deck.querySelector("[data-study-reveal]");
-    var next = deck.querySelector("[data-study-next]");
+    var keep = deck.querySelector("[data-study-keep]");
+    var learned = deck.querySelector("[data-study-learned]");
     var restart = deck.querySelector("[data-study-restart]");
     var done = deck.querySelector("[data-study-done]");
     var controls = deck.querySelector(".annotation-study__controls");
@@ -546,8 +547,8 @@
       card.querySelector("[data-study-back]").classList.add("hidden");
       revealed = false;
       reveal.classList.remove("hidden");
-      next.classList.add("hidden");
-      next.textContent = index === cards.length - 1 ? "Terminer" : "Suivante →";
+      keep.classList.add("hidden");
+      learned.classList.add("hidden");
       previous.disabled = index === 0;
       controls.classList.remove("hidden");
       done.classList.add("hidden");
@@ -559,7 +560,8 @@
       cards[index].querySelector("[data-study-back]").classList.remove("hidden");
       revealed = true;
       reveal.classList.add("hidden");
-      next.classList.remove("hidden");
+      keep.classList.remove("hidden");
+      learned.classList.remove("hidden");
     }
 
     function advance() {
@@ -582,7 +584,31 @@
       }
     });
     reveal.addEventListener("click", showAnswer);
-    next.addEventListener("click", advance);
+    keep.addEventListener("click", advance);
+    learned.addEventListener("click", function () {
+      var card = cards[index];
+      var formData = new FormData();
+      formData.set("study_later", "0");
+      learned.disabled = true;
+      fetch(card.dataset.studyToggleUrl, {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": csrfToken(),
+          "X-Requested-With": "fetch"
+        },
+        body: formData,
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Impossible de mettre à jour la note.");
+          learned.disabled = false;
+          advance();
+        })
+        .catch(function (error) {
+          learned.disabled = false;
+          showToast(error.message);
+        });
+    });
     restart.addEventListener("click", function () {
       index = 0;
       render();

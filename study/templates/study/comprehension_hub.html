@@ -9,11 +9,27 @@
     <span>Compréhension</span>
   </nav>
 
-  <header class="page-head">
+  <header class="area-hero comprehension-hero">
+    <div class="area-hero__copy">
+      <p class="eyebrow">Lire et écouter avec précision</p>
     <h1>Compréhension</h1>
+      <p>Entraîne-toi dans les conditions du test, analyse chaque correction et transforme le vocabulaire rencontré en cartes.</p>
+    </div>
+    <dl class="area-hero__metrics" aria-label="Progression en compréhension">
+      <div><dt>Tests terminés</dt><dd>{{ comprehension.completed_test_count }}/{{ comprehension.test_count }}</dd></div>
+      <div><dt>Meilleur score</dt><dd>{% if comprehension.best_percentage is not None %}{{ comprehension.best_percentage }} %{% else %}—{% endif %}</dd></div>
+      <div><dt>Parcours</dt><dd>2</dd></div>
+    </dl>
   </header>
 
-  <section class="learning-hub__paths" aria-label="Parcours de compréhension">
+  <section class="learning-hub__paths" aria-labelledby="comprehension-paths-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Parcours</p>
+        <h2 id="comprehension-paths-title">Choisir une compétence</h2>
+      </div>
+      <a href="{% url 'study:vocabulary' %}#comprehension-vocabulary">Voir le vocabulaire des tests →</a>
+    </div>
     {% include "study/_comprehension_paths.html" %}
   </section>
 </div>

@@ -11,6 +11,7 @@ from study import queue as q, srs
 from study.models import CardState, CardType, PhraseTier, Rating, ReviewLog
 
 from .factories import (
+    make_comprehension_test,
     make_part,
     make_phrase,
     make_phrase_card,
@@ -259,6 +260,71 @@ class QueueCountsTests(TestCase):
             q.scoped_cards(
                 {"kind": "vocab", "response": str(response.pk)}
             ).filter(pk=local_production.pk).exists()
+        )
+
+    def test_comprehension_vocabulary_only_enters_its_test_deck(self):
+        first_test = make_comprehension_test(number=1, question_count=1)
+        second_test = make_comprehension_test(number=2, question_count=1)
+        phrase = make_phrase(tier=PhraseTier.COMPREHENSION)
+        phrase.source_questions.add(first_test.questions.get())
+        production = make_phrase_card(phrase=phrase)
+        recognition = make_phrase_card(
+            phrase=phrase,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+        other_phrase = make_phrase(tier=PhraseTier.COMPREHENSION)
+        other_phrase.source_questions.add(second_test.questions.get())
+        other_card = make_phrase_card(phrase=other_phrase)
+
+        deck = q.scoped_cards({"kind": "vocab", "test": first_test.slug})
+
+        self.assertEqual(set(deck.values_list("pk", flat=True)), {production.pk})
+        self.assertFalse(deck.filter(pk=recognition.pk).exists())
+        self.assertFalse(deck.filter(pk=other_card.pk).exists())
+
+    def test_content_scopes_keep_responses_and_vocabulary_separate(self):
+        response_card = make_spine_card()
+        shared_phrase = make_phrase()
+        shared_production = make_phrase_card(phrase=shared_phrase)
+        shared_recognition = make_phrase_card(
+            phrase=shared_phrase,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+        local_phrase = make_phrase(tier=PhraseTier.RESPONSE)
+        local_production = make_phrase_card(phrase=local_phrase)
+        local_recognition = make_phrase_card(
+            phrase=local_phrase,
+            card_type=CardType.PHRASE_RECOGNITION,
+        )
+
+        self.assertEqual(
+            set(
+                q.scoped_cards({"content": "spine"}).values_list(
+                    "pk",
+                    flat=True,
+                )
+            ),
+            {response_card.pk},
+        )
+        self.assertEqual(
+            set(
+                q.scoped_cards({"content": "vocabulary"}).values_list(
+                    "pk",
+                    flat=True,
+                )
+            ),
+            {
+                shared_production.pk,
+                shared_recognition.pk,
+                local_production.pk,
+            },
+        )
+        self.assertNotIn(
+            local_recognition.pk,
+            q.scoped_cards({"content": "vocabulary"}).values_list(
+                "pk",
+                flat=True,
+            ),
         )
 
     def test_category_batch_scope_contains_at_most_ten_cards(self):

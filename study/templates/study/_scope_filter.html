@@ -27,7 +27,7 @@ active_part_tasks, review_scope_qs, scope_label.
   {% endif %}
   {% if review_scope_qs %}
     <div class="scope-filter__action">
-      <a class="btn btn--primary btn--sm" href="{% url 'study:review' %}?{{ review_scope_qs }}">Réviser cette sélection</a>
+      <a class="btn btn--primary btn--sm" href="{% url 'study:review' %}?kind=spine&amp;{{ review_scope_qs }}">Pratiquer les réponses</a>
       <span class="scope-filter__label muted">{{ scope_label }}</span>
     </div>
   {% endif %}

@@ -261,6 +261,7 @@ class PhraseTier(models.TextChoices):
     SHARED = "shared", "Shared catalog"
     RESPONSE = "response", "Response vocabulary"
     SUBJECT = "subject", "Subject vocabulary"
+    COMPREHENSION = "comprehension", "Comprehension vocabulary"
 
 
 class Phrase(models.Model):
@@ -268,7 +269,7 @@ class Phrase(models.Model):
 
     phrase_id = models.CharField(max_length=16, unique=True)
     tier = models.CharField(
-        max_length=8,
+        max_length=16,
         choices=PhraseTier.choices,
         default=PhraseTier.RESPONSE,
         db_index=True,
@@ -284,6 +285,11 @@ class Phrase(models.Model):
     sources_raw = models.TextField(blank=True)
     source_prompts = models.ManyToManyField(
         Prompt, related_name="phrases", blank=True
+    )
+    source_questions = models.ManyToManyField(
+        "ComprehensionQuestion",
+        related_name="vocabulary",
+        blank=True,
     )
     order = models.PositiveIntegerField(default=0)
     lot_order = models.PositiveIntegerField(default=0, db_index=True)

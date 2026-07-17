@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-3",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE03V001",
+      "kind": "mot-cle",
+      "french": "une naissance",
+      "english": "a birth",
+      "example": "La famille écrit pour annoncer une naissance dans leur foyer.",
+      "usage": "Fem. noun from 'naître'; the standard neutral word for a birth announcement, opposed to 'un décès' or 'un mariage'.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE03V002",
+      "kind": "mot-cle",
+      "french": "une réunion",
+      "english": "a meeting",
+      "example": "Lucie a une réunion de travail qui se termine tard le soir.",
+      "usage": "Fem. noun; common in professional contexts ('réunion de travail', 'salle de réunion'). Distinct from 'rencontre' (a personal meet-up).",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE03V003",
+      "kind": "mot-cle",
+      "french": "les horaires du bus",
+      "english": "the bus schedule/times",
+      "example": "Sam envoie à Héloïse les horaires du bus par SMS avant son arrivée.",
+      "usage": "Masc. plural set phrase; 'horaire(s)' is often plural in French even for a single schedule. Transfers to trains, cours, magasins.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE03V004",
+      "kind": "mot-cle",
+      "french": "l'alimentation",
+      "english": "food/nutrition",
+      "example": "Le documentaire traite surtout de l'alimentation et du goût des produits que l'on mange.",
+      "usage": "Fem. noun; broad umbrella term covering diet, food quality and eating habits, wider than 'la cuisine' (cooking).",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE03V005",
+      "kind": "mot-cle",
+      "french": "des jumelles",
+      "english": "twin sisters",
+      "example": "Adoptées séparément, des jumelles indonésiennes se sont retrouvées 29 ans plus tard.",
+      "usage": "Fem. plural noun ('un jumeau' masc. sing.); useful family-relations vocabulary for narrative comprehension passages.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE03V006",
+      "kind": "mot-cle",
+      "french": "un emploi",
+      "english": "a job",
+      "example": "Amandine cherche un emploi depuis sept mois sans succès malgré son master.",
+      "usage": "Masc. noun, more formal register than 'un boulot'; contrast with 'un stage' (internship), a frequent TCF distractor pair.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE03V007",
+      "kind": "mot-cle",
+      "french": "mobilier urbain",
+      "english": "street/urban furniture",
+      "example": "La ville de Paris installe un nouveau mobilier urbain sur certains boulevards.",
+      "usage": "Masc. noun phrase (no article needed before 'urbain'); collective singular covering benches, seats, and public fittings.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE03V008",
+      "kind": "mot-cle",
+      "french": "les réserves mondiales",
+      "english": "the world/global reserves",
+      "example": "D'après le rapport, les réserves mondiales de gaz dépassent largement les prévisions.",
+      "usage": "Fem. plural; common in economic/environmental reporting ('réserves mondiales de pétrole, d'eau, de gaz').",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE03V009",
+      "kind": "mot-cle",
+      "french": "les frais de personnel",
+      "english": "staffing/personnel costs",
+      "example": "Les entreprises cherchent à réduire les frais de personnel grâce à l'automatisation.",
+      "usage": "Masc. plural; standard business term for wage-related expenses, useful for économie topics.",
+      "questions": [
+        31
+      ]
+    },
+    {
+      "id": "CE03V010",
+      "kind": "mot-cle",
+      "french": "la cooptation",
+      "english": "employee referral (hiring)",
+      "example": "Certaines entreprises misent sur la cooptation plutôt que sur des tests de recrutement.",
+      "usage": "Fem. noun; specialized HR term for hiring via employee recommendation, often rewarded with a 'prime'.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE03V011",
+      "kind": "verbe-action",
+      "french": "a vu le jour",
+      "english": "was born (lit. saw the light of day)",
+      "example": "Le petit Adrien a vu le jour le 1er septembre au matin.",
+      "usage": "Idiomatic passé composé of 'voir le jour'; a literary/formal synonym for 'naître', typical in birth announcements.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE03V012",
+      "kind": "verbe-action",
+      "french": "réserver nos places",
+      "english": "to book/reserve our seats",
+      "example": "Lucie demande à son ami de réserver nos places au cinéma pour la séance de 20h.",
+      "usage": "Verb 'réserver' + object; standard collocation for tickets, seats or tables, useful for outings and travel.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE03V013",
+      "kind": "verbe-action",
+      "french": "avoir quitté l'école",
+      "english": "to have left school",
+      "example": "Tous les enfants doivent avoir quitté l'école à 18h selon le règlement.",
+      "usage": "Infinitif passé (avoir + participe); expresses a deadline for a completed action, common in official notices.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE03V014",
+      "kind": "verbe-action",
+      "french": "recueille l'avis",
+      "english": "gathers the opinion/feedback",
+      "example": "Pour la première fois, la mairie recueille l'avis des usagers sur le nouveau mobilier.",
+      "usage": "Verb 'recueillir' + 'avis'; formal collocation meaning to collect opinions, frequent in institutional/administrative texts.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE03V015",
+      "kind": "verbe-action",
+      "french": "se heurte à",
+      "english": "clashes with/runs into (an obstacle)",
+      "example": "La logique industrielle se heurte à celle des consommateurs qui préfèrent un contact humain.",
+      "usage": "Pronominal verb 'se heurter à' + noun; standard way to introduce an obstacle or a conflicting interest in argumentative texts.",
+      "questions": [
+        31
+      ]
+    },
+    {
+      "id": "CE03V016",
+      "kind": "verbe-action",
+      "french": "se multiplier",
+      "english": "to multiply/increase rapidly",
+      "example": "Grâce aux déchets plastiques, cette espèce d'araignée d'eau commence à se multiplier dans le Pacifique.",
+      "usage": "Pronominal verb; used for population growth of species, problems, or examples ('les problèmes se multiplient').",
+      "questions": [
+        27
+      ]
+    },
+    {
+      "id": "CE03V017",
+      "kind": "verbe-action",
+      "french": "exploitent notre préférence",
+      "english": "exploit our preference",
+      "example": "Les industriels exploitent notre préférence innée pour le sucre afin de vendre davantage.",
+      "usage": "Verb 'exploiter' + possessive noun; negative connotation of taking unfair advantage, common in critical/denunciatory articles.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE03V018",
+      "kind": "verbe-action",
+      "french": "faire le deuil de",
+      "english": "to come to terms with / let go of",
+      "example": "La crise d'adolescence oblige les parents à faire le deuil de leur position d'autorité.",
+      "usage": "Fixed verbal expression (lit. 'to mourn'); used figuratively for accepting the loss of a role, illusion or plan.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE03V019",
+      "kind": "verbe-action",
+      "french": "lâchent prise",
+      "english": "let go/loosen their grip",
+      "example": "Pour laisser grandir leur ado, les parents lâchent prise et lui font confiance.",
+      "usage": "Pronominal-style idiom 'lâcher prise'; means to stop controlling or worrying, widely used in psychology and parenting contexts.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE03V020",
+      "kind": "verbe-action",
+      "french": "limiter les risques",
+      "english": "to limit/reduce risks",
+      "example": "Recruter par cooptation permet à l'entreprise de limiter les risques d'un mauvais choix.",
+      "usage": "Verb 'limiter' + 'risque(s)'; frequent collocation in business and safety contexts, near-synonym of 'minimiser les aléas'.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE03V021",
+      "kind": "expression",
+      "french": "à ce point",
+      "english": "to such an extent/this much",
+      "example": "Amandine ne pensait pas qu'il serait à ce point difficile de trouver un emploi.",
+      "usage": "Adverbial expression intensifying an adjective; equivalent to 'tellement' or 'si... que', common in spoken and written registers.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE03V022",
+      "kind": "expression",
+      "french": "en poche",
+      "english": "under one's belt / in hand",
+      "example": "Avec un master commerce en poche, Amandine pensait trouver un emploi facilement.",
+      "usage": "Idiomatic expression following a diploma/qualification noun; means 'having already obtained' it, informal-neutral register.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE03V023",
+      "kind": "expression",
+      "french": "au sein de",
+      "english": "within/inside (an organization)",
+      "example": "Les sujets les plus variés sont débattus au sein de l'hémicycle du Parlement européen.",
+      "usage": "Formal preposition phrase meaning 'within'; typical of administrative, political and journalistic French, more elevated than 'dans'.",
+      "questions": [
+        29
+      ]
+    },
+    {
+      "id": "CE03V024",
+      "kind": "expression",
+      "french": "pour la première fois",
+      "english": "for the first time",
+      "example": "Pour la première fois, la ville de Paris consulte les habitants sur le mobilier urbain.",
+      "usage": "Fixed adverbial phrase signaling novelty; a key strategic marker for questions about 'l'originalité' of a project.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE03V025",
+      "kind": "expression",
+      "french": "de plus en plus",
+      "english": "more and more",
+      "example": "De plus en plus de parents souhaitent que leur adolescent reste à la maison.",
+      "usage": "Fixed comparative expression indicating a growing trend; can modify verbs, adjectives or nouns ('de plus en plus de + nom').",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE03V026",
+      "kind": "expression",
+      "french": "sur l'autel du compromis",
+      "english": "sacrificed for the sake of compromise",
+      "example": "L'intérêt de l'enfant se trouve sacrifié sur l'autel du compromis entre tous les acteurs concernés.",
+      "usage": "Literary/journalistic idiom (lit. 'on the altar of'); used to say something valuable is given up to satisfy competing interests.",
+      "questions": [
+        33
+      ]
+    },
+    {
+      "id": "CE03V027",
+      "kind": "expression",
+      "french": "signe des temps",
+      "english": "sign of the times",
+      "example": "Signe des temps, la cooptation est aujourd'hui acceptée et même encouragée par une prime.",
+      "usage": "Fixed journalistic phrase used to introduce a fact as characteristic of a current trend; often placed at the start of a sentence.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE03V028",
+      "kind": "expression",
+      "french": "depuis belle lurette",
+      "english": "for ages/a long time now",
+      "example": "On s'est habitué depuis belle lurette à ne plus voir de poinçonneurs dans le métro.",
+      "usage": "Informal, slightly dated idiom meaning 'for a very long time'; more colorful than 'depuis longtemps', good for nuanced register.",
+      "questions": [
+        31
+      ]
+    },
+    {
+      "id": "CE03V029",
+      "kind": "expression",
+      "french": "de bonne foi",
+      "english": "in good faith",
+      "example": "Si l'on est lucide et de bonne foi, on reconnaît la difficulté de bien lire son propre livre.",
+      "usage": "Fixed adjectival expression describing honest, sincere judgment; often paired with 'lucide' to qualify an objective viewpoint.",
+      "questions": [
+        38
+      ]
+    },
+    {
+      "id": "CE03V030",
+      "kind": "expression",
+      "french": "j'ai de la chance",
+      "english": "I'm lucky",
+      "example": "Malgré des fins de mois difficiles, Maud conclut: 'Finalement, j'ai de la chance!'",
+      "usage": "Common idiom 'avoir de la chance' (lit. 'to have luck'), here in the first person; everyday expression of good fortune.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE03V031",
+      "kind": "reformulation",
+      "french": "reste chez elle",
+      "english": "stays home (paraphrase of 'reste à la maison')",
+      "example": "Malade, Sandra annule ses cours et reste chez elle toute la journée.",
+      "usage": "Paraphrase pattern: 'chez + pronom' is a direct synonym of 'à la maison' in comprehension answers.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE03V032",
+      "kind": "reformulation",
+      "french": "jeunes mamans",
+      "english": "young mothers (paraphrase of 'jeunes mères')",
+      "example": "Le casting recherche sept jeunes mamans pour un film sur l'éducation des enfants.",
+      "usage": "Synonym pair 'mère'/'maman'; TCF answers often replace a neutral word with a more familiar one carrying the same meaning.",
+      "questions": [
+        5
+      ]
+    },
+    {
+      "id": "CE03V033",
+      "kind": "reformulation",
+      "french": "bien choisir ses vêtements",
+      "english": "choose one's clothes carefully (paraphrase of 'prendre des vêtements chauds')",
+      "example": "Sam conseille à Héloïse de bien choisir ses vêtements avant de partir à la montagne.",
+      "usage": "Paraphrase pattern turning a specific instruction ('vêtements chauds') into a general instruction verb ('bien choisir').",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE03V034",
+      "kind": "reformulation",
+      "french": "horaires de sortie",
+      "english": "pick-up/dismissal times (paraphrase of the school's departure rules)",
+      "example": "La note de l'école Ferrandi concerne surtout les horaires de sortie des élèves.",
+      "usage": "Paraphrase that names the general topic ('horaires de sortie') behind several concrete details in the passage (pick-up, 18h deadline).",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE03V035",
+      "kind": "reformulation",
+      "french": "manger quotidiennement du chocolat",
+      "english": "to eat chocolate daily (paraphrase of 'consommer trois carrés par jour')",
+      "example": "Les chercheurs conseillent de manger quotidiennement du chocolat pour se protéger du soleil.",
+      "usage": "Paraphrase pattern: 'par jour' in the passage becomes the adverb 'quotidiennement' in the answer choice.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE03V036",
+      "kind": "reformulation",
+      "french": "une méthode pour choisir une formation",
+      "english": "a method for choosing a course of study (paraphrase of 'une démarche progressive')",
+      "example": "Le livre propose une méthode pour choisir une formation adaptée à ses goûts.",
+      "usage": "Paraphrase pattern: 'démarche progressive' (passage) corresponds to 'méthode' (answer); 'projet' becomes 'formation'.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE03V037",
+      "kind": "reformulation",
+      "french": "la prise en compte de l'opinion publique",
+      "english": "taking public opinion into account (paraphrase of 'recueille l'avis des usagers')",
+      "example": "L'originalité du projet, c'est la prise en compte de l'opinion publique par la mairie.",
+      "usage": "Paraphrase pattern turning a concrete action ('recueille l'avis') into an abstract noun phrase used in the answer choice.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE03V038",
+      "kind": "reformulation",
+      "french": "les réticences émises par la clientèle",
+      "english": "the reluctance expressed by customers (paraphrase of consumers wanting human contact)",
+      "example": "Les réticences émises par la clientèle freinent surtout l'automatisation des services.",
+      "usage": "Paraphrase pattern: 'consommateurs qui ont du mal à se passer d'une personne humaine' becomes 'réticences de la clientèle'.",
+      "questions": [
+        31
+      ]
+    },
+    {
+      "id": "CE03V039",
+      "kind": "reformulation",
+      "french": "minimiser les aléas",
+      "english": "to minimize uncertainties/risks (paraphrase of 'limiter les risques')",
+      "example": "En misant sur la cooptation, l'entreprise cherche surtout à minimiser les aléas du recrutement.",
+      "usage": "Synonym-pair paraphrase: 'limiter les risques' (passage) = 'minimiser les aléas' (answer); 'aléa' is a more formal synonym of 'risque'.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE03V040",
+      "kind": "reformulation",
+      "french": "les intérêts en jeu sont difficilement compatibles",
+      "english": "the interests at stake are hard to reconcile (paraphrase of the compromise conclusion)",
+      "example": "Le journaliste constate que les intérêts en jeu sont difficilement compatibles dans cette réforme.",
+      "usage": "Paraphrase pattern summarizing a list of conflicting stakeholders into one abstract judgment about competing interests.",
+      "questions": [
+        33
+      ]
+    },
+    {
+      "id": "CE03V041",
+      "kind": "phrase-modele",
+      "french": "il suffirait de",
+      "english": "it would be enough to (+ infinitive)",
+      "example": "Selon les chercheurs, il suffirait de manger trois carrés de chocolat par jour.",
+      "usage": "Impersonal conditional pattern 'il suffirait de + infinitif'; useful to state a minimal condition for a result.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE03V042",
+      "kind": "phrase-modele",
+      "french": "plutôt que de",
+      "english": "rather than (+ infinitive)",
+      "example": "Plutôt que de multiplier les tests, certaines entreprises misent sur la cooptation.",
+      "usage": "Connector pattern 'plutôt que de + infinitif' to contrast a rejected option with the preferred one.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE03V043",
+      "kind": "phrase-modele",
+      "french": "il est incroyable que",
+      "english": "it is incredible/amazing that (+ subjunctive)",
+      "example": "Il est incroyable que la perspective de lire son livre en public n'ait jamais découragé un écrivain.",
+      "usage": "Impersonal expression of surprise triggering the subjunctive; useful opener for expressing astonishment in formal writing.",
+      "questions": [
+        38
+      ]
+    },
+    {
+      "id": "CE03V044",
+      "kind": "phrase-modele",
+      "french": "il n'est pas nécessaire de",
+      "english": "it is not necessary to (+ infinitive)",
+      "example": "Il n'est pas nécessaire de recouvrir son corps de cacao pour profiter des bienfaits du chocolat.",
+      "usage": "Impersonal negative pattern 'il n'est pas nécessaire de + infinitif'; polite way to dismiss an assumed requirement.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE03V045",
+      "kind": "phrase-modele",
+      "french": "ne suffisent plus à",
+      "english": "are no longer enough to (+ infinitive)",
+      "example": "Les diplômes ne suffisent plus à assurer une situation stable en France.",
+      "usage": "Pattern 'ne + verbe + plus à + infinitif' to argue that something once sufficient has become inadequate.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE03V046",
+      "kind": "phrase-modele",
+      "french": "c'est peut-être l'une des raisons pour lesquelles",
+      "english": "that is perhaps one of the reasons why",
+      "example": "C'est peut-être l'une des raisons pour lesquelles l'écologie politique ne convainc pas davantage.",
+      "usage": "Hedging pattern for proposing a tentative cause; useful to introduce an explanation without over-claiming certainty.",
+      "questions": [
+        36
+      ]
+    },
+    {
+      "id": "CE03V047",
+      "kind": "phrase-modele",
+      "french": "à mesure que",
+      "english": "as/in proportion as",
+      "example": "Le succès du livre grandit à mesure que le lecteur se sent mieux guidé par l'index.",
+      "usage": "Subordinating connector introducing a parallel, gradual evolution between two clauses; more formal than 'quand'.",
+      "questions": [
+        37
+      ]
+    },
+    {
+      "id": "CE03V048",
+      "kind": "phrase-modele",
+      "french": "comme si",
+      "english": "as if",
+      "example": "Le discours écologique reste factuel, comme si l'on n'osait pas parler de la beauté de la nature.",
+      "usage": "Subordinating expression 'comme si + imparfait' introducing a hypothetical comparison, common in critical/argumentative style.",
+      "questions": [
+        36
+      ]
+    },
+    {
+      "id": "CE03V049",
+      "kind": "phrase-modele",
+      "french": "quelles sont les forces dont",
+      "english": "what are the strengths that (+ noun/verb) possesses",
+      "example": "Quelles sont les forces dont dispose l'Homme pour dominer les autres espèces ?",
+      "usage": "Rhetorical-question pattern opening an essay or article by asking what resources or strengths enable an outcome.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE03V050",
+      "kind": "phrase-modele",
+      "french": "de quoi est-il question",
+      "english": "what is this about",
+      "example": "De quoi est-il question dans cet article sur les jeunes diplômés sans emploi ?",
+      "usage": "Formal interrogative pattern for asking about the topic of a text, equivalent to 'quel est le sujet de'.",
+      "questions": [
+        14
+      ]
+    }
+  ]
+}

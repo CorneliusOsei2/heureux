@@ -5,8 +5,8 @@
 {% include "study/_task_nav.html" %}
 <div class="page-head row between">
   <div>
-    <p class="eyebrow">Mémoire active</p>
-    <h1>Ma liste à revoir</h1>
+    <p class="eyebrow">{% if content == "spine" %}Expression{% elif content == "vocabulary" %}Vocabulaire{% else %}Mémoire active{% endif %}</p>
+    <h1>{% if content == "spine" %}Réponses à revoir{% elif content == "vocabulary" %}Vocabulaire à revoir{% else %}Ma liste à revoir{% endif %}</h1>
     <p class="muted mt-0">Les cartes marquées « Revoir » restent ici jusqu'à ce que vous répondiez correctement.</p>
   </div>
   {% if items %}
@@ -57,7 +57,11 @@
     <div class="done-state__emoji">✓</div>
     <h2>Aucune carte à revoir</h2>
     <p>Lorsque vous hésitez sur une carte, choisissez « Revoir » : elle apparaîtra ici.</p>
-    <a class="btn btn--primary" href="{% url 'study:review' %}{% if task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">Continuer la révision</a>
+    {% if content == "spine" %}
+      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">Pratiquer les réponses</a>
+    {% else %}
+      <a class="btn btn--primary" href="{% url 'study:vocabulary' %}">Choisir un deck de vocabulaire</a>
+    {% endif %}
   </div>
 {% endif %}
 {% endblock %}

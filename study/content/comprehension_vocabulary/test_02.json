@@ -1,0 +1,456 @@
+{
+  "test_slug": "test-2",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE02V001",
+      "kind": "mot-cle",
+      "french": "envois urgents",
+      "english": "an urgent shipment",
+      "example": "L'entreprise prend en charge des envois urgents à domicile ou au bureau de poste.",
+      "usage": "Nom courant dans les services de livraison et la correspondance professionnelle.",
+      "questions": [2]
+    },
+    {
+      "id": "CE02V002",
+      "kind": "mot-cle",
+      "french": "un contrat de travail",
+      "english": "an employment contract",
+      "example": "Au forum, plusieurs jeunes signent un contrat de travail.",
+      "usage": "Document juridique qui formalise une relation d'emploi.",
+      "questions": [6]
+    },
+    {
+      "id": "CE02V003",
+      "kind": "mot-cle",
+      "french": "la période estivale",
+      "english": "the summer period",
+      "example": "Les demandes de congés doivent être organisées pendant la période estivale.",
+      "usage": "Registre administratif pour parler de la saison d'été.",
+      "questions": [13]
+    },
+    {
+      "id": "CE02V004",
+      "kind": "mot-cle",
+      "french": "dégager le trafic",
+      "english": "a traffic jam",
+      "example": "Le bus aérien pourrait dégager le trafic dans les zones urbaines.",
+      "usage": "Nom très courant pour un ralentissement important de la circulation.",
+      "questions": [15]
+    },
+    {
+      "id": "CE02V005",
+      "kind": "mot-cle",
+      "french": "savoir-être",
+      "english": "soft skills",
+      "example": "Lors d'un entretien, le savoir-être peut aider un candidat à se démarquer.",
+      "usage": "Terme professionnel pour les qualités relationnelles et comportementales.",
+      "questions": [18]
+    },
+    {
+      "id": "CE02V006",
+      "kind": "mot-cle",
+      "french": "l'appellation d'origine contrôlée",
+      "english": "protected designation of origin",
+      "example": "L'appellation d'origine contrôlée protège le piment d'Espelette contre les copies.",
+      "usage": "Label officiel garantissant l'origine et l'authenticité d'un produit.",
+      "questions": [20]
+    },
+    {
+      "id": "CE02V007",
+      "kind": "mot-cle",
+      "french": "bourses",
+      "english": "a grant",
+      "example": "Près de quatre mille bourses Erasmus n'ont pas trouvé preneur.",
+      "usage": "Aide financière accordée notamment aux étudiants.",
+      "questions": [22]
+    },
+    {
+      "id": "CE02V008",
+      "kind": "mot-cle",
+      "french": "un don",
+      "english": "a donation",
+      "example": "Les propriétaires sollicitent un don pour restaurer le château.",
+      "usage": "Somme offerte sans remboursement, souvent pour soutenir une cause.",
+      "questions": [24]
+    },
+    {
+      "id": "CE02V009",
+      "kind": "mot-cle",
+      "french": "revenus des garants",
+      "english": "a guarantor",
+      "example": "Les revenus des garants influencent la décision du propriétaire.",
+      "usage": "Personne ou organisme qui garantit le paiement d'une dette ou d'un loyer.",
+      "questions": [30]
+    },
+    {
+      "id": "CE02V010",
+      "kind": "mot-cle",
+      "french": "tarification spéciale",
+      "english": "special pricing",
+      "example": "L'Union des transports publics préfère une tarification spéciale pour les jeunes.",
+      "usage": "Prix réduit ou adapté à un public précis.",
+      "questions": [38]
+    },
+    {
+      "id": "CE02V011",
+      "kind": "verbe-action",
+      "french": "nous rencontrer",
+      "english": "to meet",
+      "example": "Ariane demande : « Pouvons-nous nous rencontrer dans ton bureau demain matin ? »",
+      "usage": "Verbe pronominal pour convenir d'un rendez-vous entre personnes.",
+      "questions": [5]
+    },
+    {
+      "id": "CE02V012",
+      "kind": "verbe-action",
+      "french": "prévenir les collègues",
+      "english": "to notify colleagues",
+      "example": "Ahmed doit prévenir les collègues des services concernés par la réunion.",
+      "usage": "Prévenir signifie informer à temps d'un événement ou d'un changement.",
+      "questions": [9]
+    },
+    {
+      "id": "CE02V013",
+      "kind": "verbe-action",
+      "french": "demande de congés",
+      "english": "to request time off",
+      "example": "Chaque employé remet sa demande de congés avant vendredi midi.",
+      "usage": "Expression professionnelle pour demander officiellement des jours de congé.",
+      "questions": [13]
+    },
+    {
+      "id": "CE02V014",
+      "kind": "verbe-action",
+      "french": "se démarquer",
+      "english": "to stand out",
+      "example": "Les candidats peuvent se démarquer grâce à un talent particulier.",
+      "usage": "S'emploie pour se distinguer positivement des autres.",
+      "questions": [18]
+    },
+    {
+      "id": "CE02V015",
+      "kind": "verbe-action",
+      "french": "lutter contre les imitations",
+      "english": "to fight imitations",
+      "example": "L'AOC permet de lutter contre les imitations du piment d'Espelette.",
+      "usage": "Construction fréquente pour évoquer une protection juridique ou commerciale.",
+      "questions": [20]
+    },
+    {
+      "id": "CE02V016",
+      "kind": "verbe-action",
+      "french": "s'adapte aux capacités",
+      "english": "to adapt to",
+      "example": "Theo s'adapte aux capacités de jeux de chaque enfant.",
+      "usage": "Se construit avec à pour ajuster son comportement à une situation.",
+      "questions": [21]
+    },
+    {
+      "id": "CE02V017",
+      "kind": "verbe-action",
+      "french": "gérer correctement ses phases de repos",
+      "english": "to manage one's rest periods",
+      "example": "Pour gagner, le navigateur doit gérer correctement ses phases de repos.",
+      "usage": "Collocation utile pour organiser récupération, sommeil et effort.",
+      "questions": [23]
+    },
+    {
+      "id": "CE02V018",
+      "kind": "verbe-action",
+      "french": "se porte garant",
+      "english": "to act as guarantor",
+      "example": "L'État se porte garant du versement des loyers étudiants.",
+      "usage": "Expression juridique et administrative indiquant qu'on garantit un paiement.",
+      "questions": [30]
+    },
+    {
+      "id": "CE02V019",
+      "kind": "verbe-action",
+      "french": "repousser les points qui fâchent à plus tard",
+      "english": "to postpone",
+      "example": "Les ministres préfèrent repousser les points qui fâchent à plus tard.",
+      "usage": "Formule courante pour différer une décision ou une discussion.",
+      "questions": [32]
+    },
+    {
+      "id": "CE02V020",
+      "kind": "verbe-action",
+      "french": "bute sur un mot",
+      "english": "to get stuck on a word",
+      "example": "Jean Claude bute sur un mot et consulte alors un dictionnaire.",
+      "usage": "Registre courant pour rencontrer une difficulté de compréhension.",
+      "questions": [39]
+    },
+    {
+      "id": "CE02V021",
+      "kind": "expression",
+      "french": "au plus tard",
+      "english": "at the latest",
+      "example": "La feuille de demande doit être remise au plus tard vendredi midi.",
+      "usage": "Marque une échéance limite dans une consigne.",
+      "questions": [13]
+    },
+    {
+      "id": "CE02V022",
+      "kind": "expression",
+      "french": "se faire voler leurs traditions",
+      "english": "to have one's traditions stolen",
+      "example": "Les Basques n'aiment pas se faire voler leurs traditions.",
+      "usage": "Expression qui évoque la défense d'un héritage culturel contre l'appropriation.",
+      "questions": [20]
+    },
+    {
+      "id": "CE02V023",
+      "kind": "expression",
+      "french": "a du plomb dans l'aile",
+      "english": "to be struggling",
+      "example": "Le programme Erasmus a du plomb dans l'aile.",
+      "usage": "Expression imagée indiquant qu'un projet ou une situation se dégrade.",
+      "questions": [22]
+    },
+    {
+      "id": "CE02V024",
+      "kind": "expression",
+      "french": "se rendre à l'évidence",
+      "english": "to face the facts",
+      "example": "Il faut se rendre à l'évidence : le quotidien papier arrive trop tard.",
+      "usage": "Introduit l'acceptation d'un constat difficile à nier.",
+      "questions": [35]
+    },
+    {
+      "id": "CE02V025",
+      "kind": "expression",
+      "french": "passe volontiers à la caisse",
+      "english": "to pay up",
+      "example": "Le public qui achète l'album passe volontiers à la caisse.",
+      "usage": "Registre courant, souvent figuré, pour parler du fait de payer.",
+      "questions": [36]
+    },
+    {
+      "id": "CE02V026",
+      "kind": "expression",
+      "french": "se retrancher",
+      "english": "to withdraw",
+      "example": "Pour apprécier ce disque, il faut se retrancher et prendre son temps.",
+      "usage": "Ici, signifie s'isoler pour se concentrer, dans un registre soutenu.",
+      "questions": [36]
+    },
+    {
+      "id": "CE02V027",
+      "kind": "expression",
+      "french": "dire l'indicible",
+      "english": "to express the unsayable",
+      "example": "Cette collection invite les auteurs à dire l'indicible dans une lettre.",
+      "usage": "Formule littéraire pour exprimer ce qui paraît impossible à formuler.",
+      "questions": [37]
+    },
+    {
+      "id": "CE02V028",
+      "kind": "expression",
+      "french": "une fausse bonne idée",
+      "english": "a seemingly good idea",
+      "example": "Selon l'UTP, la gratuité totale est une fausse bonne idée.",
+      "usage": "Expression critique pour une solution séduisante mais finalement nuisible.",
+      "questions": [38]
+    },
+    {
+      "id": "CE02V029",
+      "kind": "expression",
+      "french": "a quelque chose à se reprocher",
+      "english": "to have something to hide",
+      "example": "La caméra cachée suppose que la personne filmée a quelque chose à se reprocher.",
+      "usage": "Suggère une faute ou une culpabilité présumée.",
+      "questions": [29]
+    },
+    {
+      "id": "CE02V030",
+      "kind": "expression",
+      "french": "un parcours du combattant",
+      "english": "an uphill struggle",
+      "example": "Trouver un logement étudiant devient un parcours du combattant.",
+      "usage": "Expression imagée pour une démarche particulièrement difficile.",
+      "questions": [30]
+    },
+    {
+      "id": "CE02V031",
+      "kind": "reformulation",
+      "french": "Des cours",
+      "english": "language lessons",
+      "example": "La publicité propose Des cours à domicile ou au centre.",
+      "usage": "Reformule les leçons proposées dans une annonce de formation.",
+      "questions": [1]
+    },
+    {
+      "id": "CE02V032",
+      "kind": "reformulation",
+      "french": "pour un repas",
+      "english": "for a meal",
+      "example": "Alice attend Pierre devant l'ascenseur pour un repas au restaurant.",
+      "usage": "Reformule un déjeuner ou un dîner sans préciser le moment.",
+      "questions": [4]
+    },
+    {
+      "id": "CE02V033",
+      "kind": "reformulation",
+      "french": "l'entrée se fera par une autre porte",
+      "english": "entry will be through another door",
+      "example": "Pendant les travaux, l'entrée se fera par une autre porte côté boulevard.",
+      "usage": "Reformule un changement temporaire de point d'accès.",
+      "questions": [10]
+    },
+    {
+      "id": "CE02V034",
+      "kind": "reformulation",
+      "french": "respecter des normes d'hygiène",
+      "english": "to meet hygiene standards",
+      "example": "La direction interdit le survêtement pour respecter des normes d'hygiène.",
+      "usage": "Reformule une exigence de propreté dans un cadre collectif.",
+      "questions": [16]
+    },
+    {
+      "id": "CE02V035",
+      "kind": "reformulation",
+      "french": "dormir efficacement",
+      "english": "to sleep efficiently",
+      "example": "Pour gagner la course, le navigateur doit dormir efficacement.",
+      "usage": "Résume la gestion du sommeil et de la récupération.",
+      "questions": [23]
+    },
+    {
+      "id": "CE02V036",
+      "kind": "reformulation",
+      "french": "les gens en mangent plus que par le passé",
+      "english": "people eat more of it than before",
+      "example": "En France, les gens en mangent plus que par le passé, même si les algues restent peu courantes.",
+      "usage": "Reformule une consommation qui est en progression.",
+      "questions": [26]
+    },
+    {
+      "id": "CE02V037",
+      "kind": "reformulation",
+      "french": "la méfiance des propriétaires",
+      "english": "landlords' distrust",
+      "example": "La méfiance des propriétaires complique l'accès des étudiants au logement.",
+      "usage": "Résume une sélection stricte fondée sur les revenus du garant.",
+      "questions": [30]
+    },
+    {
+      "id": "CE02V038",
+      "kind": "reformulation",
+      "french": "l'accès réglementé à un emplacement protégé",
+      "english": "regulated access to a protected site",
+      "example": "La réouverture expérimentale prévoit l'accès réglementé à un emplacement protégé.",
+      "usage": "Résume des visites limitées pour préserver un lieu fragile.",
+      "questions": [31]
+    },
+    {
+      "id": "CE02V039",
+      "kind": "reformulation",
+      "french": "l'absence de prise de décisions effectives",
+      "english": "lack of effective decisions",
+      "example": "La conférence se conclut par l'absence de prise de décisions effectives.",
+      "usage": "Synthétise une réunion où les sujets difficiles sont reportés.",
+      "questions": [32]
+    },
+    {
+      "id": "CE02V040",
+      "kind": "reformulation",
+      "french": "Il doute de l'intérêt des médias traditionnels",
+      "english": "to doubt traditional media's relevance",
+      "example": "Face au numérique, il doute de l'intérêt des médias traditionnels.",
+      "usage": "Reformule la perte de vitesse de la presse papier face au numérique.",
+      "questions": [35]
+    },
+    {
+      "id": "CE02V041",
+      "kind": "phrase-modele",
+      "french": "Nous aimerions vous avoir à notre soirée",
+      "english": "We would like you at our party.",
+      "example": "Céline et Redah écrivent : « Nous aimerions vous avoir à notre soirée pour fêter la nouvelle année. »",
+      "usage": "Invitation chaleureuse, plus polie et formelle que « Venez ». ",
+      "questions": [11]
+    },
+    {
+      "id": "CE02V042",
+      "kind": "phrase-modele",
+      "french": "Vous voulez les aider?",
+      "english": "Do you want to help them?",
+      "example": "Clément et Pierre demandent : « Vous voulez les aider? »",
+      "usage": "Question directe et engageante pour solliciter un soutien.",
+      "questions": [12]
+    },
+    {
+      "id": "CE02V043",
+      "kind": "phrase-modele",
+      "french": "Veuillez nous excuser pour la gêne occasionnée.",
+      "english": "Please excuse the inconvenience caused.",
+      "example": "L'avis municipal précise : « Veuillez nous excuser pour la gêne occasionnée. »",
+      "usage": "Formule administrative standard pour présenter des excuses aux usagers.",
+      "questions": [10]
+    },
+    {
+      "id": "CE02V044",
+      "kind": "phrase-modele",
+      "french": "Il vaudrait mieux limiter la production de papier inutile.",
+      "english": "It would be better to limit unnecessary paper production.",
+      "example": "L'article conseille : « Il vaudrait mieux limiter la production de papier inutile. »",
+      "usage": "Conditionnel de conseil pour recommander une action sans l'imposer.",
+      "questions": [14]
+    },
+    {
+      "id": "CE02V045",
+      "kind": "phrase-modele",
+      "french": "il faut courir depuis au moins un an",
+      "english": "You need to have been running for at least a year.",
+      "example": "L'organisateur rappelle qu'il faut courir depuis au moins un an.",
+      "usage": "Il faut + infinitif exprime une condition nécessaire ou une obligation.",
+      "questions": [17]
+    },
+    {
+      "id": "CE02V046",
+      "kind": "phrase-modele",
+      "french": "Les entretiens n'ont pas pour enjeu de poste précis",
+      "english": "The interviews are not for a specific position.",
+      "example": "Le cabinet explique : « Les entretiens n'ont pas pour enjeu de poste précis; ils visent une réserve de talents. »",
+      "usage": "Formulation soutenue pour préciser l'objectif réel d'une démarche.",
+      "questions": [18]
+    },
+    {
+      "id": "CE02V047",
+      "kind": "phrase-modele",
+      "french": "Il s'agit d'une expérience réservée à un groupe de cinq personnes",
+      "english": "It is an experiment reserved for a group of five people.",
+      "example": "Pour la grotte, l'article indique : « Il s'agit d'une expérience réservée à un groupe de cinq personnes tirées au hasard. »",
+      "usage": "Il s'agit de sert à présenter ou définir précisément une situation.",
+      "questions": [31]
+    },
+    {
+      "id": "CE02V048",
+      "kind": "phrase-modele",
+      "french": "pourrait acheter des crédits carbone",
+      "english": "A country could buy carbon credits.",
+      "example": "Un pays qui échoue à réduire ses émissions pourrait acheter des crédits carbone.",
+      "usage": "Le conditionnel présente ici une possibilité ou une conséquence envisagée.",
+      "questions": [33]
+    },
+    {
+      "id": "CE02V049",
+      "kind": "phrase-modele",
+      "french": "Un quotidien papier ne peut pas rivaliser",
+      "english": "A print daily cannot compete with online media speed.",
+      "example": "L'auteur constate : « Un quotidien papier ne peut pas rivaliser avec la vitesse des médias en ligne. »",
+      "usage": "Ne pas pouvoir rivaliser avec exprime un désavantage face à une concurrence.",
+      "questions": [35]
+    },
+    {
+      "id": "CE02V050",
+      "kind": "phrase-modele",
+      "french": "Rien de tel qu'un dictionnaire des synonymes.",
+      "english": "Nothing beats a thesaurus.",
+      "example": "Jean Claude affirme : « Rien de tel qu'un dictionnaire des synonymes. »",
+      "usage": "Formule idiomatique pour recommander vivement un outil ou une solution.",
+      "questions": [39]
+    }
+  ]
+}

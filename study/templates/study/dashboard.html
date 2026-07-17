@@ -2,96 +2,103 @@
 {% block title %}Accueil · Heureux{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="hero__top">
-    <div class="hero__copy">
-      <p class="eyebrow">Examen de français · répétition espacée</p>
-      <h1>Prêt à réviser&nbsp;?</h1>
-      {% if counts.total_due %}
-        <p class="hero__lead"><b>{{ counts.total_due }}</b> carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }}.</p>
-      {% else %}
-        <p class="hero__lead">Tout est à jour.</p>
-      {% endif %}
+<div class="home-page">
+  <header class="home-hero">
+    <div class="home-hero__copy">
+      <p class="eyebrow">Bonjour @{{ request.user.username }}</p>
+      <h1>Que veux-tu travailler aujourd’hui&nbsp;?</h1>
+      <p>Chaque activité reste dans son espace. Choisis une étape claire et reprends exactement là où tu en es.</p>
     </div>
-    <div class="hero__stats">
-      <div class="hero__stat"><b>{{ counts.due_reviews }}</b><span>à revoir</span></div>
-      <div class="hero__stat"><b>{{ counts.new_available }}</b><span>nouvelles</span></div>
-      <div class="hero__stat"><b>{{ streak }}</b><span>jour{{ streak|pluralize }} de suite</span></div>
-      <div class="hero__stat"><b>{{ overall.mature }}/{{ overall.total }}</b><span>maîtrisées</span></div>
-    </div>
-  </div>
+    <dl class="home-hero__metrics" aria-label="Résumé de progression">
+      <div><dt>Série</dt><dd>{{ streak }} j</dd></div>
+      <div><dt>Cartes vues</dt><dd>{{ overall.seen }}/{{ overall.total }}</dd></div>
+      <div><dt>Maîtrisées</dt><dd>{{ overall.mature }}</dd></div>
+    </dl>
+  </header>
 
-  <div class="hero__actions">
-    <a class="btn btn--primary btn--lg" href="{% if content_task %}{% url 'study:task_review_hub' content_task.part.slug content_task.slug %}{% else %}{% url 'study:review' %}{% endif %}">
-      {% if counts.total_due %}Continuer la révision{% else %}Étudier{% endif %}
+  {% if can_resume_review %}
+    <a class="resume-review resume-review--home" href="{% url 'study:review' %}">
+      <span class="resume-review__icon" aria-hidden="true">▶</span>
+      <span>
+        <small>Session interrompue · {{ resume_scope_label }}</small>
+        <strong>Reprendre là où je me suis arrêté</strong>
+      </span>
+      <span aria-hidden="true">→</span>
     </a>
-    {% if nav_revisit_count %}
-      <a class="btn btn--ghost btn--lg" href="{% url 'study:revisit_list' %}">À revoir · {{ nav_revisit_count }}</a>
-    {% endif %}
-    {% if weak_count %}
-      <a class="btn btn--ghost btn--lg" href="{% url 'study:review' %}?kind=weak">Points à renforcer · {{ weak_count }}</a>
-    {% endif %}
-  </div>
-</section>
+  {% endif %}
 
-<div class="learning-domains">
-  <section class="learning-domain" aria-labelledby="expression-domain-title">
-    <header class="learning-domain__head">
+  <section class="daily-plan" aria-labelledby="daily-plan-title">
+    <div class="section-heading">
       <div>
-        <p class="eyebrow">Produire en français</p>
-        <h2 id="expression-domain-title">Expression</h2>
+        <p class="eyebrow">Plan du jour</p>
+        <h2 id="daily-plan-title">Tes prochaines activités</h2>
       </div>
-    </header>
-
-    <div class="learning-path-grid">
-      {% for path in expression_paths %}
-        {% if path.available %}
-          <a class="learning-path-card learning-path-card--available" href="{% url 'study:part_detail' path.part.slug %}">
-        {% else %}
-          <article class="learning-path-card learning-path-card--soon" aria-disabled="true">
-        {% endif %}
-            <header class="learning-path-card__head">
-              <span class="learning-path-card__icon" aria-hidden="true">
-                {% if path.part.slug == "orale" %}
-                  <svg viewBox="0 0 24 24" focusable="false"><rect x="8" y="3" width="8" height="12" rx="4"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"></path></svg>
-                {% else %}
-                  <svg viewBox="0 0 24 24" focusable="false"><path d="m4 20 4.5-1 10-10-3.5-3.5-10 10zM13.8 6.7l3.5 3.5M4 20h16"></path></svg>
-                {% endif %}
-              </span>
-              {% if not path.available %}
-                <span class="learning-path-card__status learning-path-card__status--soon">À venir</span>
-              {% endif %}
-            </header>
-            <div class="learning-path-card__body">
-              <h3>{{ path.part.name|cut:"Expression "|capfirst }}</h3>
-            </div>
-            {% if path.available %}
-              <div class="learning-path-card__facts">
-                <span><b>{{ path.available_task_count }}</b> tâche{{ path.available_task_count|pluralize }}</span>
-                <span><b>{{ path.prompt_count }}</b> sujets</span>
-                <span><b>{{ path.seen }}/{{ path.total }}</b> cartes vues</span>
-              </div>
-              <span class="learning-path-card__action">
-                Ouvrir
-                <span aria-hidden="true">→</span>
-              </span>
-            {% else %}
-              <div class="learning-path-card__pending">Parcours en préparation</div>
-            {% endif %}
-        {% if path.available %}</a>{% else %}</article>{% endif %}
-      {% endfor %}
+      <p>Les nombres indiquent précisément ce qui est disponible dans chaque espace.</p>
     </div>
-  </section>
 
-  <section class="learning-domain" aria-labelledby="comprehension-domain-title">
-    <header class="learning-domain__head">
-      <div>
-        <p class="eyebrow">Comprendre le français</p>
-        <h2 id="comprehension-domain-title">Compréhension</h2>
-      </div>
-    </header>
-    {% include "study/_comprehension_paths.html" %}
+    <div class="daily-plan__grid">
+      <article class="daily-card card daily-card--expression">
+        <span class="daily-card__index">01</span>
+        <div>
+          <p class="eyebrow">Expression</p>
+          <h3>Restituer des réponses</h3>
+          <p>{{ expression_counts.due_reviews }} à revoir · {{ expression_counts.new_available }} nouvelles réponses.</p>
+        </div>
+        <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine">Pratiquer</a>
+        <a class="daily-card__secondary" href="{% url 'study:expression' %}">Voir les sujets →</a>
+      </article>
+
+      <article class="daily-card card daily-card--vocabulary">
+        <span class="daily-card__index">02</span>
+        <div>
+          <p class="eyebrow">Vocabulaire</p>
+          <h3>Activer les mots et tournures</h3>
+          <p>{{ vocabulary_counts.due_reviews }} à revoir · {{ vocabulary_counts.new_available }} nouvelles cartes.</p>
+        </div>
+        <a class="btn btn--primary" href="{% url 'study:vocabulary' %}">Choisir un deck</a>
+        <a class="daily-card__secondary" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">Renforcer mes points faibles →</a>
+      </article>
+
+      <article class="daily-card card daily-card--comprehension">
+        <span class="daily-card__index">03</span>
+        <div>
+          <p class="eyebrow">Compréhension</p>
+          {% if comprehension.active_attempt %}
+            <h3>Continuer {{ comprehension.next_test.title }}</h3>
+            <p>{{ comprehension.active_answered_count }}/{{ comprehension.active_question_count }} questions répondues.</p>
+          {% elif comprehension.next_test %}
+            <h3>Faire {{ comprehension.next_test.title }}</h3>
+            <p>{{ comprehension.completed_test_count }}/{{ comprehension.test_count }} tests terminés.</p>
+          {% else %}
+            <h3>Entraîner la compréhension</h3>
+            <p>Les prochains tests apparaîtront ici.</p>
+          {% endif %}
+        </div>
+        {% if comprehension.active_attempt %}
+          <a class="btn btn--primary" href="{% url 'study:comprehension_question' comprehension.next_test.slug comprehension.active_attempt.id comprehension.active_attempt.current_question %}">Continuer</a>
+        {% elif comprehension.next_test %}
+          <a class="btn btn--primary" href="{% url 'study:comprehension_test' comprehension.next_test.slug %}">Ouvrir le test</a>
+        {% else %}
+          <a class="btn" href="{% url 'study:comprehension_hub' %}">Voir le parcours</a>
+        {% endif %}
+        <a class="daily-card__secondary" href="{% url 'study:comprehension_hub' %}">Tous les tests →</a>
+      </article>
+
+      <article class="daily-card card daily-card--notes">
+        <span class="daily-card__index">04</span>
+        <div>
+          <p class="eyebrow">Notes</p>
+          <h3>Revoir ce que tu as retenu</h3>
+          <p>{{ notes_to_study }} note{{ notes_to_study|pluralize }} ou surlignage{{ notes_to_study|pluralize }} à étudier.</p>
+        </div>
+        {% if notes_to_study %}
+          <a class="btn btn--primary" href="{% url 'study:annotation_study' %}">Étudier</a>
+        {% else %}
+          <a class="btn" href="{% url 'study:notes_overview' %}">Ouvrir mes notes</a>
+        {% endif %}
+        <a class="daily-card__secondary" href="{% url 'study:notes_overview' %}">Gérer mes notes →</a>
+      </article>
+    </div>
   </section>
 </div>
-
 {% endblock %}

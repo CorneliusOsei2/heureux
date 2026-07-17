@@ -40,7 +40,7 @@
   <div class="answer">
     {% if production %}
       <div class="spine-block">
-        <div class="spine-label">{% if subject_vocabulary %}Réponse française{% else %}Expression{% endif %}</div>
+        <div class="spine-label">{% if subject_vocabulary or comprehension_vocabulary %}Réponse française{% else %}Expression{% endif %}</div>
         <div class="spine-text serif">{{ phrase.expression }}</div>
       </div>
     {% else %}
@@ -58,6 +58,14 @@
           <a class="chip" href="{% url 'study:response_detail' s.response_id %}?prompt={{ s.pk }}">{{ s.theme.display_name }} P{{ s.number }}</a>
         {% endfor %}
         {% with more=sources|slice:"6:"|length %}{% if more %}<span class="chip chip--more">+{{ more }}</span>{% endif %}{% endwith %}
+      </div>
+    {% endif %}
+    {% if question_sources %}
+      <div class="phrase__foot">
+        <span class="faint">Tiré de :</span>
+        {% for source in question_sources %}
+          <a class="chip" href="{% url 'study:comprehension_question_study' source.test.slug source.number %}">{{ source.test.title }} · Q{{ source.number }}</a>
+        {% endfor %}
       </div>
     {% endif %}
   </div>

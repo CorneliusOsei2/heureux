@@ -82,12 +82,14 @@ from .srs import review as apply_review, undo_last
 MATURE_DAYS = 21
 REVIEW_SCOPE_KEYS = (
     "kind",
+    "content",
     "part",
     "task",
     "theme",
     "family",
     "category",
     "response",
+    "test",
     "batch",
 )
 MAX_ANNOTATION_QUOTE_LENGTH = 5000
@@ -384,14 +386,18 @@ def _batch_index_url(scope: dict) -> str | None:
     if scope.get("response"):
         return reverse("study:response_detail", args=[scope["response"]])
     if scope.get("category"):
+        query = {"category": scope["category"]}
         if scope.get("part") and scope.get("task"):
-            base = reverse(
-                "study:task_phrases",
-                args=[scope["part"], scope["task"]],
+            query.update(
+                {"part": scope["part"], "task": scope["task"]}
             )
-        else:
-            base = reverse("study:phrases")
-        return base + "?" + urlencode({"category": scope["category"]})
+        return reverse("study:vocabulary") + "?" + urlencode(query)
+    if scope.get("test"):
+        return (
+            reverse("study:vocabulary")
+            + "?"
+            + urlencode({"test": scope["test"]})
+        )
     if scope.get("theme"):
         return reverse("study:theme_detail", args=[scope["theme"]])
     return None
@@ -692,6 +698,10 @@ def _comprehension_summary(user):
         for test in tests
         for attempt in test.completed_attempts
     ]
+    next_test = active_test or next(
+        (test for test in tests if not test.completed_attempts),
+        tests[0] if tests else None,
+    )
     return {
         "group_count": COMPREHENSION_GROUP_COUNT,
         "test_count": len(tests),
@@ -712,6 +722,7 @@ def _comprehension_summary(user):
             (attempt.percentage for attempt in completed_attempts),
             default=None,
         ),
+        "next_test": next_test,
     }
 
 
@@ -756,25 +767,128 @@ def _home_expression_paths(parts):
 
 def dashboard(request):
     now = timezone.now()
-    counts = queue_module.queue_counts(now=now, user=request.user)
-    user_cards = queue_module.scoped_cards(user=request.user)
+    expression_counts = queue_module.queue_counts(
+        {"content": "spine"},
+        now=now,
+        user=request.user,
+    )
+    vocabulary_counts = queue_module.queue_counts(
+        {"content": "vocabulary"},
+        now=now,
+        user=request.user,
+    )
+    user_cards = Card.objects.current_content().filter(
+        user=request.user,
+        suspended=False,
+    )
     overall = deck_stats(user_cards, now)
     parts = _parts_with_task_cards(now, request.user)
+    session = ReviewSession.load(request.user)
 
     context = {
-        "counts": counts,
+        "expression_counts": expression_counts,
+        "vocabulary_counts": vocabulary_counts,
         "parts": parts,
         "expression_paths": _home_expression_paths(parts),
         "overall": overall,
         "streak": current_streak(now, user=request.user),
-        "weak_count": queue_module.queue_counts(
-            {"kind": "weak"},
-            now,
-            user=request.user,
-        )["weak_total"],
         "comprehension": _comprehension_summary(request.user),
+        "notes_to_study": Annotation.objects.filter(
+            user=request.user,
+            study_later=True,
+        ).count(),
+        "can_resume_review": bool(session.current_card_id),
+        "resume_scope_label": (
+            scope_label(session.scope)
+            if session.current_card_id and isinstance(session.scope, dict)
+            else ""
+        ),
     }
     return render(request, "study/dashboard.html", context)
+
+
+def _redirect_to(request, route_name, **scope):
+    query = request.GET.copy()
+    for key, value in scope.items():
+        if value:
+            query[key] = value
+    target = reverse(route_name)
+    if query:
+        target = f"{target}?{query.urlencode()}"
+    return redirect(target)
+
+
+@require_GET
+def redirect_home(request):
+    return _redirect_to(request, "study:dashboard")
+
+
+@require_GET
+def redirect_expression(request):
+    return _redirect_to(request, "study:expression")
+
+
+@require_GET
+def redirect_vocabulary(request, part_slug=None, task_slug=None):
+    return _redirect_to(
+        request,
+        "study:vocabulary",
+        part=part_slug,
+        task=task_slug,
+    )
+
+
+@require_GET
+def redirect_search(request, part_slug=None, task_slug=None):
+    return _redirect_to(
+        request,
+        "study:search",
+        part=part_slug,
+        task=task_slug,
+    )
+
+
+@require_GET
+def redirect_notes(request, part_slug=None, task_slug=None):
+    scope = {}
+    if part_slug and task_slug:
+        scope = {"part": part_slug, "task": task_slug}
+    elif part_slug or task_slug:
+        return HttpResponseBadRequest("Incomplete notes scope.")
+    else:
+        scope = {"scope": "general"}
+    return _redirect_to(request, "study:notes_overview", **scope)
+
+
+@require_GET
+def redirect_stats(request, part_slug=None, task_slug=None):
+    return _redirect_to(
+        request,
+        "study:stats",
+        part=part_slug,
+        task=task_slug,
+    )
+
+
+@require_GET
+def expression_hub(request):
+    now = timezone.now()
+    parts = _parts_with_task_cards(now, request.user)
+    paths = _home_expression_paths(parts)
+    available_paths = [path for path in paths if path["available"]]
+    return render(
+        request,
+        "study/expression_hub.html",
+        {
+            "paths": paths,
+            "prompt_count": sum(
+                path["prompt_count"] for path in available_paths
+            ),
+            "card_total": sum(path["total"] for path in available_paths),
+            "card_seen": sum(path["seen"] for path in available_paths),
+            "card_due": sum(path["due"] for path in available_paths),
+        },
+    )
 
 
 def _grouped_overview(request, area):
@@ -1291,7 +1405,7 @@ def _sync_comprehension_attempt_position(attempt):
 @require_POST
 def comprehension_start(request, test_slug):
     action = request.POST.get("action", "continue")
-    if action not in {"continue", "restart"}:
+    if action not in {"continue", "restart", "errors"}:
         return HttpResponseBadRequest("Action de test invalide.")
 
     with transaction.atomic():
@@ -1311,6 +1425,43 @@ def comprehension_start(request, test_slug):
             )
             .first()
         )
+        focused_snapshot = None
+        if action == "errors" and active_attempt is None:
+            source_attempt_id = request.POST.get("attempt_id", "")
+            if not source_attempt_id.isdecimal():
+                return HttpResponseBadRequest(
+                    "Tentative source invalide."
+                )
+            source_attempt = get_object_or_404(
+                ComprehensionAttempt.objects.select_for_update(),
+                pk=source_attempt_id,
+                user=request.user,
+                test=test,
+                status=ComprehensionAttemptStatus.COMPLETED,
+            )
+            wrong_question_ids = set(
+                source_attempt.answers.filter(
+                    is_correct=False,
+                ).values_list("question_id", flat=True)
+            )
+            focused_questions = [
+                copy.deepcopy(question)
+                for question in _comprehension_attempt_questions(
+                    source_attempt
+                )
+                if question["id"] in wrong_question_ids
+            ]
+            if not focused_questions:
+                return redirect(
+                    "study:comprehension_results",
+                    test_slug=test.slug,
+                    attempt_id=source_attempt.pk,
+                )
+            focused_snapshot = {
+                "practice_mode": "errors",
+                "source_attempt_id": source_attempt.pk,
+                "questions": focused_questions,
+            }
         if active_attempt and action == "restart":
             active_attempt.status = ComprehensionAttemptStatus.ABANDONED
             active_attempt.completed_at = timezone.now()
@@ -1318,7 +1469,11 @@ def comprehension_start(request, test_slug):
             active_attempt = None
 
         if active_attempt is None:
-            content_snapshot = _build_comprehension_test_snapshot(test)
+            content_snapshot = (
+                focused_snapshot
+                if focused_snapshot is not None
+                else _build_comprehension_test_snapshot(test)
+            )
             questions = content_snapshot["questions"]
             if not questions:
                 return HttpResponseBadRequest("Ce test ne contient aucune question.")
@@ -1633,6 +1788,10 @@ def comprehension_results(request, test_slug, attempt_id):
             ),
             "review_items": review_items,
             "wrong_count": attempt.total_questions - (attempt.score or 0),
+            "is_error_practice": (
+                isinstance(attempt.content_snapshot, dict)
+                and attempt.content_snapshot.get("practice_mode") == "errors"
+            ),
         },
     )
 
@@ -1666,63 +1825,40 @@ def _annotation_counts(user):
     return counts
 
 
-@require_GET
+@require_http_methods(["GET", "POST"])
 def notes_overview(request):
-    counts = _annotation_counts(request.user)
-    parts = []
-    visible_tasks = Task.objects.filter(
-        Q(is_active=True) | Q(annotations__user=request.user)
-    ).distinct()
-    visible_parts = (
-        ExamPart.objects.filter(
-            Q(is_active=True) | Q(tasks__in=visible_tasks)
+    part_slug = (request.GET.get("part") or "").strip()
+    task_slug = (request.GET.get("task") or "").strip()
+    if bool(part_slug) != bool(task_slug):
+        return HttpResponseBadRequest(
+            "A notes task filter requires both part and task."
         )
-        .distinct()
-        .prefetch_related(Prefetch("tasks", queryset=visible_tasks))
+    task = (
+        _route_task(part_slug, task_slug)
+        if part_slug and task_slug
+        else None
     )
-    for part in visible_parts:
-        tasks = []
-        for task in part.tasks.all():
-            tasks.append(
-                {
-                    "task": task,
-                    "counts": counts.get(
-                        task.id,
-                        {
-                            "notes": 0,
-                            "highlights": 0,
-                            "study": 0,
-                            "total": 0,
-                        },
-                    ),
-                }
-            )
-        parts.append({"part": part, "tasks": tasks})
-    general_counts = counts.get(
-        None,
-        {"notes": 0, "highlights": 0, "study": 0, "total": 0},
-    )
-    return render(
+    general_only = request.GET.get("scope") == "general"
+    return _notes_scope(
         request,
-        "study/notes_overview.html",
-        {
-            "parts": parts,
-            "general_counts": general_counts,
-            "total_annotations": sum(
-                item["total"] for item in counts.values()
-            ),
-            "study_count": sum(item["study"] for item in counts.values()),
-        },
+        task,
+        aggregate=task is None and not general_only,
     )
 
 
 def _annotation_scope_url(task=None):
     if task:
-        return reverse(
-            "study:task_notes",
-            args=[task.part.slug, task.slug],
+        return (
+            reverse("study:notes_overview")
+            + "?"
+            + urlencode(
+                {
+                    "part": task.part.slug,
+                    "task": task.slug,
+                }
+            )
         )
-    return reverse("study:general_notes")
+    return reverse("study:notes_overview") + "?scope=general"
 
 
 def _annotation_tab_url(task, kind):
@@ -1731,7 +1867,7 @@ def _annotation_tab_url(task, kind):
         if kind == AnnotationKind.HIGHLIGHT
         else "notes"
     )
-    return f"{_annotation_scope_url(task)}?tab={tab}"
+    return f"{_annotation_scope_url(task)}&tab={tab}"
 
 
 def _highlight_groups(highlights):
@@ -1760,7 +1896,7 @@ def _highlight_groups(highlights):
             source_query = parse_qs(source.query)
             is_expression = (
                 source.path.endswith("/expressions/")
-                or source.path == reverse("study:phrases")
+                or source.path == reverse("study:vocabulary")
                 or source_query.get("kind") == ["phrase"]
             )
             group_key = "expressions" if is_expression else "responses"
@@ -1768,8 +1904,18 @@ def _highlight_groups(highlights):
     return [groups["responses"], groups["expressions"]]
 
 
-def _notes_scope(request, task=None):
-    annotations = Annotation.objects.filter(user=request.user, task=task)
+def _notes_scope(request, task=None, *, aggregate=False):
+    annotations = Annotation.objects.filter(user=request.user)
+    if not aggregate:
+        annotations = annotations.filter(task=task)
+    query = (request.GET.get("q") or "").strip()
+    if query:
+        annotations = annotations.filter(
+            Q(title__icontains=query)
+            | Q(body__icontains=query)
+            | Q(quote__icontains=query)
+            | Q(source_title__icontains=query)
+        )
     active_tab = (
         request.GET.get("tab")
         if request.GET.get("tab") in {"notes", "highlights"}
@@ -1793,19 +1939,54 @@ def _notes_scope(request, task=None):
         form = NoteForm()
     notes = list(annotations.filter(kind=AnnotationKind.NOTE))
     highlights = list(annotations.filter(kind=AnnotationKind.HIGHLIGHT))
+    counts = _annotation_counts(request.user)
+    task_filters = []
+    for filter_task in Task.objects.select_related("part").filter(
+        Q(is_active=True) | Q(annotations__user=request.user)
+    ).distinct().order_by("part__order", "order"):
+        task_filters.append(
+            {
+                "task": filter_task,
+                "count": counts.get(filter_task.pk, {}).get("total", 0),
+            }
+        )
+    if task:
+        scope_query = urlencode(
+            {"part": task.part.slug, "task": task.slug}
+        )
+    elif not aggregate:
+        scope_query = "scope=general"
+    else:
+        scope_query = ""
     return render(
         request,
         "study/notes_list.html",
         {
             "part": task.part if task else None,
             "task": task,
-            "scope_title": task.name if task else "Notes générales",
+            "scope_title": (
+                task.name
+                if task
+                else (
+                    "Toutes mes notes"
+                    if aggregate
+                    else "Notes générales"
+                )
+            ),
             "notes": notes,
             "highlights": highlights,
             "highlight_groups": _highlight_groups(highlights),
             "active_tab": active_tab,
             "study_count": annotations.filter(study_later=True).count(),
             "form": form,
+            "aggregate": aggregate,
+            "query": query,
+            "task_filters": task_filters,
+            "general_count": counts.get(None, {}).get("total", 0),
+            "scope_query": scope_query,
+            "tab_url_prefix": (
+                f"?{scope_query}&" if scope_query else "?"
+            ),
         },
     )
 
@@ -1893,12 +2074,15 @@ def annotation_study(request, part_slug=None, task_slug=None):
         if part_slug is not None and task_slug is not None
         else None
     )
+    general_only = request.GET.get("scope") == "general"
     annotations = Annotation.objects.filter(
         user=request.user,
         study_later=True,
     ).select_related("task__part")
     if task:
         annotations = annotations.filter(task=task)
+    elif general_only:
+        annotations = annotations.filter(task__isnull=True)
     items = list(annotations.order_by("-updated_at", "-id"))
     return render(
         request,
@@ -1907,11 +2091,23 @@ def annotation_study(request, part_slug=None, task_slug=None):
             "part": task.part if task else None,
             "task": task,
             "items": items,
-            "scope_title": task.name if task else "Toutes mes notes",
+            "scope_title": (
+                task.name
+                if task
+                else (
+                    "Notes générales"
+                    if general_only
+                    else "Toutes mes notes"
+                )
+            ),
             "back_url": (
                 _annotation_scope_url(task)
                 if task
-                else reverse("study:notes_overview")
+                else (
+                    reverse("study:notes_overview") + "?scope=general"
+                    if general_only
+                    else reverse("study:notes_overview")
+                )
             ),
         },
     )
@@ -2285,6 +2481,13 @@ def annotation_study_toggle(request, pk):
         return HttpResponseBadRequest("Invalid study status.")
     annotation.study_later = value == "1"
     annotation.save(update_fields=["study_later", "updated_at"])
+    if request.headers.get("X-Requested-With") == "fetch":
+        return JsonResponse(
+            {
+                "study_later": annotation.study_later,
+                "id": annotation.pk,
+            }
+        )
     return redirect(_annotation_redirect(request, annotation))
 
 
@@ -2370,7 +2573,7 @@ def task_detail(request, part_slug, task_slug):
         "response_stats": response_stats,
         "phrase_stats": phrase_stats,
         "counts": queue_module.queue_counts(
-            scope,
+            {**scope, "kind": "spine"},
             now,
             user=request.user,
         ),
@@ -2403,15 +2606,18 @@ def _resolved_review_scope(
     request,
     session: ReviewSession,
 ) -> tuple[dict, bool]:
-    """Use an explicit query scope, otherwise resume the saved one."""
-    if request.GET.get("reset") == "1":
-        return {}, True
+    """Use an explicit request scope, otherwise resume the saved one."""
+    data = request.POST if request.method == "POST" else request.GET
+    if request.method == "GET" and data.get("reset") == "1":
+        return {"kind": "spine"}, True
     scope = scope_from_request(request)
-    explicit = any(key in request.GET for key in REVIEW_SCOPE_KEYS)
+    explicit = any(key in data for key in REVIEW_SCOPE_KEYS)
     if explicit:
         return scope, True
     saved = session.scope
-    return (saved if isinstance(saved, dict) else {}), False
+    if isinstance(saved, dict) and (saved or session.current_card_id):
+        return saved, False
+    return {"kind": "spine"}, True
 
 
 def _save_review_session(
@@ -2606,27 +2812,22 @@ def review_hub(request, part_slug, task_slug):
     part = task.part
     now = timezone.now()
     scope = {"part": part.slug, "task": task.slug}
-    cards = _task_cards(task, request.user).exclude(suspended=True)
-    response_stats = deck_stats(
-        cards.filter(card_type=CardType.SPINE),
-        now,
+    response_scope = {**scope, "kind": "spine"}
+    cards = queue_module.scoped_cards(
+        response_scope,
+        user=request.user,
     )
-    phrase_stats = deck_stats(
-        cards.filter(phrase__isnull=False),
+    response_stats = deck_stats(
+        cards,
         now,
     )
     response_counts = queue_module.queue_counts(
-        {**scope, "kind": "spine"},
-        now,
-        user=request.user,
-    )
-    phrase_counts = queue_module.queue_counts(
-        {**scope, "kind": "phrase"},
+        response_scope,
         now,
         user=request.user,
     )
     weak_counts = queue_module.queue_counts(
-        {**scope, "kind": "weak"},
+        {**scope, "kind": "weak", "content": "spine"},
         now,
         user=request.user,
     )
@@ -2636,28 +2837,50 @@ def review_hub(request, part_slug, task_slug):
         session.current_card_id
         and saved_scope.get("part") == part.slug
         and saved_scope.get("task") == task.slug
+        and (
+            saved_scope.get("kind") == "spine"
+            or saved_scope.get("content") == "spine"
+        )
     )
+    themes = []
+    for theme in Theme.objects.filter(task=task, is_active=True):
+        theme_scope = {
+            **response_scope,
+            "theme": theme.slug,
+        }
+        themes.append(
+            {
+                "theme": theme,
+                "stats": deck_stats(
+                    queue_module.scoped_cards(
+                        theme_scope,
+                        user=request.user,
+                    ),
+                    now,
+                ),
+                "counts": queue_module.queue_counts(
+                    theme_scope,
+                    now,
+                    user=request.user,
+                ),
+            }
+        )
     return render(
         request,
         "study/review_hub.html",
         {
             "part": part,
             "task": task,
-            "counts": queue_module.queue_counts(
-                scope,
-                now,
-                user=request.user,
-            ),
+            "counts": response_counts,
             "response_stats": response_stats,
-            "phrase_stats": phrase_stats,
             "response_due": response_counts["total_due"],
-            "phrase_due": phrase_counts["total_due"],
             "revisit_count": queue_module.scoped_cards(
-                {**scope, "kind": "revisit"},
+                {**scope, "kind": "revisit", "content": "spine"},
                 user=request.user,
             ).count(),
             "weak_count": weak_counts["weak_total"],
             "can_resume": can_resume,
+            "themes": themes,
         },
     )
 
@@ -2676,9 +2899,9 @@ def review_next(request):
 
 @require_GET
 def review_previous(request):
-    scope = scope_from_request(request)
     with transaction.atomic():
         session = _locked_review_session(request.user)
+        scope, _ = _resolved_review_scope(request, session)
         if session.scope != scope or not session.previous_card_id:
             return JsonResponse(
                 {"error": "Aucune carte précédente dans cette session."},
@@ -2733,10 +2956,10 @@ def review_answer(request):
     if rating not in Rating.values:
         return HttpResponseBadRequest("Invalid rating.")
 
-    scope = scope_from_request(request)
     presentation_token = request.POST.get("presentation_token", "")
     with transaction.atomic():
         session = _locked_review_session(request.user)
+        scope, _ = _resolved_review_scope(request, session)
         if (
             not presentation_token
             or session is None
@@ -2811,9 +3034,9 @@ def review_answer(request):
 @require_POST
 def review_undo(request):
     """Revert this session's exact previous review and re-present its card."""
-    scope = scope_from_request(request)
     with transaction.atomic():
         session = _locked_review_session(request.user)
+        scope, _ = _resolved_review_scope(request, session)
         if session.scope != scope:
             return JsonResponse(
                 {"error": "Cette session de révision a changé."},
@@ -2848,10 +3071,13 @@ def revisit_list(request, part_slug=None, task_slug=None):
     """Persistent list of cards marked with the Revisit review action."""
     task = (
         _route_task(part_slug, task_slug)
-        if part_slug is not None and task_slug is not None
+        if part_slug and task_slug
         else None
     )
     scope = _task_scope(task) if task else {}
+    content = (request.GET.get("content") or "").strip()
+    if content in {"spine", "vocabulary"}:
+        scope["content"] = content
     revisit_scope = {**scope, "kind": "revisit"}
     revisit_cards = queue_module.scoped_cards(
         revisit_scope,
@@ -2865,6 +3091,8 @@ def revisit_list(request, part_slug=None, task_slug=None):
         if task
         else reverse("study:revisit_list")
     )
+    if content:
+        redirect_url += "?" + urlencode({"content": content})
     if request.method == "POST":
         action = request.POST.get("action")
         if action == "remove":
@@ -2892,7 +3120,11 @@ def revisit_list(request, part_slug=None, task_slug=None):
             "response__family",
             "phrase__category",
         )
-        .prefetch_related("response__prompts")
+        .prefetch_related(
+            "response__prompts",
+            "phrase__source_prompts__theme",
+            "phrase__source_questions__test",
+        )
         .order_by("revisit_added_at", "id")
     )
     items = []
@@ -2913,28 +3145,56 @@ def revisit_list(request, part_slug=None, task_slug=None):
                 }
             )
         else:
+            phrase = card.phrase
+            if phrase.tier == PhraseTier.COMPREHENSION:
+                source_question = next(
+                    iter(phrase.source_questions.all()),
+                    None,
+                )
+                item_url = (
+                    reverse("study:vocabulary")
+                    + "?"
+                    + urlencode(
+                        {"test": source_question.test.slug}
+                    )
+                    + f"#phrase-{phrase.phrase_id}"
+                    if source_question
+                    else reverse("study:vocabulary")
+                )
+            elif phrase.tier == PhraseTier.SUBJECT:
+                source_prompt = next(
+                    iter(phrase.source_prompts.all()),
+                    None,
+                )
+                item_url = (
+                    reverse(
+                        "study:response_detail",
+                        args=[source_prompt.response_id],
+                    )
+                    + "?"
+                    + urlencode({"prompt": source_prompt.pk})
+                    + "#subject-vocabulary"
+                    if source_prompt
+                    else reverse("study:vocabulary")
+                )
+            else:
+                item_url = (
+                    reverse("study:vocabulary")
+                    + "?"
+                    + urlencode({"category": phrase.category.slug})
+                    + f"#phrase-{phrase.phrase_id}"
+                )
             items.append(
                 {
                     "card": card,
-                    "kind": "Expression",
-                    "title": card.phrase.expression,
-                    "meta": card.phrase.english_cue,
-                    "url": (
-                        (
-                            reverse(
-                                "study:task_phrases",
-                                args=[task.part.slug, task.slug],
-                            )
-                            if task
-                            else reverse("study:phrases")
-                        )
-                        + f"?category={card.phrase.category.slug}"
-                        + f"#phrase-{card.phrase.phrase_id}"
-                    ),
+                    "kind": "Vocabulaire",
+                    "title": phrase.expression,
+                    "meta": phrase.english_cue,
+                    "url": item_url,
                 }
             )
     response_items = [item for item in items if item["kind"] == "Réponse"]
-    phrase_items = [item for item in items if item["kind"] == "Expression"]
+    phrase_items = [item for item in items if item["kind"] == "Vocabulaire"]
     revisit_groups = [
         {
             "title": "Réponses argumentées",
@@ -2959,6 +3219,7 @@ def revisit_list(request, part_slug=None, task_slug=None):
             ],
             "revisit_count": len(items),
             "review_scope_qs": urlencode(revisit_scope),
+            "content": content,
         },
     )
 
@@ -3474,9 +3735,11 @@ def edit_response(request, pk):
 
 
 def phrases(request, part_slug=None, task_slug=None):
+    part_slug = part_slug or (request.GET.get("part") or "").strip()
+    task_slug = task_slug or (request.GET.get("task") or "").strip()
     task = (
         _route_task(part_slug, task_slug)
-        if part_slug is not None and task_slug is not None
+        if part_slug and task_slug
         else None
     )
     if task and not task.available:
@@ -3505,7 +3768,13 @@ def phrases(request, part_slug=None, task_slug=None):
         ),
     }
     category_slug = request.GET.get("category", "").strip()
+    test_slug = request.GET.get("test", "").strip()
+    if category_slug and test_slug:
+        return HttpResponseBadRequest(
+            "Choose either a category or a comprehension test."
+        )
     selected = None
+    selected_test = None
     all_phrases = (
         Phrase.objects.filter(
             is_active=True,
@@ -3565,6 +3834,25 @@ def phrases(request, part_slug=None, task_slug=None):
         if selected is None:
             return HttpResponseBadRequest("Unknown phrase category.")
         phrase_qs = all_phrases.filter(category=selected)
+    elif test_slug:
+        selected_test = get_object_or_404(
+            ComprehensionTest,
+            slug=test_slug,
+            is_active=True,
+            is_published=True,
+        )
+        phrase_qs = (
+            Phrase.objects.filter(
+                is_active=True,
+                tier=PhraseTier.COMPREHENSION,
+                source_questions__test=selected_test,
+                source_questions__is_active=True,
+            )
+            .select_related("category")
+            .prefetch_related("source_questions__test")
+            .distinct()
+            .order_by("category__order", "lot_order", "phrase_id")
+        )
 
     grouped = []
     review_batches = []
@@ -3584,6 +3872,25 @@ def phrases(request, part_slug=None, task_slug=None):
             (batch for batch in review_batches if batch["can_review"]),
             None,
         )
+    elif selected_test:
+        for category in PhraseCategory.objects.filter(
+            phrases__in=phrase_qs,
+            is_active=True,
+        ).distinct().order_by("order"):
+            grouped.append(
+                {
+                    "category": category,
+                    "phrases": list(phrase_qs.filter(category=category)),
+                }
+            )
+        review_batches = _review_batches(
+            {"kind": "vocab", "test": selected_test.slug},
+            request.user,
+        )
+        first_review_batch = next(
+            (batch for batch in review_batches if batch["can_review"]),
+            review_batches[0] if review_batches else None,
+        )
 
     functional_categories = [
         category
@@ -3594,7 +3901,9 @@ def phrases(request, part_slug=None, task_slug=None):
     subject_prompt_count = 0
     subject_response_count = 0
     subject_vocabulary_count = 0
-    if not selected:
+    comprehension_decks = []
+    comprehension_vocabulary_count = 0
+    if not selected and not selected_test:
         subject_prompts = (
             Prompt.objects.filter(
                 is_active=True,
@@ -3655,6 +3964,67 @@ def phrases(request, part_slug=None, task_slug=None):
         subject_response_count = len(subject_response_ids)
         subject_vocabulary_count = subject_vocabulary.distinct().count()
 
+        tests = (
+            ComprehensionTest.objects.filter(
+                is_active=True,
+                is_published=True,
+            )
+            .annotate(
+                vocabulary_count=Count(
+                    "questions__vocabulary",
+                    filter=Q(
+                        questions__vocabulary__is_active=True,
+                        questions__vocabulary__tier=PhraseTier.COMPREHENSION,
+                    ),
+                    distinct=True,
+                )
+            )
+            .filter(vocabulary_count__gt=0)
+            .order_by("number")
+        )
+        for test in tests:
+            deck_scope = {"kind": "vocab", "test": test.slug}
+            cards = queue_module.scoped_cards(
+                deck_scope,
+                user=request.user,
+            )
+            comprehension_decks.append(
+                {
+                    "test": test,
+                    "vocabulary_count": test.vocabulary_count,
+                    "batch_count": (
+                        test.vocabulary_count
+                        + queue_module.PHRASE_BATCH_SIZE
+                        - 1
+                    )
+                    // queue_module.PHRASE_BATCH_SIZE,
+                    "stats": deck_stats(cards, timezone.now()),
+                    "counts": queue_module.queue_counts(
+                        deck_scope,
+                        user=request.user,
+                    ),
+                }
+            )
+            comprehension_vocabulary_count += test.vocabulary_count
+
+    vocabulary_scope = {"content": "vocabulary"}
+    vocabulary_cards = queue_module.scoped_cards(
+        vocabulary_scope,
+        user=request.user,
+    )
+    vocabulary_counts = queue_module.queue_counts(
+        vocabulary_scope,
+        user=request.user,
+    )
+    vocabulary_revisit_count = queue_module.scoped_cards(
+        {"kind": "revisit", "content": "vocabulary"},
+        user=request.user,
+    ).count()
+    vocabulary_weak_count = queue_module.queue_counts(
+        {"kind": "weak", "content": "vocabulary"},
+        user=request.user,
+    )["weak_total"]
+
     return render(
         request,
         "study/phrases.html",
@@ -3676,17 +4046,33 @@ def phrases(request, part_slug=None, task_slug=None):
             "subject_prompt_count": subject_prompt_count,
             "subject_response_count": subject_response_count,
             "subject_vocabulary_count": subject_vocabulary_count,
+            "comprehension_decks": comprehension_decks,
+            "comprehension_vocabulary_count": (
+                comprehension_vocabulary_count
+            ),
+            "vocabulary_stats": deck_stats(
+                vocabulary_cards,
+                timezone.now(),
+            ),
+            "vocabulary_counts": vocabulary_counts,
+            "vocabulary_revisit_count": vocabulary_revisit_count,
+            "vocabulary_weak_count": vocabulary_weak_count,
             "grouped": grouped,
             "review_batches": review_batches,
             "first_review_batch": first_review_batch,
             "batch_size": queue_module.PHRASE_BATCH_SIZE,
             "selected": selected,
+            "selected_test": selected_test,
             "phrase_count": (
                 selected.phrase_count
                 if selected
-                else sum(
+                else (
+                    phrase_qs.count()
+                    if selected_test
+                    else sum(
                     category.phrase_count
                     for category in functional_categories
+                    )
                 )
             ),
         },
@@ -3694,14 +4080,21 @@ def phrases(request, part_slug=None, task_slug=None):
 
 
 def search(request, part_slug=None, task_slug=None):
+    part_slug = part_slug or (request.GET.get("part") or "").strip()
+    task_slug = task_slug or (request.GET.get("task") or "").strip()
     task = (
         _route_task(part_slug, task_slug)
-        if part_slug is not None and task_slug is not None
+        if part_slug and task_slug
         else None
     )
     query = request.GET.get("q", "").strip()
     prompt_results = []
     phrase_results = []
+    comprehension_results = []
+    prompt_result_count = 0
+    phrase_result_count = 0
+    comprehension_result_count = 0
+    result_limit = 12
     if query:
         prompt_qs = Prompt.objects.filter(is_active=True).filter(
             Q(text__icontains=query) | Q(response__body__icontains=query)
@@ -3718,16 +4111,51 @@ def search(request, part_slug=None, task_slug=None):
             phrase_qs = phrase_qs.filter(
                 source_prompts__theme__task=task
             ).distinct()
-        prompt_results = (
+        prompt_result_count = prompt_qs.count()
+        phrase_result_count = phrase_qs.count()
+        prompt_results = list(
             prompt_qs
             .select_related("response", "theme", "family")
-            .order_by("theme__order", "number")[:60]
+            .order_by("theme__order", "number")[:result_limit]
         )
-        phrase_results = (
+        phrase_results = list(
             phrase_qs
             .select_related("category")
-            .order_by("order")[:60]
+            .order_by("order")[:result_limit]
         )
+        if not task:
+            comprehension_qs = (
+                ComprehensionQuestion.objects.filter(
+                    test__is_active=True,
+                    test__is_published=True,
+                    is_active=True,
+                )
+                .filter(
+                    Q(passage_fr__icontains=query)
+                    | Q(prompt_fr__icontains=query)
+                    | Q(passage_en__icontains=query)
+                    | Q(prompt_en__icontains=query)
+                    | Q(choices__text_fr__icontains=query)
+                    | Q(choices__text_en__icontains=query)
+                )
+                .select_related("test")
+                .distinct()
+                .order_by("test__number", "number")
+            )
+            comprehension_result_count = comprehension_qs.count()
+            comprehension_results = list(
+                comprehension_qs[:result_limit]
+            )
+    result_count = (
+        prompt_result_count
+        + phrase_result_count
+        + comprehension_result_count
+    )
+    visible_result_count = (
+        len(prompt_results)
+        + len(phrase_results)
+        + len(comprehension_results)
+    )
     return render(
         request,
         "study/search.html",
@@ -3737,7 +4165,13 @@ def search(request, part_slug=None, task_slug=None):
             "query": query,
             "prompt_results": prompt_results,
             "phrase_results": phrase_results,
-            "result_count": len(prompt_results) + len(phrase_results),
+            "comprehension_results": comprehension_results,
+            "prompt_result_count": prompt_result_count,
+            "phrase_result_count": phrase_result_count,
+            "comprehension_result_count": comprehension_result_count,
+            "result_count": result_count,
+            "visible_result_count": visible_result_count,
+            "results_truncated": result_count > visible_result_count,
             "prompt_total": (
                 Prompt.objects.filter(
                     theme__task=task,
@@ -3760,6 +4194,26 @@ def search(request, part_slug=None, task_slug=None):
 # ---------------------------------------------------------------------------
 
 
+def _stats_scope_cards(scope, user):
+    cards = Card.objects.current_content().filter(user=user)
+    if not scope:
+        return cards
+
+    response_ids = queue_module.scoped_cards(
+        {**scope, "content": "spine"},
+        user=user,
+        include_suspended=True,
+    ).values("pk")
+    vocabulary_ids = queue_module.scoped_cards(
+        {**scope, "content": "vocabulary"},
+        user=user,
+        include_suspended=True,
+    ).values("pk")
+    return cards.filter(
+        Q(pk__in=response_ids) | Q(pk__in=vocabulary_ids)
+    ).distinct()
+
+
 def stats(request, part_slug=None, task_slug=None):
     now = timezone.now()
     today = timezone.localtime(now).date()
@@ -3771,11 +4225,7 @@ def stats(request, part_slug=None, task_slug=None):
     filters = _scope_filters(request, forced_task)
     scope = filters["scope"]
 
-    scoped_history_cards = queue_module.scoped_cards(
-        scope,
-        user=request.user,
-        include_suspended=True,
-    )
+    scoped_history_cards = _stats_scope_cards(scope, request.user)
     active_cards = scoped_history_cards.filter(suspended=False)
     logs_base = ReviewLog.objects.filter(user=request.user)
     if scope:
@@ -3866,6 +4316,20 @@ def stats(request, part_slug=None, task_slug=None):
         "total_reviews": logs_base.count(),
         "reviews_today": per_day.get(today, 0),
         "recent_sessions": recent_review_sessions(logs_base),
+        "expression_weak_count": queue_module.queue_counts(
+            {**scope, "kind": "weak", "content": "spine"},
+            now,
+            user=request.user,
+        )["weak_total"],
+        "vocabulary_weak_count": queue_module.queue_counts(
+            {
+                **scope,
+                "kind": "weak",
+                "content": "vocabulary",
+            },
+            now,
+            user=request.user,
+        )["weak_total"],
         **filters,
     }
     return render(request, "study/stats.html", context)
@@ -3885,10 +4349,22 @@ def _settings_context(request, **overrides):
             user=request.user,
             suspended=True,
         ).count(),
-        "change_pin_form": ChangePinForm(request.user),
-        "recovery_codes_form": CurrentPinForm(request.user),
-        "reset_form": ResetProgressForm(request.user),
-        "delete_account_form": DeleteAccountForm(request.user),
+        "change_pin_form": ChangePinForm(
+            request.user,
+            auto_id="id_change_pin_%s",
+        ),
+        "recovery_codes_form": CurrentPinForm(
+            request.user,
+            auto_id="id_recovery_codes_%s",
+        ),
+        "reset_form": ResetProgressForm(
+            request.user,
+            auto_id="id_reset_progress_%s",
+        ),
+        "delete_account_form": DeleteAccountForm(
+            request.user,
+            auto_id="id_delete_account_%s",
+        ),
     }
     context.update(overrides)
     return context
@@ -3919,7 +4395,11 @@ def settings_view(request):
 @require_POST
 @sensitive_post_parameters("current_pin", "new_pin", "new_pin_confirm")
 def change_pin(request):
-    form = ChangePinForm(request.user, request.POST)
+    form = ChangePinForm(
+        request.user,
+        request.POST,
+        auto_id="id_change_pin_%s",
+    )
     if not form.is_valid():
         return _render_settings(
             request,
@@ -3935,7 +4415,11 @@ def change_pin(request):
 @require_POST
 @sensitive_post_parameters("current_pin")
 def regenerate_recovery_codes(request):
-    form = CurrentPinForm(request.user, request.POST)
+    form = CurrentPinForm(
+        request.user,
+        request.POST,
+        auto_id="id_recovery_codes_%s",
+    )
     if not form.is_valid():
         return _render_settings(
             request,
@@ -3952,7 +4436,11 @@ def regenerate_recovery_codes(request):
 @require_POST
 @sensitive_post_parameters("current_pin")
 def reset_progress(request):
-    form = ResetProgressForm(request.user, request.POST)
+    form = ResetProgressForm(
+        request.user,
+        request.POST,
+        auto_id="id_reset_progress_%s",
+    )
     if not form.is_valid():
         return _render_settings(
             request,
@@ -4151,7 +4639,11 @@ def export_account(request):
 @require_POST
 @sensitive_post_parameters("current_pin")
 def delete_account(request):
-    form = DeleteAccountForm(request.user, request.POST)
+    form = DeleteAccountForm(
+        request.user,
+        request.POST,
+        auto_id="id_delete_account_%s",
+    )
     if not form.is_valid():
         return _render_settings(
             request,

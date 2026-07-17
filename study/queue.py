@@ -48,8 +48,10 @@ def _uses_phrase_batches(scope: Optional[dict]) -> bool:
     scope = scope or {}
     return bool(
         scope.get("kind") in {"phrase", "vocab"}
+        or scope.get("content") == "vocabulary"
         or scope.get("category")
         or scope.get("response")
+        or scope.get("test")
     )
 
 
@@ -78,6 +80,7 @@ def scoped_cards(
     )
     scope = scope or {}
     kind = scope.get("kind")
+    content = scope.get("content")
     if kind == "spine":
         qs = qs.filter(card_type=CardType.SPINE)
     elif kind == "phrase":
@@ -90,7 +93,10 @@ def scoped_cards(
     elif kind == "vocab":
         qs = qs.filter(
             card_type=CardType.PHRASE_PRODUCTION,
-            phrase__tier=PhraseTier.SUBJECT,
+            phrase__tier__in=[
+                PhraseTier.SUBJECT,
+                PhraseTier.COMPREHENSION,
+            ],
         )
     elif kind == "revisit":
         qs = qs.filter(needs_revisit=True)
@@ -148,14 +154,33 @@ def scoped_cards(
         qs = qs.filter(phrase__category__slug=scope["category"])
     if scope.get("response"):
         qs = qs.filter(
-            phrase__source_prompts__response_id=scope["response"]
+            Q(response_id=scope["response"])
+            | Q(phrase__source_prompts__response_id=scope["response"])
+        )
+    if scope.get("test"):
+        qs = qs.filter(
+            phrase__source_questions__test__slug=scope["test"],
+            phrase__source_questions__test__is_active=True,
+        )
+    if content == "spine":
+        qs = qs.filter(card_type=CardType.SPINE)
+    elif content == "vocabulary":
+        qs = qs.filter(
+            card_type__in=[
+                CardType.PHRASE_PRODUCTION,
+                CardType.PHRASE_RECOGNITION,
+            ]
         )
 
     shared_or_spine = Q(phrase__isnull=True) | Q(
         phrase__tier=PhraseTier.SHARED
     )
     local_production = Q(
-        phrase__tier__in=[PhraseTier.RESPONSE, PhraseTier.SUBJECT],
+        phrase__tier__in=[
+            PhraseTier.RESPONSE,
+            PhraseTier.SUBJECT,
+            PhraseTier.COMPREHENSION,
+        ],
         card_type=CardType.PHRASE_PRODUCTION,
     )
     response_expression = shared_or_spine | Q(
@@ -166,6 +191,8 @@ def scoped_cards(
         pass
     elif scope.get("response") and kind == "phrase":
         qs = qs.filter(response_expression)
+    elif content == "vocabulary":
+        qs = qs.filter(shared_or_spine | local_production)
     elif scope.get("response") or kind in {"revisit", "weak"}:
         qs = qs.filter(shared_or_spine | local_production)
     else:

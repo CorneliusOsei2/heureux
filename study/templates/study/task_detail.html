@@ -11,7 +11,7 @@
   <div class="task-hero__numbers" aria-label="Contenu de la tâche">
     <span><b>{{ prompt_count }}</b> sujets</span>
     <span><b>{{ response_stats.total }}</b> réponses</span>
-    <span><b>{{ phrase_count }}</b> expressions</span>
+    <span><b>{{ response_stats.mature }}</b> maîtrisées</span>
   </div>
 </header>
 
@@ -25,26 +25,32 @@
     <a class="task-module__link" href="{% url 'study:task_browse' part.slug task.slug %}" aria-label="Parcourir les sujets et réponses">Ouvrir <span aria-hidden="true">→</span></a>
   </article>
 
-  <article class="task-module">
-    <div class="task-module__icon task-module__icon--expressions">🗣️</div>
-    <div class="task-module__body">
-      <h2>Expressions &amp; vocabulaire</h2>
-      <div class="task-module__meta">{{ phrase_category_count }} catégories · {{ phrase_stats.seen }}/{{ phrase_stats.total }} cartes vues</div>
-    </div>
-    <a class="task-module__link" href="{% url 'study:task_phrases' part.slug task.slug %}" aria-label="Parcourir les expressions">Ouvrir <span aria-hidden="true">→</span></a>
-  </article>
-
   <article class="task-module task-module--review">
     <div class="task-module__icon task-module__icon--review">↻</div>
     <div class="task-module__body">
-      <h2>Révision</h2>
-      <div class="task-module__meta">{{ counts.total_due }} carte{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }}</div>
+      <h2>Pratiquer les réponses</h2>
+      <div class="task-module__meta">{{ counts.total_due }} réponse{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }} · rappel actif</div>
       <div class="task-module__actions">
         <a href="{% url 'study:task_review_hub' part.slug task.slug %}">Ouvrir <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </article>
 </section>
+
+<nav class="task-deep-links card" aria-label="Outils associés à {{ task.name }}">
+  <a href="{% url 'study:vocabulary' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+    <span>Vocabulaire</span>
+    <small>Expressions et 50 vocabs par sujet</small>
+  </a>
+  <a href="{% url 'study:notes_overview' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+    <span>Notes</span>
+    <small>Notes et surlignages de cette tâche</small>
+  </a>
+  <a href="{% url 'study:stats' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+    <span>Progression</span>
+    <small>Maîtrise et historique filtrés</small>
+  </a>
+</nav>
 
 <section class="task-themes">
   <div class="section-heading">

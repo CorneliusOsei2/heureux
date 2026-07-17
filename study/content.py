@@ -21,6 +21,7 @@ RESPONSES_DIR = CONTENT_DIR / "responses"
 STUDY_SHEETS_PATH = CONTENT_DIR / "study_sheets.md"
 PHRASES_PATH = CONTENT_DIR / "phrases.tsv"
 SUBJECT_VOCABULARY_DIR = CONTENT_DIR / "subject_vocabulary"
+COMPREHENSION_VOCABULARY_DIR = CONTENT_DIR / "comprehension_vocabulary"
 THEMES_PATH = CONTENT_DIR / "themes.json"
 SECTIONS_PATH = CONTENT_DIR / "sections.json"
 COMPREHENSION_DIR = CONTENT_DIR / "comprehension"
@@ -54,6 +55,31 @@ SUBJECT_VOCABULARY_CATEGORIES = {
     "tournure": "Tournures pour l'oral",
     "phrase-modele": "Phrases modèles",
 }
+COMPREHENSION_VOCABULARY_PER_TEST = 50
+COMPREHENSION_VOCABULARY_PER_KIND = 10
+COMPREHENSION_VOCABULARY_KINDS = (
+    "mot-cle",
+    "verbe-action",
+    "expression",
+    "reformulation",
+    "phrase-modele",
+)
+COMPREHENSION_VOCABULARY_CATEGORIES = {
+    "mot-cle": "Compréhension · Mots clés",
+    "verbe-action": "Compréhension · Verbes et actions",
+    "expression": "Compréhension · Expressions",
+    "reformulation": "Compréhension · Reformulations",
+    "phrase-modele": "Compréhension · Phrases modèles",
+}
+COMPREHENSION_VOCABULARY_FIELDS = (
+    "id",
+    "kind",
+    "french",
+    "english",
+    "example",
+    "usage",
+    "questions",
+)
 PHRASE_FIELDS = (
     "id",
     "tier",
@@ -67,7 +93,7 @@ PHRASE_FIELDS = (
 )
 PHRASE_MAX_LENGTHS = {
     "id": 16,
-    "tier": 8,
+    "tier": 16,
     "category": 120,
     "english_cue": 200,
     "expression": 300,
@@ -170,6 +196,13 @@ class PhraseData:
     sources_raw: str
     sources: Tuple[Tuple[str, int], ...]
     order: int
+
+
+@dataclass(frozen=True)
+class ComprehensionVocabularyData:
+    phrase: PhraseData
+    test_slug: str
+    question_numbers: Tuple[int, ...]
 
 
 @dataclass(frozen=True)
@@ -1060,6 +1093,207 @@ def parse_subject_vocabulary(
             f"got {len(phrases)}"
         )
     return phrases
+
+
+def parse_comprehension_vocabulary(
+    tests: Optional[List[ComprehensionTestData]] = None,
+) -> List[ComprehensionVocabularyData]:
+    """Load one rich, source-linked vocabulary deck per comprehension test."""
+    if tests is None:
+        tests = load_comprehension_tests()
+
+    tests_by_slug = {test.slug: test for test in tests}
+    seen_tests: Dict[str, str] = {}
+    seen_ids: Dict[str, str] = {}
+    vocabulary: List[ComprehensionVocabularyData] = []
+    paths = sorted(COMPREHENSION_VOCABULARY_DIR.glob("*.json"))
+    if not paths:
+        raise ValueError("No comprehension-vocabulary JSON files found")
+
+    expected_kinds = tuple(
+        kind
+        for kind in COMPREHENSION_VOCABULARY_KINDS
+        for _ in range(COMPREHENSION_VOCABULARY_PER_KIND)
+    )
+    base_order = (
+        EXPECTED_PHRASES
+        + EXPECTED_UNIQUE * SUBJECT_VOCABULARY_PER_RESPONSE
+    )
+
+    for path in paths:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            raise ValueError(f"{path.name} must contain a JSON object")
+        if set(payload) != {"test_slug", "mode", "entries"}:
+            raise ValueError(
+                f"{path.name} must contain test_slug, mode and entries"
+            )
+        test_slug = payload.get("test_slug")
+        if not isinstance(test_slug, str) or test_slug not in tests_by_slug:
+            raise ValueError(
+                f"{path.name} references unknown test {test_slug!r}"
+            )
+        if test_slug in seen_tests:
+            raise ValueError(
+                f"Duplicate comprehension vocabulary for {test_slug!r} in "
+                f"{seen_tests[test_slug]} and {path.name}"
+            )
+        seen_tests[test_slug] = path.name
+        if payload.get("mode") != "ecrite":
+            raise ValueError(f"{path.name} mode must be 'ecrite'")
+
+        entries = payload.get("entries")
+        if not isinstance(entries, list):
+            raise ValueError(f"{path.name} must contain an entries list")
+        if len(entries) != COMPREHENSION_VOCABULARY_PER_TEST:
+            raise ValueError(
+                f"{test_slug} must have exactly "
+                f"{COMPREHENSION_VOCABULARY_PER_TEST} vocabulary entries, "
+                f"got {len(entries)}"
+            )
+        actual_kinds = tuple(
+            entry.get("kind") if isinstance(entry, dict) else None
+            for entry in entries
+        )
+        if actual_kinds != expected_kinds:
+            raise ValueError(
+                f"{test_slug} must contain ten ordered entries for every "
+                "comprehension-vocabulary kind"
+            )
+
+        test = tests_by_slug[test_slug]
+        questions_by_number = {
+            question.number: question for question in test.questions
+        }
+        seen_targets = set()
+        for index, entry in enumerate(entries, start=1):
+            location = f"{test_slug} entry {index}"
+            if not isinstance(entry, dict):
+                raise ValueError(f"{location} must be an object")
+            if set(entry) != set(COMPREHENSION_VOCABULARY_FIELDS):
+                raise ValueError(
+                    f"{location} fields must be "
+                    f"{COMPREHENSION_VOCABULARY_FIELDS}"
+                )
+            values = {}
+            for field_name in COMPREHENSION_VOCABULARY_FIELDS[:-1]:
+                value = entry.get(field_name)
+                if not isinstance(value, str) or not value.strip():
+                    raise ValueError(
+                        f"{location} has an empty {field_name!r} field"
+                    )
+                values[field_name] = value.strip()
+
+            phrase_id = values["id"]
+            expected_id = (
+                f"CE{test.number:02d}V{index:03d}"
+            )
+            if phrase_id != expected_id:
+                raise ValueError(
+                    f"{location} id must be {expected_id!r}, got "
+                    f"{phrase_id!r}"
+                )
+            phrase_id_key = phrase_id.casefold()
+            if phrase_id_key in seen_ids:
+                raise ValueError(
+                    f"Duplicate comprehension-vocabulary id {phrase_id!r}"
+                )
+            seen_ids[phrase_id_key] = location
+
+            question_numbers = entry.get("questions")
+            if (
+                not isinstance(question_numbers, list)
+                or not question_numbers
+                or any(
+                    not isinstance(number, int)
+                    or number not in questions_by_number
+                    for number in question_numbers
+                )
+                or len(set(question_numbers)) != len(question_numbers)
+            ):
+                raise ValueError(
+                    f"{location} must cite unique valid question numbers"
+                )
+            question_numbers = tuple(question_numbers)
+
+            french = values["french"]
+            english = values["english"]
+            example = values["example"]
+            target_key = french.casefold()
+            if target_key in seen_targets:
+                raise ValueError(
+                    f"{test_slug} repeats french target {french!r}"
+                )
+            seen_targets.add(target_key)
+            if len(french) > PHRASE_MAX_LENGTHS["expression"]:
+                raise ValueError(f"{location} french target is too long")
+            if len(english) > PHRASE_MAX_LENGTHS["english_cue"]:
+                raise ValueError(f"{location} english cue is too long")
+            if example.casefold().count(target_key) != 1:
+                raise ValueError(
+                    f"{location} example must contain its french target "
+                    "exactly once"
+                )
+
+            cited_source = " ".join(
+                " ".join(
+                    [
+                        questions_by_number[number].passage_fr,
+                        questions_by_number[number].prompt_fr,
+                        *(
+                            choice.text_fr
+                            for choice in questions_by_number[number].choices
+                        ),
+                    ]
+                )
+                for number in question_numbers
+            ).casefold()
+            if target_key not in cited_source:
+                raise ValueError(
+                    f"{location} french target is not present in a cited "
+                    "source question"
+                )
+
+            sources_raw = "; ".join(
+                f"CE · {test.title} · Q{number}"
+                for number in question_numbers
+            )
+            phrase = PhraseData(
+                phrase_id=phrase_id,
+                tier="comprehension",
+                category=COMPREHENSION_VOCABULARY_CATEGORIES[
+                    values["kind"]
+                ],
+                english_cue=english,
+                expression=french,
+                anchor=french,
+                example=example,
+                note=values["usage"],
+                sources_raw=sources_raw,
+                sources=(),
+                order=base_order + len(vocabulary) + 1,
+            )
+            vocabulary.append(
+                ComprehensionVocabularyData(
+                    phrase=phrase,
+                    test_slug=test_slug,
+                    question_numbers=question_numbers,
+                )
+            )
+
+    missing_tests = sorted(set(tests_by_slug) - set(seen_tests))
+    if missing_tests:
+        raise ValueError(
+            "Missing comprehension vocabulary for tests: "
+            + ", ".join(missing_tests)
+        )
+    expected_total = len(tests_by_slug) * COMPREHENSION_VOCABULARY_PER_TEST
+    if len(vocabulary) != expected_total:
+        raise ValueError(
+            f"Expected {expected_total} comprehension-vocabulary entries, "
+            f"got {len(vocabulary)}"
+        )
+    return vocabulary
 
 
 def _display_to_theme(display_theme: str) -> Optional[str]:

@@ -77,19 +77,30 @@ class Command(BaseCommand):
         responses = content.parse_responses()
         phrases = content.parse_phrases(responses)
         subject_vocabulary = content.parse_subject_vocabulary(responses)
-        phrase_ids = {phrase.phrase_id.casefold() for phrase in phrases}
-        collisions = sorted(
-            phrase.phrase_id
-            for phrase in subject_vocabulary
-            if phrase.phrase_id.casefold() in phrase_ids
+        comprehension_tests = content.load_comprehension_tests()
+        comprehension_vocabulary = content.parse_comprehension_vocabulary(
+            comprehension_tests
         )
+        all_phrases = [
+            *phrases,
+            *subject_vocabulary,
+            *(item.phrase for item in comprehension_vocabulary),
+        ]
+        phrase_id_locations = {}
+        collisions = set()
+        for phrase in all_phrases:
+            key = phrase.phrase_id.casefold()
+            if key in phrase_id_locations:
+                collisions.add(phrase.phrase_id)
+                collisions.add(phrase_id_locations[key])
+            else:
+                phrase_id_locations[key] = phrase.phrase_id
         if collisions:
             raise CommandError(
-                "Subject-vocabulary IDs collide with the expression bank: "
-                + ", ".join(collisions)
+                "Duplicate phrase IDs across imported vocabularies: "
+                + ", ".join(sorted(collisions))
             )
-        phrases.extend(subject_vocabulary)
-        comprehension_tests = content.load_comprehension_tests()
+        phrases = all_phrases
 
         task_by_slug = self._import_sections(sections)
         theme_by_name = self._import_themes(themes, task_by_slug)
@@ -102,6 +113,7 @@ class Command(BaseCommand):
         )
         self._import_phrases(phrases, prompt_index)
         self._import_comprehension_tests(comprehension_tests)
+        self._link_comprehension_vocabulary(comprehension_vocabulary)
         users = list(users_with_study_state())
         if users:
             for user in users:
@@ -306,6 +318,57 @@ class Command(BaseCommand):
         ComprehensionTest.objects.exclude(pk__in=seen_tests).update(
             is_active=False,
             is_published=False,
+        )
+
+    @staticmethod
+    def _link_comprehension_vocabulary(vocabulary):
+        through_model = Phrase.source_questions.through
+        through_model.objects.all().delete()
+        if not vocabulary:
+            return
+
+        phrases = Phrase.objects.in_bulk(
+            [item.phrase.phrase_id for item in vocabulary],
+            field_name="phrase_id",
+        )
+        question_keys = {
+            (item.test_slug, number)
+            for item in vocabulary
+            for number in item.question_numbers
+        }
+        questions = {
+            (test_slug, number): question_id
+            for test_slug, number, question_id in (
+                ComprehensionQuestion.objects.filter(
+                    test__slug__in={
+                        test_slug for test_slug, _number in question_keys
+                    }
+                ).values_list("test__slug", "number", "pk")
+            )
+        }
+        missing = sorted(question_keys - set(questions))
+        if missing:
+            labels = ", ".join(
+                f"{test_slug} Q{number}"
+                for test_slug, number in missing
+            )
+            raise CommandError(
+                "Comprehension vocabulary references unknown questions: "
+                + labels
+            )
+        links = [
+            through_model(
+                phrase_id=phrases[item.phrase.phrase_id].pk,
+                comprehensionquestion_id=questions[
+                    (item.test_slug, number)
+                ],
+            )
+            for item in vocabulary
+            for number in item.question_numbers
+        ]
+        through_model.objects.bulk_create(
+            links,
+            batch_size=IMPORT_BATCH_SIZE,
         )
 
     def _import_responses(self, responses, theme_by_name, family_by_name):

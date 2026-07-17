@@ -7,7 +7,7 @@
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=1"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=44">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=46">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -46,8 +46,7 @@
         <path d="M20.5 5.5c-3.1-.8-5.9-.2-8.5 1.8v13c2.6-2 5.4-2.6 8.5-1.8z"></path>
       </symbol>
       <symbol id="nav-icon-review" viewBox="0 0 24 24">
-        <rect x="5" y="4" width="14" height="16" rx="2"></rect>
-        <path d="M9 8h6M9 12h6M9 16h4"></path>
+        <path d="m4 20 4.5-1 10-10-3.5-3.5-10 10zM13.8 6.7l3.5 3.5M4 20h16"></path>
       </symbol>
       <symbol id="nav-icon-expressions" viewBox="0 0 24 24">
         <path d="M4 5h16v11H9l-5 4z"></path>
@@ -63,6 +62,10 @@
       <symbol id="nav-icon-chevron" viewBox="0 0 24 24">
         <path d="m7 9 5 5 5-5"></path>
       </symbol>
+      <symbol id="nav-icon-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="m16 16 4 4"></path>
+      </symbol>
     </svg>
     <div class="nav__inner">
       <a class="brand" href="{% url 'study:dashboard' %}">
@@ -75,47 +78,46 @@
       <nav class="nav__links" id="primary-navigation" aria-label="Navigation principale" data-nav-links>
         <div class="nav__group nav__group--learn" role="group" aria-label="Apprendre">
           <span class="nav__section-label" aria-hidden="true">Apprendre</span>
-          <a href="{% url 'study:dashboard' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'dashboard' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'dashboard' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:dashboard' %}" class="nav__primary-link{% if active_nav_area == 'home' %} is-active{% endif %}"{% if active_nav_area == 'home' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-home"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Accueil</span>
               <small aria-hidden="true">Vue d'ensemble</small>
             </span>
           </a>
-          <a href="{% url 'study:comprehension_hub' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'comprehension_hub' or request.resolver_match.url_name == 'comprehension_overview' or request.resolver_match.url_name == 'comprehension_group' or request.resolver_match.url_name == 'comprehension_test' or request.resolver_match.url_name == 'comprehension_question_study' or request.resolver_match.url_name == 'comprehension_question' or request.resolver_match.url_name == 'comprehension_results' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'comprehension_hub' or request.resolver_match.url_name == 'comprehension_overview' or request.resolver_match.url_name == 'comprehension_group' or request.resolver_match.url_name == 'comprehension_test' or request.resolver_match.url_name == 'comprehension_question_study' or request.resolver_match.url_name == 'comprehension_question' or request.resolver_match.url_name == 'comprehension_results' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:comprehension_hub' %}" class="nav__primary-link{% if active_nav_area == 'comprehension' %} is-active{% endif %}"{% if active_nav_area == 'comprehension' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-book"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Compréhension</span>
               <small aria-hidden="true">Lire et s'entraîner</small>
             </span>
           </a>
-          <a href="{% url 'study:review_overview' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'review_overview' or request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' or request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'review_overview' or request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' or request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:expression' %}" class="nav__primary-link{% if active_nav_area == 'expression' %} is-active{% endif %}"{% if active_nav_area == 'expression' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-review"></use></svg></span>
             <span class="nav__item-copy">
-              <span class="nav__item-label">Réviser</span>
-              <small aria-hidden="true">Cartes à travailler</small>
+              <span class="nav__item-label">Expression</span>
+              <small aria-hidden="true">Oral et écrit</small>
             </span>
-            {% if nav_due_total %}<span class="pill pill--due nav__badge" aria-label="{{ nav_due_total }} cartes à réviser">{{ nav_due_total }}</span>{% endif %}
           </a>
         </div>
 
         <div class="nav__group nav__group--tools" role="group" aria-label="Outils personnels">
           <span class="nav__section-label" aria-hidden="true">Mes outils</span>
-          <a href="{% url 'study:expressions_overview' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'expressions_overview' or request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'expressions_overview' or request.resolver_match.url_name == 'phrases' or request.resolver_match.url_name == 'task_phrases' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:vocabulary' %}" class="nav__primary-link{% if active_nav_area == 'vocabulary' %} is-active{% endif %}"{% if active_nav_area == 'vocabulary' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-expressions"></use></svg></span>
             <span class="nav__item-copy">
-              <span class="nav__item-label">Expressions</span>
-              <small aria-hidden="true">Vocabulaire ciblé</small>
+              <span class="nav__item-label">Vocabulaire</span>
+              <small aria-hidden="true">Tous les mots et tournures</small>
             </span>
           </a>
-          <a href="{% url 'study:notes_overview' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'notes_overview' or request.resolver_match.url_name == 'general_notes' or request.resolver_match.url_name == 'task_notes' or request.resolver_match.url_name == 'annotation_search' or request.resolver_match.url_name == 'annotation_study' or request.resolver_match.url_name == 'task_annotation_study' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'notes_overview' or request.resolver_match.url_name == 'general_notes' or request.resolver_match.url_name == 'task_notes' or request.resolver_match.url_name == 'annotation_search' or request.resolver_match.url_name == 'annotation_study' or request.resolver_match.url_name == 'task_annotation_study' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:notes_overview' %}" class="nav__primary-link{% if active_nav_area == 'notes' %} is-active{% endif %}"{% if active_nav_area == 'notes' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-notes"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Notes</span>
               <small aria-hidden="true">Notes et surlignages</small>
             </span>
           </a>
-          <a href="{% url 'study:stats_overview' %}" class="nav__primary-link{% if request.resolver_match.url_name == 'stats_overview' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %} is-active{% endif %}"{% if request.resolver_match.url_name == 'stats_overview' or request.resolver_match.url_name == 'stats' or request.resolver_match.url_name == 'task_stats' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:stats' %}" class="nav__primary-link{% if active_nav_area == 'stats' %} is-active{% endif %}"{% if active_nav_area == 'stats' %} aria-current="page"{% endif %}>
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-stats"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Stats</span>
@@ -124,7 +126,12 @@
           </a>
         </div>
 
-        <details class="nav__more{% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' or request.resolver_match.url_name == 'settings' or request.resolver_match.url_name == 'change_pin' or request.resolver_match.url_name == 'regenerate_recovery_codes' or request.resolver_match.url_name == 'reset_progress' or request.resolver_match.url_name == 'delete_account' %} is-active{% endif %}" data-nav-more>
+        <a class="nav__search-link{% if request.resolver_match.url_name == 'search' %} is-active{% endif %}" href="{% url 'study:search' %}" aria-label="Rechercher" title="Rechercher">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#nav-icon-search"></use></svg>
+          <span>Rechercher</span>
+        </a>
+
+        <details class="nav__more{% if request.resolver_match.url_name == 'settings' or request.resolver_match.url_name == 'change_pin' or request.resolver_match.url_name == 'regenerate_recovery_codes' or request.resolver_match.url_name == 'reset_progress' or request.resolver_match.url_name == 'delete_account' %} is-active{% endif %}" data-nav-more>
           <summary aria-label="Compte et réglages" title="Compte et réglages">
             <span class="nav__avatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
             <span class="nav__more-label">Compte et réglages</span>
@@ -136,7 +143,6 @@
               <strong>@{{ request.user.username }}</strong>
             </div>
             <span class="nav__menu-divider" aria-hidden="true"></span>
-            <a href="{% if content_task %}{% url 'study:task_search' content_task.part.slug content_task.slug %}{% else %}{% url 'study:search' %}{% endif %}" class="{% if request.resolver_match.url_name == 'search' or request.resolver_match.url_name == 'task_search' %}is-active{% endif %}">Rechercher</a>
             <a href="{% url 'study:settings' %}" class="{% if request.resolver_match.url_name == 'settings' or request.resolver_match.url_name == 'change_pin' or request.resolver_match.url_name == 'regenerate_recovery_codes' or request.resolver_match.url_name == 'reset_progress' or request.resolver_match.url_name == 'delete_account' %}is-active{% endif %}">Réglages</a>
             <button type="button" data-theme-toggle>
               <span>Apparence</span>
@@ -257,7 +263,7 @@
 
   <script src="{% static 'study/js/app.js' %}?v=27"></script>
   <script src="{% static 'study/js/translate.js' %}?v=9"></script>
-  <script src="{% static 'study/js/annotations.js' %}?v=6"></script>
+  <script src="{% static 'study/js/annotations.js' %}?v=7"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

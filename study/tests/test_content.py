@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import tempfile
 from collections import Counter
 from pathlib import Path
@@ -229,3 +230,73 @@ class PhraseParserTests(SimpleTestCase):
                 "Phrases modèles": 1300,
             },
         )
+
+
+class ComprehensionVocabularyParserTests(SimpleTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.tests = content.load_comprehension_tests()
+
+    def test_bundled_bank_has_fifty_source_grounded_entries_per_test(self):
+        vocabulary = content.parse_comprehension_vocabulary(self.tests)
+        response_ids = {
+            phrase.phrase_id.casefold()
+            for phrase in content.parse_phrases(content.parse_responses())
+        }
+        subject_ids = {
+            phrase.phrase_id.casefold()
+            for phrase in content.parse_subject_vocabulary(
+                content.parse_responses()
+            )
+        }
+
+        self.assertEqual(len(vocabulary), 250)
+        self.assertEqual(
+            Counter(item.test_slug for item in vocabulary),
+            {f"test-{number}": 50 for number in range(1, 6)},
+        )
+        self.assertEqual(
+            Counter(item.phrase.category for item in vocabulary),
+            {
+                category: 50
+                for category in content.COMPREHENSION_VOCABULARY_CATEGORIES.values()
+            },
+        )
+        self.assertTrue(
+            all(item.phrase.tier == "comprehension" for item in vocabulary)
+        )
+        comprehension_ids = {
+            item.phrase.phrase_id.casefold() for item in vocabulary
+        }
+        self.assertEqual(len(comprehension_ids), 250)
+        self.assertTrue(comprehension_ids.isdisjoint(response_ids))
+        self.assertTrue(comprehension_ids.isdisjoint(subject_ids))
+
+    def test_parser_rejects_a_target_absent_from_its_cited_questions(self):
+        payload = json.loads(
+            (
+                content.COMPREHENSION_VOCABULARY_DIR / "test_01.json"
+            ).read_text(encoding="utf-8")
+        )
+        payload["entries"][0]["french"] = "terme totalement absent"
+        payload["entries"][0]["example"] = (
+            "Ce terme totalement absent ne vient pas de la source."
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "test_01.json"
+            path.write_text(
+                json.dumps(payload, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            with patch.object(
+                content,
+                "COMPREHENSION_VOCABULARY_DIR",
+                Path(directory),
+            ):
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "french target is not present",
+                ):
+                    content.parse_comprehension_vocabulary([self.tests[0]])

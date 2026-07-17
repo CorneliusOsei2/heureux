@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-1",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE01V001",
+      "kind": "mot-cle",
+      "french": "attestation",
+      "english": "official certificate / proof",
+      "example": "Pour obtenir son remboursement, la femme doit fournir une attestation de son employeur.",
+      "usage": "Nom féminin administratif désignant un document officiel qui prouve un fait; fréquent dans les démarches.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE01V002",
+      "kind": "mot-cle",
+      "french": "remboursement",
+      "english": "reimbursement",
+      "example": "Le service financier a bien reçu sa demande de remboursement du billet de train.",
+      "usage": "Nom masculin des démarches financières; on parle d'une « demande de remboursement ».",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE01V003",
+      "kind": "mot-cle",
+      "french": "déménagement",
+      "english": "move / relocation",
+      "example": "La librairie a récolté de l'argent auprès de ses clients pour financer son déménagement.",
+      "usage": "Nom masculin; changement de local ou de logement, courant dans un contexte commercial ou privé.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE01V004",
+      "kind": "mot-cle",
+      "french": "patrimoine",
+      "english": "heritage",
+      "example": "La démolition de l'église aurait causé la perte d'un élément important du patrimoine de la ville.",
+      "usage": "Nom masculin; ensemble des biens culturels et historiques à préserver.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE01V005",
+      "kind": "mot-cle",
+      "french": "horaires",
+      "english": "opening hours",
+      "example": "Malgré la fermeture pour les vacances, le magasin gardera les mêmes horaires à la rentrée.",
+      "usage": "Nom masculin le plus souvent au pluriel; désigne les heures d'ouverture d'un lieu.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE01V006",
+      "kind": "mot-cle",
+      "french": "vide-grenier",
+      "english": "garage / yard sale",
+      "example": "Les élèves de seconde financeront leur voyage grâce aux retombées d'un vide-grenier.",
+      "usage": "Nom masculin familier; vente d'objets d'occasion entre particuliers, souvent pour récolter des fonds.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE01V007",
+      "kind": "mot-cle",
+      "french": "droit à l'oubli",
+      "english": "right to be forgotten",
+      "example": "Sur internet, le droit à l'oubli devrait permettre à chacun de faire effacer ses informations personnelles.",
+      "usage": "Expression juridique liée à la protection de la vie privée numérique.",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE01V008",
+      "kind": "mot-cle",
+      "french": "manque de reconnaissance",
+      "english": "lack of recognition",
+      "example": "Malgré leur importance, les secrétaires souffrent toujours d'un certain manque de reconnaissance.",
+      "usage": "Collocation courante pour décrire un métier peu valorisé.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE01V009",
+      "kind": "mot-cle",
+      "french": "condition physique",
+      "english": "physical fitness",
+      "example": "Pour ces randonnées scientifiques, il n'est pas nécessaire d'avoir une excellente condition physique.",
+      "usage": "Collocation; désigne la forme sportive d'une personne.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE01V010",
+      "kind": "mot-cle",
+      "french": "déchets plastiques",
+      "english": "plastic waste",
+      "example": "La concentration de déchets plastiques à la surface du Pacifique nord a été multipliée par cent.",
+      "usage": "Collocation environnementale employée généralement au pluriel.",
+      "questions": [
+        27
+      ]
+    },
+    {
+      "id": "CE01V011",
+      "kind": "verbe-action",
+      "french": "annoncer",
+      "english": "to announce",
+      "example": "Cette affiche sert à annoncer un changement dans les horaires de l'université.",
+      "usage": "Verbe transitif; rendre publique une information nouvelle.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE01V012",
+      "kind": "verbe-action",
+      "french": "déménager",
+      "english": "to move (house)",
+      "example": "Les Garnier ne vont pas déménager: ils préviennent seulement leurs voisins de futurs travaux.",
+      "usage": "Verbe; changer de logement. À ne pas confondre avec « faire des travaux ».",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE01V013",
+      "kind": "verbe-action",
+      "french": "s'agrandir",
+      "english": "to expand / grow bigger",
+      "example": "Grâce aux dons de ses clients, la librairie a enfin pu s'agrandir.",
+      "usage": "Verbe pronominal; devenir plus grand, s'étendre.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE01V014",
+      "kind": "verbe-action",
+      "french": "s'installer",
+      "english": "to settle / move into (premises)",
+      "example": "Grâce aux dons de ses clients, la librairie a enfin pu s'installer dans un local plus vaste.",
+      "usage": "Verbe pronominal; s'établir dans un lieu. Ici, emménager dans de nouveaux locaux.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE01V015",
+      "kind": "verbe-action",
+      "french": "commander",
+      "english": "to order (supplies)",
+      "example": "Madame Guilbert doit rapidement commander du papier et de l'encre.",
+      "usage": "Verbe; passer une commande de matériel ou de marchandises.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE01V016",
+      "kind": "verbe-action",
+      "french": "décrocher",
+      "english": "to land (a job)",
+      "example": "Pour un job d'été, il faut montrer qu'on a vraiment envie de décrocher ce poste.",
+      "usage": "Verbe familier; obtenir quelque chose de difficile, comme un emploi.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE01V017",
+      "kind": "verbe-action",
+      "french": "financer",
+      "english": "to fund / finance",
+      "example": "Les lycéens multiplient les idées originales pour financer leur voyage d'études.",
+      "usage": "Verbe; fournir l'argent nécessaire à un projet.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE01V018",
+      "kind": "verbe-action",
+      "french": "se confier",
+      "english": "to open up / confide",
+      "example": "Les adolescents peuvent se confier sur des sites spécialisés où leur parole est prise en compte.",
+      "usage": "Verbe pronominal; parler de ses problèmes personnels à quelqu'un.",
+      "questions": [
+        31
+      ]
+    },
+    {
+      "id": "CE01V019",
+      "kind": "verbe-action",
+      "french": "conserver",
+      "english": "to preserve / keep",
+      "example": "La Ville et le diocèse ont finalement décidé de conserver l'église plutôt que de la démolir.",
+      "usage": "Verbe transitif; maintenir en l'état, ne pas détruire.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE01V020",
+      "kind": "verbe-action",
+      "french": "expatrier",
+      "english": "to relocate / move away",
+      "example": "Les gardes-chasse d'Orly ont choisi d'expatrier les lapins vers le sud de la France.",
+      "usage": "Verbe transitif; envoyer vivre ailleurs, souvent loin de son lieu d'origine.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE01V021",
+      "kind": "expression",
+      "french": "se refaire une santé",
+      "english": "to recover / get back in shape",
+      "example": "Loin de l'aéroport, les lapins vont se refaire une santé auprès des thyms de Provence.",
+      "usage": "Expression familière; retrouver la forme, se rétablir dans un cadre plus favorable.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE01V022",
+      "kind": "expression",
+      "french": "faire la preuve de",
+      "english": "to prove / demonstrate",
+      "example": "Pour être recruté, le candidat doit avant tout faire la preuve de sa motivation.",
+      "usage": "Locution; montrer concrètement que l'on possède une qualité.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE01V023",
+      "kind": "expression",
+      "french": "prendre de la valeur",
+      "english": "to gain value",
+      "example": "Les marques des grands chefs ne cessent de prendre de la valeur.",
+      "usage": "Locution; devenir plus précieux ou plus coté avec le temps.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE01V024",
+      "kind": "expression",
+      "french": "boucler le budget",
+      "english": "to finalize / balance the budget",
+      "example": "Les élèves organisent un vide-grenier pour boucler le budget de leur séjour en Corse.",
+      "usage": "Expression; réunir la somme manquante pour équilibrer le financement d'un projet.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE01V025",
+      "kind": "expression",
+      "french": "battre le rappel",
+      "english": "to rally support",
+      "example": "C'est au tour des élèves de seconde de battre le rappel pour financer leur séjour en Corse.",
+      "usage": "Expression; mobiliser un maximum de personnes autour d'un projet.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE01V026",
+      "kind": "expression",
+      "french": "avoir de la nostalgie pour",
+      "english": "to feel nostalgia for",
+      "example": "Beaucoup semblent avoir de la nostalgie pour les temps héroïques de la nouvelle cuisine.",
+      "usage": "Locution; regretter avec émotion une époque révolue.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE01V027",
+      "kind": "expression",
+      "french": "voir le jour",
+      "english": "to come into being",
+      "example": "De nouvelles idées de films peinent à trouver un financement pour voir le jour.",
+      "usage": "Locution; se réaliser, exister enfin. Contraire: « ne pas voir le jour ».",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE01V028",
+      "kind": "expression",
+      "french": "faire face à",
+      "english": "to face / deal with",
+      "example": "Dans les années à venir, l'anglais devra faire face à la progression d'autres langues.",
+      "usage": "Locution; affronter une difficulté ou une concurrence.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE01V029",
+      "kind": "expression",
+      "french": "au profit de",
+      "english": "in favor of / to the benefit of",
+      "example": "Les tâches classiques des secrétaires diminuent au profit de nouvelles responsabilités.",
+      "usage": "Locution prépositive; indique ce qui progresse au détriment d'autre chose.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE01V030",
+      "kind": "expression",
+      "french": "en voie de disparition",
+      "english": "on the way out / endangered",
+      "example": "On croyait le métier de secrétaire en voie de disparition, et pourtant il n'a jamais été aussi recherché.",
+      "usage": "Locution; se dit d'une chose ou d'une espèce menacée de disparaître.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE01V031",
+      "kind": "reformulation",
+      "french": "annoncer un changement",
+      "english": "to announce a change",
+      "example": "Le but de cette affiche est d'annoncer un changement dans les horaires d'ouverture.",
+      "usage": "Reformulation neutre du contenu d'un avis qui signale une modification.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE01V032",
+      "kind": "reformulation",
+      "french": "fermer pendant l'été",
+      "english": "to close during the summer",
+      "example": "Le message veut surtout dire que le magasin va fermer pendant l'été.",
+      "usage": "Reformulation de « nous sommes en vacances jusqu'au 1er septembre ».",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE01V033",
+      "kind": "reformulation",
+      "french": "attrapés et emmenés ailleurs",
+      "english": "caught and taken elsewhere",
+      "example": "Pour résumer, les lapins d'Orly ont été attrapés et emmenés ailleurs.",
+      "usage": "Reformulation simple de « campagne de capture » et « expatrier vers le sud ».",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE01V034",
+      "kind": "reformulation",
+      "french": "peu valorisé",
+      "english": "undervalued",
+      "example": "Aujourd'hui encore, le métier de secrétaire reste peu valorisé.",
+      "usage": "Reformulation de « manque de reconnaissance » dont souffre la profession.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE01V035",
+      "kind": "reformulation",
+      "french": "perdre son statut de langue dominante",
+      "english": "to lose its status as the dominant language",
+      "example": "L'article suggère que l'anglais pourrait perdre son statut de langue dominante.",
+      "usage": "Reformulation de « devoir faire face à la progression d'autres langues ».",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE01V036",
+      "kind": "reformulation",
+      "french": "évitent de prendre des risques",
+      "english": "avoid taking risks",
+      "example": "En reprenant d'anciens succès, les producteurs évitent de prendre des risques.",
+      "usage": "Reformulation de « se tourner vers les valeurs sûres des succès passés ».",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE01V037",
+      "kind": "reformulation",
+      "french": "manipulés par une force supérieure",
+      "english": "manipulated by a greater force",
+      "example": "Dans cet extrait, les acheteurs semblent manipulés par une force supérieure.",
+      "usage": "Reformulation du comportement automatique et involontaire décrit dans le texte.",
+      "questions": [
+        29
+      ]
+    },
+    {
+      "id": "CE01V038",
+      "kind": "reformulation",
+      "french": "réponse à des besoins alimentaires accrus",
+      "english": "a response to growing food needs",
+      "example": "Selon l'article, produire des insectes est une réponse à des besoins alimentaires accrus.",
+      "usage": "Reformulation de « la demande mondiale de protéines va doubler ».",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE01V039",
+      "kind": "reformulation",
+      "french": "concrétiser des objectifs personnels",
+      "english": "to achieve personal goals",
+      "example": "Travailler en famille permet surtout de concrétiser des objectifs personnels.",
+      "usage": "Reformulation de « réaliser ses projets plutôt que ceux des autres ».",
+      "questions": [
+        38
+      ]
+    },
+    {
+      "id": "CE01V040",
+      "kind": "reformulation",
+      "french": "perturbe le processus d'acquisition des connaissances",
+      "english": "disrupts the learning process",
+      "example": "Selon l'auteur, le contrôle perturbe le processus d'acquisition des connaissances.",
+      "usage": "Reformulation savante de « le contrôle pervertit l'action » appliquée aux études.",
+      "questions": [
+        39
+      ]
+    },
+    {
+      "id": "CE01V041",
+      "kind": "phrase-modele",
+      "french": "Nous informons notre aimable clientèle que",
+      "english": "We inform our kind customers that",
+      "example": "Nous informons notre aimable clientèle que le magasin restera fermé jusqu'au 1er septembre.",
+      "usage": "Formule commerciale figée pour ouvrir une annonce officielle aux clients.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE01V042",
+      "kind": "phrase-modele",
+      "french": "Veuillez nous excuser pour",
+      "english": "Please excuse us for",
+      "example": "Veuillez nous excuser pour le bruit occasionné par les réparations de cette semaine.",
+      "usage": "Formule de politesse écrite présentant des excuses, suivie d'un nom.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE01V043",
+      "kind": "phrase-modele",
+      "french": "Pourriez-vous",
+      "english": "Could you",
+      "example": "Pourriez-vous commander rapidement du papier et de l'encre, s'il vous plaît ?",
+      "usage": "Structure de demande polie au conditionnel, suivie d'un infinitif.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE01V044",
+      "kind": "phrase-modele",
+      "french": "Nous avons bien reçu",
+      "english": "We have duly received",
+      "example": "Nous avons bien reçu votre demande de remboursement pour un billet de train.",
+      "usage": "Formule administrative accusant réception d'un document ou d'un message.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE01V045",
+      "kind": "phrase-modele",
+      "french": "Il ne faut pas nécessairement",
+      "english": "You don't necessarily need to",
+      "example": "Il ne faut pas nécessairement disposer d'une excellente condition physique pour participer à ces séjours.",
+      "usage": "Structure impersonnelle nuançant une obligation, suivie d'un infinitif.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE01V046",
+      "kind": "phrase-modele",
+      "french": "Le jour viendra où",
+      "english": "The day will come when",
+      "example": "Le jour viendra où un grand groupe alimentaire investira dans l'entreprise d'un cuisinier reconnu.",
+      "usage": "Tournure au futur annonçant un événement jugé inévitable, suivie de « où ».",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE01V047",
+      "kind": "phrase-modele",
+      "french": "j'espère que tu pourras venir",
+      "english": "I hope you can come",
+      "example": "Nous fêtons notre nouveau logement dimanche soir; j'espère que tu pourras venir !",
+      "usage": "Formule d'invitation amicale à la fin d'un message.",
+      "questions": [
+        7
+      ]
+    },
+    {
+      "id": "CE01V048",
+      "kind": "phrase-modele",
+      "french": "Nous aurons le plaisir de vous retrouver",
+      "english": "We will be happy to see you again",
+      "example": "Nous aurons le plaisir de vous retrouver à partir du 2 septembre.",
+      "usage": "Formule commerciale courtoise annonçant une réouverture.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE01V049",
+      "kind": "phrase-modele",
+      "french": "de plus en plus",
+      "english": "more and more",
+      "example": "Les technologies de l'information sont de plus en plus utilisées dans l'enseignement supérieur.",
+      "usage": "Locution adverbiale de progression croissante; contraire de « de moins en moins ».",
+      "questions": [
+        37
+      ]
+    },
+    {
+      "id": "CE01V050",
+      "kind": "phrase-modele",
+      "french": "au contraire",
+      "english": "on the contrary",
+      "example": "On croyait les secrétaires menacées; au contraire, elles n'ont jamais été aussi recherchées.",
+      "usage": "Connecteur d'opposition introduisant l'idée inverse de ce qui précède.",
+      "questions": [
+        18
+      ]
+    }
+  ]
+}

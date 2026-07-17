@@ -1,12 +1,12 @@
 {% load static %}/* Heureux service worker — offline app shell. */
-var CACHE = "heureux-v50";
+var CACHE = "heureux-v52";
 var SHELL = [
   "{% url 'offline' %}",
-  "{% static 'study/css/app.css' %}?v=44",
+  "{% static 'study/css/app.css' %}?v=46",
   "{% static 'study/js/theme-init.js' %}?v=1",
   "{% static 'study/js/app.js' %}?v=27",
   "{% static 'study/js/translate.js' %}?v=9",
-  "{% static 'study/js/annotations.js' %}?v=6",
+  "{% static 'study/js/annotations.js' %}?v=7",
   "/manifest.webmanifest",
   "{% static 'study/icons/icon-192.png' %}?v=2",
   "{% static 'study/icons/icon-512.png' %}?v=2",

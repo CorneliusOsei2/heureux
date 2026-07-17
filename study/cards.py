@@ -19,7 +19,10 @@ def scope_from_request(request) -> dict:
     kind = data.get("kind")
     if kind in {"spine", "phrase", "vocab", "revisit", "weak"}:
         scope["kind"] = kind
-    for key in ("part", "task", "theme", "family", "category"):
+    content = data.get("content")
+    if content in {"spine", "vocabulary"}:
+        scope["content"] = content
+    for key in ("part", "task", "theme", "family", "category", "test"):
         value = (data.get(key) or "").strip()
         if value:
             scope[key] = value
@@ -34,7 +37,15 @@ def scope_from_request(request) -> dict:
 
 def scope_label(scope: dict) -> str:
     """Human label for the current study scope."""
-    from .models import ExamPart, Family, PhraseCategory, Response, Task, Theme
+    from .models import (
+        ComprehensionTest,
+        ExamPart,
+        Family,
+        PhraseCategory,
+        Response,
+        Task,
+        Theme,
+    )
 
     def with_batch(label: str) -> str:
         if scope.get("batch"):
@@ -57,6 +68,13 @@ def scope_label(scope: dict) -> str:
         ).first()
         if category:
             return with_batch(f"Expressions · {category.name}")
+    if scope.get("test"):
+        test = ComprehensionTest.objects.filter(
+            slug=scope["test"],
+            is_active=True,
+        ).first()
+        if test:
+            return with_batch(f"Vocabulaire · {test.title}")
     if scope.get("response"):
         response = Response.objects.select_related("theme").filter(
             pk=scope["response"],
@@ -107,6 +125,10 @@ def scope_label(scope: dict) -> str:
         return with_batch("Liste à revoir")
     if scope.get("kind") == "weak":
         return with_batch("Points à renforcer")
+    if scope.get("content") == "spine":
+        return with_batch("Réponses argumentées")
+    if scope.get("content") == "vocabulary":
+        return with_batch("Vocabulaire")
     return with_batch("Sélection")
 
 
@@ -145,18 +167,24 @@ def _phrase_payload(card: Card) -> dict:
     phrase = card.phrase
     production = card.card_type == CardType.PHRASE_PRODUCTION
     subject_vocabulary = phrase.tier == PhraseTier.SUBJECT
+    comprehension_vocabulary = phrase.tier == PhraseTier.COMPREHENSION
     return {
         "card": card,
         "kind": "phrase",
         "production": production,
         "subject_vocabulary": subject_vocabulary,
+        "comprehension_vocabulary": comprehension_vocabulary,
         "kind_label": (
             "Vocabulaire du sujet"
             if subject_vocabulary
             else (
-                "Expression · production"
-                if production
-                else "Expression · sens"
+                "Vocabulaire de compréhension"
+                if comprehension_vocabulary
+                else (
+                    "Expression · production"
+                    if production
+                    else "Expression · sens"
+                )
             )
         ),
         "phrase": phrase,
@@ -165,6 +193,12 @@ def _phrase_payload(card: Card) -> dict:
         "cloze_example": phrase.cloze_example,
         "sources": list(
             phrase.source_prompts.filter(is_active=True).select_related("theme")
+        ),
+        "question_sources": list(
+            phrase.source_questions.filter(
+                is_active=True,
+                test__is_active=True,
+            ).select_related("test")
         ),
         "annotation_source_key": (
             f"phrase:{phrase.phrase_id}:{card.card_type}"

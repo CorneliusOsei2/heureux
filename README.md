@@ -1,10 +1,10 @@
 # Heureux · Fiches de révision (French oral-exam flashcards)
 
-A multi-user spaced-repetition web app for memorising a French oral-exam answer
-bank. It parses the existing corpus — 167 exam prompts that collapse into
-**130 unique argued answers** across 7 themes and 17 topic families, plus a
-source-grounded bank of reusable expressions — and turns everything into
-Anki-style flashcards with an SM-2 scheduler.
+A multi-user French-exam learning app that combines expression, comprehension,
+rich vocabulary, private notes, and spaced repetition. Its expression corpus
+contains 167 prompts that collapse into **130 unique argued answers** across
+7 themes and 17 topic families; its comprehension and vocabulary collections
+turn the same source material into focused tests and active-recall decks.
 
 Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
@@ -12,17 +12,20 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 
 ## What's inside
 
-- **Expression orale → Tâche 3** — the current corpus has one clear home. Its
-  subjects, argued responses, expression bank, review queue, revisit list,
-  search, and progress are all scoped to this task.
+- **Six canonical areas** — Accueil, Compréhension, Expression, Vocabulaire,
+  Notes, and Stats each own one part of the learning experience. Review is
+  launched contextually from the area that owns the content rather than from a
+  separate, mixed destination.
+- **Expression orale → Tâche 3** — subjects, complete argued responses, and
+  response-recall practice share one clear workspace.
 - **Compréhension écrite → Test N** — persisted multiple-choice tests present
   one French document at a time, save each answer immediately, and unlock the
   English translation plus detailed answer rationales after submission.
   Unfinished tests resume at the next unanswered question; completed attempts
   keep their score, full correction, history, and retake path.
-- **Réviser, Expressions, Notes, Stats** — each top-level tab first follows the same
-  Expression orale/écrite → Tâches hierarchy as Accueil, then opens the chosen
-  task's focused workspace.
+- **Vocabulaire** — one library groups reusable expression turns, the 50-entry
+  deck for every expression subject, and a 50-entry source-linked deck for
+  every published written-comprehension test.
 - **Sessions** — review responses, expressions, or the revisit list without
   distractions. Reveal with `Space`, then choose `1` (Revoir) or `2` (Correct).
   Unfinished sessions reopen on the exact card where you stopped, and the
@@ -45,12 +48,12 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
   expressions and idioms, turns of phrase, and sentence models to every unique
   response.
   Expression and subject-vocabulary review lots contain at most 10 entries.
-- **Private notes & highlights** — notes follow the same Expression
-  orale/écrite → Tâche hierarchy, with a dedicated highlights subsection.
+- **Private notes & highlights** — one searchable library can be filtered by
+  task and has a dedicated highlights subsection.
   Select text anywhere to copy it, translate it, save it to Notes, or highlight
   it persistently. Search the complete private annotation library, mark chosen
-  notes or passages “À étudier”, then review that selection as a simple
-  active-recall deck. Translation uses the browser's local English model with
+  notes or passages “À étudier”, then decide whether each should remain in or
+  leave the active-recall deck. Translation uses the browser's local English model with
   an explicit Google Translate fallback when local translation is unavailable.
 - **Practice without a daily cap** — every new card and due review stays
   available; expression categories and subject decks provide optional 10-entry
@@ -74,6 +77,7 @@ Importing the corpus produces:
 | Response spine | 130 | Prompt → compact speaking spine |
 | Expression — production | 1,410 | English cue + blanked example → the expression |
 | Subject vocabulary | 6,500 | English cue + source example → the French target |
+| Comprehension vocabulary | 250 | English cue + source-linked example → the French target |
 | Expression — recognition | 226 shared expressions | Expression → meaning + example |
 
 Equivalent prompts (same answer in different themes) share one Response and one
@@ -81,6 +85,8 @@ spine card, so you never memorise the same answer twice. Response-local
 vocabulary uses production cards only and appears from its response sheet;
 shared production and recognition twins always remain in the same lot. Each
 response also has five dedicated subject-vocabulary lots of 10 cards.
+Each published written-comprehension test also has five source-linked lots of
+10 cards. The complete imported library currently contains 8,516 learner cards.
 
 ---
 
@@ -126,7 +132,8 @@ The app ships a self-contained snapshot of the answer bank in
   progress. Source items that disappear are archived, not deleted, so their
   cards, review history, notes, highlights, and comprehension attempts remain
   intact. CE test metadata and source questions live in
-  `study/content/comprehension/`.
+  `study/content/comprehension/`; its source-linked vocabulary lives in
+  `study/content/comprehension_vocabulary/`.
 - `sync_content --from <path-to-t3>` — refreshes the snapshot from the live
   `t3/` tree (response batches, `study_sheets.md`, `anki/data/phrases.tsv`).
   The app-owned `subject_vocabulary/` bank is preserved. Run `import_content`

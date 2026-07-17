@@ -2,12 +2,20 @@
 {% block title %}{{ part.name }} · Heureux{% endblock %}
 
 {% block content %}
-<div class="page-head">
-  <p class="eyebrow"><a href="{% url 'study:dashboard' %}">Accueil</a> · {{ part.short_name }}</p>
-  <h1 style="margin-bottom:.2rem;">{{ part.emoji }} {{ part.name }}</h1>
-</div>
+<header class="area-hero">
+  <div class="area-hero__copy">
+    <p class="eyebrow"><a href="{% url 'study:expression' %}">Expression</a> · {{ part.short_name }}</p>
+    <h1>{{ part.emoji }} {{ part.name }}</h1>
+    <p>Choisis une tâche pour parcourir ses sujets, étudier les réponses et t’entraîner à les restituer.</p>
+  </div>
+  <dl class="area-hero__metrics" aria-label="Contenu du parcours">
+    <div><dt>Tâches</dt><dd>{{ tasks|length }}</dd></div>
+    <div><dt>Parcours</dt><dd>{{ part.short_name }}</dd></div>
+    <div><dt>Mode</dt><dd>Actif</dd></div>
+  </dl>
+</header>
 
-<div class="grid grid--decks">
+<div class="grid grid--decks area-section">
   {% for t in tasks %}
     {% if t.task.available %}
       <a class="deck card" style="--deck-color: {{ t.task.color }};" href="{% url 'study:task_detail' part.slug t.task.slug %}">
