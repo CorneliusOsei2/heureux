@@ -4558,9 +4558,10 @@ def stats(request, part_slug=None, task_slug=None):
         day = today - timezone.timedelta(days=offset)
         daily.append({"date": day, "count": per_day.get(day, 0)})
     max_daily = max((d["count"] for d in daily), default=0) or 1
+    reviews_30_days = sum(d["count"] for d in daily)
 
     heat = []
-    for offset in range(90, -1, -1):
+    for offset in range(89, -1, -1):
         day = today - timezone.timedelta(days=offset)
         count = per_day.get(day, 0)
         level = min(4, 1 + count // 15) if count else 0
@@ -4592,6 +4593,11 @@ def stats(request, part_slug=None, task_slug=None):
     max_forecast = max((f["count"] for f in forecast), default=0) or 1
 
     overall = deck_stats(active_cards, now)
+    mastery_percentage = (
+        round(100 * overall["mature"] / overall["total"])
+        if overall["total"]
+        else 0
+    )
 
     theme_qs = Theme.objects.select_related("task__part").filter(is_active=True)
     if scope.get("task"):
@@ -4618,12 +4624,16 @@ def stats(request, part_slug=None, task_slug=None):
     context = {
         "daily": daily,
         "max_daily": max_daily,
+        "reviews_30_days": reviews_30_days,
         "heat": heat,
+        "reviews_90_days": sum(cell["count"] for cell in heat),
         "retention": retention,
         "mature_total": mature_total,
         "forecast": forecast,
         "max_forecast": max_forecast,
+        "forecast_total": sum(item["count"] for item in forecast),
         "overall": overall,
+        "mastery_percentage": mastery_percentage,
         "themes": themes,
         "streak": current_streak(now, logs_base, request.user),
         "total_reviews": logs_base.count(),

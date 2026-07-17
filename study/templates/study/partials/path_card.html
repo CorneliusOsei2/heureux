@@ -1,0 +1,66 @@
+{% comment %}
+Skill / parcours path card. Single source of truth for the expression-path card
+used by the Expression hub (parcours) and the Vocabulary hub (via
+partials/vocabulary_skill_card.html).
+Params:
+  code        — short code, lowercase (drives the modifier class + icon); shown
+                uppercased as the eyebrow (e.g. "eo" -> "EO").
+  title       — card title.
+  available   — bool; an <a> link when true, a disabled <article> when false.
+  url         — href when available.
+  query       — optional query string appended as "?{{ query }}".
+  card_kind   — "expression" (default), "vocabulary" or "comprehension".
+                Vocabulary adds the vocabulary-path-card class +
+                data-vocabulary-path hook and the "entrées" meta wording.
+  task_count, prompt_count — counts for the meta line.
+  entry_count — vocabulary entries (card_kind="vocabulary").
+  test_count  — when set, vocabulary meta becomes "N tests · K entrées" (CE).
+  seen, total — expression "cartes vues" (card_kind="expression").
+  facts       — comprehension summary dict (card_kind="comprehension").
+  facts_kind  — "ecrite" or "orale"; selects the comprehension meta wording.
+  action_label — action text when available (default "Ouvrir").
+{% endcomment %}
+{% if available %}
+  <a class="expression-path expression-path--available expression-path--{{ code }} card{% if card_kind == "vocabulary" %} vocabulary-path-card{% endif %}"{% if card_kind == "vocabulary" %} data-vocabulary-path{% endif %} href="{{ url }}{% if query %}?{{ query }}{% endif %}">
+{% else %}
+  <article class="expression-path expression-path--soon expression-path--{{ code }} card{% if card_kind == "vocabulary" %} vocabulary-path-card{% endif %}"{% if card_kind == "vocabulary" %} data-vocabulary-path{% endif %} aria-disabled="true">
+{% endif %}
+    <span class="expression-path__icon" aria-hidden="true">
+      {% include "study/_skill_icon.html" with skill_code=code only %}
+    </span>
+    <span class="expression-path__copy">
+      <span class="eyebrow">{{ code|upper }}</span>
+      <strong>{{ title }}</strong>
+      {% if available %}
+        <small>
+          {% if card_kind == "vocabulary" %}
+            {% if test_count %}
+              {{ test_count }} test{{ test_count|pluralize }} · {{ entry_count }} entrées
+            {% else %}
+              {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ entry_count }} entrées
+            {% endif %}
+          {% elif card_kind == "comprehension" %}
+            {% if facts_kind == "orale" %}
+              {% if facts.available_test_count %}{{ facts.available_test_count }} test{{ facts.available_test_count|pluralize }} disponible{{ facts.available_test_count|pluralize }}{% else %}{{ facts.test_count }} test{{ facts.test_count|pluralize }} dans l’historique{% endif %}{% if facts.active_attempt %} · {{ facts.active_answered_count }}/{{ facts.active_question_count }} répondues{% elif facts.best_percentage is not None %} · {{ facts.best_percentage }} % meilleur score{% endif %} · {{ facts.completed_test_count }} terminé{{ facts.completed_test_count|pluralize }}
+            {% else %}
+              {{ facts.group_count }} groupes · {% if facts.active_attempt %}{{ facts.active_answered_count }}/{{ facts.active_question_count }} répondues{% elif facts.best_percentage is not None %}{{ facts.best_percentage }} % meilleur score{% else %}{{ facts.available_test_count }} test{{ facts.available_test_count|pluralize }} disponible{{ facts.available_test_count|pluralize }}{% endif %} · {{ facts.completed_test_count }} terminé{{ facts.completed_test_count|pluralize }}
+            {% endif %}
+          {% else %}
+            {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ seen }}/{{ total }} cartes vues
+          {% endif %}
+        </small>
+      {% else %}
+        <small>{% if card_kind == "vocabulary" %}Vocabulaire en préparation{% else %}Parcours en préparation{% endif %}</small>
+      {% endif %}
+    </span>
+    <span class="expression-path__action">
+      {% if available %}
+        {{ action_label|default:"Ouvrir" }}
+        <span class="expression-path__arrow" aria-hidden="true">
+          <svg viewBox="0 0 20 20" focusable="false"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+        </span>
+      {% else %}
+        <span class="badge-soon">À venir</span>
+      {% endif %}
+    </span>
+{% if available %}</a>{% else %}</article>{% endif %}

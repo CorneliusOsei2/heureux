@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import tempfile
 from collections import Counter
 from pathlib import Path
@@ -12,6 +13,40 @@ from unittest.mock import patch
 from django.test import SimpleTestCase
 
 from study import content
+
+
+class AppCopyTests(SimpleTestCase):
+    def test_user_facing_sources_omit_exam_brand_acronyms(self):
+        project_root = Path(__file__).resolve().parents[2]
+        roots = (project_root / "study", project_root / "templates")
+        suffixes = {
+            ".css",
+            ".html",
+            ".js",
+            ".json",
+            ".md",
+            ".py",
+            ".tsv",
+            ".txt",
+        }
+        forbidden = ("T" + "CF", "T" + "EF")
+        pattern = re.compile(
+            r"\b(?:" + "|".join(re.escape(item) for item in forbidden) + r")\b",
+            re.IGNORECASE,
+        )
+        violations = []
+
+        for root in roots:
+            for path in root.rglob("*"):
+                if path.suffix.lower() not in suffixes:
+                    continue
+                text = path.read_text(encoding="utf-8")
+                if match := pattern.search(text):
+                    violations.append(
+                        f"{path.relative_to(project_root)}: {match.group(0)}"
+                    )
+
+        self.assertEqual(violations, [])
 
 
 class PhraseParserTests(SimpleTestCase):

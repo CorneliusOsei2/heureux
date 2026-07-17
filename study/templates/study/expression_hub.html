@@ -27,25 +27,8 @@
 
     <div class="expression-paths">
       {% for path in paths %}
-        {% if path.available %}
-          <a class="expression-path card" href="{% url 'study:part_detail' path.part.slug %}">
-        {% else %}
-          <article class="expression-path expression-path--soon card" aria-disabled="true">
-        {% endif %}
-            <span class="expression-path__icon" aria-hidden="true">{{ path.part.emoji }}</span>
-            <span class="expression-path__copy">
-              <span class="eyebrow">{{ path.part.short_name }}</span>
-              <strong>{{ path.part.name }}</strong>
-              {% if path.available %}
-                <small>{{ path.available_task_count }} tâche{{ path.available_task_count|pluralize }} · {{ path.prompt_count }} sujets · {{ path.seen }}/{{ path.total }} cartes vues</small>
-              {% else %}
-                <small>Parcours en préparation</small>
-              {% endif %}
-            </span>
-            <span class="expression-path__action">
-              {% if path.available %}Ouvrir <span aria-hidden="true">→</span>{% else %}<span class="badge-soon">À venir</span>{% endif %}
-            </span>
-        {% if path.available %}</a>{% else %}</article>{% endif %}
+        {% url 'study:part_detail' path.part.slug as path_url %}
+        {% include "study/partials/path_card.html" with code=path.part.short_name|lower title=path.part.name available=path.available url=path_url task_count=path.available_task_count prompt_count=path.prompt_count seen=path.seen total=path.total only %}
       {% endfor %}
     </div>
   </section>

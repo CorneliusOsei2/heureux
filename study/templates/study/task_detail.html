@@ -39,21 +39,8 @@
   </div>
   <div class="grid grid--decks">
     {% for item in themes %}
-      <a class="deck card" style="--deck-color: {{ item.theme.color }};" href="{% url 'study:theme_detail' item.theme.slug %}">
-        <div class="deck__body">
-          <div class="deck__title">
-            <span class="deck__icon">{{ item.theme.emoji }}</span>
-            <span>{{ item.theme.display_name }}</span>
-            {% if item.stats.due %}<span class="deck__due pill pill--due">{{ item.stats.due }}</span>{% endif %}
-          </div>
-          <div class="deck__meta">{{ item.prompt_count }} sujets · {{ item.stats.total }} réponses · {{ item.stats.mature }} maîtrisée{{ item.stats.mature|pluralize }}</div>
-          <div class="progress">
-            <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
-            <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
-            <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
-          </div>
-        </div>
-      </a>
+      {% url 'study:theme_detail' item.theme.slug as theme_url %}
+      {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_mature=True count_mature=item.stats.mature only %}
     {% endfor %}
   </div>
 </section>

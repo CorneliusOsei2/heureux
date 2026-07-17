@@ -1982,4 +1982,4 @@ from the dramatic work.)
 
 ---
 
-*Study guide generated from TCF Canada Compréhension Écrite Test 5*
+*Study guide generated from Compréhension écrite · Test 5*

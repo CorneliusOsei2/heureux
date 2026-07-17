@@ -27,14 +27,7 @@
   </div>
   <div class="batch-grid">
     {% for batch in review_batches %}
-      <a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
-        <span class="batch-card__top">
-          <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
-          <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
-        </span>
-        <strong>Cartes {{ batch.start }}–{{ batch.end }}</strong>
-        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
-      </a>
+      {% include "study/partials/batch_card.html" with batch=batch item_noun="Cartes" only %}
     {% endfor %}
   </div>
 </section>

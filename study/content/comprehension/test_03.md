@@ -168,7 +168,7 @@ The ad specifically says the company is looking for "7 jeunes mères" (7 young m
 
 **A -- De jeunes enfants.** The ad seeks MOTHERS, not children. The thème involves parents/children, but the casting call is specifically for mothers. This distractor exploits the fact that children are thematically present, hoping you will confuse the theme of the film with who is being recruited.
 
-**B -- Des femmes et des enfants.** Only mothers are sought. While the film's thème is about parents and children, the casting specifically calls for mothers alone. This option is too broad -- it adds "children" as people being recruited, when only mothers are needed. In TCF questions, an answer that is partially correct but adds extra information not supported by the passage is wrong.
+**B -- Des femmes et des enfants.** Only mothers are sought. While the film's thème is about parents and children, the casting specifically calls for mothers alone. This option is too broad -- it adds "children" as people being recruited, when only mothers are needed. In this type of question, an answer that is partially correct but adds extra information not supported by the passage is wrong.
 
 **D -- Des parents avec leurs enfants.** The ad says "jeunes mères" (young mothers), not "parents" in general. "Parents" would include fathers, but the ad exclusively targets mothers. This distractor generalizes where the passage is specific.
 
@@ -612,7 +612,7 @@ ou un adulte.
 
 ### **Correct Answer: A -- Leur curiosité**
 
-The text says "Plus on est jeune, plus on a d'appétit pour découvrir le monde" (The younger you are, the more appetite you have for discovering the world). "Appetit pour découvrir" (appetite for discovering) is a metaphorical expression for curiosity -- an eagerness to explore and learn new things. The strategic skill: recognize that "appétit pour découvrir" is a PARAPHRASE of "curiosité." TCF questions frequently test your ability to match an idea expressed one way in the passage with the same idea expressed differently in the answer.
+The text says "Plus on est jeune, plus on a d'appétit pour découvrir le monde" (The younger you are, the more appetite you have for discovering the world). "Appetit pour découvrir" (appetite for discovering) is a metaphorical expression for curiosity -- an eagerness to explore and learn new things. The strategic skill: recognize that "appétit pour découvrir" is a PARAPHRASE of "curiosité." These questions frequently test your ability to match an idea expressed one way in the passage with the same idea expressed differently in the answer.
 
 ### **Why the others are wrong**
 

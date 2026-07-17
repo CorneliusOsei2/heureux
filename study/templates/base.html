@@ -7,7 +7,7 @@
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=1"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=48">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=55">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,7 +70,9 @@
     <div class="nav__inner">
       <a class="brand" href="{% url 'study:dashboard' %}">
         <span class="brand__mark" aria-hidden="true"><img src="{% static 'study/icons/logo.svg' %}?v=2" alt=""></span>
-        <span class="brand__name">Heureux</span>
+        <span class="brand__copy">
+          <span class="brand__name">Heureux</span>
+        </span>
       </a>
       <button class="nav__toggle" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle>
         <span></span><span></span><span></span>

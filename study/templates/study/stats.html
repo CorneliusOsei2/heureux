@@ -2,137 +2,304 @@
 {% block title %}Progression · Heureux{% endblock %}
 
 {% block content %}
-<header class="area-hero stats-hero">
-  <div class="area-hero__copy">
-    <p class="eyebrow">Pilotage de l’apprentissage{% if task %} · {{ task.name }}{% endif %}</p>
-    <h1>Progression</h1>
-    <p>Observe ce qui évolue, puis relance directement l’activité qui mérite ton attention.</p>
-  </div>
-  <dl class="area-hero__metrics" aria-label="Résumé de progression">
-    <div><dt>Maîtrisées</dt><dd>{{ overall.mature }}<span class="hero-metric__total">/ {{ overall.total }}</span></dd></div>
-    <div><dt>Série</dt><dd>{{ streak }} j</dd></div>
-    <div><dt>Rétention</dt><dd>{% if retention %}{{ retention }} %{% else %}—{% endif %}</dd></div>
-  </dl>
-</header>
-
-{% if not task_locked %}
-{% include "study/_scope_filter.html" %}
-{% endif %}
-
-<div class="grid grid--tiles">
-  <div class="tile"><div class="tile__value tile__value--fraction">{{ overall.mature }}<span class="tile__value-total">/ {{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>
-  <div class="tile"><div class="tile__value">{{ streak }}</div><div class="tile__label">Jour{{ streak|pluralize }} de suite</div></div>
-  <div class="tile"><div class="tile__value">{{ reviews_today }}</div><div class="tile__label">Révisions aujourd'hui</div></div>
-  <div class="tile"><div class="tile__value">{% if retention %}{{ retention }}%{% else %}—{% endif %}</div><div class="tile__label">Rétention (30 j)</div></div>
-</div>
-
-<section class="stats-action-grid" aria-label="Actions recommandées">
-  <a class="card" href="{% url 'study:review' %}?kind=weak&amp;content=spine{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
-    <span><b>{{ expression_weak_count }}</b> réponses fragiles</span>
-    <small>Renforcer mon expression</small>
-    <span aria-hidden="true">→</span>
-  </a>
-  <a class="card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
-    <span><b>{{ vocabulary_weak_count }}</b> cartes lexicales fragiles</span>
-    <small>Renforcer mon vocabulaire</small>
-    <span aria-hidden="true">→</span>
-  </a>
-</section>
-
-<section class="card section-card" style="margin-top:1.4rem;">
-  <div class="row between"><h2 class="mb-0">Révisions · 30 jours</h2><span class="muted">{{ total_reviews }} au total</span></div>
-  <div class="bars" style="margin-top:1rem;">
-    {% for d in daily %}
-      <div class="bars__col" role="img" aria-label="{{ d.date|date:'j M' }} : {{ d.count }} révision{{ d.count|pluralize }}" title="{{ d.date|date:'j M' }} · {{ d.count }} révision{{ d.count|pluralize }}">
-        <span class="bars__bar" style="height: {% widthratio d.count max_daily 100 %}%;"></span>
-      </div>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="card section-card" style="margin-top:1.4rem;">
-  <h2 class="mb-0">Assiduité · 90 jours</h2>
-  <div class="heatmap" style="margin-top:1rem;">
-    {% for cell in heat %}
-      <span class="heat-cell" data-level="{{ cell.level }}" role="img" aria-label="{{ cell.date|date:'j M' }} : {{ cell.count }} révision{{ cell.count|pluralize }}" title="{{ cell.date|date:'j M' }} · {{ cell.count }} révision{{ cell.count|pluralize }}"></span>
-    {% endfor %}
-  </div>
-  <div class="legend" style="margin-top:0.8rem;">
-    <span>Moins</span>
-    <span><span class="heat-cell" data-level="0"></span></span>
-    <span><span class="heat-cell" data-level="1"></span></span>
-    <span><span class="heat-cell" data-level="2"></span></span>
-    <span><span class="heat-cell" data-level="3"></span></span>
-    <span><span class="heat-cell" data-level="4"></span></span>
-    <span>Plus</span>
-  </div>
-</section>
-
-<section class="card section-card" style="margin-top:1.4rem;">
-  <div class="row between"><h2 class="mb-0">Charge à venir · 14 jours</h2><span class="muted">cartes déjà vues à revoir</span></div>
-  <div class="bars" style="margin-top:1rem;">
-    {% for f in forecast %}
-      <div class="bars__col" role="img" aria-label="{{ f.date|date:'j M' }} : {{ f.count }} à revoir" title="{{ f.date|date:'j M' }} · {{ f.count }} à revoir">
-        <span class="bars__bar bars__bar--soft" style="height: {% widthratio f.count max_forecast 100 %}%;"></span>
-      </div>
-    {% endfor %}
-  </div>
-</section>
-
-<section style="margin-top:1.6rem;">
-  <h2>Maîtrise par thème</h2>
-  <div class="qlist">
-    {% for item in themes %}
-      <a class="qrow" href="{% url 'study:review' %}?kind=spine&amp;theme={{ item.theme.slug }}">
-        <span class="qrow__num">{{ item.theme.emoji }}</span>
-        <span class="qrow__text" style="flex:1; font-family: var(--font-sans); font-size: 0.95rem;">
-          <span class="row between">
-            <b>{{ item.theme.display_name }}</b>
-            <span class="muted">{{ item.stats.mature }}/{{ item.stats.total }} maîtrisée{{ item.stats.mature|pluralize }}</span>
-          </span>
-          <span class="progress" style="margin-top:.45rem;">
-            <span class="bg-mature" style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
-            <span class="bg-review" style="width: {% widthratio item.stats.review_young item.stats.total 100 %}%;"></span>
-            <span class="bg-learning" style="width: {% widthratio item.stats.learning item.stats.total 100 %}%;"></span>
-          </span>
+<div class="stats-page">
+  <section class="stats-hero" aria-labelledby="stats-title">
+    <div class="stats-hero__copy">
+      <p class="eyebrow">Pilotage de l’apprentissage{% if task %} · {{ task.name }}{% endif %}</p>
+      <h1 id="stats-title">Garde le cap</h1>
+      <p>Suis ta régularité, mesure ce qui tient dans le temps et repère rapidement ce qu’il faut renforcer.</p>
+      <div class="stats-hero__facts" aria-label="Résumé de la progression">
+        <span>
+          <svg aria-hidden="true"><use href="#nav-icon-stats"></use></svg>
+          {{ total_reviews|floatformat:"0g" }} révision{{ total_reviews|pluralize }}
         </span>
-      </a>
-    {% empty %}
-      <p class="muted">Aucun thème pour cette sélection pour l'instant.</p>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="recent-sessions" style="margin-top:1.6rem;" aria-labelledby="recent-sessions-title">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">Historique récent</p>
-      <h2 id="recent-sessions-title">Dernières sessions</h2>
+        <span>
+          <svg aria-hidden="true"><use href="#nav-icon-book"></use></svg>
+          {{ overall.total|floatformat:"0g" }} carte{{ overall.total|pluralize }} suivie{{ overall.total|pluralize }}
+        </span>
+      </div>
     </div>
-  </div>
-  <div class="session-list">
-    {% for session in recent_sessions %}
-      <article class="card session-card">
-        <header>
+    <div class="stats-hero__mastery">
+      <div
+        class="stats-mastery-ring"
+        style="--stats-progress: {{ mastery_percentage }}%;"
+        role="img"
+        aria-label="{{ mastery_percentage }} % de cartes maîtrisées">
+        <span>{{ mastery_percentage }}<small>%</small></span>
+      </div>
+      <div>
+        <strong>Maîtrise globale</strong>
+        <span>{{ overall.mature|floatformat:"0g" }} sur {{ overall.total|floatformat:"0g" }} cartes</span>
+      </div>
+    </div>
+  </section>
+
+  {% if not task_locked %}
+    {% include "study/_scope_filter.html" %}
+  {% endif %}
+
+  <section class="stats-kpis" aria-label="Indicateurs clés">
+    <article class="stats-kpi stats-kpi--today">
+      <span class="stats-kpi__icon" aria-hidden="true">
+        <svg><use href="#nav-icon-review"></use></svg>
+      </span>
+      <div class="stats-kpi__copy">
+        <span class="stats-kpi__label">Aujourd’hui</span>
+        <strong>{{ reviews_today|floatformat:"0g" }} <small>révision{{ reviews_today|pluralize }}</small></strong>
+        <p>{% if reviews_today %}Ton rythme est lancé.{% else %}Une courte session suffit pour commencer.{% endif %}</p>
+      </div>
+    </article>
+    <article class="stats-kpi stats-kpi--streak">
+      <span class="stats-kpi__icon" aria-hidden="true">
+        <svg><use href="#nav-icon-stats"></use></svg>
+      </span>
+      <div class="stats-kpi__copy">
+        <span class="stats-kpi__label">Série actuelle</span>
+        <strong>{{ streak|floatformat:"0g" }} <small>jour{{ streak|pluralize }}</small></strong>
+        <p>{% if streak %}Continue pour entretenir ta régularité.{% else %}Ta prochaine session démarre une série.{% endif %}</p>
+      </div>
+    </article>
+    <article class="stats-kpi stats-kpi--retention">
+      <span class="stats-kpi__icon" aria-hidden="true">
+        <svg><use href="#nav-icon-book"></use></svg>
+      </span>
+      <div class="stats-kpi__copy">
+        <span class="stats-kpi__label">Rétention à 30 jours</span>
+        <strong>{% if retention is not None %}{{ retention }}<small>%</small>{% else %}—{% endif %}</strong>
+        <p>
+          {% if retention is not None %}
+            Calculée sur {{ mature_total|floatformat:"0g" }} révision{{ mature_total|pluralize }} mature{{ mature_total|pluralize }}.
+          {% else %}
+            Disponible après tes premières révisions matures.
+          {% endif %}
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section class="stats-section" aria-labelledby="stats-priority-title">
+    <header class="stats-section__head">
+      <div>
+        <p class="eyebrow">Priorités</p>
+        <h2 id="stats-priority-title">À renforcer maintenant</h2>
+      </div>
+      <p>Reprends les éléments fragiles pendant qu’ils sont faciles à consolider.</p>
+    </header>
+    <div class="stats-action-grid">
+      <a class="stats-action card" href="{% url 'study:review' %}?kind=weak&amp;content=spine{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+        <span class="stats-action__icon stats-action__icon--expression" aria-hidden="true">
+          <svg><use href="#nav-icon-expressions"></use></svg>
+        </span>
+        <span class="stats-action__copy">
+          <small>Expression</small>
+          <strong>Réponses à renforcer</strong>
+          <span>{{ expression_weak_count|floatformat:"0g" }} carte{{ expression_weak_count|pluralize }} fragile{{ expression_weak_count|pluralize }}</span>
+        </span>
+        <span class="stats-action__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="stats-action card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+        <span class="stats-action__icon stats-action__icon--vocabulary" aria-hidden="true">
+          <svg><use href="#nav-icon-book"></use></svg>
+        </span>
+        <span class="stats-action__copy">
+          <small>Vocabulaire</small>
+          <strong>Mots et tournures à renforcer</strong>
+          <span>{{ vocabulary_weak_count|floatformat:"0g" }} carte{{ vocabulary_weak_count|pluralize }} fragile{{ vocabulary_weak_count|pluralize }}</span>
+        </span>
+        <span class="stats-action__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="stats-section" aria-labelledby="stats-activity-title">
+    <header class="stats-section__head">
+      <div>
+        <p class="eyebrow">Rythme</p>
+        <h2 id="stats-activity-title">Ton activité</h2>
+      </div>
+      <p>Une vue claire sur tes révisions passées et celles qui arrivent.</p>
+    </header>
+    <div class="stats-chart-grid">
+      <article class="stats-panel card">
+        <header class="stats-panel__head">
           <div>
-            <strong>{{ session.ended_at|date:"j M Y" }}</strong>
-            <span>{{ session.started_at|time:"H:i" }}{% if session.started_at != session.ended_at %}–{{ session.ended_at|time:"H:i" }}{% endif %}</span>
+            <span>30 derniers jours</span>
+            <h3>Révisions effectuées</h3>
           </div>
-          <span class="session-card__score">{{ session.accuracy }}% correct</span>
+          <p><strong>{{ reviews_30_days|floatformat:"0g" }}</strong><span>au total</span></p>
         </header>
-        <div class="session-card__metrics">
-          <span><b>{{ session.review_count }}</b> carte{{ session.review_count|pluralize }}</span>
-          {% if session.response_count %}<span><b>{{ session.response_count }}</b> réponse{{ session.response_count|pluralize }}</span>{% endif %}
-          {% if session.phrase_count %}<span><b>{{ session.phrase_count }}</b> expression{{ session.phrase_count|pluralize }}</span>{% endif %}
-          {% if session.study_minutes %}<span><b>{{ session.study_minutes }}</b> min d'étude</span>{% endif %}
+        <div class="stats-bars stats-bars--activity">
+          {% for day in daily %}
+            <div
+              class="stats-bars__col"
+              role="img"
+              aria-label="{{ day.date|date:'j M' }} : {{ day.count }} révision{{ day.count|pluralize }}"
+              title="{{ day.date|date:'j M' }} · {{ day.count }} révision{{ day.count|pluralize }}">
+              <span class="stats-bars__track">
+                <span class="stats-bars__bar" style="height: {% widthratio day.count max_daily 100 %}%;"></span>
+              </span>
+              <time class="stats-bars__label" datetime="{{ day.date|date:'Y-m-d' }}">
+                {% if forloop.first or forloop.last or forloop.counter|divisibleby:"7" %}{{ day.date|date:"j M" }}{% endif %}
+              </time>
+            </div>
+          {% endfor %}
         </div>
-        {% if session.topics %}
-          <p>{% for topic in session.topics %}<span class="pill">{{ topic }}</span>{% endfor %}{% if session.extra_topics %}<span class="pill">+{{ session.extra_topics }}</span>{% endif %}</p>
-        {% endif %}
       </article>
-    {% empty %}
-      <div class="empty"><p>Vos prochaines révisions apparaîtront ici, regroupées par session.</p></div>
-    {% endfor %}
-  </div>
-</section>
+
+      <article class="stats-panel card">
+        <header class="stats-panel__head">
+          <div>
+            <span>14 prochains jours</span>
+            <h3>Charge à venir</h3>
+          </div>
+          <p><strong>{{ forecast_total|floatformat:"0g" }}</strong><span>à revoir</span></p>
+        </header>
+        <div class="stats-bars stats-bars--forecast">
+          {% for day in forecast %}
+            <div
+              class="stats-bars__col"
+              role="img"
+              aria-label="{{ day.date|date:'j M' }} : {{ day.count }} à revoir"
+              title="{{ day.date|date:'j M' }} · {{ day.count }} à revoir">
+              <span class="stats-bars__track">
+                <span class="stats-bars__bar stats-bars__bar--forecast" style="height: {% widthratio day.count max_forecast 100 %}%;"></span>
+              </span>
+              <time class="stats-bars__label" datetime="{{ day.date|date:'Y-m-d' }}">
+                {% if forloop.first or forloop.last or forloop.counter|divisibleby:"4" %}{{ day.date|date:"j M" }}{% endif %}
+              </time>
+            </div>
+          {% endfor %}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stats-panel stats-panel--heatmap card" aria-labelledby="stats-consistency-title">
+    <header class="stats-panel__head">
+      <div>
+        <span>90 derniers jours</span>
+        <h2 id="stats-consistency-title">Régularité</h2>
+      </div>
+      <p><strong>{{ reviews_90_days|floatformat:"0g" }}</strong><span>révisions</span></p>
+    </header>
+    <div class="stats-heatmap" aria-label="Calendrier des révisions sur 90 jours">
+      {% for cell in heat %}
+        <span
+          class="stats-heatmap__cell"
+          data-level="{{ cell.level }}"
+          role="img"
+          aria-label="{{ cell.date|date:'j M' }} : {{ cell.count }} révision{{ cell.count|pluralize }}"
+          title="{{ cell.date|date:'j M' }} · {{ cell.count }} révision{{ cell.count|pluralize }}"></span>
+      {% endfor %}
+    </div>
+    <div class="stats-heatmap__legend" aria-hidden="true">
+      <span>Moins</span>
+      <i data-level="0"></i>
+      <i data-level="1"></i>
+      <i data-level="2"></i>
+      <i data-level="3"></i>
+      <i data-level="4"></i>
+      <span>Plus</span>
+    </div>
+  </section>
+
+  <section class="stats-section" aria-labelledby="stats-themes-title">
+    <header class="stats-section__head">
+      <div>
+        <p class="eyebrow">Maîtrise</p>
+        <h2 id="stats-themes-title">Progression par thème</h2>
+      </div>
+      <p>Ouvre un thème pour revoir ses réponses et poursuivre ta progression.</p>
+    </header>
+    <div class="stats-theme-list card">
+      {% for item in themes %}
+        <a
+          class="stats-theme"
+          style="--theme-accent: {{ item.theme.color }};"
+          href="{% url 'study:review' %}?kind=spine&amp;theme={{ item.theme.slug }}">
+          <span class="stats-theme__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
+          <span class="stats-theme__copy">
+            <small>{{ item.theme.task.part.short_name }} · {{ item.theme.task.name }}</small>
+            <strong>{{ item.theme.display_name }}</strong>
+          </span>
+          <span class="stats-theme__value">
+            <strong>{{ item.stats.mature|floatformat:"0g" }} / {{ item.stats.total|floatformat:"0g" }}</strong>
+            <small>maîtrisées</small>
+          </span>
+          <span class="stats-theme__arrow" aria-hidden="true">→</span>
+          <span
+            class="stats-theme__progress"
+            role="progressbar"
+            aria-label="{{ item.theme.display_name }} : {{ item.stats.mature }} cartes maîtrisées sur {{ item.stats.total }}"
+            aria-valuemin="0"
+            aria-valuemax="{{ item.stats.total }}"
+            aria-valuenow="{{ item.stats.mature }}">
+            <span style="width: {% widthratio item.stats.mature item.stats.total 100 %}%;"></span>
+          </span>
+        </a>
+      {% empty %}
+        <p class="stats-empty">Aucun thème pour cette sélection pour l’instant.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="stats-section recent-sessions" aria-labelledby="recent-sessions-title">
+    <header class="stats-section__head">
+      <div>
+        <p class="eyebrow">Historique récent</p>
+        <h2 id="recent-sessions-title">Dernières sessions</h2>
+      </div>
+      <p>Les révisions proches sont regroupées pour mieux lire ton rythme réel.</p>
+    </header>
+    <div class="session-list">
+      {% for session in recent_sessions %}
+        <article class="session-card card">
+          <header>
+            <span class="session-card__icon" aria-hidden="true">
+              <svg><use href="#nav-icon-review"></use></svg>
+            </span>
+            <div class="session-card__title">
+              <strong>{{ session.ended_at|date:"j M Y" }}</strong>
+              <span>
+                {{ session.started_at|time:"H:i" }}{% if session.started_at != session.ended_at %}–{{ session.ended_at|time:"H:i" }}{% endif %}
+                {% if session.study_minutes %} · {{ session.study_minutes }} min{% endif %}
+              </span>
+            </div>
+            <span class="session-card__score{% if session.accuracy < 60 %} session-card__score--low{% endif %}">{{ session.accuracy }} %</span>
+          </header>
+          <dl class="session-card__metrics">
+            <div>
+              <dt>Révisions</dt>
+              <dd>{{ session.review_count }}</dd>
+            </div>
+            <div>
+              <dt>Réussies</dt>
+              <dd>{{ session.correct_count }}</dd>
+            </div>
+            <div>
+              <dt>À reprendre</dt>
+              <dd>{{ session.revisit_count }}</dd>
+            </div>
+          </dl>
+          {% if session.topics %}
+            <p class="session-card__themes">
+              {% for topic in session.topics %}<span class="chip chip--sm">{{ topic }}</span>{% endfor %}
+              {% if session.extra_topics %}<span class="chip chip--sm">+{{ session.extra_topics }}</span>{% endif %}
+            </p>
+          {% endif %}
+        </article>
+      {% empty %}
+        <div class="stats-empty card">
+          <span class="stats-empty__icon" aria-hidden="true">
+            <svg><use href="#nav-icon-stats"></use></svg>
+          </span>
+          <div>
+            <strong>Ton historique apparaîtra ici</strong>
+            <p>Commence une session pour voir ton rythme et ta précision.</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
 {% endblock %}

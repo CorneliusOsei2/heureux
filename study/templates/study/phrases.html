@@ -46,14 +46,7 @@
   </div>
   <div class="batch-grid">
     {% for batch in review_batches %}
-      <a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
-        <span class="batch-card__top">
-          <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
-          <span class="batch-card__status">{{ batch.status_label }}</span>
-        </span>
-        <strong>Entrées {{ batch.start }}–{{ batch.end }}</strong>
-        <span>{{ batch.seen_count }}/{{ batch.active_count }} vues{% if batch.available_now %} · {{ batch.available_now }} à travailler{% else %} · à jour{% endif %}</span>
-      </a>
+      {% include "study/partials/batch_card.html" with batch=batch item_noun="Entrées" only %}
     {% endfor %}
   </div>
 </section>
@@ -133,25 +126,50 @@
   </header>
 
   <section class="vocabulary-status-grid" aria-label="Votre vocabulaire à travailler">
-    <a class="vocabulary-status card" href="{% url 'study:review' %}?content=vocabulary">
-      <span class="vocabulary-status__value">{{ vocabulary_counts.total_due }}</span>
-      <span><strong>Disponibles maintenant</strong><small>{{ vocabulary_counts.due_reviews }} à revoir · {{ vocabulary_counts.new_available }} nouvelles</small></span>
-      <span aria-hidden="true">→</span>
+    <a class="vocabulary-status vocabulary-status--due card" href="{% url 'study:review' %}?content=vocabulary">
+      <span class="vocabulary-status__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-12h-7V2Z"></path></svg>
+      </span>
+      <span class="vocabulary-status__copy">
+        <span class="vocabulary-status__value">{{ vocabulary_counts.total_due|floatformat:"0g" }}</span>
+        <strong>Disponibles maintenant</strong>
+        <small>{{ vocabulary_counts.due_reviews|floatformat:"0g" }} à revoir · {{ vocabulary_counts.new_available|floatformat:"0g" }} nouvelles</small>
+      </span>
+      <span class="vocabulary-status__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
+      </span>
     </a>
-    <a class="vocabulary-status card" href="{% url 'study:revisit_list' %}?content=vocabulary">
-      <span class="vocabulary-status__value">{{ vocabulary_revisit_count }}</span>
-      <span><strong>Marquées à revoir</strong><small>Ta sélection personnelle de mots et tournures</small></span>
-      <span aria-hidden="true">→</span>
+    <a class="vocabulary-status vocabulary-status--saved card" href="{% url 'study:revisit_list' %}?content=vocabulary">
+      <span class="vocabulary-status__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M6.5 3.5h11v17L12 17l-5.5 3.5v-17Z"></path></svg>
+      </span>
+      <span class="vocabulary-status__copy">
+        <span class="vocabulary-status__value">{{ vocabulary_revisit_count|floatformat:"0g" }}</span>
+        <strong>Marquées à revoir</strong>
+        <small>Ta sélection personnelle de mots et tournures</small>
+      </span>
+      <span class="vocabulary-status__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
+      </span>
     </a>
-    <a class="vocabulary-status card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">
-      <span class="vocabulary-status__value">{{ vocabulary_weak_count }}</span>
-      <span><strong>Points à renforcer</strong><small>Cartes oubliées ou encore fragiles</small></span>
-      <span aria-hidden="true">→</span>
+    <a class="vocabulary-status vocabulary-status--weak card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">
+      <span class="vocabulary-status__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+      </span>
+      <span class="vocabulary-status__copy">
+        <span class="vocabulary-status__value">{{ vocabulary_weak_count|floatformat:"0g" }}</span>
+        <strong>Points à renforcer</strong>
+        <small>Cartes oubliées ou encore fragiles</small>
+      </span>
+      <span class="vocabulary-status__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
+      </span>
     </a>
   </section>
 
   {% if vocabulary_landing %}
-  <section class="vocabulary-domain area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">
+  {% url 'study:vocabulary' as vocabulary_base_url %}
+  <section class="vocabulary-domain vocabulary-domain--comprehension area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">
     <div class="section-heading vocabulary-domain__heading">
       <div>
         <p class="eyebrow">Vocabulaire</p>
@@ -160,40 +178,12 @@
       <p>Travaille les mots et reformulations directement reliés aux tests de compréhension.</p>
     </div>
     <div class="expression-paths">
-      {% if comprehension_decks %}
-        <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{% url 'study:vocabulary' %}?domain=comprehension&amp;mode=ce">
-          <span class="expression-path__icon" aria-hidden="true">📄</span>
-          <span class="expression-path__copy">
-            <span class="eyebrow">CE</span>
-            <strong>Écrite</strong>
-            <small>{{ comprehension_decks|length }} tests · {{ comprehension_vocabulary_count }} entrées</small>
-          </span>
-          <span class="expression-path__action">Ouvrir <span aria-hidden="true">→</span></span>
-        </a>
-      {% else %}
-        <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
-          <span class="expression-path__icon" aria-hidden="true">📄</span>
-          <span class="expression-path__copy">
-            <span class="eyebrow">CE</span>
-            <strong>Écrite</strong>
-            <small>Vocabulaire en préparation</small>
-          </span>
-          <span class="expression-path__action"><span class="badge-soon">À venir</span></span>
-        </article>
-      {% endif %}
-      <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
-        <span class="expression-path__icon" aria-hidden="true">🎧</span>
-        <span class="expression-path__copy">
-          <span class="eyebrow">CO</span>
-          <strong>Orale</strong>
-          <small>Vocabulaire en préparation</small>
-        </span>
-        <span class="expression-path__action"><span class="badge-soon">À venir</span></span>
-      </article>
+      {% include "study/partials/vocabulary_skill_card.html" with skill_code="ce" skill_title="Écrite" skill_available=comprehension_decks skill_url=vocabulary_base_url skill_query="domain=comprehension&amp;mode=ce" skill_test_count=comprehension_decks|length skill_entry_count=comprehension_vocabulary_count only %}
+      {% include "study/partials/vocabulary_skill_card.html" with skill_code="co" skill_title="Orale" only %}
     </div>
   </section>
 
-  <section class="vocabulary-domain area-section" data-vocabulary-domain aria-labelledby="expression-paths-title">
+  <section class="vocabulary-domain vocabulary-domain--expression area-section" data-vocabulary-domain aria-labelledby="expression-paths-title">
     <div class="section-heading vocabulary-domain__heading">
       <div>
         <p class="eyebrow">Vocabulaire</p>
@@ -203,25 +193,7 @@
     </div>
     <div class="expression-paths">
       {% for path in expression_vocabulary_paths %}
-        {% if path.available %}
-          <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{{ path.url }}">
-        {% else %}
-          <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
-        {% endif %}
-            <span class="expression-path__icon" aria-hidden="true">{{ path.emoji }}</span>
-            <span class="expression-path__copy">
-              <span class="eyebrow">{{ path.short_name }}</span>
-              <strong>{{ path.title }}</strong>
-              {% if path.available %}
-                <small>{{ path.task_count }} tâche{{ path.task_count|pluralize }} · {{ path.prompt_count }} sujets · {{ path.vocabulary_count }} entrées</small>
-              {% else %}
-                <small>Vocabulaire en préparation</small>
-              {% endif %}
-            </span>
-            <span class="expression-path__action">
-              {% if path.available %}Ouvrir <span aria-hidden="true">→</span>{% else %}<span class="badge-soon">À venir</span>{% endif %}
-            </span>
-        {% if path.available %}</a>{% else %}</article>{% endif %}
+        {% include "study/partials/vocabulary_skill_card.html" with skill_code=path.short_name|lower skill_title=path.title skill_available=path.available skill_url=path.url skill_task_count=path.task_count skill_prompt_count=path.prompt_count skill_entry_count=path.vocabulary_count only %}
       {% endfor %}
     </div>
   </section>

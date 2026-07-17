@@ -17,33 +17,11 @@
 
 <div class="grid grid--decks area-section">
   {% for t in tasks %}
+    {% url 'study:task_detail' part.slug t.task.slug as task_url %}
     {% if t.task.available %}
-      <a class="deck card" style="--deck-color: {{ t.task.color }};" href="{% url 'study:task_detail' part.slug t.task.slug %}">
-        <div class="deck__body">
-          <div class="deck__title">
-            <span class="deck__icon">{{ t.task.emoji }}</span>
-            <span>{{ t.task.name }}</span>
-            {% if t.stats.due %}<span class="deck__due pill pill--due">{{ t.stats.due }}</span>{% endif %}
-          </div>
-          <div class="deck__meta">{{ t.prompt_count }} sujets · {{ t.response_stats.total }} réponses · {{ t.phrase_count }} expressions</div>
-          <div class="progress">
-            <span class="bg-mature" style="width: {% widthratio t.stats.mature t.stats.total 100 %}%;"></span>
-            <span class="bg-review" style="width: {% widthratio t.stats.review_young t.stats.total 100 %}%;"></span>
-            <span class="bg-learning" style="width: {% widthratio t.stats.learning t.stats.total 100 %}%;"></span>
-          </div>
-        </div>
-      </a>
+      {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.emoji name=t.task.name due=t.stats.due stats=t.stats count_prompts=t.prompt_count count_responses=t.response_stats.total show_phrases=True count_phrases=t.phrase_count only %}
     {% else %}
-      <a class="deck card deck--soon" href="{% url 'study:task_detail' part.slug t.task.slug %}">
-        <div class="deck__body">
-          <div class="deck__title">
-            <span class="deck__icon">{{ t.task.emoji }}</span>
-            <span>{{ t.task.name }}</span>
-            <span class="badge-soon">À venir</span>
-          </div>
-          <div class="deck__meta">{{ t.task.subtitle }}</div>
-        </div>
-      </a>
+      {% include "study/partials/deck_card.html" with url=task_url available=False icon=t.task.emoji name=t.task.name soon_meta=t.task.subtitle only %}
     {% endif %}
   {% endfor %}
 </div>

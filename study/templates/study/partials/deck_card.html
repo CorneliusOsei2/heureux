@@ -1,0 +1,39 @@
+{% comment %}
+Deck card — task/theme deck used across the Expression and Browse areas.
+Params:
+  url           — link href.
+  available     — bool; adds deck--soon + a "À venir" badge when false.
+  color         — optional --deck-color accent (omitted on soon decks).
+  icon          — emoji / short code shown in the deck__icon tile.
+  name          — deck title.
+  due           — optional count; renders the pill pill--due badge when truthy.
+  stats         — progress object (mature / review_young / learning / total).
+  count_prompts, count_responses — meta counts (available decks).
+  show_phrases + count_phrases   — append "· N expressions".
+  show_mature + count_mature     — append "· N maîtrisée(s)".
+  soon_meta     — meta line shown when not available (e.g. a task subtitle).
+  extra_classes — optional extra class names on the <a>.
+{% endcomment %}
+<a class="deck card{% if not available %} deck--soon{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}"{% if color %} style="--deck-color: {{ color }};"{% endif %} href="{{ url }}">
+  <div class="deck__body">
+    <div class="deck__title">
+      <span class="deck__icon">{{ icon }}</span>
+      <span>{{ name }}</span>
+      {% if available %}
+        {% if due %}<span class="deck__due pill pill--due">{{ due }}</span>{% endif %}
+      {% else %}
+        <span class="badge-soon">À venir</span>
+      {% endif %}
+    </div>
+    {% if available %}
+      <div class="deck__meta">{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_mature %} · {{ count_mature }} maîtrisée{{ count_mature|pluralize }}{% endif %}</div>
+      <div class="progress">
+        <span class="bg-mature" style="width: {% widthratio stats.mature stats.total 100 %}%;"></span>
+        <span class="bg-review" style="width: {% widthratio stats.review_young stats.total 100 %}%;"></span>
+        <span class="bg-learning" style="width: {% widthratio stats.learning stats.total 100 %}%;"></span>
+      </div>
+    {% else %}
+      <div class="deck__meta">{{ soon_meta }}</div>
+    {% endif %}
+  </div>
+</a>

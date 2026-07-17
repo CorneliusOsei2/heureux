@@ -83,7 +83,7 @@
   </div>
 
   <aside class="detail-side">
-    <div class="card section-card">
+    <div class="card section-card response-sidebar-card response-sidebar-card--status">
       <div class="spine-label">Cette carte</div>
       {% if card %}
         <p class="state-line"><span class="qrow__state bg-{{ card.state }}"></span> <b class="state-{{ card.state }}">{{ card.get_state_display }}</b></p>
@@ -97,18 +97,20 @@
       {% else %}
         <p class="muted">Aucune carte associée.</p>
       {% endif %}
-      {% if can_edit_response %}
-        <a class="btn btn--block" href="{% url 'study:edit_response' response.id %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
-      {% endif %}
-      <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;response={{ response.pk }}">Pratiquer cette réponse</a>
-      <a class="btn btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ selected_prompt.theme.slug }}">Pratiquer ce thème</a>
-      {% if vocabulary_review_url %}
-        <a class="btn btn--block" href="{{ vocabulary_review_url }}">Pratiquer les vocabs</a>
-      {% endif %}
+      <div class="response-sidebar-actions">
+        {% if can_edit_response %}
+          <a class="btn btn--block" href="{% url 'study:edit_response' response.id %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
+        {% endif %}
+        <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;response={{ response.pk }}">Pratiquer cette réponse</a>
+        <a class="btn btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ selected_prompt.theme.slug }}">Pratiquer ce thème</a>
+        {% if vocabulary_review_url %}
+          <a class="btn btn--block" href="{{ vocabulary_review_url }}">Pratiquer les vocabs</a>
+        {% endif %}
+      </div>
     </div>
 
     {% if response.has_aliases %}
-      <div class="card section-card" id="subject-vocabulary">
+      <div class="card section-card response-sidebar-card" id="subject-vocabulary">
         <div class="spine-label">Sujets équivalents</div>
         <ul class="mini-list">
           {% for p in prompts %}
@@ -124,34 +126,26 @@
     {% endif %}
 
     {% if subject_vocabulary %}
-      <div class="card section-card">
+      <div class="card section-card response-sidebar-card">
         <div class="spine-label">Vocabulaire de ce sujet</div>
-        <ul class="mini-list">
+        <ul class="mini-list response-sidebar-list">
           {% for phrase in subject_vocabulary %}
             <li><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
           {% endfor %}
         </ul>
-        {% for batch in vocabulary_batches %}
-          {% if batch.can_review %}
-            <a class="btn {% if forloop.first %}btn--primary{% endif %} btn--block" href="{{ batch.review_url }}">Lot {{ batch.number }} · {{ batch.label }} · {{ batch.phrase_count }} vocabs</a>
-          {% endif %}
-        {% endfor %}
+        {% include "study/partials/response_batch_list.html" with batches=vocabulary_batches batch_kind="vocabulary" only %}
       </div>
     {% endif %}
 
     {% if related_phrases %}
-      <div class="card section-card">
+      <div class="card section-card response-sidebar-card">
         <div class="spine-label">Expressions liées</div>
-        <ul class="mini-list">
+        <ul class="mini-list response-sidebar-list">
           {% for phrase in related_phrases %}
             <li><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
           {% endfor %}
         </ul>
-        {% for batch in phrase_batches %}
-          {% if batch.can_review %}
-            <a class="btn {% if forloop.first %}btn--primary{% endif %} btn--block" href="{{ batch.review_url }}">Lot {{ batch.number }} · {{ batch.phrase_count }} expression{{ batch.phrase_count|pluralize }}</a>
-          {% endif %}
-        {% endfor %}
+        {% include "study/partials/response_batch_list.html" with batches=phrase_batches batch_kind="expressions" only %}
       </div>
     {% endif %}
   </aside>

@@ -1,89 +1,11 @@
-<div class="learning-path-grid">
-  <a class="learning-path-card learning-path-card--available" href="{% url 'study:comprehension_overview' %}">
-    <header class="learning-path-card__head">
-      <span class="learning-path-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" focusable="false">
-          <path d="M5 3.5h10.5L19 7v13.5H5z"></path>
-          <path d="M15 3.5V8h4M8.5 12h7M8.5 15.5h5"></path>
-        </svg>
-      </span>
-      {% if comprehension.ecrite.active_attempt %}
-        <span class="learning-path-card__status learning-path-card__status--progress">En cours</span>
-      {% elif comprehension.ecrite.completed_test_count %}
-        <span class="learning-path-card__status learning-path-card__status--done">Pratiqué</span>
-      {% endif %}
-    </header>
-    <div class="learning-path-card__body">
-      <h3>Écrite</h3>
-    </div>
-    <div class="learning-path-card__facts">
-      <span><b>{{ comprehension.ecrite.group_count }}</b> groupes</span>
-      {% if comprehension.ecrite.active_attempt %}
-        <span><b>{{ comprehension.ecrite.active_answered_count }}/{{ comprehension.ecrite.active_question_count }}</b> répondues</span>
-      {% elif comprehension.ecrite.best_percentage is not None %}
-        <span><b>{{ comprehension.ecrite.best_percentage }} %</b> meilleur score</span>
-      {% else %}
-        <span><b>{{ comprehension.ecrite.available_test_count }}</b> test{{ comprehension.ecrite.available_test_count|pluralize }} disponible{{ comprehension.ecrite.available_test_count|pluralize }}</span>
-      {% endif %}
-      <span><b>{{ comprehension.ecrite.completed_test_count }}</b> terminé{{ comprehension.ecrite.completed_test_count|pluralize }}</span>
-    </div>
-    <span class="learning-path-card__action">
-      {% if comprehension.ecrite.active_attempt %}Continuer{% else %}Ouvrir{% endif %}
-      <span aria-hidden="true">→</span>
-    </span>
-  </a>
+<div class="expression-paths">
+  {% url 'study:comprehension_overview' as ecrite_url %}
+  {% include "study/partials/path_card.html" with card_kind="comprehension" facts_kind="ecrite" code="ce" title="Écrite" available=True url=ecrite_url facts=comprehension.ecrite action_label=comprehension.ecrite.active_attempt|yesno:"Continuer,Ouvrir" only %}
 
   {% if comprehension.orale.path_available %}
-    <a class="learning-path-card learning-path-card--available" href="{% url 'study:comprehension_oral_overview' %}">
-      <header class="learning-path-card__head">
-        <span class="learning-path-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
-            <path d="M4 13h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM20 13h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"></path>
-          </svg>
-        </span>
-        {% if comprehension.orale.active_attempt %}
-          <span class="learning-path-card__status learning-path-card__status--progress">En cours</span>
-        {% elif comprehension.orale.completed_test_count %}
-          <span class="learning-path-card__status learning-path-card__status--done">Pratiqué</span>
-        {% endif %}
-      </header>
-      <div class="learning-path-card__body">
-        <h3>Orale</h3>
-      </div>
-      <div class="learning-path-card__facts">
-        {% if comprehension.orale.available_test_count %}
-          <span><b>{{ comprehension.orale.available_test_count }}</b> test{{ comprehension.orale.available_test_count|pluralize }} disponible{{ comprehension.orale.available_test_count|pluralize }}</span>
-        {% else %}
-          <span><b>{{ comprehension.orale.test_count }}</b> test{{ comprehension.orale.test_count|pluralize }} dans l’historique</span>
-        {% endif %}
-        {% if comprehension.orale.active_attempt %}
-          <span><b>{{ comprehension.orale.active_answered_count }}/{{ comprehension.orale.active_question_count }}</b> répondues</span>
-        {% elif comprehension.orale.best_percentage is not None %}
-          <span><b>{{ comprehension.orale.best_percentage }} %</b> meilleur score</span>
-        {% endif %}
-        <span><b>{{ comprehension.orale.completed_test_count }}</b> terminé{{ comprehension.orale.completed_test_count|pluralize }}</span>
-      </div>
-      <span class="learning-path-card__action">
-        {% if comprehension.orale.active_attempt %}Continuer{% else %}Ouvrir{% endif %}
-        <span aria-hidden="true">→</span>
-      </span>
-    </a>
+    {% url 'study:comprehension_oral_overview' as orale_url %}
+    {% include "study/partials/path_card.html" with card_kind="comprehension" facts_kind="orale" code="co" title="Orale" available=True url=orale_url facts=comprehension.orale action_label=comprehension.orale.active_attempt|yesno:"Continuer,Ouvrir" only %}
   {% else %}
-    <article class="learning-path-card learning-path-card--soon" aria-disabled="true">
-      <header class="learning-path-card__head">
-        <span class="learning-path-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
-            <path d="M4 13h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM20 13h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"></path>
-          </svg>
-        </span>
-        <span class="learning-path-card__status learning-path-card__status--soon">À venir</span>
-      </header>
-      <div class="learning-path-card__body">
-        <h3>Orale</h3>
-      </div>
-      <div class="learning-path-card__pending">Parcours en préparation</div>
-    </article>
+    {% include "study/partials/path_card.html" with card_kind="comprehension" facts_kind="orale" code="co" title="Orale" available=False only %}
   {% endif %}
 </div>

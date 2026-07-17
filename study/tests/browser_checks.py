@@ -197,6 +197,84 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             directory.locator("[data-subject-theme]").get_attribute("open")
         )
 
+    def test_vocabulary_status_cards_fit_large_counts_cleanly(self):
+        self.page.set_viewport_size({"width": 1280, "height": 800})
+        self.page.goto(
+            self.live_server_url + reverse("study:vocabulary")
+        )
+        cards = self.page.locator(".vocabulary-status")
+        self.assertEqual(cards.count(), 3)
+        self.assertEqual(
+            cards.locator(".vocabulary-status__icon").count(),
+            3,
+        )
+
+        first = cards.first
+        first.locator(".vocabulary-status__value").evaluate(
+            "(element) => { element.textContent = '8\\u202f346'; }"
+        )
+        layout = first.evaluate(
+            """
+            card => {
+              const value = card.querySelector('.vocabulary-status__value');
+              const copy = card.querySelector('.vocabulary-status__copy');
+              const valueRect = value.getBoundingClientRect();
+              const copyRect = copy.getBoundingClientRect();
+              const style = getComputedStyle(card);
+              return {
+                fits: card.scrollWidth <= card.clientWidth + 1,
+                valueFits: valueRect.right <= copyRect.right + 1,
+                fontFamily: getComputedStyle(value).fontFamily,
+                borders: [
+                  style.borderTopColor,
+                  style.borderRightColor,
+                  style.borderBottomColor,
+                  style.borderLeftColor,
+                ],
+                pseudoContent: getComputedStyle(card, '::before').content,
+              };
+            }
+            """
+        )
+        self.assertTrue(layout["fits"])
+        self.assertTrue(layout["valueFits"])
+        self.assertNotIn("Georgia", layout["fontFamily"])
+        self.assertEqual(len(set(layout["borders"])), 1)
+        self.assertEqual(layout["pseudoContent"], "none")
+
+        path_cards = self.page.locator("[data-vocabulary-path]")
+        self.assertEqual(path_cards.count(), 4)
+        path_heights = path_cards.evaluate_all(
+            "cards => cards.map(card => card.getBoundingClientRect().height)"
+        )
+        self.assertLessEqual(max(path_heights), 130)
+        self.assertLessEqual(max(path_heights) - min(path_heights), 1)
+        comprehension_grid = self.page.locator(
+            ".vocabulary-domain--comprehension .expression-paths"
+        ).bounding_box()
+        expression_heading = self.page.locator(
+            ".vocabulary-domain--expression .vocabulary-domain__heading"
+        ).bounding_box()
+        self.assertLessEqual(
+            expression_heading["y"]
+            - (comprehension_grid["y"] + comprehension_grid["height"]),
+            64,
+        )
+
+        self.page.set_viewport_size({"width": 320, "height": 700})
+        self.assert_no_horizontal_overflow()
+        mobile_value_fits = first.evaluate(
+            """
+            card => {
+              const value = card.querySelector('.vocabulary-status__value');
+              const copy = card.querySelector('.vocabulary-status__copy');
+              return value.getBoundingClientRect().right <=
+                copy.getBoundingClientRect().right + 1;
+            }
+            """
+        )
+        self.assertTrue(mobile_value_fits)
+
     def save_current_prompt_highlight(self):
         prompt = self.page.locator("#card-front .prompt-text")
         prompt.evaluate(
@@ -728,6 +806,14 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             phrase.source_prompts.add(prompt)
             factories.make_phrase_card(user=self.user, phrase=phrase)
 
+        for _ in range(50):
+            phrase = factories.make_phrase(
+                category=category,
+                tier="subject",
+            )
+            phrase.source_prompts.add(prompt)
+            factories.make_phrase_card(user=self.user, phrase=phrase)
+
         shared_phrases = []
         for _ in range(16):
             phrase = factories.make_phrase(
@@ -756,6 +842,42 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "link",
             name="Lot 2 · 6 expressions",
         ).wait_for()
+        vocabulary_lots = self.page.locator(
+            ".response-batches--vocabulary .response-batch"
+        )
+        self.assertEqual(vocabulary_lots.count(), 5)
+        self.assertEqual(
+            self.page.locator(
+                ".response-batches--expressions .response-batch"
+            ).count(),
+            2,
+        )
+        lot_layouts = vocabulary_lots.evaluate_all(
+            """
+            lots => lots.map(lot => {
+              const style = getComputedStyle(lot);
+              return {
+                fits: lot.scrollWidth <= lot.clientWidth + 1,
+                height: lot.getBoundingClientRect().height,
+                borders: [
+                  style.borderTopColor,
+                  style.borderRightColor,
+                  style.borderBottomColor,
+                  style.borderLeftColor,
+                ],
+                pseudoContent: getComputedStyle(lot, '::before').content,
+              };
+            })
+            """
+        )
+        self.assertTrue(all(item["fits"] for item in lot_layouts))
+        self.assertTrue(all(item["height"] <= 72 for item in lot_layouts))
+        self.assertTrue(
+            all(len(set(item["borders"])) == 1 for item in lot_layouts)
+        )
+        self.assertTrue(
+            all(item["pseudoContent"] == "none" for item in lot_layouts)
+        )
         self.assert_no_horizontal_overflow()
 
         category_url = (
@@ -831,18 +953,48 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertLessEqual(max(mobile_heights), 320)
         self.assert_no_horizontal_overflow()
 
-    def test_stats_tiles_fill_the_desktop_row(self):
+    def test_stats_dashboard_stays_balanced_on_desktop_and_mobile(self):
         self.page.set_viewport_size({"width": 1110, "height": 700})
         self.page.goto(self.live_server_url + reverse("study:stats"))
 
-        grid_box = self.page.locator(".grid--tiles").bounding_box()
-        tiles = self.page.locator(".grid--tiles .tile")
-        self.assertEqual(tiles.count(), 4)
+        grid_box = self.page.locator(".stats-kpis").bounding_box()
+        tiles = self.page.locator(".stats-kpi")
+        self.assertEqual(tiles.count(), 3)
         last_tile_box = tiles.last.bounding_box()
         self.assertAlmostEqual(
             last_tile_box["x"] + last_tile_box["width"],
             grid_box["x"] + grid_box["width"],
             delta=1,
+        )
+        chart_panels = self.page.locator(".stats-chart-grid .stats-panel")
+        self.assertEqual(chart_panels.count(), 2)
+        self.assertAlmostEqual(
+            chart_panels.first.bounding_box()["y"],
+            chart_panels.last.bounding_box()["y"],
+            delta=1,
+        )
+        self.assertEqual(
+            self.page.locator(".stats-theme").first.evaluate(
+                "row => getComputedStyle(row, '::before').content"
+            ),
+            "none",
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 320, "height": 568})
+        self.assertEqual(
+            self.page.locator(".stats-kpis").evaluate(
+                "grid => getComputedStyle(grid).gridTemplateColumns.split(' ').length"
+            ),
+            1,
+        )
+        self.assertLessEqual(
+            self.page.locator(".stats-hero").evaluate(
+                "hero => hero.scrollWidth"
+            ),
+            self.page.locator(".stats-hero").evaluate(
+                "hero => hero.clientWidth"
+            ),
         )
         self.assert_no_horizontal_overflow()
 
@@ -865,7 +1017,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
 
         self.page.locator(
-            ".learning-path-card--available",
+            ".expression-path--available",
             has_text="Écrite",
         ).click()
         self.page.get_by_role(

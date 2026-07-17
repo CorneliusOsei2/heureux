@@ -67,9 +67,9 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v54"', body)
+        self.assertIn('var CACHE = "heureux-v61"', body)
         self.assertIn("study/css/app.css", body)
-        self.assertIn("?v=48", body)
+        self.assertIn("?v=55", body)
         self.assertIn("study/js/app.js", body)
         self.assertIn("?v=27", body)
         self.assertIn("study/js/translate.js", body)
@@ -320,8 +320,8 @@ class SmokeTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "<h1>Compréhension</h1>", html=True)
-        self.assertContains(response, ">Écrite</h3>")
-        self.assertContains(response, ">Orale</h3>")
+        self.assertContains(response, ">Écrite</strong>")
+        self.assertContains(response, ">Orale</strong>")
         self.assertContains(
             response,
             reverse("study:comprehension_overview"),
@@ -330,7 +330,7 @@ class SmokeTests(TestCase):
             response,
             reverse("study:comprehension_oral_overview"),
         )
-        self.assertContains(response, "<b>8</b> groupes", html=True)
+        self.assertContains(response, "8 groupes")
         self.assertNotContains(response, "Parcours en préparation")
         self.assertContains(
             response,
@@ -1015,6 +1015,15 @@ class CategoryBatchViewsTests(TestCase):
         self.assertContains(
             page,
             f"kind=vocab&amp;response={response.pk}&amp;batch=1",
+        )
+        self.assertContains(
+            page,
+            'class="response-batches response-batches--vocabulary"',
+        )
+        self.assertContains(
+            page,
+            'class="response-batch response-batch--featured"',
+            count=1,
         )
         self.assertContains(page, "Lot 5 · Phrases modèles · 10 vocabs")
         state = self.client.get(

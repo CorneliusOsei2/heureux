@@ -1,0 +1,6 @@
+{% comment %}
+Vocabulary-hub path card — thin adapter over partials/path_card.html so the
+Vocabulary and Expression hubs render the same card. Maps the skill_* API used
+by phrases.html onto path_card's params.
+{% endcomment %}
+{% include "study/partials/path_card.html" with card_kind="vocabulary" code=skill_code title=skill_title available=skill_available url=skill_url query=skill_query task_count=skill_task_count prompt_count=skill_prompt_count entry_count=skill_entry_count test_count=skill_test_count only %}
