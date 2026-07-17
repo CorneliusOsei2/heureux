@@ -3478,6 +3478,7 @@ def export_account(request):
                 "current_question": attempt.current_question,
                 "score": attempt.score,
                 "total_questions": attempt.total_questions,
+                "content_snapshot": attempt.content_snapshot,
                 "started_at": attempt.started_at,
                 "updated_at": attempt.updated_at,
                 "completed_at": attempt.completed_at,

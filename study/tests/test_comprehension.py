@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from dataclasses import replace
+from pathlib import Path
 
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError, transaction
@@ -54,6 +56,25 @@ class ComprehensionContentTests(SimpleTestCase):
             "A",
         )
         self.assertEqual(final_question.correct_explanation, "")
+
+    def test_parser_rejects_duplicate_choice_letters(self):
+        source = (content.COMPREHENSION_DIR / "test_02.md").read_text(
+            encoding="utf-8"
+        )
+        malformed = source.replace(
+            "| D | Des voyages | Trips |",
+            "| C | Des voyages | Trips |",
+            1,
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "duplicate-choice.md"
+            path.write_text(malformed, encoding="utf-8")
+
+            with self.assertRaisesRegex(
+                ValueError,
+                "A, B, C and D exactly once",
+            ):
+                content._parse_comprehension_source(path, slug="test")
 
 
 class ComprehensionImportTests(TestCase):
@@ -379,7 +400,7 @@ class ComprehensionFlowTests(TestCase):
         self.assertTrue(first_item["answer"].is_correct)
         self.assertNotContains(response, "Contenu remplacé")
 
-    def test_resume_skips_a_question_archived_during_an_attempt(self):
+    def test_attempt_keeps_a_question_archived_after_it_started(self):
         attempt = self.start()
         self.submit(attempt, 1, "A")
         self.test.questions.filter(number=2).update(is_active=False)
@@ -390,16 +411,11 @@ class ComprehensionFlowTests(TestCase):
 
         response = self.client.get(stale_url)
 
-        self.assertRedirects(
-            response,
-            reverse(
-                "study:comprehension_question",
-                args=[self.test.slug, attempt.pk, 3],
-            ),
-            fetch_redirect_response=False,
-        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["question"]["number"], 2)
+        self.assertEqual(response.context["total_questions"], 3)
         attempt.refresh_from_db()
-        self.assertEqual(attempt.current_question, 3)
+        self.assertEqual(attempt.current_question, 2)
 
     def test_archived_answer_remains_in_the_attempt_progress_total(self):
         attempt = self.start()
@@ -418,7 +434,7 @@ class ComprehensionFlowTests(TestCase):
         self.assertEqual(response.context["total_questions"], 3)
         self.assertContains(response, "2 réponses enregistrées")
 
-    def test_resume_completes_when_no_active_questions_remain(self):
+    def test_attempt_does_not_shrink_when_remaining_questions_are_archived(self):
         attempt = self.start()
         self.submit(attempt, 1, "A")
         self.test.questions.filter(number__gte=2).update(is_active=False)
@@ -430,18 +446,78 @@ class ComprehensionFlowTests(TestCase):
             )
         )
 
-        self.assertRedirects(
-            response,
-            reverse(
-                "study:comprehension_results",
-                args=[self.test.slug, attempt.pk],
-            ),
-            fetch_redirect_response=False,
-        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["question"]["number"], 2)
+        self.assertEqual(response.context["total_questions"], 3)
         attempt.refresh_from_db()
-        self.assertEqual(attempt.status, ComprehensionAttemptStatus.COMPLETED)
-        self.assertEqual(attempt.score, 1)
-        self.assertEqual(attempt.total_questions, 1)
+        self.assertEqual(
+            attempt.status,
+            ComprehensionAttemptStatus.IN_PROGRESS,
+        )
+        self.assertEqual(attempt.total_questions, 3)
+
+    def test_submission_uses_the_answer_key_pinned_when_attempt_started(self):
+        attempt = self.start()
+        question = self.test.questions.get(number=1)
+        original_passage = question.passage_fr
+        self.client.get(
+            reverse(
+                "study:comprehension_question",
+                args=[self.test.slug, attempt.pk, 1],
+            )
+        )
+        question.passage_fr = "Passage changed by a later import."
+        question.save(update_fields=["passage_fr"])
+        question.choices.filter(letter="A").update(is_correct=False)
+        question.choices.filter(letter="B").update(is_correct=True)
+
+        response = self.submit(attempt, 1, "A")
+        answer = attempt.answers.get(question=question)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(answer.is_correct)
+        self.assertEqual(
+            answer.question_snapshot["passage_fr"],
+            original_passage,
+        )
+        self.assertEqual(
+            next(
+                choice["letter"]
+                for choice in answer.question_snapshot["choices"]
+                if choice["is_correct"]
+            ),
+            "A",
+        )
+
+    def test_newly_imported_question_does_not_enter_an_existing_attempt(self):
+        attempt = self.start()
+        question = ComprehensionQuestion.objects.create(
+            test=self.test,
+            content_key="ce:test-1:q04",
+            number=4,
+            passage_fr="Nouveau passage.",
+            passage_en="New passage.",
+            prompt_fr="Nouvelle question ?",
+            prompt_en="New question?",
+        )
+        for letter in "ABCD":
+            ComprehensionChoice.objects.create(
+                question=question,
+                letter=letter,
+                text_fr=f"Nouveau choix {letter}",
+                text_en=f"New choice {letter}",
+                is_correct=(letter == "A"),
+            )
+        self.submit(attempt, 1, "A")
+        self.submit(attempt, 2, "A")
+        final = self.submit(attempt, 3, "A")
+
+        self.assertIn("?correction=1", final.url)
+        attempt.refresh_from_db()
+        self.assertEqual(attempt.total_questions, 3)
+        correction = self.client.get(final.url)
+        self.assertEqual(correction.context["total_questions"], 3)
+        self.assertEqual(len(correction.context["navigator"]), 3)
 
     def test_archived_test_keeps_owned_history_without_dead_retake_action(self):
         attempt = self.start()
