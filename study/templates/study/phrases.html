@@ -4,7 +4,7 @@
 {% block content %}
 {% if selected or selected_test %}
 <nav class="phrase-category-back" aria-label="Retour au vocabulaire">
-  <a href="{% url 'study:vocabulary' %}{% if task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
+  <a href="{% url 'study:vocabulary' %}{% if selected_test %}?domain=comprehension&amp;mode=ecrite{% elif task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
 </nav>
 
 <header class="phrase-category-hero card">
@@ -118,12 +118,17 @@
           <span>Filtre actif · {{ part.short_name }} · {{ task.name }}</span>
           <a href="{% url 'study:vocabulary' %}">Effacer</a>
         </div>
+      {% elif comprehension_directory %}
+        <div class="active-filter">
+          <span>Filtre actif · Compréhension · Écrite</span>
+          <a href="{% url 'study:vocabulary' %}">Effacer</a>
+        </div>
       {% endif %}
     </div>
     <dl class="area-hero__metrics" aria-label="Bibliothèque de vocabulaire">
       <div><dt>Expression</dt><dd>{{ subject_vocabulary_count|add:functional_phrase_count }}</dd></div>
       <div><dt>Compréhension</dt><dd>{{ comprehension_vocabulary_count }}</dd></div>
-      <div><dt>Cartes maîtrisées</dt><dd>{{ vocabulary_stats.mature }}/{{ vocabulary_stats.total }}</dd></div>
+      <div><dt>Cartes maîtrisées</dt><dd>{{ vocabulary_stats.mature }}<span class="hero-metric__total">/ {{ vocabulary_stats.total }}</span></dd></div>
     </dl>
   </header>
 
@@ -145,6 +150,84 @@
     </a>
   </section>
 
+  {% if vocabulary_landing %}
+  <section class="vocabulary-domain area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">
+    <div class="section-heading vocabulary-domain__heading">
+      <div>
+        <p class="eyebrow">Vocabulaire</p>
+        <h2 id="comprehension-paths-title">Compréhension</h2>
+      </div>
+      <p>Travaille les mots et reformulations directement reliés aux tests de compréhension.</p>
+    </div>
+    <div class="expression-paths">
+      {% if comprehension_decks %}
+        <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{% url 'study:vocabulary' %}?domain=comprehension&amp;mode=ecrite">
+          <span class="expression-path__icon" aria-hidden="true">📄</span>
+          <span class="expression-path__copy">
+            <span class="eyebrow">CE</span>
+            <strong>Écrite</strong>
+            <small>{{ comprehension_decks|length }} tests · {{ comprehension_vocabulary_count }} entrées</small>
+          </span>
+          <span class="expression-path__action">Ouvrir <span aria-hidden="true">→</span></span>
+        </a>
+      {% else %}
+        <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
+          <span class="expression-path__icon" aria-hidden="true">📄</span>
+          <span class="expression-path__copy">
+            <span class="eyebrow">CE</span>
+            <strong>Écrite</strong>
+            <small>Vocabulaire en préparation</small>
+          </span>
+          <span class="expression-path__action"><span class="badge-soon">À venir</span></span>
+        </article>
+      {% endif %}
+      <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
+        <span class="expression-path__icon" aria-hidden="true">🎧</span>
+        <span class="expression-path__copy">
+          <span class="eyebrow">CO</span>
+          <strong>Orale</strong>
+          <small>Vocabulaire en préparation</small>
+        </span>
+        <span class="expression-path__action"><span class="badge-soon">À venir</span></span>
+      </article>
+    </div>
+  </section>
+
+  <section class="vocabulary-domain area-section" data-vocabulary-domain aria-labelledby="expression-paths-title">
+    <div class="section-heading vocabulary-domain__heading">
+      <div>
+        <p class="eyebrow">Vocabulaire</p>
+        <h2 id="expression-paths-title">Expression</h2>
+      </div>
+      <p>Entre dans une compétence, puis dans sa tâche, pour retrouver uniquement les tournures et vocabs associés.</p>
+    </div>
+    <div class="expression-paths">
+      {% for path in expression_vocabulary_paths %}
+        {% if path.available %}
+          <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{{ path.url }}">
+        {% else %}
+          <article class="expression-path expression-path--soon card vocabulary-path-card" data-vocabulary-path aria-disabled="true">
+        {% endif %}
+            <span class="expression-path__icon" aria-hidden="true">{{ path.emoji }}</span>
+            <span class="expression-path__copy">
+              <span class="eyebrow">{{ path.short_name }}</span>
+              <strong>{{ path.title }}</strong>
+              {% if path.available %}
+                <small>{{ path.task_count }} tâche{{ path.task_count|pluralize }} · {{ path.prompt_count }} sujets · {{ path.vocabulary_count }} entrées</small>
+              {% else %}
+                <small>Vocabulaire en préparation</small>
+              {% endif %}
+            </span>
+            <span class="expression-path__action">
+              {% if path.available %}Ouvrir <span aria-hidden="true">→</span>{% else %}<span class="badge-soon">À venir</span>{% endif %}
+            </span>
+        {% if path.available %}</a>{% else %}</article>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if task %}
   <section class="expression-directory area-section" id="expression-vocabulary" aria-labelledby="expression-vocabulary-title">
     <div class="section-heading expression-directory__heading">
       <div>
@@ -228,8 +311,9 @@
       <div class="empty"><p>Aucun deck de sujet ne correspond à ce filtre.</p></div>
     {% endif %}
   </section>
+  {% endif %}
 
-  {% if not task %}
+  {% if comprehension_directory %}
   <section class="area-section comprehension-vocabulary" id="comprehension-vocabulary" aria-labelledby="comprehension-vocabulary-title">
     <div class="section-heading">
       <div>

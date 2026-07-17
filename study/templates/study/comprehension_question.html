@@ -129,8 +129,8 @@
       </div>
 
       {% if question.correct_explanation or not answer.is_correct and selected_choice.rationale %}
-        <details class="ce-rationales">
-          <summary>Voir l’explication en anglais</summary>
+        <details class="ce-rationales ce-rationales--explanation" open>
+          <summary><span aria-hidden="true">EN</span> Explication en anglais</summary>
           <div>
             {% if question.correct_explanation %}
               <div class="ce-correction__explanation">

@@ -16,7 +16,7 @@
       <p>Entraîne-toi dans les conditions du test, analyse chaque correction et transforme le vocabulaire rencontré en cartes.</p>
     </div>
     <dl class="area-hero__metrics" aria-label="Progression en compréhension">
-      <div><dt>Tests terminés</dt><dd>{{ comprehension.completed_test_count }}/{{ comprehension.test_count }}</dd></div>
+      <div><dt>Tests terminés</dt><dd>{{ comprehension.completed_test_count }}<span class="hero-metric__total">/ {{ comprehension.test_count }}</span></dd></div>
       <div><dt>Meilleur score</dt><dd>{% if comprehension.best_percentage is not None %}{{ comprehension.best_percentage }} %{% else %}—{% endif %}</dd></div>
       <div><dt>Parcours</dt><dd>2</dd></div>
     </dl>

@@ -9,7 +9,7 @@
     <p>Observe ce qui évolue, puis relance directement l’activité qui mérite ton attention.</p>
   </div>
   <dl class="area-hero__metrics" aria-label="Résumé de progression">
-    <div><dt>Maîtrisées</dt><dd>{{ overall.mature }}/{{ overall.total }}</dd></div>
+    <div><dt>Maîtrisées</dt><dd>{{ overall.mature }}<span class="hero-metric__total">/ {{ overall.total }}</span></dd></div>
     <div><dt>Série</dt><dd>{{ streak }} j</dd></div>
     <div><dt>Rétention</dt><dd>{% if retention %}{{ retention }} %{% else %}—{% endif %}</dd></div>
   </dl>
@@ -20,7 +20,7 @@
 {% endif %}
 
 <div class="grid grid--tiles">
-  <div class="tile"><div class="tile__value">{{ overall.mature }}<span class="muted" style="font-size:1rem;">/{{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>
+  <div class="tile"><div class="tile__value tile__value--fraction">{{ overall.mature }}<span class="tile__value-total">/ {{ overall.total }}</span></div><div class="tile__label">Cartes maîtrisées</div></div>
   <div class="tile"><div class="tile__value">{{ streak }}</div><div class="tile__label">Jour{{ streak|pluralize }} de suite</div></div>
   <div class="tile"><div class="tile__value">{{ reviews_today }}</div><div class="tile__label">Révisions aujourd'hui</div></div>
   <div class="tile"><div class="tile__value">{% if retention %}{{ retention }}%{% else %}—{% endif %}</div><div class="tile__label">Rétention (30 j)</div></div>

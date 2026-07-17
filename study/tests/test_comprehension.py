@@ -481,6 +481,10 @@ class ComprehensionFlowTests(TestCase):
         after = self.client.get(url)
         self.assertContains(after, question.passage_en)
         self.assertContains(after, "Pourquoi votre choix B ne convient pas")
+        self.assertContains(
+            after,
+            '<details class="ce-rationales ce-rationales--explanation" open>',
+        )
         self.assertContains(after, "Question suivante")
 
         self.submit(attempt, 1, "A")

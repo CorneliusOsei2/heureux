@@ -799,13 +799,51 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         self.assertTrue(desktop_heights)
         self.assertLessEqual(max(desktop_heights), 300)
+        self.assertEqual(
+            self.page.locator(".daily-card").first.evaluate(
+                "card => getComputedStyle(card, '::before').content"
+            ),
+            "none",
+        )
+        label_colors = self.page.locator(".daily-card .eyebrow").evaluate_all(
+            "labels => labels.map(label => getComputedStyle(label).color)"
+        )
+        self.assertEqual(len(set(label_colors)), 4)
         self.assert_no_horizontal_overflow()
 
         self.page.set_viewport_size({"width": 320, "height": 568})
+        views_metric = self.page.locator(".home-hero__metrics dd").nth(1)
+        views_metric.evaluate(
+            """
+            element => {
+              element.firstChild.textContent = "159";
+              element.querySelector(".hero-metric__total").textContent = "/ 9700";
+            }
+            """
+        )
+        self.assertLessEqual(
+            views_metric.evaluate("element => element.scrollWidth"),
+            views_metric.evaluate("element => element.clientWidth"),
+        )
         mobile_heights = self.page.locator(".daily-card").evaluate_all(
             "cards => cards.map(card => card.getBoundingClientRect().height)"
         )
         self.assertLessEqual(max(mobile_heights), 320)
+        self.assert_no_horizontal_overflow()
+
+    def test_stats_tiles_fill_the_desktop_row(self):
+        self.page.set_viewport_size({"width": 1110, "height": 700})
+        self.page.goto(self.live_server_url + reverse("study:stats"))
+
+        grid_box = self.page.locator(".grid--tiles").bounding_box()
+        tiles = self.page.locator(".grid--tiles .tile")
+        self.assertEqual(tiles.count(), 4)
+        last_tile_box = tiles.last.bounding_box()
+        self.assertAlmostEqual(
+            last_tile_box["x"] + last_tile_box["width"],
+            grid_box["x"] + grid_box["width"],
+            delta=1,
+        )
         self.assert_no_horizontal_overflow()
 
     def test_mobile_comprehension_quiz_correction_and_results(self):
@@ -874,12 +912,14 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
         self.page.locator(".ce-choice", has_text="Choix B français 1").click()
         self.page.get_by_role("heading", name="La bonne réponse était A.").wait_for()
-        self.assertFalse(
-            self.page.get_by_text(
-                "Pourquoi votre choix B ne convient pas"
-            ).is_visible()
+        explanation = self.page.locator(".ce-rationales--explanation")
+        self.assertTrue(explanation.evaluate("element => element.open"))
+        answer_box = self.page.locator(".ce-correction__answer").bounding_box()
+        explanation_box = explanation.bounding_box()
+        self.assertGreaterEqual(
+            explanation_box["y"] - answer_box["y"] - answer_box["height"],
+            8,
         )
-        self.page.get_by_text("Voir l’explication en anglais").click()
         self.page.get_by_text(
             "Pourquoi votre choix B ne convient pas"
         ).wait_for()

@@ -765,6 +765,84 @@ def _home_expression_paths(parts):
     return paths
 
 
+def _vocabulary_expression_paths(now, user):
+    part_items = _parts_with_task_cards(now, user)
+    path_specs = (
+        {
+            "title": "Écrite",
+            "short_name": "EE",
+            "slugs": {"ecrit", "ecrite"},
+            "fallback_emoji": "✍️",
+        },
+        {
+            "title": "Orale",
+            "short_name": "EO",
+            "slugs": {"oral", "orale"},
+            "fallback_emoji": "🎙️",
+        },
+    )
+    paths = []
+    for spec in path_specs:
+        item = next(
+            (
+                candidate
+                for candidate in part_items
+                if candidate["part"].slug in spec["slugs"]
+            ),
+            None,
+        )
+        vocabulary_tasks = []
+        if item:
+            vocabulary_tasks = [
+                task_item
+                for task_item in item["tasks"]
+                if task_item["task"].available
+                and (
+                    task_item["functional_phrase_count"]
+                    + task_item["subject_vocabulary_count"]
+                )
+            ]
+        available = bool(
+            item and item["part"].available and vocabulary_tasks
+        )
+        url = ""
+        if available:
+            if len(vocabulary_tasks) == 1:
+                task = vocabulary_tasks[0]["task"]
+                url = reverse("study:vocabulary") + "?" + urlencode(
+                    {"part": task.part.slug, "task": task.slug}
+                )
+            else:
+                url = reverse(
+                    "study:part_detail",
+                    args=[item["part"].slug],
+                )
+        paths.append(
+            {
+                "title": spec["title"],
+                "short_name": spec["short_name"],
+                "emoji": (
+                    item["part"].emoji
+                    if item
+                    else spec["fallback_emoji"]
+                ),
+                "available": available,
+                "url": url,
+                "task_count": len(vocabulary_tasks),
+                "prompt_count": sum(
+                    task_item["prompt_count"]
+                    for task_item in vocabulary_tasks
+                ),
+                "vocabulary_count": sum(
+                    task_item["functional_phrase_count"]
+                    + task_item["subject_vocabulary_count"]
+                    for task_item in vocabulary_tasks
+                ),
+            }
+        )
+    return paths
+
+
 def dashboard(request):
     now = timezone.now()
     expression_counts = queue_module.queue_counts(
@@ -3737,6 +3815,18 @@ def edit_response(request, pk):
 def phrases(request, part_slug=None, task_slug=None):
     part_slug = part_slug or (request.GET.get("part") or "").strip()
     task_slug = task_slug or (request.GET.get("task") or "").strip()
+    vocabulary_domain = (request.GET.get("domain") or "").strip()
+    vocabulary_mode = (request.GET.get("mode") or "").strip()
+    if bool(part_slug) != bool(task_slug):
+        return HttpResponseBadRequest("Choose both a part and a task.")
+    if vocabulary_domain not in {"", "comprehension"}:
+        return HttpResponseBadRequest("Unknown vocabulary domain.")
+    if vocabulary_mode not in {"", "ecrite"}:
+        return HttpResponseBadRequest("Unknown vocabulary mode.")
+    if vocabulary_mode and vocabulary_domain != "comprehension":
+        return HttpResponseBadRequest(
+            "A vocabulary mode requires a domain."
+        )
     task = (
         _route_task(part_slug, task_slug)
         if part_slug and task_slug
@@ -3769,6 +3859,12 @@ def phrases(request, part_slug=None, task_slug=None):
     }
     category_slug = request.GET.get("category", "").strip()
     test_slug = request.GET.get("test", "").strip()
+    if vocabulary_domain and (
+        task or category_slug or test_slug
+    ):
+        return HttpResponseBadRequest(
+            "Choose either a vocabulary domain or a deck."
+        )
     if category_slug and test_slug:
         return HttpResponseBadRequest(
             "Choose either a category or a comprehension test."
@@ -3897,6 +3993,13 @@ def phrases(request, part_slug=None, task_slug=None):
         for category in categories
         if category.is_functional
     ]
+    comprehension_directory = vocabulary_domain == "comprehension"
+    vocabulary_landing = not (
+        selected
+        or selected_test
+        or task
+        or comprehension_directory
+    )
     subject_theme_groups = []
     subject_prompt_count = 0
     subject_response_count = 0
@@ -4007,6 +4110,12 @@ def phrases(request, part_slug=None, task_slug=None):
             )
             comprehension_vocabulary_count += test.vocabulary_count
 
+    expression_vocabulary_paths = (
+        _vocabulary_expression_paths(timezone.now(), request.user)
+        if vocabulary_landing
+        else []
+    )
+
     vocabulary_scope = {"content": "vocabulary"}
     vocabulary_cards = queue_module.scoped_cards(
         vocabulary_scope,
@@ -4033,6 +4142,9 @@ def phrases(request, part_slug=None, task_slug=None):
             "task": task,
             "categories": categories,
             "functional_categories": functional_categories,
+            "vocabulary_landing": vocabulary_landing,
+            "comprehension_directory": comprehension_directory,
+            "expression_vocabulary_paths": expression_vocabulary_paths,
             "functional_phrase_count": sum(
                 category.phrase_count
                 for category in functional_categories

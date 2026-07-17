@@ -15,28 +15,6 @@
   </div>
 </header>
 
-<section class="task-modules" aria-label="Contenu de {{ task.name }}">
-  <article class="task-module">
-    <div class="task-module__icon task-module__icon--responses">🗂️</div>
-    <div class="task-module__body">
-      <h2>Sujets &amp; réponses</h2>
-      <div class="task-module__meta">{{ prompt_count }} sujets · {{ response_stats.total }} réponses · {{ response_stats.mature }} maîtrisées</div>
-    </div>
-    <a class="task-module__link" href="{% url 'study:task_browse' part.slug task.slug %}" aria-label="Parcourir les sujets et réponses">Ouvrir <span aria-hidden="true">→</span></a>
-  </article>
-
-  <article class="task-module task-module--review">
-    <div class="task-module__icon task-module__icon--review">↻</div>
-    <div class="task-module__body">
-      <h2>Pratiquer les réponses</h2>
-      <div class="task-module__meta">{{ counts.total_due }} réponse{{ counts.total_due|pluralize }} disponible{{ counts.total_due|pluralize }} · rappel actif</div>
-      <div class="task-module__actions">
-        <a href="{% url 'study:task_review_hub' part.slug task.slug %}">Ouvrir <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </article>
-</section>
-
 <nav class="task-deep-links card" aria-label="Outils associés à {{ task.name }}">
   <a href="{% url 'study:vocabulary' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
     <span>Vocabulaire</span>

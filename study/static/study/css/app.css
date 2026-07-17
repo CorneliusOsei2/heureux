@@ -486,7 +486,7 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 }
 
 .grid { display: grid; gap: 1rem; }
-.grid--tiles { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.grid--tiles { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .grid--decks { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 
@@ -508,6 +508,18 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 }
 .tile__label { color: var(--text-faint); font-size: 0.82rem; font-weight: 600; }
 .tile__value { font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 0.1rem; }
+.tile__value--fraction {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.tile__value-total {
+  margin-left: 0.22em;
+  color: var(--text-soft);
+  font-size: 0.58em;
+  font-weight: 650;
+  letter-spacing: 0;
+}
 .tile__sub { color: var(--text-soft); font-size: 0.85rem; }
 
 /* ---------- Buttons ---------- */
@@ -1453,71 +1465,6 @@ a.learning-path-card:hover .learning-path-card__action > span {
   font-weight: 600;
 }
 
-.task-modules {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 1.2rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-}
-.task-module {
-  min-width: 0;
-  padding: 1rem;
-  border-right: 1px solid var(--border);
-}
-.task-module:last-child { border-right: 0; }
-.task-module__icon {
-  width: 2.25rem;
-  height: 2.25rem;
-  display: grid;
-  place-items: center;
-  margin-bottom: 0.85rem;
-  border-radius: 10px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-.task-module__icon--expressions { background: var(--accent-soft); color: var(--accent); }
-.task-module__icon--review { background: color-mix(in srgb, var(--mature) 14%, var(--surface)); color: var(--mature); }
-.task-module h2 { margin: 0 0 0.45rem; font-size: 1.18rem; }
-.task-module__meta {
-  margin-top: 0.75rem;
-  color: var(--text-faint);
-  font-size: 0.76rem;
-}
-.task-module__link {
-  display: inline-flex;
-  gap: 0.35rem;
-  margin-top: 1rem;
-  color: var(--primary);
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-.task-module__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.9rem;
-}
-.task-module__actions a {
-  padding: 0.32rem 0.65rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--text-soft);
-  font-size: 0.76rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-.task-module__actions a:first-child {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: #fff;
-}
-.task-module__actions a:hover { border-color: var(--primary); color: var(--primary); }
-.task-module__actions a:first-child:hover { color: #fff; }
 .task-themes { margin-top: 2.2rem; }
 .section-heading {
   display: flex;
@@ -1586,6 +1533,7 @@ a.learning-path-card:hover .learning-path-card__action > span {
 }
 .expression-directory__heading > p,
 .subject-vocabulary-directory__heading > p,
+.vocabulary-domain__heading > p,
 .phrase-catalog .section-heading > p {
   max-width: 62ch;
   margin: 0;
@@ -4244,7 +4192,8 @@ button.ce-choice:focus-visible .ce-choice__radio {
   background: var(--again);
   color: #fff;
 }
-.ce-translation > summary > span {
+.ce-translation > summary > span,
+.ce-rationales--explanation > summary > span {
   display: inline-grid;
   place-items: center;
   width: 27px;
@@ -4551,6 +4500,20 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .ce-review-item__explanation p { margin: 0; }
 .ce-review-item .ce-rationales,
 .ce-review-item .ce-translation { margin-inline: 0; }
+.ce-rationales--explanation { margin-top: 0.75rem; }
+.ce-rationales--explanation > div { padding: 1rem 1.1rem 1.05rem; }
+.ce-rationales--explanation .ce-correction__explanation,
+.ce-rationales--explanation .ce-review-item__explanation {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 1.6;
+}
+.ce-rationales--explanation .ce-selected-rationale {
+  margin: 0.85rem 0 0;
+}
+.ce-rationales--explanation h3 { margin-bottom: 0.35rem; }
 
 /* ---------- Utilities ---------- */
 .muted { color: var(--text-soft); }
@@ -4624,6 +4587,15 @@ button.ce-choice:focus-visible .ce-choice__radio {
   font-family: var(--font-serif);
   font-size: clamp(1.05rem, 2.4vw, 1.45rem);
   font-weight: 650;
+  white-space: nowrap;
+}
+.area-hero__metrics .hero-metric__total,
+.home-hero__metrics .hero-metric__total {
+  display: inline-block;
+  margin-left: 0.18em;
+  color: var(--text-soft);
+  font-size: 0.7em;
+  font-weight: 600;
 }
 
 .home-hero {
@@ -4639,6 +4611,8 @@ button.ce-choice:focus-visible .ce-choice__radio {
   gap: 0.85rem;
 }
 .daily-card {
+  --daily-accent: var(--primary);
+  --daily-accent-soft: var(--primary-soft);
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -4647,21 +4621,23 @@ button.ce-choice:focus-visible .ce-choice__radio {
   padding: 1.25rem;
   overflow: hidden;
 }
-.daily-card::before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: var(--primary);
-  content: "";
+.daily-card--vocabulary {
+  --daily-accent: var(--accent);
+  --daily-accent-soft: var(--accent-soft);
 }
-.daily-card--vocabulary::before { background: var(--accent); }
-.daily-card--comprehension::before { background: var(--success); }
-.daily-card--notes::before { background: var(--warning); }
+.daily-card--comprehension {
+  --daily-accent: var(--success);
+  --daily-accent-soft: var(--success-soft);
+}
+.daily-card--notes {
+  --daily-accent: var(--warning);
+  --daily-accent-soft: var(--warning-soft);
+}
 .daily-card__index {
   position: absolute;
   top: 0.8rem;
   right: 1rem;
-  color: color-mix(in srgb, var(--text-faint) 36%, transparent);
+  color: color-mix(in srgb, var(--daily-accent) 28%, transparent);
   font-family: var(--font-serif);
   font-size: 2.4rem;
   font-weight: 700;
@@ -4671,12 +4647,23 @@ button.ce-choice:focus-visible .ce-choice__radio {
   grid-column: 1 / -1;
   max-width: 86%;
 }
-.daily-card h3 { margin: 0.1rem 0 0.45rem; font-size: 1.3rem; }
+.daily-card .eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 0.55rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: var(--daily-accent-soft);
+  color: var(--daily-accent);
+  letter-spacing: 0.1em;
+}
+.daily-card h3 { margin: 0 0 0.45rem; font-size: 1.3rem; }
 .daily-card p:not(.eyebrow) { margin: 0; color: var(--text-soft); }
 .daily-card .btn { align-self: end; justify-self: start; }
 .daily-card__secondary {
   align-self: center;
   justify-self: end;
+  color: var(--daily-accent);
   font-size: 0.8rem;
   font-weight: 650;
 }
@@ -4723,7 +4710,6 @@ button.ce-choice:focus-visible .ce-choice__radio {
   font-weight: 750;
 }
 
-.task-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .task-deep-links {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5279,9 +5265,6 @@ button.ce-choice:focus-visible .ce-choice__radio {
   .session-list { grid-template-columns: 1fr; }
   .detail-grid { grid-template-columns: 1fr; }
   .task-hero { align-items: flex-start; flex-direction: column; gap: 1rem; }
-  .task-modules { grid-template-columns: 1fr; }
-  .task-module { border-right: 0; border-bottom: 1px solid var(--border); }
-  .task-module:last-child { border-bottom: 0; }
   .review-groups { grid-template-columns: 1fr; }
   .review-group,
   .review-group--all,
@@ -5416,6 +5399,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
   .phrase-category-hero__actions .btn { width: 100%; }
   .expression-directory__heading,
   .subject-vocabulary-directory__heading,
+  .vocabulary-domain__heading,
   .phrase-catalog .section-heading {
     align-items: flex-start;
     flex-direction: column;

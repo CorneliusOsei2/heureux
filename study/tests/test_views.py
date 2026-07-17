@@ -67,9 +67,9 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v52"', body)
+        self.assertIn('var CACHE = "heureux-v54"', body)
         self.assertIn("study/css/app.css", body)
-        self.assertIn("?v=46", body)
+        self.assertIn("?v=48", body)
         self.assertIn("study/js/app.js", body)
         self.assertIn("?v=27", body)
         self.assertIn("study/js/translate.js", body)
@@ -114,6 +114,52 @@ class SmokeTests(TestCase):
         for name in names:
             with self.subTest(name=name):
                 self.assertEqual(self.client.get(reverse(name)).status_code, 200)
+
+    def test_vocabulary_hub_groups_four_paths_in_two_domains(self):
+        subject_phrase = factories.make_phrase(tier="subject")
+        subject_phrase.source_prompts.add(Prompt.objects.first())
+        factories.make_phrase_card(phrase=subject_phrase, user=self.user)
+
+        response = self.client.get(reverse("study:vocabulary"))
+
+        self.assertTrue(response.context["vocabulary_landing"])
+        self.assertContains(response, "data-vocabulary-domain", count=2)
+        self.assertContains(response, "data-vocabulary-path", count=4)
+        self.assertContains(response, 'id="comprehension-paths-title"')
+        self.assertContains(response, 'id="expression-paths-title"')
+        self.assertNotContains(response, 'id="expression-vocabulary"')
+        self.assertNotContains(response, 'id="comprehension-vocabulary"')
+        self.assertContains(
+            response,
+            reverse("study:vocabulary")
+            + "?part=orale&amp;task=tache-3",
+        )
+
+    def test_written_comprehension_card_opens_only_test_decks(self):
+        test = factories.make_comprehension_test(
+            number=1,
+            question_count=1,
+        )
+        phrase = factories.make_phrase(tier="comprehension")
+        phrase.source_questions.add(test.questions.get(number=1))
+        factories.make_phrase_card(phrase=phrase, user=self.user)
+
+        landing = self.client.get(reverse("study:vocabulary"))
+        self.assertContains(
+            landing,
+            reverse("study:vocabulary")
+            + "?domain=comprehension&amp;mode=ecrite",
+        )
+
+        response = self.client.get(
+            reverse("study:vocabulary"),
+            {"domain": "comprehension", "mode": "ecrite"},
+        )
+        self.assertTrue(response.context["comprehension_directory"])
+        self.assertFalse(response.context["vocabulary_landing"])
+        self.assertContains(response, "Vocabulaire des tests")
+        self.assertContains(response, test.title)
+        self.assertNotContains(response, 'id="expression-vocabulary"')
 
     def test_legacy_gateways_redirect_to_canonical_areas(self):
         destinations = (
@@ -313,12 +359,13 @@ class SmokeTests(TestCase):
 
         self.assertContains(response, "Reprendre là où je me suis arrêté")
 
-    def test_task_hub_organizes_all_content(self):
+    def test_task_hub_uses_navigation_without_duplicate_modules(self):
         response = self.client.get(
             reverse("study:task_detail", args=["orale", "tache-3"])
         )
         self.assertContains(response, "Sujets &amp; réponses")
-        self.assertContains(response, "Pratiquer les réponses")
+        self.assertNotContains(response, "Pratiquer les réponses")
+        self.assertNotContains(response, 'class="task-modules"')
         self.assertContains(response, "Vocabulaire")
         self.assertContains(response, "Progression")
         self.assertContains(
