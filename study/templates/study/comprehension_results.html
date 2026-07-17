@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}Résultats · {{ test.title }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="ce-shell ce-results">
+  <nav class="ce-breadcrumb" aria-label="Fil d’Ariane">
+    <a href="{% url 'study:comprehension_overview' %}">Compréhension écrite</a>
+    <span aria-hidden="true">›</span>
+    <a href="{% url 'study:comprehension_test' test.slug %}">{{ test.title }}</a>
+    <span aria-hidden="true">›</span>
+    <span>Résultats</span>
+  </nav>
+
+  <header class="ce-results-hero">
+    <div class="ce-results-hero__score">
+      <strong>{{ attempt.score }}</strong>
+      <span>sur {{ attempt.total_questions }}</span>
+    </div>
+    <div class="ce-results-hero__copy">
+      <p class="eyebrow">{{ test.title }} · Terminé</p>
+      <h1>
+        {% if attempt.percentage >= 85 %}
+          Excellente compréhension
+        {% elif attempt.percentage >= 70 %}
+          Très bon travail
+        {% elif attempt.percentage >= 50 %}
+          Une base solide à renforcer
+        {% else %}
+          Continuez, chaque correction compte
+        {% endif %}
+      </h1>
+      <p>Vous avez obtenu <b>{{ attempt.percentage }} %</b>. Parcourez les corrections pour comprendre précisément chaque choix.</p>
+      <div class="ce-results-hero__facts">
+        <span class="is-correct"><b>{{ attempt.score }}</b> bonnes réponses</span>
+        <span class="is-wrong"><b>{{ wrong_count }}</b> à revoir</span>
+        <span>Terminé le <b>{{ attempt.completed_at|date:"j M Y" }}</b></span>
+      </div>
+    </div>
+    <div class="ce-results-hero__actions">
+      {% if test.is_active and test.is_published %}
+      <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="continue">
+        <button class="btn btn--primary" type="submit">Refaire ce test</button>
+      </form>
+      {% else %}
+        <span class="ce-results-archived">Ce test n’est plus disponible et ne peut pas être recommencé.</span>
+      {% endif %}
+      <a class="btn" href="{% url 'study:comprehension_overview' %}">Tous les tests</a>
+    </div>
+  </header>
+
+  <section class="ce-results-map" aria-labelledby="ce-results-map-title">
+    <div>
+      <p class="eyebrow">Vue d’ensemble</p>
+      <h2 id="ce-results-map-title">Vos {{ attempt.total_questions }} réponses</h2>
+    </div>
+    <div class="ce-results-map__grid">
+      {% for item in review_items %}
+        <a href="#question-{{ item.question.number }}" class="{% if item.answer.is_correct %}is-correct{% else %}is-wrong{% endif %}" aria-label="Question {{ item.question.number }}, {% if item.answer.is_correct %}correcte{% else %}incorrecte{% endif %}">
+          {{ item.question.number }}
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="ce-review-list" aria-labelledby="ce-review-title">
+    <div class="ce-section-heading">
+      <div>
+        <p class="eyebrow">Correction détaillée</p>
+        <h2 id="ce-review-title">Revoir les questions</h2>
+      </div>
+      <p>Ouvrez une question pour retrouver le texte, votre choix et l’explication.</p>
+    </div>
+
+    {% for item in review_items %}
+      <details class="ce-review-item{% if item.answer.is_correct %} is-correct{% else %} is-wrong{% endif %}" id="question-{{ item.question.number }}">
+        <summary>
+          <span class="ce-review-item__number">{{ item.question.number }}</span>
+          <span class="ce-review-item__prompt">{{ item.question.prompt_fr }}</span>
+          <span class="ce-review-item__status">
+            {% if item.answer.is_correct %}Correcte <b>✓</b>{% else %}À revoir <b>×</b>{% endif %}
+          </span>
+        </summary>
+        <div class="ce-review-item__body">
+          <div class="ce-review-item__passage">{{ item.question.passage_fr }}</div>
+          <div class="ce-review-item__choices">
+            {% for choice in item.choices %}
+              <div class="{% if choice.is_correct %}is-correct{% elif choice.letter == item.selected_letter %}is-wrong{% endif %}">
+                <span>{{ choice.letter }}</span>
+                <p>{{ choice.text_fr }}</p>
+                {% if choice.is_correct %}<b>Bonne réponse</b>{% elif choice.letter == item.selected_letter %}<b>Votre choix</b>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% if item.question.correct_explanation %}
+            <div class="ce-review-item__explanation">
+              <h3>Explication</h3>
+              <p>{{ item.question.correct_explanation }}</p>
+            </div>
+          {% endif %}
+
+          <details class="ce-rationales">
+            <summary>Analyser les autres choix</summary>
+            <div>
+              {% for choice in item.choices %}
+                {% if not choice.is_correct and choice.rationale %}
+                  <article{% if choice.letter == item.selected_letter %} class="is-selected"{% endif %}>
+                    <span>{{ choice.letter }}</span>
+                    <p>{{ choice.rationale }}</p>
+                  </article>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </details>
+
+          <details class="ce-translation">
+            <summary><span aria-hidden="true">EN</span> Voir la traduction anglaise</summary>
+            <div class="ce-translation__body">
+              <section>
+                <small>Document</small>
+                <p>{{ item.question.passage_en }}</p>
+              </section>
+              <section>
+                <small>Question</small>
+                <p><strong>{{ item.question.prompt_en }}</strong></p>
+                <ol class="ce-translation__choices">
+                  {% for choice in item.choices %}
+                    <li><span>{{ choice.letter }}</span>{{ choice.text_en }}</li>
+                  {% endfor %}
+                </ol>
+              </section>
+            </div>
+          </details>
+        </div>
+      </details>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

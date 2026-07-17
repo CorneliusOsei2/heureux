@@ -65,7 +65,7 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v38"', body)
+        self.assertIn('var CACHE = "heureux-v40"', body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
         self.assertIn("SKIP_WAITING", body)
@@ -216,9 +216,16 @@ class SmokeTests(TestCase):
         self.assertContains(
             response,
             'class="nav__primary-link',
-            count=5,
+            count=6,
         )
-        for label in ("Accueil", "Réviser", "Expressions", "Notes", "Stats"):
+        for label in (
+            "Accueil",
+            "Compréhension",
+            "Réviser",
+            "Expressions",
+            "Notes",
+            "Stats",
+        ):
             self.assertContains(response, f">{label}</a>")
         self.assertContains(response, 'class="footer__inner"')
 
@@ -503,7 +510,7 @@ class CategoryBatchViewsTests(TestCase):
             card for pair in self.phrase_pairs for card in pair
         ]
 
-    def test_expression_category_displays_fifteen_expression_lots(self):
+    def test_expression_category_displays_ten_expression_lots(self):
         response = self.client.get(
             reverse("study:phrases"),
             {"category": self.category.slug},
@@ -512,17 +519,17 @@ class CategoryBatchViewsTests(TestCase):
         self.assertEqual(len(response.context["review_batches"]), 2)
         self.assertEqual(
             response.context["review_batches"][0]["phrase_count"],
-            15,
+            10,
         )
         self.assertEqual(
             response.context["review_batches"][1]["phrase_count"],
-            1,
+            6,
         )
         self.assertEqual(
             [batch["card_count"] for batch in response.context["review_batches"]],
-            [30, 2],
+            [20, 12],
         )
-        self.assertContains(response, "Lots de 15 expressions maximum")
+        self.assertContains(response, "Lots de 10 expressions maximum")
         self.assertContains(response, "Lot 02")
         self.assertContains(response, "batch=2")
 
@@ -549,7 +556,7 @@ class CategoryBatchViewsTests(TestCase):
                 batch["phrase_count"]
                 for batch in response.context["review_batches"]
             ],
-            [15, 1],
+            [10, 6],
         )
         self.assertNotContains(response, "response-only-vocabulary")
 
@@ -563,13 +570,13 @@ class CategoryBatchViewsTests(TestCase):
         state = self.client.get(reverse("study:review_next"), params).json()
 
         self.assertContains(page, "Lot 2")
-        self.assertEqual(state["card_id"], self.phrase_pairs[15][0].id)
-        self.assertEqual(state["counts"]["new_available"], 2)
+        self.assertEqual(state["card_id"], self.phrase_pairs[10][0].id)
+        self.assertEqual(state["counts"]["new_available"], 12)
 
     def test_batch_cards_show_in_progress_and_completed_states(self):
         future = timezone.now() + timedelta(days=5)
         first_batch = [
-            card for pair in self.phrase_pairs[:15] for card in pair
+            card for pair in self.phrase_pairs[:10] for card in pair
         ]
         first_batch[0].state = CardState.LEARNING
         first_batch[0].due = future
@@ -596,7 +603,7 @@ class CategoryBatchViewsTests(TestCase):
 
         completed_batch = complete.context["review_batches"][0]
         self.assertEqual(completed_batch["status"], "complete")
-        self.assertEqual(completed_batch["seen_count"], 15)
+        self.assertEqual(completed_batch["seen_count"], 10)
         self.assertFalse(completed_batch["can_review"])
         self.assertContains(complete, "✓")
         self.assertContains(complete, "Terminé")
@@ -604,7 +611,7 @@ class CategoryBatchViewsTests(TestCase):
     def test_suspended_lot_is_visible_but_not_clickable(self):
         Card.objects.filter(
             pk__in=[
-                card.pk for pair in self.phrase_pairs[:15] for card in pair
+                card.pk for pair in self.phrase_pairs[:10] for card in pair
             ]
         ).update(suspended=True)
 
@@ -670,10 +677,52 @@ class CategoryBatchViewsTests(TestCase):
                 batch["phrase_count"]
                 for batch in page.context["phrase_batches"]
             ],
-            [15, 1],
+            [10, 6],
         )
-        self.assertContains(page, "Lot 1 · 15 expressions")
-        self.assertContains(page, "Lot 2 · 1 expression")
+        self.assertContains(page, "Lot 1 · 10 expressions")
+        self.assertContains(page, "Lot 2 · 6 expressions")
+
+    def test_response_sheet_offers_five_ten_card_subject_vocabulary_lots(self):
+        response = factories.make_response()
+        prompt = response.prompts.first()
+        for _ in range(50):
+            phrase = factories.make_phrase(tier="subject")
+            phrase.source_prompts.add(prompt)
+            factories.make_phrase_card(
+                phrase=phrase,
+                user=self.user,
+            )
+
+        page = self.client.get(
+            reverse("study:response_detail", args=[response.pk])
+        )
+
+        self.assertEqual(page.context["vocabulary_count"], 50)
+        self.assertEqual(len(page.context["subject_vocabulary"]), 10)
+        self.assertEqual(
+            [
+                batch["phrase_count"]
+                for batch in page.context["vocabulary_batches"]
+            ],
+            [10, 10, 10, 10, 10],
+        )
+        self.assertContains(page, "Pratiquer les vocabs")
+        self.assertContains(
+            page,
+            f"kind=vocab&amp;response={response.pk}&amp;batch=1",
+        )
+        self.assertContains(page, "Lot 5 · Phrases modèles · 10 vocabs")
+        state = self.client.get(
+            reverse("study:review_next"),
+            {
+                "kind": "vocab",
+                "response": str(response.pk),
+                "batch": "1",
+            },
+        ).json()
+        self.assertIn("Vocabulaire du sujet", state["front_html"])
+        self.assertIn("Produisez le mot", state["front_html"])
+        self.assertIn("Réponse française", state["back_html"])
 
 
 class ReviewFlowTests(TestCase):

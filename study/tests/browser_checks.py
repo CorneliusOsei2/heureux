@@ -194,6 +194,12 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         Annotation.objects.create(
             user=self.user,
             task=self.task,
+            kind=AnnotationKind.NOTE,
+            body="Une note personnelle.",
+        )
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
             kind=AnnotationKind.HIGHLIGHT,
             quote="Passage retenu dans une réponse.",
             source_path=reverse(
@@ -215,12 +221,31 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             end_offset=35,
         )
 
-        self.page.goto(
-            self.live_server_url
-            + reverse(
-                "study:task_notes",
-                args=[self.part.slug, self.task.slug],
-            )
+        notes_url = self.live_server_url + reverse(
+            "study:task_notes",
+            args=[self.part.slug, self.task.slug],
+        )
+        self.page.goto(notes_url)
+        self.page.locator(
+            ".annotation-card__body",
+            has_text="Une note personnelle.",
+        ).wait_for()
+        self.assertEqual(
+            self.page.locator("#notes-tab").get_attribute("aria-selected"),
+            "true",
+        )
+        self.assertEqual(
+            self.page.get_by_text("Passage retenu dans une réponse.").count(),
+            0,
+        )
+
+        self.page.locator("#highlights-tab").click()
+        self.page.wait_for_url("**?tab=highlights")
+        self.assertEqual(
+            self.page.locator("#highlights-tab").get_attribute(
+                "aria-selected"
+            ),
+            "true",
         )
 
         response_group = self.page.locator(
@@ -350,11 +375,11 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.page.goto(self.live_server_url + response_url)
         self.page.get_by_role(
             "link",
-            name="Lot 1 · 15 expressions",
+            name="Lot 1 · 10 expressions",
         ).wait_for()
         self.page.get_by_role(
             "link",
-            name="Lot 2 · 1 expression",
+            name="Lot 2 · 6 expressions",
         ).wait_for()
         self.assert_no_horizontal_overflow()
 
@@ -362,7 +387,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             reverse("study:phrases") + f"?category={category.slug}"
         )
         self.page.goto(self.live_server_url + category_url)
-        self.page.get_by_text("Lots de 15 expressions maximum").wait_for()
+        self.page.get_by_text("Lots de 10 expressions maximum").wait_for()
         self.assertEqual(
             self.page.locator(".batch-card").count(),
             2,
@@ -383,4 +408,44 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             highlighted.text_content(),
             shared_phrases[0].anchor,
         )
+        self.assert_no_horizontal_overflow()
+
+    def test_mobile_comprehension_quiz_correction_and_results(self):
+        test = factories.make_comprehension_test(question_count=2)
+        self.page.set_viewport_size({"width": 320, "height": 568})
+
+        self.page.goto(
+            self.live_server_url + reverse("study:comprehension_overview")
+        )
+        self.page.get_by_role("heading", name="Compréhension écrite").wait_for()
+        self.assert_no_horizontal_overflow()
+        self.page.get_by_role("link", name="Découvrir le test").click()
+
+        self.page.get_by_role("button", name="Commencer le test").click()
+        self.page.get_by_role("heading", name="Question 1 sur 2").wait_for()
+        self.assertEqual(
+            self.page.get_by_text("English passage 1.").count(),
+            0,
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.locator(".ce-choice", has_text="Choix B français 1").click()
+        self.page.get_by_role("button", name="Valider ma réponse").click()
+        self.page.get_by_role("heading", name="La bonne réponse était A.").wait_for()
+        self.page.get_by_text(
+            "Pourquoi votre choix B ne convient pas"
+        ).wait_for()
+        self.page.get_by_text("Voir la traduction anglaise").click()
+        self.page.get_by_text("English passage 1.").wait_for()
+        self.assert_no_horizontal_overflow()
+
+        self.page.get_by_role("link", name="Question suivante").click()
+        self.page.locator(".ce-choice", has_text="Choix A français 2").click()
+        self.page.get_by_role("button", name="Valider ma réponse").click()
+        self.page.get_by_role("link", name="Voir mes résultats").wait_for()
+        self.assert_no_horizontal_overflow()
+
+        self.page.get_by_role("link", name="Voir mes résultats").click()
+        self.page.get_by_role("heading", name="Revoir les questions").wait_for()
+        self.assertEqual(self.page.locator(".ce-review-item").count(), 2)
         self.assert_no_horizontal_overflow()

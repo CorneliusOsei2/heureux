@@ -2,7 +2,8 @@
 
 Copies the response batches, study sheets and phrase inventory from the source
 tree (default: the t3 directory above this app) into ``study/content`` so the
-app stays self-contained and deployable. Run ``import_content`` afterwards.
+app stays self-contained and deployable. The app-owned subject-vocabulary bank
+is left untouched. Run ``import_content`` afterwards.
 """
 
 from __future__ import annotations

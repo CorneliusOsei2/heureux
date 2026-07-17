@@ -15,6 +15,11 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expression orale → Tâche 3** — the current corpus has one clear home. Its
   subjects, argued responses, expression bank, review queue, revisit list,
   search, and progress are all scoped to this task.
+- **Compréhension écrite → Test N** — persisted multiple-choice tests present
+  one French document at a time, save each answer immediately, and unlock the
+  English translation plus detailed answer rationales after submission.
+  Unfinished tests resume at the next unanswered question; completed attempts
+  keep their score, full correction, history, and retake path.
 - **Réviser, Expressions, Notes, Stats** — each top-level tab first follows the same
   Expression orale/écrite → Tâches hierarchy as Accueil, then opens the chosen
   task's focused workspace.
@@ -35,8 +40,11 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Expressions & vocabulaire** — 226 reusable chunks form a curated shared
   catalog with accurate topical and functional categories. The remaining 1,184
   source-grounded chunks stay with their response, preserving at least 12 useful
-  expressions per answer without mixing local vocabulary into global decks.
-  Every review lot contains at most 15 unique expressions.
+  expressions per answer without mixing local vocabulary into global decks. A
+  separate subject deck adds exactly 50 carefully grounded words, collocations,
+  expressions and idioms, turns of phrase, and sentence models to every unique
+  response.
+  Expression and subject-vocabulary review lots contain at most 10 entries.
 - **Private notes & highlights** — notes follow the same Expression
   orale/écrite → Tâche hierarchy, with a dedicated highlights subsection.
   Select text anywhere to copy it, translate it, save it to Notes, or highlight
@@ -45,8 +53,9 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
   active-recall deck. Translation uses the browser's local English model with
   an explicit Google Translate fallback when local translation is unavailable.
 - **Practice without a daily cap** — every new card and due review stays
-  available; themes and expression categories provide optional 15-expression lots
-  with not-started, in-progress, and completed states plus next-lot navigation.
+  available; expression categories and subject decks provide optional 10-entry
+  lots with not-started, in-progress, and completed states plus next-lot
+  navigation.
 - **Progression** — 30-day review bars, 90-day activity heatmap, 14-day forecast,
   mature-card retention, streak, per-theme mastery, and a private recent-session
   timeline grouped by natural study breaks.
@@ -64,12 +73,14 @@ Importing the corpus produces:
 |------|-------|--------------|
 | Response spine | 130 | Prompt → compact speaking spine |
 | Expression — production | 1,410 | English cue + blanked example → the expression |
+| Subject vocabulary | 6,500 | English cue + source example → the French target |
 | Expression — recognition | 226 shared expressions | Expression → meaning + example |
 
 Equivalent prompts (same answer in different themes) share one Response and one
 spine card, so you never memorise the same answer twice. Response-local
 vocabulary uses production cards only and appears from its response sheet;
-shared production and recognition twins always remain in the same lot.
+shared production and recognition twins always remain in the same lot. Each
+response also has five dedicated subject-vocabulary lots of 10 cards.
 
 ---
 
@@ -113,10 +124,13 @@ The app ships a self-contained snapshot of the answer bank in
 - `import_content` — (re)builds the database from that snapshot. **Idempotent**:
   re-running upserts shared content and preserves every learner's private review
   progress. Source items that disappear are archived, not deleted, so their
-  cards, review history, notes, and highlights remain intact.
+  cards, review history, notes, highlights, and comprehension attempts remain
+  intact. CE test metadata and source questions live in
+  `study/content/comprehension/`.
 - `sync_content --from <path-to-t3>` — refreshes the snapshot from the live
   `t3/` tree (response batches, `study_sheets.md`, `anki/data/phrases.tsv`).
-  Run `import_content` afterwards to load the changes.
+  The app-owned `subject_vocabulary/` bank is preserved. Run `import_content`
+  afterwards to load the changes.
 
 So the normal loop after editing the answer bank is:
 
@@ -215,8 +229,8 @@ Every grade is written to `ReviewLog`, which powers the stats page.
 flashcards/
 ├── config/                 # Django project (settings, urls, wsgi/asgi)
 ├── study/
-│   ├── models.py           # Theme, Family, Response, Argument, Prompt,
-│   │                       #   Phrase, Card, ReviewLog, Settings
+│   ├── models.py           # Shared study content, comprehension quizzes,
+│   │                       #   learner cards, attempts, history, and settings
 │   ├── content.py          # Pure parser for the answer bank
 │   ├── accounts.py · forms.py · middleware.py
 │   │                       # Account provisioning, PIN auth, access control

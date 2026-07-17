@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import timedelta
 from io import StringIO
+from unittest.mock import MagicMock, patch
 
 from django.contrib.auth import get_user_model
 from django.core.management import call_command
@@ -13,6 +14,8 @@ from study import queue, srs
 from study.accounts import (
     ACCOUNT_FAILURE_LIMIT,
     IP_ATTEMPT_LIMIT,
+    STUDY_DATA_LOCK_ID,
+    acquire_study_data_lock,
     generate_recovery_codes,
     login_throttle_key,
     provision_user_study_data,
@@ -39,6 +42,19 @@ from . import factories
     PASSWORD_HASHERS=["django.contrib.auth.hashers.MD5PasswordHasher"]
 )
 class AuthenticationTests(TestCase):
+    def test_postgres_study_data_lock_serializes_import_and_provisioning(self):
+        cursor = MagicMock()
+        mocked_connection = MagicMock(vendor="postgresql")
+        mocked_connection.cursor.return_value.__enter__.return_value = cursor
+
+        with patch("study.accounts.connection", mocked_connection):
+            acquire_study_data_lock()
+
+        cursor.execute.assert_called_once_with(
+            "SELECT pg_advisory_xact_lock(%s)",
+            [STUDY_DATA_LOCK_ID],
+        )
+
     def test_private_pages_redirect_to_login(self):
         response = self.client.get(reverse("study:dashboard"))
         self.assertRedirects(
@@ -546,7 +562,7 @@ class AuthenticationTests(TestCase):
 
         self.assertFalse(users_with_study_state().filter(pk=admin.pk).exists())
         self.assertEqual(Card.objects.filter(user=admin).count(), 0)
-        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 1766)
+        self.assertEqual(Card.objects.filter(user__isnull=True).count(), 8266)
 
         learner = get_user_model().objects.create_user(
             username="learner",
@@ -554,12 +570,12 @@ class AuthenticationTests(TestCase):
         )
         provision_user_study_data(learner)
 
-        self.assertEqual(Card.objects.filter(user=learner).count(), 1766)
+        self.assertEqual(Card.objects.filter(user=learner).count(), 8266)
         self.assertFalse(
             Card.objects.filter(
                 user=learner,
                 card_type="phrase_recog",
-                phrase__tier="response",
+                phrase__tier__in=["response", "subject"],
             ).exists()
         )
         self.assertFalse(Card.objects.filter(user__isnull=True).exists())

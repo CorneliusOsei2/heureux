@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import re
 import secrets
@@ -17,7 +18,7 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.utils import IntegrityError
 from django.db.models import Count, Prefetch, Q
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import Http404, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -25,7 +26,7 @@ from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.cache import never_cache
 from django.views.decorators.debug import sensitive_post_parameters
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
 from . import queue as queue_module
 from .accounts import (
@@ -54,6 +55,12 @@ from .models import (
     Card,
     CardState,
     CardType,
+    ComprehensionAnswer,
+    ComprehensionAttempt,
+    ComprehensionAttemptStatus,
+    ComprehensionChoice,
+    ComprehensionQuestion,
+    ComprehensionTest,
     ExamPart,
     Family,
     Phrase,
@@ -290,12 +297,13 @@ def _review_batches(scope: dict, user) -> list[dict]:
         units = [[row] for row in rows]
 
     now = timezone.now()
+    size = queue_module.batch_size(base_scope)
     batches = []
     for number, start in enumerate(
-        range(0, len(units), queue_module.BATCH_SIZE),
+        range(0, len(units), size),
         start=1,
     ):
-        units_in_batch = units[start : start + queue_module.BATCH_SIZE]
+        units_in_batch = units[start : start + size]
         active_units = [
             [row for row in unit if not row["suspended"]]
             for unit in units_in_batch
@@ -580,6 +588,86 @@ def _phrase_deck_stats(now, user=None, task=None):
     return deck_stats(cards, now)
 
 
+def _comprehension_test_cards(user, *, published_only=False):
+    attempts = (
+        ComprehensionAttempt.objects.filter(user=user)
+        .annotate(
+            answer_total=Count("answers"),
+        )
+        .order_by("-started_at", "-pk")
+    )
+    tests = ComprehensionTest.objects.filter(
+        Q(is_active=True) | Q(attempts__user=user)
+    ).distinct()
+    if published_only:
+        tests = tests.filter(is_active=True, is_published=True)
+    tests = list(
+        tests.annotate(
+            active_question_count=Count(
+                "questions",
+                filter=Q(questions__is_active=True),
+                distinct=True,
+            )
+        ).prefetch_related(
+            Prefetch("attempts", queryset=attempts, to_attr="user_attempts")
+        )
+    )
+    for test in tests:
+        test.active_attempt = next(
+            (
+                attempt
+                for attempt in test.user_attempts
+                if attempt.status == ComprehensionAttemptStatus.IN_PROGRESS
+            ),
+            None,
+        )
+        test.completed_attempts = [
+            attempt
+            for attempt in test.user_attempts
+            if attempt.status == ComprehensionAttemptStatus.COMPLETED
+        ]
+        test.latest_attempt = (
+            test.completed_attempts[0] if test.completed_attempts else None
+        )
+        test.best_attempt = max(
+            test.completed_attempts,
+            key=lambda attempt: (attempt.percentage, attempt.score or 0),
+            default=None,
+        )
+        test.active_answered_count = (
+            test.active_attempt.answer_total if test.active_attempt else 0
+        )
+        test.attempt_question_count = (
+            test.active_attempt.total_questions
+            if test.active_attempt
+            else test.active_question_count
+        )
+    return tests
+
+
+def _comprehension_summary(user):
+    tests = _comprehension_test_cards(user, published_only=True)
+    completed_attempts = [
+        attempt
+        for test in tests
+        for attempt in test.completed_attempts
+    ]
+    return {
+        "test_count": len(tests),
+        "completed_test_count": sum(
+            bool(test.completed_attempts) for test in tests
+        ),
+        "active_attempt": next(
+            (test.active_attempt for test in tests if test.active_attempt),
+            None,
+        ),
+        "best_percentage": max(
+            (attempt.percentage for attempt in completed_attempts),
+            default=None,
+        ),
+    }
+
+
 def dashboard(request):
     now = timezone.now()
     counts = queue_module.queue_counts(now=now, user=request.user)
@@ -596,6 +684,7 @@ def dashboard(request):
             now,
             user=request.user,
         )["weak_total"],
+        "comprehension": _comprehension_summary(request.user),
     }
     return render(request, "study/dashboard.html", context)
 
@@ -652,6 +741,10 @@ def _grouped_overview(request, area):
                     is_active=True,
                     tier=PhraseTier.RESPONSE,
                 ).count(),
+                "subject_phrase_count": Phrase.objects.filter(
+                    is_active=True,
+                    tier=PhraseTier.SUBJECT,
+                ).count(),
                 "phrase_stats": _phrase_deck_stats(now, request.user),
                 "phrase_counts": queue_module.queue_counts(
                     {"kind": "phrase"},
@@ -687,6 +780,591 @@ def expressions_overview(request):
 @require_GET
 def stats_overview(request):
     return _grouped_overview(request, "stats")
+
+
+# ---------------------------------------------------------------------------
+# Compréhension écrite
+# ---------------------------------------------------------------------------
+
+
+def _comprehension_question_snapshot(
+    question,
+    selected_choice=None,
+    *,
+    choices=None,
+):
+    choices = choices if choices is not None else question.choices.all()
+    choices = [
+        {
+            "id": choice.pk,
+            "letter": choice.letter,
+            "text_fr": choice.text_fr,
+            "text_en": choice.text_en,
+            "rationale": choice.rationale,
+            "is_correct": choice.is_correct,
+        }
+        for choice in question.choices.all()
+    ]
+    return {
+        "id": question.pk,
+        "content_key": question.content_key,
+        "number": question.number,
+        "passage_fr": question.passage_fr,
+        "passage_en": question.passage_en,
+        "prompt_fr": question.prompt_fr,
+        "prompt_en": question.prompt_en,
+        "correct_explanation": question.correct_explanation,
+        "choices": choices,
+        "selected_letter": selected_choice.letter if selected_choice else "",
+    }
+
+
+def _build_comprehension_test_snapshot(test):
+    questions = (
+        test.questions.filter(is_active=True)
+        .prefetch_related(
+            Prefetch(
+                "choices",
+                queryset=ComprehensionChoice.objects.filter(is_active=True),
+            )
+        )
+        .order_by("number")
+    )
+    return {
+        "questions": [
+            _comprehension_question_snapshot(question)
+            for question in questions
+        ]
+    }
+
+
+def _comprehension_attempt_questions(attempt):
+    snapshot = attempt.content_snapshot
+    if isinstance(snapshot, dict):
+        questions = snapshot.get("questions")
+        if (
+            isinstance(questions, list)
+            and questions
+            and all(
+                isinstance(question, dict)
+                and question.get("id")
+                and question.get("choices")
+                for question in questions
+            )
+        ):
+            return questions
+
+    answers = {
+        answer.question_id: answer
+        for answer in attempt.answers.select_related("selected_choice")
+    }
+    questions = (
+        attempt.test.questions.filter(
+            Q(is_active=True) | Q(pk__in=answers)
+        )
+        .prefetch_related("choices")
+        .order_by("number")
+    )
+    serialized = []
+    for question in questions:
+        answer = answers.get(question.pk)
+        if answer and answer.question_snapshot:
+            question_data = copy.deepcopy(answer.question_snapshot)
+            question_data.setdefault("id", question.pk)
+            question_data.setdefault("content_key", question.content_key)
+            for choice_data, choice in zip(
+                question_data.get("choices", []),
+                question.choices.all(),
+            ):
+                choice_data.setdefault("id", choice.pk)
+        else:
+            available_choices = [
+                choice
+                for choice in question.choices.all()
+                if answer or choice.is_active
+            ]
+            question_data = _comprehension_question_snapshot(
+                question,
+                answer.selected_choice if answer else None,
+                choices=available_choices,
+            )
+        serialized.append(question_data)
+
+    attempt.content_snapshot = {"questions": serialized}
+    attempt.total_questions = len(serialized)
+    attempt.save(update_fields=["content_snapshot", "total_questions"])
+    return serialized
+
+
+def _snapshot_with_selected_choice(question, selected_letter):
+    snapshot = copy.deepcopy(question)
+    snapshot["selected_letter"] = selected_letter
+    return snapshot
+
+
+def _comprehension_answer_snapshot(answer):
+    snapshot = answer.question_snapshot
+    if (
+        isinstance(snapshot, dict)
+        and snapshot.get("choices")
+        and snapshot.get("number")
+    ):
+        return snapshot
+    for question in _comprehension_attempt_questions(answer.attempt):
+        if question["id"] == answer.question_id:
+            return _snapshot_with_selected_choice(
+                question,
+                answer.selected_choice.letter,
+            )
+    return _comprehension_question_snapshot(
+        answer.question,
+        answer.selected_choice,
+    )
+
+
+@require_GET
+def comprehension_overview(request):
+    tests = _comprehension_test_cards(request.user)
+    published = [
+        test
+        for test in tests
+        if test.is_active and test.is_published
+    ]
+    completed_attempts = [
+        attempt
+        for test in published
+        for attempt in test.completed_attempts
+    ]
+    return render(
+        request,
+        "study/comprehension_overview.html",
+        {
+            "tests": tests,
+            "published_count": len(published),
+            "completed_count": sum(
+                bool(test.completed_attempts) for test in published
+            ),
+            "best_percentage": max(
+                (attempt.percentage for attempt in completed_attempts),
+                default=None,
+            ),
+        },
+    )
+
+
+@require_GET
+def comprehension_test_detail(request, test_slug):
+    test = next(
+        (
+            item
+            for item in _comprehension_test_cards(request.user)
+            if item.slug == test_slug
+            and (
+                (item.is_active and item.is_published)
+                or item.user_attempts
+            )
+        ),
+        None,
+    )
+    if test is None:
+        raise Http404
+    return render(
+        request,
+        "study/comprehension_test.html",
+        {
+            "test": test,
+            "attempt_history": test.completed_attempts[:6],
+        },
+    )
+
+
+def _comprehension_question_url(attempt, number):
+    return reverse(
+        "study:comprehension_question",
+        args=[attempt.test.slug, attempt.pk, number],
+    )
+
+
+def _sync_comprehension_attempt_position(attempt):
+    if attempt.status != ComprehensionAttemptStatus.IN_PROGRESS:
+        return None
+    questions = _comprehension_attempt_questions(attempt)
+    answered_question_ids = set(
+        attempt.answers.values_list("question_id", flat=True)
+    )
+    next_question = next(
+        (
+            question
+            for question in questions
+            if question["id"] not in answered_question_ids
+        ),
+        None,
+    )
+    if next_question:
+        if attempt.current_question != next_question["number"]:
+            attempt.current_question = next_question["number"]
+            attempt.save(update_fields=["current_question", "updated_at"])
+        return next_question["number"]
+
+    attempt.status = ComprehensionAttemptStatus.COMPLETED
+    attempt.score = attempt.answers.filter(is_correct=True).count()
+    attempt.total_questions = len(questions)
+    attempt.completed_at = timezone.now()
+    attempt.save(
+        update_fields=[
+            "status",
+            "score",
+            "total_questions",
+            "completed_at",
+            "updated_at",
+        ]
+    )
+    return None
+
+
+@require_POST
+def comprehension_start(request, test_slug):
+    action = request.POST.get("action", "continue")
+    if action not in {"continue", "restart"}:
+        return HttpResponseBadRequest("Action de test invalide.")
+
+    with transaction.atomic():
+        get_user_model().objects.select_for_update().get(pk=request.user.pk)
+        test = get_object_or_404(
+            ComprehensionTest.objects.select_for_update(),
+            slug=test_slug,
+            is_active=True,
+            is_published=True,
+        )
+        active_attempt = (
+            ComprehensionAttempt.objects.select_for_update()
+            .filter(
+                user=request.user,
+                test=test,
+                status=ComprehensionAttemptStatus.IN_PROGRESS,
+            )
+            .first()
+        )
+        if active_attempt and action == "restart":
+            active_attempt.status = ComprehensionAttemptStatus.ABANDONED
+            active_attempt.completed_at = timezone.now()
+            active_attempt.save(update_fields=["status", "completed_at", "updated_at"])
+            active_attempt = None
+
+        if active_attempt is None:
+            content_snapshot = _build_comprehension_test_snapshot(test)
+            questions = content_snapshot["questions"]
+            if not questions:
+                return HttpResponseBadRequest("Ce test ne contient aucune question.")
+            active_attempt = ComprehensionAttempt.objects.create(
+                user=request.user,
+                test=test,
+                current_question=questions[0]["number"],
+                total_questions=len(questions),
+                content_snapshot=content_snapshot,
+            )
+        resume_number = _sync_comprehension_attempt_position(active_attempt)
+
+    if resume_number is None:
+        return redirect(
+            "study:comprehension_results",
+            test_slug=test.slug,
+            attempt_id=active_attempt.pk,
+        )
+    return redirect(
+        _comprehension_question_url(
+            active_attempt,
+            resume_number,
+        )
+    )
+
+
+def _comprehension_attempt(request, test_slug, attempt_id):
+    return get_object_or_404(
+        ComprehensionAttempt.objects.select_related("test"),
+        pk=attempt_id,
+        user=request.user,
+        test__slug=test_slug,
+    )
+
+
+def _comprehension_question_context(attempt, question_number, error=""):
+    questions = _comprehension_attempt_questions(attempt)
+    if not questions:
+        return None
+    question_index = next(
+        (
+            index
+            for index, question in enumerate(questions)
+            if question["number"] == question_number
+        ),
+        None,
+    )
+    if question_index is None:
+        return None
+
+    answers = {
+        answer.question_id: answer
+        for answer in attempt.answers.select_related(
+            "question",
+            "selected_choice",
+        )
+    }
+    next_unanswered = next(
+        (
+            question
+            for question in questions
+            if question["id"] not in answers
+        ),
+        None,
+    )
+    question = questions[question_index]
+    answer = answers.get(question["id"])
+    if (
+        answer is None
+        and next_unanswered
+        and question["id"] != next_unanswered["id"]
+    ):
+        return {
+            "redirect_number": next_unanswered["number"],
+        }
+
+    question_model = ComprehensionQuestion.objects.filter(
+        pk=question["id"],
+        test=attempt.test,
+    ).first()
+    if question_model is None:
+        return None
+    display_question = question
+    display_choices = question["choices"]
+    selected_choice = answer.selected_choice if answer else None
+    selected_letter = selected_choice.letter if selected_choice else ""
+    if answer and answer.question_snapshot:
+        display_question = _comprehension_answer_snapshot(answer)
+        display_choices = display_question["choices"]
+        selected_letter = display_question.get("selected_letter") or selected_letter
+        selected_choice = next(
+            (
+                choice
+                for choice in display_choices
+                if choice["letter"] == selected_letter
+            ),
+            None,
+        )
+    correct_choice = next(
+        (
+            choice
+            for choice in display_choices
+            if choice["is_correct"]
+        ),
+        None,
+    )
+    navigator = [
+        {
+            "number": item["number"],
+            "is_answered": item["id"] in answers,
+            "is_current": item["id"] == question["id"],
+            "is_available": (
+                item["id"] in answers
+                or next_unanswered is None
+                or item["id"] == next_unanswered["id"]
+            ),
+        }
+        for item in questions
+    ]
+    return {
+        "attempt": attempt,
+        "test": attempt.test,
+        "question": display_question,
+        "question_model": question_model,
+        "choices": display_choices,
+        "answer": answer,
+        "selected_choice": selected_choice,
+        "selected_letter": selected_letter,
+        "correct_choice": correct_choice,
+        "answered_count": len(answers),
+        "total_questions": len(questions),
+        "position": question_index + 1,
+        "previous_number": (
+            questions[question_index - 1]["number"] if question_index else None
+        ),
+        "next_number": (
+            questions[question_index + 1]["number"]
+            if answer and question_index + 1 < len(questions)
+            else None
+        ),
+        "navigator": navigator,
+        "answer_error": error,
+    }
+
+
+@require_http_methods(["GET", "POST"])
+def comprehension_question(request, test_slug, attempt_id, number):
+    attempt = _comprehension_attempt(request, test_slug, attempt_id)
+    if (
+        not attempt.test.is_active
+        or not attempt.test.is_published
+    ):
+        return redirect("study:comprehension_overview")
+    if (
+        attempt.status == ComprehensionAttemptStatus.COMPLETED
+        and not (
+            request.method == "GET"
+            and request.GET.get("correction") == "1"
+        )
+    ):
+        return redirect(
+            "study:comprehension_results",
+            test_slug=test_slug,
+            attempt_id=attempt.pk,
+        )
+    if attempt.status == ComprehensionAttemptStatus.ABANDONED:
+        return redirect("study:comprehension_test", test_slug=test_slug)
+
+    context = _comprehension_question_context(attempt, number)
+    if context is None:
+        with transaction.atomic():
+            locked_attempt = get_object_or_404(
+                ComprehensionAttempt.objects.select_for_update().select_related(
+                    "test"
+                ),
+                pk=attempt.pk,
+                user=request.user,
+            )
+            resume_number = _sync_comprehension_attempt_position(locked_attempt)
+        if resume_number is None:
+            return redirect(
+                "study:comprehension_results",
+                test_slug=test_slug,
+                attempt_id=attempt.pk,
+            )
+        return redirect(
+            _comprehension_question_url(locked_attempt, resume_number)
+        )
+    if context.get("redirect_number"):
+        return redirect(
+            _comprehension_question_url(
+                attempt,
+                context["redirect_number"],
+            )
+        )
+    if request.method != "POST":
+        return render(request, "study/comprehension_question.html", context)
+
+    if context["answer"] is not None:
+        return redirect(_comprehension_question_url(attempt, number))
+    selected_choice_id = request.POST.get("choice")
+    selected_choice_data = next(
+        (
+            choice
+            for choice in context["choices"]
+            if str(choice["id"]) == selected_choice_id
+        ),
+        None,
+    )
+    selected_choice = (
+        ComprehensionChoice.objects.filter(
+            pk=selected_choice_id,
+            question=context["question_model"],
+        ).first()
+        if (
+            selected_choice_data
+            and selected_choice_id
+            and selected_choice_id.isdecimal()
+        )
+        else None
+    )
+    if selected_choice is None:
+        context["answer_error"] = "Choisissez une réponse avant de valider."
+        return render(
+            request,
+            "study/comprehension_question.html",
+            context,
+            status=400,
+        )
+
+    with transaction.atomic():
+        locked_attempt = get_object_or_404(
+            ComprehensionAttempt.objects.select_for_update(),
+            pk=attempt.pk,
+            user=request.user,
+        )
+        if locked_attempt.status == ComprehensionAttemptStatus.COMPLETED:
+            return redirect(
+                f"{_comprehension_question_url(locked_attempt, number)}"
+                "?correction=1"
+            )
+        if locked_attempt.status != ComprehensionAttemptStatus.IN_PROGRESS:
+            return redirect("study:comprehension_test", test_slug=test_slug)
+        ComprehensionAnswer.objects.get_or_create(
+            attempt=locked_attempt,
+            question=context["question_model"],
+            defaults={
+                "selected_choice": selected_choice,
+                "is_correct": selected_choice_data["is_correct"],
+                "question_snapshot": _snapshot_with_selected_choice(
+                    context["question"],
+                    selected_choice_data["letter"],
+                ),
+            },
+        )
+        next_question_number = _sync_comprehension_attempt_position(locked_attempt)
+        if next_question_number is None:
+            return redirect(
+                f"{_comprehension_question_url(locked_attempt, number)}"
+                "?correction=1"
+            )
+
+    return redirect(_comprehension_question_url(attempt, number))
+
+
+@require_GET
+def comprehension_results(request, test_slug, attempt_id):
+    attempt = _comprehension_attempt(request, test_slug, attempt_id)
+    if attempt.status == ComprehensionAttemptStatus.IN_PROGRESS:
+        return redirect(
+            _comprehension_question_url(attempt, attempt.current_question)
+        )
+    if attempt.status != ComprehensionAttemptStatus.COMPLETED:
+        return redirect("study:comprehension_test", test_slug=test_slug)
+
+    submitted_answers = list(
+        attempt.answers.select_related(
+            "question",
+            "selected_choice",
+        )
+        .prefetch_related("question__choices")
+        .order_by("question__number")
+    )
+    review_items = []
+    for answer in submitted_answers:
+        question = _comprehension_answer_snapshot(answer)
+        choices = question["choices"]
+        review_items.append(
+            {
+                "question": question,
+                "choices": choices,
+                "answer": answer,
+                "selected_letter": (
+                    question.get("selected_letter")
+                    or answer.selected_choice.letter
+                ),
+                "correct_choice": next(
+                    (choice for choice in choices if choice["is_correct"]),
+                    None,
+                ),
+            }
+        )
+    return render(
+        request,
+        "study/comprehension_results.html",
+        {
+            "attempt": attempt,
+            "test": attempt.test,
+            "review_items": review_items,
+            "wrong_count": attempt.total_questions - (attempt.score or 0),
+        },
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -777,6 +1455,15 @@ def _annotation_scope_url(task=None):
     return reverse("study:general_notes")
 
 
+def _annotation_tab_url(task, kind):
+    tab = (
+        "highlights"
+        if kind == AnnotationKind.HIGHLIGHT
+        else "notes"
+    )
+    return f"{_annotation_scope_url(task)}?tab={tab}"
+
+
 def _highlight_groups(highlights):
     groups = {
         "responses": {
@@ -813,7 +1500,13 @@ def _highlight_groups(highlights):
 
 def _notes_scope(request, task=None):
     annotations = Annotation.objects.filter(user=request.user, task=task)
+    active_tab = (
+        request.GET.get("tab")
+        if request.GET.get("tab") in {"notes", "highlights"}
+        else "notes"
+    )
     if request.method == "POST":
+        active_tab = "notes"
         instance = Annotation(
             user=request.user,
             task=task,
@@ -822,7 +1515,10 @@ def _notes_scope(request, task=None):
         form = NoteForm(request.POST, instance=instance)
         if form.is_valid():
             note = form.save()
-            return redirect(_annotation_scope_url(task) + f"#note-{note.id}")
+            return redirect(
+                _annotation_tab_url(task, AnnotationKind.NOTE)
+                + f"#note-{note.id}"
+            )
     else:
         form = NoteForm()
     notes = list(annotations.filter(kind=AnnotationKind.NOTE))
@@ -837,6 +1533,7 @@ def _notes_scope(request, task=None):
             "notes": notes,
             "highlights": highlights,
             "highlight_groups": _highlight_groups(highlights),
+            "active_tab": active_tab,
             "study_count": annotations.filter(study_later=True).count(),
             "form": form,
         },
@@ -893,7 +1590,7 @@ def annotation_search(request):
     results = list(annotations[:100])
     for annotation in results:
         annotation.notes_url = (
-            _annotation_scope_url(annotation.task)
+            _annotation_tab_url(annotation.task, annotation.kind)
             + "#"
             + _annotation_anchor(annotation)
         )
@@ -1083,7 +1780,11 @@ def annotation_create(request):
         {
             "id": annotation.id,
             "created": created,
-            "notes_url": _annotation_scope_url(task),
+            "notes_url": (
+                _annotation_tab_url(task, annotation.kind)
+                + "#"
+                + _annotation_anchor(annotation)
+            ),
         },
         status=201 if created else 200,
     )
@@ -1097,7 +1798,7 @@ def _annotation_redirect(request, annotation):
         require_https=request.is_secure(),
     ):
         return candidate
-    return _annotation_scope_url(annotation.task)
+    return _annotation_tab_url(annotation.task, annotation.kind)
 
 
 @require_POST
@@ -2129,12 +2830,41 @@ def response_detail(request, pk):
             source_prompts__response=response,
             is_active=True,
         )
+        .exclude(tier=PhraseTier.SUBJECT)
         .distinct()
         .select_related("category")
     )
     phrase_batches = _review_batches(
         {"kind": "phrase", "response": str(response.pk)},
         request.user,
+    )
+    subject_vocabulary = (
+        Phrase.objects.filter(
+            source_prompts__response=response,
+            is_active=True,
+            tier=PhraseTier.SUBJECT,
+        )
+        .distinct()
+        .select_related("category")
+        .order_by("lot_order", "phrase_id")
+    )
+    vocabulary_count = subject_vocabulary.count()
+    vocabulary_batches = _review_batches(
+        {"kind": "vocab", "response": str(response.pk)},
+        request.user,
+    )
+    vocabulary_lot_labels = (
+        "Mots clés",
+        "Collocations",
+        "Expressions et idiomes",
+        "Tournures pour l'oral",
+        "Phrases modèles",
+    )
+    for batch, label in zip(vocabulary_batches, vocabulary_lot_labels):
+        batch["label"] = label
+    first_vocabulary_batch = next(
+        (batch for batch in vocabulary_batches if batch["can_review"]),
+        vocabulary_batches[0] if vocabulary_batches else None,
     )
     return render(
         request,
@@ -2149,6 +2879,14 @@ def response_detail(request, pk):
             "card": card,
             "related_phrases": related_phrases,
             "phrase_batches": phrase_batches,
+            "subject_vocabulary": list(subject_vocabulary[:10]),
+            "vocabulary_count": vocabulary_count,
+            "vocabulary_batches": vocabulary_batches,
+            "vocabulary_review_url": (
+                first_vocabulary_batch["review_url"]
+                if first_vocabulary_batch
+                else None
+            ),
             "can_edit_response": response.prompts.filter(
                 is_active=True,
                 theme__task__slug="tache-3",
@@ -2276,8 +3014,8 @@ def phrases(request, part_slug=None, task_slug=None):
         ).count()
         category.card_count = category_card_counts.get(category.id, 0)
         category.batch_count = (
-            category.phrase_count + queue_module.BATCH_SIZE - 1
-        ) // queue_module.BATCH_SIZE
+            category.phrase_count + queue_module.PHRASE_BATCH_SIZE - 1
+        ) // queue_module.PHRASE_BATCH_SIZE
 
     phrase_qs = all_phrases.none()
     if category_slug:
@@ -2332,7 +3070,7 @@ def phrases(request, part_slug=None, task_slug=None):
             ],
             "grouped": grouped,
             "review_batches": review_batches,
-            "batch_size": queue_module.BATCH_SIZE,
+            "batch_size": queue_module.PHRASE_BATCH_SIZE,
             "selected": selected,
             "phrase_count": (
                 selected.phrase_count
@@ -2626,6 +3364,7 @@ def reset_progress(request):
             suspended=False,
         )
         ReviewLog.objects.filter(user=request.user).delete()
+        ComprehensionAttempt.objects.filter(user=request.user).delete()
         _save_review_session(session, {}, clear_pass=True)
     return redirect(reverse("study:settings") + "?reset=1")
 
@@ -2718,11 +3457,47 @@ def export_account(request):
             user=request.user
         ).select_related("response")
     ]
+    comprehension_attempts = []
+    for attempt in (
+        ComprehensionAttempt.objects.filter(user=request.user)
+        .select_related("test")
+        .prefetch_related(
+            Prefetch(
+                "answers",
+                queryset=ComprehensionAnswer.objects.select_related(
+                    "question",
+                    "selected_choice",
+                ),
+            )
+        )
+    ):
+        comprehension_attempts.append(
+            {
+                "test": attempt.test.slug,
+                "status": attempt.status,
+                "current_question": attempt.current_question,
+                "score": attempt.score,
+                "total_questions": attempt.total_questions,
+                "started_at": attempt.started_at,
+                "updated_at": attempt.updated_at,
+                "completed_at": attempt.completed_at,
+                "answers": [
+                    {
+                        "question_key": answer.question.content_key,
+                        "selected_choice": answer.selected_choice.letter,
+                        "is_correct": answer.is_correct,
+                        "question_snapshot": answer.question_snapshot,
+                        "submitted_at": answer.submitted_at,
+                    }
+                    for answer in attempt.answers.all()
+                ],
+            }
+        )
     session = ReviewSession.load(request.user)
     settings = Settings.load(request.user)
     payload = {
         "format": "heureux-account-export",
-        "version": 1,
+        "version": 2,
         "exported_at": timezone.now(),
         "account": {
             "username": request.user.get_username(),
@@ -2744,6 +3519,7 @@ def export_account(request):
         "review_logs": review_logs,
         "annotations": annotations,
         "personal_responses": personal_responses,
+        "comprehension_attempts": comprehension_attempts,
     }
     response = JsonResponse(
         payload,

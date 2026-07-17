@@ -37,7 +37,31 @@
   </div>
 </section>
 
-<h2 style="margin-top:2rem;">Votre parcours de français</h2>
+<section class="ce-home-card" aria-labelledby="ce-home-title">
+  <div class="ce-home-card__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false">
+      <path d="M5 3.5h10.5L19 7v13.5H5z"></path>
+      <path d="M15 3.5V8h4M8.5 12h7M8.5 15.5h5"></path>
+    </svg>
+  </div>
+  <div class="ce-home-card__body">
+    <p class="eyebrow">Compréhension écrite</p>
+    <h2 id="ce-home-title">Lire, comprendre, choisir</h2>
+    {% if comprehension.active_attempt %}
+      <p>Votre {{ comprehension.active_attempt.test.title }} est en cours. Vos réponses sont enregistrées après chaque question.</p>
+    {% elif comprehension.completed_test_count %}
+      <p>{{ comprehension.completed_test_count }} test{{ comprehension.completed_test_count|pluralize }} terminé{{ comprehension.completed_test_count|pluralize }}{% if comprehension.best_percentage is not None %} · meilleur résultat {{ comprehension.best_percentage }} %{% endif %}.</p>
+    {% else %}
+      <p>Entraînez-vous en conditions de quiz, puis analysez chaque réponse avec sa traduction et son explication.</p>
+    {% endif %}
+  </div>
+  <a class="ce-home-card__action" href="{% url 'study:comprehension_overview' %}">
+    {% if comprehension.active_attempt %}Continuer le test{% else %}Voir les tests{% endif %}
+    <span aria-hidden="true">→</span>
+  </a>
+</section>
+
+<h2 style="margin-top:2rem;">Expression française</h2>
 <p class="muted mt-0">Choisissez l'expression orale ou écrite, puis une tâche à travailler.</p>
 
 {% include "study/_task_groups.html" with area="home" %}

@@ -16,6 +16,29 @@
   </div>
 </header>
 
+<nav class="notes-tabs" role="tablist" aria-label="Type de contenu">
+  <a
+    class="notes-tab {% if active_tab == 'notes' %}is-active{% endif %}"
+    id="notes-tab"
+    role="tab"
+    aria-selected="{% if active_tab == 'notes' %}true{% else %}false{% endif %}"
+    aria-controls="notes-panel"
+    href="?tab=notes">
+    <span>Notes</span>
+    <span class="notes-tab__count">{{ notes|length }}</span>
+  </a>
+  <a
+    class="notes-tab {% if active_tab == 'highlights' %}is-active{% endif %}"
+    id="highlights-tab"
+    role="tab"
+    aria-selected="{% if active_tab == 'highlights' %}true{% else %}false{% endif %}"
+    aria-controls="highlights-panel"
+    href="?tab=highlights">
+    <span>Surlignages</span>
+    <span class="notes-tab__count">{{ highlights|length }}</span>
+  </a>
+</nav>
+
 <div class="notes-tools">
   <a class="btn" href="{% url 'study:annotation_search' %}">Rechercher</a>
   {% if task %}
@@ -25,6 +48,8 @@
   {% endif %}
 </div>
 
+{% if active_tab == "notes" %}
+<div class="notes-tab-panel" id="notes-panel" role="tabpanel" aria-labelledby="notes-tab">
 <details class="card notes-compose" {% if form.errors %}open{% endif %}>
   <summary><span aria-hidden="true">＋</span> Nouvelle note</summary>
   <form method="post">
@@ -102,7 +127,9 @@
     {% endfor %}
   </div>
 </section>
-
+</div>
+{% else %}
+<div class="notes-tab-panel" id="highlights-panel" role="tabpanel" aria-labelledby="highlights-tab">
 <section class="annotations-section" aria-labelledby="highlights-heading">
   <div class="section-heading">
     <div>
@@ -162,4 +189,6 @@
     {% endif %}
   </div>
 </section>
+</div>
+{% endif %}
 {% endblock %}

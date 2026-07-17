@@ -40,7 +40,7 @@
   <div class="answer">
     {% if production %}
       <div class="spine-block">
-        <div class="spine-label">Expression</div>
+        <div class="spine-label">{% if subject_vocabulary %}Réponse française{% else %}Expression{% endif %}</div>
         <div class="spine-text serif">{{ phrase.expression }}</div>
       </div>
     {% else %}

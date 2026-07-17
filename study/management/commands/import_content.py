@@ -12,16 +12,23 @@ from collections import defaultdict
 from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
-from django.db import connection, transaction
+from django.db import transaction
 
 from study import content
-from study.accounts import provision_user_study_data, users_with_study_state
+from study.accounts import (
+    acquire_study_data_lock,
+    provision_user_study_data,
+    users_with_study_state,
+)
 from study.models import (
     Argument,
     Card,
     CardState,
     CardType,
     ContentImportState,
+    ComprehensionChoice,
+    ComprehensionQuestion,
+    ComprehensionTest,
     ExamPart,
     Family,
     Phrase,
@@ -37,6 +44,7 @@ PHRASE_ID_MERGES = {
     "N83": "I15",
     "W25": "ED15",
 }
+IMPORT_BATCH_SIZE = 500
 
 
 class Command(BaseCommand):
@@ -68,6 +76,20 @@ class Command(BaseCommand):
         family_map, families = content.parse_families()
         responses = content.parse_responses()
         phrases = content.parse_phrases(responses)
+        subject_vocabulary = content.parse_subject_vocabulary(responses)
+        phrase_ids = {phrase.phrase_id.casefold() for phrase in phrases}
+        collisions = sorted(
+            phrase.phrase_id
+            for phrase in subject_vocabulary
+            if phrase.phrase_id.casefold() in phrase_ids
+        )
+        if collisions:
+            raise CommandError(
+                "Subject-vocabulary IDs collide with the expression bank: "
+                + ", ".join(collisions)
+            )
+        phrases.extend(subject_vocabulary)
+        comprehension_tests = content.load_comprehension_tests()
 
         task_by_slug = self._import_sections(sections)
         theme_by_name = self._import_themes(themes, task_by_slug)
@@ -79,6 +101,7 @@ class Command(BaseCommand):
             responses, response_by_key, theme_by_name, family_by_name
         )
         self._import_phrases(phrases, prompt_index)
+        self._import_comprehension_tests(comprehension_tests)
         users = list(users_with_study_state())
         if users:
             for user in users:
@@ -97,12 +120,15 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS(
                 "Imported {t} themes, {f} families, {r} responses, "
-                "{p} prompts, {ph} phrases, {c} cards.".format(
+                "{p} prompts, {ph} phrases, {ct} comprehension tests, "
+                "{cq} comprehension questions, {c} cards.".format(
                     t=Theme.objects.filter(is_active=True).count(),
                     f=Family.objects.filter(is_active=True).count(),
                     r=Response.objects.filter(is_active=True).count(),
                     p=Prompt.objects.filter(is_active=True).count(),
                     ph=Phrase.objects.filter(is_active=True).count(),
+                    ct=ComprehensionTest.objects.filter(is_active=True).count(),
+                    cq=ComprehensionQuestion.objects.filter(is_active=True).count(),
                     c=Card.objects.count(),
                 )
             )
@@ -110,12 +136,7 @@ class Command(BaseCommand):
 
     @staticmethod
     def _acquire_import_lock():
-        if connection.vendor == "postgresql":
-            with connection.cursor() as cursor:
-                cursor.execute(
-                    "SELECT pg_advisory_xact_lock(%s)",
-                    [20341866963359064],
-                )
+        acquire_study_data_lock()
 
     @staticmethod
     def _source_fingerprint():
@@ -230,6 +251,63 @@ class Command(BaseCommand):
         Family.objects.exclude(pk__in=seen).update(is_active=False)
         return mapping
 
+    def _import_comprehension_tests(self, tests):
+        seen_tests = set()
+        for test_data in tests:
+            test, _ = ComprehensionTest.objects.update_or_create(
+                slug=test_data.slug,
+                defaults={
+                    "number": test_data.number,
+                    "title": test_data.title,
+                    "description": test_data.description,
+                    "expected_question_count": test_data.expected_question_count,
+                    "order": test_data.order,
+                    "is_published": test_data.is_published,
+                    "is_active": True,
+                },
+            )
+            seen_tests.add(test.pk)
+            seen_questions = set()
+            for question_data in test_data.questions:
+                question, _ = ComprehensionQuestion.objects.update_or_create(
+                    content_key=question_data.content_key,
+                    defaults={
+                        "test": test,
+                        "number": question_data.number,
+                        "passage_fr": question_data.passage_fr,
+                        "passage_en": question_data.passage_en,
+                        "prompt_fr": question_data.prompt_fr,
+                        "prompt_en": question_data.prompt_en,
+                        "correct_explanation": (
+                            question_data.correct_explanation
+                        ),
+                        "is_active": True,
+                    },
+                )
+                seen_questions.add(question.pk)
+                seen_letters = set()
+                for choice_data in question_data.choices:
+                    ComprehensionChoice.objects.update_or_create(
+                        question=question,
+                        letter=choice_data.letter,
+                        defaults={
+                            "text_fr": choice_data.text_fr,
+                            "text_en": choice_data.text_en,
+                            "rationale": choice_data.rationale,
+                            "is_correct": choice_data.is_correct,
+                            "is_active": True,
+                        },
+                    )
+                    seen_letters.add(choice_data.letter)
+                ComprehensionChoice.objects.filter(question=question).exclude(
+                    letter__in=seen_letters
+                ).update(is_active=False)
+            test.questions.exclude(pk__in=seen_questions).update(is_active=False)
+        ComprehensionTest.objects.exclude(pk__in=seen_tests).update(
+            is_active=False,
+            is_published=False,
+        )
+
     def _import_responses(self, responses, theme_by_name, family_by_name):
         seen = set()
         mapping = {}
@@ -332,13 +410,28 @@ class Command(BaseCommand):
         return index
 
     def _import_phrases(self, phrases, prompt_index):
+        for data in phrases:
+            missing_sources = [
+                key for key in data.sources if key not in prompt_index
+            ]
+            if missing_sources:
+                labels = ", ".join(
+                    f"{theme} P{number}" for theme, number in missing_sources
+                )
+                raise CommandError(
+                    f"Phrase {data.phrase_id} references unknown prompts: {labels}"
+                )
+
+        Phrase.objects.update(is_active=False)
         seen_categories = {}
-        seen_phrases = set()
         order = 0
         lot_orders = dict(
             Phrase.objects.values_list("phrase_id", "lot_order")
         )
         next_lot_order = max(lot_orders.values(), default=0) + 1
+        existing_by_id = Phrase.objects.in_bulk(field_name="phrase_id")
+        new_phrases = []
+        changed_phrases = []
         for data in phrases:
             if data.category not in seen_categories:
                 order += 1
@@ -363,37 +456,75 @@ class Command(BaseCommand):
                 lot_orders[data.phrase_id] = lot_order
             else:
                 lot_order = existing_lot_order
-            phrase, _ = Phrase.objects.update_or_create(
-                phrase_id=data.phrase_id,
-                defaults={
-                    "tier": data.tier,
-                    "category": category,
-                    "english_cue": data.english_cue,
-                    "expression": data.expression,
-                    "anchor": data.anchor,
-                    "example": data.example,
-                    "note": data.note,
-                    "sources_raw": data.sources_raw,
-                    "order": data.order,
-                    "lot_order": lot_order,
-                    "is_active": True,
-                },
-            )
-            missing_sources = [
-                key for key in data.sources if key not in prompt_index
-            ]
-            if missing_sources:
-                labels = ", ".join(
-                    f"{theme} P{number}" for theme, number in missing_sources
-                )
-                raise CommandError(
-                    f"Phrase {data.phrase_id} references unknown prompts: {labels}"
-                )
-            source_objs = [prompt_index[key] for key in data.sources]
-            phrase.source_prompts.set(source_objs)
-            seen_phrases.add(phrase.pk)
+            phrase = existing_by_id.get(data.phrase_id)
+            if phrase is None:
+                phrase = Phrase(phrase_id=data.phrase_id)
+                new_phrases.append(phrase)
+            else:
+                changed_phrases.append(phrase)
+            phrase.tier = data.tier
+            phrase.category = category
+            phrase.english_cue = data.english_cue
+            phrase.expression = data.expression
+            phrase.anchor = data.anchor
+            phrase.example = data.example
+            phrase.note = data.note
+            phrase.sources_raw = data.sources_raw
+            phrase.order = data.order
+            phrase.lot_order = lot_order
+            phrase.is_active = True
 
-        Phrase.objects.exclude(pk__in=seen_phrases).update(is_active=False)
+        Phrase.objects.bulk_create(
+            new_phrases,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        phrase_fields = [
+            "tier",
+            "category",
+            "english_cue",
+            "expression",
+            "anchor",
+            "example",
+            "note",
+            "sources_raw",
+            "order",
+            "lot_order",
+            "is_active",
+        ]
+        if changed_phrases:
+            Phrase.objects.bulk_update(
+                changed_phrases,
+                phrase_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
+
+        phrase_ids = [data.phrase_id for data in phrases]
+        phrase_by_id = Phrase.objects.in_bulk(
+            phrase_ids,
+            field_name="phrase_id",
+        )
+        seen_phrases = {phrase.pk for phrase in phrase_by_id.values()}
+        through_model = Phrase.source_prompts.through
+        seen_phrase_ids = list(seen_phrases)
+        for start in range(0, len(seen_phrase_ids), IMPORT_BATCH_SIZE):
+            through_model.objects.filter(
+                phrase_id__in=seen_phrase_ids[
+                    start : start + IMPORT_BATCH_SIZE
+                ]
+            ).delete()
+        source_links = [
+            through_model(
+                phrase_id=phrase_by_id[data.phrase_id].pk,
+                prompt_id=prompt_index[source].pk,
+            )
+            for data in phrases
+            for source in data.sources
+        ]
+        through_model.objects.bulk_create(
+            source_links,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+
         PhraseCategory.objects.exclude(
             pk__in=[c.pk for c in seen_categories.values()]
         ).update(is_active=False)
@@ -580,21 +711,52 @@ class Command(BaseCommand):
 
     def _sync_cards(self, response_by_key, user=None):
         """Create one card per studyable item; never reset existing state."""
-        for response in response_by_key.values():
-            Card.objects.get_or_create(
+        responses = list(response_by_key.values())
+        existing_response_ids = set(
+            Card.objects.filter(
                 user=user,
                 card_type=CardType.SPINE,
-                response=response,
-            )
-        for phrase in Phrase.objects.filter(is_active=True):
-            Card.objects.get_or_create(
-                user=user,
-                card_type=CardType.PHRASE_PRODUCTION,
-                phrase=phrase,
-            )
-            if phrase.tier == "shared":
-                Card.objects.get_or_create(
+            ).values_list("response_id", flat=True)
+        )
+        Card.objects.bulk_create(
+            [
+                Card(
                     user=user,
-                    card_type=CardType.PHRASE_RECOGNITION,
-                    phrase=phrase,
+                    card_type=CardType.SPINE,
+                    response=response,
                 )
+                for response in responses
+                if response.pk not in existing_response_ids
+            ],
+            ignore_conflicts=True,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+
+        phrases = list(Phrase.objects.filter(is_active=True))
+        phrase_card_types = (
+            (CardType.PHRASE_PRODUCTION, phrases),
+            (
+                CardType.PHRASE_RECOGNITION,
+                [phrase for phrase in phrases if phrase.tier == "shared"],
+            ),
+        )
+        for card_type, eligible_phrases in phrase_card_types:
+            existing_phrase_ids = set(
+                Card.objects.filter(
+                    user=user,
+                    card_type=card_type,
+                ).values_list("phrase_id", flat=True)
+            )
+            Card.objects.bulk_create(
+                [
+                    Card(
+                        user=user,
+                        card_type=card_type,
+                        phrase=phrase,
+                    )
+                    for phrase in eligible_phrases
+                    if phrase.pk not in existing_phrase_ids
+                ],
+                ignore_conflicts=True,
+                batch_size=IMPORT_BATCH_SIZE,
+            )

@@ -1,0 +1,3245 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "economie:p1",
+      "entries": [
+        {
+          "id": "SVE1-0001",
+          "kind": "mot-cle",
+          "french": "travail",
+          "english": "work / a job",
+          "example": "La vraie question est de savoir s'il est réellement facile de trouver du travail quand on s'installe au Canada.",
+          "usage": "m. noun; core topic word. 'trouver du travail' = to find work; 'du travail' is partitive, uncountable here."
+        },
+        {
+          "id": "SVE1-0002",
+          "kind": "mot-cle",
+          "french": "embaucher",
+          "english": "to hire",
+          "example": "Tout d'abord, la première difficulté vient du fait que les employeurs canadiens demandent souvent une expérience locale avant d'embaucher.",
+          "usage": "transitive verb; subject = employer. Noun form 'l'embauche' (f.). Opposite: licencier."
+        },
+        {
+          "id": "SVE1-0003",
+          "kind": "mot-cle",
+          "french": "diplômes",
+          "english": "diplomas / qualifications",
+          "example": "En effet, beaucoup d'employeurs ne connaissent pas les diplômes étrangers et préfèrent un candidat qui a déjà travaillé dans le pays.",
+          "usage": "m. pl. noun; 'diplômes étrangers' = foreign qualifications, often not recognised abroad."
+        },
+        {
+          "id": "SVE1-0004",
+          "kind": "mot-cle",
+          "french": "qualifications",
+          "english": "qualifications / skill level",
+          "example": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "usage": "f. pl.; 'en dessous de ses qualifications' = below one's skill level (over-qualification)."
+        },
+        {
+          "id": "SVE1-0005",
+          "kind": "mot-cle",
+          "french": "réglementées",
+          "english": "regulated",
+          "example": "De plus, certaines professions sont réglementées et demandent une équivalence ou une certification, ce qui retarde l'accès au métier d'origine.",
+          "usage": "past participle/adj. from réglementer; 'professions réglementées' need a licence/equivalence."
+        },
+        {
+          "id": "SVE1-0006",
+          "kind": "mot-cle",
+          "french": "équivalence",
+          "english": "recognition of credentials",
+          "example": "De plus, certaines professions sont réglementées et demandent une équivalence ou une certification, ce qui retarde l'accès au métier d'origine.",
+          "usage": "f. noun; administrative equivalence of a foreign diploma. Collocates 'obtenir une équivalence'."
+        },
+        {
+          "id": "SVE1-0007",
+          "kind": "mot-cle",
+          "french": "bilingue",
+          "english": "bilingual",
+          "example": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "usage": "adj., invariable in gender; strong asset on the Canadian job market."
+        },
+        {
+          "id": "SVE1-0008",
+          "kind": "mot-cle",
+          "french": "pénurie",
+          "english": "shortage",
+          "example": "Par exemple, une personne qui choisit une province en pénurie dans son métier trouve souvent un emploi bien plus vite qu'une personne qui cherche dans un grand centre déjà saturé.",
+          "usage": "f. noun; 'secteur en pénurie' = understaffed sector. Cross-topic: labour, health, environment."
+        },
+        {
+          "id": "SVE1-0009",
+          "kind": "mot-cle",
+          "french": "concurrentiels",
+          "english": "competitive (crowded)",
+          "example": "En effet, certains secteurs comme la santé, la construction ou l'informatique manquent de main-d'œuvre, alors que d'autres sont saturés et très concurrentiels.",
+          "usage": "m. pl. adj.; a saturated market is 'très concurrentiel'. Register: neutral/economic."
+        },
+        {
+          "id": "SVE1-0010",
+          "kind": "mot-cle",
+          "french": "souplesse",
+          "english": "flexibility / adaptability",
+          "example": "En conclusion, je dirais qu'on peut trouver du travail au Canada, mais que cela demande du temps, une bonne préparation et de la souplesse.",
+          "usage": "f. noun; here a personal quality needed in a job search, not physical suppleness."
+        },
+        {
+          "id": "SVE1-0011",
+          "kind": "collocation",
+          "french": "marché du travail",
+          "english": "the labour market",
+          "example": "D'abord, le marché du travail canadien attend une expérience locale que les nouveaux arrivants n'ont pas encore.",
+          "usage": "fixed economic collocation; 'entrer sur le marché du travail' = to enter the job market."
+        },
+        {
+          "id": "SVE1-0012",
+          "kind": "collocation",
+          "french": "expérience locale",
+          "english": "local experience",
+          "example": "D'abord, le marché du travail canadien attend une expérience locale que les nouveaux arrivants n'ont pas encore.",
+          "usage": "noun+adj; what newcomers lack. Contrast 'expérience étrangère'."
+        },
+        {
+          "id": "SVE1-0013",
+          "kind": "collocation",
+          "french": "nouveaux arrivants",
+          "english": "newcomers / new immigrants",
+          "example": "D'abord, le marché du travail canadien attend une expérience locale que les nouveaux arrivants n'ont pas encore.",
+          "usage": "m. pl.; standard term in immigration/economic discourse."
+        },
+        {
+          "id": "SVE1-0014",
+          "kind": "collocation",
+          "french": "langue de travail",
+          "english": "working language",
+          "example": "Ensuite, la maîtrise de la langue de travail joue un rôle décisif dans presque tous les secteurs.",
+          "usage": "noun+de+noun; the language required on the job (English or French)."
+        },
+        {
+          "id": "SVE1-0015",
+          "kind": "collocation",
+          "french": "rôle décisif",
+          "english": "decisive role",
+          "example": "Ensuite, la maîtrise de la langue de travail joue un rôle décisif dans presque tous les secteurs.",
+          "usage": "'jouer un rôle décisif' = to play a decisive role; frequent essay collocation."
+        },
+        {
+          "id": "SVE1-0016",
+          "kind": "collocation",
+          "french": "diplômes étrangers",
+          "english": "foreign diplomas",
+          "example": "En effet, beaucoup d'employeurs ne connaissent pas les diplômes étrangers et préfèrent un candidat qui a déjà travaillé dans le pays.",
+          "usage": "recruiters 'ne connaissent pas' them; recognition is slow."
+        },
+        {
+          "id": "SVE1-0017",
+          "kind": "collocation",
+          "french": "références canadiennes",
+          "english": "Canadian references",
+          "example": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "usage": "local references employers trust; transferable pattern: 'références locales'."
+        },
+        {
+          "id": "SVE1-0018",
+          "kind": "collocation",
+          "french": "processus de reconnaissance",
+          "english": "recognition process",
+          "example": "Prenons l'exemple d'un ingénieur ou d'un infirmier formé à l'étranger : il doit souvent passer par un long processus de reconnaissance avant de pouvoir exercer pleinement son métier au Canada.",
+          "usage": "long administrative procedure for regulated professions."
+        },
+        {
+          "id": "SVE1-0019",
+          "kind": "collocation",
+          "french": "communication écrite et orale",
+          "english": "written and spoken communication",
+          "example": "En effet, presque tous les emplois qualifiés exigent une bonne communication écrite et orale, en anglais ou en français selon la région.",
+          "usage": "fixed pair; a common job-requirement phrase."
+        },
+        {
+          "id": "SVE1-0020",
+          "kind": "collocation",
+          "french": "niveau linguistique",
+          "english": "language level",
+          "example": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "usage": "noun+adj; 'un bon niveau linguistique' opens more positions."
+        },
+        {
+          "id": "SVE1-0021",
+          "kind": "expression",
+          "french": "dès le départ",
+          "english": "right from the start",
+          "example": "À mon avis, on peut trouver du travail au Canada, mais cela n'est généralement pas facile dès le départ.",
+          "usage": "time expression; nuance = not immediately, though possible later."
+        },
+        {
+          "id": "SVE1-0022",
+          "kind": "expression",
+          "french": "un objectif réaliste",
+          "english": "a realistic goal",
+          "example": "Ce n'est donc pas facile au sens automatique du mot, mais c'est un objectif réaliste pour qui s'y prépare sérieusement.",
+          "usage": "Evaluative noun phrase for a balanced conclusion; 'réaliste' agrees with the masculine noun 'objectif'."
+        },
+        {
+          "id": "SVE1-0023",
+          "kind": "expression",
+          "french": "s'y prépare sérieusement",
+          "english": "prepares for it seriously",
+          "example": "Ce n'est donc pas facile au sens automatique du mot, mais c'est un objectif réaliste pour qui s'y prépare sérieusement.",
+          "usage": "From the pronominal verb 'se préparer à' + noun; 'y' replaces the project or move already mentioned."
+        },
+        {
+          "id": "SVE1-0024",
+          "kind": "expression",
+          "french": "en dessous de leurs qualifications",
+          "english": "below their qualifications",
+          "example": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "usage": "describes under-employment; 'accepter un emploi en dessous de ses qualifications'."
+        },
+        {
+          "id": "SVE1-0025",
+          "kind": "expression",
+          "french": "le temps d'obtenir",
+          "english": "while waiting to obtain",
+          "example": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "usage": "'Le temps de' + infinitive marks a temporary stage before the intended result; useful for qualification and job-search contexts."
+        },
+        {
+          "id": "SVE1-0026",
+          "kind": "expression",
+          "french": "un éventail de postes",
+          "english": "a range of positions",
+          "example": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "usage": "'un éventail de' = a range of; elevated synonym of 'beaucoup de'."
+        },
+        {
+          "id": "SVE1-0027",
+          "kind": "expression",
+          "french": "manquent de main-d'œuvre",
+          "english": "are short of labour",
+          "example": "En effet, certains secteurs comme la santé, la construction ou l'informatique manquent de main-d'œuvre, alors que d'autres sont saturés et très concurrentiels.",
+          "usage": "'manquer de' + noun; 'main-d'œuvre' (f.) = workforce. Note the hyphen and apostrophe."
+        },
+        {
+          "id": "SVE1-0028",
+          "kind": "expression",
+          "french": "n'est pas une question de chance",
+          "english": "is not a matter of luck",
+          "example": "Cela permet de comprendre que la facilité à trouver du travail n'est pas une question de chance, mais de préparation concrète.",
+          "usage": "Reusable contrast frame: 'ce n'est pas une question de X, mais de Y' shifts the explanation from one factor to another."
+        },
+        {
+          "id": "SVE1-0029",
+          "kind": "expression",
+          "french": "partir sans information précise",
+          "english": "to leave without precise information",
+          "example": "À l'inverse, partir sans information précise rend la recherche longue et décourageante.",
+          "usage": "'Sans' + noun marks a missing condition; reusable when evaluating preparation, migration, or a project."
+        },
+        {
+          "id": "SVE1-0030",
+          "kind": "expression",
+          "french": "exercer pleinement son métier",
+          "english": "to fully practise one's trade",
+          "example": "Prenons l'exemple d'un ingénieur ou d'un infirmier formé à l'étranger : il doit souvent passer par un long processus de reconnaissance avant de pouvoir exercer pleinement son métier au Canada.",
+          "usage": "'exercer un métier' = to practise a profession; 'pleinement' = fully."
+        },
+        {
+          "id": "SVE1-0031",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir s'il est réellement facile de trouver du travail quand on s'installe au Canada.",
+          "usage": "essay opener reformulating the prompt; followed by 'si' + indirect question."
+        },
+        {
+          "id": "SVE1-0032",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, on peut trouver du travail au Canada, mais cela n'est généralement pas facile dès le départ.",
+          "usage": "opinion marker; slightly less formal than 'selon moi'. Starts the thesis."
+        },
+        {
+          "id": "SVE1-0033",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, la première difficulté vient du fait que les employeurs canadiens demandent souvent une expérience locale avant d'embaucher.",
+          "usage": "enumeration connector opening the first argument."
+        },
+        {
+          "id": "SVE1-0034",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed / In fact",
+          "example": "En effet, beaucoup d'employeurs ne connaissent pas les diplômes étrangers et préfèrent un candidat qui a déjà travaillé dans le pays.",
+          "usage": "justification connector introducing supporting explanation, not concession."
+        },
+        {
+          "id": "SVE1-0035",
+          "kind": "tournure",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, certaines professions sont réglementées et demandent une équivalence ou une certification, ce qui retarde l'accès au métier d'origine.",
+          "usage": "additive connector adding a second supporting point."
+        },
+        {
+          "id": "SVE1-0036",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "usage": "contrast connector, formal; introduces an opposing case."
+        },
+        {
+          "id": "SVE1-0037",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, partir sans information précise rend la recherche longue et décourageante.",
+          "usage": "strong contrast connector; note the à + l' elision."
+        },
+        {
+          "id": "SVE1-0038",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que trouver un travail correspondant à ses qualifications demande du temps, même quand on est compétent et motivé.",
+          "usage": "concluding connector for a paragraph; + indicative."
+        },
+        {
+          "id": "SVE1-0039",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que la facilité à trouver du travail n'est pas une question de chance, mais de préparation concrète.",
+          "usage": "synthesis connector; 'permettre de' + infinitive."
+        },
+        {
+          "id": "SVE1-0040",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je dirais qu'on peut trouver du travail au Canada, mais que cela demande du temps, une bonne préparation et de la souplesse.",
+          "usage": "final connector opening the conclusion paragraph."
+        },
+        {
+          "id": "SVE1-0041",
+          "kind": "phrase-modele",
+          "french": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "english": "Newcomers often accept jobs below their qualifications while they build Canadian references.",
+          "example": "Cela oblige souvent les nouveaux arrivants à accepter d'abord des emplois très en dessous de leurs qualifications de départ, le temps d'obtenir des références canadiennes.",
+          "usage": "Model concession sentence; 'obliger qqn à' + inf; 'le temps de' + inf = until they get."
+        },
+        {
+          "id": "SVE1-0042",
+          "kind": "phrase-modele",
+          "french": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "english": "A bilingual person can access a much wider range of jobs early on.",
+          "example": "En revanche, une personne bilingue ou avec un bon niveau linguistique peut accéder à un éventail de postes beaucoup plus large dès les premiers mois.",
+          "usage": "Contrast model with 'En revanche'; 'accéder à' + noun; comparative 'beaucoup plus large'."
+        },
+        {
+          "id": "SVE1-0043",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la langue n'est pas un détail : elle détermine en grande partie la facilité ou la difficulté à entrer sur le marché du travail.",
+          "english": "Language is not a detail: it largely determines ease of entry.",
+          "example": "Cela montre que la langue n'est pas un détail : elle détermine en grande partie la facilité ou la difficulté à entrer sur le marché du travail.",
+          "usage": "Emphatic model; colon reveals explanation; 'en grande partie' = largely."
+        },
+        {
+          "id": "SVE1-0044",
+          "kind": "phrase-modele",
+          "french": "Cibler le bon secteur, la bonne région et adapter son CV au format local change beaucoup la durée de la recherche.",
+          "english": "Targeting the right sector and adapting your CV shortens the search.",
+          "example": "Cibler le bon secteur, la bonne région et adapter son CV au format local change beaucoup la durée de la recherche.",
+          "usage": "Nominal-subject model listing conditions; useful for advice essays."
+        },
+        {
+          "id": "SVE1-0045",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que la facilité à trouver du travail n'est pas une question de chance, mais de préparation concrète.",
+          "english": "Ease of finding work is not luck but concrete preparation.",
+          "example": "Cela permet de comprendre que la facilité à trouver du travail n'est pas une question de chance, mais de préparation concrète.",
+          "usage": "Synthesis model; 'non pas X mais Y' opposition structure."
+        },
+        {
+          "id": "SVE1-0046",
+          "kind": "phrase-modele",
+          "french": "Pour un travailleur qualifié dans un secteur en pénurie, l'embauche peut être assez rapide.",
+          "english": "For a qualified worker in a shortage sector, hiring can be quite fast.",
+          "example": "Pour un travailleur qualifié dans un secteur en pénurie, l'embauche peut être assez rapide.",
+          "usage": "Conditional-profile model; 'pour + noun' framing a case."
+        },
+        {
+          "id": "SVE1-0047",
+          "kind": "phrase-modele",
+          "french": "Au contraire, pour un profil sans expérience locale et avec un faible niveau de langue, la recherche peut durer plusieurs mois.",
+          "english": "For someone without local experience, the search can last months.",
+          "example": "Au contraire, pour un profil sans expérience locale et avec un faible niveau de langue, la recherche peut durer plusieurs mois.",
+          "usage": "Parallel counter-case model opening with 'Au contraire'."
+        },
+        {
+          "id": "SVE1-0048",
+          "kind": "phrase-modele",
+          "french": "D'abord, le marché du travail canadien attend une expérience locale que les nouveaux arrivants n'ont pas encore.",
+          "english": "The Canadian labour market expects local experience newcomers don't yet have.",
+          "example": "D'abord, le marché du travail canadien attend une expérience locale que les nouveaux arrivants n'ont pas encore.",
+          "usage": "Argument-preview model; relative 'que ... n'ont pas encore'."
+        },
+        {
+          "id": "SVE1-0049",
+          "kind": "phrase-modele",
+          "french": "Ensuite, la maîtrise de la langue de travail joue un rôle décisif dans presque tous les secteurs.",
+          "english": "Mastering the working language plays a decisive role in almost every sector.",
+          "example": "Ensuite, la maîtrise de la langue de travail joue un rôle décisif dans presque tous les secteurs.",
+          "usage": "Preview model; 'jouer un rôle décisif dans'."
+        },
+        {
+          "id": "SVE1-0050",
+          "kind": "phrase-modele",
+          "french": "Ce n'est donc pas facile au sens automatique du mot, mais c'est un objectif réaliste pour qui s'y prépare sérieusement.",
+          "english": "It's not easy in the automatic sense, but it's a realistic goal.",
+          "example": "Ce n'est donc pas facile au sens automatique du mot, mais c'est un objectif réaliste pour qui s'y prépare sérieusement.",
+          "usage": "Balanced conclusion model; 'pour qui' = for whoever; 's'y préparer'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p2",
+      "entries": [
+        {
+          "id": "SVE1-0051",
+          "kind": "mot-cle",
+          "french": "revenus",
+          "english": "income / earnings",
+          "example": "La vraie question est de savoir si les revenus très élevés de certains sportifs sont justifiés ou excessifs.",
+          "usage": "m. pl.; 'revenus élevés' = high income. Distinguish from 'salaire' (fixed wage)."
+        },
+        {
+          "id": "SVE1-0052",
+          "kind": "mot-cle",
+          "french": "salaires",
+          "english": "wages / salaries",
+          "example": "D'abord, ces salaires sont sans rapport avec l'utilité sociale réelle de leur activité.",
+          "usage": "m. pl.; here 'ces salaires' = these pay packages. Register: economic."
+        },
+        {
+          "id": "SVE1-0053",
+          "kind": "mot-cle",
+          "french": "rémunération",
+          "english": "remuneration / pay",
+          "example": "Cela montre qu'il existe un vrai décalage entre la rémunération et l'utilité sociale de l'activité concernée.",
+          "usage": "f. noun; formal synonym of salaire; 'la rémunération de l'activité'."
+        },
+        {
+          "id": "SVE1-0054",
+          "kind": "mot-cle",
+          "french": "décalage",
+          "english": "gap / mismatch",
+          "example": "Cela montre qu'il existe un vrai décalage entre la rémunération et l'utilité sociale de l'activité concernée.",
+          "usage": "m. noun; 'un décalage entre X et Y' = a mismatch between. Key argument word."
+        },
+        {
+          "id": "SVE1-0055",
+          "kind": "mot-cle",
+          "french": "vedettes",
+          "english": "stars / celebrities",
+          "example": "Voir quelques vedettes s'enrichir sans limite pendant que des métiers pénibles et indispensables restent mal payés donne le sentiment que ni l'effort ni l'utilité ne sont vraiment récompensés.",
+          "usage": "f. pl.; 'quelques vedettes' = a few celebrities. Register: media."
+        },
+        {
+          "id": "SVE1-0056",
+          "kind": "mot-cle",
+          "french": "footballeur",
+          "english": "footballer",
+          "example": "Par exemple, un footballeur de très haut niveau peut gagner en une semaine ce qu'une infirmière gagne en plusieurs années de travail.",
+          "usage": "m. noun; f. 'footballeuse'. Example of a highly paid athlete."
+        },
+        {
+          "id": "SVE1-0057",
+          "kind": "mot-cle",
+          "french": "infirmière",
+          "english": "nurse",
+          "example": "Par exemple, un footballeur de très haut niveau peut gagner en une semaine ce qu'une infirmière gagne en plusieurs années de travail.",
+          "usage": "f. noun; m. 'infirmier'. Symbol of an essential, underpaid job."
+        },
+        {
+          "id": "SVE1-0058",
+          "kind": "mot-cle",
+          "french": "athlètes",
+          "english": "athletes",
+          "example": "La majorité des athlètes professionnels gagnent des revenus moyens et vivent une carrière courte, parfois marquée par des blessures.",
+          "usage": "m./f. pl.; 'la majorité des athlètes' earn moderate income."
+        },
+        {
+          "id": "SVE1-0059",
+          "kind": "mot-cle",
+          "french": "blessures",
+          "english": "injuries",
+          "example": "La majorité des athlètes professionnels gagnent des revenus moyens et vivent une carrière courte, parfois marquée par des blessures.",
+          "usage": "f. pl.; shorten athletes' careers; 'marquée par des blessures'."
+        },
+        {
+          "id": "SVE1-0060",
+          "kind": "mot-cle",
+          "french": "réussite",
+          "english": "success",
+          "example": "En effet, quand on voit que les revenus les plus visibles vont à quelques sportifs stars, on finit par penser que la vraie réussite, c'est d'être célèbre et bien payé.",
+          "usage": "f. noun; the essay questions how success is defined. Cross-topic: education, work."
+        },
+        {
+          "id": "SVE1-0061",
+          "kind": "collocation",
+          "french": "revenus très élevés",
+          "english": "very high income",
+          "example": "La vraie question est de savoir si les revenus très élevés de certains sportifs sont justifiés ou excessifs.",
+          "usage": "intensified collocation; the core object of the debate."
+        },
+        {
+          "id": "SVE1-0062",
+          "kind": "collocation",
+          "french": "utilité sociale",
+          "english": "social usefulness",
+          "example": "D'abord, ces salaires sont sans rapport avec l'utilité sociale réelle de leur activité.",
+          "usage": "noun+adj; central criterion opposed to pay. Contrast 'utilité réelle'."
+        },
+        {
+          "id": "SVE1-0063",
+          "kind": "collocation",
+          "french": "sportifs de haut niveau",
+          "english": "top-level athletes",
+          "example": "À mon avis, oui, les revenus de certains sportifs de haut niveau sont devenus excessifs, même si ce n'est pas le cas de tous les sportifs.",
+          "usage": "'de haut niveau' = elite; fixed collocation for professional sport."
+        },
+        {
+          "id": "SVE1-0064",
+          "kind": "collocation",
+          "french": "justice sociale",
+          "english": "social justice",
+          "example": "Ensuite, je pense que ces revenus très élevés posent un problème de justice sociale.",
+          "usage": "noun+adj; 'un problème de justice sociale'. Cross-topic: state, economy."
+        },
+        {
+          "id": "SVE1-0065",
+          "kind": "collocation",
+          "french": "modération salariale",
+          "english": "wage restraint",
+          "example": "En effet, ces sommes record sont d'autant plus mal ressenties qu'on demande, dans le même temps, des efforts et de la modération salariale aux travailleurs ordinaires.",
+          "usage": "economic collocation; asked of ordinary workers. Register: formal/economic."
+        },
+        {
+          "id": "SVE1-0066",
+          "kind": "collocation",
+          "french": "droits télévisés",
+          "english": "broadcasting rights",
+          "example": "De plus, ces salaires reposent surtout sur la logique du spectacle et des droits télévisés, pas sur la valeur sociale de l'activité.",
+          "usage": "m. pl.; source of huge sport revenue; 'la logique des droits télévisés'."
+        },
+        {
+          "id": "SVE1-0067",
+          "kind": "collocation",
+          "french": "métiers essentiels",
+          "english": "essential jobs",
+          "example": "Ensuite, ils créent un écart choquant avec des métiers essentiels qui restent mal payés.",
+          "usage": "reference point for comparison; caregivers, cleaners, cashiers."
+        },
+        {
+          "id": "SVE1-0068",
+          "kind": "collocation",
+          "french": "sommes record",
+          "english": "record sums",
+          "example": "En effet, ces sommes record sont d'autant plus mal ressenties qu'on demande, dans le même temps, des efforts et de la modération salariale aux travailleurs ordinaires.",
+          "usage": "'record' as invariable adj. after noun; = record amounts."
+        },
+        {
+          "id": "SVE1-0069",
+          "kind": "collocation",
+          "french": "crise sanitaire",
+          "english": "health crisis",
+          "example": "On l'a bien vu pendant la crise sanitaire : les caissiers, les éboueurs et les aides-soignants, pourtant présentés comme essentiels et applaudis chaque soir, sont restés très mal payés, alors que quelques sportifs vedettes continuaient de toucher des sommes record.",
+          "usage": "f.; refers to the pandemic; 'pendant la crise sanitaire'."
+        },
+        {
+          "id": "SVE1-0070",
+          "kind": "collocation",
+          "french": "utilité réelle",
+          "english": "real usefulness",
+          "example": "Je pense d'abord que ces salaires posent problème parce qu'ils sont sans rapport avec l'utilité réelle du métier.",
+          "usage": "evaluative collocation contrasting entertainment with essential value."
+        },
+        {
+          "id": "SVE1-0071",
+          "kind": "expression",
+          "french": "trop d'argent",
+          "english": "too much money",
+          "example": "À mon avis, certains sportifs gagnent effectivement trop d'argent.",
+          "usage": "quantity expression 'trop de' + uncountable noun; core thesis."
+        },
+        {
+          "id": "SVE1-0072",
+          "kind": "expression",
+          "french": "d'autant plus mal ressenties",
+          "english": "all the more poorly received",
+          "example": "En effet, ces sommes record sont d'autant plus mal ressenties qu'on demande, dans le même temps, des efforts et de la modération salariale aux travailleurs ordinaires.",
+          "usage": "'D'autant plus ... que' intensifies a reaction by adding its reason; 'ressenti' agrees with the feminine plural 'sommes'."
+        },
+        {
+          "id": "SVE1-0073",
+          "kind": "expression",
+          "french": "s'enrichir sans limite",
+          "english": "to get rich without limit",
+          "example": "Voir quelques vedettes s'enrichir sans limite pendant que des métiers pénibles et indispensables restent mal payés donne le sentiment que ni l'effort ni l'utilité ne sont vraiment récompensés.",
+          "usage": "pronominal 's'enrichir'; 'sans limite' intensifier; critical register."
+        },
+        {
+          "id": "SVE1-0074",
+          "kind": "expression",
+          "french": "envoient un mauvais message",
+          "english": "send the wrong message",
+          "example": "Enfin, je pense que ces salaires envoient un mauvais message, surtout aux jeunes.",
+          "usage": "Natural evaluative partnership for discussing a policy, example, or public figure's social impact."
+        },
+        {
+          "id": "SVE1-0075",
+          "kind": "expression",
+          "french": "aux yeux des jeunes",
+          "english": "in the eyes of young people",
+          "example": "Cela rend les métiers utiles et discrets moins attirants aux yeux des jeunes.",
+          "usage": "'aux yeux de qqn' = in someone's eyes; perspective expression."
+        },
+        {
+          "id": "SVE1-0076",
+          "kind": "expression",
+          "french": "finit par abîmer la confiance",
+          "english": "ends up damaging trust",
+          "example": "Ce décalage finit par abîmer la confiance dans l'idée d'une société juste.",
+          "usage": "'Finir par' + infinitive describes an eventual consequence; 'abîmer la confiance' applies across social-policy debates."
+        },
+        {
+          "id": "SVE1-0077",
+          "kind": "expression",
+          "french": "font fonctionner la société",
+          "english": "keep society running",
+          "example": "Pourtant, ses revenus dépassent largement ceux de métiers qui font fonctionner la société au quotidien.",
+          "usage": "'faire fonctionner' = to make (something) work/run; causative faire."
+        },
+        {
+          "id": "SVE1-0078",
+          "kind": "expression",
+          "french": "la valeur d'une personne se mesure à",
+          "english": "a person's worth is measured by",
+          "example": "Enfin, ils transmettent l'idée discutable que la valeur d'une personne se mesure à ce qu'elle gagne.",
+          "usage": "'Se mesurer à' is a passive-like pronominal construction for the criterion used to judge something."
+        },
+        {
+          "id": "SVE1-0079",
+          "kind": "expression",
+          "french": "mal payés",
+          "english": "badly paid",
+          "example": "Ensuite, ils créent un écart choquant avec des métiers essentiels qui restent mal payés.",
+          "usage": "adverb+participle; 'rester mal payé' = to stay underpaid."
+        },
+        {
+          "id": "SVE1-0080",
+          "kind": "expression",
+          "french": "sans rapport avec",
+          "english": "unrelated to",
+          "example": "D'abord, ces salaires sont sans rapport avec l'utilité sociale réelle de leur activité.",
+          "usage": "'être sans rapport avec' = to have nothing to do with; formal."
+        },
+        {
+          "id": "SVE1-0081",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si les revenus très élevés de certains sportifs sont justifiés ou excessifs.",
+          "usage": "prompt-reformulation opener + indirect yes/no question."
+        },
+        {
+          "id": "SVE1-0082",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, oui, les revenus de certains sportifs de haut niveau sont devenus excessifs, même si ce n'est pas le cas de tous les sportifs.",
+          "usage": "thesis-marking opinion connector."
+        },
+        {
+          "id": "SVE1-0083",
+          "kind": "tournure",
+          "french": "Cela dit",
+          "english": "That said",
+          "example": "Cela dit, il faut préciser que cette critique vise une minorité de sportifs très médiatisés.",
+          "usage": "concessive connector introducing a qualification of one's own claim."
+        },
+        {
+          "id": "SVE1-0084",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I think first that",
+          "example": "Je pense d'abord que ces salaires posent problème parce qu'ils sont sans rapport avec l'utilité réelle du métier.",
+          "usage": "first-argument opener stating a personal stance; + indicative."
+        },
+        {
+          "id": "SVE1-0085",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, un sportif de haut niveau divertit le public, ce qui est une activité légitime, mais cela ne soigne personne, n'éduque personne et ne produit aucun service essentiel.",
+          "usage": "justification connector developing the idea."
+        },
+        {
+          "id": "SVE1-0086",
+          "kind": "tournure",
+          "french": "Pourtant",
+          "english": "Yet / However",
+          "example": "Pourtant, ses revenus dépassent largement ceux de métiers qui font fonctionner la société au quotidien.",
+          "usage": "adversative connector marking an unexpected contrast."
+        },
+        {
+          "id": "SVE1-0087",
+          "kind": "tournure",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, ces salaires reposent surtout sur la logique du spectacle et des droits télévisés, pas sur la valeur sociale de l'activité.",
+          "usage": "additive connector reinforcing the argument."
+        },
+        {
+          "id": "SVE1-0088",
+          "kind": "tournure",
+          "french": "donne le sentiment que",
+          "english": "gives the feeling that",
+          "example": "Voir quelques vedettes s'enrichir sans limite pendant que des métiers pénibles et indispensables restent mal payés donne le sentiment que ni l'effort ni l'utilité ne sont vraiment récompensés.",
+          "usage": "'donner le sentiment que' + indicative; expresses perceived impression."
+        },
+        {
+          "id": "SVE1-0089",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, il faut préciser que cela ne concerne pas tous les sportifs.",
+          "usage": "concession connector opening the 'nuance' paragraph."
+        },
+        {
+          "id": "SVE1-0090",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense que les revenus de certains grands sportifs sont effectivement excessifs, surtout quand on les compare aux métiers essentiels.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0091",
+          "kind": "phrase-modele",
+          "french": "Cela montre qu'il existe un vrai décalage entre la rémunération et l'utilité sociale de l'activité concernée.",
+          "english": "This shows a real gap between pay and the social usefulness of the activity.",
+          "example": "Cela montre qu'il existe un vrai décalage entre la rémunération et l'utilité sociale de l'activité concernée.",
+          "usage": "Paragraph-conclusion model; 'un décalage entre X et Y'."
+        },
+        {
+          "id": "SVE1-0092",
+          "kind": "phrase-modele",
+          "french": "Ce décalage finit par abîmer la confiance dans l'idée d'une société juste.",
+          "english": "This gap ends up damaging trust in the idea of a fair society.",
+          "example": "Ce décalage finit par abîmer la confiance dans l'idée d'une société juste.",
+          "usage": "Consequence model; 'finir par' + inf; abstract subject 'Ce décalage'."
+        },
+        {
+          "id": "SVE1-0093",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la question dépasse le sport : elle touche à la cohésion et à la justice dans la société.",
+          "english": "This shows the issue goes beyond sport: it touches social cohesion and justice.",
+          "example": "Cela montre que la question dépasse le sport : elle touche à la cohésion et à la justice dans la société.",
+          "usage": "Widening-scope model; colon + 'toucher à' = to concern."
+        },
+        {
+          "id": "SVE1-0094",
+          "kind": "phrase-modele",
+          "french": "Cela rend les métiers utiles et discrets moins attirants aux yeux des jeunes.",
+          "english": "It makes useful, low-profile jobs less attractive to young people.",
+          "example": "Cela rend les métiers utiles et discrets moins attirants aux yeux des jeunes.",
+          "usage": "Causative 'rendre + adj' model; 'aux yeux de' implied audience."
+        },
+        {
+          "id": "SVE1-0095",
+          "kind": "phrase-modele",
+          "french": "Cela montre que ces salaires extrêmes ont aussi un effet culturel sur la manière dont on définit la réussite.",
+          "english": "This shows extreme pay also has a cultural effect on how we define success.",
+          "example": "Cela montre que ces salaires extrêmes ont aussi un effet culturel sur la manière dont on définit la réussite.",
+          "usage": "Cultural-effect model; 'la manière dont' = the way in which."
+        },
+        {
+          "id": "SVE1-0096",
+          "kind": "phrase-modele",
+          "french": "La critique vise donc surtout une petite élite très médiatisée, pas le sport en général.",
+          "english": "The criticism targets a small, highly publicised elite, not sport in general.",
+          "example": "La critique vise donc surtout une petite élite très médiatisée, pas le sport en général.",
+          "usage": "Precision/nuance model; 'viser' = to target; 'donc' recap."
+        },
+        {
+          "id": "SVE1-0097",
+          "kind": "phrase-modele",
+          "french": "La majorité des athlètes professionnels gagnent des revenus moyens et vivent une carrière courte, parfois marquée par des blessures.",
+          "english": "Most professional athletes earn moderate income and have short careers.",
+          "example": "La majorité des athlètes professionnels gagnent des revenus moyens et vivent une carrière courte, parfois marquée par des blessures.",
+          "usage": "Counter-example model qualifying the thesis; 'la majorité de'."
+        },
+        {
+          "id": "SVE1-0098",
+          "kind": "phrase-modele",
+          "french": "D'abord, ces salaires sont sans rapport avec l'utilité sociale réelle de leur activité.",
+          "english": "These salaries are unrelated to the real social usefulness of the activity.",
+          "example": "D'abord, ces salaires sont sans rapport avec l'utilité sociale réelle de leur activité.",
+          "usage": "Argument-preview model; 'sans rapport avec'."
+        },
+        {
+          "id": "SVE1-0099",
+          "kind": "phrase-modele",
+          "french": "Le problème n'est donc pas le sport en lui-même, mais le déséquilibre énorme entre quelques stars et le reste de la société.",
+          "english": "The problem is not sport itself, but the huge imbalance with the rest of society.",
+          "example": "Le problème n'est donc pas le sport en lui-même, mais le déséquilibre énorme entre quelques stars et le reste de la société.",
+          "usage": "Balanced conclusion model; 'non pas X mais Y'; 'en lui-même'."
+        },
+        {
+          "id": "SVE1-0100",
+          "kind": "phrase-modele",
+          "french": "Ensuite, ils créent un écart choquant avec des métiers essentiels qui restent mal payés.",
+          "english": "They create a shocking gap with essential jobs that stay badly paid.",
+          "example": "Ensuite, ils créent un écart choquant avec des métiers essentiels qui restent mal payés.",
+          "usage": "Second-argument model; relative 'qui restent mal payés'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p3",
+      "entries": [
+        {
+          "id": "SVE1-0101",
+          "kind": "mot-cle",
+          "french": "responsable",
+          "english": "manager / person in charge",
+          "example": "La vraie question est de savoir si la fonction de responsable est réellement à la portée de tout le monde.",
+          "usage": "m./f. noun & adj.; 'être responsable' = to be in charge. Central topic word."
+        },
+        {
+          "id": "SVE1-0102",
+          "kind": "mot-cle",
+          "french": "compétences",
+          "english": "skills",
+          "example": "D'abord, ce rôle demande des compétences humaines précises que tout le monde ne possède pas.",
+          "usage": "f. pl.; 'compétences humaines/techniques'. High-frequency essay noun."
+        },
+        {
+          "id": "SVE1-0103",
+          "kind": "mot-cle",
+          "french": "promotion",
+          "english": "promotion",
+          "example": "Cela montre que la fonction de responsable n'est pas une simple promotion : c'est un changement de métier qui demande d'autres aptitudes.",
+          "usage": "f. noun; 'refuser une promotion' = to turn down a promotion."
+        },
+        {
+          "id": "SVE1-0104",
+          "kind": "mot-cle",
+          "french": "tempérament",
+          "english": "temperament",
+          "example": "Cela montre que la responsabilité n'est pas seulement une compétence : c'est aussi une question de tempérament personnel.",
+          "usage": "m. noun; 'une question de tempérament' = a matter of character."
+        },
+        {
+          "id": "SVE1-0105",
+          "kind": "mot-cle",
+          "french": "management",
+          "english": "management (skills)",
+          "example": "Au contraire, nommer une personne responsable sans préparation crée souvent des erreurs de gestion et de management.",
+          "usage": "m. noun (anglicism, accepted); 'formation au management'. Register: business."
+        },
+        {
+          "id": "SVE1-0106",
+          "kind": "mot-cle",
+          "french": "budget",
+          "english": "budget",
+          "example": "En effet, on n'apprend pas à diriger uniquement par instinct : il faut comprendre comment fonctionne un service, connaître les règles, gérer un budget et organiser un planning.",
+          "usage": "m. noun; 'gérer un budget' = to manage a budget. Managerial task."
+        },
+        {
+          "id": "SVE1-0107",
+          "kind": "mot-cle",
+          "french": "critiques",
+          "english": "criticism",
+          "example": "Cela suppose de savoir dire non, de gérer les conflits et d'accepter les critiques.",
+          "usage": "f. pl.; 'accepter les critiques' = to accept criticism. Also adj. 'critique'."
+        },
+        {
+          "id": "SVE1-0108",
+          "kind": "mot-cle",
+          "french": "conflits",
+          "english": "conflicts",
+          "example": "Cela suppose de savoir dire non, de gérer les conflits et d'accepter les critiques.",
+          "usage": "m. pl.; 'gérer les conflits' = to handle conflicts. Cross-topic: work, society."
+        },
+        {
+          "id": "SVE1-0109",
+          "kind": "mot-cle",
+          "french": "aptitudes",
+          "english": "aptitudes / abilities",
+          "example": "Cela montre que la fonction de responsable n'est pas une simple promotion : c'est un changement de métier qui demande d'autres aptitudes.",
+          "usage": "f. pl.; 'demander d'autres aptitudes' = to require other abilities."
+        },
+        {
+          "id": "SVE1-0110",
+          "kind": "mot-cle",
+          "french": "instinct",
+          "english": "instinct",
+          "example": "En effet, on n'apprend pas à diriger uniquement par instinct : il faut comprendre comment fonctionne un service, connaître les règles, gérer un budget et organiser un planning.",
+          "usage": "m. noun; 'par instinct' = by instinct; leadership isn't learned by instinct alone."
+        },
+        {
+          "id": "SVE1-0111",
+          "kind": "collocation",
+          "french": "fonction de responsable",
+          "english": "managerial role",
+          "example": "La vraie question est de savoir si la fonction de responsable est réellement à la portée de tout le monde.",
+          "usage": "fixed collocation; 'occuper une fonction de responsable'."
+        },
+        {
+          "id": "SVE1-0112",
+          "kind": "collocation",
+          "french": "compétences humaines",
+          "english": "people skills",
+          "example": "D'abord, ce rôle demande des compétences humaines précises que tout le monde ne possède pas.",
+          "usage": "noun+adj; soft skills a manager needs; contrast 'compétences techniques'."
+        },
+        {
+          "id": "SVE1-0113",
+          "kind": "collocation",
+          "french": "charge de décision",
+          "english": "decision-making burden",
+          "example": "Ensuite, je pense qu'être responsable suppose d'accepter une charge de décision que tout le monde n'est pas prêt à porter.",
+          "usage": "noun+de+noun; 'porter une charge de décision' = to bear it."
+        },
+        {
+          "id": "SVE1-0114",
+          "kind": "collocation",
+          "french": "responsabilité hiérarchique",
+          "english": "managerial authority",
+          "example": "À l'inverse, beaucoup de personnes très compétentes préfèrent éviter ce type de pression et restent volontairement à un poste sans responsabilité hiérarchique.",
+          "usage": "'un poste sans responsabilité hiérarchique' = a non-managerial post."
+        },
+        {
+          "id": "SVE1-0115",
+          "kind": "collocation",
+          "french": "formations au management",
+          "english": "management training",
+          "example": "Par exemple, beaucoup d'entreprises proposent aujourd'hui des formations au management précisément parce qu'elles savent qu'on ne devient pas un bon responsable du jour au lendemain.",
+          "usage": "f. pl.; 'formation au + noun'; offered by firms to develop managers."
+        },
+        {
+          "id": "SVE1-0116",
+          "kind": "collocation",
+          "french": "erreurs de gestion",
+          "english": "management mistakes",
+          "example": "Au contraire, nommer une personne responsable sans préparation crée souvent des erreurs de gestion et de management.",
+          "usage": "f. pl.; 'gestion' = management/administration; result of poor preparation."
+        },
+        {
+          "id": "SVE1-0117",
+          "kind": "collocation",
+          "french": "expérience du terrain",
+          "english": "field experience",
+          "example": "Ces compétences s'acquièrent progressivement, par l'expérience du terrain et parfois par des formations spécifiques.",
+          "usage": "hands-on experience; 'par l'expérience du terrain' = through field experience."
+        },
+        {
+          "id": "SVE1-0118",
+          "kind": "collocation",
+          "french": "capacité à comprendre les autres",
+          "english": "the ability to understand others",
+          "example": "Ces qualités ne dépendent pas seulement de la bonne volonté : elles supposent une certaine capacité à comprendre les autres et à rester calme dans des situations difficiles.",
+          "usage": "'capacité à' + inf; empathy as a core managerial trait."
+        },
+        {
+          "id": "SVE1-0119",
+          "kind": "collocation",
+          "french": "situations difficiles",
+          "english": "difficult situations",
+          "example": "Ces qualités ne dépendent pas seulement de la bonne volonté : elles supposent une certaine capacité à comprendre les autres et à rester calme dans des situations difficiles.",
+          "usage": "noun+adj; 'rester calme dans des situations difficiles'."
+        },
+        {
+          "id": "SVE1-0120",
+          "kind": "collocation",
+          "french": "changement de métier",
+          "english": "a change of trade",
+          "example": "Cela montre que la fonction de responsable n'est pas une simple promotion : c'est un changement de métier qui demande d'autres aptitudes.",
+          "usage": "'c'est un changement de métier' = it's a different job, not a mere step up."
+        },
+        {
+          "id": "SVE1-0121",
+          "kind": "expression",
+          "french": "à la portée de tout le monde",
+          "english": "within everyone's reach",
+          "example": "La vraie question est de savoir si la fonction de responsable est réellement à la portée de tout le monde.",
+          "usage": "'à la portée de qqn' = within someone's reach; used with negation here."
+        },
+        {
+          "id": "SVE1-0122",
+          "kind": "expression",
+          "french": "du jour au lendemain",
+          "english": "overnight / from one day to the next",
+          "example": "Par exemple, beaucoup d'entreprises proposent aujourd'hui des formations au management précisément parce qu'elles savent qu'on ne devient pas un bon responsable du jour au lendemain.",
+          "usage": "time idiom; 'on ne devient pas responsable du jour au lendemain'."
+        },
+        {
+          "id": "SVE1-0123",
+          "kind": "expression",
+          "french": "réservé à quelques élus",
+          "english": "reserved for a chosen few",
+          "example": "Cependant, il ne faut pas en conclure qu'être responsable est réservé à quelques élus.",
+          "usage": "'quelques élus' = a select few; ironic/formal register."
+        },
+        {
+          "id": "SVE1-0124",
+          "kind": "expression",
+          "french": "savoir dire non",
+          "english": "to know how to say no",
+          "example": "Cela suppose de savoir dire non, de gérer les conflits et d'accepter les critiques.",
+          "usage": "'savoir' + inf = to be able to; a managerial skill."
+        },
+        {
+          "id": "SVE1-0125",
+          "kind": "expression",
+          "french": "assumer les conséquences de ses choix",
+          "english": "to take responsibility for the consequences of one's choices",
+          "example": "En effet, un responsable doit trancher, parfois sous la pression, et assumer les conséquences de ses choix pour lui-même et pour les autres.",
+          "usage": "'Assumer' takes a direct object; this is a standard way to discuss responsibility in work and civic topics."
+        },
+        {
+          "id": "SVE1-0126",
+          "kind": "expression",
+          "french": "rester calme dans des situations difficiles",
+          "english": "to stay calm in difficult situations",
+          "example": "Ces qualités ne dépendent pas seulement de la bonne volonté : elles supposent une certaine capacité à comprendre les autres et à rester calme dans des situations difficiles.",
+          "usage": "'Rester' + adjective describes a maintained state; the frame transfers readily to conflict and pressure contexts."
+        },
+        {
+          "id": "SVE1-0127",
+          "kind": "expression",
+          "french": "n'est pas forcément un bon responsable",
+          "english": "is not necessarily a good manager",
+          "example": "Prenons l'exemple d'un excellent vendeur : il n'est pas forcément un bon responsable de magasin, parce que diriger une équipe est un métier différent de la vente elle-même.",
+          "usage": "'Ne ... pas forcément' softens a negative judgement and avoids an absolute claim."
+        },
+        {
+          "id": "SVE1-0128",
+          "kind": "expression",
+          "french": "n'est pas prêt à porter",
+          "english": "is not ready to bear",
+          "example": "Ensuite, je pense qu'être responsable suppose d'accepter une charge de décision que tout le monde n'est pas prêt à porter.",
+          "usage": "'Être prêt à' + infinitive expresses readiness; 'porter une charge' is a useful metaphor for responsibility."
+        },
+        {
+          "id": "SVE1-0129",
+          "kind": "expression",
+          "french": "se prépare et se mérite",
+          "english": "is prepared for and earned",
+          "example": "C'est une fonction qui se prépare et se mérite, plus qu'elle ne se distribue.",
+          "usage": "The paired pronominal verbs present a role as something developed over time rather than simply granted."
+        },
+        {
+          "id": "SVE1-0130",
+          "kind": "expression",
+          "french": "se construit dans la durée",
+          "english": "is built over time",
+          "example": "Cela montre que cette fonction se construit dans la durée, et qu'elle n'est pas accessible immédiatement à n'importe qui.",
+          "usage": "pronominal passive; 'dans la durée' = over the long term."
+        },
+        {
+          "id": "SVE1-0131",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la fonction de responsable est réellement à la portée de tout le monde.",
+          "usage": "reformulation opener + indirect question."
+        },
+        {
+          "id": "SVE1-0132",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, tout le monde n'est pas capable d'occuper une fonction de responsable, même si beaucoup peuvent y être préparés.",
+          "usage": "opinion/thesis marker."
+        },
+        {
+          "id": "SVE1-0133",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, être responsable demande des compétences humaines que tout le monde ne possède pas naturellement.",
+          "usage": "first-argument enumeration connector."
+        },
+        {
+          "id": "SVE1-0134",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, un responsable doit savoir écouter, organiser, motiver une équipe et gérer les tensions au quotidien.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0135",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, une personne très compétente techniquement peut très bien échouer comme responsable si elle n'a pas ces qualités humaines.",
+          "usage": "formal contrast connector."
+        },
+        {
+          "id": "SVE1-0136",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, beaucoup de personnes très compétentes préfèrent éviter ce type de pression et restent volontairement à un poste sans responsabilité hiérarchique.",
+          "usage": "strong reversal connector."
+        },
+        {
+          "id": "SVE1-0137",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, nommer une personne responsable sans préparation crée souvent des erreurs de gestion et de management.",
+          "usage": "direct opposition connector."
+        },
+        {
+          "id": "SVE1-0138",
+          "kind": "tournure",
+          "french": "Cela suppose de",
+          "english": "This requires / assumes",
+          "example": "Cela suppose de savoir dire non, de gérer les conflits et d'accepter les critiques.",
+          "usage": "'supposer de' + inf = to entail; introduces a requirement."
+        },
+        {
+          "id": "SVE1-0139",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, il ne faut pas en conclure qu'être responsable est réservé à quelques élus.",
+          "usage": "concession opening the nuance."
+        },
+        {
+          "id": "SVE1-0140",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je dirais que la fonction de responsable n'est pas à la portée immédiate de tout le monde, parce qu'elle demande des compétences humaines, une certaine solidité personnelle et une vraie expérience.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0141",
+          "kind": "phrase-modele",
+          "french": "Ces qualités ne dépendent pas seulement de la bonne volonté : elles supposent une certaine capacité à comprendre les autres et à rester calme dans des situations difficiles.",
+          "english": "These qualities require the ability to understand others and stay calm.",
+          "example": "Ces qualités ne dépendent pas seulement de la bonne volonté : elles supposent une certaine capacité à comprendre les autres et à rester calme dans des situations difficiles.",
+          "usage": "Model with colon + 'supposer' = to entail; lists soft skills."
+        },
+        {
+          "id": "SVE1-0142",
+          "kind": "phrase-modele",
+          "french": "Prenons l'exemple d'un excellent vendeur : il n'est pas forcément un bon responsable de magasin, parce que diriger une équipe est un métier différent de la vente elle-même.",
+          "english": "An excellent salesperson isn't necessarily a good store manager.",
+          "example": "Prenons l'exemple d'un excellent vendeur : il n'est pas forcément un bon responsable de magasin, parce que diriger une équipe est un métier différent de la vente elle-même.",
+          "usage": "Example model; 'ne ... pas forcément' = not necessarily; 'parce que' cause."
+        },
+        {
+          "id": "SVE1-0143",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la fonction de responsable n'est pas une simple promotion : c'est un changement de métier qui demande d'autres aptitudes.",
+          "english": "Being a manager isn't a mere promotion: it's a change of trade.",
+          "example": "Cela montre que la fonction de responsable n'est pas une simple promotion : c'est un changement de métier qui demande d'autres aptitudes.",
+          "usage": "Emphatic model; colon reveals the point; 'ne ... pas une simple'."
+        },
+        {
+          "id": "SVE1-0144",
+          "kind": "phrase-modele",
+          "french": "Par exemple, certains employés refusent une promotion parce qu'ils savent qu'ils n'aimeraient pas devoir évaluer leurs collègues ou imposer des choix difficiles.",
+          "english": "Some employees refuse a promotion, knowing they wouldn't like judging colleagues.",
+          "example": "Par exemple, certains employés refusent une promotion parce qu'ils savent qu'ils n'aimeraient pas devoir évaluer leurs collègues ou imposer des choix difficiles.",
+          "usage": "Example model; conditional 'n'aimeraient pas' for hypothetical reluctance."
+        },
+        {
+          "id": "SVE1-0145",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la responsabilité n'est pas seulement une compétence : c'est aussi une question de tempérament personnel.",
+          "english": "Responsibility isn't only a skill: it's also a matter of temperament.",
+          "example": "Cela montre que la responsabilité n'est pas seulement une compétence : c'est aussi une question de tempérament personnel.",
+          "usage": "Synthesis model; 'non seulement ... c'est aussi' balance."
+        },
+        {
+          "id": "SVE1-0146",
+          "kind": "phrase-modele",
+          "french": "Cela montre que cette fonction se construit dans la durée, et qu'elle n'est pas accessible immédiatement à n'importe qui.",
+          "english": "This role is built over time and isn't immediately open to anyone.",
+          "example": "Cela montre que cette fonction se construit dans la durée, et qu'elle n'est pas accessible immédiatement à n'importe qui.",
+          "usage": "Conclusion-of-paragraph model; 'accessible à' + noun."
+        },
+        {
+          "id": "SVE1-0147",
+          "kind": "phrase-modele",
+          "french": "Beaucoup de personnes peuvent développer ces qualités si on leur en donne le temps et la formation.",
+          "english": "Many people can develop these qualities if given time and training.",
+          "example": "Beaucoup de personnes peuvent développer ces qualités si on leur en donne le temps et la formation.",
+          "usage": "Counter-argument model; 'si on leur donne' conditional clause."
+        },
+        {
+          "id": "SVE1-0148",
+          "kind": "phrase-modele",
+          "french": "La vraie idée n'est donc pas que tout le monde en est incapable, mais que personne n'y est prêt automatiquement.",
+          "english": "The idea isn't that everyone is incapable, but that no one is ready automatically.",
+          "example": "La vraie idée n'est donc pas que tout le monde en est incapable, mais que personne n'y est prêt automatiquement.",
+          "usage": "Nuance model; 'non pas que ... mais que' subjunctive-free contrast."
+        },
+        {
+          "id": "SVE1-0149",
+          "kind": "phrase-modele",
+          "french": "Ensuite, il exige de prendre des décisions difficiles et d'assumer leurs conséquences, ce qui ne convient pas à chacun.",
+          "english": "It requires making hard decisions and taking their consequences.",
+          "example": "Ensuite, il exige de prendre des décisions difficiles et d'assumer leurs conséquences, ce qui ne convient pas à chacun.",
+          "usage": "Argument-preview model; 'exiger de' + inf; 'ce qui ne convient pas à'."
+        },
+        {
+          "id": "SVE1-0150",
+          "kind": "phrase-modele",
+          "french": "C'est une fonction qui se prépare et se mérite, plus qu'elle ne se distribue.",
+          "english": "It's a role that is prepared and earned more than it is handed out.",
+          "example": "C'est une fonction qui se prépare et se mérite, plus qu'elle ne se distribue.",
+          "usage": "Conclusion model; pronominal verbs 'se préparer/se mériter/se distribuer'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p4",
+      "entries": [
+        {
+          "id": "SVE1-0151",
+          "kind": "mot-cle",
+          "french": "sieste",
+          "english": "nap",
+          "example": "La vraie question est de savoir si autoriser la sieste au travail est une mesure utile ou simplement un confort excessif.",
+          "usage": "f. noun; 'faire une sieste' = to take a nap. Central topic word."
+        },
+        {
+          "id": "SVE1-0152",
+          "kind": "mot-cle",
+          "french": "concentration",
+          "english": "concentration / focus",
+          "example": "D'abord, une pause courte permet de retrouver de la concentration et de réduire les erreurs.",
+          "usage": "f. noun; 'retrouver de la concentration' = to regain focus."
+        },
+        {
+          "id": "SVE1-0153",
+          "kind": "mot-cle",
+          "french": "fatigue",
+          "english": "tiredness",
+          "example": "Enfin, dans les métiers où la fatigue est dangereuse, elle réduit aussi les accidents et renforce la sécurité.",
+          "usage": "f. noun; 'la fatigue de l'après-midi'. Cross-topic: health, safety."
+        },
+        {
+          "id": "SVE1-0154",
+          "kind": "mot-cle",
+          "french": "salariés",
+          "english": "employees",
+          "example": "Ensuite, cela contribue clairement au bien-être et à la santé des salariés.",
+          "usage": "m. pl.; f. 'salariées'. Standard term for wage-earners."
+        },
+        {
+          "id": "SVE1-0155",
+          "kind": "mot-cle",
+          "french": "vigilance",
+          "english": "alertness",
+          "example": "En effet, la fatigue diminue les réflexes et la vigilance, et c'est souvent elle qui provoque les accidents de la route, sur les machines ou pendant les soins.",
+          "usage": "f. noun; 'restaurer la vigilance'; key for safety-critical jobs."
+        },
+        {
+          "id": "SVE1-0156",
+          "kind": "mot-cle",
+          "french": "réflexes",
+          "english": "reflexes",
+          "example": "En effet, la fatigue diminue les réflexes et la vigilance, et c'est souvent elle qui provoque les accidents de la route, sur les machines ou pendant les soins.",
+          "usage": "m. pl.; fatigue 'diminue les réflexes'. Physical/attention meaning."
+        },
+        {
+          "id": "SVE1-0157",
+          "kind": "mot-cle",
+          "french": "accidents",
+          "english": "accidents",
+          "example": "Enfin, dans les métiers où la fatigue est dangereuse, elle réduit aussi les accidents et renforce la sécurité.",
+          "usage": "m. pl.; 'réduire les accidents'; consequence of fatigue."
+        },
+        {
+          "id": "SVE1-0158",
+          "kind": "mot-cle",
+          "french": "sécurité",
+          "english": "safety",
+          "example": "Enfin, dans les métiers où la fatigue est dangereuse, elle réduit aussi les accidents et renforce la sécurité.",
+          "usage": "f. noun; 'renforcer la sécurité'. Cross-topic: work, road, state."
+        },
+        {
+          "id": "SVE1-0159",
+          "kind": "mot-cle",
+          "french": "sommeil",
+          "english": "sleep",
+          "example": "En effet, le manque de sommeil est un problème courant, et cumuler la fatigue tout au long de la semaine pèse sur la santé physique et mentale.",
+          "usage": "m. noun; 'le manque de sommeil' = sleep deprivation."
+        },
+        {
+          "id": "SVE1-0160",
+          "kind": "mot-cle",
+          "french": "prévention",
+          "english": "prevention",
+          "example": "Cela montre que, dans ces métiers, la sieste n'est pas un confort mais une véritable mesure de prévention.",
+          "usage": "f. noun; 'une mesure de prévention'; frames the nap as protective."
+        },
+        {
+          "id": "SVE1-0161",
+          "kind": "collocation",
+          "french": "sieste au travail",
+          "english": "napping at work",
+          "example": "La vraie question est de savoir si autoriser la sieste au travail est une mesure utile ou simplement un confort excessif.",
+          "usage": "topic collocation; 'autoriser la sieste au travail'."
+        },
+        {
+          "id": "SVE1-0162",
+          "kind": "collocation",
+          "french": "pause courte",
+          "english": "short break",
+          "example": "D'abord, une pause courte permet de retrouver de la concentration et de réduire les erreurs.",
+          "usage": "noun+adj; 'une pause courte' restores energy; contrast 'longue pause'."
+        },
+        {
+          "id": "SVE1-0163",
+          "kind": "collocation",
+          "french": "espaces de repos",
+          "english": "rest areas",
+          "example": "Par exemple, certaines entreprises qui ont installé des espaces de repos ont constaté que leurs salariés faisaient moins d'erreurs et étaient plus efficaces ensuite.",
+          "usage": "m. pl.; 'installer des espaces de repos' = to set up rest areas."
+        },
+        {
+          "id": "SVE1-0164",
+          "kind": "collocation",
+          "french": "arrêts maladie",
+          "english": "sick leave",
+          "example": "Une courte sieste permet de réduire le stress, de mieux gérer la pression et de limiter les arrêts maladie.",
+          "usage": "m. pl.; 'limiter les arrêts maladie' = to reduce sick days."
+        },
+        {
+          "id": "SVE1-0165",
+          "kind": "collocation",
+          "french": "santé physique et mentale",
+          "english": "physical and mental health",
+          "example": "En effet, le manque de sommeil est un problème courant, et cumuler la fatigue tout au long de la semaine pèse sur la santé physique et mentale.",
+          "usage": "fixed pair; 'peser sur la santé physique et mentale'."
+        },
+        {
+          "id": "SVE1-0166",
+          "kind": "collocation",
+          "french": "bien-être des salariés",
+          "english": "employee wellbeing",
+          "example": "Ensuite, je pense que cette mesure est utile parce qu'elle protège la santé et le bien-être des salariés.",
+          "usage": "noun+de+noun; 'protéger le bien-être des salariés'."
+        },
+        {
+          "id": "SVE1-0167",
+          "kind": "collocation",
+          "french": "mesure de prévention",
+          "english": "preventive measure",
+          "example": "Cela montre que, dans ces métiers, la sieste n'est pas un confort mais une véritable mesure de prévention.",
+          "usage": "'une véritable mesure de prévention'; formal/policy register."
+        },
+        {
+          "id": "SVE1-0168",
+          "kind": "collocation",
+          "french": "chauffeurs routiers",
+          "english": "truck drivers",
+          "example": "Par exemple, chez les chauffeurs routiers ou le personnel hospitalier de nuit, une pause de vingt minutes réduit nettement le risque d'accident lié à l'endormissement.",
+          "usage": "m. pl.; example of a fatigue-sensitive job."
+        },
+        {
+          "id": "SVE1-0169",
+          "kind": "collocation",
+          "french": "personnel hospitalier",
+          "english": "hospital staff",
+          "example": "Par exemple, chez les chauffeurs routiers ou le personnel hospitalier de nuit, une pause de vingt minutes réduit nettement le risque d'accident lié à l'endormissement.",
+          "usage": "m. sing. collective; 'le personnel hospitalier de nuit'."
+        },
+        {
+          "id": "SVE1-0170",
+          "kind": "collocation",
+          "french": "gain de qualité",
+          "english": "gain in quality",
+          "example": "Cela montre qu'une sieste courte n'est pas une perte de temps, mais un gain de qualité dans le travail.",
+          "usage": "'un gain de qualité dans le travail'; contrast 'perte de temps'."
+        },
+        {
+          "id": "SVE1-0171",
+          "kind": "expression",
+          "french": "à condition qu'elle reste courte et bien encadrée",
+          "english": "provided that it remains short and properly supervised",
+          "example": "À mon avis, autoriser la sieste au travail peut être une bonne mesure, à condition qu'elle reste courte et bien encadrée.",
+          "usage": "'À condition que' takes the subjunctive ('reste'); this frame introduces a necessary condition."
+        },
+        {
+          "id": "SVE1-0172",
+          "kind": "expression",
+          "french": "n'est pas une perte de temps",
+          "english": "is not a waste of time",
+          "example": "Cela montre qu'une sieste courte n'est pas une perte de temps, mais un gain de qualité dans le travail.",
+          "usage": "Fixed evaluative expression used to reframe a pause, expense, or effort as worthwhile."
+        },
+        {
+          "id": "SVE1-0173",
+          "kind": "expression",
+          "french": "tenir sans aucun moment de repos",
+          "english": "to keep going without any time to rest",
+          "example": "Par exemple, un employé qui peut faire une pause courte gère souvent mieux une journée chargée qu'un employé qui doit tenir sans aucun moment de repos.",
+          "usage": "'Tenir sans' + noun describes sustained effort without a necessary resource; here it underscores the cost of skipping a break."
+        },
+        {
+          "id": "SVE1-0174",
+          "kind": "expression",
+          "french": "met en jeu la sécurité",
+          "english": "puts safety at stake",
+          "example": "Enfin, je pense que dans les métiers où la fatigue met en jeu la sécurité, une courte sieste réduit réellement les accidents.",
+          "usage": "'mettre en jeu' = to jeopardise/put at stake; strong construction."
+        },
+        {
+          "id": "SVE1-0175",
+          "kind": "expression",
+          "french": "revient donc à prendre un vrai risque",
+          "english": "therefore amounts to taking a real risk",
+          "example": "Empêcher des salariés épuisés de récupérer revient donc à prendre un vrai risque.",
+          "usage": "'Revenir à' + infinitive means 'to amount to'; it draws out the practical implication of an action."
+        },
+        {
+          "id": "SVE1-0176",
+          "kind": "expression",
+          "french": "c'est un investissement dans la santé des équipes",
+          "english": "it is an investment in team health",
+          "example": "Cela montre que cette mesure n'est pas un luxe : c'est un investissement dans la santé des équipes.",
+          "usage": "Reframing pattern for an expense or policy; 'investissement dans' is common in workplace and public-health discussion."
+        },
+        {
+          "id": "SVE1-0177",
+          "kind": "expression",
+          "french": "fait baisser la concentration",
+          "english": "lowers concentration",
+          "example": "En effet, la fatigue de l'après-midi fait baisser la concentration et augmente les erreurs, surtout dans les métiers qui demandent de l'attention.",
+          "usage": "causative 'faire baisser' = to bring down/reduce."
+        },
+        {
+          "id": "SVE1-0178",
+          "kind": "expression",
+          "french": "perdre plus de temps que la pause elle-même",
+          "english": "to lose more time than the break itself",
+          "example": "À l'opposé, lutter contre la fatigue toute l'après-midi ralentit le travail et fait souvent perdre plus de temps que la pause elle-même.",
+          "usage": "Comparative frame 'plus ... que' challenges the apparent efficiency of refusing a short break."
+        },
+        {
+          "id": "SVE1-0179",
+          "kind": "expression",
+          "french": "gérer la pression",
+          "english": "to handle pressure",
+          "example": "Une courte sieste permet de réduire le stress, de mieux gérer la pression et de limiter les arrêts maladie.",
+          "usage": "frequent workplace collocation; 'mieux gérer la pression'."
+        },
+        {
+          "id": "SVE1-0180",
+          "kind": "expression",
+          "french": "n'est pas un luxe",
+          "english": "is not a luxury",
+          "example": "Cela montre que cette mesure n'est pas un luxe : c'est un investissement dans la santé des équipes.",
+          "usage": "Compact rebuttal used to present a need or prevention measure as legitimate rather than indulgent."
+        },
+        {
+          "id": "SVE1-0181",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si autoriser la sieste au travail est une mesure utile ou simplement un confort excessif.",
+          "usage": "reformulation opener + indirect question."
+        },
+        {
+          "id": "SVE1-0182",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, autoriser la sieste au travail peut être une bonne mesure, à condition qu'elle reste courte et bien encadrée.",
+          "usage": "opinion/thesis marker."
+        },
+        {
+          "id": "SVE1-0183",
+          "kind": "tournure",
+          "french": "D'abord",
+          "english": "First",
+          "example": "D'abord, une pause courte permet de retrouver de la concentration et de réduire les erreurs.",
+          "usage": "enumeration connector opening the preview of arguments."
+        },
+        {
+          "id": "SVE1-0184",
+          "kind": "tournure",
+          "french": "Ensuite, je pense que",
+          "english": "Then, I think that",
+          "example": "Ensuite, je pense que cette mesure est utile parce qu'elle protège la santé et le bien-être des salariés.",
+          "usage": "enumerated argument opener; 'ensuite' sequences points; + indicative."
+        },
+        {
+          "id": "SVE1-0185",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, la fatigue de l'après-midi fait baisser la concentration et augmente les erreurs, surtout dans les métiers qui demandent de l'attention.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0186",
+          "kind": "tournure",
+          "french": "À l'opposé",
+          "english": "At the opposite end",
+          "example": "À l'opposé, lutter contre la fatigue toute l'après-midi ralentit le travail et fait souvent perdre plus de temps que la pause elle-même.",
+          "usage": "contrast connector introducing the reverse scenario."
+        },
+        {
+          "id": "SVE1-0187",
+          "kind": "tournure",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, un salarié qui se sent respecté dans ses besoins de base est généralement plus motivé et plus fidèle à son entreprise.",
+          "usage": "additive connector."
+        },
+        {
+          "id": "SVE1-0188",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que cette mesure n'est pas un luxe : c'est un investissement dans la santé des équipes.",
+          "usage": "paragraph-conclusion connector; + indicative."
+        },
+        {
+          "id": "SVE1-0189",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, pour être utile, cette mesure doit rester courte, encadrée et réservée aux métiers où elle est réalisable.",
+          "usage": "concession opening the nuance."
+        },
+        {
+          "id": "SVE1-0190",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense que les employeurs devraient autoriser une courte sieste au travail dans les métiers où cela est faisable.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0191",
+          "kind": "phrase-modele",
+          "french": "Par exemple, un employé qui peut faire une pause courte gère souvent mieux une journée chargée qu'un employé qui doit tenir sans aucun moment de repos.",
+          "english": "An employee who can take a short break handles a busy day better.",
+          "example": "Par exemple, un employé qui peut faire une pause courte gère souvent mieux une journée chargée qu'un employé qui doit tenir sans aucun moment de repos.",
+          "usage": "Comparative model; 'gérer mieux ... que'; relative clauses."
+        },
+        {
+          "id": "SVE1-0192",
+          "kind": "phrase-modele",
+          "french": "À l'opposé, lutter contre la fatigue toute l'après-midi ralentit le travail et fait souvent perdre plus de temps que la pause elle-même.",
+          "english": "Fighting afternoon fatigue slows work and wastes more time than the break itself.",
+          "example": "À l'opposé, lutter contre la fatigue toute l'après-midi ralentit le travail et fait souvent perdre plus de temps que la pause elle-même.",
+          "usage": "Contrast model with 'À l'opposé'; 'faire perdre du temps'."
+        },
+        {
+          "id": "SVE1-0193",
+          "kind": "phrase-modele",
+          "french": "Cela montre qu'une sieste courte n'est pas une perte de temps, mais un gain de qualité dans le travail.",
+          "english": "A short nap isn't a waste of time but a gain in quality at work.",
+          "example": "Cela montre qu'une sieste courte n'est pas une perte de temps, mais un gain de qualité dans le travail.",
+          "usage": "Reframing model; 'non pas X mais Y'."
+        },
+        {
+          "id": "SVE1-0194",
+          "kind": "phrase-modele",
+          "french": "De plus, un salarié qui se sent respecté dans ses besoins de base est généralement plus motivé et plus fidèle à son entreprise.",
+          "english": "An employee who feels respected in basic needs is more motivated and loyal.",
+          "example": "De plus, un salarié qui se sent respecté dans ses besoins de base est généralement plus motivé et plus fidèle à son entreprise.",
+          "usage": "Benefit model; 'se sentir respecté'; comparative 'plus motivé'."
+        },
+        {
+          "id": "SVE1-0195",
+          "kind": "phrase-modele",
+          "french": "Cela montre que cette mesure n'est pas un luxe : c'est un investissement dans la santé des équipes.",
+          "english": "This measure isn't a luxury: it's an investment in team health.",
+          "example": "Cela montre que cette mesure n'est pas un luxe : c'est un investissement dans la santé des équipes.",
+          "usage": "Emphatic model; colon reveals reframing."
+        },
+        {
+          "id": "SVE1-0196",
+          "kind": "phrase-modele",
+          "french": "Une courte sieste restaure cette vigilance et évite des erreurs qui peuvent être graves, voire mortelles.",
+          "english": "A short nap restores alertness and prevents errors that can be serious.",
+          "example": "Une courte sieste restaure cette vigilance et évite des erreurs qui peuvent être graves, voire mortelles.",
+          "usage": "Safety model; 'voire mortelles' = even fatal, intensifying scale."
+        },
+        {
+          "id": "SVE1-0197",
+          "kind": "phrase-modele",
+          "french": "Cela montre que, dans ces métiers, la sieste n'est pas un confort mais une véritable mesure de prévention.",
+          "english": "In these jobs the nap isn't a comfort but a genuine preventive measure.",
+          "example": "Cela montre que, dans ces métiers, la sieste n'est pas un confort mais une véritable mesure de prévention.",
+          "usage": "Nuance model; 'non pas X mais Y'; policy register."
+        },
+        {
+          "id": "SVE1-0198",
+          "kind": "phrase-modele",
+          "french": "Cependant, pour être utile, cette mesure doit rester courte, encadrée et réservée aux métiers où elle est réalisable.",
+          "english": "To be useful, the measure must stay short, supervised and role-appropriate.",
+          "example": "Cependant, pour être utile, cette mesure doit rester courte, encadrée et réservée aux métiers où elle est réalisable.",
+          "usage": "Condition model; 'pour + inf'; agreement of adjectives."
+        },
+        {
+          "id": "SVE1-0199",
+          "kind": "phrase-modele",
+          "french": "La bonne approche est donc de l'autoriser là où c'est à la fois possible et utile, plutôt que de l'imposer partout.",
+          "english": "The right approach is to allow it where it's both possible and useful.",
+          "example": "La bonne approche est donc de l'autoriser là où c'est à la fois possible et utile, plutôt que de l'imposer partout.",
+          "usage": "Balanced-conclusion model; 'plutôt que de' + inf = rather than."
+        },
+        {
+          "id": "SVE1-0200",
+          "kind": "phrase-modele",
+          "french": "Bien encadrée, cette mesure améliore à la fois la concentration, la santé et la sécurité des salariés.",
+          "english": "Well framed, this measure improves focus, health and safety.",
+          "example": "Bien encadrée, cette mesure améliore à la fois la concentration, la santé et la sécurité des salariés.",
+          "usage": "Conclusion model; fronted participle 'Bien encadrée'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p5",
+      "entries": [
+        {
+          "id": "SVE1-0201",
+          "kind": "mot-cle",
+          "french": "État",
+          "english": "the State",
+          "example": "La vraie question est de savoir jusqu'où l'État peut, et doit, organiser et encadrer la vie en société.",
+          "usage": "m. noun, capitalised for the political entity; 'l'État' = the government/state."
+        },
+        {
+          "id": "SVE1-0202",
+          "kind": "mot-cle",
+          "french": "contrôle",
+          "english": "control",
+          "example": "À mon avis, non : l'État ne peut pas tout contrôler, et chercher à le faire serait à la fois impossible et contraire à l'intérêt des citoyens.",
+          "usage": "m. noun; 'un contrôle plus fort'. Cross-topic: economy, technology, society."
+        },
+        {
+          "id": "SVE1-0203",
+          "kind": "mot-cle",
+          "french": "société",
+          "english": "society",
+          "example": "La vraie question est de savoir jusqu'où l'État peut, et doit, organiser et encadrer la vie en société.",
+          "usage": "f. noun; 'une société moderne'. High-frequency essay noun."
+        },
+        {
+          "id": "SVE1-0204",
+          "kind": "mot-cle",
+          "french": "citoyens",
+          "english": "citizens",
+          "example": "À mon avis, non : l'État ne peut pas tout contrôler, et chercher à le faire serait à la fois impossible et contraire à l'intérêt des citoyens.",
+          "usage": "m. pl.; f. 'citoyennes'; partners of state action alongside firms."
+        },
+        {
+          "id": "SVE1-0205",
+          "kind": "mot-cle",
+          "french": "lois",
+          "english": "laws",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "f. pl.; 'voter des lois' = to pass laws. Note irregular 'loi'/'lois'."
+        },
+        {
+          "id": "SVE1-0206",
+          "kind": "mot-cle",
+          "french": "liberté",
+          "english": "freedom",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "f. noun; 'la liberté individuelle'; balanced against control."
+        },
+        {
+          "id": "SVE1-0207",
+          "kind": "mot-cle",
+          "french": "innovation",
+          "english": "innovation",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "f. noun; excessive control 'étouffe l'innovation'."
+        },
+        {
+          "id": "SVE1-0208",
+          "kind": "mot-cle",
+          "french": "initiative",
+          "english": "initiative",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "f. noun; 'étouffer l'initiative' = to stifle initiative."
+        },
+        {
+          "id": "SVE1-0209",
+          "kind": "mot-cle",
+          "french": "administration",
+          "english": "government administration",
+          "example": "Aucune administration n'a les moyens, ni la légitimité, de surveiller ces choix dans le détail.",
+          "usage": "f. noun; 'aucune administration' can monitor private choices."
+        },
+        {
+          "id": "SVE1-0210",
+          "kind": "mot-cle",
+          "french": "coopération",
+          "english": "cooperation",
+          "example": "Sans cette coopération, beaucoup de règles publiques restent purement théoriques.",
+          "usage": "f. noun; 'sans cette coopération' public rules stay theoretical."
+        },
+        {
+          "id": "SVE1-0211",
+          "kind": "collocation",
+          "french": "intérêt général",
+          "english": "the common good",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "fixed political collocation; 'protéger l'intérêt général'."
+        },
+        {
+          "id": "SVE1-0212",
+          "kind": "collocation",
+          "french": "action publique",
+          "english": "public action / policy",
+          "example": "Enfin, l'action publique ne fonctionne vraiment que lorsqu'elle est partagée avec les citoyens, les entreprises et les acteurs locaux.",
+          "usage": "f.; 'l'action publique n'est efficace que...'. Register: institutional."
+        },
+        {
+          "id": "SVE1-0213",
+          "kind": "collocation",
+          "french": "décisions privées",
+          "english": "private decisions",
+          "example": "Tout d'abord, il existe des domaines de la vie qu'aucun État ne peut réellement contrôler, parce qu'ils dépendent de millions de décisions privées.",
+          "usage": "f. pl.; millions of them escape state control."
+        },
+        {
+          "id": "SVE1-0214",
+          "kind": "collocation",
+          "french": "santé publique",
+          "english": "public health",
+          "example": "Même s'il doit rester très solide sur les enjeux essentiels comme la sécurité, la justice ou la santé publique, il ne peut ni surveiller ni encadrer chaque aspect de la vie quotidienne.",
+          "usage": "f.; an essential domain the state must hold firmly."
+        },
+        {
+          "id": "SVE1-0215",
+          "kind": "collocation",
+          "french": "limites raisonnables",
+          "english": "reasonable limits",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "'fixer des limites raisonnables' = to set reasonable limits."
+        },
+        {
+          "id": "SVE1-0216",
+          "kind": "collocation",
+          "french": "services publics",
+          "english": "public services",
+          "example": "En effet, l'État peut voter des lois et financer des services publics, mais il ne peut pas, à lui seul, gérer chaque aspect de la vie sociale.",
+          "usage": "m. pl.; 'financer des services publics'."
+        },
+        {
+          "id": "SVE1-0217",
+          "kind": "collocation",
+          "french": "comportements quotidiens",
+          "english": "everyday behaviours",
+          "example": "D'abord, certains domaines de la vie échappent par nature à son contrôle, comme les choix privés ou les comportements quotidiens.",
+          "usage": "m. pl.; largely beyond state reach."
+        },
+        {
+          "id": "SVE1-0218",
+          "kind": "collocation",
+          "french": "choix individuels",
+          "english": "individual choices",
+          "example": "Cela oblige l'État à reconnaître les limites de son pouvoir et à accepter qu'une grande partie des choix individuels lui échappera toujours.",
+          "usage": "m. pl.; 'une grande partie des choix individuels lui échappe'."
+        },
+        {
+          "id": "SVE1-0219",
+          "kind": "collocation",
+          "french": "acteurs locaux",
+          "english": "local actors / stakeholders",
+          "example": "Enfin, l'action publique ne fonctionne vraiment que lorsqu'elle est partagée avec les citoyens, les entreprises et les acteurs locaux.",
+          "usage": "m. pl.; share responsibility with the state."
+        },
+        {
+          "id": "SVE1-0220",
+          "kind": "collocation",
+          "french": "dynamisme d'un pays",
+          "english": "a country's dynamism",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "freedom is 'essentiel au dynamisme d'un pays'."
+        },
+        {
+          "id": "SVE1-0221",
+          "kind": "expression",
+          "french": "ne peut pas tout contrôler",
+          "english": "cannot control everything",
+          "example": "À mon avis, non : l'État ne peut pas tout contrôler, et chercher à le faire serait à la fois impossible et contraire à l'intérêt des citoyens.",
+          "usage": "Transferable limit-setting frame; 'tout' is the direct object placed before the infinitive."
+        },
+        {
+          "id": "SVE1-0222",
+          "kind": "expression",
+          "french": "un excès de contrôle",
+          "english": "an excess of control",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "'un excès de' + noun; 'étouffer' follows as consequence."
+        },
+        {
+          "id": "SVE1-0223",
+          "kind": "expression",
+          "french": "étouffer l'initiative",
+          "english": "to stifle initiative",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "'étouffer' = to smother/stifle; strong critical verb."
+        },
+        {
+          "id": "SVE1-0224",
+          "kind": "expression",
+          "french": "fixer un cadre clair",
+          "english": "to set a clear framework",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "'fixer un cadre' = to set a framework; governance vocabulary."
+        },
+        {
+          "id": "SVE1-0225",
+          "kind": "expression",
+          "french": "fait sa part",
+          "english": "does its part",
+          "example": "Cela permet à l'action publique de produire des effets concrets et durables, parce que chaque acteur fait sa part.",
+          "usage": "'faire sa part' = to do one's share; each actor contributes."
+        },
+        {
+          "id": "SVE1-0226",
+          "kind": "expression",
+          "french": "restent purement théoriques",
+          "english": "remain purely theoretical",
+          "example": "Sans cette coopération, beaucoup de règles publiques restent purement théoriques.",
+          "usage": "'Rester' + adjective describes rules or plans that have not become effective in practice."
+        },
+        {
+          "id": "SVE1-0227",
+          "kind": "expression",
+          "french": "personne d'autre ne peut le faire à sa place",
+          "english": "no one else can do it in its place",
+          "example": "Au contraire, il doit rester très solide dans certains domaines essentiels, comme la sécurité, la justice, l'école, la santé publique et la protection des plus fragiles, parce que personne d'autre ne peut le faire à sa place.",
+          "usage": "'Faire quelque chose à la place de' expresses replacement; this negated frame justifies a necessary public role."
+        },
+        {
+          "id": "SVE1-0228",
+          "kind": "expression",
+          "french": "l'intérêt général est en jeu",
+          "english": "the common good is at stake",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "'être en jeu' = to be at stake; conditions state intervention."
+        },
+        {
+          "id": "SVE1-0229",
+          "kind": "expression",
+          "french": "ni surveiller ni encadrer chaque aspect",
+          "english": "neither monitor nor regulate every aspect",
+          "example": "Même s'il doit rester très solide sur les enjeux essentiels comme la sécurité, la justice ou la santé publique, il ne peut ni surveiller ni encadrer chaque aspect de la vie quotidienne.",
+          "usage": "The negative pairing 'ni ... ni' coordinates two infinitives and is useful for arguing against overreach."
+        },
+        {
+          "id": "SVE1-0230",
+          "kind": "expression",
+          "french": "laisser le reste à la liberté et à la responsabilité de chacun",
+          "english": "leave the rest to each person's freedom and responsibility",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "'Laisser ... à' assigns what remains to an actor; it balances regulation and individual autonomy."
+        },
+        {
+          "id": "SVE1-0231",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir jusqu'où",
+          "english": "The real question is how far",
+          "example": "La vraie question est de savoir jusqu'où l'État peut, et doit, organiser et encadrer la vie en société.",
+          "usage": "reformulation opener with 'jusqu'où' = how far, for scope questions."
+        },
+        {
+          "id": "SVE1-0232",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, non : l'État ne peut pas tout contrôler, et chercher à le faire serait à la fois impossible et contraire à l'intérêt des citoyens.",
+          "usage": "opinion/thesis marker; here followed by a colon and a strong 'non'."
+        },
+        {
+          "id": "SVE1-0233",
+          "kind": "tournure",
+          "french": "D'abord",
+          "english": "First",
+          "example": "D'abord, certains domaines de la vie échappent par nature à son contrôle, comme les choix privés ou les comportements quotidiens.",
+          "usage": "enumeration connector."
+        },
+        {
+          "id": "SVE1-0234",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, il existe des domaines de la vie qu'aucun État ne peut réellement contrôler, parce qu'ils dépendent de millions de décisions privées.",
+          "usage": "first-argument opener."
+        },
+        {
+          "id": "SVE1-0235",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, dans une société moderne, des millions de personnes prennent chaque jour des décisions privées : ce qu'elles mangent, ce qu'elles dépensent, comment elles élèvent leurs enfants.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0236",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, l'absence totale de règles produit du désordre, des abus et des inégalités.",
+          "usage": "reversal connector; 'l'absence totale de règles' case."
+        },
+        {
+          "id": "SVE1-0237",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, il doit rester très solide dans certains domaines essentiels, comme la sécurité, la justice, l'école, la santé publique et la protection des plus fragiles, parce que personne d'autre ne peut le faire à sa place.",
+          "usage": "opposition connector in the nuance."
+        },
+        {
+          "id": "SVE1-0238",
+          "kind": "tournure",
+          "french": "Cela permet de",
+          "english": "This allows / makes it possible to",
+          "example": "Cela permet de garder une société à la fois ordonnée et vivante, dans laquelle on peut entreprendre, créer et choisir librement.",
+          "usage": "'permettre de' + inf; introduces a positive outcome."
+        },
+        {
+          "id": "SVE1-0239",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, dire que l'État ne peut pas tout contrôler ne veut pas dire qu'il doit être faible.",
+          "usage": "concession opening the nuance."
+        },
+        {
+          "id": "SVE1-0240",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense que l'État ne peut pas tout contrôler, parce qu'une société moderne dépend aussi des choix privés et de l'action des autres acteurs collectifs.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0241",
+          "kind": "phrase-modele",
+          "french": "Même s'il doit rester très solide sur les enjeux essentiels comme la sécurité, la justice ou la santé publique, il ne peut ni surveiller ni encadrer chaque aspect de la vie quotidienne.",
+          "english": "Even if it must stay firm on essentials, it cannot monitor every aspect of daily life.",
+          "example": "Même s'il doit rester très solide sur les enjeux essentiels comme la sécurité, la justice ou la santé publique, il ne peut ni surveiller ni encadrer chaque aspect de la vie quotidienne.",
+          "usage": "Concession model; 'Même si' + indicative; 'ni ... ni' negation."
+        },
+        {
+          "id": "SVE1-0242",
+          "kind": "phrase-modele",
+          "french": "En effet, dans une société moderne, des millions de personnes prennent chaque jour des décisions privées : ce qu'elles mangent, ce qu'elles dépensent, comment elles élèvent leurs enfants.",
+          "english": "Millions of people make private decisions every day: what they eat, spend, how they raise children.",
+          "example": "En effet, dans une société moderne, des millions de personnes prennent chaque jour des décisions privées : ce qu'elles mangent, ce qu'elles dépensent, comment elles élèvent leurs enfants.",
+          "usage": "Enumeration model; colon + listed clauses."
+        },
+        {
+          "id": "SVE1-0243",
+          "kind": "phrase-modele",
+          "french": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "english": "The State can pass laws, but it depends on everyone's behaviour for real effect.",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "Limitation model; 'dépendre de' + noun; 'pour que' + subjunctive 'aient'."
+        },
+        {
+          "id": "SVE1-0244",
+          "kind": "phrase-modele",
+          "french": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "english": "The State's role isn't to regulate everything but to set reasonable limits.",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "Definition model; 'non pas ... mais'; enumerated infinitives."
+        },
+        {
+          "id": "SVE1-0245",
+          "kind": "phrase-modele",
+          "french": "Cela permet de garder une société à la fois ordonnée et vivante, dans laquelle on peut entreprendre, créer et choisir librement.",
+          "english": "This keeps society both orderly and lively, where one can create and choose freely.",
+          "example": "Cela permet de garder une société à la fois ordonnée et vivante, dans laquelle on peut entreprendre, créer et choisir librement.",
+          "usage": "Outcome model; 'à la fois ... et'; 'dans laquelle' relative."
+        },
+        {
+          "id": "SVE1-0246",
+          "kind": "phrase-modele",
+          "french": "Les familles, les écoles, les entreprises et les associations jouent un rôle direct dans l'éducation, la solidarité ou la protection de l'environnement.",
+          "english": "Families, schools, firms and associations play a direct role in society.",
+          "example": "Les familles, les écoles, les entreprises et les associations jouent un rôle direct dans l'éducation, la solidarité ou la protection de l'environnement.",
+          "usage": "Enumeration-of-actors model; useful for civic-society essays."
+        },
+        {
+          "id": "SVE1-0247",
+          "kind": "phrase-modele",
+          "french": "Par exemple, pour réduire la pollution, il faut à la fois des lois strictes, des entreprises qui changent leurs procédés et des citoyens qui modifient leurs habitudes de déplacement.",
+          "english": "To cut pollution, you need strict laws, firms that change, and citizens who adapt.",
+          "example": "Par exemple, pour réduire la pollution, il faut à la fois des lois strictes, des entreprises qui changent leurs procédés et des citoyens qui modifient leurs habitudes de déplacement.",
+          "usage": "Multi-actor model; 'il faut à la fois ... et'."
+        },
+        {
+          "id": "SVE1-0248",
+          "kind": "phrase-modele",
+          "french": "Cependant, dire que l'État ne peut pas tout contrôler ne veut pas dire qu'il doit être faible.",
+          "english": "Saying the State can't control everything doesn't mean it must be weak.",
+          "example": "Cependant, dire que l'État ne peut pas tout contrôler ne veut pas dire qu'il doit être faible.",
+          "usage": "Nuance model; gerund subject 'dire que ...'; 'ne veut pas dire que'."
+        },
+        {
+          "id": "SVE1-0249",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que l'État ne peut pas tout contrôler, parce qu'une société moderne dépend aussi des choix privés et de l'action des autres acteurs collectifs.",
+          "english": "The State can't control everything because society depends on private choices too.",
+          "example": "En conclusion, je pense que l'État ne peut pas tout contrôler, parce qu'une société moderne dépend aussi des choix privés et de l'action des autres acteurs collectifs.",
+          "usage": "Conclusion model; 'parce que' cause; recap of thesis."
+        },
+        {
+          "id": "SVE1-0250",
+          "kind": "phrase-modele",
+          "french": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "english": "Its role is to set a clear framework where the common good is at stake.",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "Final model; 'là où' = where; 'laisser le reste à'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p6",
+      "entries": [
+        {
+          "id": "SVE1-0251",
+          "kind": "mot-cle",
+          "french": "bien-être",
+          "english": "wellbeing",
+          "example": "La vraie question est de savoir si le bien-être au travail est un vrai enjeu ou seulement un confort secondaire.",
+          "usage": "m. noun (hyphenated); 'favoriser le bien-être'. Central topic word."
+        },
+        {
+          "id": "SVE1-0252",
+          "kind": "mot-cle",
+          "french": "salariés",
+          "english": "employees",
+          "example": "D'abord, parce que la santé physique et mentale des salariés en dépend directement.",
+          "usage": "m. pl.; the beneficiaries of workplace wellbeing."
+        },
+        {
+          "id": "SVE1-0253",
+          "kind": "mot-cle",
+          "french": "motivation",
+          "english": "motivation",
+          "example": "Ensuite, je pense que le bien-être au travail améliore directement la motivation et l'efficacité.",
+          "usage": "f. noun; 'améliorer la motivation'. Cross-topic: work, education."
+        },
+        {
+          "id": "SVE1-0254",
+          "kind": "mot-cle",
+          "french": "efficacité",
+          "english": "efficiency / effectiveness",
+          "example": "Ensuite, je pense que le bien-être au travail améliore directement la motivation et l'efficacité.",
+          "usage": "f. noun; wellbeing improves 'la motivation et l'efficacité'."
+        },
+        {
+          "id": "SVE1-0255",
+          "kind": "mot-cle",
+          "french": "stress",
+          "english": "stress",
+          "example": "Enfin, parce que cela renforce la fidélité à l'entreprise et limite les coûts liés au stress et à l'absentéisme.",
+          "usage": "m. noun (anglicism); 'les coûts liés au stress'."
+        },
+        {
+          "id": "SVE1-0256",
+          "kind": "mot-cle",
+          "french": "absentéisme",
+          "english": "absenteeism",
+          "example": "Enfin, parce que cela renforce la fidélité à l'entreprise et limite les coûts liés au stress et à l'absentéisme.",
+          "usage": "m. noun; 'limiter l'absentéisme'. Register: HR/economic."
+        },
+        {
+          "id": "SVE1-0257",
+          "kind": "mot-cle",
+          "french": "recrutement",
+          "english": "recruitment",
+          "example": "En effet, des salariés satisfaits restent plus longtemps dans l'entreprise, ce qui réduit les coûts liés au recrutement et à la formation des nouveaux.",
+          "usage": "m. noun; 'les coûts liés au recrutement'."
+        },
+        {
+          "id": "SVE1-0258",
+          "kind": "mot-cle",
+          "french": "anxiété",
+          "english": "anxiety",
+          "example": "Le stress permanent, la pression excessive ou un mauvais environnement provoquent des troubles du sommeil, de l'anxiété et parfois de vraies maladies.",
+          "usage": "f. noun; a health effect of poor conditions."
+        },
+        {
+          "id": "SVE1-0259",
+          "kind": "mot-cle",
+          "french": "performance",
+          "english": "performance",
+          "example": "Cela montre que favoriser le bien-être n'est pas opposé à la performance : c'est même une condition pour qu'elle dure.",
+          "usage": "f. noun; wellbeing 'n'est pas opposé à la performance'."
+        },
+        {
+          "id": "SVE1-0260",
+          "kind": "mot-cle",
+          "french": "renouvellement",
+          "english": "turnover (of staff)",
+          "example": "À l'inverse, une entreprise qui néglige le bien-être doit souvent gérer un fort renouvellement et perdre du temps à former sans cesse de nouvelles personnes.",
+          "usage": "m. noun; 'un fort renouvellement' = high staff turnover."
+        },
+        {
+          "id": "SVE1-0261",
+          "kind": "collocation",
+          "french": "bien-être au travail",
+          "english": "wellbeing at work",
+          "example": "La vraie question est de savoir si le bien-être au travail est un vrai enjeu ou seulement un confort secondaire.",
+          "usage": "topic collocation; 'favoriser le bien-être au travail'."
+        },
+        {
+          "id": "SVE1-0262",
+          "kind": "collocation",
+          "french": "santé physique et mentale",
+          "english": "physical and mental health",
+          "example": "D'abord, parce que la santé physique et mentale des salariés en dépend directement.",
+          "usage": "fixed pair; directly depends on working conditions."
+        },
+        {
+          "id": "SVE1-0263",
+          "kind": "collocation",
+          "french": "conditions de travail",
+          "english": "working conditions",
+          "example": "Par exemple, beaucoup d'entreprises qui investissent dans de meilleures conditions de travail constatent ensuite une baisse réelle des départs et des arrêts.",
+          "usage": "f. pl.; 'de meilleures conditions de travail'."
+        },
+        {
+          "id": "SVE1-0264",
+          "kind": "collocation",
+          "french": "arrêts maladie",
+          "english": "sick leave",
+          "example": "Par exemple, on observe que les arrêts maladie sont souvent plus fréquents dans les entreprises où la pression est forte et l'organisation mauvaise.",
+          "usage": "m. pl.; more frequent where pressure is high."
+        },
+        {
+          "id": "SVE1-0265",
+          "kind": "collocation",
+          "french": "cadre de travail",
+          "english": "work environment",
+          "example": "À l'opposé, un cadre de travail respectueux permet aux salariés de tenir dans la durée sans s'épuiser.",
+          "usage": "m.; 'un cadre de travail respectueux'."
+        },
+        {
+          "id": "SVE1-0266",
+          "kind": "collocation",
+          "french": "conflits internes",
+          "english": "internal conflicts",
+          "example": "Cela limite également l'absentéisme et les conflits internes, qui pèsent toujours sur l'organisation.",
+          "usage": "m. pl.; weigh on the organisation; reduced by wellbeing."
+        },
+        {
+          "id": "SVE1-0267",
+          "kind": "collocation",
+          "french": "charge de travail",
+          "english": "workload",
+          "example": "Par exemple, dans une équipe où le responsable écoute les difficultés et adapte la charge de travail, on constate généralement une meilleure ambiance et de meilleurs résultats.",
+          "usage": "f.; 'adapter la charge de travail' = to adjust the workload."
+        },
+        {
+          "id": "SVE1-0268",
+          "kind": "collocation",
+          "french": "troubles du sommeil",
+          "english": "sleep disorders",
+          "example": "Le stress permanent, la pression excessive ou un mauvais environnement provoquent des troubles du sommeil, de l'anxiété et parfois de vraies maladies.",
+          "usage": "m. pl.; caused by permanent stress."
+        },
+        {
+          "id": "SVE1-0269",
+          "kind": "collocation",
+          "french": "pression excessive",
+          "english": "excessive pressure",
+          "example": "Le stress permanent, la pression excessive ou un mauvais environnement provoquent des troubles du sommeil, de l'anxiété et parfois de vraies maladies.",
+          "usage": "noun+adj; a driver of health problems."
+        },
+        {
+          "id": "SVE1-0270",
+          "kind": "collocation",
+          "french": "coûts liés au recrutement",
+          "english": "recruitment costs",
+          "example": "En effet, des salariés satisfaits restent plus longtemps dans l'entreprise, ce qui réduit les coûts liés au recrutement et à la formation des nouveaux.",
+          "usage": "'les coûts liés à' + noun; economic argument."
+        },
+        {
+          "id": "SVE1-0271",
+          "kind": "expression",
+          "french": "n'est pas un confort",
+          "english": "is not a comfort/perk",
+          "example": "Cela montre que le bien-être au travail n'est pas un confort, mais une vraie question de santé publique.",
+          "usage": "reframing idiom; wellbeing 'n'est pas un confort'."
+        },
+        {
+          "id": "SVE1-0272",
+          "kind": "expression",
+          "french": "question de santé publique",
+          "english": "a public-health issue",
+          "example": "Cela montre que le bien-être au travail n'est pas un confort, mais une vraie question de santé publique.",
+          "usage": "'une vraie question de santé publique'; elevates the stakes."
+        },
+        {
+          "id": "SVE1-0273",
+          "kind": "expression",
+          "french": "fait souvent juste le minimum",
+          "english": "often does only the bare minimum",
+          "example": "En revanche, un salarié démotivé fait souvent juste le minimum et se désengage progressivement de son travail.",
+          "usage": "'Faire juste le minimum' describes minimal engagement; it is more idiomatic than the noun phrase alone."
+        },
+        {
+          "id": "SVE1-0274",
+          "kind": "expression",
+          "french": "se désengage progressivement",
+          "english": "gradually disengages",
+          "example": "En revanche, un salarié démotivé fait souvent juste le minimum et se désengage progressivement de son travail.",
+          "usage": "pronominal 'se désengager de'; describes demotivation."
+        },
+        {
+          "id": "SVE1-0275",
+          "kind": "expression",
+          "french": "le bien-être n'est pas opposé à la performance",
+          "english": "wellbeing is not opposed to performance",
+          "example": "Cela montre que favoriser le bien-être n'est pas opposé à la performance : c'est même une condition pour qu'elle dure.",
+          "usage": "Reusable contrast claim: 'ne pas être opposé à' counters a false trade-off between two goals."
+        },
+        {
+          "id": "SVE1-0276",
+          "kind": "expression",
+          "french": "prend aussi davantage d'initiatives",
+          "english": "also takes more initiative",
+          "example": "Il prend aussi davantage d'initiatives et participe plus volontiers à la vie de l'équipe.",
+          "usage": "'Prendre des initiatives' is a standard workplace partnership; 'davantage de' is a formal way to say 'more'."
+        },
+        {
+          "id": "SVE1-0277",
+          "kind": "expression",
+          "french": "un investissement économique",
+          "english": "an economic investment",
+          "example": "Cela montre que le bien-être au travail est aussi un investissement économique, pas seulement une question humaine.",
+          "usage": "reframes wellbeing spending as a return-generating investment."
+        },
+        {
+          "id": "SVE1-0278",
+          "kind": "expression",
+          "french": "ne s'agit pas de supprimer les exigences",
+          "english": "it is not about removing all demands",
+          "example": "Il ne s'agit pas de supprimer les exigences, mais de mettre en place un cadre où l'effort reste tenable et juste.",
+          "usage": "'Il ne s'agit pas de' + infinitive rejects a mistaken interpretation and introduces a more precise nuance."
+        },
+        {
+          "id": "SVE1-0279",
+          "kind": "expression",
+          "french": "reste tenable et juste",
+          "english": "stays bearable and fair",
+          "example": "Il ne s'agit pas de supprimer les exigences, mais de mettre en place un cadre où l'effort reste tenable et juste.",
+          "usage": "'tenable' = sustainable/bearable; condition for effort."
+        },
+        {
+          "id": "SVE1-0280",
+          "kind": "expression",
+          "french": "une baisse réelle",
+          "english": "a real drop",
+          "example": "Par exemple, beaucoup d'entreprises qui investissent dans de meilleures conditions de travail constatent ensuite une baisse réelle des départs et des arrêts.",
+          "usage": "'constater une baisse réelle des départs' = to see a real fall."
+        },
+        {
+          "id": "SVE1-0281",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si le bien-être au travail est un vrai enjeu ou seulement un confort secondaire.",
+          "usage": "reformulation opener + indirect question."
+        },
+        {
+          "id": "SVE1-0282",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, oui, il est très important de favoriser le bien-être au travail.",
+          "usage": "opinion/thesis marker."
+        },
+        {
+          "id": "SVE1-0283",
+          "kind": "tournure",
+          "french": "D'abord, parce que",
+          "english": "First, because",
+          "example": "D'abord, parce que la santé physique et mentale des salariés en dépend directement.",
+          "usage": "enumerated causal opener; 'parce que' + indicative."
+        },
+        {
+          "id": "SVE1-0284",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I think first that",
+          "example": "Je pense d'abord que le bien-être au travail est essentiel pour protéger la santé physique et mentale des salariés.",
+          "usage": "first-argument opener; personal stance."
+        },
+        {
+          "id": "SVE1-0285",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, on passe une grande partie de sa vie au travail, et de mauvaises conditions finissent toujours par peser sur le corps et sur le moral.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0286",
+          "kind": "tournure",
+          "french": "À l'opposé",
+          "english": "At the opposite end",
+          "example": "À l'opposé, un cadre de travail respectueux permet aux salariés de tenir dans la durée sans s'épuiser.",
+          "usage": "contrast connector introducing the reverse case."
+        },
+        {
+          "id": "SVE1-0287",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, un salarié démotivé fait souvent juste le minimum et se désengage progressivement de son travail.",
+          "usage": "formal contrast connector."
+        },
+        {
+          "id": "SVE1-0288",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, une entreprise qui néglige le bien-être doit souvent gérer un fort renouvellement et perdre du temps à former sans cesse de nouvelles personnes.",
+          "usage": "reversal connector."
+        },
+        {
+          "id": "SVE1-0289",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, le bien-être au travail ne signifie pas absence d'effort.",
+          "usage": "concession opening the nuance."
+        },
+        {
+          "id": "SVE1-0290",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense qu'il est très important de favoriser le bien-être au travail, parce qu'il touche à la santé, à l'efficacité et à la stabilité des équipes.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0291",
+          "kind": "phrase-modele",
+          "french": "En effet, on passe une grande partie de sa vie au travail, et de mauvaises conditions finissent toujours par peser sur le corps et sur le moral.",
+          "english": "We spend much of our life at work, and bad conditions weigh on body and morale.",
+          "example": "En effet, on passe une grande partie de sa vie au travail, et de mauvaises conditions finissent toujours par peser sur le corps et sur le moral.",
+          "usage": "Justification model; 'passer une grande partie de'; 'peser sur'."
+        },
+        {
+          "id": "SVE1-0292",
+          "kind": "phrase-modele",
+          "french": "Le stress permanent, la pression excessive ou un mauvais environnement provoquent des troubles du sommeil, de l'anxiété et parfois de vraies maladies.",
+          "english": "Permanent stress or a bad environment causes sleep disorders and anxiety.",
+          "example": "Le stress permanent, la pression excessive ou un mauvais environnement provoquent des troubles du sommeil, de l'anxiété et parfois de vraies maladies.",
+          "usage": "Cause-effect model; compound subject + 'provoquer'."
+        },
+        {
+          "id": "SVE1-0293",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le bien-être au travail n'est pas un confort, mais une vraie question de santé publique.",
+          "english": "This shows wellbeing at work isn't a perk but a real public-health issue.",
+          "example": "Cela montre que le bien-être au travail n'est pas un confort, mais une vraie question de santé publique.",
+          "usage": "Reframing model; 'non pas X mais Y'."
+        },
+        {
+          "id": "SVE1-0294",
+          "kind": "phrase-modele",
+          "french": "Il prend aussi davantage d'initiatives et participe plus volontiers à la vie de l'équipe.",
+          "english": "They also take more initiative and join in team life more willingly.",
+          "example": "Il prend aussi davantage d'initiatives et participe plus volontiers à la vie de l'équipe.",
+          "usage": "Benefit model; 'davantage de'; 'plus volontiers'."
+        },
+        {
+          "id": "SVE1-0295",
+          "kind": "phrase-modele",
+          "french": "Cela montre que favoriser le bien-être n'est pas opposé à la performance : c'est même une condition pour qu'elle dure.",
+          "english": "Wellbeing isn't opposed to performance: it's a condition for it to last.",
+          "example": "Cela montre que favoriser le bien-être n'est pas opposé à la performance : c'est même une condition pour qu'elle dure.",
+          "usage": "Synthesis model; colon; 'pour que + subjunctive dure'."
+        },
+        {
+          "id": "SVE1-0296",
+          "kind": "phrase-modele",
+          "french": "En effet, des salariés satisfaits restent plus longtemps dans l'entreprise, ce qui réduit les coûts liés au recrutement et à la formation des nouveaux.",
+          "english": "Satisfied employees stay longer, cutting recruitment and training costs.",
+          "example": "En effet, des salariés satisfaits restent plus longtemps dans l'entreprise, ce qui réduit les coûts liés au recrutement et à la formation des nouveaux.",
+          "usage": "Economic model; 'ce qui réduit' relative-consequence clause."
+        },
+        {
+          "id": "SVE1-0297",
+          "kind": "phrase-modele",
+          "french": "Par exemple, beaucoup d'entreprises qui investissent dans de meilleures conditions de travail constatent ensuite une baisse réelle des départs et des arrêts.",
+          "english": "Firms that invest in better conditions then see a real fall in departures.",
+          "example": "Par exemple, beaucoup d'entreprises qui investissent dans de meilleures conditions de travail constatent ensuite une baisse réelle des départs et des arrêts.",
+          "usage": "Evidence model; 'investir dans'; 'constater une baisse'."
+        },
+        {
+          "id": "SVE1-0298",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le bien-être au travail est aussi un investissement économique, pas seulement une question humaine.",
+          "english": "This shows wellbeing at work is also an economic investment, not only human.",
+          "example": "Cela montre que le bien-être au travail est aussi un investissement économique, pas seulement une question humaine.",
+          "usage": "Reframing model; 'pas seulement' = not only."
+        },
+        {
+          "id": "SVE1-0299",
+          "kind": "phrase-modele",
+          "french": "Une entreprise efficace doit donc associer exigence et respect des salariés.",
+          "english": "An effective company must combine demand with respect for employees.",
+          "example": "Une entreprise efficace doit donc associer exigence et respect des salariés.",
+          "usage": "Nuance model; 'associer X et Y' = to combine."
+        },
+        {
+          "id": "SVE1-0300",
+          "kind": "phrase-modele",
+          "french": "Une bonne entreprise comprend que ses résultats dépendent aussi de la qualité de vie de ceux qui y travaillent.",
+          "english": "A good company understands its results also depend on employees' quality of life.",
+          "example": "Une bonne entreprise comprend que ses résultats dépendent aussi de la qualité de vie de ceux qui y travaillent.",
+          "usage": "Conclusion model; 'dépendre de'; 'ceux qui y travaillent'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p9",
+      "entries": [
+        {
+          "id": "SVE1-0301",
+          "kind": "mot-cle",
+          "french": "salaire",
+          "english": "wage / salary",
+          "example": "La vraie question est de savoir si le salaire est réellement le critère le plus important dans un travail.",
+          "usage": "m. noun; the criterion under debate; 'le montant du salaire'."
+        },
+        {
+          "id": "SVE1-0302",
+          "kind": "mot-cle",
+          "french": "conditions",
+          "english": "conditions",
+          "example": "D'abord, parce que les conditions de travail et le bien-être quotidien comptent au moins autant.",
+          "usage": "f. pl.; here 'conditions de travail'. High-frequency essay noun."
+        },
+        {
+          "id": "SVE1-0303",
+          "kind": "mot-cle",
+          "french": "sens",
+          "english": "meaning / purpose",
+          "example": "Ensuite, parce que le sens du travail et l'intérêt du métier jouent un rôle décisif sur la durée.",
+          "usage": "m. noun; 'le sens du travail' = the meaning of work."
+        },
+        {
+          "id": "SVE1-0304",
+          "kind": "mot-cle",
+          "french": "sécurité",
+          "english": "security",
+          "example": "Enfin, parce que la sécurité et la stabilité de l'emploi passent souvent avant le montant du salaire.",
+          "usage": "f. noun; 'la sécurité de l'emploi' = job security."
+        },
+        {
+          "id": "SVE1-0305",
+          "kind": "mot-cle",
+          "french": "stabilité",
+          "english": "stability",
+          "example": "Enfin, parce que la sécurité et la stabilité de l'emploi passent souvent avant le montant du salaire.",
+          "usage": "f. noun; valued above pay by many workers."
+        },
+        {
+          "id": "SVE1-0306",
+          "kind": "mot-cle",
+          "french": "motivation",
+          "english": "motivation",
+          "example": "De plus, un métier intéressant favorise la motivation, la créativité et la progression professionnelle.",
+          "usage": "f. noun; fostered by an interesting job."
+        },
+        {
+          "id": "SVE1-0307",
+          "kind": "mot-cle",
+          "french": "créativité",
+          "english": "creativity",
+          "example": "De plus, un métier intéressant favorise la motivation, la créativité et la progression professionnelle.",
+          "usage": "f. noun; 'favoriser la créativité'."
+        },
+        {
+          "id": "SVE1-0308",
+          "kind": "mot-cle",
+          "french": "emploi",
+          "english": "job / employment",
+          "example": "Enfin, parce que la sécurité et la stabilité de l'emploi passent souvent avant le montant du salaire.",
+          "usage": "m. noun; 'un emploi stable'. Distinguish 'emploi' (post) from 'travail'."
+        },
+        {
+          "id": "SVE1-0309",
+          "kind": "mot-cle",
+          "french": "revenu",
+          "english": "income",
+          "example": "Beaucoup de personnes préfèrent donc un revenu correct mais sûr à un salaire plus élevé mais menacé.",
+          "usage": "m. noun; 'un revenu correct mais sûr'. Singular vs 'revenus'."
+        },
+        {
+          "id": "SVE1-0310",
+          "kind": "mot-cle",
+          "french": "précaire",
+          "english": "precarious / insecure",
+          "example": "En effet, un salaire élevé perd une grande partie de son intérêt s'il s'accompagne d'un contrat précaire et de la peur constante de perdre son poste.",
+          "usage": "adj.; 'un contrat précaire' = an insecure contract."
+        },
+        {
+          "id": "SVE1-0311",
+          "kind": "collocation",
+          "french": "conditions de travail",
+          "english": "working conditions",
+          "example": "D'abord, parce que les conditions de travail et le bien-être quotidien comptent au moins autant.",
+          "usage": "f. pl.; count as much as pay; frequent collocation."
+        },
+        {
+          "id": "SVE1-0312",
+          "kind": "collocation",
+          "french": "sens du travail",
+          "english": "the meaning of work",
+          "example": "Ensuite, parce que le sens du travail et l'intérêt du métier jouent un rôle décisif sur la durée.",
+          "usage": "noun+de+noun; decisive over the long run."
+        },
+        {
+          "id": "SVE1-0313",
+          "kind": "collocation",
+          "french": "montant du salaire",
+          "english": "the salary amount",
+          "example": "Enfin, parce que la sécurité et la stabilité de l'emploi passent souvent avant le montant du salaire.",
+          "usage": "m.; 'passer avant le montant du salaire' = to come before the pay figure."
+        },
+        {
+          "id": "SVE1-0314",
+          "kind": "collocation",
+          "french": "climat d'équipe",
+          "english": "team atmosphere",
+          "example": "De bonnes conditions de travail, comme un horaire raisonnable, un bon climat d'équipe et une charge de travail tenable, changent profondément la qualité de vie.",
+          "usage": "m.; 'un bon climat d'équipe' improves quality of life."
+        },
+        {
+          "id": "SVE1-0315",
+          "kind": "collocation",
+          "french": "projets de vie",
+          "english": "life plans",
+          "example": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "usage": "m. pl.; 'construire des projets de vie' needs stability."
+        },
+        {
+          "id": "SVE1-0316",
+          "kind": "collocation",
+          "french": "contrat précaire",
+          "english": "insecure contract",
+          "example": "En effet, un salaire élevé perd une grande partie de son intérêt s'il s'accompagne d'un contrat précaire et de la peur constante de perdre son poste.",
+          "usage": "noun+adj; undercuts the value of a high salary."
+        },
+        {
+          "id": "SVE1-0317",
+          "kind": "collocation",
+          "french": "emploi stable",
+          "english": "stable job",
+          "example": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "usage": "noun+adj; enables planning; contrast 'emploi menacé'."
+        },
+        {
+          "id": "SVE1-0318",
+          "kind": "collocation",
+          "french": "horaire raisonnable",
+          "english": "reasonable hours",
+          "example": "De bonnes conditions de travail, comme un horaire raisonnable, un bon climat d'équipe et une charge de travail tenable, changent profondément la qualité de vie.",
+          "usage": "m.; part of good working conditions."
+        },
+        {
+          "id": "SVE1-0319",
+          "kind": "collocation",
+          "french": "progression professionnelle",
+          "english": "career progression",
+          "example": "De plus, un métier intéressant favorise la motivation, la créativité et la progression professionnelle.",
+          "usage": "f.; favoured by an interesting job."
+        },
+        {
+          "id": "SVE1-0320",
+          "kind": "collocation",
+          "french": "salaire élevé",
+          "english": "high salary",
+          "example": "En effet, un salaire élevé perd une grande partie de son intérêt s'il s'accompagne d'un contrat précaire et de la peur constante de perdre son poste.",
+          "usage": "noun+adj; loses value in an exhausting environment."
+        },
+        {
+          "id": "SVE1-0321",
+          "kind": "expression",
+          "french": "à la fin du mois",
+          "english": "at the end of the month",
+          "example": "Cela montre qu'un emploi ne se juge pas seulement à la fin du mois, mais aussi au quotidien.",
+          "usage": "time idiom; a job isn't judged 'seulement à la fin du mois'."
+        },
+        {
+          "id": "SVE1-0322",
+          "kind": "expression",
+          "french": "un métier qui a du sens",
+          "english": "a job that has meaning",
+          "example": "En effet, faire un métier qui a du sens, dans lequel on se sent utile et où l'on apprend, donne envie de se lever le matin.",
+          "usage": "'avoir du sens' = to make sense/be meaningful; relative clause."
+        },
+        {
+          "id": "SVE1-0323",
+          "kind": "expression",
+          "french": "se lever le matin",
+          "english": "to get up in the morning",
+          "example": "En effet, faire un métier qui a du sens, dans lequel on se sent utile et où l'on apprend, donne envie de se lever le matin.",
+          "usage": "'donner envie de se lever le matin' = to make you want to get up."
+        },
+        {
+          "id": "SVE1-0324",
+          "kind": "expression",
+          "french": "se projeter",
+          "english": "to plan ahead / picture one's future",
+          "example": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "usage": "pronominal 'se projeter'; enabled by a stable job."
+        },
+        {
+          "id": "SVE1-0325",
+          "kind": "expression",
+          "french": "angoisse du lendemain",
+          "english": "fear of tomorrow",
+          "example": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "usage": "'sans angoisse du lendemain' = without worry about the future."
+        },
+        {
+          "id": "SVE1-0326",
+          "kind": "expression",
+          "french": "coûter cher en santé",
+          "english": "to cost dearly in health terms",
+          "example": "En revanche, un très bon salaire dans un environnement épuisant finit souvent par coûter cher en santé.",
+          "usage": "'coûter cher en' + noun; a high salary can 'coûter cher en santé'."
+        },
+        {
+          "id": "SVE1-0327",
+          "kind": "expression",
+          "french": "la peur constante",
+          "english": "the constant fear",
+          "example": "En effet, un salaire élevé perd une grande partie de son intérêt s'il s'accompagne d'un contrat précaire et de la peur constante de perdre son poste.",
+          "usage": "'la peur constante de perdre son poste'; precarity's toll."
+        },
+        {
+          "id": "SVE1-0328",
+          "kind": "expression",
+          "french": "difficile à supporter",
+          "english": "hard to bear",
+          "example": "Au contraire, un travail qui ne plaît pas, même bien payé, devient vite difficile à supporter sur le long terme.",
+          "usage": "adj + 'à' + inf; 'devient difficile à supporter'."
+        },
+        {
+          "id": "SVE1-0329",
+          "kind": "expression",
+          "french": "pèse souvent plus lourd",
+          "english": "often weighs more heavily",
+          "example": "Cela montre que la tranquillité d'un emploi durable pèse souvent plus lourd que quelques centaines d'euros de plus par mois.",
+          "usage": "'peser plus lourd que' = to matter more than; figurative weight."
+        },
+        {
+          "id": "SVE1-0330",
+          "kind": "expression",
+          "french": "porteur de sens",
+          "english": "meaningful / carrying meaning",
+          "example": "Un bon emploi, c'est un emploi bien payé, mais aussi vivable, intéressant, porteur de sens et stable.",
+          "usage": "adj phrase; 'un emploi porteur de sens' = a meaningful job."
+        },
+        {
+          "id": "SVE1-0331",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si le salaire est réellement le critère le plus important dans un travail.",
+          "usage": "reformulation opener + indirect question."
+        },
+        {
+          "id": "SVE1-0332",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, le salaire est important, mais ce n'est pas le critère le plus important dans un travail.",
+          "usage": "opinion/thesis marker."
+        },
+        {
+          "id": "SVE1-0333",
+          "kind": "tournure",
+          "french": "D'abord, parce que",
+          "english": "First, because",
+          "example": "D'abord, parce que les conditions de travail et le bien-être quotidien comptent au moins autant.",
+          "usage": "enumerated causal opener."
+        },
+        {
+          "id": "SVE1-0334",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, les conditions de travail comptent au moins autant que le salaire.",
+          "usage": "first-argument opener."
+        },
+        {
+          "id": "SVE1-0335",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, on passe une grande partie de la semaine au travail, et la qualité de cet environnement a un impact direct sur la santé, le sommeil et la vie de famille.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0336",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, un très bon salaire dans un environnement épuisant finit souvent par coûter cher en santé.",
+          "usage": "formal contrast connector."
+        },
+        {
+          "id": "SVE1-0337",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, un travail qui ne plaît pas, même bien payé, devient vite difficile à supporter sur le long terme.",
+          "usage": "opposition connector."
+        },
+        {
+          "id": "SVE1-0338",
+          "kind": "tournure",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, un métier intéressant favorise la motivation, la créativité et la progression professionnelle.",
+          "usage": "additive connector."
+        },
+        {
+          "id": "SVE1-0339",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, il faut reconnaître que lorsque le salaire est trop faible, la question redevient prioritaire.",
+          "usage": "concession opening the nuance."
+        },
+        {
+          "id": "SVE1-0340",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense que le salaire est très important, mais qu'il n'est pas la chose la plus importante dans un travail.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0341",
+          "kind": "phrase-modele",
+          "french": "De bonnes conditions de travail, comme un horaire raisonnable, un bon climat d'équipe et une charge de travail tenable, changent profondément la qualité de vie.",
+          "english": "Good conditions, reasonable hours, a good team and a bearable workload change life quality.",
+          "example": "De bonnes conditions de travail, comme un horaire raisonnable, un bon climat d'équipe et une charge de travail tenable, changent profondément la qualité de vie.",
+          "usage": "Enumeration model; apposition listing conditions; 'changer profondément'."
+        },
+        {
+          "id": "SVE1-0342",
+          "kind": "phrase-modele",
+          "french": "En revanche, un très bon salaire dans un environnement épuisant finit souvent par coûter cher en santé.",
+          "english": "A very good salary in an exhausting environment often ends up costing health.",
+          "example": "En revanche, un très bon salaire dans un environnement épuisant finit souvent par coûter cher en santé.",
+          "usage": "Contrast model with 'En revanche'; 'finir par' + inf."
+        },
+        {
+          "id": "SVE1-0343",
+          "kind": "phrase-modele",
+          "french": "Cela montre qu'un emploi ne se juge pas seulement à la fin du mois, mais aussi au quotidien.",
+          "english": "A job isn't judged only at month's end, but also day to day.",
+          "example": "Cela montre qu'un emploi ne se juge pas seulement à la fin du mois, mais aussi au quotidien.",
+          "usage": "Synthesis model; 'ne ... pas seulement ... mais aussi'."
+        },
+        {
+          "id": "SVE1-0344",
+          "kind": "phrase-modele",
+          "french": "En effet, faire un métier qui a du sens, dans lequel on se sent utile et où l'on apprend, donne envie de se lever le matin.",
+          "english": "Doing meaningful work where you feel useful makes you want to get up.",
+          "example": "En effet, faire un métier qui a du sens, dans lequel on se sent utile et où l'on apprend, donne envie de se lever le matin.",
+          "usage": "Justification model; relative clauses; 'donner envie de' + inf."
+        },
+        {
+          "id": "SVE1-0345",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le sens du travail pèse souvent autant, voire plus, que le simple salaire.",
+          "english": "This shows meaning often matters as much as, or more than, salary.",
+          "example": "Cela montre que le sens du travail pèse souvent autant, voire plus, que le simple salaire.",
+          "usage": "Paragraph-conclusion model; 'autant, voire plus, que'."
+        },
+        {
+          "id": "SVE1-0346",
+          "kind": "phrase-modele",
+          "french": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "english": "A stable job lets you plan, borrow to house yourself and build life projects.",
+          "example": "Un emploi stable, au contraire, permet de se projeter, d'emprunter pour se loger et de construire des projets de vie sans angoisse du lendemain.",
+          "usage": "Benefit model; enumerated infinitives; 'permettre de'."
+        },
+        {
+          "id": "SVE1-0347",
+          "kind": "phrase-modele",
+          "french": "Beaucoup de personnes préfèrent donc un revenu correct mais sûr à un salaire plus élevé mais menacé.",
+          "english": "Many people prefer a modest but secure income to a higher but threatened salary.",
+          "example": "Beaucoup de personnes préfèrent donc un revenu correct mais sûr à un salaire plus élevé mais menacé.",
+          "usage": "Preference model; 'préférer X à Y'; 'mais sûr' vs 'mais menacé'."
+        },
+        {
+          "id": "SVE1-0348",
+          "kind": "phrase-modele",
+          "french": "Par exemple, beaucoup de personnes refusent un poste très bien payé dans une entreprise fragile pour conserver un emploi plus stable, même un peu moins rémunéré.",
+          "english": "Many refuse a well-paid post in a fragile firm to keep a more stable job.",
+          "example": "Par exemple, beaucoup de personnes refusent un poste très bien payé dans une entreprise fragile pour conserver un emploi plus stable, même un peu moins rémunéré.",
+          "usage": "Example model; 'pour + inf' purpose; 'même un peu moins rémunéré'."
+        },
+        {
+          "id": "SVE1-0349",
+          "kind": "phrase-modele",
+          "french": "Quelqu'un qui n'arrive pas à payer son loyer ou à nourrir sa famille pensera d'abord à l'argent, et c'est normal.",
+          "english": "Someone who can't pay rent will think of money first, and that's normal.",
+          "example": "Quelqu'un qui n'arrive pas à payer son loyer ou à nourrir sa famille pensera d'abord à l'argent, et c'est normal.",
+          "usage": "Nuance model; relative subject; 'pensera d'abord à' future."
+        },
+        {
+          "id": "SVE1-0350",
+          "kind": "phrase-modele",
+          "french": "Un bon emploi, c'est un emploi bien payé, mais aussi vivable, intéressant, porteur de sens et stable.",
+          "english": "A good job is well paid, but also liveable, interesting, meaningful and stable.",
+          "example": "Un bon emploi, c'est un emploi bien payé, mais aussi vivable, intéressant, porteur de sens et stable.",
+          "usage": "Conclusion model; enumerated adjectives; 'mais aussi'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p10",
+      "entries": [
+        {
+          "id": "SVE1-0351",
+          "kind": "mot-cle",
+          "french": "jeunes",
+          "english": "young people",
+          "example": "La vraie question est de savoir si les jeunes sont vraiment désavantagés au moment de chercher leur premier emploi.",
+          "usage": "m./f. pl. noun & adj.; the disadvantaged group in this topic."
+        },
+        {
+          "id": "SVE1-0352",
+          "kind": "mot-cle",
+          "french": "expérience",
+          "english": "experience",
+          "example": "D'abord, parce que les employeurs demandent souvent une expérience que les jeunes n'ont pas encore eu le temps d'acquérir.",
+          "usage": "f. noun; what employers demand and youth lack."
+        },
+        {
+          "id": "SVE1-0353",
+          "kind": "mot-cle",
+          "french": "réseau",
+          "english": "network",
+          "example": "Ensuite, parce que les jeunes manquent souvent de réseau professionnel pour accéder aux offres.",
+          "usage": "m. noun; 'un réseau professionnel' = a professional network."
+        },
+        {
+          "id": "SVE1-0354",
+          "kind": "mot-cle",
+          "french": "employeurs",
+          "english": "employers",
+          "example": "D'abord, parce que les employeurs demandent souvent une expérience que les jeunes n'ont pas encore eu le temps d'acquérir.",
+          "usage": "m. pl.; 'les employeurs demandent une expérience'."
+        },
+        {
+          "id": "SVE1-0355",
+          "kind": "mot-cle",
+          "french": "contrats",
+          "english": "contracts",
+          "example": "Enfin, parce qu'ils acceptent souvent des contrats courts ou précaires, ce qui ralentit leur entrée stable sur le marché du travail.",
+          "usage": "m. pl.; 'des contrats courts ou précaires'."
+        },
+        {
+          "id": "SVE1-0356",
+          "kind": "mot-cle",
+          "french": "stages",
+          "english": "internships",
+          "example": "En effet, beaucoup d'embauches passent par des contacts, des recommandations ou des stages bien placés, plus que par les annonces publiques.",
+          "usage": "m. pl.; entry-level experience; 'des stages bien placés'."
+        },
+        {
+          "id": "SVE1-0357",
+          "kind": "mot-cle",
+          "french": "intérim",
+          "english": "temping / temp work",
+          "example": "En effet, à l'entrée dans la vie active, beaucoup de jeunes enchaînent stages, contrats courts, missions d'intérim ou temps partiels.",
+          "usage": "m. noun; 'missions d'intérim' = temp assignments."
+        },
+        {
+          "id": "SVE1-0358",
+          "kind": "mot-cle",
+          "french": "candidatures",
+          "english": "applications",
+          "example": "Par exemple, une personne expérimentée trouve souvent un nouveau poste grâce à un ancien collègue ou à un client, alors qu'un jeune doit envoyer des dizaines de candidatures pour obtenir un seul entretien.",
+          "usage": "f. pl.; 'envoyer des candidatures' = to send applications."
+        },
+        {
+          "id": "SVE1-0359",
+          "kind": "mot-cle",
+          "french": "autonomie",
+          "english": "independence",
+          "example": "Par exemple, beaucoup de jeunes ne signent un premier contrat stable que plusieurs années après la fin de leurs études, ce qui retarde leur autonomie.",
+          "usage": "f. noun; delayed for youth; 'retarder leur autonomie'."
+        },
+        {
+          "id": "SVE1-0360",
+          "kind": "mot-cle",
+          "french": "diplômés",
+          "english": "graduates",
+          "example": "Par exemple, beaucoup de jeunes diplômés constatent que les premières offres auxquelles ils répondent demandent deux ou trois ans d'expérience, ce qu'ils ne peuvent évidemment pas avoir.",
+          "usage": "m. pl.; 'jeunes diplômés' = young graduates."
+        },
+        {
+          "id": "SVE1-0361",
+          "kind": "collocation",
+          "french": "premier emploi",
+          "english": "first job",
+          "example": "La vraie question est de savoir si les jeunes sont vraiment désavantagés au moment de chercher leur premier emploi.",
+          "usage": "m.; 'chercher son premier emploi'. Topic collocation."
+        },
+        {
+          "id": "SVE1-0362",
+          "kind": "collocation",
+          "french": "réseau professionnel",
+          "english": "professional network",
+          "example": "Ensuite, parce que les jeunes manquent souvent de réseau professionnel pour accéder aux offres.",
+          "usage": "m.; access to unadvertised jobs; youth lack it."
+        },
+        {
+          "id": "SVE1-0363",
+          "kind": "collocation",
+          "french": "expérience préalable",
+          "english": "prior experience",
+          "example": "En effet, beaucoup d'offres d'emploi demandent une expérience préalable, parfois plusieurs années, même pour des postes présentés comme accessibles.",
+          "usage": "f.; 'demander une expérience préalable'."
+        },
+        {
+          "id": "SVE1-0364",
+          "kind": "collocation",
+          "french": "offres d'emploi",
+          "english": "job offers / postings",
+          "example": "En effet, beaucoup d'offres d'emploi demandent une expérience préalable, parfois plusieurs années, même pour des postes présentés comme accessibles.",
+          "usage": "f. pl.; 'beaucoup d'offres d'emploi'."
+        },
+        {
+          "id": "SVE1-0365",
+          "kind": "collocation",
+          "french": "contrats courts",
+          "english": "short-term contracts",
+          "example": "Enfin, parce qu'ils acceptent souvent des contrats courts ou précaires, ce qui ralentit leur entrée stable sur le marché du travail.",
+          "usage": "m. pl.; typical of young workers' early careers."
+        },
+        {
+          "id": "SVE1-0366",
+          "kind": "collocation",
+          "french": "emploi stable",
+          "english": "stable job",
+          "example": "Enfin, je pense que les jeunes ont aussi plus de mal à trouver un emploi stable, et pas seulement un emploi.",
+          "usage": "noun+adj; harder for youth to obtain."
+        },
+        {
+          "id": "SVE1-0367",
+          "kind": "collocation",
+          "french": "jeunes diplômés",
+          "english": "young graduates",
+          "example": "Par exemple, beaucoup de jeunes diplômés constatent que les premières offres auxquelles ils répondent demandent deux ou trois ans d'expérience, ce qu'ils ne peuvent évidemment pas avoir.",
+          "usage": "m. pl.; face demands they cannot meet."
+        },
+        {
+          "id": "SVE1-0368",
+          "kind": "collocation",
+          "french": "monde du travail",
+          "english": "the world of work",
+          "example": "Une personne déjà installée dans le monde du travail entend parler des opportunités avant qu'elles ne soient annoncées.",
+          "usage": "m.; 'installé dans le monde du travail' = established at work."
+        },
+        {
+          "id": "SVE1-0369",
+          "kind": "collocation",
+          "french": "vie active",
+          "english": "working life",
+          "example": "En effet, à l'entrée dans la vie active, beaucoup de jeunes enchaînent stages, contrats courts, missions d'intérim ou temps partiels.",
+          "usage": "f.; 'à l'entrée dans la vie active' = when entering working life."
+        },
+        {
+          "id": "SVE1-0370",
+          "kind": "collocation",
+          "french": "manque d'expérience",
+          "english": "lack of experience",
+          "example": "Je pense d'abord que la principale difficulté vient du manque d'expérience demandé par les employeurs.",
+          "usage": "m.; 'le manque d'expérience demandé' = the required experience they lack."
+        },
+        {
+          "id": "SVE1-0371",
+          "kind": "expression",
+          "french": "n'est pas une fatalité",
+          "english": "is not inevitable",
+          "example": "Cette difficulté n'est pas une fatalité, mais elle reste une réalité dans la plupart des secteurs.",
+          "usage": "'une fatalité' = something inevitable; used to end on nuance."
+        },
+        {
+          "id": "SVE1-0372",
+          "kind": "expression",
+          "french": "par définition",
+          "english": "by definition",
+          "example": "Or, par définition, un jeune qui sort des études n'a pas encore eu le temps d'acquérir cette expérience.",
+          "usage": "fixed adverbial; 'un jeune, par définition, n'a pas encore...'."
+        },
+        {
+          "id": "SVE1-0373",
+          "kind": "expression",
+          "french": "se contenter des offres officielles",
+          "english": "to make do with official postings",
+          "example": "À l'opposé, un jeune doit souvent se contenter des offres officielles, qui sont les plus concurrentielles.",
+          "usage": "'se contenter de' = to settle for; the most competitive route."
+        },
+        {
+          "id": "SVE1-0374",
+          "kind": "expression",
+          "french": "passent par des contacts",
+          "english": "go through contacts",
+          "example": "En effet, beaucoup d'embauches passent par des contacts, des recommandations ou des stages bien placés, plus que par les annonces publiques.",
+          "usage": "'passer par' = to go via; many hires happen through contacts."
+        },
+        {
+          "id": "SVE1-0375",
+          "kind": "expression",
+          "french": "ont aussi plus de mal à trouver un emploi stable",
+          "english": "also have more difficulty finding a stable job",
+          "example": "Enfin, je pense que les jeunes ont aussi plus de mal à trouver un emploi stable, et pas seulement un emploi.",
+          "usage": "'Avoir du mal à' + infinitive means 'to struggle to'; the comparative highlights unequal access."
+        },
+        {
+          "id": "SVE1-0376",
+          "kind": "expression",
+          "french": "difficulté est structurelle",
+          "english": "difficulty is structural",
+          "example": "Cela montre que la première difficulté est structurelle : on demande aux jeunes ce qu'ils ne peuvent pas encore avoir.",
+          "usage": "evaluative claim; 'structurel/le' = built into the system."
+        },
+        {
+          "id": "SVE1-0377",
+          "kind": "expression",
+          "french": "on demande aux jeunes ce qu'ils ne peuvent pas encore avoir",
+          "english": "young people are asked for what they cannot yet have",
+          "example": "Cela montre que la première difficulté est structurelle : on demande aux jeunes ce qu'ils ne peuvent pas encore avoir.",
+          "usage": "Reusable structural-inequality formulation; 'ce qu' introduces the thing demanded."
+        },
+        {
+          "id": "SVE1-0378",
+          "kind": "expression",
+          "french": "sort des études",
+          "english": "leaves education",
+          "example": "Or, par définition, un jeune qui sort des études n'a pas encore eu le temps d'acquérir cette expérience.",
+          "usage": "'sortir des études' = to finish studying; 'un jeune qui sort des études'."
+        },
+        {
+          "id": "SVE1-0379",
+          "kind": "expression",
+          "french": "obtenir un seul entretien",
+          "english": "to get a single interview",
+          "example": "Par exemple, une personne expérimentée trouve souvent un nouveau poste grâce à un ancien collègue ou à un client, alors qu'un jeune doit envoyer des dizaines de candidatures pour obtenir un seul entretien.",
+          "usage": "'obtenir un entretien' = to land an interview; 'un seul' stresses scarcity."
+        },
+        {
+          "id": "SVE1-0380",
+          "kind": "expression",
+          "french": "entend parler des opportunités",
+          "english": "hears about the opportunities",
+          "example": "Une personne déjà installée dans le monde du travail entend parler des opportunités avant qu'elles ne soient annoncées.",
+          "usage": "'entendre parler de' = to hear about; insider information advantage."
+        },
+        {
+          "id": "SVE1-0381",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si les jeunes sont vraiment désavantagés au moment de chercher leur premier emploi.",
+          "usage": "reformulation opener + indirect question."
+        },
+        {
+          "id": "SVE1-0382",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, oui, il est en général plus difficile de trouver du travail quand on est jeune.",
+          "usage": "opinion/thesis marker."
+        },
+        {
+          "id": "SVE1-0383",
+          "kind": "tournure",
+          "french": "D'abord, parce que",
+          "english": "First, because",
+          "example": "D'abord, parce que les employeurs demandent souvent une expérience que les jeunes n'ont pas encore eu le temps d'acquérir.",
+          "usage": "enumerated causal opener."
+        },
+        {
+          "id": "SVE1-0384",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I think first that",
+          "example": "Je pense d'abord que la principale difficulté vient du manque d'expérience demandé par les employeurs.",
+          "usage": "first-argument opener; personal stance."
+        },
+        {
+          "id": "SVE1-0385",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, beaucoup d'offres d'emploi demandent une expérience préalable, parfois plusieurs années, même pour des postes présentés comme accessibles.",
+          "usage": "justification connector."
+        },
+        {
+          "id": "SVE1-0386",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, les candidats plus âgés peuvent souvent prouver qu'ils ont déjà travaillé sur des projets concrets.",
+          "usage": "opposition connector; the older-candidate case."
+        },
+        {
+          "id": "SVE1-0387",
+          "kind": "tournure",
+          "french": "À l'opposé",
+          "english": "At the opposite end",
+          "example": "À l'opposé, un jeune doit souvent se contenter des offres officielles, qui sont les plus concurrentielles.",
+          "usage": "contrast connector introducing the reverse case."
+        },
+        {
+          "id": "SVE1-0388",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, un salarié installé bénéficie souvent d'un contrat plus long et d'une meilleure protection.",
+          "usage": "formal contrast connector."
+        },
+        {
+          "id": "SVE1-0389",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que la difficulté ne vient pas seulement des compétences, mais aussi de l'accès aux opportunités.",
+          "usage": "synthesis connector; 'permettre de' + inf."
+        },
+        {
+          "id": "SVE1-0390",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense qu'il est en général plus difficile de trouver du travail quand on est jeune, à cause du manque d'expérience, de réseau et d'accès aux contrats stables.",
+          "usage": "closing connector."
+        },
+        {
+          "id": "SVE1-0391",
+          "kind": "phrase-modele",
+          "french": "En effet, beaucoup d'offres d'emploi demandent une expérience préalable, parfois plusieurs années, même pour des postes présentés comme accessibles.",
+          "english": "Many job ads demand prior experience, even for supposedly accessible posts.",
+          "example": "En effet, beaucoup d'offres d'emploi demandent une expérience préalable, parfois plusieurs années, même pour des postes présentés comme accessibles.",
+          "usage": "Justification model; 'même pour' concessive; 'présentés comme'."
+        },
+        {
+          "id": "SVE1-0392",
+          "kind": "phrase-modele",
+          "french": "Au contraire, les candidats plus âgés peuvent souvent prouver qu'ils ont déjà travaillé sur des projets concrets.",
+          "english": "Older candidates can often prove they've already worked on concrete projects.",
+          "example": "Au contraire, les candidats plus âgés peuvent souvent prouver qu'ils ont déjà travaillé sur des projets concrets.",
+          "usage": "Contrast model with 'Au contraire'; 'prouver que' + indicative."
+        },
+        {
+          "id": "SVE1-0393",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la première difficulté est structurelle : on demande aux jeunes ce qu'ils ne peuvent pas encore avoir.",
+          "english": "This shows the first difficulty is structural: youth are asked for the impossible.",
+          "example": "Cela montre que la première difficulté est structurelle : on demande aux jeunes ce qu'ils ne peuvent pas encore avoir.",
+          "usage": "Synthesis model; colon reveals explanation."
+        },
+        {
+          "id": "SVE1-0394",
+          "kind": "phrase-modele",
+          "french": "En effet, beaucoup d'embauches passent par des contacts, des recommandations ou des stages bien placés, plus que par les annonces publiques.",
+          "english": "Many hires happen through contacts, references or well-placed internships.",
+          "example": "En effet, beaucoup d'embauches passent par des contacts, des recommandations ou des stages bien placés, plus que par les annonces publiques.",
+          "usage": "Mechanism model; 'passer par'; 'plus que par' comparison."
+        },
+        {
+          "id": "SVE1-0395",
+          "kind": "phrase-modele",
+          "french": "Une personne déjà installée dans le monde du travail entend parler des opportunités avant qu'elles ne soient annoncées.",
+          "english": "Someone already established hears about opportunities before they're announced.",
+          "example": "Une personne déjà installée dans le monde du travail entend parler des opportunités avant qu'elles ne soient annoncées.",
+          "usage": "Advantage model; 'avant que ... ne soient annoncées' + subjunctive."
+        },
+        {
+          "id": "SVE1-0396",
+          "kind": "phrase-modele",
+          "french": "À l'opposé, un jeune doit souvent se contenter des offres officielles, qui sont les plus concurrentielles.",
+          "english": "A young person often has to settle for official postings, the most competitive ones.",
+          "example": "À l'opposé, un jeune doit souvent se contenter des offres officielles, qui sont les plus concurrentielles.",
+          "usage": "Contrast model with 'À l'opposé'; 'se contenter de'."
+        },
+        {
+          "id": "SVE1-0397",
+          "kind": "phrase-modele",
+          "french": "Cela leur permet de gagner un peu d'expérience, mais pas d'avoir une vraie stabilité ni de construire des projets de vie.",
+          "english": "This lets them gain a little experience but not real stability or life projects.",
+          "example": "Cela leur permet de gagner un peu d'expérience, mais pas d'avoir une vraie stabilité ni de construire des projets de vie.",
+          "usage": "Nuance model; 'permettre de'; 'ni ... ni' negation."
+        },
+        {
+          "id": "SVE1-0398",
+          "kind": "phrase-modele",
+          "french": "En revanche, un salarié installé bénéficie souvent d'un contrat plus long et d'une meilleure protection.",
+          "english": "An established employee often enjoys a longer contract and better protection.",
+          "example": "En revanche, un salarié installé bénéficie souvent d'un contrat plus long et d'une meilleure protection.",
+          "usage": "Contrast model with 'En revanche'; 'bénéficier de'."
+        },
+        {
+          "id": "SVE1-0399",
+          "kind": "phrase-modele",
+          "french": "Dans certains secteurs en pénurie, comme l'informatique, la santé ou certains métiers techniques, les jeunes diplômés sont au contraire très recherchés.",
+          "english": "In shortage sectors like IT or health, young graduates are actually sought after.",
+          "example": "Dans certains secteurs en pénurie, comme l'informatique, la santé ou certains métiers techniques, les jeunes diplômés sont au contraire très recherchés.",
+          "usage": "Counter-case model; 'au contraire'; enumeration of sectors."
+        },
+        {
+          "id": "SVE1-0400",
+          "kind": "phrase-modele",
+          "french": "Cette difficulté n'est pas une fatalité, mais elle reste une réalité dans la plupart des secteurs.",
+          "english": "This difficulty isn't inevitable, but it remains a reality in most sectors.",
+          "example": "Cette difficulté n'est pas une fatalité, mais elle reste une réalité dans la plupart des secteurs.",
+          "usage": "Conclusion model; 'ne ... pas une fatalité mais'."
+        }
+      ]
+    }
+  ]
+}

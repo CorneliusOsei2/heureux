@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% block title %}Question {{ question.number }} · {{ test.title }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="ce-shell ce-quiz">
+  <nav class="ce-breadcrumb" aria-label="Fil d’Ariane">
+    <a href="{% url 'study:comprehension_overview' %}">Compréhension écrite</a>
+    <span aria-hidden="true">›</span>
+    <a href="{% url 'study:comprehension_test' test.slug %}">{{ test.title }}</a>
+    <span aria-hidden="true">›</span>
+    <span>Question {{ question.number }}</span>
+  </nav>
+
+  <header class="ce-quiz__header">
+    <div>
+      <p class="eyebrow">{{ test.title }}</p>
+      <h1>Question {{ position }} <span>sur {{ total_questions }}</span></h1>
+    </div>
+    <div class="ce-quiz__progress">
+      <span>{{ answered_count }} réponse{{ answered_count|pluralize }} enregistrée{{ answered_count|pluralize }}</span>
+      <progress value="{{ answered_count }}" max="{{ total_questions }}" aria-label="{{ answered_count }} questions répondues sur {{ total_questions }}"></progress>
+    </div>
+  </header>
+
+  <details class="ce-question-map">
+    <summary>
+      <span>Vue d’ensemble</span>
+      <span>{{ answered_count }}/{{ total_questions }}</span>
+    </summary>
+    <div class="ce-question-map__grid">
+      {% for item in navigator %}
+        {% if item.is_available %}
+          <a href="{% url 'study:comprehension_question' test.slug attempt.pk item.number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}" class="{% if item.is_current %}is-current{% elif item.is_answered %}is-answered{% endif %}" aria-label="Question {{ item.number }}{% if item.is_answered %}, répondue{% endif %}"{% if item.is_current %} aria-current="step"{% endif %}>
+            {{ item.number }}
+          </a>
+        {% else %}
+          <span class="is-locked" aria-label="Question {{ item.number }}, verrouillée">{{ item.number }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </details>
+
+  <div class="ce-question-layout">
+    <article class="ce-passage-card">
+      <header>
+        <span class="ce-passage-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M5 3.5h10.5L19 7v13.5H5z"></path>
+            <path d="M15 3.5V8h4M8.5 12h7M8.5 15.5h7"></path>
+          </svg>
+        </span>
+        <div>
+          <small>Document</small>
+          <strong>Lisez le texte</strong>
+        </div>
+      </header>
+      <div class="ce-passage-card__text">{{ question.passage_fr }}</div>
+    </article>
+
+    <section class="ce-answer-card" aria-labelledby="ce-question-prompt">
+      <header class="ce-answer-card__head">
+        <span>Q{{ question.number }}</span>
+        <div>
+          <small>Choisissez la meilleure réponse</small>
+          <h2 id="ce-question-prompt">{{ question.prompt_fr }}</h2>
+        </div>
+      </header>
+
+      {% if answer %}
+        <div class="ce-choices ce-choices--answered">
+          {% for choice in choices %}
+            <div class="ce-choice{% if choice.is_correct %} is-correct{% elif choice.letter == selected_letter %} is-wrong{% else %} is-muted{% endif %}">
+              <span class="ce-choice__letter">{{ choice.letter }}</span>
+              <span class="ce-choice__text">{{ choice.text_fr }}</span>
+              {% if choice.is_correct %}
+                <span class="ce-choice__result" aria-label="Bonne réponse">✓</span>
+              {% elif choice.letter == selected_letter %}
+                <span class="ce-choice__result" aria-label="Votre réponse, incorrecte">×</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <form method="post" class="ce-answer-form">
+          {% csrf_token %}
+          <fieldset>
+            <legend class="sr-only">{{ question.prompt_fr }}</legend>
+            <div class="ce-choices">
+              {% for choice in choices %}
+                <label class="ce-choice">
+                  <input type="radio" name="choice" value="{{ choice.id }}">
+                  <span class="ce-choice__letter">{{ choice.letter }}</span>
+                  <span class="ce-choice__text">{{ choice.text_fr }}</span>
+                  <span class="ce-choice__radio" aria-hidden="true"></span>
+                </label>
+              {% endfor %}
+            </div>
+          </fieldset>
+          {% if answer_error %}
+            <p class="ce-answer-error" role="alert">{{ answer_error }}</p>
+          {% endif %}
+          <button class="btn btn--primary btn--lg ce-submit-answer" type="submit">
+            Valider ma réponse
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      {% endif %}
+    </section>
+  </div>
+
+  {% if answer %}
+    <section class="ce-correction{% if answer.is_correct %} ce-correction--correct{% else %} ce-correction--wrong{% endif %}" aria-labelledby="ce-correction-title">
+      <header class="ce-correction__head">
+        <span class="ce-correction__mark" aria-hidden="true">{% if answer.is_correct %}✓{% else %}×{% endif %}</span>
+        <div>
+          <p class="eyebrow">{% if answer.is_correct %}Bonne réponse{% else %}Réponse à revoir{% endif %}</p>
+          <h2 id="ce-correction-title">
+            {% if answer.is_correct %}
+              Bien joué, vous avez repéré l’information essentielle.
+            {% else %}
+              La bonne réponse était {{ correct_choice.letter }}.
+            {% endif %}
+          </h2>
+        </div>
+      </header>
+
+      <div class="ce-correction__answer">
+        <span>{{ correct_choice.letter }}</span>
+        <strong>{{ correct_choice.text_fr }}</strong>
+      </div>
+
+      {% if question.correct_explanation %}
+        <div class="ce-correction__explanation">
+          <h3>Explication</h3>
+          <p>{{ question.correct_explanation }}</p>
+        </div>
+      {% endif %}
+
+      {% if not answer.is_correct and selected_choice.rationale %}
+        <div class="ce-selected-rationale">
+          <strong>Pourquoi votre choix {{ selected_letter }} ne convient pas</strong>
+          <p>{{ selected_choice.rationale }}</p>
+        </div>
+      {% endif %}
+
+      <details class="ce-rationales">
+        <summary>Pourquoi les autres réponses ne conviennent pas</summary>
+        <div>
+          {% for choice in choices %}
+            {% if not choice.is_correct and choice.rationale %}
+              <article{% if choice.letter == selected_letter %} class="is-selected"{% endif %}>
+                <span>{{ choice.letter }}</span>
+                <p>{{ choice.rationale }}</p>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </details>
+
+      <details class="ce-translation">
+        <summary>
+          <span aria-hidden="true">EN</span>
+          Voir la traduction anglaise
+        </summary>
+        <div class="ce-translation__body">
+          <section>
+            <small>Document</small>
+            <p>{{ question.passage_en }}</p>
+          </section>
+          <section>
+            <small>Question</small>
+            <p><strong>{{ question.prompt_en }}</strong></p>
+            <ol class="ce-translation__choices">
+              {% for choice in choices %}
+                <li><span>{{ choice.letter }}</span>{{ choice.text_en }}</li>
+              {% endfor %}
+            </ol>
+          </section>
+        </div>
+      </details>
+    </section>
+  {% endif %}
+
+  <footer class="ce-quiz__footer">
+    {% if previous_number %}
+      <a class="btn" href="{% url 'study:comprehension_question' test.slug attempt.pk previous_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}"><span aria-hidden="true">←</span> Question précédente</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if next_number %}
+      <a class="btn btn--primary" href="{% url 'study:comprehension_question' test.slug attempt.pk next_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">Question suivante <span aria-hidden="true">→</span></a>
+    {% elif attempt.status == "completed" %}
+      <a class="btn btn--primary" href="{% url 'study:comprehension_results' test.slug attempt.pk %}">Voir mes résultats <span aria-hidden="true">→</span></a>
+    {% endif %}
+  </footer>
+</div>
+{% endblock %}

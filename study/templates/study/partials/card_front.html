@@ -18,7 +18,7 @@
   </div>
   {% if production %}
     <p class="cue-text">{{ phrase.english_cue }}</p>
-    <p class="cue-hint">Produisez l'expression française, puis complétez :<br>« {{ cloze_example }} »</p>
+    <p class="cue-hint">{% if subject_vocabulary %}Produisez le mot, la tournure ou la phrase française{% else %}Produisez l'expression française{% endif %}, puis complétez :<br>« {{ cloze_example }} »</p>
   {% else %}
     <p class="cue-text serif">{{ phrase.expression }}</p>
     <p class="cue-hint">Que signifie cette expression, et quand l'employer ?</p>

@@ -2,7 +2,7 @@
 
 Practice is unrestricted: every eligible new card and every due review remains
 available. Optional scopes narrow the queue to a task, category, or stable lot
-of at most 15 unique expressions without introducing a daily cap.
+without introducing a daily cap.
 """
 
 from __future__ import annotations
@@ -23,7 +23,8 @@ from .models import (
 )
 
 
-BATCH_SIZE = 15
+RESPONSE_BATCH_SIZE = 15
+PHRASE_BATCH_SIZE = 10
 WEAK_LOOKBACK_DAYS = 30
 
 
@@ -46,10 +47,17 @@ def batch_ordering(scope: Optional[dict] = None) -> tuple[str, ...]:
 def _uses_phrase_batches(scope: Optional[dict]) -> bool:
     scope = scope or {}
     return bool(
-        scope.get("kind") == "phrase"
+        scope.get("kind") in {"phrase", "vocab"}
         or scope.get("category")
         or scope.get("response")
     )
+
+
+def batch_size(scope: Optional[dict] = None) -> int:
+    """Return the number of review units in one stable lot."""
+    if _uses_phrase_batches(scope):
+        return PHRASE_BATCH_SIZE
+    return RESPONSE_BATCH_SIZE
 
 
 def scoped_cards(
@@ -78,6 +86,11 @@ def scoped_cards(
                 CardType.PHRASE_PRODUCTION,
                 CardType.PHRASE_RECOGNITION,
             ]
+        )
+    elif kind == "vocab":
+        qs = qs.filter(
+            card_type=CardType.PHRASE_PRODUCTION,
+            phrase__tier=PhraseTier.SUBJECT,
         )
     elif kind == "revisit":
         qs = qs.filter(needs_revisit=True)
@@ -142,10 +155,18 @@ def scoped_cards(
         phrase__tier=PhraseTier.SHARED
     )
     local_production = Q(
+        phrase__tier__in=[PhraseTier.RESPONSE, PhraseTier.SUBJECT],
+        card_type=CardType.PHRASE_PRODUCTION,
+    )
+    response_expression = shared_or_spine | Q(
         phrase__tier=PhraseTier.RESPONSE,
         card_type=CardType.PHRASE_PRODUCTION,
     )
-    if scope.get("response") or kind in {"revisit", "weak"}:
+    if kind == "vocab":
+        pass
+    elif scope.get("response") and kind == "phrase":
+        qs = qs.filter(response_expression)
+    elif scope.get("response") or kind in {"revisit", "weak"}:
         qs = qs.filter(shared_or_spine | local_production)
     else:
         qs = qs.filter(shared_or_spine)
@@ -156,19 +177,20 @@ def scoped_cards(
     except (TypeError, ValueError):
         batch_number = 0
     if batch_number > 0:
-        start = (batch_number - 1) * BATCH_SIZE
+        size = batch_size(scope)
+        start = (batch_number - 1) * size
         if _uses_phrase_batches(scope):
             phrase_ids = list(
                 qs.filter(phrase_id__isnull=False)
                 .order_by("phrase__lot_order", "phrase_id")
                 .values_list("phrase_id", flat=True)
-                .distinct()[start : start + BATCH_SIZE]
+                .distinct()[start : start + size]
             )
             qs = qs.filter(phrase_id__in=phrase_ids)
         else:
             batch_ids = list(
                 qs.order_by(*batch_ordering(scope))
-                .values_list("pk", flat=True)[start : start + BATCH_SIZE]
+                .values_list("pk", flat=True)[start : start + size]
             )
             qs = qs.filter(pk__in=batch_ids)
 

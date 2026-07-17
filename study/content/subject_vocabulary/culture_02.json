@@ -1,0 +1,3245 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "culture:p9",
+      "entries": [
+        {
+          "id": "SVC2-0001",
+          "kind": "mot-cle",
+          "french": "s'adapter à l'étranger",
+          "english": "to adapt/settle abroad",
+          "example": "À mon avis, oui, s'adapter à l'étranger est souvent difficile, mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Pronominal verb + prep 'à'; core topic verb — reuse to name the theme of the response."
+        },
+        {
+          "id": "SVC2-0002",
+          "kind": "mot-cle",
+          "french": "une fatalité",
+          "english": "an inevitability / doom",
+          "example": "À mon avis, oui, s'adapter à l'étranger est souvent difficile, mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Noun; here in the negation 'n'est pas une fatalité' = not unavoidable. Useful for nuanced positions."
+        },
+        {
+          "id": "SVC2-0003",
+          "kind": "mot-cle",
+          "french": "barrières concrètes",
+          "english": "concrete/practical barriers",
+          "example": "D'abord, il existe de vraies barrières concrètes au quotidien.",
+          "usage": "Adj follows and agrees with fem. plural noun; names tangible everyday obstacles."
+        },
+        {
+          "id": "SVC2-0004",
+          "kind": "mot-cle",
+          "french": "les démarches administratives",
+          "english": "administrative procedures/paperwork",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "Fixed collocation; high-value for immigration/adaptation topics."
+        },
+        {
+          "id": "SVC2-0005",
+          "kind": "mot-cle",
+          "french": "le système de santé",
+          "english": "the healthcare system",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "Topical noun phrase; typical example of things to relearn abroad."
+        },
+        {
+          "id": "SVC2-0006",
+          "kind": "mot-cle",
+          "french": "fatigue émotionnelle et mentale",
+          "english": "emotional and mental fatigue",
+          "example": "Ensuite, l'éloignement de la famille, des amis et de tous ses repères crée une vraie fatigue émotionnelle et mentale.",
+          "usage": "Two adjectives coordinated by 'et'; names the psychological cost of expatriation."
+        },
+        {
+          "id": "SVC2-0007",
+          "kind": "mot-cle",
+          "french": "l'éloignement",
+          "english": "distance / being far away",
+          "example": "Ensuite, l'éloignement de la famille et des amis crée une vraie fatigue mentale.",
+          "usage": "Abstract noun from 'éloigner'; refers to separation from family and friends."
+        },
+        {
+          "id": "SVC2-0008",
+          "kind": "mot-cle",
+          "french": "un sentiment d'isolement",
+          "english": "a feeling of isolation",
+          "example": "Cela provoque chez beaucoup de nouveaux arrivants un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale.",
+          "usage": "Noun + 'de' + noun; recurrent emotional-state phrase in social topics."
+        },
+        {
+          "id": "SVC2-0009",
+          "kind": "mot-cle",
+          "french": "un processus long",
+          "english": "a long process",
+          "example": "Cependant, même avec la meilleure préparation, l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "Adj after noun; frames adaptation as gradual, not instant — good for nuance."
+        },
+        {
+          "id": "SVC2-0010",
+          "kind": "mot-cle",
+          "french": "une expérience très formatrice",
+          "english": "a very character-building experience",
+          "example": "Mais cette difficulté n'est pas une fatalité : avec une vraie préparation et un réseau sur place, elle peut devenir une expérience très formatrice.",
+          "usage": "'formateur/formatrice' = educational/growth-giving; positive reframing word."
+        },
+        {
+          "id": "SVC2-0011",
+          "kind": "collocation",
+          "french": "s'installer dans un nouveau pays",
+          "english": "to settle in a new country",
+          "example": "Tout d'abord, s'installer dans un nouveau pays implique presque toujours des barrières concrètes très fatigantes au quotidien.",
+          "usage": "Verb + 'dans'; standard way to talk about relocating."
+        },
+        {
+          "id": "SVC2-0012",
+          "kind": "collocation",
+          "french": "ouvrir un compte bancaire",
+          "english": "to open a bank account",
+          "example": "Ainsi, ouvrir un compte bancaire ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "Concrete admin task; classic example of first-months difficulties."
+        },
+        {
+          "id": "SVC2-0013",
+          "kind": "collocation",
+          "french": "faire reconnaître un diplôme étranger",
+          "english": "to get a foreign degree recognised",
+          "example": "Ainsi, ouvrir un compte bancaire ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "Causative 'faire + infinitif'; note the administrative nuance."
+        },
+        {
+          "id": "SVC2-0014",
+          "kind": "collocation",
+          "french": "un réseau humain",
+          "english": "a human/social network",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Metaphorical noun phrase for one's circle of support."
+        },
+        {
+          "id": "SVC2-0015",
+          "kind": "collocation",
+          "french": "un cours de langue",
+          "english": "a language class",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Noun + 'de' + noun; typical integration activity."
+        },
+        {
+          "id": "SVC2-0016",
+          "kind": "collocation",
+          "french": "un milieu professionnel actif",
+          "english": "an active professional environment",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Adj 'actif' agrees; describes a place that helps break isolation."
+        },
+        {
+          "id": "SVC2-0017",
+          "kind": "collocation",
+          "french": "rejoindre rapidement une association",
+          "english": "to quickly join an association",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Verb + adverb + object; advice-giving collocation."
+        },
+        {
+          "id": "SVC2-0018",
+          "kind": "collocation",
+          "french": "un objectif défini",
+          "english": "a defined/clear goal",
+          "example": "En effet, partir avec un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation change complètement l'expérience.",
+          "usage": "Past participle as adj; condition for a smoother move."
+        },
+        {
+          "id": "SVC2-0019",
+          "kind": "collocation",
+          "french": "un minimum de moyens financiers",
+          "english": "a minimum of financial means",
+          "example": "En effet, partir avec un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation change complètement l'expérience.",
+          "usage": "'un minimum de' = at least some; one of the departure conditions."
+        },
+        {
+          "id": "SVC2-0020",
+          "kind": "collocation",
+          "french": "une vraie capacité d'adaptation",
+          "english": "a real ability to adapt",
+          "example": "En effet, partir avec un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation change complètement l'expérience.",
+          "usage": "'vraie' before noun; personal quality that eases expatriation."
+        },
+        {
+          "id": "SVC2-0021",
+          "kind": "expression",
+          "french": "à partir de zéro",
+          "english": "from scratch",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Fixed idiom; here 'tout reconstruire à partir de zéro'. Very reusable."
+        },
+        {
+          "id": "SVC2-0022",
+          "kind": "expression",
+          "french": "fait de hauts et de bas",
+          "english": "made of ups and downs",
+          "example": "Cependant, même avec la meilleure préparation, l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "Idiom describing an uneven process; good for nuance/conclusion."
+        },
+        {
+          "id": "SVC2-0023",
+          "kind": "expression",
+          "french": "ne pas conclure trop vite",
+          "english": "not to jump to conclusions",
+          "example": "Il faut accepter que les premiers mois soient inconfortables, et ne pas conclure trop vite qu'on a pris la mauvaise décision.",
+          "usage": "Negative infinitive advice; pairs with 'ne pas + inf'."
+        },
+        {
+          "id": "SVC2-0024",
+          "kind": "expression",
+          "french": "du jour au lendemain",
+          "english": "overnight / from one day to the next",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Fixed time expression; use it after a verb for a sudden break or change."
+        },
+        {
+          "id": "SVC2-0025",
+          "kind": "expression",
+          "french": "sur place",
+          "english": "on site / once there",
+          "example": "Enfin, le degré de difficulté dépend en grande partie des conditions du départ et du soutien trouvé sur place.",
+          "usage": "Fixed adverbial location phrase; it contrasts preparation before departure with action once there."
+        },
+        {
+          "id": "SVC2-0026",
+          "kind": "expression",
+          "french": "dès leur arrivée",
+          "english": "as soon as they arrive",
+          "example": "C'est le cas, par exemple, des personnes qui préparent leur départ pendant plusieurs mois et qui s'inscrivent dès leur arrivée dans des activités locales : elles surmontent en général les difficultés beaucoup plus vite que celles parties dans l'urgence.",
+          "usage": "'dès' = from the very moment; time connector for promptness."
+        },
+        {
+          "id": "SVC2-0027",
+          "kind": "expression",
+          "french": "dans l'urgence",
+          "english": "in a rush / under pressure",
+          "example": "C'est le cas, par exemple, des personnes qui préparent leur départ pendant plusieurs mois et qui s'inscrivent dès leur arrivée dans des activités locales : elles surmontent en général les difficultés beaucoup plus vite que celles parties dans l'urgence.",
+          "usage": "Adverbial phrase contrasting rushed vs prepared departures."
+        },
+        {
+          "id": "SVC2-0028",
+          "kind": "expression",
+          "french": "sans s'en rendre compte",
+          "english": "without realizing it",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Pronominal fixed phrase; s'en rendre compte naturally names an unnoticed habit or dependence."
+        },
+        {
+          "id": "SVC2-0029",
+          "kind": "expression",
+          "french": "peser très lourd",
+          "english": "weigh very heavily",
+          "example": "Cette solitude, surtout au début, peut peser très lourd.",
+          "usage": "Figurative verb phrase for a burden; natural with loneliness, grief, pressure, or an obstacle."
+        },
+        {
+          "id": "SVC2-0030",
+          "kind": "expression",
+          "french": "en profondeur",
+          "english": "in depth / deeply",
+          "example": "Prenons l'exemple d'une personne qui s'installe seule dans une grande ville étrangère : elle peut se sentir isolée le soir, après des journées entières où elle n'a parlé à personne en profondeur, et cela peut durer plusieurs mois.",
+          "usage": "Adverbial; 'parler en profondeur' = to talk meaningfully."
+        },
+        {
+          "id": "SVC2-0031",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, oui, s'adapter à l'étranger est souvent difficile, mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Opinion marker to open a stance; comma-led, followed by clause."
+        },
+        {
+          "id": "SVC2-0032",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si s'adapter à un nouveau pays est une difficulté réelle, et de comprendre d'où vient cette difficulté.",
+          "usage": "Reframing formula; introduces the true issue at stake."
+        },
+        {
+          "id": "SVC2-0033",
+          "kind": "tournure",
+          "french": "Même si certaines personnes la vivent bien,",
+          "english": "Even though some people experience it well,",
+          "example": "Même si certaines personnes la vivent bien, elle reste une étape exigeante pour la plupart de celles qui partent.",
+          "usage": "'Même si' + indicative concession; acknowledges the counter-case."
+        },
+        {
+          "id": "SVC2-0034",
+          "kind": "tournure",
+          "french": "Il faut accepter que",
+          "english": "One must accept that",
+          "example": "Il faut accepter que les premiers mois soient inconfortables, et ne pas conclure trop vite qu'on a pris la mauvaise décision.",
+          "usage": "'Il faut que' + subjunctive ('soient'); expresses necessity/acceptance."
+        },
+        {
+          "id": "SVC2-0035",
+          "kind": "tournure",
+          "french": "De même,",
+          "english": "Likewise, / Similarly,",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Additive connector linking parallel ideas."
+        },
+        {
+          "id": "SVC2-0036",
+          "kind": "tournure",
+          "french": "Cependant, même avec la meilleure préparation,",
+          "english": "However, even with the best preparation,",
+          "example": "Cependant, même avec la meilleure préparation, l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "'Cependant' concession + 'même avec' hypothetical; opens the nuance."
+        },
+        {
+          "id": "SVC2-0037",
+          "kind": "tournure",
+          "french": "En conclusion, je pense que oui,",
+          "english": "In conclusion, I think yes,",
+          "example": "En conclusion, je pense que oui, s'adapter à l'étranger est souvent difficile, à cause des barrières concrètes du quotidien et de l'éloignement de ses proches.",
+          "usage": "Conclusion marker restating the thesis clearly."
+        },
+        {
+          "id": "SVC2-0038",
+          "kind": "tournure",
+          "french": "Cela permet de transformer",
+          "english": "This makes it possible to transform",
+          "example": "Cela permet de transformer une période très difficile en une vraie expérience d'apprentissage et d'autonomie.",
+          "usage": "'permettre de + inf' expresses enabled result."
+        },
+        {
+          "id": "SVC2-0039",
+          "kind": "tournure",
+          "french": "dépend en grande partie des conditions du départ",
+          "english": "depends largely on the conditions of departure",
+          "example": "Enfin, le degré de difficulté dépend en grande partie des conditions du départ et du soutien trouvé sur place.",
+          "usage": "'dépendre de' + 'en grande partie' hedges the claim."
+        },
+        {
+          "id": "SVC2-0040",
+          "kind": "tournure",
+          "french": "Ainsi,",
+          "english": "Thus,",
+          "example": "Ainsi, ouvrir un compte bancaire ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "Connector introducing a consequence or illustration."
+        },
+        {
+          "id": "SVC2-0041",
+          "kind": "phrase-modele",
+          "french": "s'adapter à l'étranger est souvent difficile, mais cette difficulté n'est pas une fatalité",
+          "english": "adapting abroad is often hard, but that difficulty is not inevitable",
+          "example": "À mon avis, oui, s'adapter à l'étranger est souvent difficile, mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Ready-made thesis chunk with 'mais' contrast; memorise for the position."
+        },
+        {
+          "id": "SVC2-0042",
+          "kind": "phrase-modele",
+          "french": "presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires",
+          "english": "almost everything has to be relearnt: language, paperwork, healthcare, even eating habits",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "'être à + inf' = must be done; enumerated example list."
+        },
+        {
+          "id": "SVC2-0043",
+          "kind": "phrase-modele",
+          "french": "ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro",
+          "english": "that network vanishes overnight, and everything has to be rebuilt from scratch",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Two idioms in one line ('du jour au lendemain', 'à partir de zéro')."
+        },
+        {
+          "id": "SVC2-0044",
+          "kind": "phrase-modele",
+          "french": "Cette solitude, surtout au début, peut peser très lourd",
+          "english": "This loneliness, especially at the start, can weigh heavily",
+          "example": "Cette solitude, surtout au début, peut peser très lourd.",
+          "usage": "'peser lourd' figurative; oral-ready emotional line."
+        },
+        {
+          "id": "SVC2-0045",
+          "kind": "phrase-modele",
+          "french": "un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale",
+          "english": "a real feeling of isolation, which can weaken their motivation and mental health",
+          "example": "Cela provoque chez beaucoup de nouveaux arrivants un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale.",
+          "usage": "Relative 'qui' + consequence; strong argument-2 closer."
+        },
+        {
+          "id": "SVC2-0046",
+          "kind": "phrase-modele",
+          "french": "le degré de difficulté dépend en grande partie des conditions du départ et des liens construits sur place",
+          "english": "the degree of difficulty depends largely on departure conditions and ties built locally",
+          "example": "Enfin, le degré de difficulté dépend en grande partie des conditions du départ et des liens construits sur place.",
+          "usage": "Thesis of argument 3; note 'liens construits sur place'."
+        },
+        {
+          "id": "SVC2-0047",
+          "kind": "phrase-modele",
+          "french": "l'adaptation reste un processus long, fait de hauts et de bas",
+          "english": "adaptation remains a long process, full of ups and downs",
+          "example": "Cependant, même avec la meilleure préparation, l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "Nuance line; 'rester' = to remain."
+        },
+        {
+          "id": "SVC2-0048",
+          "kind": "phrase-modele",
+          "french": "avec une vraie préparation et un réseau sur place, elle peut devenir une expérience très formatrice",
+          "english": "with real preparation and a network in place, it can become a very formative experience",
+          "example": "Mais cette difficulté n'est pas une fatalité : avec une vraie préparation et un réseau sur place, elle peut devenir une expérience très formatrice.",
+          "usage": "Conditional-style reframing for the conclusion."
+        },
+        {
+          "id": "SVC2-0049",
+          "kind": "phrase-modele",
+          "french": "Il faut accepter que les premiers mois soient inconfortables, et ne pas conclure trop vite qu'on a pris la mauvaise décision",
+          "english": "One must accept that the first months are uncomfortable, and not conclude too quickly that one made the wrong choice",
+          "example": "Il faut accepter que les premiers mois soient inconfortables, et ne pas conclure trop vite qu'on a pris la mauvaise décision.",
+          "usage": "'que ... soient' subjunctive after 'il faut'."
+        },
+        {
+          "id": "SVC2-0050",
+          "kind": "phrase-modele",
+          "french": "surmontent en général les difficultés beaucoup plus vite que celles parties dans l'urgence",
+          "english": "generally overcome the difficulties much faster than those who left in a rush",
+          "example": "C'est le cas, par exemple, des personnes qui préparent leur départ pendant plusieurs mois et qui s'inscrivent dès leur arrivée dans des activités locales : elles surmontent en général les difficultés beaucoup plus vite que celles parties dans l'urgence.",
+          "usage": "Comparative 'plus vite que'; contrasts prepared vs rushed movers."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p10",
+      "entries": [
+        {
+          "id": "SVC2-0051",
+          "kind": "mot-cle",
+          "french": "ses traditions et sa culture d'origine",
+          "english": "one's traditions and culture of origin",
+          "example": "La vraie question est de savoir si garder ses traditions et sa culture d'origine est compatible avec une bonne intégration dans le pays d'accueil.",
+          "usage": "Possessives agree; core topic phrase of the response."
+        },
+        {
+          "id": "SVC2-0052",
+          "kind": "mot-cle",
+          "french": "le pays d'accueil",
+          "english": "the host country",
+          "example": "La vraie question est de savoir si garder ses traditions et sa culture d'origine est compatible avec une bonne intégration dans le pays d'accueil.",
+          "usage": "Fixed term for the receiving country; recurs throughout."
+        },
+        {
+          "id": "SVC2-0053",
+          "kind": "mot-cle",
+          "french": "un repère identitaire",
+          "english": "an identity marker/anchor",
+          "example": "D'abord, les traditions sont un repère identitaire essentiel pour la personne elle-même.",
+          "usage": "Noun + adj; explains why traditions matter psychologically."
+        },
+        {
+          "id": "SVC2-0054",
+          "kind": "mot-cle",
+          "french": "la transmission entre les générations",
+          "english": "transmission between generations",
+          "example": "Ensuite, préserver ses traditions est important pour la transmission entre les générations, notamment pour les enfants nés ou élevés dans le pays d'accueil.",
+          "usage": "Abstract noun + 'entre'; theme of argument 2."
+        },
+        {
+          "id": "SVC2-0055",
+          "kind": "mot-cle",
+          "french": "un vrai sentiment d'appartenance",
+          "english": "a genuine sense of belonging",
+          "example": "Prenons l'exemple d'enfants à qui les parents racontent régulièrement l'histoire de la famille et du pays d'origine : ils gardent souvent, à l'âge adulte, un vrai sentiment d'appartenance et un lien fort avec leurs racines.",
+          "usage": "'appartenance' = belonging; emotional benefit for children."
+        },
+        {
+          "id": "SVC2-0056",
+          "kind": "mot-cle",
+          "french": "un vrai héritage culturel",
+          "english": "a real cultural heritage",
+          "example": "Cela donne aux enfants un vrai héritage culturel, sur lequel ils peuvent s'appuyer toute leur vie, à la fois personnellement et professionnellement.",
+          "usage": "'vrai' before noun; what parents pass on."
+        },
+        {
+          "id": "SVC2-0057",
+          "kind": "mot-cle",
+          "french": "diversité culturelle",
+          "english": "cultural diversity",
+          "example": "Cela permet à la fois à la personne de garder son identité, et au pays d'accueil de gagner en diversité culturelle.",
+          "usage": "Topical noun phrase; benefit for the host society."
+        },
+        {
+          "id": "SVC2-0058",
+          "kind": "mot-cle",
+          "french": "une stabilité intérieure",
+          "english": "inner stability",
+          "example": "Garder un lien avec sa culture d'origine donne une stabilité intérieure qui aide à mieux affronter tous ces bouleversements.",
+          "usage": "'intérieure' agrees fem.; psychological benefit of keeping roots."
+        },
+        {
+          "id": "SVC2-0059",
+          "kind": "mot-cle",
+          "french": "sa langue maternelle",
+          "english": "one's mother tongue",
+          "example": "Par exemple, parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, ce sont des gestes qui apportent un vrai sentiment de continuité, surtout dans les périodes difficiles loin des siens.",
+          "usage": "Fixed collocation ('langue maternelle')."
+        },
+        {
+          "id": "SVC2-0060",
+          "kind": "mot-cle",
+          "french": "ses fêtes traditionnelles",
+          "english": "one's traditional festivals",
+          "example": "Par exemple, parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, ce sont des gestes qui apportent un vrai sentiment de continuité, surtout dans les périodes difficiles loin des siens.",
+          "usage": "Adj agrees fem. plural; concrete cultural practice."
+        },
+        {
+          "id": "SVC2-0061",
+          "kind": "collocation",
+          "french": "cuisiner les plats de son pays",
+          "english": "to cook one's country's dishes",
+          "example": "Par exemple, parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, ce sont des gestes qui apportent un vrai sentiment de continuité, surtout dans les périodes difficiles loin des siens.",
+          "usage": "Verb + object; everyday example of preserving culture."
+        },
+        {
+          "id": "SVC2-0062",
+          "kind": "collocation",
+          "french": "nouveaux codes sociaux",
+          "english": "new social codes",
+          "example": "En effet, partir vivre à l'étranger entraîne forcément de nombreux changements : nouvelle langue, nouveau travail, nouveaux codes sociaux.",
+          "usage": "Adj precedes plural noun; things one must learn abroad."
+        },
+        {
+          "id": "SVC2-0063",
+          "kind": "collocation",
+          "french": "leur histoire familiale",
+          "english": "their family history",
+          "example": "Si les parents ne transmettent rien de leur culture d'origine, ils peuvent perdre une partie de leur histoire familiale, sans même s'en rendre compte.",
+          "usage": "Possessive + noun + adj; what risks being lost without transmission."
+        },
+        {
+          "id": "SVC2-0064",
+          "kind": "collocation",
+          "french": "un lien fort avec leurs racines",
+          "english": "a strong link with their roots",
+          "example": "Prenons l'exemple d'enfants à qui les parents racontent régulièrement l'histoire de la famille et du pays d'origine : ils gardent souvent, à l'âge adulte, un vrai sentiment d'appartenance et un lien fort avec leurs racines.",
+          "usage": "'lien avec' + 'racines' metaphor for belonging."
+        },
+        {
+          "id": "SVC2-0065",
+          "kind": "collocation",
+          "french": "la culture du pays d'accueil",
+          "english": "the culture of the host country",
+          "example": "En effet, ces enfants absorbent surtout la culture du pays d'accueil, à travers l'école, les amis et les médias.",
+          "usage": "Noun + 'de'; what children absorb via school and media."
+        },
+        {
+          "id": "SVC2-0066",
+          "kind": "collocation",
+          "french": "les festivals de quartier",
+          "english": "neighbourhood festivals",
+          "example": "On le voit à Montréal, à Toronto ou à Paris, où les restaurants, les festivals de quartier, les marchés et certaines fêtes populaires sont devenus plus riches grâce aux apports des familles venues de l'étranger.",
+          "usage": "Noun + 'de'; example of enriching diversity."
+        },
+        {
+          "id": "SVC2-0067",
+          "kind": "collocation",
+          "french": "certaines fêtes populaires",
+          "english": "some popular/folk festivities",
+          "example": "On le voit à Montréal, à Toronto ou à Paris, où les restaurants, les festivals de quartier, les marchés et certaines fêtes populaires sont devenus plus riches grâce aux apports des familles venues de l'étranger.",
+          "usage": "'populaire' = of the people; enriched by newcomers."
+        },
+        {
+          "id": "SVC2-0068",
+          "kind": "collocation",
+          "french": "un pays moderne",
+          "english": "a modern country",
+          "example": "En effet, un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs.",
+          "usage": "Adj after noun; subject of the 'rarement homogène' claim."
+        },
+        {
+          "id": "SVC2-0069",
+          "kind": "collocation",
+          "french": "s'ouvrant à la culture locale",
+          "english": "opening up to the local culture",
+          "example": "Une personne qui préserve ses traditions tout en s'ouvrant à la culture locale apporte sa pierre à cette diversité, sans s'enfermer dans une bulle.",
+          "usage": "Gerund 'en s'ouvrant'; condition for healthy preservation."
+        },
+        {
+          "id": "SVC2-0070",
+          "kind": "collocation",
+          "french": "l'histoire de la famille et du pays d'origine",
+          "english": "the history of the family and the country of origin",
+          "example": "Prenons l'exemple d'enfants à qui les parents racontent régulièrement l'histoire de la famille et du pays d'origine : ils gardent souvent, à l'âge adulte, un vrai sentiment d'appartenance et un lien fort avec leurs racines.",
+          "usage": "Coordinated 'de la ... et du ...'; what parents recount."
+        },
+        {
+          "id": "SVC2-0071",
+          "kind": "expression",
+          "french": "à condition de rester ouvert",
+          "english": "provided one stays open",
+          "example": "À mon avis, oui, il faut préserver ses traditions et sa culture dans le pays d'accueil, à condition de rester ouvert au pays qui nous accueille.",
+          "usage": "'à condition de + inf' = conditional clause; key nuance connector."
+        },
+        {
+          "id": "SVC2-0072",
+          "kind": "expression",
+          "french": "au contraire",
+          "english": "on the contrary",
+          "example": "Même si certaines personnes pensent que cela peut freiner l'intégration, cette préservation n'est pas un obstacle, au contraire.",
+          "usage": "Discourse marker reversing an expectation."
+        },
+        {
+          "id": "SVC2-0073",
+          "kind": "expression",
+          "french": "vivre en vase clos",
+          "english": "to live in an insular bubble",
+          "example": "Cependant, préserver ses traditions ne doit pas conduire à vivre en vase clos, en refusant la culture du pays d'accueil.",
+          "usage": "Fixed expression; vivre en vase clos warns against isolation from the surrounding society."
+        },
+        {
+          "id": "SVC2-0074",
+          "kind": "expression",
+          "french": "apporte sa pierre à cette diversité",
+          "english": "contributes their stone to this diversity",
+          "example": "Une personne qui préserve ses traditions tout en s'ouvrant à la culture locale apporte sa pierre à cette diversité, sans s'enfermer dans une bulle.",
+          "usage": "Idiom 'apporter sa pierre (à l'édifice)' = to do one's part."
+        },
+        {
+          "id": "SVC2-0075",
+          "kind": "expression",
+          "french": "sans s'enfermer dans une bulle",
+          "english": "without shutting oneself in a bubble",
+          "example": "Une personne qui préserve ses traditions tout en s'ouvrant à la culture locale apporte sa pierre à cette diversité, sans s'enfermer dans une bulle.",
+          "usage": "'sans + inf pronominal'; warns against isolation."
+        },
+        {
+          "id": "SVC2-0076",
+          "kind": "expression",
+          "french": "loin des siens",
+          "english": "far from one's loved ones",
+          "example": "Par exemple, parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, ce sont des gestes qui apportent un vrai sentiment de continuité, surtout dans les périodes difficiles loin des siens.",
+          "usage": "'les siens' = one's people/family; set phrase."
+        },
+        {
+          "id": "SVC2-0077",
+          "kind": "expression",
+          "french": "sans même s'en rendre compte",
+          "english": "without even realising it",
+          "example": "Si les parents ne transmettent rien de leur culture d'origine, ils peuvent perdre une partie de leur histoire familiale, sans même s'en rendre compte.",
+          "usage": "'s'en rendre compte' = to realise; 'sans même' intensifies."
+        },
+        {
+          "id": "SVC2-0078",
+          "kind": "expression",
+          "french": "laissé une partie d'elle-même derrière elle",
+          "english": "left a part of herself behind",
+          "example": "Cela permet à la personne de se sentir entière, et non comme quelqu'un qui aurait laissé une partie d'elle-même derrière elle.",
+          "usage": "Reflexive 'elle-même' + 'derrière elle'; emotional image."
+        },
+        {
+          "id": "SVC2-0079",
+          "kind": "expression",
+          "french": "toute leur vie",
+          "english": "all their life / for a lifetime",
+          "example": "Cela donne aux enfants un vrai héritage culturel, sur lequel ils peuvent s'appuyer toute leur vie, à la fois personnellement et professionnellement.",
+          "usage": "Time span 'tout(e) + possessive + noun'."
+        },
+        {
+          "id": "SVC2-0080",
+          "kind": "expression",
+          "french": "à la fois personnellement et professionnellement",
+          "english": "both personally and professionally",
+          "example": "Cela donne aux enfants un vrai héritage culturel, sur lequel ils peuvent s'appuyer toute leur vie, à la fois personnellement et professionnellement.",
+          "usage": "'à la fois ... et ...' correlative pair of adverbs."
+        },
+        {
+          "id": "SVC2-0081",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, oui, il faut préserver ses traditions et sa culture dans le pays d'accueil, à condition de rester ouvert au pays qui nous accueille.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0082",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si garder ses traditions et sa culture d'origine est compatible avec une bonne intégration dans le pays d'accueil.",
+          "usage": "Reframing formula introducing the true issue."
+        },
+        {
+          "id": "SVC2-0083",
+          "kind": "tournure",
+          "french": "Même si certaines personnes pensent que",
+          "english": "Even though some people think that",
+          "example": "Même si certaines personnes pensent que cela peut freiner l'intégration, cette préservation n'est pas un obstacle, au contraire.",
+          "usage": "'Même si' + indicative concession introducing an objection."
+        },
+        {
+          "id": "SVC2-0084",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, les traditions sont un repère identitaire essentiel pour la personne elle-même.",
+          "usage": "First item of an enumeration (D'abord/Ensuite/Enfin)."
+        },
+        {
+          "id": "SVC2-0085",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, elles permettent une vraie transmission entre les générations.",
+          "usage": "Second enumerator linking arguments."
+        },
+        {
+          "id": "SVC2-0086",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, elles peuvent même enrichir le pays d'accueil, à condition de rester ouvert.",
+          "usage": "Last enumerator introducing the closing argument."
+        },
+        {
+          "id": "SVC2-0087",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, partir vivre à l'étranger entraîne forcément de nombreux changements : nouvelle langue, nouveau travail, nouveaux codes sociaux.",
+          "usage": "Justification connector introducing supporting explanation."
+        },
+        {
+          "id": "SVC2-0088",
+          "kind": "tournure",
+          "french": "Prenons l'exemple d'enfants",
+          "english": "Let's take the example of children",
+          "example": "Prenons l'exemple d'enfants à qui les parents racontent régulièrement l'histoire de la famille et du pays d'origine : ils gardent souvent, à l'âge adulte, un vrai sentiment d'appartenance et un lien fort avec leurs racines.",
+          "usage": "'Prenons l'exemple de' introduces an illustration; imperative 'nous'."
+        },
+        {
+          "id": "SVC2-0089",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, préserver ses traditions ne doit pas conduire à vivre en vase clos, en refusant la culture du pays d'accueil.",
+          "usage": "Concessive connector opening the nuance paragraph."
+        },
+        {
+          "id": "SVC2-0090",
+          "kind": "tournure",
+          "french": "En conclusion, je pense qu'il faut",
+          "english": "In conclusion, I think one must",
+          "example": "En conclusion, je pense qu'il faut préserver ses traditions dans le pays d'accueil, parce qu'elles sont un repère identitaire essentiel, qu'elles permettent la transmission aux enfants et qu'elles peuvent même enrichir la société d'accueil.",
+          "usage": "Conclusion marker + 'il faut' restating the thesis."
+        },
+        {
+          "id": "SVC2-0091",
+          "kind": "phrase-modele",
+          "french": "il faut préserver ses traditions et sa culture dans le pays d'accueil, à condition de rester ouvert au pays qui nous accueille",
+          "english": "one must preserve one's traditions and culture in the host country, provided one stays open to the country welcoming us",
+          "example": "À mon avis, oui, il faut préserver ses traditions et sa culture dans le pays d'accueil, à condition de rester ouvert au pays qui nous accueille.",
+          "usage": "Full thesis with condition clause; memorise for the position."
+        },
+        {
+          "id": "SVC2-0092",
+          "kind": "phrase-modele",
+          "french": "Garder un lien avec sa culture d'origine donne une stabilité intérieure qui aide à mieux affronter tous ces bouleversements",
+          "english": "Keeping a link with one's culture of origin gives inner stability that helps to better face all these upheavals",
+          "example": "Garder un lien avec sa culture d'origine donne une stabilité intérieure qui aide à mieux affronter tous ces bouleversements.",
+          "usage": "Infinitive subject 'Garder ...'; cause-effect line."
+        },
+        {
+          "id": "SVC2-0093",
+          "kind": "phrase-modele",
+          "french": "parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles",
+          "english": "speaking one's mother tongue at home, cooking one's country's dishes, celebrating one's traditional festivals",
+          "example": "Par exemple, parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, ce sont des gestes qui apportent un vrai sentiment de continuité, surtout dans les périodes difficiles loin des siens.",
+          "usage": "Tricolon of infinitives; vivid concrete examples."
+        },
+        {
+          "id": "SVC2-0094",
+          "kind": "phrase-modele",
+          "french": "La transmission, au contraire, leur donne une double appartenance, qui est souvent une vraie richesse",
+          "english": "Transmission, on the contrary, gives them a dual belonging, which is often a real richness",
+          "example": "La transmission, au contraire, leur donne une double appartenance, qui est souvent une vraie richesse.",
+          "usage": "'au contraire' reversal + relative 'qui'."
+        },
+        {
+          "id": "SVC2-0095",
+          "kind": "phrase-modele",
+          "french": "un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs",
+          "english": "a modern country is rarely homogeneous: it is always enriched by the food, music, festivals and languages brought by those who come from elsewhere",
+          "example": "En effet, un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs.",
+          "usage": "'s'enrichir de' + enumeration; transferable across culture topics."
+        },
+        {
+          "id": "SVC2-0096",
+          "kind": "phrase-modele",
+          "french": "Une personne qui préserve ses traditions tout en s'ouvrant à la culture locale apporte sa pierre à cette diversité",
+          "english": "A person who preserves their traditions while opening to the local culture contributes their part to this diversity",
+          "example": "Une personne qui préserve ses traditions tout en s'ouvrant à la culture locale apporte sa pierre à cette diversité, sans s'enfermer dans une bulle.",
+          "usage": "'tout en + gerund' = while doing; balanced-position line."
+        },
+        {
+          "id": "SVC2-0097",
+          "kind": "phrase-modele",
+          "french": "préserver ses traditions ne s'oppose pas à l'intégration : au contraire, cela peut même enrichir le pays d'accueil",
+          "english": "preserving one's traditions does not conflict with integration: on the contrary, it can even enrich the host country",
+          "example": "Enfin, préserver ses traditions ne s'oppose pas à l'intégration : au contraire, cela peut même enrichir le pays d'accueil, à condition de rester ouvert aux autres.",
+          "usage": "'s'opposer à' = to conflict with; refutes the objection."
+        },
+        {
+          "id": "SVC2-0098",
+          "kind": "phrase-modele",
+          "french": "Le bon équilibre est de garder ce qui compte vraiment, tout en s'ouvrant à ce que le nouveau pays a aussi à offrir",
+          "english": "The right balance is to keep what truly matters, while opening up to what the new country also has to offer",
+          "example": "Le bon équilibre est de garder ce qui compte vraiment, tout en s'ouvrant à ce que le nouveau pays a aussi à offrir.",
+          "usage": "'Le bon équilibre est de + inf'; nuance formula."
+        },
+        {
+          "id": "SVC2-0099",
+          "kind": "phrase-modele",
+          "french": "Cette préservation n'est pas contraire à l'intégration, à condition qu'elle s'accompagne d'une vraie ouverture",
+          "english": "This preservation is not contrary to integration, provided it is accompanied by real openness",
+          "example": "Cette préservation n'est pas contraire à l'intégration, à condition qu'elle s'accompagne d'une vraie ouverture.",
+          "usage": "'à condition que' + subjunctive ('s'accompagne')."
+        },
+        {
+          "id": "SVC2-0100",
+          "kind": "phrase-modele",
+          "french": "elles peuvent même enrichir le pays d'accueil, à condition de rester ouvert",
+          "english": "they can even enrich the host country, provided one stays open",
+          "example": "Enfin, elles peuvent même enrichir le pays d'accueil, à condition de rester ouvert.",
+          "usage": "'même' = even; concessive reinforcement of argument 3."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p11",
+      "entries": [
+        {
+          "id": "SVC2-0101",
+          "kind": "mot-cle",
+          "french": "son pays d'origine",
+          "english": "one's country of origin",
+          "example": "La vraie question est de savoir si, lorsqu'on vit à l'étranger, il faut surtout rester entre personnes de son pays d'origine ou s'ouvrir aussi aux habitants du pays d'accueil.",
+          "usage": "Fixed possessive phrase; central topic term."
+        },
+        {
+          "id": "SVC2-0102",
+          "kind": "mot-cle",
+          "french": "les habitants du pays d'accueil",
+          "english": "the inhabitants of the host country",
+          "example": "Enfin, ce sont les liens construits avec les habitants du pays d'accueil qui font la vraie différence.",
+          "usage": "Noun + 'du'; the people one should also mix with."
+        },
+        {
+          "id": "SVC2-0103",
+          "kind": "mot-cle",
+          "french": "le seul cercle social",
+          "english": "the only social circle",
+          "example": "À mon avis, fréquenter des gens de son pays d'origine est normal et même utile, mais cela ne doit pas devenir le seul cercle social.",
+          "usage": "'seul' before noun = 'the only'; warns against exclusivity."
+        },
+        {
+          "id": "SVC2-0104",
+          "kind": "mot-cle",
+          "french": "la communauté d'origine",
+          "english": "the community of origin",
+          "example": "Même si la communauté d'origine apporte un vrai soutien, s'y enfermer finit par freiner l'intégration.",
+          "usage": "Topic noun phrase for one's compatriots abroad."
+        },
+        {
+          "id": "SVC2-0105",
+          "kind": "mot-cle",
+          "french": "un vrai soutien",
+          "english": "real support",
+          "example": "Même si la communauté d'origine apporte un vrai soutien, s'y enfermer finit par freiner l'intégration.",
+          "usage": "'vrai' before noun intensifies; benefit of the community."
+        },
+        {
+          "id": "SVC2-0106",
+          "kind": "mot-cle",
+          "french": "bulle culturelle",
+          "english": "cultural bubble",
+          "example": "En effet, si l'on ne fréquente que des personnes de son pays, on finit par vivre dans une sorte de bulle culturelle : on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale.",
+          "usage": "Metaphor for social isolation within one's group."
+        },
+        {
+          "id": "SVC2-0107",
+          "kind": "mot-cle",
+          "french": "la langue locale",
+          "english": "the local language",
+          "example": "On pratique peu la langue locale, on comprend mal les codes et les habitudes, et une distance s'installe peu à peu avec les voisins, les collègues et les institutions.",
+          "usage": "Fixed collocation; what one practises too little in a bubble."
+        },
+        {
+          "id": "SVC2-0108",
+          "kind": "mot-cle",
+          "french": "l'isolement",
+          "english": "isolation",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Abstract noun; the risk of staying only among one's own."
+        },
+        {
+          "id": "SVC2-0109",
+          "kind": "mot-cle",
+          "french": "un nouvel arrivant",
+          "english": "a newcomer",
+          "example": "Par exemple, un nouvel arrivant trouve souvent ses premières informations — un logement, un petit emploi, les bonnes adresses — grâce à des compatriotes déjà installés qui connaissent le terrain.",
+          "usage": "'nouvel' before vowel; standard migration term."
+        },
+        {
+          "id": "SVC2-0110",
+          "kind": "mot-cle",
+          "french": "des compatriotes déjà installés",
+          "english": "compatriots already settled",
+          "example": "Par exemple, un nouvel arrivant trouve souvent ses premières informations — un logement, un petit emploi, les bonnes adresses — grâce à des compatriotes déjà installés qui connaissent le terrain.",
+          "usage": "'déjà installés' past participle; source of first help."
+        },
+        {
+          "id": "SVC2-0111",
+          "kind": "collocation",
+          "french": "un réseau humain",
+          "english": "a human/social network",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Metaphorical noun phrase for one's built-up circle of contacts."
+        },
+        {
+          "id": "SVC2-0112",
+          "kind": "collocation",
+          "french": "rompre la solitude",
+          "english": "to break the loneliness",
+          "example": "Retrouver des personnes qui parlent sa langue et partagent ses repères permet de rompre la solitude des débuts et d'obtenir une aide concrète pour les premières démarches.",
+          "usage": "'rompre' = to break; strong verb + abstract object."
+        },
+        {
+          "id": "SVC2-0113",
+          "kind": "collocation",
+          "french": "une aide concrète",
+          "english": "concrete/practical help",
+          "example": "Retrouver des personnes qui parlent sa langue et partagent ses repères permet de rompre la solitude des débuts et d'obtenir une aide concrète pour les premières démarches.",
+          "usage": "'concrète' agrees fem.; tangible assistance from compatriots."
+        },
+        {
+          "id": "SVC2-0114",
+          "kind": "collocation",
+          "french": "les premières démarches",
+          "english": "the first procedures/steps",
+          "example": "Retrouver des personnes qui parlent sa langue et partagent ses repères permet de rompre la solitude des débuts et d'obtenir une aide concrète pour les premières démarches.",
+          "usage": "'démarches' = official steps; early-stage tasks abroad."
+        },
+        {
+          "id": "SVC2-0115",
+          "kind": "collocation",
+          "french": "le choc des premiers mois",
+          "english": "the shock of the first months",
+          "example": "Cela permet de surmonter plus facilement le choc des premiers mois et de ne pas se sentir complètement seul dans un pays inconnu.",
+          "usage": "'choc de' + time; the initial adjustment difficulty."
+        },
+        {
+          "id": "SVC2-0116",
+          "kind": "collocation",
+          "french": "les codes et les habitudes",
+          "english": "the codes and customs",
+          "example": "On pratique peu la langue locale, on comprend mal les codes et les habitudes, et une distance s'installe peu à peu avec les voisins, les collègues et les institutions.",
+          "usage": "Coordinated nouns; cultural norms one may misread."
+        },
+        {
+          "id": "SVC2-0117",
+          "kind": "collocation",
+          "french": "le marché du travail",
+          "english": "the labour market",
+          "example": "En effet, les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "Fixed economic collocation; accessed via local contacts."
+        },
+        {
+          "id": "SVC2-0118",
+          "kind": "collocation",
+          "french": "un soutien moral",
+          "english": "moral support",
+          "example": "En effet, les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "Noun + adj; emotional help in hard times."
+        },
+        {
+          "id": "SVC2-0119",
+          "kind": "collocation",
+          "french": "un cours de langue",
+          "english": "a language class",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Noun + 'de' + noun; integration activity."
+        },
+        {
+          "id": "SVC2-0120",
+          "kind": "collocation",
+          "french": "sa vie sociale",
+          "english": "its social life",
+          "example": "En effet, si l'on ne fréquente que des personnes de son pays, on finit par vivre dans une sorte de bulle culturelle : on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale.",
+          "usage": "Possessive + fixed collocation; what one misses inside a bubble."
+        },
+        {
+          "id": "SVC2-0121",
+          "kind": "expression",
+          "french": "à partir de zéro",
+          "english": "from scratch",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Idiom; 'tout reconstruire à partir de zéro'."
+        },
+        {
+          "id": "SVC2-0122",
+          "kind": "expression",
+          "french": "peu à peu",
+          "english": "little by little / gradually",
+          "example": "Ensuite, se limiter à ce cercle isole peu à peu de la société d'accueil.",
+          "usage": "Adverbial idiom of gradual change."
+        },
+        {
+          "id": "SVC2-0123",
+          "kind": "expression",
+          "french": "sans s'en rendre compte",
+          "english": "without realising it",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "'s'en rendre compte' pronominal; automatic reliance."
+        },
+        {
+          "id": "SVC2-0124",
+          "kind": "expression",
+          "french": "les bonnes adresses",
+          "english": "the good/useful contacts and places",
+          "example": "Par exemple, un nouvel arrivant trouve souvent ses premières informations — un logement, un petit emploi, les bonnes adresses — grâce à des compatriotes déjà installés qui connaissent le terrain.",
+          "usage": "Idiomatic 'bonnes adresses' = insider tips."
+        },
+        {
+          "id": "SVC2-0125",
+          "kind": "expression",
+          "french": "qui connaissent le terrain",
+          "english": "who know the lay of the land",
+          "example": "Par exemple, un nouvel arrivant trouve souvent ses premières informations — un logement, un petit emploi, les bonnes adresses — grâce à des compatriotes déjà installés qui connaissent le terrain.",
+          "usage": "'connaître le terrain' idiom = to know the ground/context."
+        },
+        {
+          "id": "SVC2-0126",
+          "kind": "expression",
+          "french": "une véritable forme d'isolement",
+          "english": "a genuine form of isolation",
+          "example": "Cela ralentit l'intégration et peut transformer le confort du groupe d'origine en une véritable forme d'isolement.",
+          "usage": "'véritable' before noun intensifies; the risk described."
+        },
+        {
+          "id": "SVC2-0127",
+          "kind": "expression",
+          "french": "avant qu'il ne soit publié",
+          "english": "before it is (even) advertised",
+          "example": "Par exemple, c'est souvent grâce à un collègue ou à un voisin du pays d'accueil que l'on entend parler d'un emploi avant qu'il ne soit publié, ou que l'on découvre la bonne marche à suivre pour une démarche compliquée.",
+          "usage": "'avant que' + subjunctive with expletive 'ne'."
+        },
+        {
+          "id": "SVC2-0128",
+          "kind": "expression",
+          "french": "la bonne marche à suivre",
+          "english": "the right procedure to follow",
+          "example": "Par exemple, c'est souvent grâce à un collègue ou à un voisin du pays d'accueil que l'on entend parler d'un emploi avant qu'il ne soit publié, ou que l'on découvre la bonne marche à suivre pour une démarche compliquée.",
+          "usage": "'la marche à suivre' idiom = the steps/procedure."
+        },
+        {
+          "id": "SVC2-0129",
+          "kind": "expression",
+          "french": "un lien affectif avec sa culture",
+          "english": "an emotional bond with one's culture",
+          "example": "Elle aide à surmonter la solitude, à comprendre certaines démarches et à garder un lien affectif avec sa culture.",
+          "usage": "'affectif' = emotional; value of the origin community."
+        },
+        {
+          "id": "SVC2-0130",
+          "kind": "expression",
+          "french": "se sentir complètement seul",
+          "english": "to feel completely alone",
+          "example": "Cela permet de surmonter plus facilement le choc des premiers mois et de ne pas se sentir complètement seul dans un pays inconnu.",
+          "usage": "'se sentir + adj'; 'complètement' intensifier."
+        },
+        {
+          "id": "SVC2-0131",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, garder des liens avec des personnes de son pays d'origine est utile, surtout au début, mais il ne faut pas s'y limiter : pour vraiment s'intégrer, il faut aussi s'ouvrir aux habitants du pays d'accueil.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0132",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si, lorsqu'on vit à l'étranger, il faut surtout rester entre personnes de son pays d'origine ou s'ouvrir aussi aux habitants du pays d'accueil.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0133",
+          "kind": "tournure",
+          "french": "Même si la communauté d'origine apporte un vrai soutien,",
+          "english": "Even though the origin community brings real support,",
+          "example": "Même si la communauté d'origine apporte un vrai soutien, s'y enfermer finit par freiner l'intégration.",
+          "usage": "'Même si' + indicative concession granting the opposing point."
+        },
+        {
+          "id": "SVC2-0134",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, la communauté d'origine est un soutien précieux, surtout dans les premiers mois.",
+          "usage": "First enumerator of the arguments."
+        },
+        {
+          "id": "SVC2-0135",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, se limiter à ce cercle isole peu à peu de la société d'accueil.",
+          "usage": "Second enumerator."
+        },
+        {
+          "id": "SVC2-0136",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, ce sont les liens construits avec les habitants du pays qui rendent l'intégration vraiment solide.",
+          "usage": "Final enumerator."
+        },
+        {
+          "id": "SVC2-0137",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Justification connector introducing explanation."
+        },
+        {
+          "id": "SVC2-0138",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, un nouvel arrivant trouve souvent ses premières informations — un logement, un petit emploi, les bonnes adresses — grâce à des compatriotes déjà installés qui connaissent le terrain.",
+          "usage": "Illustration connector introducing a concrete case."
+        },
+        {
+          "id": "SVC2-0139",
+          "kind": "tournure",
+          "french": "Cependant, il ne faut pas dévaloriser",
+          "english": "However, one must not devalue",
+          "example": "Cependant, il ne faut pas dévaloriser la communauté d'origine.",
+          "usage": "'il ne faut pas + inf'; nuance defending the community."
+        },
+        {
+          "id": "SVC2-0140",
+          "kind": "tournure",
+          "french": "En conclusion, je pense qu'il est normal",
+          "english": "In conclusion, I think it is normal",
+          "example": "En conclusion, je pense qu'il est normal et même utile de fréquenter des gens de son pays d'origine, surtout au début, mais à condition de ne pas s'y limiter.",
+          "usage": "Conclusion marker + impersonal 'il est normal'."
+        },
+        {
+          "id": "SVC2-0141",
+          "kind": "phrase-modele",
+          "french": "pour vraiment s'intégrer, il faut aussi s'ouvrir aux habitants du pays d'accueil",
+          "english": "to truly integrate, one must also open up to the host country's inhabitants",
+          "example": "À mon avis, garder des liens avec des personnes de son pays d'origine est utile, surtout au début, mais il ne faut pas s'y limiter : pour vraiment s'intégrer, il faut aussi s'ouvrir aux habitants du pays d'accueil.",
+          "usage": "Purpose clause 'pour + inf' + 'il faut'; the core thesis."
+        },
+        {
+          "id": "SVC2-0142",
+          "kind": "phrase-modele",
+          "french": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro",
+          "english": "Abroad, that network vanishes overnight, and everything has to be rebuilt from scratch",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Two idioms; transferable expat line (shared with p9)."
+        },
+        {
+          "id": "SVC2-0143",
+          "kind": "phrase-modele",
+          "french": "Retrouver des personnes qui parlent sa langue et partagent ses repères permet de rompre la solitude des débuts",
+          "english": "Meeting people who speak your language and share your reference points helps break the early loneliness",
+          "example": "Retrouver des personnes qui parlent sa langue et partagent ses repères permet de rompre la solitude des débuts et d'obtenir une aide concrète pour les premières démarches.",
+          "usage": "Infinitive subject; 'permet de + inf' result."
+        },
+        {
+          "id": "SVC2-0144",
+          "kind": "phrase-modele",
+          "french": "si l'on ne fréquente que des personnes de son pays, on finit par vivre dans une sorte de bulle culturelle",
+          "english": "if you only associate with people from your country, you end up living in a kind of cultural bubble",
+          "example": "En effet, si l'on ne fréquente que des personnes de son pays, on finit par vivre dans une sorte de bulle culturelle : on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale.",
+          "usage": "'ne ... que' restriction + 'finir par + inf'."
+        },
+        {
+          "id": "SVC2-0145",
+          "kind": "phrase-modele",
+          "french": "on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale",
+          "english": "you physically live in the country, but you don't really take part in its social life",
+          "example": "En effet, si l'on ne fréquente que des personnes de son pays, on finit par vivre dans une sorte de bulle culturelle : on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale.",
+          "usage": "'mais' contrast; vivid image of surface presence."
+        },
+        {
+          "id": "SVC2-0146",
+          "kind": "phrase-modele",
+          "french": "ce sont les liens construits avec les habitants du pays d'accueil qui font la vraie différence",
+          "english": "it is the ties built with the host country's inhabitants that make the real difference",
+          "example": "Enfin, ce sont les liens construits avec les habitants du pays d'accueil qui font la vraie différence.",
+          "usage": "Cleft 'ce sont ... qui' for emphasis; argument-3 thesis."
+        },
+        {
+          "id": "SVC2-0147",
+          "kind": "phrase-modele",
+          "french": "rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement",
+          "english": "quickly joining an association, a language class or an active professional environment helps break isolation",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Enumerated infinitive subjects; practical advice."
+        },
+        {
+          "id": "SVC2-0148",
+          "kind": "phrase-modele",
+          "french": "Le problème n'est donc pas de la fréquenter, mais de s'y enfermer",
+          "english": "So the problem is not associating with it, but shutting oneself inside it",
+          "example": "Le problème n'est donc pas de la fréquenter, mais de s'y enfermer.",
+          "usage": "'ne ... pas ... mais' antithesis; 's'y enfermer' pronominal."
+        },
+        {
+          "id": "SVC2-0149",
+          "kind": "phrase-modele",
+          "french": "La meilleure intégration est celle qui s'appuie sur la communauté d'origine comme un tremplin, tout en s'ouvrant vraiment aux habitants du pays d'accueil",
+          "english": "The best integration is the one that leans on the origin community as a springboard, while genuinely opening up to the host country's inhabitants",
+          "example": "La meilleure intégration est celle qui s'appuie sur la communauté d'origine comme un tremplin, tout en s'ouvrant vraiment aux habitants du pays d'accueil.",
+          "usage": "'tremplin' metaphor + 'tout en + gerund'; conclusion line."
+        },
+        {
+          "id": "SVC2-0150",
+          "kind": "phrase-modele",
+          "french": "c'est souvent grâce à un collègue ou à un voisin du pays d'accueil que l'on entend parler d'un emploi avant qu'il ne soit publié",
+          "english": "it is often thanks to a colleague or neighbour in the host country that one hears about a job before it is advertised",
+          "example": "Par exemple, c'est souvent grâce à un collègue ou à un voisin du pays d'accueil que l'on entend parler d'un emploi avant qu'il ne soit publié, ou que l'on découvre la bonne marche à suivre pour une démarche compliquée.",
+          "usage": "Cleft 'c'est ... que' + 'entendre parler de'."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p12",
+      "entries": [
+        {
+          "id": "SVC2-0151",
+          "kind": "mot-cle",
+          "french": "la télévision",
+          "english": "television",
+          "example": "La vraie question est de savoir si la télévision est une perte de temps en elle-même ou si tout dépend de l'usage qu'on en fait.",
+          "usage": "Central topic noun; alternates with 'le téléviseur' (the TV set)."
+        },
+        {
+          "id": "SVC2-0152",
+          "kind": "mot-cle",
+          "french": "une perte de temps",
+          "english": "a waste of time",
+          "example": "La vraie question est de savoir si la télévision est une perte de temps en elle-même ou si tout dépend de l'usage qu'on en fait.",
+          "usage": "Key evaluative noun phrase debated throughout the response."
+        },
+        {
+          "id": "SVC2-0153",
+          "kind": "mot-cle",
+          "french": "l'esprit critique",
+          "english": "critical thinking",
+          "example": "À mon avis, le temps passé devant la télévision n'est pas du temps perdu en soi : tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde.",
+          "usage": "Fixed collocation; the mindset that makes TV worthwhile."
+        },
+        {
+          "id": "SVC2-0154",
+          "kind": "mot-cle",
+          "french": "un vrai outil d'information",
+          "english": "a real information tool",
+          "example": "Je pense d'abord que la télévision peut être un vrai outil d'information et de découverte.",
+          "usage": "'outil de' + noun; positive framing of TV."
+        },
+        {
+          "id": "SVC2-0155",
+          "kind": "mot-cle",
+          "french": "les journaux télévisés",
+          "english": "TV news bulletins",
+          "example": "En effet, les journaux télévisés, les reportages et les documentaires permettent de comprendre des sujets que beaucoup de gens n'iraient pas chercher dans des livres.",
+          "usage": "Fixed term ('journal télévisé' = TV news)."
+        },
+        {
+          "id": "SVC2-0156",
+          "kind": "mot-cle",
+          "french": "un bon documentaire",
+          "english": "a good documentary",
+          "example": "Par exemple, un bon documentaire sur l'environnement ou sur l'histoire peut donner des informations claires et marquantes en une heure, ce qui n'a rien d'une perte de temps.",
+          "usage": "Adj before noun; recurring positive example."
+        },
+        {
+          "id": "SVC2-0157",
+          "kind": "mot-cle",
+          "french": "valeur culturelle et sociale",
+          "english": "cultural and social value",
+          "example": "Ensuite, elle a aussi une vraie valeur culturelle et sociale, en partageant des films, des débats et des moments communs.",
+          "usage": "Two coordinated adjectives; argument-2 theme."
+        },
+        {
+          "id": "SVC2-0158",
+          "kind": "mot-cle",
+          "french": "un point de rencontre",
+          "english": "a meeting point",
+          "example": "La télévision joue donc aussi un rôle de lien social, surtout dans les foyers où elle reste un point de rencontre.",
+          "usage": "Metaphor for TV as a social gathering focus."
+        },
+        {
+          "id": "SVC2-0159",
+          "kind": "mot-cle",
+          "french": "une consommation passive",
+          "english": "passive consumption",
+          "example": "Cependant, il faut reconnaître qu'une grande partie des programmes télévisés sont effectivement de qualité moyenne et invitent à une consommation passive.",
+          "usage": "'passive' agrees fem.; the misuse that wastes time."
+        },
+        {
+          "id": "SVC2-0160",
+          "kind": "mot-cle",
+          "french": "des moments partagés",
+          "english": "shared moments",
+          "example": "De plus, regarder un programme à plusieurs, en famille ou entre amis, crée des moments partagés et des sujets de discussion.",
+          "usage": "Past participle as adj; the social benefit of watching together."
+        },
+        {
+          "id": "SVC2-0161",
+          "kind": "collocation",
+          "french": "faire découvrir le monde",
+          "english": "to help discover the world",
+          "example": "D'abord, la télévision peut vraiment informer et faire découvrir le monde.",
+          "usage": "Causative 'faire + inf'; benefit of TV."
+        },
+        {
+          "id": "SVC2-0162",
+          "kind": "collocation",
+          "french": "allumer le téléviseur",
+          "english": "to switch on the TV set",
+          "example": "En effet, allumer le téléviseur des heures pour regarder n'importe quoi, sans réfléchir, finit évidemment par remplir le temps sans rien apporter.",
+          "usage": "Verb + object; note 'téléviseur' = the device."
+        },
+        {
+          "id": "SVC2-0163",
+          "kind": "collocation",
+          "french": "regarder un grand film",
+          "english": "to watch a great film",
+          "example": "Par exemple, regarder un grand film ou un match important en famille n'est pas du temps perdu : c'est un moment partagé qui compte autant que le contenu lui-même.",
+          "usage": "'grand' before noun = great/important, not big."
+        },
+        {
+          "id": "SVC2-0164",
+          "kind": "collocation",
+          "french": "un match important",
+          "english": "an important match/game",
+          "example": "Par exemple, regarder un grand film ou un match important en famille n'est pas du temps perdu : c'est un moment partagé qui compte autant que le contenu lui-même.",
+          "usage": "'important' after noun; shared family-viewing example."
+        },
+        {
+          "id": "SVC2-0165",
+          "kind": "collocation",
+          "french": "de vraies connaissances",
+          "english": "real knowledge",
+          "example": "Ce type de programmes peut donc apporter de vraies connaissances, parfois mieux qu'un texte écrit.",
+          "usage": "'vraies' before noun intensifies; what TV can provide."
+        },
+        {
+          "id": "SVC2-0166",
+          "kind": "collocation",
+          "french": "les réseaux sociaux",
+          "english": "social media/networks",
+          "example": "Le même problème existe avec internet, les réseaux sociaux ou même les livres : tout outil mal utilisé peut devenir une perte de temps.",
+          "usage": "Fixed plural collocation; compared with TV misuse."
+        },
+        {
+          "id": "SVC2-0167",
+          "kind": "collocation",
+          "french": "un vrai rôle éducatif",
+          "english": "a real educational role",
+          "example": "Cela montre que la télévision, bien choisie, peut jouer un vrai rôle éducatif.",
+          "usage": "'vrai' before noun; the teaching function of well-chosen TV."
+        },
+        {
+          "id": "SVC2-0168",
+          "kind": "collocation",
+          "french": "la culture commune",
+          "english": "shared/common culture",
+          "example": "En effet, elle diffuse des films, des séries, des concerts et des débats qui font partie de la culture commune et qui nourrissent les conversations entre les gens.",
+          "usage": "Noun + adj; what films and debates feed."
+        },
+        {
+          "id": "SVC2-0169",
+          "kind": "collocation",
+          "french": "des sujets de discussion",
+          "english": "topics of conversation",
+          "example": "De plus, regarder un programme à plusieurs, en famille ou entre amis, crée des moments partagés et des sujets de discussion.",
+          "usage": "'sujet de' + noun; social benefit of shared viewing."
+        },
+        {
+          "id": "SVC2-0170",
+          "kind": "collocation",
+          "french": "l'image et le son",
+          "english": "image and sound",
+          "example": "De plus, l'image et le son rendent certaines réalités plus concrètes : on voit vraiment un pays, une crise ou un métier, au lieu de seulement les imaginer.",
+          "usage": "Coordinated nouns; why TV makes things concrete."
+        },
+        {
+          "id": "SVC2-0171",
+          "kind": "expression",
+          "french": "en soi",
+          "english": "in itself / per se",
+          "example": "À mon avis, le temps passé devant la télévision n'est pas du temps perdu en soi : tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde.",
+          "usage": "Adverbial; 'du temps perdu en soi' = a waste in itself."
+        },
+        {
+          "id": "SVC2-0172",
+          "kind": "expression",
+          "french": "trop absolu",
+          "english": "too absolute / sweeping",
+          "example": "À mon avis, dire que le temps passé devant la télévision est du temps perdu est trop absolu.",
+          "usage": "'trop + adj'; criticises an overstated claim."
+        },
+        {
+          "id": "SVC2-0173",
+          "kind": "expression",
+          "french": "n'importe quoi",
+          "english": "just anything / rubbish",
+          "example": "En effet, allumer le téléviseur des heures pour regarder n'importe quoi, sans réfléchir, finit évidemment par remplir le temps sans rien apporter.",
+          "usage": "Idiom for undiscerning content."
+        },
+        {
+          "id": "SVC2-0174",
+          "kind": "expression",
+          "french": "sans choix et sans limite",
+          "english": "without choice and without limit",
+          "example": "Enfin, elle ne devient une perte de temps que lorsqu'elle est consommée sans choix et sans limite.",
+          "usage": "Parallel 'sans ... et sans ...'; defines misuse."
+        },
+        {
+          "id": "SVC2-0175",
+          "kind": "expression",
+          "french": "pour occuper le temps",
+          "english": "just to fill time",
+          "example": "Par exemple, regarder pendant des heures des programmes que l'on n'a même pas choisis, juste pour occuper le temps, est très différent de regarder un film ou un reportage que l'on a vraiment voulu voir.",
+          "usage": "'pour + inf' purpose; passive viewing motive."
+        },
+        {
+          "id": "SVC2-0176",
+          "kind": "expression",
+          "french": "sans réfléchir",
+          "english": "without thinking",
+          "example": "En effet, allumer le téléviseur des heures pour regarder n'importe quoi, sans réfléchir, finit évidemment par remplir le temps sans rien apporter.",
+          "usage": "'sans + inf'; marks mindless consumption."
+        },
+        {
+          "id": "SVC2-0177",
+          "kind": "expression",
+          "french": "mieux qu'un texte écrit",
+          "english": "better than a written text",
+          "example": "Ce type de programmes peut donc apporter de vraies connaissances, parfois mieux qu'un texte écrit.",
+          "usage": "Comparative 'mieux que'; TV vs book claim."
+        },
+        {
+          "id": "SVC2-0178",
+          "kind": "expression",
+          "french": "en une heure",
+          "english": "in an hour",
+          "example": "Par exemple, un bon documentaire sur l'environnement ou sur l'histoire peut donner des informations claires et marquantes en une heure, ce qui n'a rien d'une perte de temps.",
+          "usage": "'en + duration' = time taken to do something."
+        },
+        {
+          "id": "SVC2-0179",
+          "kind": "expression",
+          "french": "à plusieurs, en famille ou entre amis",
+          "english": "in a group, as a family or among friends",
+          "example": "De plus, regarder un programme à plusieurs, en famille ou entre amis, crée des moments partagés et des sujets de discussion.",
+          "usage": "'à plusieurs' = together; social-viewing set phrase."
+        },
+        {
+          "id": "SVC2-0180",
+          "kind": "expression",
+          "french": "l'usage passif",
+          "english": "passive use",
+          "example": "Cela montre que le vrai problème n'est pas la télévision en elle-même, mais l'usage passif que l'on peut en faire.",
+          "usage": "Noun + adj; locates the real problem in usage, not the medium."
+        },
+        {
+          "id": "SVC2-0181",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, le temps passé devant la télévision n'est pas du temps perdu en soi : tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0182",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la télévision est une perte de temps en elle-même ou si tout dépend de l'usage qu'on en fait.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0183",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que la télévision peut être un vrai outil d'information et de découverte.",
+          "usage": "Opinion + enumerator introducing argument 1."
+        },
+        {
+          "id": "SVC2-0184",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, l'image et le son rendent certaines réalités plus concrètes : on voit vraiment un pays, une crise ou un métier, au lieu de seulement les imaginer.",
+          "usage": "Additive connector adding a further point."
+        },
+        {
+          "id": "SVC2-0185",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, elle a aussi une vraie valeur culturelle et sociale, en partageant des films, des débats et des moments communs.",
+          "usage": "Enumerator linking argument 2."
+        },
+        {
+          "id": "SVC2-0186",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, elle ne devient une perte de temps que lorsqu'elle est consommée sans choix et sans limite.",
+          "usage": "Enumerator introducing argument 3."
+        },
+        {
+          "id": "SVC2-0187",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, les journaux télévisés, les reportages et les documentaires permettent de comprendre des sujets que beaucoup de gens n'iraient pas chercher dans des livres.",
+          "usage": "Justification connector."
+        },
+        {
+          "id": "SVC2-0188",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, un bon documentaire sur l'environnement ou sur l'histoire peut donner des informations claires et marquantes en une heure, ce qui n'a rien d'une perte de temps.",
+          "usage": "Illustration connector."
+        },
+        {
+          "id": "SVC2-0189",
+          "kind": "tournure",
+          "french": "Tout dépend de ce que l'on regarde",
+          "english": "it all depends on what one watches",
+          "example": "Tout dépend de ce que l'on regarde, du temps qu'on y consacre et du regard critique que l'on garde.",
+          "usage": "Nuanced evaluative frame; de ce que + indicative names the factor that determines the judgement."
+        },
+        {
+          "id": "SVC2-0190",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître qu'",
+          "english": "However, one must acknowledge that",
+          "example": "Cependant, il faut reconnaître qu'une grande partie des programmes télévisés sont effectivement de qualité moyenne et invitent à une consommation passive.",
+          "usage": "Concessive 'il faut reconnaître que' opening the nuance."
+        },
+        {
+          "id": "SVC2-0191",
+          "kind": "phrase-modele",
+          "french": "le temps passé devant la télévision n'est pas du temps perdu en soi",
+          "english": "time spent in front of the TV is not wasted time in itself",
+          "example": "À mon avis, le temps passé devant la télévision n'est pas du temps perdu en soi : tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde.",
+          "usage": "Thesis line; 'du temps perdu' partitive."
+        },
+        {
+          "id": "SVC2-0192",
+          "kind": "phrase-modele",
+          "french": "tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde",
+          "english": "it all depends on what you watch, the time you devote to it and the critical mind you keep",
+          "example": "À mon avis, le temps passé devant la télévision n'est pas du temps perdu en soi : tout dépend de ce que l'on regarde, du temps qu'on y consacre et de l'esprit critique que l'on garde.",
+          "usage": "'tout dépend de' + tricolon; strong nuance formula."
+        },
+        {
+          "id": "SVC2-0193",
+          "kind": "phrase-modele",
+          "french": "les journaux télévisés, les reportages et les documentaires permettent de comprendre des sujets que beaucoup de gens n'iraient pas chercher dans des livres",
+          "english": "TV news, reports and documentaries make it possible to understand subjects many people would not go and look for in books",
+          "example": "En effet, les journaux télévisés, les reportages et les documentaires permettent de comprendre des sujets que beaucoup de gens n'iraient pas chercher dans des livres.",
+          "usage": "Enumeration + 'permettre de + inf'."
+        },
+        {
+          "id": "SVC2-0194",
+          "kind": "phrase-modele",
+          "french": "l'image et le son rendent certaines réalités plus concrètes : on voit vraiment un pays, une crise ou un métier",
+          "english": "image and sound make certain realities more concrete: you really see a country, a crisis or a job",
+          "example": "De plus, l'image et le son rendent certaines réalités plus concrètes : on voit vraiment un pays, une crise ou un métier, au lieu de seulement les imaginer.",
+          "usage": "'rendre + adj' = to make; sensory argument."
+        },
+        {
+          "id": "SVC2-0195",
+          "kind": "phrase-modele",
+          "french": "regarder un grand film ou un match important en famille n'est pas du temps perdu : c'est un moment partagé",
+          "english": "watching a great film or an important match as a family is not wasted time: it is a shared moment",
+          "example": "Par exemple, regarder un grand film ou un match important en famille n'est pas du temps perdu : c'est un moment partagé qui compte autant que le contenu lui-même.",
+          "usage": "Colon reframing; social-value line."
+        },
+        {
+          "id": "SVC2-0196",
+          "kind": "phrase-modele",
+          "french": "La télévision joue donc aussi un rôle de lien social, surtout dans les foyers où elle reste un point de rencontre",
+          "english": "So television also plays a role of social bond, especially in homes where it remains a meeting point",
+          "example": "La télévision joue donc aussi un rôle de lien social, surtout dans les foyers où elle reste un point de rencontre.",
+          "usage": "'jouer un rôle de'; argument-2 conclusion."
+        },
+        {
+          "id": "SVC2-0197",
+          "kind": "phrase-modele",
+          "french": "la télévision ne devient une perte de temps que lorsqu'elle est consommée sans choix et sans limite",
+          "english": "television only becomes a waste of time when it is consumed without choice and without limit",
+          "example": "Enfin, la télévision ne devient une perte de temps que lorsqu'elle est consommée sans choix et sans limite.",
+          "usage": "'ne ... que lorsque' = only when; conditional argument."
+        },
+        {
+          "id": "SVC2-0198",
+          "kind": "phrase-modele",
+          "french": "tout outil mal utilisé peut devenir une perte de temps",
+          "english": "any badly used tool can become a waste of time",
+          "example": "Le même problème existe avec internet, les réseaux sociaux ou même les livres : tout outil mal utilisé peut devenir une perte de temps.",
+          "usage": "Generalising maxim; 'mal utilisé' past participle."
+        },
+        {
+          "id": "SVC2-0199",
+          "kind": "phrase-modele",
+          "french": "le vrai problème n'est pas la télévision en elle-même, mais l'usage passif que l'on peut en faire",
+          "english": "the real problem is not television itself, but the passive use one can make of it",
+          "example": "Cela montre que le vrai problème n'est pas la télévision en elle-même, mais l'usage passif que l'on peut en faire.",
+          "usage": "'ne ... pas ... mais' antithesis; 'en elle-même'."
+        },
+        {
+          "id": "SVC2-0200",
+          "kind": "phrase-modele",
+          "french": "La vraie question est donc moins « la télévision est-elle utile ? » que « comment et combien je la regarde ? »",
+          "english": "The real question is therefore less 'is television useful?' than 'how and how much do I watch it?'",
+          "example": "La vraie question est donc moins « la télévision est-elle utile ? » que « comment et combien je la regarde ? ».",
+          "usage": "'moins ... que ...' comparison reframing the debate."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p13",
+      "entries": [
+        {
+          "id": "SVC2-0201",
+          "kind": "mot-cle",
+          "french": "les matières culturelles",
+          "english": "cultural (arts) subjects",
+          "example": "La vraie question est de savoir si les matières culturelles comme la musique, le dessin ou le théâtre ont vraiment leur place à l'école.",
+          "usage": "Central topic term ('matière' = school subject)."
+        },
+        {
+          "id": "SVC2-0202",
+          "kind": "mot-cle",
+          "french": "la musique, le dessin ou le théâtre",
+          "english": "music, drawing or drama",
+          "example": "La vraie question est de savoir si les matières culturelles comme la musique, le dessin ou le théâtre ont vraiment leur place à l'école.",
+          "usage": "Enumerated examples defining the subjects at issue."
+        },
+        {
+          "id": "SVC2-0203",
+          "kind": "mot-cle",
+          "french": "l'expression personnelle",
+          "english": "personal expression",
+          "example": "Tout d'abord, les matières culturelles développent l'expression personnelle, la sensibilité et l'esprit critique.",
+          "usage": "Noun + adj; first benefit developed."
+        },
+        {
+          "id": "SVC2-0204",
+          "kind": "mot-cle",
+          "french": "la sensibilité",
+          "english": "sensitivity",
+          "example": "D'abord, elles développent l'expression, la sensibilité et l'esprit critique.",
+          "usage": "Abstract noun; artistic quality fostered by these subjects."
+        },
+        {
+          "id": "SVC2-0205",
+          "kind": "mot-cle",
+          "french": "l'esprit critique",
+          "english": "critical thinking",
+          "example": "D'abord, elles développent l'expression, la sensibilité et l'esprit critique.",
+          "usage": "Fixed collocation; a key formative benefit."
+        },
+        {
+          "id": "SVC2-0206",
+          "kind": "mot-cle",
+          "french": "l'empathie",
+          "english": "empathy",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien — des qualités que les matières purement théoriques sollicitent beaucoup moins.",
+          "usage": "Abstract noun; developed by role-play and the arts."
+        },
+        {
+          "id": "SVC2-0207",
+          "kind": "mot-cle",
+          "french": "la créativité",
+          "english": "creativity",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien — des qualités que les matières purement théoriques sollicitent beaucoup moins.",
+          "usage": "Abstract noun; core benefit of arts education."
+        },
+        {
+          "id": "SVC2-0208",
+          "kind": "mot-cle",
+          "french": "de vrais métiers",
+          "english": "real (professional) careers",
+          "example": "Enfin, elles peuvent révéler des talents et préparer à de vrais métiers.",
+          "usage": "'vrais' before noun; argument that arts lead to jobs."
+        },
+        {
+          "id": "SVC2-0209",
+          "kind": "mot-cle",
+          "french": "la première vocation",
+          "english": "the first calling/vocation",
+          "example": "Or, c'est très souvent à l'école que naît la première vocation.",
+          "usage": "Noun + adj; where artistic careers often begin."
+        },
+        {
+          "id": "SVC2-0210",
+          "kind": "mot-cle",
+          "french": "des écoles spécialisées",
+          "english": "specialised schools",
+          "example": "Devenir comédien, musicien, peintre ou cinéaste suppose souvent des années d'études dans des écoles spécialisées, des conservatoires ou des académies.",
+          "usage": "Adj agrees; where artistic training continues."
+        },
+        {
+          "id": "SVC2-0211",
+          "kind": "collocation",
+          "french": "l'ouverture d'esprit",
+          "english": "open-mindedness",
+          "example": "À mon avis, non, je ne suis pas d'accord : les matières culturelles ont toute leur place à l'école, car elles développent l'expression, l'ouverture d'esprit et de vraies compétences utiles pour la vie.",
+          "usage": "Fixed collocation; a competence the arts develop."
+        },
+        {
+          "id": "SVC2-0212",
+          "kind": "collocation",
+          "french": "joue une scène de théâtre",
+          "english": "acts out a drama scene",
+          "example": "Par exemple, un élève qui joue une scène de théâtre apprend à maîtriser sa voix, son corps et ses émotions, et gagne une assurance qu'un cours classique ne lui apporterait pas de la même manière.",
+          "usage": "Verb 'jouer' + object; concrete classroom example."
+        },
+        {
+          "id": "SVC2-0213",
+          "kind": "collocation",
+          "french": "maîtriser sa voix, son corps et ses émotions",
+          "english": "to master one's voice, body and emotions",
+          "example": "Par exemple, un élève qui joue une scène de théâtre apprend à maîtriser sa voix, son corps et ses émotions, et gagne une assurance qu'un cours classique ne lui apporterait pas de la même manière.",
+          "usage": "Tricolon of objects after 'maîtriser'."
+        },
+        {
+          "id": "SVC2-0214",
+          "kind": "collocation",
+          "french": "un courant de peinture",
+          "english": "a painting movement/school",
+          "example": "En effet, découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays.",
+          "usage": "'courant de' = trend/movement in art."
+        },
+        {
+          "id": "SVC2-0215",
+          "kind": "collocation",
+          "french": "une œuvre musicale",
+          "english": "a musical work",
+          "example": "En effet, découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays.",
+          "usage": "Noun + adj; art object to discover."
+        },
+        {
+          "id": "SVC2-0216",
+          "kind": "collocation",
+          "french": "une pièce de théâtre",
+          "english": "a play (theatre)",
+          "example": "En effet, découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays.",
+          "usage": "Fixed term ('pièce' = play)."
+        },
+        {
+          "id": "SVC2-0217",
+          "kind": "collocation",
+          "french": "des points de vue différents",
+          "english": "different points of view",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien — des qualités que les matières purement théoriques sollicitent beaucoup moins.",
+          "usage": "Fixed 'point de vue' + adj; empathy outcome."
+        },
+        {
+          "id": "SVC2-0218",
+          "kind": "collocation",
+          "french": "un atelier de théâtre",
+          "english": "a drama workshop",
+          "example": "Par exemple, beaucoup de musiciens ou de comédiens reconnaissent que tout a commencé par un cours de musique ou un atelier de théâtre découvert à l'école.",
+          "usage": "'atelier de' = workshop; where vocations begin."
+        },
+        {
+          "id": "SVC2-0219",
+          "kind": "collocation",
+          "french": "une vraie discipline",
+          "english": "real discipline",
+          "example": "En effet, les métiers artistiques sont de vrais métiers sérieux, qui demandent une vraie discipline et une formation longue et exigeante.",
+          "usage": "'vraie' before noun; what artistic careers demand."
+        },
+        {
+          "id": "SVC2-0220",
+          "kind": "collocation",
+          "french": "l'avenir professionnel des élèves",
+          "english": "the pupils' professional future",
+          "example": "Cela montre que les matières culturelles peuvent aussi avoir une utilité très concrète pour l'avenir professionnel des élèves.",
+          "usage": "Noun + adj + 'des élèves'; concrete usefulness argument."
+        },
+        {
+          "id": "SVC2-0221",
+          "kind": "expression",
+          "french": "toute leur place à l'école",
+          "english": "fully their place at school",
+          "example": "À mon avis, non, je ne suis pas d'accord : les matières culturelles ont toute leur place à l'école, car elles développent l'expression, l'ouverture d'esprit et de vraies compétences utiles pour la vie.",
+          "usage": "'avoir toute sa place' idiom = to fully belong."
+        },
+        {
+          "id": "SVC2-0222",
+          "kind": "expression",
+          "french": "jugées secondaires",
+          "english": "deemed secondary",
+          "example": "Même si ces matières sont parfois jugées secondaires par rapport aux matières classiques, elles apportent beaucoup aux élèves.",
+          "usage": "Past participle agreeing fem. plural; the objection stated."
+        },
+        {
+          "id": "SVC2-0223",
+          "kind": "expression",
+          "french": "se mettre à la place des autres",
+          "english": "to put oneself in others' shoes",
+          "example": "En effet, pratiquer la musique, le dessin ou le théâtre oblige l'élève à imaginer, à ressentir et à se mettre à la place des autres.",
+          "usage": "Idiom for empathy; pronominal 'se mettre'."
+        },
+        {
+          "id": "SVC2-0224",
+          "kind": "expression",
+          "french": "mille façons de voir",
+          "english": "a thousand ways of seeing",
+          "example": "Par exemple, étudier des musiques ou des peintures venues d'autres continents permet aux élèves de réaliser qu'il existe mille façons de voir et de représenter le monde.",
+          "usage": "'mille' hyperbole; expresses plurality of viewpoints."
+        },
+        {
+          "id": "SVC2-0225",
+          "kind": "expression",
+          "french": "Loin d'être une perte de temps",
+          "english": "Far from being a waste of time",
+          "example": "Loin d'être une perte de temps, elles font partie d'une éducation complète.",
+          "usage": "'Loin de + inf' = far from; refutes the objection."
+        },
+        {
+          "id": "SVC2-0226",
+          "kind": "expression",
+          "french": "tout a commencé par",
+          "english": "it all began with",
+          "example": "Par exemple, beaucoup de musiciens ou de comédiens reconnaissent que tout a commencé par un cours de musique ou un atelier de théâtre découvert à l'école.",
+          "usage": "'commencer par' = to start with; origin-story phrase."
+        },
+        {
+          "id": "SVC2-0227",
+          "kind": "expression",
+          "french": "d'autres époques et d'autres pays",
+          "english": "other eras and other countries",
+          "example": "En effet, découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays.",
+          "usage": "Parallel 'd'autres ... et d'autres ...'; scope of arts."
+        },
+        {
+          "id": "SVC2-0228",
+          "kind": "expression",
+          "french": "le monde qui les entoure",
+          "english": "the world around them",
+          "example": "Cette ouverture aide les élèves à mieux comprendre le monde qui les entoure et à respecter des cultures différentes de la leur.",
+          "usage": "Relative 'qui les entoure'; comprehension benefit."
+        },
+        {
+          "id": "SVC2-0229",
+          "kind": "expression",
+          "french": "lire, écrire et compter",
+          "english": "reading, writing and arithmetic",
+          "example": "Cependant, il est vrai que l'école doit d'abord assurer les apprentissages fondamentaux comme lire, écrire et compter.",
+          "usage": "Set tricolon for the 'three Rs' / basics."
+        },
+        {
+          "id": "SVC2-0230",
+          "kind": "expression",
+          "french": "une nouvelle motivation",
+          "english": "a fresh motivation",
+          "example": "Mais les matières culturelles ne s'opposent pas à ces apprentissages : elles les complètent et donnent souvent aux élèves une nouvelle motivation pour venir à l'école.",
+          "usage": "'nouvelle' before noun; why arts help school engagement."
+        },
+        {
+          "id": "SVC2-0231",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, non, je ne suis pas d'accord : les matières culturelles ont toute leur place à l'école, car elles développent l'expression, l'ouverture d'esprit et de vraies compétences utiles pour la vie.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0232",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si les matières culturelles comme la musique, le dessin ou le théâtre ont vraiment leur place à l'école.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0233",
+          "kind": "tournure",
+          "french": "Même si ces matières sont parfois jugées secondaires",
+          "english": "Even though these subjects are sometimes deemed secondary",
+          "example": "Même si ces matières sont parfois jugées secondaires par rapport aux matières classiques, elles apportent beaucoup aux élèves.",
+          "usage": "'Même si' + indicative concession granting the objection."
+        },
+        {
+          "id": "SVC2-0234",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, les matières culturelles développent l'expression personnelle, la sensibilité et l'esprit critique.",
+          "usage": "Emphatic first enumerator."
+        },
+        {
+          "id": "SVC2-0235",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, elles ouvrent l'esprit à d'autres cultures et forment des citoyens plus curieux.",
+          "usage": "Second enumerator."
+        },
+        {
+          "id": "SVC2-0236",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, elles peuvent révéler des talents et préparer à de vrais métiers.",
+          "usage": "Final enumerator."
+        },
+        {
+          "id": "SVC2-0237",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, pratiquer la musique, le dessin ou le théâtre oblige l'élève à imaginer, à ressentir et à se mettre à la place des autres.",
+          "usage": "Justification connector."
+        },
+        {
+          "id": "SVC2-0238",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, un élève qui joue une scène de théâtre apprend à maîtriser sa voix, son corps et ses émotions, et gagne une assurance qu'un cours classique ne lui apporterait pas de la même manière.",
+          "usage": "Illustration connector."
+        },
+        {
+          "id": "SVC2-0239",
+          "kind": "tournure",
+          "french": "Cependant, il est vrai que",
+          "english": "However, it is true that",
+          "example": "Cependant, il est vrai que l'école doit d'abord assurer les apprentissages fondamentaux comme lire, écrire et compter.",
+          "usage": "Concessive 'il est vrai que' opening the nuance."
+        },
+        {
+          "id": "SVC2-0240",
+          "kind": "tournure",
+          "french": "En conclusion, je pense que",
+          "english": "In conclusion, I think that",
+          "example": "En conclusion, je pense que les matières culturelles doivent absolument rester à l'école, parce qu'elles développent l'expression et l'esprit critique, ouvrent à d'autres cultures et peuvent révéler de vrais talents.",
+          "usage": "Conclusion marker restating the thesis."
+        },
+        {
+          "id": "SVC2-0241",
+          "kind": "phrase-modele",
+          "french": "les matières culturelles ont toute leur place à l'école, car elles développent l'expression, l'ouverture d'esprit et de vraies compétences utiles pour la vie",
+          "english": "cultural subjects fully belong at school, because they develop expression, open-mindedness and real skills useful for life",
+          "example": "À mon avis, non, je ne suis pas d'accord : les matières culturelles ont toute leur place à l'école, car elles développent l'expression, l'ouverture d'esprit et de vraies compétences utiles pour la vie.",
+          "usage": "'car' cause + tricolon; the position statement."
+        },
+        {
+          "id": "SVC2-0242",
+          "kind": "phrase-modele",
+          "french": "pratiquer la musique, le dessin ou le théâtre oblige l'élève à imaginer, à ressentir et à se mettre à la place des autres",
+          "english": "practising music, drawing or drama forces the pupil to imagine, to feel and to put themselves in others' shoes",
+          "example": "En effet, pratiquer la musique, le dessin ou le théâtre oblige l'élève à imaginer, à ressentir et à se mettre à la place des autres.",
+          "usage": "'obliger à + inf' + tricolon of infinitives."
+        },
+        {
+          "id": "SVC2-0243",
+          "kind": "phrase-modele",
+          "french": "un élève qui joue une scène de théâtre apprend à maîtriser sa voix, son corps et ses émotions",
+          "english": "a pupil who acts a drama scene learns to master their voice, body and emotions",
+          "example": "Par exemple, un élève qui joue une scène de théâtre apprend à maîtriser sa voix, son corps et ses émotions, et gagne une assurance qu'un cours classique ne lui apporterait pas de la même manière.",
+          "usage": "'apprendre à + inf'; concrete example."
+        },
+        {
+          "id": "SVC2-0244",
+          "kind": "phrase-modele",
+          "french": "découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays",
+          "english": "discovering a musical work, a painting movement or a play also means discovering the history, ideas and sensibilities of other eras and countries",
+          "example": "En effet, découvrir une œuvre musicale, un courant de peinture ou une pièce de théâtre, c'est aussi découvrir l'histoire, les idées et les sensibilités d'autres époques et d'autres pays.",
+          "usage": "'..., c'est aussi + inf' definitional structure."
+        },
+        {
+          "id": "SVC2-0245",
+          "kind": "phrase-modele",
+          "french": "ces matières forment des citoyens plus curieux, plus tolérants et plus ouverts",
+          "english": "these subjects shape more curious, more tolerant and more open citizens",
+          "example": "Cela montre que ces matières forment des citoyens plus curieux, plus tolérants et plus ouverts.",
+          "usage": "'former' = to shape; tricolon of comparatives."
+        },
+        {
+          "id": "SVC2-0246",
+          "kind": "phrase-modele",
+          "french": "les métiers artistiques sont de vrais métiers sérieux, qui demandent une vraie discipline et une formation longue et exigeante",
+          "english": "artistic careers are real, serious professions that demand true discipline and a long, demanding training",
+          "example": "En effet, les métiers artistiques sont de vrais métiers sérieux, qui demandent une vraie discipline et une formation longue et exigeante.",
+          "usage": "Relative 'qui demandent'; defends arts as serious work."
+        },
+        {
+          "id": "SVC2-0247",
+          "kind": "phrase-modele",
+          "french": "c'est très souvent à l'école que naît la première vocation",
+          "english": "it is very often at school that the first calling is born",
+          "example": "Or, c'est très souvent à l'école que naît la première vocation.",
+          "usage": "Cleft 'c'est ... que' + inversion 'naît'."
+        },
+        {
+          "id": "SVC2-0248",
+          "kind": "phrase-modele",
+          "french": "les matières culturelles ne s'opposent pas à ces apprentissages : elles les complètent",
+          "english": "cultural subjects do not conflict with these learnings: they complement them",
+          "example": "Mais les matières culturelles ne s'opposent pas à ces apprentissages : elles les complètent et donnent souvent aux élèves une nouvelle motivation pour venir à l'école.",
+          "usage": "'s'opposer à' negated; colon of contrast."
+        },
+        {
+          "id": "SVC2-0249",
+          "kind": "phrase-modele",
+          "french": "Loin d'être une perte de temps, elles font partie d'une éducation complète",
+          "english": "Far from being a waste of time, they are part of a complete education",
+          "example": "Loin d'être une perte de temps, elles font partie d'une éducation complète.",
+          "usage": "'Loin de + inf' front-loaded refutation."
+        },
+        {
+          "id": "SVC2-0250",
+          "kind": "phrase-modele",
+          "french": "supprimer la musique, le dessin ou le théâtre de l'école serait une erreur",
+          "english": "removing music, drawing or drama from school would be a mistake",
+          "example": "À mon avis, supprimer la musique, le dessin ou le théâtre de l'école serait une erreur.",
+          "usage": "Conditional 'serait'; infinitive subject."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p14",
+      "entries": [
+        {
+          "id": "SVC2-0251",
+          "kind": "mot-cle",
+          "french": "les autres cultures",
+          "english": "other cultures",
+          "example": "La vraie question est de savoir si l'on peut vraiment découvrir et comprendre les autres cultures sans se déplacer, ou si le voyage reste indispensable.",
+          "usage": "Central topic term of the response."
+        },
+        {
+          "id": "SVC2-0252",
+          "kind": "mot-cle",
+          "french": "sans voyager",
+          "english": "without travelling",
+          "example": "À mon avis, on peut largement découvrir les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres ; mais le voyage apporte une expérience directe que rien ne remplace totalement.",
+          "usage": "'sans + inf'; the key condition being debated."
+        },
+        {
+          "id": "SVC2-0253",
+          "kind": "mot-cle",
+          "french": "les livres, les documentaires et les médias",
+          "english": "books, documentaries and the media",
+          "example": "D'abord, les livres, les documentaires et les médias donnent accès à une énorme quantité de connaissances.",
+          "usage": "Enumerated resources; argument-1 theme."
+        },
+        {
+          "id": "SVC2-0254",
+          "kind": "mot-cle",
+          "french": "une expérience directe",
+          "english": "a direct experience",
+          "example": "À mon avis, on peut largement découvrir les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres ; mais le voyage apporte une expérience directe que rien ne remplace totalement.",
+          "usage": "Noun + adj; what only travel provides."
+        },
+        {
+          "id": "SVC2-0255",
+          "kind": "mot-cle",
+          "french": "les technologies actuelles",
+          "english": "today's technologies",
+          "example": "Enfin, les technologies actuelles permettent même d'entrer en contact direct avec d'autres cultures, sans se déplacer.",
+          "usage": "'actuelles' = current (false friend, not 'actual'); argument-3 theme."
+        },
+        {
+          "id": "SVC2-0256",
+          "kind": "mot-cle",
+          "french": "un contact direct",
+          "english": "direct contact",
+          "example": "Enfin, les technologies actuelles permettent un contact direct avec d'autres cultures, sans même se déplacer.",
+          "usage": "Noun + adj; what the internet enables."
+        },
+        {
+          "id": "SVC2-0257",
+          "kind": "mot-cle",
+          "french": "échanges linguistiques en ligne",
+          "english": "online language exchanges",
+          "example": "Par exemple, grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays et découvrir leur mode de vie de l'intérieur.",
+          "usage": "'en ligne' = online; modern learning tool."
+        },
+        {
+          "id": "SVC2-0258",
+          "kind": "mot-cle",
+          "french": "un roman écrit par un auteur étranger",
+          "english": "a novel written by a foreign author",
+          "example": "Par exemple, un bon documentaire sur le Japon ou un roman écrit par un auteur étranger peut faire comprendre une culture, ses valeurs et sa sensibilité bien mieux qu'un court séjour touristique.",
+          "usage": "Past participle + agent 'par'; cultural source."
+        },
+        {
+          "id": "SVC2-0259",
+          "kind": "mot-cle",
+          "french": "un court séjour touristique",
+          "english": "a short tourist stay",
+          "example": "Par exemple, un bon documentaire sur le Japon ou un roman écrit par un auteur étranger peut faire comprendre une culture, ses valeurs et sa sensibilité bien mieux qu'un court séjour touristique.",
+          "usage": "'court' before noun; contrasted unfavourably with deep learning."
+        },
+        {
+          "id": "SVC2-0260",
+          "kind": "mot-cle",
+          "french": "le mode de vie",
+          "english": "the way of life",
+          "example": "En effet, un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables sur l'histoire, les traditions et le mode de vie d'un autre peuple.",
+          "usage": "Fixed collocation; what one learns about a people."
+        },
+        {
+          "id": "SVC2-0261",
+          "kind": "collocation",
+          "french": "des connaissances solides et durables",
+          "english": "solid and lasting knowledge",
+          "example": "En effet, un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables sur l'histoire, les traditions et le mode de vie d'un autre peuple.",
+          "usage": "Two coordinated adjectives after noun; quality of book learning."
+        },
+        {
+          "id": "SVC2-0262",
+          "kind": "collocation",
+          "french": "les podcasts et les conférences en ligne",
+          "english": "podcasts and online talks",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité, et donnent accès à des cultures que l'on n'aura peut-être jamais l'occasion de visiter.",
+          "usage": "Coordinated modern media nouns."
+        },
+        {
+          "id": "SVC2-0263",
+          "kind": "collocation",
+          "french": "Goûter une cuisine étrangère",
+          "english": "To taste a foreign cuisine",
+          "example": "Goûter une cuisine étrangère, participer à un festival de quartier ou échanger avec des personnes d'autres origines permet de découvrir une culture de façon concrète et vivante.",
+          "usage": "Verb 'goûter' + object; concrete way to meet a culture."
+        },
+        {
+          "id": "SVC2-0264",
+          "kind": "collocation",
+          "french": "un festival de quartier",
+          "english": "a neighbourhood festival",
+          "example": "Goûter une cuisine étrangère, participer à un festival de quartier ou échanger avec des personnes d'autres origines permet de découvrir une culture de façon concrète et vivante.",
+          "usage": "'de quartier' = local; nearby cultural encounter."
+        },
+        {
+          "id": "SVC2-0265",
+          "kind": "collocation",
+          "french": "communiquer en temps réel",
+          "english": "to communicate in real time",
+          "example": "En effet, Internet permet de communiquer en temps réel avec des personnes du monde entier, d'échanger avec elles et de partager leur quotidien.",
+          "usage": "'en temps réel' fixed adverbial; internet benefit."
+        },
+        {
+          "id": "SVC2-0266",
+          "kind": "collocation",
+          "french": "réseaux sociaux",
+          "english": "social media/networks",
+          "example": "Par exemple, grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays et découvrir leur mode de vie de l'intérieur.",
+          "usage": "Fixed plural collocation."
+        },
+        {
+          "id": "SVC2-0267",
+          "kind": "collocation",
+          "french": "entrer en relation directe",
+          "english": "to enter into direct contact",
+          "example": "On peut ainsi entrer en relation directe avec une autre culture, poser des questions et nouer de vrais liens, sans jamais prendre l'avion.",
+          "usage": "'entrer en relation' set phrase + adj."
+        },
+        {
+          "id": "SVC2-0268",
+          "kind": "collocation",
+          "french": "des personnes d'autres origines",
+          "english": "people from other backgrounds",
+          "example": "Goûter une cuisine étrangère, participer à un festival de quartier ou échanger avec des personnes d'autres origines permet de découvrir une culture de façon concrète et vivante.",
+          "usage": "'d'autres origines'; local diversity."
+        },
+        {
+          "id": "SVC2-0269",
+          "kind": "collocation",
+          "french": "l'histoire, les traditions et le mode de vie",
+          "english": "the history, traditions and way of life",
+          "example": "En effet, un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables sur l'histoire, les traditions et le mode de vie d'un autre peuple.",
+          "usage": "Tricolon of what a documentary teaches."
+        },
+        {
+          "id": "SVC2-0270",
+          "kind": "collocation",
+          "french": "des habitants d'un autre pays",
+          "english": "inhabitants of another country",
+          "example": "Par exemple, grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays et découvrir leur mode de vie de l'intérieur.",
+          "usage": "'habitants de'; online contacts."
+        },
+        {
+          "id": "SVC2-0271",
+          "kind": "expression",
+          "french": "sans bouger de chez soi",
+          "english": "without leaving home",
+          "example": "Tout d'abord, les livres, les documentaires et les médias permettent de découvrir les autres cultures sans bouger de chez soi.",
+          "usage": "Fixed everyday expression; chez soi contracts the possessive location naturally."
+        },
+        {
+          "id": "SVC2-0272",
+          "kind": "expression",
+          "french": "sans se déplacer",
+          "english": "without travelling",
+          "example": "Enfin, les technologies actuelles permettent même d'entrer en contact direct avec d'autres cultures, sans se déplacer.",
+          "usage": "Sans + infinitive expresses an action avoided; reusable for remote learning, work, and cultural access."
+        },
+        {
+          "id": "SVC2-0273",
+          "kind": "expression",
+          "french": "sans même se déplacer",
+          "english": "without even travelling",
+          "example": "Enfin, les technologies actuelles permettent un contact direct avec d'autres cultures, sans même se déplacer.",
+          "usage": "Sans même + infinitive emphasizes that no physical journey is needed."
+        },
+        {
+          "id": "SVC2-0274",
+          "kind": "expression",
+          "french": "de l'intérieur",
+          "english": "from the inside",
+          "example": "Par exemple, grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays et découvrir leur mode de vie de l'intérieur.",
+          "usage": "Adverbial; 'découvrir de l'intérieur' = to discover from within."
+        },
+        {
+          "id": "SVC2-0275",
+          "kind": "expression",
+          "french": "en grande partie",
+          "english": "largely / to a large extent",
+          "example": "À mon avis, il est tout à fait possible de connaître en grande partie les autres cultures sans voyager.",
+          "usage": "Hedging adverbial qualifying the claim."
+        },
+        {
+          "id": "SVC2-0276",
+          "kind": "expression",
+          "french": "tout près de chez soi",
+          "english": "right near home",
+          "example": "Ensuite, on peut rencontrer d'autres cultures tout près de chez soi.",
+          "usage": "'tout près de' intensified proximity; 'chez soi' = one's home."
+        },
+        {
+          "id": "SVC2-0277",
+          "kind": "expression",
+          "french": "d'ouvrir les yeux autour de soi",
+          "english": "to open one's eyes around oneself",
+          "example": "Cela montre qu'il suffit parfois d'ouvrir les yeux autour de soi pour rencontrer d'autres cultures.",
+          "usage": "Idiom for paying attention to nearby diversity."
+        },
+        {
+          "id": "SVC2-0278",
+          "kind": "expression",
+          "french": "à distance",
+          "english": "remotely / from afar",
+          "example": "En conclusion, je pense qu'on peut vraiment connaître les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres, y compris à distance.",
+          "usage": "Fixed adverbial phrase; it contrasts mediated contact with being physically present."
+        },
+        {
+          "id": "SVC2-0279",
+          "kind": "expression",
+          "french": "en temps réel",
+          "english": "in real time",
+          "example": "En effet, Internet permet de communiquer en temps réel avec des personnes du monde entier, d'échanger avec elles et de partager leur quotidien.",
+          "usage": "Fixed adverbial phrase (tech register)."
+        },
+        {
+          "id": "SVC2-0280",
+          "kind": "expression",
+          "french": "de grande qualité",
+          "english": "of high quality",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité, et donnent accès à des cultures que l'on n'aura peut-être jamais l'occasion de visiter.",
+          "usage": "'de + noun of quality' set phrase describing media."
+        },
+        {
+          "id": "SVC2-0281",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, on peut largement découvrir les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres ; mais le voyage apporte une expérience directe que rien ne remplace totalement.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0282",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si l'on peut vraiment découvrir et comprendre les autres cultures sans se déplacer, ou si le voyage reste indispensable.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0283",
+          "kind": "tournure",
+          "french": "Même si le voyage reste une expérience unique,",
+          "english": "Even though travel remains a unique experience,",
+          "example": "Même si le voyage reste une expérience unique, il n'est pas le seul moyen d'accéder à une culture.",
+          "usage": "'Même si' + indicative concession granting travel's value."
+        },
+        {
+          "id": "SVC2-0284",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, les livres, les documentaires et les médias permettent de découvrir les autres cultures sans bouger de chez soi.",
+          "usage": "Emphatic first enumerator."
+        },
+        {
+          "id": "SVC2-0285",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, on peut rencontrer d'autres cultures tout près de chez soi.",
+          "usage": "Second enumerator."
+        },
+        {
+          "id": "SVC2-0286",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, les technologies actuelles permettent même d'entrer en contact direct avec d'autres cultures, sans se déplacer.",
+          "usage": "Final enumerator."
+        },
+        {
+          "id": "SVC2-0287",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables sur l'histoire, les traditions et le mode de vie d'un autre peuple.",
+          "usage": "Justification connector."
+        },
+        {
+          "id": "SVC2-0288",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, un bon documentaire sur le Japon ou un roman écrit par un auteur étranger peut faire comprendre une culture, ses valeurs et sa sensibilité bien mieux qu'un court séjour touristique.",
+          "usage": "Illustration connector."
+        },
+        {
+          "id": "SVC2-0289",
+          "kind": "tournure",
+          "french": "Cela montre qu'",
+          "english": "This shows that",
+          "example": "Cela montre qu'une grande partie de la connaissance d'une culture est accessible à tous, sans voyager.",
+          "usage": "Consequence/summary connector (elided before vowel)."
+        },
+        {
+          "id": "SVC2-0290",
+          "kind": "tournure",
+          "french": "Cependant, sans voyage,",
+          "english": "However, without travel,",
+          "example": "Cependant, sans voyage, la connaissance d'une culture reste en partie théorique : se trouver sur place permet de ressentir l'ambiance, les odeurs et le rythme de vie, ce que les écrans transmettent difficilement.",
+          "usage": "Concessive + 'sans + noun' opening the nuance."
+        },
+        {
+          "id": "SVC2-0291",
+          "kind": "phrase-modele",
+          "french": "on peut largement découvrir les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres",
+          "english": "one can largely discover other cultures without travelling, thanks to books, the media and encounters",
+          "example": "À mon avis, on peut largement découvrir les autres cultures sans voyager, grâce aux livres, aux médias et aux rencontres ; mais le voyage apporte une expérience directe que rien ne remplace totalement.",
+          "usage": "'grâce à' + enumeration; the position statement."
+        },
+        {
+          "id": "SVC2-0292",
+          "kind": "phrase-modele",
+          "french": "un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables",
+          "english": "a good book or a good documentary lets you acquire solid and lasting knowledge",
+          "example": "En effet, un bon livre ou un bon documentaire permet d'acquérir des connaissances solides et durables sur l'histoire, les traditions et le mode de vie d'un autre peuple.",
+          "usage": "'permettre de + inf'; argument-1 core."
+        },
+        {
+          "id": "SVC2-0293",
+          "kind": "phrase-modele",
+          "french": "un bon documentaire sur le Japon ou un roman écrit par un auteur étranger peut faire comprendre une culture, ses valeurs et sa sensibilité bien mieux qu'un court séjour touristique",
+          "english": "a good documentary on Japan or a novel by a foreign author can convey a culture, its values and sensibility far better than a short tourist stay",
+          "example": "Par exemple, un bon documentaire sur le Japon ou un roman écrit par un auteur étranger peut faire comprendre une culture, ses valeurs et sa sensibilité bien mieux qu'un court séjour touristique.",
+          "usage": "'faire comprendre' causative + comparative 'bien mieux que'."
+        },
+        {
+          "id": "SVC2-0294",
+          "kind": "phrase-modele",
+          "french": "un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs",
+          "english": "a modern country is rarely homogeneous: it is always enriched by food, music, festivals and languages brought by those from elsewhere",
+          "example": "En effet, un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs.",
+          "usage": "'s'enrichir de' + enumeration; reusable across culture topics."
+        },
+        {
+          "id": "SVC2-0295",
+          "kind": "phrase-modele",
+          "french": "il suffit parfois d'ouvrir les yeux autour de soi pour rencontrer d'autres cultures",
+          "english": "sometimes it is enough to open your eyes around you to meet other cultures",
+          "example": "Cela montre qu'il suffit parfois d'ouvrir les yeux autour de soi pour rencontrer d'autres cultures.",
+          "usage": "'il suffit de + inf pour + inf' construction."
+        },
+        {
+          "id": "SVC2-0296",
+          "kind": "phrase-modele",
+          "french": "Internet permet de communiquer en temps réel avec des personnes du monde entier",
+          "english": "the Internet lets you communicate in real time with people the world over",
+          "example": "En effet, Internet permet de communiquer en temps réel avec des personnes du monde entier, d'échanger avec elles et de partager leur quotidien.",
+          "usage": "'permettre de + inf'; argument-3 core."
+        },
+        {
+          "id": "SVC2-0297",
+          "kind": "phrase-modele",
+          "french": "la distance n'est plus un véritable obstacle pour entrer en contact avec d'autres cultures",
+          "english": "distance is no longer a real obstacle to getting in touch with other cultures",
+          "example": "Cela montre que la distance n'est plus un véritable obstacle pour entrer en contact avec d'autres cultures.",
+          "usage": "'ne ... plus' + 'pour + inf' purpose."
+        },
+        {
+          "id": "SVC2-0298",
+          "kind": "phrase-modele",
+          "french": "se trouver sur place permet de ressentir l'ambiance, les odeurs et le rythme de vie, ce que les écrans transmettent difficilement",
+          "english": "being there in person lets you feel the atmosphere, the smells and the pace of life, which screens convey only with difficulty",
+          "example": "Cependant, sans voyage, la connaissance d'une culture reste en partie théorique : se trouver sur place permet de ressentir l'ambiance, les odeurs et le rythme de vie, ce que les écrans transmettent difficilement.",
+          "usage": "Nuance line; 'ce que' relative summarising."
+        },
+        {
+          "id": "SVC2-0299",
+          "kind": "phrase-modele",
+          "french": "Le voyage apporte une dimension directe que rien ne remplace totalement, mais il n'est pas la seule porte d'entrée vers les autres cultures",
+          "english": "Travel brings a direct dimension that nothing fully replaces, but it is not the only gateway to other cultures",
+          "example": "Le voyage apporte une dimension directe que rien ne remplace totalement, mais il n'est pas la seule porte d'entrée vers les autres cultures.",
+          "usage": "'que rien ne remplace' + 'porte d'entrée' metaphor; conclusion."
+        },
+        {
+          "id": "SVC2-0300",
+          "kind": "phrase-modele",
+          "french": "grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays",
+          "english": "thanks to online language exchanges or social media, one can chat regularly with inhabitants of another country",
+          "example": "Par exemple, grâce aux échanges linguistiques en ligne ou aux réseaux sociaux, on peut discuter régulièrement avec des habitants d'un autre pays et découvrir leur mode de vie de l'intérieur.",
+          "usage": "'grâce à' + modern tools; argument-3 example."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p15",
+      "entries": [
+        {
+          "id": "SVC2-0301",
+          "kind": "mot-cle",
+          "french": "la cuisine",
+          "english": "cooking / cuisine",
+          "example": "La vraie question est de savoir si la cuisine d'un pays permet vraiment d'entrer dans sa culture, ou si elle n'en montre qu'une petite partie.",
+          "usage": "Central topic noun; means both cooking and a country's food."
+        },
+        {
+          "id": "SVC2-0302",
+          "kind": "mot-cle",
+          "french": "une porte d'entrée",
+          "english": "a gateway / entry point",
+          "example": "Elle est donc une porte d'entrée importante, mais elle doit être complétée par d'autres formes de découverte pour vraiment connaître un pays.",
+          "usage": "Metaphor 'porte d'entrée vers' = way into a culture."
+        },
+        {
+          "id": "SVC2-0303",
+          "kind": "mot-cle",
+          "french": "les habitudes quotidiennes",
+          "english": "daily habits",
+          "example": "D'abord, elle révèle les habitudes quotidiennes et la manière dont les gens vivent ensemble.",
+          "usage": "Noun + adj; what cuisine reveals about a society."
+        },
+        {
+          "id": "SVC2-0304",
+          "kind": "mot-cle",
+          "french": "les ingrédients",
+          "english": "the ingredients",
+          "example": "En effet, les ingrédients utilisés, les épices, les façons de cuisiner sont liés au climat, aux ressources et aux échanges du pays avec le reste du monde.",
+          "usage": "Topical noun; carriers of geography and history."
+        },
+        {
+          "id": "SVC2-0305",
+          "kind": "mot-cle",
+          "french": "les épices",
+          "english": "the spices",
+          "example": "En effet, les ingrédients utilisés, les épices, les façons de cuisiner sont liés au climat, aux ressources et aux échanges du pays avec le reste du monde.",
+          "usage": "Topical noun; tied to climate and trade."
+        },
+        {
+          "id": "SVC2-0306",
+          "kind": "mot-cle",
+          "french": "mémoire vivante",
+          "english": "living memory",
+          "example": "La cuisine est donc une sorte de mémoire vivante, transmise de génération en génération.",
+          "usage": "Metaphor; cuisine as transmitted heritage."
+        },
+        {
+          "id": "SVC2-0307",
+          "kind": "mot-cle",
+          "french": "le couscous",
+          "english": "couscous",
+          "example": "Par exemple, le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb, tandis que la morue au Portugal rappelle l'histoire maritime et les échanges avec l'Atlantique.",
+          "usage": "Concrete dish example (Maghreb) illustrating history."
+        },
+        {
+          "id": "SVC2-0308",
+          "kind": "mot-cle",
+          "french": "la morue",
+          "english": "cod (salt cod)",
+          "example": "Par exemple, le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb, tandis que la morue au Portugal rappelle l'histoire maritime et les échanges avec l'Atlantique.",
+          "usage": "Concrete dish example (Portugal) and maritime history."
+        },
+        {
+          "id": "SVC2-0309",
+          "kind": "mot-cle",
+          "french": "l'histoire maritime",
+          "english": "maritime history",
+          "example": "Par exemple, le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb, tandis que la morue au Portugal rappelle l'histoire maritime et les échanges avec l'Atlantique.",
+          "usage": "Noun + adj; what cod recalls about Portugal."
+        },
+        {
+          "id": "SVC2-0310",
+          "kind": "mot-cle",
+          "french": "les rituels du repas",
+          "english": "meal rituals",
+          "example": "Par exemple, une personne qui goûte pour la première fois un pho vietnamien ou des tapas espagnoles peut ensuite vouloir comprendre les rituels du repas, les produits utilisés et l'histoire de ces plats.",
+          "usage": "'rituels de' + noun; deeper cultural layer."
+        },
+        {
+          "id": "SVC2-0311",
+          "kind": "collocation",
+          "french": "la culture d'un pays",
+          "english": "a country's culture",
+          "example": "À mon avis, la cuisine est une excellente porte d'entrée vers la culture d'un pays, parce qu'elle révèle beaucoup d'habitudes, de valeurs et d'éléments d'histoire, même si elle ne suffit pas à elle seule à tout comprendre.",
+          "usage": "Recurrent 'culture de'; the thing cuisine reveals."
+        },
+        {
+          "id": "SVC2-0312",
+          "kind": "collocation",
+          "french": "la vie quotidienne",
+          "english": "daily life",
+          "example": "Je pense d'abord que la cuisine d'un pays raconte beaucoup sur la vie quotidienne et les relations entre les gens.",
+          "usage": "Fixed collocation; what food tells us about."
+        },
+        {
+          "id": "SVC2-0313",
+          "kind": "collocation",
+          "french": "organisent leurs repas",
+          "english": "organise their meals",
+          "example": "En effet, à travers la cuisine, on voit comment les gens organisent leurs repas, à quelles heures ils mangent, avec qui et dans quelle ambiance.",
+          "usage": "Verb + object; how people structure eating."
+        },
+        {
+          "id": "SVC2-0314",
+          "kind": "collocation",
+          "french": "la place de la famille",
+          "english": "the place of the family",
+          "example": "De plus, ces habitudes ne sont pas anodines : elles montrent la place de la famille, du travail ou du temps libre dans la société.",
+          "usage": "'la place de' = the role/importance of."
+        },
+        {
+          "id": "SVC2-0315",
+          "kind": "collocation",
+          "french": "les façons de cuisiner",
+          "english": "the ways of cooking",
+          "example": "En effet, les ingrédients utilisés, les épices, les façons de cuisiner sont liés au climat, aux ressources et aux échanges du pays avec le reste du monde.",
+          "usage": "'façon de + inf'; culinary methods."
+        },
+        {
+          "id": "SVC2-0316",
+          "kind": "collocation",
+          "french": "une influence étrangère",
+          "english": "a foreign influence",
+          "example": "De plus, beaucoup de plats sont nés de moments précis de l'histoire, comme une période de pauvreté, une migration ou une influence étrangère.",
+          "usage": "Noun + adj; historical shaper of dishes."
+        },
+        {
+          "id": "SVC2-0317",
+          "kind": "collocation",
+          "french": "de génération en génération",
+          "english": "from generation to generation",
+          "example": "La cuisine est donc une sorte de mémoire vivante, transmise de génération en génération.",
+          "usage": "Fixed 'de X en X' pattern of transmission."
+        },
+        {
+          "id": "SVC2-0318",
+          "kind": "collocation",
+          "french": "du repas partagé",
+          "english": "of the shared meal",
+          "example": "Par exemple, le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb, tandis que la morue au Portugal rappelle l'histoire maritime et les échanges avec l'Atlantique.",
+          "usage": "'partagé' past participle as adj; social eating value."
+        },
+        {
+          "id": "SVC2-0319",
+          "kind": "collocation",
+          "french": "un pho vietnamien",
+          "english": "a Vietnamese pho",
+          "example": "Par exemple, une personne qui goûte pour la première fois un pho vietnamien ou des tapas espagnoles peut ensuite vouloir comprendre les rituels du repas, les produits utilisés et l'histoire de ces plats.",
+          "usage": "Concrete dish + nationality adj; discovery example."
+        },
+        {
+          "id": "SVC2-0320",
+          "kind": "collocation",
+          "french": "des tapas espagnoles",
+          "english": "Spanish tapas",
+          "example": "Par exemple, une personne qui goûte pour la première fois un pho vietnamien ou des tapas espagnoles peut ensuite vouloir comprendre les rituels du repas, les produits utilisés et l'histoire de ces plats.",
+          "usage": "Dish + adj agreeing fem. plural; discovery example."
+        },
+        {
+          "id": "SVC2-0321",
+          "kind": "expression",
+          "french": "à elle seule à tout comprendre",
+          "english": "on its own to understand everything",
+          "example": "À mon avis, la cuisine est une excellente porte d'entrée vers la culture d'un pays, parce qu'elle révèle beaucoup d'habitudes, de valeurs et d'éléments d'histoire, même si elle ne suffit pas à elle seule à tout comprendre.",
+          "usage": "'à elle seule' = by itself; nuance about limits."
+        },
+        {
+          "id": "SVC2-0322",
+          "kind": "expression",
+          "french": "en disent beaucoup sur",
+          "english": "say a lot about",
+          "example": "Par exemple, dans certains pays les repas sont longs et pris en famille, alors que dans d'autres ils sont rapides et souvent pris seuls : ces différences en disent beaucoup sur le rapport au temps et aux relations sociales.",
+          "usage": "'en dire beaucoup sur' idiom = to reveal much about."
+        },
+        {
+          "id": "SVC2-0323",
+          "kind": "expression",
+          "french": "dans quelle ambiance",
+          "english": "in what atmosphere",
+          "example": "En effet, à travers la cuisine, on voit comment les gens organisent leurs repas, à quelles heures ils mangent, avec qui et dans quelle ambiance.",
+          "usage": "Indirect question ('dans quelle...'); part of what cuisine reveals."
+        },
+        {
+          "id": "SVC2-0324",
+          "kind": "expression",
+          "french": "avant d'aller plus loin",
+          "english": "before going further",
+          "example": "C'est souvent par la nourriture que l'on commence à s'intéresser à un pays avant d'aller plus loin.",
+          "usage": "'avant de + inf'; progression phrase."
+        },
+        {
+          "id": "SVC2-0325",
+          "kind": "expression",
+          "french": "qu'on parle ou non la langue du pays",
+          "english": "whether or not one speaks the country's language",
+          "example": "De plus, c'est un domaine ouvert à tout le monde, qu'on parle ou non la langue du pays.",
+          "usage": "'ou non' alternative concession; accessibility point."
+        },
+        {
+          "id": "SVC2-0326",
+          "kind": "expression",
+          "french": "pour la première fois",
+          "english": "for the first time",
+          "example": "Par exemple, une personne qui goûte pour la première fois un pho vietnamien ou des tapas espagnoles peut ensuite vouloir comprendre les rituels du repas, les produits utilisés et l'histoire de ces plats.",
+          "usage": "Set time phrase marking a first experience."
+        },
+        {
+          "id": "SVC2-0327",
+          "kind": "expression",
+          "french": "ne dit pas grand-chose",
+          "english": "doesn't say much",
+          "example": "Elle ne dit pas grand-chose, par exemple, de son système politique, de ses valeurs profondes ou de sa langue.",
+          "usage": "'grand-chose' in negation = much; limit of cuisine."
+        },
+        {
+          "id": "SVC2-0328",
+          "kind": "expression",
+          "french": "l'une des manières les plus concrètes",
+          "english": "one of the most concrete ways",
+          "example": "Enfin, elle reste l'une des manières les plus concrètes et accessibles d'entrer dans une autre culture.",
+          "usage": "'l'une des + superlative' partitive superlative."
+        },
+        {
+          "id": "SVC2-0329",
+          "kind": "expression",
+          "french": "une partie importante de la culture",
+          "english": "an important part of the culture",
+          "example": "À mon avis, la cuisine permet réellement de connaître une partie importante de la culture d'un pays.",
+          "usage": "'une partie de' quantifier; measured claim."
+        },
+        {
+          "id": "SVC2-0330",
+          "kind": "expression",
+          "french": "entrer en contact avec son passé",
+          "english": "to get in touch with its past",
+          "example": "Cela montre que goûter la cuisine d'un pays, c'est aussi entrer en contact avec son passé et son territoire.",
+          "usage": "'entrer en contact avec' set phrase; history angle."
+        },
+        {
+          "id": "SVC2-0331",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, la cuisine est une excellente porte d'entrée vers la culture d'un pays, parce qu'elle révèle beaucoup d'habitudes, de valeurs et d'éléments d'histoire, même si elle ne suffit pas à elle seule à tout comprendre.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0332",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la cuisine d'un pays permet vraiment d'entrer dans sa culture, ou si elle n'en montre qu'une petite partie.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0333",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que la cuisine d'un pays raconte beaucoup sur la vie quotidienne et les relations entre les gens.",
+          "usage": "Opinion + enumerator introducing argument 1."
+        },
+        {
+          "id": "SVC2-0334",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, elle révèle les habitudes quotidiennes et la manière dont les gens vivent ensemble.",
+          "usage": "First enumerator of the arguments."
+        },
+        {
+          "id": "SVC2-0335",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, elle porte en elle l'histoire et la géographie du pays, à travers ses ingrédients et ses recettes.",
+          "usage": "Second enumerator."
+        },
+        {
+          "id": "SVC2-0336",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, ces habitudes ne sont pas anodines : elles montrent la place de la famille, du travail ou du temps libre dans la société.",
+          "usage": "Additive connector within an argument."
+        },
+        {
+          "id": "SVC2-0337",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, elle reste l'une des manières les plus concrètes et accessibles d'entrer dans une autre culture.",
+          "usage": "Final enumerator."
+        },
+        {
+          "id": "SVC2-0338",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, à travers la cuisine, on voit comment les gens organisent leurs repas, à quelles heures ils mangent, avec qui et dans quelle ambiance.",
+          "usage": "Justification connector."
+        },
+        {
+          "id": "SVC2-0339",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, dans certains pays les repas sont longs et pris en famille, alors que dans d'autres ils sont rapides et souvent pris seuls : ces différences en disent beaucoup sur le rapport au temps et aux relations sociales.",
+          "usage": "Illustration connector."
+        },
+        {
+          "id": "SVC2-0340",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître que",
+          "english": "However, one must acknowledge that",
+          "example": "Cependant, il faut reconnaître que la cuisine ne donne pas accès à toute la culture d'un pays.",
+          "usage": "Concessive 'il faut reconnaître que' opening the nuance."
+        },
+        {
+          "id": "SVC2-0341",
+          "kind": "phrase-modele",
+          "french": "la cuisine est une excellente porte d'entrée vers la culture d'un pays",
+          "english": "cooking is an excellent gateway into a country's culture",
+          "example": "À mon avis, la cuisine est une excellente porte d'entrée vers la culture d'un pays, parce qu'elle révèle beaucoup d'habitudes, de valeurs et d'éléments d'histoire, même si elle ne suffit pas à elle seule à tout comprendre.",
+          "usage": "Thesis line; 'porte d'entrée vers' metaphor."
+        },
+        {
+          "id": "SVC2-0342",
+          "kind": "phrase-modele",
+          "french": "à travers la cuisine, on voit comment les gens organisent leurs repas, à quelles heures ils mangent, avec qui et dans quelle ambiance",
+          "english": "through cooking, you see how people organise their meals, at what times they eat, with whom and in what atmosphere",
+          "example": "En effet, à travers la cuisine, on voit comment les gens organisent leurs repas, à quelles heures ils mangent, avec qui et dans quelle ambiance.",
+          "usage": "'à travers' + indirect questions; observational argument."
+        },
+        {
+          "id": "SVC2-0343",
+          "kind": "phrase-modele",
+          "french": "Connaître la cuisine d'un pays, c'est donc déjà comprendre une partie de sa manière de vivre",
+          "english": "To know a country's cuisine is therefore already to understand part of its way of life",
+          "example": "Connaître la cuisine d'un pays, c'est donc déjà comprendre une partie de sa manière de vivre.",
+          "usage": "Infinitive subject + 'c'est ... comprendre' definition."
+        },
+        {
+          "id": "SVC2-0344",
+          "kind": "phrase-modele",
+          "french": "les ingrédients utilisés, les épices, les façons de cuisiner sont liés au climat, aux ressources et aux échanges du pays avec le reste du monde",
+          "english": "the ingredients used, the spices and the ways of cooking are linked to the climate, resources and the country's exchanges with the rest of the world",
+          "example": "En effet, les ingrédients utilisés, les épices, les façons de cuisiner sont liés au climat, aux ressources et aux échanges du pays avec le reste du monde.",
+          "usage": "'être lié à' + tricolon; geography-history argument."
+        },
+        {
+          "id": "SVC2-0345",
+          "kind": "phrase-modele",
+          "french": "La cuisine est donc une sorte de mémoire vivante, transmise de génération en génération",
+          "english": "Cooking is therefore a kind of living memory, passed on from generation to generation",
+          "example": "La cuisine est donc une sorte de mémoire vivante, transmise de génération en génération.",
+          "usage": "'une sorte de' hedge + past participle 'transmise'."
+        },
+        {
+          "id": "SVC2-0346",
+          "kind": "phrase-modele",
+          "french": "le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb",
+          "english": "couscous tells at once of the importance of grains, vegetables and the shared meal in the Maghreb",
+          "example": "Par exemple, le couscous raconte à la fois l'importance des céréales, des légumes et du repas partagé au Maghreb, tandis que la morue au Portugal rappelle l'histoire maritime et les échanges avec l'Atlantique.",
+          "usage": "'raconte à la fois ... et ...'; personified dish example."
+        },
+        {
+          "id": "SVC2-0347",
+          "kind": "phrase-modele",
+          "french": "contrairement à un livre ou à un cours, la cuisine s'expérimente directement : on goûte, on cuisine, on partage",
+          "english": "unlike a book or a lesson, cooking is experienced directly: you taste, you cook, you share",
+          "example": "En effet, contrairement à un livre ou à un cours, la cuisine s'expérimente directement : on goûte, on cuisine, on partage, et l'on se souvient de ce que l'on a ressenti.",
+          "usage": "'contrairement à' contrast + pronominal 's'expérimente'."
+        },
+        {
+          "id": "SVC2-0348",
+          "kind": "phrase-modele",
+          "french": "C'est souvent par la nourriture que l'on commence à s'intéresser à un pays avant d'aller plus loin",
+          "english": "It is often through food that one begins to take an interest in a country before going further",
+          "example": "C'est souvent par la nourriture que l'on commence à s'intéresser à un pays avant d'aller plus loin.",
+          "usage": "Cleft 'C'est ... que' + 's'intéresser à'."
+        },
+        {
+          "id": "SVC2-0349",
+          "kind": "phrase-modele",
+          "french": "goûter la cuisine d'un pays, c'est aussi entrer en contact avec son passé et son territoire",
+          "english": "tasting a country's cuisine also means getting in touch with its past and its territory",
+          "example": "Cela montre que goûter la cuisine d'un pays, c'est aussi entrer en contact avec son passé et son territoire.",
+          "usage": "'..., c'est aussi + inf' definitional line."
+        },
+        {
+          "id": "SVC2-0350",
+          "kind": "phrase-modele",
+          "french": "elle reste l'une des entrées les plus vivantes et les plus concrètes dans une culture",
+          "english": "it remains one of the liveliest and most concrete ways into a culture",
+          "example": "Elle ne suffit pas à elle seule, mais elle reste l'une des entrées les plus vivantes et les plus concrètes dans une culture.",
+          "usage": "'l'une des + double superlative'; conclusion line."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p16",
+      "entries": [
+        {
+          "id": "SVC2-0351",
+          "kind": "mot-cle",
+          "french": "l'amitié",
+          "english": "friendship",
+          "example": "La vraie question est de savoir si l'on peut être vraiment heureux sans amis, ou si l'amitié reste une condition importante du bonheur.",
+          "usage": "Central abstract noun of the response."
+        },
+        {
+          "id": "SVC2-0352",
+          "kind": "mot-cle",
+          "french": "une vie heureuse",
+          "english": "a happy life",
+          "example": "L'amitié reste donc l'un des piliers les plus précieux d'une vie heureuse.",
+          "usage": "Feminine noun phrase; a concise outcome for evaluating relationships and well-being."
+        },
+        {
+          "id": "SVC2-0353",
+          "kind": "mot-cle",
+          "french": "un soutien émotionnel",
+          "english": "emotional support",
+          "example": "D'abord, les amis apportent un soutien émotionnel précieux dans les moments difficiles, que la famille ou le couple ne couvrent pas toujours.",
+          "usage": "Noun + adj; the first benefit of friends."
+        },
+        {
+          "id": "SVC2-0354",
+          "kind": "mot-cle",
+          "french": "un être social",
+          "english": "a social being",
+          "example": "Ensuite, l'être humain est par nature un être social, et l'isolement prolongé finit par nuire à la santé et au moral.",
+          "usage": "'être' as noun = a being; the human-nature argument."
+        },
+        {
+          "id": "SVC2-0355",
+          "kind": "mot-cle",
+          "french": "l'isolement prolongé",
+          "english": "prolonged isolation",
+          "example": "Ensuite, l'être humain est par nature un être social, et l'isolement prolongé finit par nuire à la santé et au moral.",
+          "usage": "Noun + adj; the harmful state described."
+        },
+        {
+          "id": "SVC2-0356",
+          "kind": "mot-cle",
+          "french": "la santé psychologique",
+          "english": "psychological health",
+          "example": "Ce type de relation joue donc un rôle important dans la santé psychologique, parce qu'il permet de se sentir compris et accepté tel que l'on est.",
+          "usage": "Noun + adj; affected by friendship or its lack."
+        },
+        {
+          "id": "SVC2-0357",
+          "kind": "mot-cle",
+          "french": "notre épanouissement",
+          "english": "our flourishing/fulfilment",
+          "example": "À mon avis, il n'est pas réaliste de dire que les amis ne sont pas nécessaires au bonheur, parce que le soutien et les liens qu'ils nous apportent jouent un rôle profond dans notre équilibre et notre épanouissement.",
+          "usage": "Abstract noun ('s'épanouir'); part of well-being."
+        },
+        {
+          "id": "SVC2-0358",
+          "kind": "mot-cle",
+          "french": "un besoin humain profond",
+          "english": "a deep human need",
+          "example": "Cela montre que les liens d'amitié répondent à un besoin humain profond, qu'on ne peut pas remplacer par autre chose.",
+          "usage": "Two-part modifier; friendship framed as a need."
+        },
+        {
+          "id": "SVC2-0359",
+          "kind": "mot-cle",
+          "french": "un vrai problème de santé publique",
+          "english": "a real public-health problem",
+          "example": "En effet, l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression, et il a même des conséquences sur la santé physique, au point d'être aujourd'hui considéré comme un vrai problème de santé publique.",
+          "usage": "'vrai' before noun; how isolation is now seen."
+        },
+        {
+          "id": "SVC2-0360",
+          "kind": "mot-cle",
+          "french": "notre personnalité",
+          "english": "our personality",
+          "example": "Cette confrontation bienveillante nous fait évoluer et participe directement à la construction de notre personnalité.",
+          "usage": "Abstract noun; what friendship helps build."
+        },
+        {
+          "id": "SVC2-0361",
+          "kind": "collocation",
+          "french": "un soutien émotionnel précieux",
+          "english": "precious emotional support",
+          "example": "D'abord, les amis apportent un soutien émotionnel précieux dans les moments difficiles, que la famille ou le couple ne couvrent pas toujours.",
+          "usage": "'précieux' after noun; the value of friends in hard times."
+        },
+        {
+          "id": "SVC2-0362",
+          "kind": "collocation",
+          "french": "on choisit ses amis librement",
+          "english": "one chooses one's friends freely",
+          "example": "En effet, on choisit ses amis librement, ce qui crée souvent une grande confiance et une vraie liberté de parole.",
+          "usage": "Verb + adverb; the freedom that builds trust."
+        },
+        {
+          "id": "SVC2-0363",
+          "kind": "collocation",
+          "french": "une vraie liberté de parole",
+          "english": "real freedom of speech/expression",
+          "example": "En effet, on choisit ses amis librement, ce qui crée souvent une grande confiance et une vraie liberté de parole.",
+          "usage": "'liberté de parole'; why friends can be told anything."
+        },
+        {
+          "id": "SVC2-0364",
+          "kind": "collocation",
+          "french": "le risque de dépression",
+          "english": "the risk of depression",
+          "example": "En effet, l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression, et il a même des conséquences sur la santé physique, au point d'être aujourd'hui considéré comme un vrai problème de santé publique.",
+          "usage": "'risque de' + noun; health consequence of isolation."
+        },
+        {
+          "id": "SVC2-0365",
+          "kind": "collocation",
+          "french": "la santé physique",
+          "english": "physical health",
+          "example": "En effet, l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression, et il a même des conséquences sur la santé physique, au point d'être aujourd'hui considéré comme un vrai problème de santé publique.",
+          "usage": "Fixed collocation contrasting with mental effects."
+        },
+        {
+          "id": "SVC2-0366",
+          "kind": "collocation",
+          "french": "les moments difficiles",
+          "english": "difficult times/moments",
+          "example": "D'abord, les amis apportent un soutien émotionnel précieux dans les moments difficiles, que la famille ou le couple ne couvrent pas toujours.",
+          "usage": "Fixed collocation; when friends matter most."
+        },
+        {
+          "id": "SVC2-0367",
+          "kind": "collocation",
+          "french": "reprendre confiance",
+          "english": "to regain confidence",
+          "example": "Par exemple, après une rupture, un échec à un examen ou une période de chômage, pouvoir appeler un ami qui écoute sans juger aide souvent à reprendre confiance et à ne pas rester seul avec son inquiétude.",
+          "usage": "'reprendre + noun'; effect of a friend's support."
+        },
+        {
+          "id": "SVC2-0368",
+          "kind": "collocation",
+          "french": "besoin de contact régulier",
+          "english": "need for regular contact",
+          "example": "Ce besoin de contact régulier avec les autres est inscrit dans la nature humaine et ne disparaît pas, même quand on a un travail ou une famille.",
+          "usage": "'besoin de' + noun; the social need described."
+        },
+        {
+          "id": "SVC2-0369",
+          "kind": "collocation",
+          "french": "des liens humains de qualité",
+          "english": "quality human bonds",
+          "example": "Le vrai problème n'est donc pas tant d'avoir beaucoup d'amis que d'avoir des liens humains de qualité.",
+          "usage": "'de qualité' set phrase; the conclusion's key idea."
+        },
+        {
+          "id": "SVC2-0370",
+          "kind": "collocation",
+          "french": "la construction de notre personnalité",
+          "english": "the building of our personality",
+          "example": "Cette confrontation bienveillante nous fait évoluer et participe directement à la construction de notre personnalité.",
+          "usage": "'construction de' + noun; growth through friendship."
+        },
+        {
+          "id": "SVC2-0371",
+          "kind": "expression",
+          "french": "tel que l'on est",
+          "english": "just as one is",
+          "example": "Ce type de relation joue donc un rôle important dans la santé psychologique, parce qu'il permet de se sentir compris et accepté tel que l'on est.",
+          "usage": "'tel que' = just as; being accepted unconditionally."
+        },
+        {
+          "id": "SVC2-0372",
+          "kind": "expression",
+          "french": "sans peur d'être jugé",
+          "english": "without fear of being judged",
+          "example": "De plus, on peut leur dire des choses qu'on ne dirait ni à sa famille ni à ses collègues, sans peur d'être jugé.",
+          "usage": "'sans peur de + inf'; passive 'être jugé'."
+        },
+        {
+          "id": "SVC2-0373",
+          "kind": "expression",
+          "french": "entre égaux",
+          "english": "as equals / between equals",
+          "example": "En effet, comme on les choisit entre égaux, les amis osent nous parler franchement et nous renvoient une image honnête de nous-mêmes, ce que ni la famille ni les collègues ne font toujours.",
+          "usage": "Fixed plural phrase; it describes a relationship without hierarchy and supports contrasts with family or work."
+        },
+        {
+          "id": "SVC2-0374",
+          "kind": "expression",
+          "french": "par nature",
+          "english": "by nature",
+          "example": "Ensuite, l'être humain est par nature un être social, et l'isolement prolongé finit par nuire à la santé et au moral.",
+          "usage": "Adverbial; 'l'être humain est par nature social'."
+        },
+        {
+          "id": "SVC2-0375",
+          "kind": "expression",
+          "french": "au point d'être aujourd'hui considéré",
+          "english": "to the point of now being regarded",
+          "example": "En effet, l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression, et il a même des conséquences sur la santé physique, au point d'être aujourd'hui considéré comme un vrai problème de santé publique.",
+          "usage": "'au point de + inf' = so much that; passive 'être considéré'."
+        },
+        {
+          "id": "SVC2-0376",
+          "kind": "expression",
+          "french": "une image honnête de nous-mêmes",
+          "english": "an honest image of ourselves",
+          "example": "En effet, comme on les choisit entre égaux, les amis osent nous parler franchement et nous renvoient une image honnête de nous-mêmes, ce que ni la famille ni les collègues ne font toujours.",
+          "usage": "'de nous-mêmes' reflexive; what friends reflect back."
+        },
+        {
+          "id": "SVC2-0377",
+          "kind": "expression",
+          "french": "sortir de nos habitudes",
+          "english": "to step out of our routines",
+          "example": "De plus, ils nous font découvrir d'autres idées, d'autres goûts et d'autres manières de vivre, et nous poussent à sortir de nos habitudes.",
+          "usage": "'sortir de' idiom; friends push us to grow."
+        },
+        {
+          "id": "SVC2-0378",
+          "kind": "expression",
+          "french": "sur le moment",
+          "english": "in the moment / at the time",
+          "example": "Cela montre que l'amitié ne nous rend pas seulement heureux sur le moment : elle nous aide à devenir nous-mêmes, ce qui nourrit un bonheur plus profond et plus durable.",
+          "usage": "Adverbial contrasting short vs lasting happiness."
+        },
+        {
+          "id": "SVC2-0379",
+          "kind": "expression",
+          "french": "des périodes de solitude choisie",
+          "english": "periods of chosen solitude",
+          "example": "Cependant, il faut reconnaître que l'on peut vivre des périodes de solitude choisie sans en souffrir, et que la qualité des amitiés compte plus que leur nombre.",
+          "usage": "'choisie' past participle agreeing; nuance point."
+        },
+        {
+          "id": "SVC2-0380",
+          "kind": "expression",
+          "french": "l'un des piliers les plus précieux",
+          "english": "one of the most precious pillars",
+          "example": "L'amitié reste donc l'un des piliers les plus précieux d'une vie heureuse.",
+          "usage": "'pilier' metaphor + superlative; conclusion image."
+        },
+        {
+          "id": "SVC2-0381",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, il n'est pas réaliste de dire que les amis ne sont pas nécessaires au bonheur, parce que le soutien et les liens qu'ils nous apportent jouent un rôle profond dans notre équilibre et notre épanouissement.",
+          "usage": "Opinion marker opening the stance."
+        },
+        {
+          "id": "SVC2-0382",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si l'on peut être vraiment heureux sans amis, ou si l'amitié reste une condition importante du bonheur.",
+          "usage": "Reframing formula stating the true issue."
+        },
+        {
+          "id": "SVC2-0383",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que les amis apportent un soutien émotionnel que peu d'autres relations peuvent vraiment remplacer.",
+          "usage": "Opinion + enumerator introducing argument 1."
+        },
+        {
+          "id": "SVC2-0384",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, on peut leur dire des choses qu'on ne dirait ni à sa famille ni à ses collègues, sans peur d'être jugé.",
+          "usage": "Additive connector within an argument."
+        },
+        {
+          "id": "SVC2-0385",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, l'être humain est par nature un être social, et l'isolement prolongé finit par nuire à la santé et au moral.",
+          "usage": "Second enumerator."
+        },
+        {
+          "id": "SVC2-0386",
+          "kind": "tournure",
+          "french": "Enfin, je pense que",
+          "english": "Finally, I think that",
+          "example": "Enfin, je pense que les amis ne font pas que nous soutenir : ils nous aident à grandir et à mieux nous connaître.",
+          "usage": "Final enumerator + opinion introducing argument 3."
+        },
+        {
+          "id": "SVC2-0387",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, on choisit ses amis librement, ce qui crée souvent une grande confiance et une vraie liberté de parole.",
+          "usage": "Justification connector."
+        },
+        {
+          "id": "SVC2-0388",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, après une rupture, un échec à un examen ou une période de chômage, pouvoir appeler un ami qui écoute sans juger aide souvent à reprendre confiance et à ne pas rester seul avec son inquiétude.",
+          "usage": "Illustration connector."
+        },
+        {
+          "id": "SVC2-0389",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que l'amitié n'est pas un simple plaisir, mais une vraie source d'équilibre intérieur.",
+          "usage": "Consequence/summary connector closing an argument."
+        },
+        {
+          "id": "SVC2-0390",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître que",
+          "english": "However, one must acknowledge that",
+          "example": "Cependant, il faut reconnaître que l'on peut vivre des périodes de solitude choisie sans en souffrir, et que la qualité des amitiés compte plus que leur nombre.",
+          "usage": "Concessive 'il faut reconnaître que' opening the nuance."
+        },
+        {
+          "id": "SVC2-0391",
+          "kind": "phrase-modele",
+          "french": "il n'est pas réaliste de dire que les amis ne sont pas nécessaires au bonheur",
+          "english": "it is not realistic to say that friends are not necessary for happiness",
+          "example": "À mon avis, il n'est pas réaliste de dire que les amis ne sont pas nécessaires au bonheur, parce que le soutien et les liens qu'ils nous apportent jouent un rôle profond dans notre équilibre et notre épanouissement.",
+          "usage": "'il n'est pas réaliste de + inf'; the position statement."
+        },
+        {
+          "id": "SVC2-0392",
+          "kind": "phrase-modele",
+          "french": "les amis apportent un soutien émotionnel que peu d'autres relations peuvent vraiment remplacer",
+          "english": "friends provide emotional support that few other relationships can really replace",
+          "example": "Je pense d'abord que les amis apportent un soutien émotionnel que peu d'autres relations peuvent vraiment remplacer.",
+          "usage": "Relative 'que ... peuvent remplacer'; argument-1 core."
+        },
+        {
+          "id": "SVC2-0393",
+          "kind": "phrase-modele",
+          "french": "on peut leur dire des choses qu'on ne dirait ni à sa famille ni à ses collègues, sans peur d'être jugé",
+          "english": "you can tell them things you would tell neither your family nor your colleagues, without fear of being judged",
+          "example": "De plus, on peut leur dire des choses qu'on ne dirait ni à sa famille ni à ses collègues, sans peur d'être jugé.",
+          "usage": "Conditional 'dirait' + 'ni ... ni ...' correlative."
+        },
+        {
+          "id": "SVC2-0394",
+          "kind": "phrase-modele",
+          "french": "l'être humain est par nature un être social, et la solitude prolongée finit par fragiliser le bien-être",
+          "english": "the human being is by nature a social being, and prolonged loneliness ends up undermining well-being",
+          "example": "Ensuite, l'être humain est par nature un être social, et la solitude prolongée finit par fragiliser le bien-être.",
+          "usage": "'par nature' + 'finir par + inf'; argument-2 thesis."
+        },
+        {
+          "id": "SVC2-0395",
+          "kind": "phrase-modele",
+          "french": "l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression",
+          "english": "prolonged isolation does not only affect mood: it increases stress and the risk of depression",
+          "example": "En effet, l'isolement prolongé n'affecte pas seulement l'humeur : il augmente le stress et le risque de dépression, et il a même des conséquences sur la santé physique, au point d'être aujourd'hui considéré comme un vrai problème de santé publique.",
+          "usage": "'ne ... pas seulement' + colon of escalation."
+        },
+        {
+          "id": "SVC2-0396",
+          "kind": "phrase-modele",
+          "french": "les liens d'amitié répondent à un besoin humain profond, qu'on ne peut pas remplacer par autre chose",
+          "english": "bonds of friendship meet a deep human need that cannot be replaced by anything else",
+          "example": "Cela montre que les liens d'amitié répondent à un besoin humain profond, qu'on ne peut pas remplacer par autre chose.",
+          "usage": "'répondre à un besoin' + relative; argument-2 close."
+        },
+        {
+          "id": "SVC2-0397",
+          "kind": "phrase-modele",
+          "french": "comme on les choisit entre égaux, les amis osent nous parler franchement et nous renvoient une image honnête de nous-mêmes",
+          "english": "because we choose them as equals, friends dare to speak to us frankly and reflect an honest image of ourselves back to us",
+          "example": "En effet, comme on les choisit entre égaux, les amis osent nous parler franchement et nous renvoient une image honnête de nous-mêmes, ce que ni la famille ni les collègues ne font toujours.",
+          "usage": "'comme' cause + 'oser + inf'; argument-3 core."
+        },
+        {
+          "id": "SVC2-0398",
+          "kind": "phrase-modele",
+          "french": "l'amitié ne nous rend pas seulement heureux sur le moment : elle nous aide à devenir nous-mêmes",
+          "english": "friendship does not only make us happy in the moment: it helps us become ourselves",
+          "example": "Cela montre que l'amitié ne nous rend pas seulement heureux sur le moment : elle nous aide à devenir nous-mêmes, ce qui nourrit un bonheur plus profond et plus durable.",
+          "usage": "'rendre + adj' + colon contrast; growth argument."
+        },
+        {
+          "id": "SVC2-0399",
+          "kind": "phrase-modele",
+          "french": "Le vrai problème n'est donc pas tant d'avoir beaucoup d'amis que d'avoir des liens humains de qualité",
+          "english": "The real problem is therefore not so much having many friends as having quality human bonds",
+          "example": "Le vrai problème n'est donc pas tant d'avoir beaucoup d'amis que d'avoir des liens humains de qualité.",
+          "usage": "'ne ... pas tant ... que ...' comparative; nuance line."
+        },
+        {
+          "id": "SVC2-0400",
+          "kind": "phrase-modele",
+          "french": "L'amitié reste donc l'un des piliers les plus précieux d'une vie heureuse",
+          "english": "Friendship therefore remains one of the most precious pillars of a happy life",
+          "example": "L'amitié reste donc l'un des piliers les plus précieux d'une vie heureuse.",
+          "usage": "'rester' + superlative; conclusion line."
+        }
+      ]
+    }
+  ]
+}

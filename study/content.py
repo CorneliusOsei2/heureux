@@ -20,13 +20,40 @@ CONTENT_DIR = Path(__file__).resolve().parent / "content"
 RESPONSES_DIR = CONTENT_DIR / "responses"
 STUDY_SHEETS_PATH = CONTENT_DIR / "study_sheets.md"
 PHRASES_PATH = CONTENT_DIR / "phrases.tsv"
+SUBJECT_VOCABULARY_DIR = CONTENT_DIR / "subject_vocabulary"
 THEMES_PATH = CONTENT_DIR / "themes.json"
 SECTIONS_PATH = CONTENT_DIR / "sections.json"
+COMPREHENSION_DIR = CONTENT_DIR / "comprehension"
+COMPREHENSION_TESTS_PATH = COMPREHENSION_DIR / "tests.json"
 
 EXPECTED_PROMPTS = 167
 EXPECTED_UNIQUE = 130
 EXPECTED_FAMILIES = 17
 EXPECTED_PHRASES = 1410
+SUBJECT_VOCABULARY_PER_RESPONSE = 50
+SUBJECT_VOCABULARY_PER_KIND = 10
+SUBJECT_VOCABULARY_FIELDS = (
+    "id",
+    "kind",
+    "french",
+    "english",
+    "example",
+    "usage",
+)
+SUBJECT_VOCABULARY_KINDS = (
+    "mot-cle",
+    "collocation",
+    "expression",
+    "tournure",
+    "phrase-modele",
+)
+SUBJECT_VOCABULARY_CATEGORIES = {
+    "mot-cle": "Mots clés du sujet",
+    "collocation": "Collocations du sujet",
+    "expression": "Expressions du sujet",
+    "tournure": "Tournures pour l'oral",
+    "phrase-modele": "Phrases modèles",
+}
 PHRASE_FIELDS = (
     "id",
     "tier",
@@ -145,6 +172,39 @@ class PhraseData:
     order: int
 
 
+@dataclass(frozen=True)
+class ComprehensionChoiceData:
+    letter: str
+    text_fr: str
+    text_en: str
+    rationale: str
+    is_correct: bool
+
+
+@dataclass(frozen=True)
+class ComprehensionQuestionData:
+    content_key: str
+    number: int
+    passage_fr: str
+    passage_en: str
+    prompt_fr: str
+    prompt_en: str
+    correct_explanation: str
+    choices: Tuple[ComprehensionChoiceData, ...]
+
+
+@dataclass(frozen=True)
+class ComprehensionTestData:
+    slug: str
+    number: int
+    title: str
+    description: str
+    expected_question_count: int
+    order: int
+    is_published: bool
+    questions: Tuple[ComprehensionQuestionData, ...]
+
+
 def _slugify(value: str) -> str:
     replacements = {
         "à": "a", "â": "a", "ä": "a", "ç": "c", "é": "e", "è": "e",
@@ -229,6 +289,188 @@ def load_sections() -> List[SectionData]:
         )
     sections.sort(key=lambda s: s.order)
     return sections
+
+
+def _ce_plain_text(value: str) -> str:
+    value = value.replace("\u00a0", " ").replace("**", "")
+    value = re.sub(r"\n---\s*$", "", value.strip())
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def _parse_comprehension_source(
+    path: Path,
+    *,
+    slug: str,
+) -> Tuple[ComprehensionQuestionData, ...]:
+    text = path.read_text(encoding="utf-8")
+    parts = re.split(
+        r"(?m)^## \*\*Q(\d+)\*\*\s*$",
+        text,
+    )[1:]
+    if not parts or len(parts) % 2:
+        raise ValueError(f"No valid comprehension questions in {path.name}")
+
+    questions: List[ComprehensionQuestionData] = []
+    for index in range(0, len(parts), 2):
+        number = int(parts[index])
+        block = parts[index + 1]
+        passage_match = re.search(
+            r"### \*\*Passage\*\*\s*```\s*\n(.*?)\n```",
+            block,
+            flags=re.DOTALL,
+        )
+        if not passage_match:
+            raise ValueError(f"{path.name} Q{number} has no passage")
+        passage = passage_match.group(1).strip()
+        translation_match = re.search(
+            r"\n\s*\((.+)\)\s*$",
+            passage,
+            flags=re.DOTALL,
+        )
+        if not translation_match:
+            raise ValueError(f"{path.name} Q{number} has no passage translation")
+        passage_fr = _ce_plain_text(passage[:translation_match.start()])
+        passage_en = _ce_plain_text(translation_match.group(1))
+
+        prompt_match = re.search(
+            r"(?m)^\|\s*\*\*Prompt\*\*\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*$",
+            block,
+        )
+        if not prompt_match:
+            raise ValueError(f"{path.name} Q{number} has no prompt row")
+
+        choice_rows = re.findall(
+            r"(?m)^\|\s*(\*\*)?([A-D])(?:\*\*)?\s*"
+            r"\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*$",
+            block,
+        )
+        if len(choice_rows) != 4:
+            raise ValueError(
+                f"{path.name} Q{number} must have four choices, "
+                f"found {len(choice_rows)}"
+            )
+        choice_letters = [letter for _marker, letter, _fr, _en in choice_rows]
+        if len(set(choice_letters)) != 4 or set(choice_letters) != set("ABCD"):
+            raise ValueError(
+                f"{path.name} Q{number} choices must use A, B, C and D exactly once"
+            )
+        bold_answers = [
+            letter for marker, letter, _text_fr, _text_en in choice_rows if marker
+        ]
+        heading_match = re.search(
+            r"### \*\*Correct Answer:\s*([A-D])\s*--.*?\*\*",
+            block,
+        )
+        if heading_match:
+            correct_letter = heading_match.group(1)
+            if bold_answers and bold_answers != [correct_letter]:
+                raise ValueError(
+                    f"{path.name} Q{number} has conflicting correct answers"
+                )
+        elif len(bold_answers) == 1:
+            correct_letter = bold_answers[0]
+        else:
+            raise ValueError(f"{path.name} Q{number} has no correct answer")
+
+        correct_explanation = ""
+        if heading_match:
+            explanation_end = re.search(
+                r"### \*\*Why the others are wrong\*\*",
+                block[heading_match.end():],
+            )
+            raw_explanation = block[heading_match.end():]
+            if explanation_end:
+                raw_explanation = raw_explanation[:explanation_end.start()]
+            correct_explanation = _ce_plain_text(raw_explanation)
+
+        rationales: Dict[str, str] = {}
+        why_match = re.search(
+            r"### \*\*Why the others are wrong\*\*(.*)$",
+            block,
+            flags=re.DOTALL,
+        )
+        if why_match:
+            rationale_parts = re.split(
+                r"(?m)^\*\*([A-D])\s*--.*?\*\*\s*",
+                why_match.group(1),
+            )[1:]
+            for rationale_index in range(0, len(rationale_parts), 2):
+                letter = rationale_parts[rationale_index]
+                rationale = rationale_parts[rationale_index + 1]
+                rationales[letter] = _ce_plain_text(rationale)
+
+        choices = tuple(
+            ComprehensionChoiceData(
+                letter=letter,
+                text_fr=_ce_plain_text(text_fr),
+                text_en=_ce_plain_text(text_en),
+                rationale=rationales.get(letter, ""),
+                is_correct=(letter == correct_letter),
+            )
+            for _marker, letter, text_fr, text_en in choice_rows
+        )
+        if sum(choice.is_correct for choice in choices) != 1:
+            raise ValueError(
+                f"{path.name} Q{number} must have exactly one correct choice"
+            )
+        questions.append(
+            ComprehensionQuestionData(
+                content_key=f"ce:{slug}:q{number:02d}",
+                number=number,
+                passage_fr=passage_fr,
+                passage_en=passage_en,
+                prompt_fr=_ce_plain_text(prompt_match.group(1)),
+                prompt_en=_ce_plain_text(prompt_match.group(2)),
+                correct_explanation=correct_explanation,
+                choices=choices,
+            )
+        )
+
+    question_numbers = [question.number for question in questions]
+    expected_numbers = list(range(1, len(questions) + 1))
+    if question_numbers != expected_numbers:
+        raise ValueError(
+            f"{path.name} question numbers must be consecutive from Q1"
+        )
+    return tuple(questions)
+
+
+def load_comprehension_tests() -> List[ComprehensionTestData]:
+    raw = json.loads(COMPREHENSION_TESTS_PATH.read_text(encoding="utf-8"))
+    tests: List[ComprehensionTestData] = []
+    seen_slugs = set()
+    seen_numbers = set()
+    for item in raw.get("tests", []):
+        source_name = item["source"]
+        if Path(source_name).name != source_name:
+            raise ValueError(f"Invalid comprehension source path: {source_name!r}")
+        path = COMPREHENSION_DIR / source_name
+        questions = _parse_comprehension_source(path, slug=item["slug"])
+        expected_count = int(item.get("expected_question_count", 36))
+        is_published = bool(item.get("is_published", False))
+        if is_published and len(questions) != expected_count:
+            raise ValueError(
+                f"Published {item['slug']} needs {expected_count} questions, "
+                f"found {len(questions)}"
+            )
+        if item["slug"] in seen_slugs or item["number"] in seen_numbers:
+            raise ValueError("Comprehension test slugs and numbers must be unique")
+        seen_slugs.add(item["slug"])
+        seen_numbers.add(item["number"])
+        tests.append(
+            ComprehensionTestData(
+                slug=item["slug"],
+                number=int(item["number"]),
+                title=item.get("title") or f"Test {item['number']}",
+                description=item.get("description", ""),
+                expected_question_count=expected_count,
+                order=int(item.get("order", item["number"])),
+                is_published=is_published,
+                questions=questions,
+            )
+        )
+    tests.sort(key=lambda item: (item.order, item.number))
+    return tests
 
 
 def theme_order_map() -> Dict[str, int]:
@@ -638,6 +880,173 @@ def parse_phrases(
     if len(phrases) != EXPECTED_PHRASES:
         raise ValueError(
             f"Expected {EXPECTED_PHRASES} phrases, got {len(phrases)}"
+        )
+    return phrases
+
+
+def parse_subject_vocabulary(
+    responses: Optional[List[ResponseData]] = None,
+) -> List[PhraseData]:
+    """Load the dedicated 50-entry vocabulary deck for every response."""
+    if responses is None:
+        responses = parse_responses()
+
+    response_by_key = {response.content_key: response for response in responses}
+    seen_response_keys: Dict[str, str] = {}
+    seen_ids: Dict[str, str] = {}
+    phrases: List[PhraseData] = []
+    paths = sorted(SUBJECT_VOCABULARY_DIR.glob("*.json"))
+    if not paths:
+        raise ValueError("No subject-vocabulary JSON files found")
+
+    expected_kinds = tuple(
+        kind
+        for kind in SUBJECT_VOCABULARY_KINDS
+        for _ in range(SUBJECT_VOCABULARY_PER_KIND)
+    )
+    for path in paths:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict) or payload.get("version") != 1:
+            raise ValueError(f"{path.name} must use subject-vocabulary version 1")
+        response_rows = payload.get("responses")
+        if not isinstance(response_rows, list):
+            raise ValueError(f"{path.name} must contain a responses list")
+
+        for response_index, response_row in enumerate(response_rows, start=1):
+            location = f"{path.name} response {response_index}"
+            if not isinstance(response_row, dict):
+                raise ValueError(f"{location} must be an object")
+            response_key = response_row.get("response_key")
+            if not isinstance(response_key, str) or not response_key.strip():
+                raise ValueError(f"{location} has no response_key")
+            response_key = response_key.strip()
+            if response_key in seen_response_keys:
+                raise ValueError(
+                    f"Duplicate subject vocabulary for {response_key!r} in "
+                    f"{seen_response_keys[response_key]} and {path.name}"
+                )
+            response = response_by_key.get(response_key)
+            if response is None:
+                raise ValueError(
+                    f"{location} references unknown response {response_key!r}"
+                )
+            seen_response_keys[response_key] = path.name
+
+            entries = response_row.get("entries")
+            if not isinstance(entries, list):
+                raise ValueError(f"{location} must contain an entries list")
+            if len(entries) != SUBJECT_VOCABULARY_PER_RESPONSE:
+                raise ValueError(
+                    f"{response_key} must have exactly "
+                    f"{SUBJECT_VOCABULARY_PER_RESPONSE} vocabulary entries, "
+                    f"got {len(entries)}"
+                )
+            actual_kinds = tuple(
+                entry.get("kind") if isinstance(entry, dict) else None
+                for entry in entries
+            )
+            if actual_kinds != expected_kinds:
+                raise ValueError(
+                    f"{response_key} must contain ten ordered entries for each "
+                    "subject-vocabulary kind"
+                )
+
+            seen_targets = set()
+            sources = tuple(
+                (prompt.theme, prompt.number) for prompt in response.prompts
+            )
+            sources_raw = "; ".join(
+                f"{theme} P{number}" for theme, number in sources
+            )
+            for entry_index, entry in enumerate(entries, start=1):
+                entry_location = f"{response_key} entry {entry_index}"
+                if not isinstance(entry, dict):
+                    raise ValueError(f"{entry_location} must be an object")
+                values = {}
+                for field_name in SUBJECT_VOCABULARY_FIELDS:
+                    value = entry.get(field_name)
+                    if not isinstance(value, str) or not value.strip():
+                        raise ValueError(
+                            f"{entry_location} has an empty {field_name!r} field"
+                        )
+                    values[field_name] = value.strip()
+
+                phrase_id = values["id"]
+                phrase_id_key = phrase_id.casefold()
+                if len(phrase_id) > PHRASE_MAX_LENGTHS["id"]:
+                    raise ValueError(
+                        f"{entry_location} id exceeds "
+                        f"{PHRASE_MAX_LENGTHS['id']} characters"
+                    )
+                if phrase_id_key in seen_ids:
+                    raise ValueError(
+                        f"Duplicate subject-vocabulary id {phrase_id!r} in "
+                        f"{seen_ids[phrase_id_key]} and {entry_location}"
+                    )
+                seen_ids[phrase_id_key] = entry_location
+
+                french = values["french"]
+                english = values["english"]
+                example = values["example"]
+                if len(french) > PHRASE_MAX_LENGTHS["expression"]:
+                    raise ValueError(
+                        f"{entry_location} french target exceeds "
+                        f"{PHRASE_MAX_LENGTHS['expression']} characters"
+                    )
+                if len(english) > PHRASE_MAX_LENGTHS["english_cue"]:
+                    raise ValueError(
+                        f"{entry_location} english cue exceeds "
+                        f"{PHRASE_MAX_LENGTHS['english_cue']} characters"
+                    )
+                target_key = french.casefold()
+                if target_key in seen_targets:
+                    raise ValueError(
+                        f"{response_key} repeats french target {french!r}"
+                    )
+                seen_targets.add(target_key)
+                if french not in response.body:
+                    raise ValueError(
+                        f"{entry_location} french target is not verbatim in "
+                        "the response"
+                    )
+                if example not in response.body:
+                    raise ValueError(
+                        f"{entry_location} example is not verbatim in the response"
+                    )
+                if example.casefold().count(target_key) != 1:
+                    raise ValueError(
+                        f"{entry_location} example must contain its french "
+                        "target exactly once"
+                    )
+
+                phrases.append(
+                    PhraseData(
+                        phrase_id=phrase_id,
+                        tier="subject",
+                        category=SUBJECT_VOCABULARY_CATEGORIES[values["kind"]],
+                        english_cue=english,
+                        expression=french,
+                        anchor=french,
+                        example=example,
+                        note=values["usage"],
+                        sources_raw=sources_raw,
+                        sources=sources,
+                        order=EXPECTED_PHRASES + len(phrases) + 1,
+                    )
+                )
+
+    missing = sorted(set(response_by_key) - set(seen_response_keys))
+    if missing:
+        raise ValueError(
+            "Missing subject vocabulary for responses: " + ", ".join(missing)
+        )
+    expected_total = (
+        len(response_by_key) * SUBJECT_VOCABULARY_PER_RESPONSE
+    )
+    if len(phrases) != expected_total:
+        raise ValueError(
+            f"Expected {expected_total} subject-vocabulary entries, "
+            f"got {len(phrases)}"
         )
     return phrases
 

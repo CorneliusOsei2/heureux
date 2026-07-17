@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Heureux{% endblock %}</title>
-  <meta name="description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
+  <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=1"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=34">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=36">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Heureux">
   <meta property="og:title" content="{% block og_title %}Heureux{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}Révisions en répétition espacée pour l'expression orale et écrite en français.{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Révisions pour l'expression et la compréhension du français.{% endblock %}">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
   <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}?v=2">
   <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
   <meta property="og:image:alt" content="Heureux — logo blanc, bleu et rouge">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% block twitter_title %}Heureux{% endblock %}">
-  <meta name="twitter:description" content="Révisions en répétition espacée pour l'expression orale et écrite en français.">
+  <meta name="twitter:description" content="Révisions pour l'expression et la compréhension du français.">
   <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
 </head>
 <body
@@ -46,6 +46,7 @@
       </button>
       <nav class="nav__links" id="primary-navigation" aria-label="Navigation principale" data-nav-links>
         <a href="{% url 'study:dashboard' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}">Accueil</a>
+        <a href="{% url 'study:comprehension_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'comprehension_overview' or request.resolver_match.url_name == 'comprehension_test' or request.resolver_match.url_name == 'comprehension_question' or request.resolver_match.url_name == 'comprehension_results' %}is-active{% endif %}">Compréhension</a>
         <a href="{% url 'study:review_overview' %}" class="nav__primary-link {% if request.resolver_match.url_name == 'review_overview' or request.resolver_match.url_name == 'review' or request.resolver_match.url_name == 'task_review_hub' or request.resolver_match.url_name == 'revisit_list' or request.resolver_match.url_name == 'task_revisit_list' %}is-active{% endif %}">
           Réviser
           {% if nav_due_total %}<span class="pill pill--due">{{ nav_due_total }}</span>{% endif %}

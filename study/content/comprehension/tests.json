@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "slug": "test-1",
+      "number": 1,
+      "title": "Test 1",
+      "description": "36 questions de compréhension écrite, du repérage simple à l'analyse de textes complexes.",
+      "expected_question_count": 36,
+      "order": 1,
+      "is_published": true,
+      "source": "test_01.md"
+    },
+    {
+      "slug": "test-2",
+      "number": 2,
+      "title": "Test 2",
+      "description": "Ce test sera disponible dès que les 36 questions auront été intégrées.",
+      "expected_question_count": 36,
+      "order": 2,
+      "is_published": false,
+      "source": "test_02.md"
+    }
+  ]
+}

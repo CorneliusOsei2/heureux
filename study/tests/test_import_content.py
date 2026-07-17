@@ -16,6 +16,7 @@ from study.models import (
     AnnotationKind,
     Card,
     CardState,
+    CardType,
     ContentImportState,
     Prompt,
     Rating,
@@ -66,6 +67,40 @@ class PhraseLotMigrationTests(TestCase):
         )
         self.assertEqual(response_session.current_card_id, response_card.pk)
         self.assertEqual(response_session.presentation_token, "valid-token")
+
+    def test_resizing_phrase_lots_clears_saved_batch_sessions_again(self):
+        phrase_user = factories.make_user("resized-phrase-session")
+        phrase_card = factories.make_phrase_card(user=phrase_user)
+        phrase_session = ReviewSession.objects.create(
+            user=phrase_user,
+            current_card=phrase_card,
+            scope={"kind": "phrase", "category": "liaisons", "batch": "2"},
+            presentation_token="stale-token",
+        )
+        response_user = factories.make_user("resized-response-session")
+        response_card = factories.make_spine_card(user=response_user)
+        response_session = ReviewSession.objects.create(
+            user=response_user,
+            current_card=response_card,
+            scope={"kind": "spine", "theme": "culture", "batch": "2"},
+            presentation_token="valid-token",
+        )
+
+        migration = importlib.import_module(
+            "study.migrations.0019_subject_vocabulary_tier"
+        )
+        migration.reset_resized_phrase_batch_sessions(apps, None)
+
+        phrase_session.refresh_from_db()
+        response_session.refresh_from_db()
+        self.assertEqual(phrase_session.scope, {})
+        self.assertIsNone(phrase_session.current_card_id)
+        self.assertEqual(phrase_session.presentation_token, "")
+        self.assertEqual(
+            response_session.scope,
+            {"kind": "spine", "theme": "culture", "batch": "2"},
+        )
+        self.assertEqual(response_session.current_card_id, response_card.pk)
 
 
 class NonDestructiveImportTests(TestCase):
@@ -326,6 +361,118 @@ class NonDestructiveImportTests(TestCase):
         self.assertEqual(production.interval_days, 24)
         self.assertTrue(production.needs_revisit)
         self.assertEqual(recognition.reps, 11)
+
+    def test_bulk_phrase_import_preserves_identity_and_replaces_sources(self):
+        response = factories.make_response()
+        prompt = response.prompts.get(is_canonical=True)
+        old_response = factories.make_response()
+        old_prompt = old_response.prompts.get(is_canonical=True)
+        phrase = factories.make_phrase(tier="response", lot_order=777)
+        phrase.phrase_id = "BULK1"
+        phrase.save(update_fields=["phrase_id"])
+        phrase.source_prompts.add(old_prompt)
+        user = factories.make_user("bulk-phrase-import")
+        card = factories.make_phrase_card(
+            user=user,
+            phrase=phrase,
+            state=CardState.REVIEW,
+            reps=6,
+            interval_days=12,
+        )
+        phrase_id = phrase.pk
+        data = content.PhraseData(
+            phrase_id="BULK1",
+            tier="subject",
+            category="Mots clés du sujet",
+            english_cue="updated cue",
+            expression="mise à jour",
+            anchor="mise à jour",
+            example="Une mise à jour utile.",
+            note="Updated note.",
+            sources_raw=f"{prompt.theme.name} P{prompt.number}",
+            sources=((prompt.theme.name, prompt.number),),
+            order=1500,
+        )
+        new_data = content.PhraseData(
+            phrase_id="BULK2",
+            tier="subject",
+            category="Mots clés du sujet",
+            english_cue="new cue",
+            expression="nouveau terme",
+            anchor="nouveau terme",
+            example="Un nouveau terme utile.",
+            note="New note.",
+            sources_raw=f"{prompt.theme.name} P{prompt.number}",
+            sources=((prompt.theme.name, prompt.number),),
+            order=1501,
+        )
+
+        command = Command()
+        prompt_index = {(prompt.theme.name, prompt.number): prompt}
+        command._import_phrases([data, new_data], prompt_index)
+        command._import_phrases([data, new_data], prompt_index)
+
+        phrase.refresh_from_db()
+        card.refresh_from_db()
+        self.assertEqual(phrase.pk, phrase_id)
+        self.assertEqual(phrase.tier, "subject")
+        self.assertEqual(phrase.english_cue, "updated cue")
+        self.assertEqual(phrase.lot_order, 777)
+        self.assertEqual(list(phrase.source_prompts.all()), [prompt])
+        self.assertEqual(card.reps, 6)
+        self.assertEqual(card.interval_days, 12)
+        imported_new = phrase.__class__.objects.get(phrase_id="BULK2")
+        self.assertGreater(imported_new.lot_order, phrase.lot_order)
+        self.assertEqual(list(imported_new.source_prompts.all()), [prompt])
+
+        command._import_phrases([], {})
+
+        phrase.refresh_from_db()
+        imported_new.refresh_from_db()
+        card.refresh_from_db()
+        self.assertFalse(phrase.is_active)
+        self.assertFalse(imported_new.is_active)
+        self.assertEqual(card.reps, 6)
+
+    def test_card_sync_creates_only_production_for_subject_vocabulary(self):
+        user = factories.make_user("subject-card-sync")
+        response = factories.make_response()
+        shared = factories.make_phrase(tier="shared")
+        subject = factories.make_phrase(tier="subject")
+
+        Command()._sync_cards(
+            {response.content_key: response},
+            user=user,
+        )
+
+        self.assertTrue(
+            Card.objects.filter(
+                user=user,
+                response=response,
+                card_type=CardType.SPINE,
+            ).exists()
+        )
+        self.assertEqual(
+            set(
+                Card.objects.filter(user=user, phrase=shared).values_list(
+                    "card_type",
+                    flat=True,
+                )
+            ),
+            {
+                CardType.PHRASE_PRODUCTION,
+                CardType.PHRASE_RECOGNITION,
+            },
+        )
+        self.assertEqual(
+            list(
+                Card.objects.filter(user=user, phrase=subject).values_list(
+                    "card_type",
+                    flat=True,
+                )
+            ),
+            [CardType.PHRASE_PRODUCTION],
+        )
 
     def test_archived_task_keeps_notes_and_manual_delete_uncategorizes_them(self):
         user = factories.make_user("note-owner")

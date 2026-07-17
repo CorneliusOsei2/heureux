@@ -6,7 +6,7 @@ from datetime import timedelta
 
 from django.conf import settings as django_settings
 from django.contrib.auth import authenticate, get_user_model
-from django.db import transaction
+from django.db import connection, transaction
 from django.db.models import Q
 from django.utils import timezone
 from django.utils.crypto import salted_hmac
@@ -34,11 +34,23 @@ ACCOUNT_LOCK_MAX = timedelta(hours=4)
 THROTTLE_RETENTION = timedelta(days=2)
 RECOVERY_CODE_COUNT = 8
 RECOVERY_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+STUDY_DATA_LOCK_ID = 20341866963359064
+
+
+def acquire_study_data_lock() -> None:
+    """Serialize content imports with user deck provisioning on PostgreSQL."""
+    if connection.vendor == "postgresql":
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT pg_advisory_xact_lock(%s)",
+                [STUDY_DATA_LOCK_ID],
+            )
 
 
 def provision_user_study_data(user) -> None:
     """Create a private deck, claiming legacy progress for the first account."""
     with transaction.atomic():
+        acquire_study_data_lock()
         is_first_user = not get_user_model().objects.exclude(pk=user.pk).exists()
         has_owned_cards = Card.objects.filter(user__isnull=False).exists()
         if is_first_user or not has_owned_cards:

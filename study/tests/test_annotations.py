@@ -53,16 +53,31 @@ class AnnotationTests(TestCase):
         self.assertContains(overview, "1 note")
         self.assertContains(overview, "1 surlignage")
 
-        detail = self.client.get(
+        notes_tab = self.client.get(
             reverse(
                 "study:task_notes",
                 args=[self.part.slug, self.task.slug],
             )
         )
-        self.assertContains(detail, "Notes")
-        self.assertContains(detail, "Surlignages")
-        self.assertContains(detail, "Réutiliser cette structure.")
-        self.assertContains(detail, "Passage important")
+        self.assertContains(notes_tab, 'role="tablist"')
+        self.assertContains(
+            notes_tab,
+            'id="notes-tab"',
+        )
+        self.assertContains(notes_tab, 'aria-selected="true"')
+        self.assertContains(notes_tab, "Réutiliser cette structure.")
+        self.assertNotContains(notes_tab, "Passage important")
+
+        highlights_tab = self.client.get(
+            reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            ),
+            {"tab": "highlights"},
+        )
+        self.assertEqual(highlights_tab.context["active_tab"], "highlights")
+        self.assertContains(highlights_tab, "Passage important")
+        self.assertNotContains(highlights_tab, "Réutiliser cette structure.")
 
     def test_highlights_are_grouped_by_responses_and_expressions(self):
         response_highlight = Annotation.objects.create(
@@ -111,7 +126,8 @@ class AnnotationTests(TestCase):
             reverse(
                 "study:task_notes",
                 args=[self.part.slug, self.task.slug],
-            )
+            ),
+            {"tab": "highlights"},
         )
 
         groups = {
@@ -139,7 +155,10 @@ class AnnotationTests(TestCase):
             {"title": "Connecteurs", "body": "Employer cependant et pourtant."},
         )
         task_note = Annotation.objects.get(title="Connecteurs")
-        self.assertRedirects(response, task_url + f"#note-{task_note.id}")
+        self.assertRedirects(
+            response,
+            task_url + f"?tab=notes#note-{task_note.id}",
+        )
         self.assertEqual(task_note.user, self.user)
         self.assertEqual(task_note.task, self.task)
         self.assertEqual(task_note.kind, AnnotationKind.NOTE)
@@ -150,7 +169,10 @@ class AnnotationTests(TestCase):
             {"title": "", "body": "Objectif de la semaine."},
         )
         general_note = Annotation.objects.get(body="Objectif de la semaine.")
-        self.assertRedirects(response, general_url + f"#note-{general_note.id}")
+        self.assertRedirects(
+            response,
+            general_url + f"?tab=notes#note-{general_note.id}",
+        )
         self.assertIsNone(general_note.task)
 
     def test_selected_note_is_private_and_source_linked(self):
@@ -165,6 +187,14 @@ class AnnotationTests(TestCase):
         self.assertEqual(note.quote, self.selection["quote"])
         self.assertEqual(note.body, "À mémoriser.")
         self.assertEqual(note.source_path, self.source_path)
+        self.assertEqual(
+            response.json()["notes_url"],
+            reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
+            + f"?tab=notes#note-{note.id}",
+        )
 
         self.client.force_login(self.other)
         other_page = self.client.get(
@@ -190,6 +220,14 @@ class AnnotationTests(TestCase):
         self.assertEqual(second.status_code, 200)
         self.assertEqual(first.json()["id"], second.json()["id"])
         self.assertEqual(Annotation.objects.count(), 1)
+        self.assertEqual(
+            first.json()["notes_url"],
+            reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
+            + f"?tab=highlights#highlight-{first.json()['id']}",
+        )
 
         response = self.client.get(
             reverse("study:annotations_for_source"),

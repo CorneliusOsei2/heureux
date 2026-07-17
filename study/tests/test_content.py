@@ -177,3 +177,55 @@ class PhraseParserTests(SimpleTestCase):
             {phrase_id: categories[phrase_id] for phrase_id in expected},
             expected,
         )
+
+    def test_subject_vocabulary_has_fifty_grounded_entries_per_response(self):
+        vocabulary = content.parse_subject_vocabulary(self.responses)
+        prompt_to_response = {
+            (prompt.theme, prompt.number): response.content_key
+            for response in self.responses
+            for prompt in response.prompts
+        }
+        prompts_by_response = {
+            response.content_key: {
+                (prompt.theme, prompt.number) for prompt in response.prompts
+            }
+            for response in self.responses
+        }
+        coverage = Counter()
+        for phrase in vocabulary:
+            self.assertEqual(phrase.tier, "subject")
+            response_keys = {
+                prompt_to_response[source] for source in phrase.sources
+            }
+            self.assertEqual(len(response_keys), 1)
+            response_key = response_keys.pop()
+            self.assertEqual(
+                set(phrase.sources),
+                prompts_by_response[response_key],
+            )
+            coverage[response_key] += 1
+
+        self.assertEqual(len(vocabulary), 130 * 50)
+        self.assertEqual(
+            set(coverage),
+            {response.content_key for response in self.responses},
+        )
+        self.assertEqual(set(coverage.values()), {50})
+        self.assertTrue(
+            {
+                phrase.phrase_id.casefold()
+                for phrase in content.parse_phrases(self.responses)
+            }.isdisjoint(
+                phrase.phrase_id.casefold() for phrase in vocabulary
+            )
+        )
+        self.assertEqual(
+            Counter(phrase.category for phrase in vocabulary),
+            {
+                "Mots clés du sujet": 1300,
+                "Collocations du sujet": 1300,
+                "Expressions du sujet": 1300,
+                "Tournures pour l'oral": 1300,
+                "Phrases modèles": 1300,
+            },
+        )

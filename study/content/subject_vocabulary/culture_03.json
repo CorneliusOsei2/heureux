@@ -1,0 +1,3245 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "culture:p17",
+      "entries": [
+        {
+          "id": "SVC3-0001",
+          "kind": "mot-cle",
+          "french": "expérience à l'étranger",
+          "english": "experience abroad",
+          "example": "À mon avis, dire qu'une expérience à l'étranger est toujours positive est trop absolu.",
+          "usage": "Noun phrase; fém. « une expérience ». Recurring topic keyword; note « à l'étranger » = abroad."
+        },
+        {
+          "id": "SVC3-0002",
+          "kind": "mot-cle",
+          "french": "une expérience de vie à l'étranger",
+          "english": "an experience of living abroad",
+          "example": "La vraie question est de savoir si une expérience de vie à l'étranger est toujours positive, ou si son résultat dépend des conditions dans lesquelles elle se déroule.",
+          "usage": "Feminine noun phrase; a precise topic label for weighing personal and professional outcomes abroad."
+        },
+        {
+          "id": "SVC3-0003",
+          "kind": "mot-cle",
+          "french": "autonomie",
+          "english": "autonomy, independence",
+          "example": "D'abord, elle peut effectivement apporter beaucoup : autonomie, ouverture d'esprit et opportunités.",
+          "usage": "Fém. noun; « développer l'autonomie ». Common cue for personal-growth arguments."
+        },
+        {
+          "id": "SVC3-0004",
+          "kind": "mot-cle",
+          "french": "ouverture d'esprit",
+          "english": "open-mindedness",
+          "example": "D'abord, elle peut effectivement apporter beaucoup : autonomie, ouverture d'esprit et opportunités.",
+          "usage": "Fém.; fixed pair « ouverture d'esprit ». Contrast with « ouvrir l'esprit » (verb)."
+        },
+        {
+          "id": "SVC3-0005",
+          "kind": "mot-cle",
+          "french": "les codes du pays",
+          "english": "the country's social codes",
+          "example": "Ensuite, elle peut aussi être très difficile lorsqu'on ne maîtrise pas la langue ou les codes du pays.",
+          "usage": "Masc. pl.; « les codes » = unwritten cultural rules; pairs with « maîtriser »."
+        },
+        {
+          "id": "SVC3-0006",
+          "kind": "mot-cle",
+          "french": "les démarches administratives",
+          "english": "administrative procedures",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "Fém. pl.; key vocab for immigration/settling topics; « faire des démarches »."
+        },
+        {
+          "id": "SVC3-0007",
+          "kind": "mot-cle",
+          "french": "le système de santé",
+          "english": "the healthcare system",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "Masc.; topical noun for life abroad; useful across culture prompts."
+        },
+        {
+          "id": "SVC3-0008",
+          "kind": "mot-cle",
+          "french": "source de stress",
+          "english": "a source of stress",
+          "example": "Dans ces conditions, l'expérience peut devenir source de stress, voire de souffrance, plutôt qu'une vraie ouverture.",
+          "usage": "Fém.; « devenir source de stress ». Evaluative noun for negative outcomes."
+        },
+        {
+          "id": "SVC3-0009",
+          "kind": "mot-cle",
+          "french": "moyens financiers",
+          "english": "financial means",
+          "example": "En effet, partir avec un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation n'a rien à voir avec partir dans la précarité, sans réseau et sans certitude.",
+          "usage": "Masc. pl.; « un minimum de moyens financiers »; register: neutral."
+        },
+        {
+          "id": "SVC3-0010",
+          "kind": "mot-cle",
+          "french": "une bourse",
+          "english": "a scholarship, grant",
+          "example": "Par exemple, partir étudier à l'étranger avec une bourse n'a pas du tout le même sens que partir y travailler dans des conditions précaires pour envoyer de l'argent à sa famille restée au pays.",
+          "usage": "Fém.; « partir avec une bourse ». Contrasts privileged vs precarious mobility."
+        },
+        {
+          "id": "SVC3-0011",
+          "kind": "collocation",
+          "french": "apporter beaucoup",
+          "english": "to bring/offer a lot",
+          "example": "D'abord, elle peut effectivement apporter beaucoup : autonomie, ouverture d'esprit et opportunités.",
+          "usage": "V + adv; « ça peut apporter beaucoup ». Frequent evaluative collocation."
+        },
+        {
+          "id": "SVC3-0012",
+          "kind": "collocation",
+          "french": "ne maîtrise pas la langue",
+          "english": "doesn't master the language",
+          "example": "Ensuite, elle peut aussi être très difficile lorsqu'on ne maîtrise pas la langue ou les codes du pays.",
+          "usage": "« maîtriser la langue » negated; ne...pas. Key condition for difficulty."
+        },
+        {
+          "id": "SVC3-0013",
+          "kind": "collocation",
+          "french": "se débrouiller seul",
+          "english": "to manage on one's own",
+          "example": "En effet, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "Pronominal + adj; « se débrouiller » = to cope/manage. Very oral-useful."
+        },
+        {
+          "id": "SVC3-0014",
+          "kind": "collocation",
+          "french": "développer des qualités",
+          "english": "to develop qualities",
+          "example": "En effet, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "V + noun; growth vocabulary; pairs with « utiles pour une carrière »."
+        },
+        {
+          "id": "SVC3-0015",
+          "kind": "collocation",
+          "french": "ouvre l'esprit",
+          "english": "opens the mind",
+          "example": "De plus, le contact avec une autre culture ouvre l'esprit, fait relativiser ses propres certitudes et apprend à voir les choses autrement.",
+          "usage": "V + noun; « le contact ouvre l'esprit ». Contrast noun « ouverture d'esprit »."
+        },
+        {
+          "id": "SVC3-0016",
+          "kind": "collocation",
+          "french": "relativiser ses propres certitudes",
+          "english": "to put one's own certainties in perspective",
+          "example": "De plus, le contact avec une autre culture ouvre l'esprit, fait relativiser ses propres certitudes et apprend à voir les choses autrement.",
+          "usage": "V + noun; « relativiser » = to qualify/temper. Higher register."
+        },
+        {
+          "id": "SVC3-0017",
+          "kind": "collocation",
+          "french": "un marché du travail plus dynamique",
+          "english": "a more dynamic job market",
+          "example": "Sur le plan professionnel, certains pays offrent de meilleures formations, un marché du travail plus dynamique ou un cadre plus favorable pour entreprendre.",
+          "usage": "Masc.; comparative « plus dynamique »; economic-argument collocation."
+        },
+        {
+          "id": "SVC3-0018",
+          "kind": "collocation",
+          "french": "se sentir isolé",
+          "english": "to feel isolated",
+          "example": "De plus, sans contact avec les habitants, on peut rapidement se sentir isolé et étranger à tout ce qui se passe.",
+          "usage": "Pronominal + adj; « se sentir isolé ». Core negative-experience phrase."
+        },
+        {
+          "id": "SVC3-0019",
+          "kind": "collocation",
+          "french": "envoyer de l'argent",
+          "english": "to send money",
+          "example": "Par exemple, partir étudier à l'étranger avec une bourse n'a pas du tout le même sens que partir y travailler dans des conditions précaires pour envoyer de l'argent à sa famille restée au pays.",
+          "usage": "V + partitive « de l'argent »; migration/remittances collocation."
+        },
+        {
+          "id": "SVC3-0020",
+          "kind": "collocation",
+          "french": "gardent un souvenir fort",
+          "english": "keep a strong memory",
+          "example": "Beaucoup de personnes en gardent un souvenir fort et y voient un tournant important de leur vie.",
+          "usage": "« garder un souvenir »; 3rd pl. present. Positive long-term evaluation."
+        },
+        {
+          "id": "SVC3-0021",
+          "kind": "expression",
+          "french": "tout dépend de la préparation",
+          "english": "it all depends on the preparation",
+          "example": "À mon avis, une expérience à l'étranger peut être très enrichissante, mais elle n'est pas toujours positive : tout dépend de la préparation, de l'intégration et des conditions personnelles dans lesquelles elle se vit.",
+          "usage": "Expression « tout dépend de + N »; conditional/nuance marker."
+        },
+        {
+          "id": "SVC3-0022",
+          "kind": "expression",
+          "french": "n'a rien à voir avec",
+          "english": "has nothing to do with",
+          "example": "En effet, partir avec un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation n'a rien à voir avec partir dans la précarité, sans réseau et sans certitude.",
+          "usage": "Idiom for contrast; « X n'a rien à voir avec Y ». Very useful in comparisons."
+        },
+        {
+          "id": "SVC3-0023",
+          "kind": "expression",
+          "french": "n'a pas du tout le même sens",
+          "english": "doesn't have the same meaning at all",
+          "example": "Par exemple, partir étudier à l'étranger avec une bourse n'a pas du tout le même sens que partir y travailler dans des conditions précaires pour envoyer de l'argent à sa famille restée au pays.",
+          "usage": "Emphatic contrast « pas du tout le même sens »; « ne...pas du tout » reinforces."
+        },
+        {
+          "id": "SVC3-0024",
+          "kind": "expression",
+          "french": "passer de l'enthousiasme au découragement",
+          "english": "to go from enthusiasm to discouragement",
+          "example": "Par exemple, un étudiant qui arrive dans une université étrangère sans comprendre les cours, sans logement stable et sans groupe d'amis peut vite passer de l'enthousiasme au découragement.",
+          "usage": "Idiom « passer de X à Y »; vivid narrative of decline."
+        },
+        {
+          "id": "SVC3-0025",
+          "kind": "expression",
+          "french": "presque tout est à réapprendre",
+          "english": "almost everything has to be relearned",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "« être à + infinitif » = must be done; « réapprendre » = relearn."
+        },
+        {
+          "id": "SVC3-0026",
+          "kind": "expression",
+          "french": "une vraie épreuve",
+          "english": "a real ordeal",
+          "example": "Enfin, le résultat dépend aussi beaucoup de la situation personnelle et financière de la personne, qui peut faire de cette expérience une chance ou une vraie épreuve.",
+          "usage": "Fém.; « une épreuve » = hardship/test; « vraie » intensifies. Negative frame."
+        },
+        {
+          "id": "SVC3-0027",
+          "kind": "expression",
+          "french": "une vraie chance pour certains",
+          "english": "a real opportunity for some",
+          "example": "Le même séjour peut donc être une vraie chance pour certains et une épreuve très difficile pour d'autres.",
+          "usage": "« une chance » = luck/opportunity; contrastive « pour certains...pour d'autres »."
+        },
+        {
+          "id": "SVC3-0028",
+          "kind": "expression",
+          "french": "n'est pas automatique",
+          "english": "is not automatic",
+          "example": "Cela montre que l'expérience à l'étranger n'est pas automatique : elle dépend largement des conditions d'intégration.",
+          "usage": "Evaluative expression; success/benefit isn't guaranteed. Handy conclusion device."
+        },
+        {
+          "id": "SVC3-0029",
+          "kind": "expression",
+          "french": "jamais une réussite automatique",
+          "english": "never an automatic success",
+          "example": "Elle peut être une vraie chance, mais jamais une réussite automatique : tout repose sur les conditions dans lesquelles elle se vit.",
+          "usage": "« jamais » + noun; strong denial. Pairs with « tout repose sur »."
+        },
+        {
+          "id": "SVC3-0030",
+          "kind": "expression",
+          "french": "un tournant important de leur vie",
+          "english": "an important turning point in their life",
+          "example": "Beaucoup de personnes en gardent un souvenir fort et y voient un tournant important de leur vie.",
+          "usage": "« un tournant » = turning point; positive biographical evaluation."
+        },
+        {
+          "id": "SVC3-0031",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si une expérience de vie à l'étranger est toujours positive, ou si son résultat dépend des conditions dans lesquelles elle se déroule.",
+          "usage": "Opening frame to reformulate a prompt; « savoir si » + indirect question."
+        },
+        {
+          "id": "SVC3-0032",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, dire qu'une expérience à l'étranger est toujours positive est trop absolu.",
+          "usage": "Opinion marker; sentence-initial + comma. Essential oral connector."
+        },
+        {
+          "id": "SVC3-0033",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, elle peut effectivement apporter beaucoup : autonomie, ouverture d'esprit et opportunités.",
+          "usage": "Enumeration linker; pairs with « Ensuite », « Enfin »."
+        },
+        {
+          "id": "SVC3-0034",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "Confirms/justifies previous claim; introduces development."
+        },
+        {
+          "id": "SVC3-0035",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, sans contact avec les habitants, on peut rapidement se sentir isolé et étranger à tout ce qui se passe.",
+          "usage": "Additive linker; stacks arguments within a development."
+        },
+        {
+          "id": "SVC3-0036",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, beaucoup d'étudiants partis en échange à l'étranger reviennent plus mûrs, plus à l'aise avec une autre langue et avec une vision plus large du monde.",
+          "usage": "Introduces an illustration; standard example marker."
+        },
+        {
+          "id": "SVC3-0037",
+          "kind": "tournure",
+          "french": "Cela montre qu'",
+          "english": "This shows that",
+          "example": "Cela montre qu'une expérience à l'étranger peut devenir un accélérateur de maturité, de compétences et d'ouverture, quand elle se déroule dans de bonnes conditions.",
+          "usage": "Consequence/conclusion linker; « Cela montre que + indicatif »."
+        },
+        {
+          "id": "SVC3-0038",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître qu'avec une bonne préparation, une vraie ouverture et un effort d'intégration, une expérience à l'étranger reste très souvent positive sur le long terme.",
+          "usage": "Concession linker introducing the nuance section."
+        },
+        {
+          "id": "SVC3-0039",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense qu'une expérience à l'étranger n'est pas toujours positive, parce qu'elle dépend de la langue, de l'intégration et de la situation personnelle.",
+          "usage": "Closing linker; signals final synthesis."
+        },
+        {
+          "id": "SVC3-0040",
+          "kind": "tournure",
+          "french": "dépend aussi beaucoup de",
+          "english": "also depends a lot on",
+          "example": "Enfin, le résultat dépend aussi beaucoup de la situation personnelle et financière de la personne, qui peut faire de cette expérience une chance ou une vraie épreuve.",
+          "usage": "Evaluation of causes; « dépendre de + N »; « aussi beaucoup » = quantifier."
+        },
+        {
+          "id": "SVC3-0041",
+          "kind": "phrase-modele",
+          "french": "dire qu'une expérience à l'étranger est toujours positive est trop absolu",
+          "english": "saying an experience abroad is always positive is too absolute",
+          "example": "À mon avis, dire qu'une expérience à l'étranger est toujours positive est trop absolu.",
+          "usage": "Model to reject an overly strong claim; « dire que... est trop absolu »."
+        },
+        {
+          "id": "SVC3-0042",
+          "kind": "phrase-modele",
+          "french": "il est vrai qu'une expérience à l'étranger peut apporter beaucoup sur le plan personnel et professionnel",
+          "english": "it's true that an experience abroad can offer a lot personally and professionally",
+          "example": "Je pense d'abord qu'il est vrai qu'une expérience à l'étranger peut apporter beaucoup sur le plan personnel et professionnel.",
+          "usage": "Concession-then-argue model; « il est vrai que... »; « sur le plan de »."
+        },
+        {
+          "id": "SVC3-0043",
+          "kind": "phrase-modele",
+          "french": "vivre dans un nouvel environnement oblige à se débrouiller seul",
+          "english": "living in a new environment forces you to fend for yourself",
+          "example": "En effet, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "Model; « obliger à + inf »; cause→effect on autonomy."
+        },
+        {
+          "id": "SVC3-0044",
+          "kind": "phrase-modele",
+          "french": "une expérience à l'étranger peut devenir un accélérateur de maturité, de compétences et d'ouverture",
+          "english": "an experience abroad can become an accelerator of maturity, skills and openness",
+          "example": "Cela montre qu'une expérience à l'étranger peut devenir un accélérateur de maturité, de compétences et d'ouverture, quand elle se déroule dans de bonnes conditions.",
+          "usage": "Positive synthesis; « un accélérateur de » + tricolon."
+        },
+        {
+          "id": "SVC3-0045",
+          "kind": "phrase-modele",
+          "french": "l'expérience peut devenir source de stress, voire de souffrance, plutôt qu'une vraie ouverture",
+          "english": "the experience can become a source of stress, even suffering, rather than real openness",
+          "example": "Dans ces conditions, l'expérience peut devenir source de stress, voire de souffrance, plutôt qu'une vraie ouverture.",
+          "usage": "Negative model; « voire » = even; « plutôt que » = rather than."
+        },
+        {
+          "id": "SVC3-0046",
+          "kind": "phrase-modele",
+          "french": "elle dépend largement des conditions d'intégration",
+          "english": "it largely depends on the conditions of integration",
+          "example": "Cela montre que l'expérience à l'étranger n'est pas automatique : elle dépend largement des conditions d'intégration.",
+          "usage": "Model conclusion for Arg 2; « dépendre de »; « largement » = quantifier."
+        },
+        {
+          "id": "SVC3-0047",
+          "kind": "phrase-modele",
+          "french": "Le même séjour peut donc être une vraie chance pour certains et une épreuve très difficile pour d'autres",
+          "english": "The same stay can thus be a real opportunity for some and a very hard ordeal for others",
+          "example": "Le même séjour peut donc être une vraie chance pour certains et une épreuve très difficile pour d'autres.",
+          "usage": "Balanced model; « pour certains... pour d'autres » symmetry."
+        },
+        {
+          "id": "SVC3-0048",
+          "kind": "phrase-modele",
+          "french": "avec une bonne préparation, une vraie ouverture et un effort d'intégration, une expérience à l'étranger reste très souvent positive sur le long terme",
+          "english": "with good preparation, real openness and an effort to integrate, an experience abroad stays very often positive long-term",
+          "example": "Cependant, il faut reconnaître qu'avec une bonne préparation, une vraie ouverture et un effort d'intégration, une expérience à l'étranger reste très souvent positive sur le long terme.",
+          "usage": "Nuance model listing conditions; « sur le long terme »."
+        },
+        {
+          "id": "SVC3-0049",
+          "kind": "phrase-modele",
+          "french": "une expérience à l'étranger n'est pas toujours positive, parce qu'elle dépend de la langue, de l'intégration et de la situation personnelle",
+          "english": "an experience abroad is not always positive, because it depends on language, integration and personal situation",
+          "example": "En conclusion, je pense qu'une expérience à l'étranger n'est pas toujours positive, parce qu'elle dépend de la langue, de l'intégration et de la situation personnelle.",
+          "usage": "Thesis restatement; « ne...pas toujours » + « parce que » + tricolon."
+        },
+        {
+          "id": "SVC3-0050",
+          "kind": "phrase-modele",
+          "french": "tout repose sur les conditions dans lesquelles elle se vit",
+          "english": "everything rests on the conditions in which it is lived",
+          "example": "Elle peut être une vraie chance, mais jamais une réussite automatique : tout repose sur les conditions dans lesquelles elle se vit.",
+          "usage": "Closing model; « reposer sur »; relative « dans lesquelles »."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p18",
+      "entries": [
+        {
+          "id": "SVC3-0051",
+          "kind": "mot-cle",
+          "french": "courrier traditionnel",
+          "english": "traditional mail/post",
+          "example": "À mon avis, la disparition du courrier traditionnel est plutôt regrettable.",
+          "usage": "Masc.; central topic keyword; « le courrier » = mail. Contrast « messages numériques »."
+        },
+        {
+          "id": "SVC3-0052",
+          "kind": "mot-cle",
+          "french": "les messages numériques",
+          "english": "digital messages",
+          "example": "Enfin, ces courriers laissaient une trace que l'on pouvait garder et relire, alors que les messages numériques disparaissent presque aussitôt.",
+          "usage": "Masc. pl.; « numérique » = digital; the modern counterpart in the debate."
+        },
+        {
+          "id": "SVC3-0053",
+          "kind": "mot-cle",
+          "french": "une lettre",
+          "english": "a letter",
+          "example": "D'abord, une lettre ou une carte avait une dimension personnelle et affective beaucoup plus forte qu'un message rapide.",
+          "usage": "Fém.; « écrire une lettre »; core concrete noun of the topic."
+        },
+        {
+          "id": "SVC3-0054",
+          "kind": "mot-cle",
+          "french": "une carte de vœux",
+          "english": "a greetings card",
+          "example": "En effet, recevoir une lettre écrite à la main ou une carte de vœux montrait que l'autre personne avait pris du temps spécialement pour nous : pour écrire, pour acheter un timbre, pour aller à la poste.",
+          "usage": "Fém.; « vœux » = good wishes (always pl.); seasonal correspondence."
+        },
+        {
+          "id": "SVC3-0055",
+          "kind": "mot-cle",
+          "french": "un timbre",
+          "english": "a stamp",
+          "example": "En effet, recevoir une lettre écrite à la main ou une carte de vœux montrait que l'autre personne avait pris du temps spécialement pour nous : pour écrire, pour acheter un timbre, pour aller à la poste.",
+          "usage": "Masc.; « acheter un timbre »; concrete postal vocabulary."
+        },
+        {
+          "id": "SVC3-0056",
+          "kind": "mot-cle",
+          "french": "l'écriture",
+          "english": "handwriting; writing",
+          "example": "De plus, le simple fait de voir l'écriture de quelqu'un, de toucher le papier, donnait à ces messages une présence physique que l'on ne retrouve pas dans un texte sur un écran.",
+          "usage": "Fém.; here « voir l'écriture de quelqu'un » = someone's handwriting."
+        },
+        {
+          "id": "SVC3-0057",
+          "kind": "mot-cle",
+          "french": "le papier",
+          "english": "the paper",
+          "example": "De plus, le simple fait de voir l'écriture de quelqu'un, de toucher le papier, donnait à ces messages une présence physique que l'on ne retrouve pas dans un texte sur un écran.",
+          "usage": "Masc.; « toucher le papier »; evokes material presence."
+        },
+        {
+          "id": "SVC3-0058",
+          "kind": "mot-cle",
+          "french": "une présence physique",
+          "english": "a physical presence",
+          "example": "De plus, le simple fait de voir l'écriture de quelqu'un, de toucher le papier, donnait à ces messages une présence physique que l'on ne retrouve pas dans un texte sur un écran.",
+          "usage": "Fém.; « donner une présence physique »; contrasts screens."
+        },
+        {
+          "id": "SVC3-0059",
+          "kind": "mot-cle",
+          "french": "une charge humaine",
+          "english": "a human weight/warmth",
+          "example": "Cela montre que ces échanges écrits portaient une charge humaine que les messages rapides ne peuvent pas vraiment égaler.",
+          "usage": "Fém.; « porter une charge humaine »; affective evaluation."
+        },
+        {
+          "id": "SVC3-0060",
+          "kind": "mot-cle",
+          "french": "valeur de souvenir",
+          "english": "keepsake/memory value",
+          "example": "À l'inverse, les messages numériques sont rarement relus, souvent perdus quand on change de téléphone, et n'ont pas la même valeur de souvenir.",
+          "usage": "Fém.; « la même valeur de souvenir »; theme of memory."
+        },
+        {
+          "id": "SVC3-0061",
+          "kind": "collocation",
+          "french": "disparition progressive",
+          "english": "gradual disappearance",
+          "example": "La vraie question est de savoir si la disparition progressive du courrier traditionnel est une vraie perte ou simplement un changement d'habitudes.",
+          "usage": "Fém. + adj; « la disparition progressive du courrier »; slow-change collocation."
+        },
+        {
+          "id": "SVC3-0062",
+          "kind": "collocation",
+          "french": "changement d'habitudes",
+          "english": "change of habits",
+          "example": "La vraie question est de savoir si la disparition progressive du courrier traditionnel est une vraie perte ou simplement un changement d'habitudes.",
+          "usage": "Masc.; « un simple changement d'habitudes »; downplaying formula."
+        },
+        {
+          "id": "SVC3-0063",
+          "kind": "collocation",
+          "french": "écrire à la main",
+          "english": "to write by hand",
+          "example": "Ensuite, écrire à la main demandait du temps et de la réflexion, ce qui donnait à ces écrits une vraie qualité.",
+          "usage": "V + « à la main » = by hand; recurrent contrast with typing."
+        },
+        {
+          "id": "SVC3-0064",
+          "kind": "collocation",
+          "french": "demandait du temps et de la réflexion",
+          "english": "required time and thought",
+          "example": "Ensuite, écrire à la main demandait du temps et de la réflexion, ce qui donnait à ces écrits une vraie qualité.",
+          "usage": "« demander du temps »; imperfect for past habit; partitive « de la réflexion »."
+        },
+        {
+          "id": "SVC3-0065",
+          "kind": "collocation",
+          "french": "laissaient une trace",
+          "english": "left a trace/record",
+          "example": "Enfin, ces courriers laissaient une trace que l'on pouvait garder et relire, alors que les messages numériques disparaissent presque aussitôt.",
+          "usage": "« laisser une trace »; imperfect; memory-value collocation."
+        },
+        {
+          "id": "SVC3-0066",
+          "kind": "collocation",
+          "french": "acheter un timbre",
+          "english": "to buy a stamp",
+          "example": "En effet, recevoir une lettre écrite à la main ou une carte de vœux montrait que l'autre personne avait pris du temps spécialement pour nous : pour écrire, pour acheter un timbre, pour aller à la poste.",
+          "usage": "V + noun; part of the effort of writing; concrete action."
+        },
+        {
+          "id": "SVC3-0067",
+          "kind": "collocation",
+          "french": "aller à la poste",
+          "english": "to go to the post office",
+          "example": "En effet, recevoir une lettre écrite à la main ou une carte de vœux montrait que l'autre personne avait pris du temps spécialement pour nous : pour écrire, pour acheter un timbre, pour aller à la poste.",
+          "usage": "V + « à la poste »; « la poste » fém.; everyday errand collocation."
+        },
+        {
+          "id": "SVC3-0068",
+          "kind": "collocation",
+          "french": "choisissait mieux ses mots",
+          "english": "chose one's words better",
+          "example": "En effet, en écrivant à la main, on choisissait mieux ses mots, on construisait des phrases plus complètes et on prenait le temps d'exprimer des choses parfois difficiles à dire à l'oral.",
+          "usage": "« choisir ses mots »; imperfect + « mieux »; quality-of-writing point."
+        },
+        {
+          "id": "SVC3-0069",
+          "kind": "collocation",
+          "french": "garder le contact",
+          "english": "to keep in touch",
+          "example": "Ils permettent aussi de garder le contact avec des personnes très éloignées, presque tous les jours, ce qui n'était pas possible avant.",
+          "usage": "Fixed collocation « garder le contact avec qn »; very oral-useful."
+        },
+        {
+          "id": "SVC3-0070",
+          "kind": "collocation",
+          "french": "change de téléphone",
+          "english": "changes phone",
+          "example": "À l'inverse, les messages numériques sont rarement relus, souvent perdus quand on change de téléphone, et n'ont pas la même valeur de souvenir.",
+          "usage": "« changer de + N » (no article) = to change one's...; loss-of-data point."
+        },
+        {
+          "id": "SVC3-0071",
+          "kind": "expression",
+          "french": "n'a rien à voir avec",
+          "english": "has nothing to do with",
+          "example": "Par exemple, recevoir une vraie carte d'anniversaire écrite à la main de la part d'un proche n'a rien à voir avec le même message envoyé en deux secondes par téléphone.",
+          "usage": "Idiom for strong contrast; « X n'a rien à voir avec Y »."
+        },
+        {
+          "id": "SVC3-0072",
+          "kind": "expression",
+          "french": "faisait toute la différence",
+          "english": "made all the difference",
+          "example": "Cette dimension matérielle et personnelle faisait toute la différence.",
+          "usage": "Idiom « faire toute la différence »; imperfect here."
+        },
+        {
+          "id": "SVC3-0073",
+          "kind": "expression",
+          "french": "peu à peu",
+          "english": "little by little",
+          "example": "Aujourd'hui, les messages courts encouragent un style rapide, souvent simplifié, et certaines nuances disparaissent peu à peu.",
+          "usage": "Adverbial idiom; gradual process; synonym « progressivement »."
+        },
+        {
+          "id": "SVC3-0074",
+          "kind": "expression",
+          "french": "on a tendance à résumer",
+          "english": "we tend to summarise",
+          "example": "Par exemple, dans une lettre on prenait le temps d'expliquer un sentiment ou une situation en détail, alors qu'aujourd'hui on a tendance à résumer en quelques mots ou en émojis.",
+          "usage": "« avoir tendance à + inf » = to tend to; on = generic we."
+        },
+        {
+          "id": "SVC3-0075",
+          "kind": "expression",
+          "french": "des années plus tard",
+          "english": "years later",
+          "example": "En effet, on rangeait les lettres importantes dans une boîte ou dans un tiroir, et on pouvait les retrouver des années plus tard.",
+          "usage": "Time expression; « X plus tard »; narrates lasting value."
+        },
+        {
+          "id": "SVC3-0076",
+          "kind": "expression",
+          "french": "en deux secondes",
+          "english": "in two seconds",
+          "example": "Par exemple, recevoir une vraie carte d'anniversaire écrite à la main de la part d'un proche n'a rien à voir avec le même message envoyé en deux secondes par téléphone.",
+          "usage": "Hyperbolic time idiom; stresses how effortless digital messages are."
+        },
+        {
+          "id": "SVC3-0077",
+          "kind": "expression",
+          "french": "presque aussitôt",
+          "english": "almost immediately",
+          "example": "Enfin, ces courriers laissaient une trace que l'on pouvait garder et relire, alors que les messages numériques disparaissent presque aussitôt.",
+          "usage": "Adverbial; « aussitôt » = right away; ephemerality of digital."
+        },
+        {
+          "id": "SVC3-0078",
+          "kind": "expression",
+          "french": "presque tous les jours",
+          "english": "almost every day",
+          "example": "Ils permettent aussi de garder le contact avec des personnes très éloignées, presque tous les jours, ce qui n'était pas possible avant.",
+          "usage": "Frequency expression; stresses constant digital contact."
+        },
+        {
+          "id": "SVC3-0079",
+          "kind": "expression",
+          "french": "ce qui n'était pas possible avant",
+          "english": "which wasn't possible before",
+          "example": "Ils permettent aussi de garder le contact avec des personnes très éloignées, presque tous les jours, ce qui n'était pas possible avant.",
+          "usage": "Relative « ce qui » + « avant »; acknowledges digital progress."
+        },
+        {
+          "id": "SVC3-0080",
+          "kind": "expression",
+          "french": "une vraie perte",
+          "english": "a real loss",
+          "example": "La vraie question est de savoir si la disparition progressive du courrier traditionnel est une vraie perte ou simplement un changement d'habitudes.",
+          "usage": "Fém.; evaluative « une vraie perte »; opposed to « un changement »."
+        },
+        {
+          "id": "SVC3-0081",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la disparition progressive du courrier traditionnel est une vraie perte ou simplement un changement d'habitudes.",
+          "usage": "Reformulation frame; « savoir si » + alternative « ou »."
+        },
+        {
+          "id": "SVC3-0082",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, la disparition du courrier traditionnel est plutôt regrettable.",
+          "usage": "Opinion marker; sentence-initial. Essential connector."
+        },
+        {
+          "id": "SVC3-0083",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, une lettre ou une carte avait une dimension personnelle et affective beaucoup plus forte qu'un message rapide.",
+          "usage": "Enumeration linker opening the first point."
+        },
+        {
+          "id": "SVC3-0084",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, écrire à la main demandait du temps et de la réflexion, ce qui donnait à ces écrits une vraie qualité.",
+          "usage": "Enumeration linker for the second point."
+        },
+        {
+          "id": "SVC3-0085",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, je pense que le courrier traditionnel avait une vraie valeur de mémoire, parce qu'il laissait une trace que l'on pouvait garder.",
+          "usage": "Enumeration linker closing the list."
+        },
+        {
+          "id": "SVC3-0086",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, on rangeait les lettres importantes dans une boîte ou dans un tiroir, et on pouvait les retrouver des années plus tard.",
+          "usage": "Justifies the preceding claim; opens development."
+        },
+        {
+          "id": "SVC3-0087",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, cette pratique régulière entretenait une certaine richesse de la langue.",
+          "usage": "Additive linker within a development."
+        },
+        {
+          "id": "SVC3-0088",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, recevoir une vraie carte d'anniversaire écrite à la main de la part d'un proche n'a rien à voir avec le même message envoyé en deux secondes par téléphone.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0089",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que ces échanges écrits portaient une charge humaine que les messages rapides ne peuvent pas vraiment égaler.",
+          "usage": "Consequence linker; « Cela montre que + indicatif »."
+        },
+        {
+          "id": "SVC3-0090",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que la disparition du courrier traditionnel est regrettable, parce qu'elle fait perdre une vraie dimension humaine, une qualité d'écriture et une mémoire durable.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0091",
+          "kind": "phrase-modele",
+          "french": "cette disparition est en partie regrettable, parce que le courrier traditionnel apportait une dimension humaine et durable",
+          "english": "this disappearance is partly regrettable, because traditional mail brought a human, lasting dimension",
+          "example": "À mon avis, cette disparition est en partie regrettable, parce que le courrier traditionnel apportait une dimension humaine et durable que les messages numériques ne remplacent pas vraiment, même si ces derniers sont plus pratiques.",
+          "usage": "Nuanced thesis; « en partie » softens; « parce que » + imperfect."
+        },
+        {
+          "id": "SVC3-0092",
+          "kind": "phrase-modele",
+          "french": "le courrier traditionnel avait une dimension personnelle et affective beaucoup plus forte que les messages d'aujourd'hui",
+          "english": "traditional mail had a much stronger personal and emotional dimension than today's messages",
+          "example": "Je pense d'abord que le courrier traditionnel avait une dimension personnelle et affective beaucoup plus forte que les messages d'aujourd'hui.",
+          "usage": "Comparative model; « beaucoup plus fort que »."
+        },
+        {
+          "id": "SVC3-0093",
+          "kind": "phrase-modele",
+          "french": "donnait à ces messages une présence physique que l'on ne retrouve pas dans un texte sur un écran",
+          "english": "gave these messages a physical presence not found in text on a screen",
+          "example": "De plus, le simple fait de voir l'écriture de quelqu'un, de toucher le papier, donnait à ces messages une présence physique que l'on ne retrouve pas dans un texte sur un écran.",
+          "usage": "Model; « donner à qch une présence »; relative « que l'on ne retrouve pas »."
+        },
+        {
+          "id": "SVC3-0094",
+          "kind": "phrase-modele",
+          "french": "ces échanges écrits portaient une charge humaine que les messages rapides ne peuvent pas vraiment égaler",
+          "english": "these written exchanges carried a human weight that quick messages can't really match",
+          "example": "Cela montre que ces échanges écrits portaient une charge humaine que les messages rapides ne peuvent pas vraiment égaler.",
+          "usage": "Model; « porter une charge »; « ne peuvent pas égaler »."
+        },
+        {
+          "id": "SVC3-0095",
+          "kind": "phrase-modele",
+          "french": "en écrivant à la main, on choisissait mieux ses mots, on construisait des phrases plus complètes",
+          "english": "by writing by hand, we chose our words better and built more complete sentences",
+          "example": "En effet, en écrivant à la main, on choisissait mieux ses mots, on construisait des phrases plus complètes et on prenait le temps d'exprimer des choses parfois difficiles à dire à l'oral.",
+          "usage": "Gerund « en écrivant » = by writing; parallel imperfects."
+        },
+        {
+          "id": "SVC3-0096",
+          "kind": "phrase-modele",
+          "french": "la disparition du courrier traditionnel s'accompagne aussi d'un certain appauvrissement de l'écriture personnelle",
+          "english": "the disappearance of traditional mail also comes with a certain impoverishment of personal writing",
+          "example": "Cela montre que la disparition du courrier traditionnel s'accompagne aussi d'un certain appauvrissement de l'écriture personnelle.",
+          "usage": "Model; « s'accompagner de »; « appauvrissement » = impoverishment."
+        },
+        {
+          "id": "SVC3-0097",
+          "kind": "phrase-modele",
+          "french": "ces lettres devenaient souvent une sorte de petite histoire personnelle ou familiale",
+          "english": "these letters often became a kind of small personal or family history",
+          "example": "De plus, ces lettres devenaient souvent une sorte de petite histoire personnelle ou familiale, transmise parfois aux générations suivantes.",
+          "usage": "Model; « une sorte de » = a kind of; memory theme."
+        },
+        {
+          "id": "SVC3-0098",
+          "kind": "phrase-modele",
+          "french": "Ce n'est donc pas tant la communication elle-même qui est en cause, mais une certaine forme d'attention et de durée",
+          "english": "It's thus not so much communication itself at stake, but a certain form of attention and duration",
+          "example": "Ce n'est donc pas tant la communication elle-même qui est en cause, mais une certaine forme d'attention et de durée que l'on a tendance à perdre.",
+          "usage": "Nuance model; « pas tant X que Y »; « être en cause »."
+        },
+        {
+          "id": "SVC3-0099",
+          "kind": "phrase-modele",
+          "french": "la disparition du courrier traditionnel est regrettable, parce qu'elle fait perdre une vraie dimension humaine, une qualité d'écriture et une mémoire durable",
+          "english": "the disappearance of traditional mail is regrettable, because it makes us lose a real human dimension, writing quality and lasting memory",
+          "example": "En conclusion, je pense que la disparition du courrier traditionnel est regrettable, parce qu'elle fait perdre une vraie dimension humaine, une qualité d'écriture et une mémoire durable.",
+          "usage": "Conclusion model; « faire perdre » + tricolon."
+        },
+        {
+          "id": "SVC3-0100",
+          "kind": "phrase-modele",
+          "french": "Les outils numériques sont très utiles, mais ils ne remplacent pas complètement ce que ces lettres apportaient",
+          "english": "Digital tools are very useful, but they don't fully replace what those letters brought",
+          "example": "Les outils numériques sont très utiles, mais ils ne remplacent pas complètement ce que ces lettres apportaient.",
+          "usage": "Balanced closing; « ne...pas complètement »; concession + limit."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p19",
+      "entries": [
+        {
+          "id": "SVC3-0101",
+          "kind": "mot-cle",
+          "french": "la langue locale",
+          "english": "the local language",
+          "example": "Par exemple, certaines personnes installées depuis des années à l'étranger parlent encore très peu la langue locale, et finissent par ne fréquenter que d'autres étrangers, en gardant une vision très limitée du pays autour d'elles.",
+          "usage": "Fém.; « parler la langue locale »; central keyword of the debate."
+        },
+        {
+          "id": "SVC3-0102",
+          "kind": "mot-cle",
+          "french": "la mentalité d'un peuple",
+          "english": "a people's mindset",
+          "example": "Cela montre que la langue est la porte principale d'entrée dans la mentalité d'un peuple.",
+          "usage": "Feminine noun phrase; use it with comprendre or saisir to discuss values and social codes."
+        },
+        {
+          "id": "SVC3-0103",
+          "kind": "mot-cle",
+          "french": "l'humour des gens",
+          "english": "people's humour",
+          "example": "D'abord, la langue est ce qui donne accès aux vraies conversations, aux mentalités et à l'humour des gens.",
+          "usage": "Masc. « l'humour »; hard to grasp without the language."
+        },
+        {
+          "id": "SVC3-0104",
+          "kind": "mot-cle",
+          "french": "bulle touristique",
+          "english": "a tourist bubble",
+          "example": "Ensuite, sans la langue, on reste dans une sorte de bulle touristique, sans accès aux médias, aux débats ni à la vie publique.",
+          "usage": "Fém.; metaphor for staying an outsider; « une sorte de bulle touristique »."
+        },
+        {
+          "id": "SVC3-0105",
+          "kind": "mot-cle",
+          "french": "médias",
+          "english": "the media",
+          "example": "Ensuite, sans la langue, on reste dans une sorte de bulle touristique, sans accès aux médias, aux débats ni à la vie publique.",
+          "usage": "Masc. pl.; access to media requires the language; topical noun."
+        },
+        {
+          "id": "SVC3-0106",
+          "kind": "mot-cle",
+          "french": "les blagues",
+          "english": "jokes",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "Fém. pl.; « comprendre les blagues »; marker of true fluency."
+        },
+        {
+          "id": "SVC3-0107",
+          "kind": "mot-cle",
+          "french": "les sous-entendus",
+          "english": "implied meanings, innuendo",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "Masc. pl.; « saisir les sous-entendus »; nuance of communication."
+        },
+        {
+          "id": "SVC3-0108",
+          "kind": "mot-cle",
+          "french": "des proverbes",
+          "english": "proverbs",
+          "example": "De plus, beaucoup de choses importantes dans une culture passent par des expressions, des proverbes ou des références qu'aucune traduction ne rend vraiment.",
+          "usage": "Masc. pl.; culture carried by « expressions, proverbes ou références »."
+        },
+        {
+          "id": "SVC3-0109",
+          "kind": "mot-cle",
+          "french": "les actualités locales",
+          "english": "local news",
+          "example": "En effet, sans la langue, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale : on ne peut pas lire les journaux, suivre les actualités locales, comprendre les conversations dans la rue ni participer aux débats qui agitent la société.",
+          "usage": "Fém. pl.; « suivre les actualités locales »; participation in society."
+        },
+        {
+          "id": "SVC3-0110",
+          "kind": "mot-cle",
+          "french": "une vision extérieure",
+          "english": "an outside view",
+          "example": "Mais ce que l'on connaît ainsi reste une vision extérieure, qui ne remplace pas une compréhension réelle.",
+          "usage": "Fém.; « rester une vision extérieure »; limited, superficial knowledge."
+        },
+        {
+          "id": "SVC3-0111",
+          "kind": "collocation",
+          "french": "parler sa langue",
+          "english": "to speak its language",
+          "example": "La vraie question est de savoir si l'on peut vraiment connaître un pays sans parler sa langue, ou si la langue reste indispensable pour le comprendre en profondeur.",
+          "usage": "V + poss.; « sans parler sa langue »; recurring conditional phrase."
+        },
+        {
+          "id": "SVC3-0112",
+          "kind": "collocation",
+          "french": "le connaître en profondeur",
+          "english": "to know it deeply",
+          "example": "À mon avis, on peut percevoir certains aspects d'un pays sans parler sa langue, mais on ne peut pas vraiment le connaître en profondeur, parce que la langue donne accès à ce qu'aucune observation extérieure ne peut révéler.",
+          "usage": "V + adv phrase; « connaître en profondeur »; object pronoun « le »."
+        },
+        {
+          "id": "SVC3-0113",
+          "kind": "collocation",
+          "french": "donne accès",
+          "english": "gives access",
+          "example": "À mon avis, on peut percevoir certains aspects d'un pays sans parler sa langue, mais on ne peut pas vraiment le connaître en profondeur, parce que la langue donne accès à ce qu'aucune observation extérieure ne peut révéler.",
+          "usage": "« donner accès à + N »; key verb for what language unlocks."
+        },
+        {
+          "id": "SVC3-0114",
+          "kind": "collocation",
+          "french": "avoir de vraies conversations",
+          "english": "to have real conversations",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "V + noun; partitive « de » before adj+noun. Fluency benefit."
+        },
+        {
+          "id": "SVC3-0115",
+          "kind": "collocation",
+          "french": "comprendre les blagues",
+          "english": "to understand the jokes",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "V + noun; concrete marker of deep understanding."
+        },
+        {
+          "id": "SVC3-0116",
+          "kind": "collocation",
+          "french": "saisir les sous-entendus",
+          "english": "to grasp the innuendo",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "« saisir » = to catch/grasp; higher register than « comprendre »."
+        },
+        {
+          "id": "SVC3-0117",
+          "kind": "collocation",
+          "french": "lire les journaux",
+          "english": "to read the newspapers",
+          "example": "En effet, sans la langue, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale : on ne peut pas lire les journaux, suivre les actualités locales, comprendre les conversations dans la rue ni participer aux débats qui agitent la société.",
+          "usage": "V + noun; « les journaux » pl. of journal; social participation."
+        },
+        {
+          "id": "SVC3-0118",
+          "kind": "collocation",
+          "french": "goûter la cuisine",
+          "english": "to taste the cuisine",
+          "example": "En effet, on peut goûter la cuisine, observer les paysages, regarder les comportements dans la rue, visiter les monuments et même ressentir l'ambiance générale d'un lieu.",
+          "usage": "V + noun; accessible-without-language activity; sensory verb."
+        },
+        {
+          "id": "SVC3-0119",
+          "kind": "collocation",
+          "french": "visiter les monuments",
+          "english": "to visit the monuments",
+          "example": "En effet, on peut goûter la cuisine, observer les paysages, regarder les comportements dans la rue, visiter les monuments et même ressentir l'ambiance générale d'un lieu.",
+          "usage": "V + noun; tourist activity accessible without language."
+        },
+        {
+          "id": "SVC3-0120",
+          "kind": "collocation",
+          "french": "en posant des questions",
+          "english": "by asking questions",
+          "example": "Une personne attentive, curieuse et ouverte peut apprendre beaucoup en observant et en posant des questions, même avec un niveau modeste.",
+          "usage": "Gerund « en posant »; « poser une question »; learning strategy."
+        },
+        {
+          "id": "SVC3-0121",
+          "kind": "expression",
+          "french": "en profondeur",
+          "english": "in depth",
+          "example": "La vraie question est de savoir si l'on peut vraiment connaître un pays sans parler sa langue, ou si la langue reste indispensable pour le comprendre en profondeur.",
+          "usage": "Adverbial; « comprendre en profondeur »; opposed to surface knowledge."
+        },
+        {
+          "id": "SVC3-0122",
+          "kind": "expression",
+          "french": "malgré tout",
+          "english": "nonetheless, in spite of everything",
+          "example": "Enfin, certains aspects d'un pays restent malgré tout accessibles, mais ils donnent une vision toujours partielle.",
+          "usage": "Concessive idiom; « restent malgré tout accessibles »."
+        },
+        {
+          "id": "SVC3-0123",
+          "kind": "expression",
+          "french": "qu'à moitié",
+          "english": "only halfway",
+          "example": "Sans la langue, on parle aux gens, mais on ne les comprend qu'à moitié.",
+          "usage": "Restrictive « ne...qu'à moitié » = only half; partial understanding."
+        },
+        {
+          "id": "SVC3-0124",
+          "kind": "expression",
+          "french": "depuis longtemps",
+          "english": "for a long time",
+          "example": "Par exemple, comprendre l'humour d'un pays, ses chansons populaires ou ses débats politiques est presque impossible sans bien parler la langue, même si l'on y vit depuis longtemps.",
+          "usage": "Duration with present tense; « y vivre depuis longtemps »."
+        },
+        {
+          "id": "SVC3-0125",
+          "kind": "expression",
+          "french": "à l'extérieur de",
+          "english": "on the outside of",
+          "example": "Ensuite, sans la langue, on reste très facilement à l'extérieur de la vie réelle du pays.",
+          "usage": "Locative idiom; « rester à l'extérieur de la vie réelle »."
+        },
+        {
+          "id": "SVC3-0126",
+          "kind": "expression",
+          "french": "vue de l'extérieur",
+          "english": "seen from the outside",
+          "example": "Le pays que l'on connaît alors n'est pas vraiment le pays tel qu'il est, mais une version simplifiée, vue de l'extérieur.",
+          "usage": "Past participle phrase; « une version vue de l'extérieur »."
+        },
+        {
+          "id": "SVC3-0127",
+          "kind": "expression",
+          "french": "au quotidien",
+          "english": "on a daily basis",
+          "example": "Par exemple, on peut très bien connaître la cuisine, la musique et certains lieux d'un pays, et pourtant ne presque rien comprendre à la manière dont ses habitants pensent ou réagissent au quotidien.",
+          "usage": "Adverbial; « comment ils réagissent au quotidien »; everyday life."
+        },
+        {
+          "id": "SVC3-0128",
+          "kind": "expression",
+          "french": "un mur infranchissable",
+          "english": "an impassable wall",
+          "example": "La langue n'est donc pas un mur infranchissable, mais elle reste l'outil le plus solide pour aller au-delà de la surface.",
+          "usage": "Metaphor; « la langue n'est pas un mur infranchissable »."
+        },
+        {
+          "id": "SVC3-0129",
+          "kind": "expression",
+          "french": "aller au-delà de la surface",
+          "english": "to go beyond the surface",
+          "example": "La langue n'est donc pas un mur infranchissable, mais elle reste l'outil le plus solide pour aller au-delà de la surface.",
+          "usage": "Idiom « au-delà de »; deep vs superficial knowledge."
+        },
+        {
+          "id": "SVC3-0130",
+          "kind": "expression",
+          "french": "la porte principale d'entrée",
+          "english": "the main gateway",
+          "example": "Cela montre que la langue est la porte principale d'entrée dans la mentalité d'un peuple.",
+          "usage": "Metaphor; « la porte d'entrée dans + N »; language as access point."
+        },
+        {
+          "id": "SVC3-0131",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si l'on peut vraiment connaître un pays sans parler sa langue, ou si la langue reste indispensable pour le comprendre en profondeur.",
+          "usage": "Reformulation frame; « savoir si... ou si... »."
+        },
+        {
+          "id": "SVC3-0132",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, on peut observer un pays sans parler sa langue, mais pas vraiment le connaître en profondeur.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0133",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, la langue est ce qui donne accès aux vraies conversations, aux mentalités et à l'humour des gens.",
+          "usage": "Enumeration linker opening point one."
+        },
+        {
+          "id": "SVC3-0134",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, c'est par la langue que l'on peut avoir de vraies conversations, comprendre les blagues, saisir les sous-entendus et sentir les manières de penser.",
+          "usage": "Justifies the preceding claim."
+        },
+        {
+          "id": "SVC3-0135",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, on dépend constamment de quelqu'un d'autre pour traduire ou expliquer, ce qui filtre forcément la réalité.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0136",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, comprendre l'humour d'un pays, ses chansons populaires ou ses débats politiques est presque impossible sans bien parler la langue, même si l'on y vit depuis longtemps.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0137",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que sans la langue, on observe le pays plus qu'on ne le vit vraiment.",
+          "usage": "Consequence linker; « Cela montre que + indicatif »."
+        },
+        {
+          "id": "SVC3-0138",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître que parler parfaitement la langue n'est pas indispensable pour commencer à connaître un pays.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0139",
+          "kind": "tournure",
+          "french": "il faut reconnaître que",
+          "english": "one must acknowledge that",
+          "example": "Cependant, il faut reconnaître que parler parfaitement la langue n'est pas indispensable pour commencer à connaître un pays.",
+          "usage": "Concession formula; « il faut reconnaître que + indicatif »."
+        },
+        {
+          "id": "SVC3-0140",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que l'on peut percevoir certaines choses d'un pays sans en parler la langue, mais que l'on ne peut pas vraiment le connaître en profondeur.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0141",
+          "kind": "phrase-modele",
+          "french": "on peut percevoir certains aspects d'un pays sans parler sa langue, mais on ne peut pas vraiment le connaître en profondeur",
+          "english": "you can perceive some aspects of a country without speaking its language, but you can't really know it deeply",
+          "example": "À mon avis, on peut percevoir certains aspects d'un pays sans parler sa langue, mais on ne peut pas vraiment le connaître en profondeur, parce que la langue donne accès à ce qu'aucune observation extérieure ne peut révéler.",
+          "usage": "Balanced thesis; « percevoir... mais... ne...pas vraiment »."
+        },
+        {
+          "id": "SVC3-0142",
+          "kind": "phrase-modele",
+          "french": "la langue est ce qui permet de comprendre un pays de l'intérieur, à travers les mots et les réactions de ses habitants",
+          "english": "language is what lets you understand a country from the inside, through its people's words and reactions",
+          "example": "Je pense d'abord que la langue est ce qui permet de comprendre un pays de l'intérieur, à travers les mots et les réactions de ses habitants.",
+          "usage": "Model; « ce qui permet de »; « de l'intérieur »; « à travers »."
+        },
+        {
+          "id": "SVC3-0143",
+          "kind": "phrase-modele",
+          "french": "Sans la langue, on parle aux gens, mais on ne les comprend qu'à moitié",
+          "english": "Without the language, you talk to people but only understand them halfway",
+          "example": "Sans la langue, on parle aux gens, mais on ne les comprend qu'à moitié.",
+          "usage": "Model; « sans + N » opener; « ne...qu'à moitié »."
+        },
+        {
+          "id": "SVC3-0144",
+          "kind": "phrase-modele",
+          "french": "la langue est la porte principale d'entrée dans la mentalité d'un peuple",
+          "english": "language is the main gateway into a people's mindset",
+          "example": "Cela montre que la langue est la porte principale d'entrée dans la mentalité d'un peuple.",
+          "usage": "Metaphorical synthesis; « la porte d'entrée dans »."
+        },
+        {
+          "id": "SVC3-0145",
+          "kind": "phrase-modele",
+          "french": "on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale",
+          "english": "you physically live in the country but don't really take part in its social life",
+          "example": "En effet, sans la langue, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale : on ne peut pas lire les journaux, suivre les actualités locales, comprendre les conversations dans la rue ni participer aux débats qui agitent la société.",
+          "usage": "Model contrast; « habiter » vs « participer à »."
+        },
+        {
+          "id": "SVC3-0146",
+          "kind": "phrase-modele",
+          "french": "Le pays que l'on connaît alors n'est pas vraiment le pays tel qu'il est, mais une version simplifiée",
+          "english": "The country you then know isn't really the country as it is, but a simplified version",
+          "example": "Le pays que l'on connaît alors n'est pas vraiment le pays tel qu'il est, mais une version simplifiée, vue de l'extérieur.",
+          "usage": "Model; « tel qu'il est » = as it is; « une version simplifiée »."
+        },
+        {
+          "id": "SVC3-0147",
+          "kind": "phrase-modele",
+          "french": "sans la langue, on observe le pays plus qu'on ne le vit vraiment",
+          "english": "without the language, you observe the country more than you really live it",
+          "example": "Cela montre que sans la langue, on observe le pays plus qu'on ne le vit vraiment.",
+          "usage": "Model; « observer plus que » + expletive « ne »; observe vs live."
+        },
+        {
+          "id": "SVC3-0148",
+          "kind": "phrase-modele",
+          "french": "ce que l'on connaît ainsi reste une vision extérieure, qui ne remplace pas une compréhension réelle",
+          "english": "what you know this way stays an outside view that doesn't replace real understanding",
+          "example": "Mais ce que l'on connaît ainsi reste une vision extérieure, qui ne remplace pas une compréhension réelle.",
+          "usage": "Model; « ce que l'on connaît »; « ne remplace pas »."
+        },
+        {
+          "id": "SVC3-0149",
+          "kind": "phrase-modele",
+          "french": "La langue n'est donc pas un mur infranchissable, mais elle reste l'outil le plus solide pour aller au-delà de la surface",
+          "english": "Language is thus not an impassable wall, but stays the most solid tool to go beyond the surface",
+          "example": "La langue n'est donc pas un mur infranchissable, mais elle reste l'outil le plus solide pour aller au-delà de la surface.",
+          "usage": "Nuance model; « ne...pas... mais »; superlative « le plus solide »."
+        },
+        {
+          "id": "SVC3-0150",
+          "kind": "phrase-modele",
+          "french": "La langue reste la clé qui ouvre l'accès aux vraies conversations, aux idées et à la vie réelle d'une société",
+          "english": "Language remains the key that opens access to real conversations, ideas and the real life of a society",
+          "example": "La langue reste la clé qui ouvre l'accès aux vraies conversations, aux idées et à la vie réelle d'une société.",
+          "usage": "Closing metaphor; « la clé qui ouvre l'accès à » + tricolon."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p20",
+      "entries": [
+        {
+          "id": "SVC3-0151",
+          "kind": "mot-cle",
+          "french": "la lecture",
+          "english": "reading",
+          "example": "Ensuite, la lecture reste la voie la plus profonde, parce qu'elle entraîne la réflexion, la concentration et le langage.",
+          "usage": "Fém.; central topic keyword; « la lecture entraîne la réflexion »."
+        },
+        {
+          "id": "SVC3-0152",
+          "kind": "mot-cle",
+          "french": "les documentaires",
+          "english": "documentaries",
+          "example": "D'abord, la culture passe aujourd'hui aussi par les documentaires, les films, les podcasts, les voyages et les échanges, qui apportent de vraies connaissances.",
+          "usage": "Masc. pl.; alternative source of culture; topical noun."
+        },
+        {
+          "id": "SVC3-0153",
+          "kind": "mot-cle",
+          "french": "les podcasts",
+          "english": "podcasts",
+          "example": "D'abord, la culture passe aujourd'hui aussi par les documentaires, les films, les podcasts, les voyages et les échanges, qui apportent de vraies connaissances.",
+          "usage": "Masc. pl.; modern cultural medium listed among alternatives."
+        },
+        {
+          "id": "SVC3-0154",
+          "kind": "mot-cle",
+          "french": "la littérature",
+          "english": "literature",
+          "example": "Enfin, certains domaines de la culture, comme la littérature ou la pensée, restent surtout accessibles par les livres.",
+          "usage": "Fém.; domain accessible mainly through books; higher register."
+        },
+        {
+          "id": "SVC3-0155",
+          "kind": "mot-cle",
+          "french": "les conférences en ligne",
+          "english": "online lectures/talks",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité, sans parler des films, des voyages ou des échanges du quotidien.",
+          "usage": "Fém. pl.; « en ligne » = online; quality alternative source."
+        },
+        {
+          "id": "SVC3-0156",
+          "kind": "mot-cle",
+          "french": "la concentration",
+          "english": "concentration",
+          "example": "Ensuite, la lecture reste la voie la plus profonde, parce qu'elle entraîne la réflexion, la concentration et le langage.",
+          "usage": "Fém.; « la lecture entraîne la concentration »; cognitive benefit."
+        },
+        {
+          "id": "SVC3-0157",
+          "kind": "mot-cle",
+          "french": "une pensée longue",
+          "english": "a long, sustained line of thought",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures, ce que les contenus rapides ne demandent pas vraiment.",
+          "usage": "Fém.; « suivre une pensée longue »; deep-thinking vocabulary."
+        },
+        {
+          "id": "SVC3-0158",
+          "kind": "mot-cle",
+          "french": "la philosophie",
+          "english": "philosophy",
+          "example": "En effet, la littérature, la philosophie ou la pensée historique sont d'abord transmises par des textes, et les versions résumées ne rendent qu'une petite partie de leur richesse.",
+          "usage": "Fém.; transmitted first through texts; book-only domain."
+        },
+        {
+          "id": "SVC3-0159",
+          "kind": "mot-cle",
+          "french": "l'héritage culturel",
+          "english": "cultural heritage",
+          "example": "Sans lecture, toute une partie de l'héritage culturel reste donc difficile d'accès.",
+          "usage": "Masc.; « une partie de l'héritage culturel »; access theme."
+        },
+        {
+          "id": "SVC3-0160",
+          "kind": "mot-cle",
+          "french": "un grand auteur",
+          "english": "a great author",
+          "example": "De plus, lire un grand auteur, c'est aussi entrer en contact avec une langue, un style et une époque que rien d'autre ne reproduit vraiment.",
+          "usage": "Masc.; « lire un grand auteur »; contact with language and era."
+        },
+        {
+          "id": "SVC3-0161",
+          "kind": "collocation",
+          "french": "être cultivé",
+          "english": "to be cultured/educated",
+          "example": "La vraie question est de savoir si la lecture est vraiment indispensable pour être cultivé, ou si d'autres voies permettent aussi d'y parvenir.",
+          "usage": "V + adj; recurring evaluative goal; « pour être cultivé »."
+        },
+        {
+          "id": "SVC3-0162",
+          "kind": "collocation",
+          "french": "d'autres voies",
+          "english": "other paths/routes",
+          "example": "La vraie question est de savoir si la lecture est vraiment indispensable pour être cultivé, ou si d'autres voies permettent aussi d'y parvenir.",
+          "usage": "Fém. pl.; « d'autres voies permettent »; pluralist argument."
+        },
+        {
+          "id": "SVC3-0163",
+          "kind": "collocation",
+          "french": "se cultiver",
+          "english": "to develop one's culture",
+          "example": "En effet, on peut aujourd'hui se cultiver par beaucoup d'autres voies.",
+          "usage": "Pronominal verb; « se cultiver par d'autres voies »."
+        },
+        {
+          "id": "SVC3-0164",
+          "kind": "collocation",
+          "french": "entraîne la réflexion",
+          "english": "trains/fosters reflection",
+          "example": "Ensuite, la lecture reste la voie la plus profonde, parce qu'elle entraîne la réflexion, la concentration et le langage.",
+          "usage": "« entraîner » = to train; « la réflexion » = thinking. Benefit of reading."
+        },
+        {
+          "id": "SVC3-0165",
+          "kind": "collocation",
+          "french": "prendre du temps",
+          "english": "to take time",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures, ce que les contenus rapides ne demandent pas vraiment.",
+          "usage": "V + partitive; « lire demande de prendre du temps »; effort of reading."
+        },
+        {
+          "id": "SVC3-0166",
+          "kind": "collocation",
+          "french": "tenir son attention",
+          "english": "to hold one's attention",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures, ce que les contenus rapides ne demandent pas vraiment.",
+          "usage": "V + noun; « tenir son attention sur »; sustained focus."
+        },
+        {
+          "id": "SVC3-0167",
+          "kind": "collocation",
+          "french": "revenir en arrière",
+          "english": "to go back / re-read",
+          "example": "De plus, le livre laisse au lecteur le temps de s'arrêter, de revenir en arrière et de réfléchir à ce qu'il vient de lire.",
+          "usage": "Idiom-collocation; « revenir en arrière »; reflective reading."
+        },
+        {
+          "id": "SVC3-0168",
+          "kind": "collocation",
+          "french": "gros lecteurs",
+          "english": "heavy/avid readers",
+          "example": "De plus, certaines personnes développent une vraie culture par leur métier, par leurs rencontres ou par leur curiosité, sans être de gros lecteurs.",
+          "usage": "Masc. pl.; « être de gros lecteurs »; « gros » = prolific here."
+        },
+        {
+          "id": "SVC3-0169",
+          "kind": "collocation",
+          "french": "apportent de vraies connaissances",
+          "english": "bring real knowledge",
+          "example": "D'abord, la culture passe aujourd'hui aussi par les documentaires, les films, les podcasts, les voyages et les échanges, qui apportent de vraies connaissances.",
+          "usage": "« apporter des connaissances »; partitive « de » before adj+noun."
+        },
+        {
+          "id": "SVC3-0170",
+          "kind": "collocation",
+          "french": "comprendre les nuances",
+          "english": "to understand the nuances",
+          "example": "Par exemple, lire un essai ou un roman complet permet de comprendre les nuances d'un sujet ou d'un personnage, ce qu'un résumé vidéo ou un article rapide ne peut pas vraiment offrir.",
+          "usage": "V + noun; deep understanding from complete reading."
+        },
+        {
+          "id": "SVC3-0171",
+          "kind": "expression",
+          "french": "y parvenir",
+          "english": "to achieve it / get there",
+          "example": "La vraie question est de savoir si la lecture est vraiment indispensable pour être cultivé, ou si d'autres voies permettent aussi d'y parvenir.",
+          "usage": "« parvenir à + N » with pronoun « y »; goal-reaching expression."
+        },
+        {
+          "id": "SVC3-0172",
+          "kind": "expression",
+          "french": "malgré tout",
+          "english": "nonetheless",
+          "example": "Ensuite, je pense que la lecture garde malgré tout une place particulière, parce qu'elle entraîne la réflexion en profondeur.",
+          "usage": "Concessive idiom; « garde malgré tout une place »."
+        },
+        {
+          "id": "SVC3-0173",
+          "kind": "expression",
+          "french": "en profondeur",
+          "english": "in depth",
+          "example": "Ensuite, je pense que la lecture garde malgré tout une place particulière, parce qu'elle entraîne la réflexion en profondeur.",
+          "usage": "Adverbial; « la réflexion en profondeur »; deep vs shallow."
+        },
+        {
+          "id": "SVC3-0174",
+          "kind": "expression",
+          "french": "sans parler des films",
+          "english": "not to mention films",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité, sans parler des films, des voyages ou des échanges du quotidien.",
+          "usage": "Idiom « sans parler de » = not to mention; adds items to a list."
+        },
+        {
+          "id": "SVC3-0175",
+          "kind": "expression",
+          "french": "n'a rien à voir avec",
+          "english": "has nothing to do with",
+          "example": "Par exemple, on peut connaître l'histoire d'un grand roman ou d'un grand philosophe à travers une vidéo, mais cela n'a rien à voir avec le fait de lire vraiment leurs œuvres.",
+          "usage": "Idiom for strong contrast between video and real reading."
+        },
+        {
+          "id": "SVC3-0176",
+          "kind": "expression",
+          "french": "encore faut-il",
+          "english": "but one still has to",
+          "example": "À l'inverse, lire beaucoup ne suffit pas en soi à être cultivé : encore faut-il réfléchir, comprendre et discuter ce que l'on lit.",
+          "usage": "Inversion idiom « encore faut-il + inf »; adds a needed condition."
+        },
+        {
+          "id": "SVC3-0177",
+          "kind": "expression",
+          "french": "en soi",
+          "english": "in itself",
+          "example": "À l'inverse, lire beaucoup ne suffit pas en soi à être cultivé : encore faut-il réfléchir, comprendre et discuter ce que l'on lit.",
+          "usage": "Adverbial; « ne suffit pas en soi »; intrinsic-value qualifier."
+        },
+        {
+          "id": "SVC3-0178",
+          "kind": "expression",
+          "french": "une garantie automatique",
+          "english": "an automatic guarantee",
+          "example": "La lecture est donc un outil très puissant, mais pas une garantie automatique.",
+          "usage": "Fém.; « pas une garantie automatique »; denies certainty."
+        },
+        {
+          "id": "SVC3-0179",
+          "kind": "expression",
+          "french": "difficile d'accès",
+          "english": "hard to access",
+          "example": "Sans lecture, toute une partie de l'héritage culturel reste donc difficile d'accès.",
+          "usage": "Adj phrase « difficile d'accès »; opposite « facile d'accès »."
+        },
+        {
+          "id": "SVC3-0180",
+          "kind": "expression",
+          "french": "de grande qualité",
+          "english": "of high quality",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité, sans parler des films, des voyages ou des échanges du quotidien.",
+          "usage": "Adj phrase; « être de grande qualité »; positive evaluation."
+        },
+        {
+          "id": "SVC3-0181",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la lecture est vraiment indispensable pour être cultivé, ou si d'autres voies permettent aussi d'y parvenir.",
+          "usage": "Reformulation frame; « savoir si... ou si... »."
+        },
+        {
+          "id": "SVC3-0182",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, on n'a pas absolument besoin de lire pour être cultivé, mais la lecture garde un rôle particulier.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0183",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, la culture passe aujourd'hui aussi par les documentaires, les films, les podcasts, les voyages et les échanges, qui apportent de vraies connaissances.",
+          "usage": "Enumeration linker opening point one."
+        },
+        {
+          "id": "SVC3-0184",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, on peut aujourd'hui se cultiver par beaucoup d'autres voies.",
+          "usage": "Justifies preceding claim."
+        },
+        {
+          "id": "SVC3-0185",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, le livre laisse au lecteur le temps de s'arrêter, de revenir en arrière et de réfléchir à ce qu'il vient de lire.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0186",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, on peut connaître l'histoire d'un grand roman ou d'un grand philosophe à travers une vidéo, mais cela n'a rien à voir avec le fait de lire vraiment leurs œuvres.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0187",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la lecture n'est pas la seule porte d'entrée vers la culture, même si elle reste très importante.",
+          "usage": "Consequence linker."
+        },
+        {
+          "id": "SVC3-0188",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître qu'une personne peut être très cultivée sans lire beaucoup, si elle est curieuse, attentive et entourée de gens qui lui apportent des connaissances.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0189",
+          "kind": "tournure",
+          "french": "À l'inverse,",
+          "english": "Conversely,",
+          "example": "À l'inverse, lire beaucoup ne suffit pas en soi à être cultivé : encore faut-il réfléchir, comprendre et discuter ce que l'on lit.",
+          "usage": "Contrast linker; introduces the opposite case."
+        },
+        {
+          "id": "SVC3-0190",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense qu'on n'est pas obligé de lire pour être cultivé, parce que la culture s'acquiert aussi par beaucoup d'autres voies.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0191",
+          "kind": "phrase-modele",
+          "french": "on n'est pas obligé de lire pour être cultivé, mais la lecture reste l'une des voies les plus solides et les plus complètes",
+          "english": "you're not required to read to be cultured, but reading stays one of the most solid and complete paths",
+          "example": "À mon avis, on n'est pas obligé de lire pour être cultivé, mais la lecture reste l'une des voies les plus solides et les plus complètes pour le devenir.",
+          "usage": "Balanced thesis; « ne...pas obligé de »; superlative « l'une des plus »."
+        },
+        {
+          "id": "SVC3-0192",
+          "kind": "phrase-modele",
+          "french": "il serait faux de dire que seule la lecture permet d'être cultivé",
+          "english": "it would be wrong to say that only reading lets you be cultured",
+          "example": "Je pense d'abord qu'il serait faux de dire que seule la lecture permet d'être cultivé.",
+          "usage": "Model; conditional « il serait faux de »; « seule + N »."
+        },
+        {
+          "id": "SVC3-0193",
+          "kind": "phrase-modele",
+          "french": "La culture ne se résume donc pas à un seul support : elle se construit par toutes les sources",
+          "english": "Culture thus isn't reducible to a single medium: it is built from all sources",
+          "example": "La culture ne se résume donc pas à un seul support : elle se construit par toutes les sources que l'on prend le temps d'écouter et de comprendre.",
+          "usage": "Model; « se résumer à »; « se construire par »."
+        },
+        {
+          "id": "SVC3-0194",
+          "kind": "phrase-modele",
+          "french": "lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages",
+          "english": "reading requires taking time, following a long line of thought and holding attention over several pages",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures, ce que les contenus rapides ne demandent pas vraiment.",
+          "usage": "Model; « demander de + inf » + tricolon of infinitives."
+        },
+        {
+          "id": "SVC3-0195",
+          "kind": "phrase-modele",
+          "french": "Cette manière de penser, plus lente et plus structurée, fait partie de ce que l'on appelle vraiment",
+          "english": "This way of thinking, slower and more structured, is part of what we truly call...",
+          "example": "Cette manière de penser, plus lente et plus structurée, fait partie de ce que l'on appelle vraiment « être cultivé ».",
+          "usage": "Model; « faire partie de »; « ce que l'on appelle »."
+        },
+        {
+          "id": "SVC3-0196",
+          "kind": "phrase-modele",
+          "french": "lire un essai ou un roman complet permet de comprendre les nuances d'un sujet ou d'un personnage",
+          "english": "reading an essay or a whole novel lets you understand the nuances of a subject or character",
+          "example": "Par exemple, lire un essai ou un roman complet permet de comprendre les nuances d'un sujet ou d'un personnage, ce qu'un résumé vidéo ou un article rapide ne peut pas vraiment offrir.",
+          "usage": "Model; « permettre de + inf »; depth vs quick summaries."
+        },
+        {
+          "id": "SVC3-0197",
+          "kind": "phrase-modele",
+          "french": "la lecture développe une qualité de pensée que les autres supports ont du mal à reproduire",
+          "english": "reading develops a quality of thought that other media struggle to reproduce",
+          "example": "Cela montre que la lecture développe une qualité de pensée que les autres supports ont du mal à reproduire.",
+          "usage": "Model; « avoir du mal à + inf » = to struggle to."
+        },
+        {
+          "id": "SVC3-0198",
+          "kind": "phrase-modele",
+          "french": "lire un grand auteur, c'est aussi entrer en contact avec une langue, un style et une époque",
+          "english": "reading a great author is also getting in contact with a language, a style and an era",
+          "example": "De plus, lire un grand auteur, c'est aussi entrer en contact avec une langue, un style et une époque que rien d'autre ne reproduit vraiment.",
+          "usage": "Model; « lire..., c'est + inf »; « entrer en contact avec »."
+        },
+        {
+          "id": "SVC3-0199",
+          "kind": "phrase-modele",
+          "french": "la lecture garde une fonction unique dans l'accès à la culture, que les autres supports ne remplacent qu'en partie",
+          "english": "reading keeps a unique function in access to culture, that other media only partly replace",
+          "example": "Cela montre que la lecture garde une fonction unique dans l'accès à la culture, que les autres supports ne remplacent qu'en partie.",
+          "usage": "Model; « ne remplacent qu'en partie » = only partly replace."
+        },
+        {
+          "id": "SVC3-0200",
+          "kind": "phrase-modele",
+          "french": "la lecture reste l'une des plus solides, parce qu'elle entraîne la pensée et donne accès à une part de l'héritage culturel",
+          "english": "reading stays one of the most solid, because it trains thought and gives access to part of the cultural heritage",
+          "example": "Mais la lecture reste l'une des plus solides, parce qu'elle entraîne la pensée et donne accès à une part de l'héritage culturel que rien d'autre ne remplace vraiment.",
+          "usage": "Closing model; « l'une des plus solides »; « donner accès à »."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p21",
+      "entries": [
+        {
+          "id": "SVC3-0201",
+          "kind": "mot-cle",
+          "french": "le voyage en solitaire",
+          "english": "solo travel",
+          "example": "La vraie question est de savoir ce que le voyage en solitaire peut apporter, et s'il s'agit d'un vrai choix positif ou simplement d'un cas particulier.",
+          "usage": "Masc.; « en solitaire » = solo; central keyword; synonym « voyager seul »."
+        },
+        {
+          "id": "SVC3-0202",
+          "kind": "mot-cle",
+          "french": "l'autonomie",
+          "english": "autonomy, independence",
+          "example": "D'abord, il oblige à se débrouiller seul, ce qui développe l'autonomie et la confiance en soi.",
+          "usage": "Fém.; « développer l'autonomie »; core benefit of solo travel."
+        },
+        {
+          "id": "SVC3-0203",
+          "kind": "mot-cle",
+          "french": "la confiance en soi",
+          "english": "self-confidence",
+          "example": "D'abord, il oblige à se débrouiller seul, ce qui développe l'autonomie et la confiance en soi.",
+          "usage": "Fém.; fixed phrase « confiance en soi »; personal-growth vocab."
+        },
+        {
+          "id": "SVC3-0204",
+          "kind": "mot-cle",
+          "french": "une liberté totale",
+          "english": "total freedom",
+          "example": "Ensuite, il donne une liberté totale dans le rythme, les choix et les découvertes du voyage.",
+          "usage": "Fém.; « une liberté totale dans le rythme »; key benefit noun."
+        },
+        {
+          "id": "SVC3-0205",
+          "kind": "mot-cle",
+          "french": "une expérience très enrichissante",
+          "english": "a very enriching experience",
+          "example": "À mon avis, voyager seul peut être une expérience très enrichissante, parce qu'elle développe l'autonomie, donne une vraie liberté et favorise des rencontres plus authentiques, même si cela ne convient pas à tout le monde.",
+          "usage": "Feminine noun phrase; it evaluates a stay or journey while leaving room for a later nuance."
+        },
+        {
+          "id": "SVC3-0206",
+          "kind": "mot-cle",
+          "french": "expérience formatrice",
+          "english": "a formative experience",
+          "example": "Cela montre que le voyage en solitaire est une vraie expérience formatrice, bien au-delà du simple plaisir du voyage.",
+          "usage": "Fém.; « formateur/formatrice » = character-building; evaluation."
+        },
+        {
+          "id": "SVC3-0207",
+          "kind": "mot-cle",
+          "french": "des rencontres plus authentiques",
+          "english": "more authentic encounters",
+          "example": "À mon avis, voyager seul peut être une expérience très enrichissante, parce qu'elle développe l'autonomie, donne une vraie liberté et favorise des rencontres plus authentiques, même si cela ne convient pas à tout le monde.",
+          "usage": "Fém. pl.; « une rencontre » = meeting; benefit of travelling alone."
+        },
+        {
+          "id": "SVC3-0208",
+          "kind": "mot-cle",
+          "french": "le voyageur seul",
+          "english": "the lone traveller",
+          "example": "Enfin, il favorise souvent des rencontres plus vraies, parce que le voyageur seul est davantage tourné vers les autres.",
+          "usage": "Masc.; « le voyageur seul est tourné vers les autres »; agent noun."
+        },
+        {
+          "id": "SVC3-0209",
+          "kind": "mot-cle",
+          "french": "une auberge",
+          "english": "a hostel/inn",
+          "example": "Par exemple, un voyageur seul dans une auberge, un marché ou un petit restaurant aura plus facilement une conversation avec un habitant ou un autre voyageur qu'un groupe déjà fermé sur lui-même.",
+          "usage": "Fém.; place where solo travellers meet people; concrete setting."
+        },
+        {
+          "id": "SVC3-0210",
+          "kind": "mot-cle",
+          "french": "la personnalité de chacun",
+          "english": "each person's personality",
+          "example": "Voyager seul reste donc un choix très enrichissant, mais qui doit correspondre à la personnalité de chacun.",
+          "usage": "Fém.; « correspondre à la personnalité de chacun »; nuance vocab."
+        },
+        {
+          "id": "SVC3-0211",
+          "kind": "collocation",
+          "french": "voyager seul",
+          "english": "to travel alone",
+          "example": "À mon avis, le choix de voyager seul est une option qui a beaucoup de sens.",
+          "usage": "V + adj; recurring topic collocation; « le choix de voyager seul »."
+        },
+        {
+          "id": "SVC3-0212",
+          "kind": "collocation",
+          "french": "se débrouiller seul",
+          "english": "to fend for oneself",
+          "example": "D'abord, il oblige à se débrouiller seul, ce qui développe l'autonomie et la confiance en soi.",
+          "usage": "Pronominal + adj; « obliger à se débrouiller seul »; autonomy."
+        },
+        {
+          "id": "SVC3-0213",
+          "kind": "collocation",
+          "french": "développe l'autonomie",
+          "english": "develops autonomy",
+          "example": "À mon avis, voyager seul peut être une expérience très enrichissante, parce qu'elle développe l'autonomie, donne une vraie liberté et favorise des rencontres plus authentiques, même si cela ne convient pas à tout le monde.",
+          "usage": "« développer l'autonomie »; 3rd sg present; recurring benefit."
+        },
+        {
+          "id": "SVC3-0214",
+          "kind": "collocation",
+          "french": "faire face aux imprévus",
+          "english": "to deal with the unexpected",
+          "example": "En effet, quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus et résoudre les problèmes sans aide.",
+          "usage": "Idiom-collocation « faire face à + N » = to cope with."
+        },
+        {
+          "id": "SVC3-0215",
+          "kind": "collocation",
+          "french": "résoudre les problèmes",
+          "english": "to solve problems",
+          "example": "En effet, quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus et résoudre les problèmes sans aide.",
+          "usage": "V + noun; « résoudre » (irregular); self-reliance vocab."
+        },
+        {
+          "id": "SVC3-0216",
+          "kind": "collocation",
+          "french": "prendre des décisions rapidement",
+          "english": "to make decisions quickly",
+          "example": "De plus, ces situations obligent à prendre des décisions rapidement, ce qui apprend à se connaître et à se faire confiance.",
+          "usage": "« prendre une décision » + adv; growth from pressure."
+        },
+        {
+          "id": "SVC3-0217",
+          "kind": "collocation",
+          "french": "faire de compromis",
+          "english": "to make compromises",
+          "example": "De plus, on ne doit pas faire de compromis pour s'adapter aux envies des autres, ce qui rend le voyage beaucoup plus personnel.",
+          "usage": "« faire des/de compromis »; here negated « ne...pas faire de »."
+        },
+        {
+          "id": "SVC3-0218",
+          "kind": "collocation",
+          "french": "demander de l'aide",
+          "english": "to ask for help",
+          "example": "Par exemple, si son train est annulé dans un pays qu'elle ne connaît pas, une personne seule doit trouver une autre solution, demander de l'aide et modifier son itinéraire sans paniquer.",
+          "usage": "V + partitive « de l'aide »; very oral-useful collocation."
+        },
+        {
+          "id": "SVC3-0219",
+          "kind": "collocation",
+          "french": "partager un repas",
+          "english": "to share a meal",
+          "example": "En effet, quand on est seul, on est obligé d'aller vers les autres pour demander une information, pour parler ou pour partager un repas, et les habitants comme les autres voyageurs viennent aussi plus facilement vers une personne seule.",
+          "usage": "V + noun; social bonding while travelling."
+        },
+        {
+          "id": "SVC3-0220",
+          "kind": "collocation",
+          "french": "partager leurs émotions",
+          "english": "to share their emotions",
+          "example": "Certaines personnes ont vraiment besoin de partager leurs émotions sur le moment, et d'autres se sentiraient mal à l'aise dans certaines situations sans personne à leurs côtés.",
+          "usage": "« partager ses émotions »; need some travellers feel (nuance)."
+        },
+        {
+          "id": "SVC3-0221",
+          "kind": "expression",
+          "french": "a beaucoup de sens",
+          "english": "makes a lot of sense",
+          "example": "À mon avis, le choix de voyager seul est une option qui a beaucoup de sens.",
+          "usage": "Idiom « avoir du sens »; « beaucoup de sens » intensifies. Evaluation."
+        },
+        {
+          "id": "SVC3-0222",
+          "kind": "expression",
+          "french": "tout gérer",
+          "english": "to handle everything",
+          "example": "En effet, quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus et résoudre les problèmes sans aide.",
+          "usage": "« gérer » = to manage; « devoir tout gérer »; solo responsibility."
+        },
+        {
+          "id": "SVC3-0223",
+          "kind": "expression",
+          "french": "sans aide",
+          "english": "without help",
+          "example": "En effet, quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus et résoudre les problèmes sans aide.",
+          "usage": "Adverbial « sans + N » (no article); self-reliance."
+        },
+        {
+          "id": "SVC3-0224",
+          "kind": "expression",
+          "french": "Au retour",
+          "english": "On returning / Back home",
+          "example": "Au retour, on se sent souvent plus capable et plus sûr de soi qu'avant le départ.",
+          "usage": "Time expression opening a sentence; « au retour »."
+        },
+        {
+          "id": "SVC3-0225",
+          "kind": "expression",
+          "french": "plus sûr de soi",
+          "english": "more self-assured",
+          "example": "Au retour, on se sent souvent plus capable et plus sûr de soi qu'avant le départ.",
+          "usage": "Adj phrase « sûr de soi » = self-confident; comparative « plus »."
+        },
+        {
+          "id": "SVC3-0226",
+          "kind": "expression",
+          "french": "bien au-delà du simple plaisir",
+          "english": "well beyond the mere pleasure",
+          "example": "Cela montre que le voyage en solitaire est une vraie expérience formatrice, bien au-delà du simple plaisir du voyage.",
+          "usage": "Idiom « au-delà de » reinforced by « bien »; « le simple + N » = mere."
+        },
+        {
+          "id": "SVC3-0227",
+          "kind": "expression",
+          "french": "en cours de route",
+          "english": "along the way",
+          "example": "Par exemple, on peut décider de rester deux jours de plus dans un endroit qu'on aime, ou changer complètement d'itinéraire en cours de route, ce qui est presque impossible quand on voyage avec d'autres personnes.",
+          "usage": "Idiom; « changer d'itinéraire en cours de route »; mid-journey."
+        },
+        {
+          "id": "SVC3-0228",
+          "kind": "expression",
+          "french": "mal à l'aise",
+          "english": "ill at ease, uncomfortable",
+          "example": "Certaines personnes ont vraiment besoin de partager leurs émotions sur le moment, et d'autres se sentiraient mal à l'aise dans certaines situations sans personne à leurs côtés.",
+          "usage": "Idiom « être mal à l'aise »; opposite « à l'aise »."
+        },
+        {
+          "id": "SVC3-0229",
+          "kind": "expression",
+          "french": "n'est pas synonyme de solitude",
+          "english": "is not synonymous with loneliness",
+          "example": "Cela montre que le voyage en solitaire n'est pas synonyme de solitude, mais souvent au contraire une porte ouverte vers les autres.",
+          "usage": "« être synonyme de »; distinguishes solo travel from loneliness."
+        },
+        {
+          "id": "SVC3-0230",
+          "kind": "expression",
+          "french": "une porte ouverte vers les autres",
+          "english": "an open door to others",
+          "example": "Cela montre que le voyage en solitaire n'est pas synonyme de solitude, mais souvent au contraire une porte ouverte vers les autres.",
+          "usage": "Metaphor; « une porte ouverte vers »; sociability of solo travel."
+        },
+        {
+          "id": "SVC3-0231",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir",
+          "english": "The real question is to know/figure out",
+          "example": "La vraie question est de savoir ce que le voyage en solitaire peut apporter, et s'il s'agit d'un vrai choix positif ou simplement d'un cas particulier.",
+          "usage": "Reformulation frame; here « savoir ce que... »."
+        },
+        {
+          "id": "SVC3-0232",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, le choix de voyager seul est une option qui a beaucoup de sens.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0233",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, il oblige à se débrouiller seul, ce qui développe l'autonomie et la confiance en soi.",
+          "usage": "Enumeration linker opening point one."
+        },
+        {
+          "id": "SVC3-0234",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, on choisit librement où aller, combien de temps rester, quoi visiter et à quel rythme.",
+          "usage": "Justifies preceding claim."
+        },
+        {
+          "id": "SVC3-0235",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, sans groupe d'amis autour de soi, on est beaucoup plus disponible et attentif à ce qui se passe autour.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0236",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, si son train est annulé dans un pays qu'elle ne connaît pas, une personne seule doit trouver une autre solution, demander de l'aide et modifier son itinéraire sans paniquer.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0237",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que le voyage en solitaire est une vraie expérience formatrice, bien au-delà du simple plaisir du voyage.",
+          "usage": "Consequence linker."
+        },
+        {
+          "id": "SVC3-0238",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître que voyager seul ne convient pas à tout le monde.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0239",
+          "kind": "tournure",
+          "french": "il faut reconnaître que",
+          "english": "one must acknowledge that",
+          "example": "Cependant, il faut reconnaître que voyager seul ne convient pas à tout le monde.",
+          "usage": "Concession formula; « il faut reconnaître que + indicatif »."
+        },
+        {
+          "id": "SVC3-0240",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que voyager seul est une expérience très positive pour ceux qui s'y prêtent, parce qu'elle développe l'autonomie, donne une grande liberté et favorise de vraies rencontres.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0241",
+          "kind": "phrase-modele",
+          "french": "voyager seul peut être une expérience très enrichissante, parce qu'elle développe l'autonomie, donne une vraie liberté et favorise des rencontres plus authentiques",
+          "english": "travelling alone can be a very enriching experience, because it develops autonomy, gives real freedom and fosters more authentic encounters",
+          "example": "À mon avis, voyager seul peut être une expérience très enrichissante, parce qu'elle développe l'autonomie, donne une vraie liberté et favorise des rencontres plus authentiques, même si cela ne convient pas à tout le monde.",
+          "usage": "Thesis model; « parce que » + tricolon of benefits."
+        },
+        {
+          "id": "SVC3-0242",
+          "kind": "phrase-modele",
+          "french": "voyager seul est une vraie école d'autonomie et de confiance en soi",
+          "english": "travelling alone is a real school of autonomy and self-confidence",
+          "example": "Je pense d'abord que voyager seul est une vraie école d'autonomie et de confiance en soi.",
+          "usage": "Model; metaphor « une école de »; two paired benefits."
+        },
+        {
+          "id": "SVC3-0243",
+          "kind": "phrase-modele",
+          "french": "quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus",
+          "english": "when you travel alone, you have to handle everything: booking, finding your way, choosing, coping with the unexpected",
+          "example": "En effet, quand on voyage seul, on doit tout gérer : réserver, s'orienter, choisir, faire face aux imprévus et résoudre les problèmes sans aide.",
+          "usage": "Model; « quand on... » + colon list of infinitives."
+        },
+        {
+          "id": "SVC3-0244",
+          "kind": "phrase-modele",
+          "french": "Au retour, on se sent souvent plus capable et plus sûr de soi qu'avant le départ",
+          "english": "On returning, you often feel more capable and more self-assured than before leaving",
+          "example": "Au retour, on se sent souvent plus capable et plus sûr de soi qu'avant le départ.",
+          "usage": "Model; « se sentir plus... que »; before/after contrast."
+        },
+        {
+          "id": "SVC3-0245",
+          "kind": "phrase-modele",
+          "french": "voyager seul donne une liberté que l'on n'a pas vraiment quand on voyage à plusieurs",
+          "english": "travelling alone gives a freedom you don't really have when travelling with others",
+          "example": "Ensuite, voyager seul donne une liberté que l'on n'a pas vraiment quand on voyage à plusieurs.",
+          "usage": "Model; « à plusieurs » = in a group; relative « que l'on n'a pas »."
+        },
+        {
+          "id": "SVC3-0246",
+          "kind": "phrase-modele",
+          "french": "Cette liberté permet souvent de vivre des choses que l'on n'aurait jamais faites en groupe",
+          "english": "This freedom often lets you experience things you'd never have done in a group",
+          "example": "Cette liberté permet souvent de vivre des choses que l'on n'aurait jamais faites en groupe.",
+          "usage": "Model; conditional past « n'aurait jamais faites »."
+        },
+        {
+          "id": "SVC3-0247",
+          "kind": "phrase-modele",
+          "french": "voyager seul transforme le voyage en une vraie expérience personnelle, modelée par ses propres envies",
+          "english": "travelling alone turns the trip into a real personal experience, shaped by one's own desires",
+          "example": "Cela montre que voyager seul transforme le voyage en une vraie expérience personnelle, modelée par ses propres envies.",
+          "usage": "Model; « transformer X en Y »; « modelé par »."
+        },
+        {
+          "id": "SVC3-0248",
+          "kind": "phrase-modele",
+          "french": "quand on est seul, on est obligé d'aller vers les autres pour demander une information",
+          "english": "when you're alone, you're forced to go towards others to ask for information",
+          "example": "En effet, quand on est seul, on est obligé d'aller vers les autres pour demander une information, pour parler ou pour partager un repas, et les habitants comme les autres voyageurs viennent aussi plus facilement vers une personne seule.",
+          "usage": "Model; « être obligé de + inf »; « aller vers les autres »."
+        },
+        {
+          "id": "SVC3-0249",
+          "kind": "phrase-modele",
+          "french": "Voyager seul reste donc un choix très enrichissant, mais qui doit correspondre à la personnalité de chacun",
+          "english": "Solo travel thus stays a very enriching choice, but one that must fit each person's personality",
+          "example": "Voyager seul reste donc un choix très enrichissant, mais qui doit correspondre à la personnalité de chacun.",
+          "usage": "Nuance model; « rester... mais qui doit »; « correspondre à »."
+        },
+        {
+          "id": "SVC3-0250",
+          "kind": "phrase-modele",
+          "french": "c'est une manière de voyager qui apporte beaucoup à ceux qui l'essaient",
+          "english": "it's a way of travelling that brings a lot to those who try it",
+          "example": "Ce n'est pas un choix universel, mais c'est une manière de voyager qui apporte beaucoup à ceux qui l'essaient.",
+          "usage": "Closing model; « une manière de + inf »; « ceux qui »."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p24",
+      "entries": [
+        {
+          "id": "SVC3-0251",
+          "kind": "mot-cle",
+          "french": "des contacts locaux",
+          "english": "local contacts",
+          "example": "Par exemple, beaucoup de personnes trouvent un meilleur travail ou un logement plus facilement grâce à des contacts locaux, parfois même sans passer par les annonces officielles.",
+          "usage": "Plural noun phrase; it names the personal and professional network that supports integration."
+        },
+        {
+          "id": "SVC3-0252",
+          "kind": "mot-cle",
+          "french": "la société d'accueil",
+          "english": "the host society",
+          "example": "D'abord, sans ces liens, on finit rapidement par se sentir isolé et coupé de la société d'accueil.",
+          "usage": "Fém.; « coupé de la société d'accueil »; integration vocab."
+        },
+        {
+          "id": "SVC3-0253",
+          "kind": "mot-cle",
+          "french": "liens locaux",
+          "english": "local ties/connections",
+          "example": "En effet, vivre à l'étranger sans liens locaux signifie souvent passer ses journées à travailler ou à étudier, puis à rentrer chez soi sans personne à qui parler vraiment.",
+          "usage": "Masc. pl.; « vivre sans liens locaux »; core concept of the essay."
+        },
+        {
+          "id": "SVC3-0254",
+          "kind": "mot-cle",
+          "french": "les codes du pays",
+          "english": "the country's social codes",
+          "example": "Ensuite, ce sont les habitants qui permettent vraiment d'apprendre la langue et de comprendre les codes du pays.",
+          "usage": "Masc. pl.; unwritten rules learned from locals."
+        },
+        {
+          "id": "SVC3-0255",
+          "kind": "mot-cle",
+          "french": "codes culturels",
+          "english": "cultural codes",
+          "example": "De plus, beaucoup de codes culturels ne s'apprennent pas dans un manuel : ils se devinent à travers les conversations, les remarques et les habitudes au travail.",
+          "usage": "Masc. pl.; « ne s'apprennent pas dans un manuel »; tacit knowledge."
+        },
+        {
+          "id": "SVC3-0256",
+          "kind": "mot-cle",
+          "french": "un soutien moral",
+          "english": "moral support",
+          "example": "En effet, les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "Masc.; « un soutien moral dans les moments difficiles »; relationship benefit."
+        },
+        {
+          "id": "SVC3-0257",
+          "kind": "mot-cle",
+          "french": "un sentiment d'appartenance",
+          "english": "a sense of belonging",
+          "example": "Avec le temps, elles donnent aussi un sentiment d'appartenance qui rend la vie à l'étranger beaucoup plus stable.",
+          "usage": "Masc.; « donner un sentiment d'appartenance »; stability vocab."
+        },
+        {
+          "id": "SVC3-0258",
+          "kind": "mot-cle",
+          "french": "la communauté d'origine",
+          "english": "the community of origin",
+          "example": "Cependant, il ne faut pas dévaloriser la communauté d'origine.",
+          "usage": "Fém.; « ne pas dévaloriser la communauté d'origine »; nuance vocab."
+        },
+        {
+          "id": "SVC3-0259",
+          "kind": "mot-cle",
+          "french": "un lien affectif",
+          "english": "an emotional bond",
+          "example": "Elle aide à surmonter la solitude, à comprendre certaines démarches et à garder un lien affectif avec sa culture.",
+          "usage": "Masc.; « garder un lien affectif avec sa culture »; affective vocab."
+        },
+        {
+          "id": "SVC3-0260",
+          "kind": "mot-cle",
+          "french": "la qualité de vie",
+          "english": "quality of life",
+          "example": "Cela montre que ces liens jouent un rôle concret dans la qualité de vie à l'étranger, bien au-delà de la simple amitié.",
+          "usage": "Fém.; « la qualité de vie à l'étranger »; overall evaluation noun."
+        },
+        {
+          "id": "SVC3-0261",
+          "kind": "collocation",
+          "french": "créer des liens",
+          "english": "to form/build ties",
+          "example": "La vraie question est de savoir si créer des liens avec les habitants est vraiment indispensable pour bien vivre à l'étranger, ou seulement un avantage parmi d'autres.",
+          "usage": "V + noun; recurring topic collocation; « créer des liens avec »."
+        },
+        {
+          "id": "SVC3-0262",
+          "kind": "collocation",
+          "french": "se sentir isolé",
+          "english": "to feel isolated",
+          "example": "D'abord, sans ces liens, on finit rapidement par se sentir isolé et coupé de la société d'accueil.",
+          "usage": "Pronominal + adj; core negative-outcome collocation."
+        },
+        {
+          "id": "SVC3-0263",
+          "kind": "collocation",
+          "french": "apprendre la langue",
+          "english": "to learn the language",
+          "example": "Ensuite, ce sont les habitants qui permettent vraiment d'apprendre la langue et de comprendre les codes du pays.",
+          "usage": "V + noun; « permettre d'apprendre la langue »; integration benefit."
+        },
+        {
+          "id": "SVC3-0264",
+          "kind": "collocation",
+          "french": "comprendre les codes du pays",
+          "english": "to understand the country's codes",
+          "example": "Ensuite, ce sont les habitants qui permettent vraiment d'apprendre la langue et de comprendre les codes du pays.",
+          "usage": "V + noun; distinct from noun « les codes du pays »; integration."
+        },
+        {
+          "id": "SVC3-0265",
+          "kind": "collocation",
+          "french": "garde le contact",
+          "english": "keeps in touch",
+          "example": "De plus, même si l'on garde le contact avec sa famille à distance, cela ne remplace pas une présence quotidienne.",
+          "usage": "« garder le contact avec »; 3rd sg present; distance-relationship."
+        },
+        {
+          "id": "SVC3-0266",
+          "kind": "collocation",
+          "french": "peser sur le moral",
+          "english": "to weigh on one's morale",
+          "example": "Sur le long terme, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale, et cette solitude finit par peser sur le moral.",
+          "usage": "Idiom-collocation « peser sur le moral »; emotional toll."
+        },
+        {
+          "id": "SVC3-0267",
+          "kind": "collocation",
+          "french": "accepter une invitation",
+          "english": "to accept an invitation",
+          "example": "Par exemple, c'est souvent en discutant avec des collègues ou des voisins que l'on comprend quand il faut tutoyer ou vouvoyer, comment accepter une invitation, ou pourquoi certaines démarches se font d'une manière plutôt que d'une autre.",
+          "usage": "V + noun; social code learned from locals; everyday situation."
+        },
+        {
+          "id": "SVC3-0268",
+          "kind": "collocation",
+          "french": "tutoyer ou vouvoyer",
+          "english": "to use tu or vous",
+          "example": "Par exemple, c'est souvent en discutant avec des collègues ou des voisins que l'on comprend quand il faut tutoyer ou vouvoyer, comment accepter une invitation, ou pourquoi certaines démarches se font d'une manière plutôt que d'une autre.",
+          "usage": "Two verbs; register choice unique to French; cultural code."
+        },
+        {
+          "id": "SVC3-0269",
+          "kind": "collocation",
+          "french": "donnent accès",
+          "english": "give access",
+          "example": "En effet, les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "« donner accès à + N »; contacts open opportunities."
+        },
+        {
+          "id": "SVC3-0270",
+          "kind": "collocation",
+          "french": "surmonter la solitude",
+          "english": "to overcome loneliness",
+          "example": "Elle aide à surmonter la solitude, à comprendre certaines démarches et à garder un lien affectif avec sa culture.",
+          "usage": "V + noun; « surmonter » = to overcome; role of one's community."
+        },
+        {
+          "id": "SVC3-0271",
+          "kind": "expression",
+          "french": "bien vivre à l'étranger",
+          "english": "to live well abroad",
+          "example": "À mon avis, il est presque indispensable de créer des relations avec les habitants pour bien vivre à l'étranger.",
+          "usage": "« bien vivre » + « à l'étranger »; recurring goal phrase of the essay."
+        },
+        {
+          "id": "SVC3-0272",
+          "kind": "expression",
+          "french": "un avantage parmi d'autres",
+          "english": "one advantage among others",
+          "example": "La vraie question est de savoir si créer des liens avec les habitants est vraiment indispensable pour bien vivre à l'étranger, ou seulement un avantage parmi d'autres.",
+          "usage": "Idiom « parmi d'autres » = among others; downplaying formula."
+        },
+        {
+          "id": "SVC3-0273",
+          "kind": "expression",
+          "french": "Sur le long terme",
+          "english": "In the long run",
+          "example": "Sur le long terme, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale, et cette solitude finit par peser sur le moral.",
+          "usage": "Time idiom opening a sentence; opposite « à court terme »."
+        },
+        {
+          "id": "SVC3-0274",
+          "kind": "expression",
+          "french": "à l'aise dans la langue",
+          "english": "comfortable in the language",
+          "example": "En effet, les cours et les livres donnent une base, mais c'est seulement en parlant régulièrement avec des locaux que l'on devient vraiment à l'aise dans la langue.",
+          "usage": "« être à l'aise dans/avec »; fluency evaluation."
+        },
+        {
+          "id": "SVC3-0275",
+          "kind": "expression",
+          "french": "un décalage",
+          "english": "a gap, disconnect",
+          "example": "Sans ces échanges directs, on garde toujours un décalage avec la société dans laquelle on vit.",
+          "usage": "Masc.; « garder un décalage avec la société »; mismatch idea."
+        },
+        {
+          "id": "SVC3-0276",
+          "kind": "expression",
+          "french": "sur place",
+          "english": "on the spot, locally",
+          "example": "En effet, les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "Adverbial; « les contacts sur place »; on-location meaning."
+        },
+        {
+          "id": "SVC3-0277",
+          "kind": "expression",
+          "french": "Avec le temps",
+          "english": "Over time",
+          "example": "Avec le temps, elles donnent aussi un sentiment d'appartenance qui rend la vie à l'étranger beaucoup plus stable.",
+          "usage": "Time expression opening a sentence; gradual development."
+        },
+        {
+          "id": "SVC3-0278",
+          "kind": "expression",
+          "french": "bien au-delà de la simple amitié",
+          "english": "well beyond mere friendship",
+          "example": "Cela montre que ces liens jouent un rôle concret dans la qualité de vie à l'étranger, bien au-delà de la simple amitié.",
+          "usage": "Idiom « au-delà de »; « la simple + N » = mere."
+        },
+        {
+          "id": "SVC3-0279",
+          "kind": "expression",
+          "french": "Autrement dit",
+          "english": "In other words",
+          "example": "Autrement dit, les liens avec les habitants doivent compléter ce soutien, pas l'effacer.",
+          "usage": "Reformulation connector; introduces a restatement."
+        },
+        {
+          "id": "SVC3-0280",
+          "kind": "expression",
+          "french": "en pratique",
+          "english": "in practice",
+          "example": "Vivre dans un pays sans aucun lien local revient, en pratique, à vivre à côté de ce pays plutôt que dedans.",
+          "usage": "Adverbial; « revient, en pratique, à »; real-world contrast with theory."
+        },
+        {
+          "id": "SVC3-0281",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si créer des liens avec les habitants est vraiment indispensable pour bien vivre à l'étranger, ou seulement un avantage parmi d'autres.",
+          "usage": "Reformulation frame; « savoir si... ou... »."
+        },
+        {
+          "id": "SVC3-0282",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, il est presque indispensable de créer des relations avec les habitants pour bien vivre à l'étranger.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0283",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, sans ces liens, on finit rapidement par se sentir isolé et coupé de la société d'accueil.",
+          "usage": "Enumeration linker opening point one."
+        },
+        {
+          "id": "SVC3-0284",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, les cours et les livres donnent une base, mais c'est seulement en parlant régulièrement avec des locaux que l'on devient vraiment à l'aise dans la langue.",
+          "usage": "Justifies preceding claim."
+        },
+        {
+          "id": "SVC3-0285",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, même si l'on garde le contact avec sa famille à distance, cela ne remplace pas une présence quotidienne.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0286",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, beaucoup de personnes trouvent un meilleur travail ou un logement plus facilement grâce à des contacts locaux, parfois même sans passer par les annonces officielles.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0287",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que les liens avec les habitants ne sont pas un détail, mais une vraie condition du bien-être à l'étranger.",
+          "usage": "Consequence linker."
+        },
+        {
+          "id": "SVC3-0288",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il ne faut pas dévaloriser la communauté d'origine.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0289",
+          "kind": "tournure",
+          "french": "il ne faut pas",
+          "english": "one must not",
+          "example": "Cependant, il ne faut pas dévaloriser la communauté d'origine.",
+          "usage": "Deontic formula; « il ne faut pas + inf »; warns against an error."
+        },
+        {
+          "id": "SVC3-0290",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense qu'il est presque indispensable de créer des relations avec les habitants pour bien vivre à l'étranger, parce qu'elles évitent l'isolement, permettent une vraie intégration et ouvrent de nombreuses opportunités.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0291",
+          "kind": "phrase-modele",
+          "french": "créer de vraies relations avec les habitants est presque indispensable pour bien vivre à l'étranger",
+          "english": "building real relationships with locals is almost indispensable to live well abroad",
+          "example": "À mon avis, créer de vraies relations avec les habitants est presque indispensable pour bien vivre à l'étranger, parce que ce sont ces liens qui rendent l'intégration réelle, durable et humainement satisfaisante.",
+          "usage": "Thesis model; « presque indispensable pour + inf »."
+        },
+        {
+          "id": "SVC3-0292",
+          "kind": "phrase-modele",
+          "french": "sans relations avec les habitants, on finit rapidement par se sentir isolé dans le pays où l'on vit",
+          "english": "without relationships with locals, you quickly end up feeling isolated in the country where you live",
+          "example": "Je pense d'abord que sans relations avec les habitants, on finit rapidement par se sentir isolé dans le pays où l'on vit.",
+          "usage": "Model; « finir par + inf » = to end up; « sans + N » opener."
+        },
+        {
+          "id": "SVC3-0293",
+          "kind": "phrase-modele",
+          "french": "on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale",
+          "english": "you physically live in the country but don't really take part in its social life",
+          "example": "Sur le long terme, on habite physiquement dans le pays, mais on ne participe pas vraiment à sa vie sociale, et cette solitude finit par peser sur le moral.",
+          "usage": "Model contrast; « habiter » vs « participer à »."
+        },
+        {
+          "id": "SVC3-0294",
+          "kind": "phrase-modele",
+          "french": "les liens avec les habitants ne sont pas un détail, mais une vraie condition du bien-être à l'étranger",
+          "english": "ties with locals aren't a detail but a real condition of well-being abroad",
+          "example": "Cela montre que les liens avec les habitants ne sont pas un détail, mais une vraie condition du bien-être à l'étranger.",
+          "usage": "Model; « ne...pas X, mais Y »; « une condition de »."
+        },
+        {
+          "id": "SVC3-0295",
+          "kind": "phrase-modele",
+          "french": "c'est seulement en parlant régulièrement avec des locaux que l'on devient vraiment à l'aise dans la langue",
+          "english": "it's only by speaking regularly with locals that you become truly comfortable in the language",
+          "example": "En effet, les cours et les livres donnent une base, mais c'est seulement en parlant régulièrement avec des locaux que l'on devient vraiment à l'aise dans la langue.",
+          "usage": "Cleft model; « c'est seulement en... que »; gerund « en parlant »."
+        },
+        {
+          "id": "SVC3-0296",
+          "kind": "phrase-modele",
+          "french": "beaucoup de codes culturels ne s'apprennent pas dans un manuel : ils se devinent à travers les conversations",
+          "english": "many cultural codes aren't learned in a manual: they are guessed through conversations",
+          "example": "De plus, beaucoup de codes culturels ne s'apprennent pas dans un manuel : ils se devinent à travers les conversations, les remarques et les habitudes au travail.",
+          "usage": "Model; pronominal passive « ne s'apprennent pas »; « se deviner »."
+        },
+        {
+          "id": "SVC3-0297",
+          "kind": "phrase-modele",
+          "french": "les relations locales sont la base d'une vraie intégration, et pas seulement un agrément",
+          "english": "local relationships are the basis of real integration, and not just a nicety",
+          "example": "Cela montre que les relations locales sont la base d'une vraie intégration, et pas seulement un agrément.",
+          "usage": "Model; « la base de »; « pas seulement + N »."
+        },
+        {
+          "id": "SVC3-0298",
+          "kind": "phrase-modele",
+          "french": "elles donnent aussi un sentiment d'appartenance qui rend la vie à l'étranger beaucoup plus stable",
+          "english": "they also give a sense of belonging that makes life abroad much more stable",
+          "example": "Avec le temps, elles donnent aussi un sentiment d'appartenance qui rend la vie à l'étranger beaucoup plus stable.",
+          "usage": "Model; « rendre + N + adj »; comparative « beaucoup plus »."
+        },
+        {
+          "id": "SVC3-0299",
+          "kind": "phrase-modele",
+          "french": "Le problème n'est donc pas de la fréquenter, mais de s'y enfermer",
+          "english": "The problem is thus not to associate with it, but to shut oneself in it",
+          "example": "Le problème n'est donc pas de la fréquenter, mais de s'y enfermer.",
+          "usage": "Nuance model; « le problème n'est pas de X, mais de Y »."
+        },
+        {
+          "id": "SVC3-0300",
+          "kind": "phrase-modele",
+          "french": "Vivre dans un pays sans aucun lien local revient, en pratique, à vivre à côté de ce pays plutôt que dedans",
+          "english": "Living in a country without any local ties amounts, in practice, to living next to that country rather than in it",
+          "example": "Vivre dans un pays sans aucun lien local revient, en pratique, à vivre à côté de ce pays plutôt que dedans.",
+          "usage": "Closing model; « revenir à + inf »; « à côté de... plutôt que dedans »."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p25",
+      "entries": [
+        {
+          "id": "SVC3-0301",
+          "kind": "mot-cle",
+          "french": "les motivations",
+          "english": "the motivations",
+          "example": "À mon avis, les motivations pour vivre à l'étranger se regroupent en trois grands ensembles.",
+          "usage": "Fém. pl.; central keyword; « les motivations pour vivre à l'étranger »."
+        },
+        {
+          "id": "SVC3-0302",
+          "kind": "mot-cle",
+          "french": "les opportunités professionnelles",
+          "english": "professional opportunities",
+          "example": "À mon avis, les motivations pour vivre à l'étranger sont très diverses, mais elles tournent principalement autour de trois grandes raisons : les opportunités professionnelles, le développement personnel et la recherche d'un meilleur avenir, parfois aussi par nécessité.",
+          "usage": "Fém. pl.; first cluster of reasons; career vocab."
+        },
+        {
+          "id": "SVC3-0303",
+          "kind": "mot-cle",
+          "french": "le développement personnel",
+          "english": "personal development",
+          "example": "À mon avis, les motivations pour vivre à l'étranger sont très diverses, mais elles tournent principalement autour de trois grandes raisons : les opportunités professionnelles, le développement personnel et la recherche d'un meilleur avenir, parfois aussi par nécessité.",
+          "usage": "Masc.; second cluster of reasons; growth vocab."
+        },
+        {
+          "id": "SVC3-0304",
+          "kind": "mot-cle",
+          "french": "un salaire plus élevé",
+          "english": "a higher salary",
+          "example": "D'abord, beaucoup de personnes partent pour des raisons professionnelles, à la recherche de meilleures conditions de travail ou d'un salaire plus élevé.",
+          "usage": "Masc.; comparative « plus élevé »; economic motivation."
+        },
+        {
+          "id": "SVC3-0305",
+          "kind": "mot-cle",
+          "french": "le pays d'origine",
+          "english": "the country of origin",
+          "example": "En effet, certains pays offrent un marché du travail plus large, des salaires plus élevés ou de meilleures conditions de travail que le pays d'origine.",
+          "usage": "Masc.; « que le pays d'origine »; comparison point."
+        },
+        {
+          "id": "SVC3-0306",
+          "kind": "mot-cle",
+          "french": "une expérience internationale",
+          "english": "international experience",
+          "example": "De plus, dans certains domaines comme la recherche, l'ingénierie, la santé ou le numérique, une expérience internationale peut accélérer une carrière et donner accès à des projets plus ambitieux.",
+          "usage": "Fém.; « accélérer une carrière »; career-boosting asset."
+        },
+        {
+          "id": "SVC3-0307",
+          "kind": "mot-cle",
+          "french": "une décision de carrière",
+          "english": "a career decision",
+          "example": "Pour beaucoup, partir à l'étranger est donc d'abord une décision de carrière, prise pour avancer plus vite ou trouver un emploi qu'ils n'auraient pas chez eux.",
+          "usage": "Fém.; « d'abord une décision de carrière »; professional framing."
+        },
+        {
+          "id": "SVC3-0308",
+          "kind": "mot-cle",
+          "french": "jeunes diplômés",
+          "english": "young graduates",
+          "example": "Par exemple, beaucoup de jeunes diplômés acceptent un poste à l'étranger parce qu'il leur permet de gagner plusieurs années d'expérience et un meilleur salaire qu'un poste équivalent dans leur pays.",
+          "usage": "Masc. pl.; « un diplômé » = graduate; typical mobile group."
+        },
+        {
+          "id": "SVC3-0309",
+          "kind": "mot-cle",
+          "french": "la sécurité",
+          "english": "safety, security",
+          "example": "En effet, dans certains pays, les conditions de vie, la sécurité ou les perspectives sont très limitées, ce qui pousse les gens à partir pour eux-mêmes ou pour leurs enfants.",
+          "usage": "Fém.; among push factors « les conditions de vie, la sécurité »."
+        },
+        {
+          "id": "SVC3-0310",
+          "kind": "mot-cle",
+          "french": "un meilleur avenir familial",
+          "english": "a better family future",
+          "example": "Dans ces cas, la motivation principale n'est pas l'aventure, mais la recherche de stabilité et d'un meilleur avenir familial.",
+          "usage": "Masc.; « la recherche de... d'un meilleur avenir familial »; necessity motive."
+        },
+        {
+          "id": "SVC3-0311",
+          "kind": "collocation",
+          "french": "quitter leur pays",
+          "english": "to leave their country",
+          "example": "La vraie question est de savoir pourquoi certaines personnes choisissent de quitter leur pays pour aller s'installer ailleurs.",
+          "usage": "V + noun; « choisir de quitter leur pays »; migration verb."
+        },
+        {
+          "id": "SVC3-0312",
+          "kind": "collocation",
+          "french": "s'installer ailleurs",
+          "english": "to settle elsewhere",
+          "example": "La vraie question est de savoir pourquoi certaines personnes choisissent de quitter leur pays pour aller s'installer ailleurs.",
+          "usage": "Pronominal + adv; « aller s'installer ailleurs »; relocation."
+        },
+        {
+          "id": "SVC3-0313",
+          "kind": "collocation",
+          "french": "pour des raisons professionnelles",
+          "english": "for professional reasons",
+          "example": "D'abord, beaucoup de personnes partent pour des raisons professionnelles, à la recherche de meilleures conditions de travail ou d'un salaire plus élevé.",
+          "usage": "« pour des raisons + adj »; frames the first motive cluster."
+        },
+        {
+          "id": "SVC3-0314",
+          "kind": "collocation",
+          "french": "apprendre une langue",
+          "english": "to learn a language",
+          "example": "Ensuite, d'autres partent pour des raisons personnelles, comme apprendre une langue, vivre une expérience nouvelle ou gagner en autonomie.",
+          "usage": "V + noun; personal-development motive; recurring collocation."
+        },
+        {
+          "id": "SVC3-0315",
+          "kind": "collocation",
+          "french": "gagner en autonomie",
+          "english": "to gain independence",
+          "example": "Ensuite, d'autres partent pour des raisons personnelles, comme apprendre une langue, vivre une expérience nouvelle ou gagner en autonomie.",
+          "usage": "« gagner en + N » = to grow in; personal-growth collocation."
+        },
+        {
+          "id": "SVC3-0316",
+          "kind": "collocation",
+          "french": "accélérer une carrière",
+          "english": "to speed up a career",
+          "example": "De plus, dans certains domaines comme la recherche, l'ingénierie, la santé ou le numérique, une expérience internationale peut accélérer une carrière et donner accès à des projets plus ambitieux.",
+          "usage": "V + noun; « une expérience internationale peut accélérer une carrière »."
+        },
+        {
+          "id": "SVC3-0317",
+          "kind": "collocation",
+          "french": "gagner en maturité",
+          "english": "to grow in maturity",
+          "example": "Par exemple, beaucoup d'étudiants partent en échange ou en programme à l'étranger d'abord pour vivre une expérience nouvelle, apprendre une langue et gagner en maturité, et pas seulement pour leur diplôme.",
+          "usage": "« gagner en maturité »; personal-development outcome."
+        },
+        {
+          "id": "SVC3-0318",
+          "kind": "collocation",
+          "french": "envoyer de l'argent",
+          "english": "to send money",
+          "example": "De plus, certaines personnes partent dans l'espoir d'envoyer de l'argent à leur famille restée au pays.",
+          "usage": "V + partitive; remittances motive; « à leur famille »."
+        },
+        {
+          "id": "SVC3-0319",
+          "kind": "collocation",
+          "french": "sortir de ses habitudes",
+          "english": "to break out of one's habits",
+          "example": "En effet, vivre dans un autre pays permet d'apprendre une nouvelle langue et de sortir de ses habitudes ; le contact avec une autre culture ouvre l'esprit, fait relativiser ses propres certitudes et apprend à voir les choses autrement.",
+          "usage": "V + noun; « sortir de ses habitudes »; benefit of living abroad."
+        },
+        {
+          "id": "SVC3-0320",
+          "kind": "collocation",
+          "french": "offrir à leurs enfants une meilleure éducation",
+          "english": "to offer their children a better education",
+          "example": "Par exemple, beaucoup de familles décident de s'installer à l'étranger surtout pour offrir à leurs enfants une meilleure éducation, des soins de santé plus accessibles ou une vie plus stable.",
+          "usage": "« offrir qch à qn »; family-driven necessity motive."
+        },
+        {
+          "id": "SVC3-0321",
+          "kind": "expression",
+          "french": "à la recherche de",
+          "english": "in search of",
+          "example": "D'abord, beaucoup de personnes partent pour des raisons professionnelles, à la recherche de meilleures conditions de travail ou d'un salaire plus élevé.",
+          "usage": "Idiom « à la recherche de + N »; motive/goal introducer."
+        },
+        {
+          "id": "SVC3-0322",
+          "kind": "expression",
+          "french": "par nécessité",
+          "english": "out of necessity",
+          "example": "Enfin, certaines personnes partent surtout par nécessité, parce qu'elles voient peu d'avenir dans leur pays d'origine.",
+          "usage": "Adverbial « par + N »; opposed to « par choix »; necessity motive."
+        },
+        {
+          "id": "SVC3-0323",
+          "kind": "expression",
+          "french": "chez eux",
+          "english": "at home / in their country",
+          "example": "Pour beaucoup, partir à l'étranger est donc d'abord une décision de carrière, prise pour avancer plus vite ou trouver un emploi qu'ils n'auraient pas chez eux.",
+          "usage": "Idiom « chez + pron. »; here = in their own country."
+        },
+        {
+          "id": "SVC3-0324",
+          "kind": "expression",
+          "french": "Pour beaucoup",
+          "english": "For many (people)",
+          "example": "Pour beaucoup, partir à l'étranger est donc d'abord une décision de carrière, prise pour avancer plus vite ou trouver un emploi qu'ils n'auraient pas chez eux.",
+          "usage": "Quantifier expression opening a sentence; generalisation."
+        },
+        {
+          "id": "SVC3-0325",
+          "kind": "expression",
+          "french": "joue un rôle central",
+          "english": "plays a central role",
+          "example": "Cela montre que la dimension professionnelle joue un rôle central dans la décision de partir.",
+          "usage": "Idiom « jouer un rôle »; « central » emphasises importance."
+        },
+        {
+          "id": "SVC3-0326",
+          "kind": "expression",
+          "french": "au moins aussi forte que",
+          "english": "at least as strong as",
+          "example": "Cette envie d'expérience, de liberté et d'ouverture est souvent au moins aussi forte que la motivation professionnelle.",
+          "usage": "Comparative « aussi...que » + « au moins »; equal-or-more."
+        },
+        {
+          "id": "SVC3-0327",
+          "kind": "expression",
+          "french": "restée au pays",
+          "english": "left behind in the home country",
+          "example": "De plus, certaines personnes partent dans l'espoir d'envoyer de l'argent à leur famille restée au pays.",
+          "usage": "Past participle « rester » agreeing fém.; « la famille restée au pays »."
+        },
+        {
+          "id": "SVC3-0328",
+          "kind": "expression",
+          "french": "par choix",
+          "english": "by choice",
+          "example": "Enfin, je pense qu'il faut aussi reconnaître que beaucoup de personnes partent à l'étranger surtout pour chercher un meilleur avenir, parfois plus par nécessité que par choix.",
+          "usage": "Adverbial « par + N »; contrasts with « par nécessité »."
+        },
+        {
+          "id": "SVC3-0329",
+          "kind": "expression",
+          "french": "Dans ces cas",
+          "english": "In these cases",
+          "example": "Dans ces cas, la motivation principale n'est pas l'aventure, mais la recherche de stabilité et d'un meilleur avenir familial.",
+          "usage": "Framing expression opening a sentence; situational restriction."
+        },
+        {
+          "id": "SVC3-0330",
+          "kind": "expression",
+          "french": "Derrière chaque parcours",
+          "english": "Behind every journey/life-path",
+          "example": "Derrière chaque parcours, il y a presque toujours plusieurs raisons mêlées, plus ou moins choisies selon les situations.",
+          "usage": "« un parcours » = life path; « derrière » introduces hidden causes."
+        },
+        {
+          "id": "SVC3-0331",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir pourquoi",
+          "english": "The real question is why",
+          "example": "La vraie question est de savoir pourquoi certaines personnes choisissent de quitter leur pays pour aller s'installer ailleurs.",
+          "usage": "Reformulation frame; « savoir pourquoi » + indirect question."
+        },
+        {
+          "id": "SVC3-0332",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, les motivations pour vivre à l'étranger se regroupent en trois grands ensembles.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0333",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, beaucoup de personnes partent pour des raisons professionnelles, à la recherche de meilleures conditions de travail ou d'un salaire plus élevé.",
+          "usage": "Enumeration linker opening cluster one."
+        },
+        {
+          "id": "SVC3-0334",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, certains pays offrent un marché du travail plus large, des salaires plus élevés ou de meilleures conditions de travail que le pays d'origine.",
+          "usage": "Justifies preceding claim."
+        },
+        {
+          "id": "SVC3-0335",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, certaines personnes partent dans l'espoir d'envoyer de l'argent à leur famille restée au pays.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0336",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, beaucoup de familles décident de s'installer à l'étranger surtout pour offrir à leurs enfants une meilleure éducation, des soins de santé plus accessibles ou une vie plus stable.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0337",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la dimension professionnelle joue un rôle central dans la décision de partir.",
+          "usage": "Consequence linker."
+        },
+        {
+          "id": "SVC3-0338",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître que ces différentes motivations se mélangent souvent dans une même personne.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0339",
+          "kind": "tournure",
+          "french": "il faut reconnaître que",
+          "english": "one must acknowledge that",
+          "example": "Cependant, il faut reconnaître que ces différentes motivations se mélangent souvent dans une même personne.",
+          "usage": "Concession formula; « il faut reconnaître que + indicatif »."
+        },
+        {
+          "id": "SVC3-0340",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que les motivations pour vivre à l'étranger sont très diverses, mais qu'elles tournent surtout autour du travail, du développement personnel et de la recherche d'un meilleur avenir.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0341",
+          "kind": "phrase-modele",
+          "french": "les motivations pour vivre à l'étranger sont très diverses, mais elles tournent principalement autour de trois grandes raisons",
+          "english": "the motivations for living abroad are very diverse, but they mainly revolve around three big reasons",
+          "example": "À mon avis, les motivations pour vivre à l'étranger sont très diverses, mais elles tournent principalement autour de trois grandes raisons : les opportunités professionnelles, le développement personnel et la recherche d'un meilleur avenir, parfois aussi par nécessité.",
+          "usage": "Thesis model; « tourner autour de »; announces a three-part plan."
+        },
+        {
+          "id": "SVC3-0342",
+          "kind": "phrase-modele",
+          "french": "une grande partie des personnes qui vivent à l'étranger sont parties pour des raisons professionnelles",
+          "english": "a large share of the people who live abroad left for professional reasons",
+          "example": "Je pense d'abord qu'une grande partie des personnes qui vivent à l'étranger sont parties pour des raisons professionnelles.",
+          "usage": "Model; « une grande partie de »; passé composé « sont parties »."
+        },
+        {
+          "id": "SVC3-0343",
+          "kind": "phrase-modele",
+          "french": "certains pays offrent un marché du travail plus large, des salaires plus élevés ou de meilleures conditions de travail",
+          "english": "some countries offer a broader job market, higher salaries or better working conditions",
+          "example": "En effet, certains pays offrent un marché du travail plus large, des salaires plus élevés ou de meilleures conditions de travail que le pays d'origine.",
+          "usage": "Model; « offrir » + tricolon of comparatives."
+        },
+        {
+          "id": "SVC3-0344",
+          "kind": "phrase-modele",
+          "french": "partir à l'étranger est donc d'abord une décision de carrière, prise pour avancer plus vite ou trouver un emploi",
+          "english": "going abroad is thus first a career decision, taken to advance faster or find a job",
+          "example": "Pour beaucoup, partir à l'étranger est donc d'abord une décision de carrière, prise pour avancer plus vite ou trouver un emploi qu'ils n'auraient pas chez eux.",
+          "usage": "Model; « une décision prise pour + inf »; participle « prise »."
+        },
+        {
+          "id": "SVC3-0345",
+          "kind": "phrase-modele",
+          "french": "vivre dans un autre pays permet d'apprendre une nouvelle langue et de sortir de ses habitudes",
+          "english": "living in another country lets you learn a new language and break out of your habits",
+          "example": "En effet, vivre dans un autre pays permet d'apprendre une nouvelle langue et de sortir de ses habitudes ; le contact avec une autre culture ouvre l'esprit, fait relativiser ses propres certitudes et apprend à voir les choses autrement.",
+          "usage": "Model; « permettre de + inf » + coordinated infinitives."
+        },
+        {
+          "id": "SVC3-0346",
+          "kind": "phrase-modele",
+          "french": "Cette envie d'expérience, de liberté et d'ouverture est souvent au moins aussi forte que la motivation professionnelle",
+          "english": "This desire for experience, freedom and openness is often at least as strong as the professional motivation",
+          "example": "Cette envie d'expérience, de liberté et d'ouverture est souvent au moins aussi forte que la motivation professionnelle.",
+          "usage": "Model; « une envie de » + tricolon; comparative « aussi...que »."
+        },
+        {
+          "id": "SVC3-0347",
+          "kind": "phrase-modele",
+          "french": "beaucoup de personnes partent à l'étranger surtout pour chercher un meilleur avenir, parfois plus par nécessité que par choix",
+          "english": "many people go abroad mainly to seek a better future, sometimes more out of necessity than by choice",
+          "example": "Enfin, je pense qu'il faut aussi reconnaître que beaucoup de personnes partent à l'étranger surtout pour chercher un meilleur avenir, parfois plus par nécessité que par choix.",
+          "usage": "Model; « plus... que »; « par nécessité / par choix » contrast."
+        },
+        {
+          "id": "SVC3-0348",
+          "kind": "phrase-modele",
+          "french": "la motivation principale n'est pas l'aventure, mais la recherche de stabilité et d'un meilleur avenir familial",
+          "english": "the main motivation isn't adventure but the search for stability and a better family future",
+          "example": "Dans ces cas, la motivation principale n'est pas l'aventure, mais la recherche de stabilité et d'un meilleur avenir familial.",
+          "usage": "Model; « n'est pas X, mais Y »; « la recherche de »."
+        },
+        {
+          "id": "SVC3-0349",
+          "kind": "phrase-modele",
+          "french": "Quelqu'un peut partir d'abord pour le travail, mais aussi pour vivre une expérience, apprendre une langue et donner un avenir meilleur à sa famille",
+          "english": "Someone may leave first for work, but also to have an experience, learn a language and give a better future to their family",
+          "example": "Quelqu'un peut partir d'abord pour le travail, mais aussi pour vivre une expérience, apprendre une langue et donner un avenir meilleur à sa famille.",
+          "usage": "Nuance model; layered motives « d'abord... mais aussi »."
+        },
+        {
+          "id": "SVC3-0350",
+          "kind": "phrase-modele",
+          "french": "Il est donc rarement possible de réduire un projet à une seule raison",
+          "english": "It is thus rarely possible to reduce a project to a single reason",
+          "example": "Il est donc rarement possible de réduire un projet à une seule raison.",
+          "usage": "Closing model; « réduire X à Y »; « rarement possible »."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p26",
+      "entries": [
+        {
+          "id": "SVC3-0351",
+          "kind": "mot-cle",
+          "french": "le pays d'accueil",
+          "english": "the host country",
+          "example": "À mon avis, il est important de bien connaître le pays d'accueil avant d'immigrer.",
+          "usage": "Masc.; central keyword; « bien connaître le pays d'accueil »."
+        },
+        {
+          "id": "SVC3-0352",
+          "kind": "mot-cle",
+          "french": "différences culturelles",
+          "english": "cultural differences",
+          "example": "Enfin, elle aide à se préparer mentalement aux différences culturelles et à éviter un choc trop brutal.",
+          "usage": "Fém. pl.; « se préparer aux différences culturelles »; adaptation vocab."
+        },
+        {
+          "id": "SVC3-0353",
+          "kind": "mot-cle",
+          "french": "un projet réaliste",
+          "english": "a realistic plan/project",
+          "example": "Ensuite, elle permet de construire un projet réaliste, en tenant compte du marché du travail, du coût de la vie et du système local.",
+          "usage": "Masc.; « construire un projet réaliste »; planning vocab."
+        },
+        {
+          "id": "SVC3-0354",
+          "kind": "mot-cle",
+          "french": "coût de la vie",
+          "english": "the cost of living",
+          "example": "Ensuite, elle permet de construire un projet réaliste, en tenant compte du marché du travail, du coût de la vie et du système local.",
+          "usage": "Masc.; « tenir compte du coût de la vie »; economic factor."
+        },
+        {
+          "id": "SVC3-0355",
+          "kind": "mot-cle",
+          "french": "marché du travail",
+          "english": "the job market",
+          "example": "Ensuite, elle permet de construire un projet réaliste, en tenant compte du marché du travail, du coût de la vie et du système local.",
+          "usage": "Masc.; key factor when planning immigration; economic vocab."
+        },
+        {
+          "id": "SVC3-0356",
+          "kind": "mot-cle",
+          "french": "procédures administratives",
+          "english": "administrative procedures",
+          "example": "De plus, chaque pays a ses propres procédures administratives, ses horaires et ses interlocuteurs, et tout prend beaucoup plus de temps quand on découvre ces règles seulement à l'arrivée.",
+          "usage": "Fém. pl.; « ses propres procédures administratives »; bureaucracy vocab."
+        },
+        {
+          "id": "SVC3-0357",
+          "kind": "mot-cle",
+          "french": "les conditions de logement",
+          "english": "housing conditions",
+          "example": "En effet, le marché du travail, le coût de la vie, les conditions de logement et les diplômes reconnus varient beaucoup d'un pays à l'autre.",
+          "usage": "Fém. pl.; factor that varies « d'un pays à l'autre »."
+        },
+        {
+          "id": "SVC3-0358",
+          "kind": "mot-cle",
+          "french": "choc culturel",
+          "english": "culture shock",
+          "example": "De plus, sans préparation, ces différences peuvent provoquer un vrai choc culturel et un sentiment de découragement les premiers mois.",
+          "usage": "Masc.; « provoquer un vrai choc culturel »; adaptation risk."
+        },
+        {
+          "id": "SVC3-0359",
+          "kind": "mot-cle",
+          "french": "codes sociaux",
+          "english": "social codes",
+          "example": "En effet, vivre dans un autre pays signifie souvent affronter des codes sociaux, un climat ou un rythme de vie très différents de ce que l'on a connu.",
+          "usage": "Masc. pl.; « affronter des codes sociaux »; cultural-difference vocab."
+        },
+        {
+          "id": "SVC3-0360",
+          "kind": "mot-cle",
+          "french": "rythme de vie",
+          "english": "the pace of life",
+          "example": "En effet, vivre dans un autre pays signifie souvent affronter des codes sociaux, un climat ou un rythme de vie très différents de ce que l'on a connu.",
+          "usage": "Masc.; « un rythme de vie très différent »; lifestyle factor."
+        },
+        {
+          "id": "SVC3-0361",
+          "kind": "collocation",
+          "french": "connaître le pays d'accueil",
+          "english": "to know the host country",
+          "example": "Cela montre que connaître le pays d'accueil avant de partir évite beaucoup de stress et d'erreurs au début.",
+          "usage": "V + noun; « connaître le pays d'accueil avant de partir »; recurring."
+        },
+        {
+          "id": "SVC3-0362",
+          "kind": "collocation",
+          "french": "construire un projet réaliste",
+          "english": "to build a realistic plan",
+          "example": "À mon avis, il est très important de bien connaître le pays d'accueil avant d'immigrer, parce que cela facilite les démarches une fois sur place, permet de construire un projet réaliste et aide à se préparer aux différences culturelles.",
+          "usage": "V + noun; « permettre de construire un projet réaliste »; planning."
+        },
+        {
+          "id": "SVC3-0363",
+          "kind": "collocation",
+          "french": "se préparer mentalement",
+          "english": "to prepare oneself mentally",
+          "example": "Enfin, elle aide à se préparer mentalement aux différences culturelles et à éviter un choc trop brutal.",
+          "usage": "Pronominal + adv; « se préparer mentalement aux différences »."
+        },
+        {
+          "id": "SVC3-0364",
+          "kind": "collocation",
+          "french": "ouvrir un compte en banque",
+          "english": "to open a bank account",
+          "example": "En effet, sans quelques bases sur la langue et sur le fonctionnement du pays, on se retrouve très vite perdu dans des démarches simples comme se loger, ouvrir un compte en banque, se soigner ou utiliser les transports.",
+          "usage": "V + noun; concrete settling-in task; everyday admin."
+        },
+        {
+          "id": "SVC3-0365",
+          "kind": "collocation",
+          "french": "utiliser les transports",
+          "english": "to use public transport",
+          "example": "En effet, sans quelques bases sur la langue et sur le fonctionnement du pays, on se retrouve très vite perdu dans des démarches simples comme se loger, ouvrir un compte en banque, se soigner ou utiliser les transports.",
+          "usage": "V + noun; daily-life task once abroad; concrete vocab."
+        },
+        {
+          "id": "SVC3-0366",
+          "kind": "collocation",
+          "french": "se loger",
+          "english": "to find housing / house oneself",
+          "example": "En effet, sans quelques bases sur la langue et sur le fonctionnement du pays, on se retrouve très vite perdu dans des démarches simples comme se loger, ouvrir un compte en banque, se soigner ou utiliser les transports.",
+          "usage": "Pronominal verb; « se loger »; basic settling task."
+        },
+        {
+          "id": "SVC3-0367",
+          "kind": "collocation",
+          "french": "évite beaucoup de stress",
+          "english": "avoids a lot of stress",
+          "example": "Cela montre que connaître le pays d'accueil avant de partir évite beaucoup de stress et d'erreurs au début.",
+          "usage": "« éviter » + « beaucoup de + N »; benefit of preparation."
+        },
+        {
+          "id": "SVC3-0368",
+          "kind": "collocation",
+          "french": "un sentiment de découragement",
+          "english": "a feeling of discouragement",
+          "example": "De plus, sans préparation, ces différences peuvent provoquer un vrai choc culturel et un sentiment de découragement les premiers mois.",
+          "usage": "Masc.; « provoquer un sentiment de découragement »; adaptation risk."
+        },
+        {
+          "id": "SVC3-0369",
+          "kind": "collocation",
+          "french": "sait à quoi s'attendre",
+          "english": "knows what to expect",
+          "example": "En s'informant à l'avance, on sait à quoi s'attendre et on accepte plus facilement les choses qui ne correspondent pas à ses habitudes.",
+          "usage": "Idiom « savoir à quoi s'attendre »; benefit of advance info."
+        },
+        {
+          "id": "SVC3-0370",
+          "kind": "collocation",
+          "french": "discutant avec les habitants",
+          "english": "talking with the locals",
+          "example": "Une partie de la connaissance ne s'acquiert qu'au contact direct, en se trompant, en observant et en discutant avec les habitants.",
+          "usage": "Gerund « en discutant avec »; on-site learning."
+        },
+        {
+          "id": "SVC3-0371",
+          "kind": "expression",
+          "french": "avant d'immigrer",
+          "english": "before immigrating",
+          "example": "La vraie question est de savoir si bien connaître le pays d'accueil avant d'immigrer est vraiment important, ou si l'on peut tout apprendre une fois sur place.",
+          "usage": "« avant de + inf »; time frame central to the prompt."
+        },
+        {
+          "id": "SVC3-0372",
+          "kind": "expression",
+          "french": "une fois sur place",
+          "english": "once there / on arrival",
+          "example": "La vraie question est de savoir si bien connaître le pays d'accueil avant d'immigrer est vraiment important, ou si l'on peut tout apprendre une fois sur place.",
+          "usage": "Idiom « une fois + participe/loc »; « sur place » = on site."
+        },
+        {
+          "id": "SVC3-0373",
+          "kind": "expression",
+          "french": "d'un pays à l'autre",
+          "english": "from one country to another",
+          "example": "En effet, le marché du travail, le coût de la vie, les conditions de logement et les diplômes reconnus varient beaucoup d'un pays à l'autre.",
+          "usage": "Idiom « d'un X à l'autre »; expresses variation."
+        },
+        {
+          "id": "SVC3-0374",
+          "kind": "expression",
+          "french": "tant qu'on ne connaît pas",
+          "english": "as long as one doesn't know",
+          "example": "De plus, certains métiers très recherchés dans un pays peuvent être saturés dans un autre, et les salaires affichés ne disent rien tant qu'on ne connaît pas les charges et les loyers.",
+          "usage": "« tant que + ne...pas »; condition/limitation clause."
+        },
+        {
+          "id": "SVC3-0375",
+          "kind": "expression",
+          "french": "partir sur des illusions",
+          "english": "to set off on illusions",
+          "example": "Sans ces informations, on risque de partir sur des illusions et de découvrir trop tard que le projet n'est pas viable.",
+          "usage": "Idiom; « partir sur des illusions » = to leave with false hopes."
+        },
+        {
+          "id": "SVC3-0376",
+          "kind": "expression",
+          "french": "trop tard",
+          "english": "too late",
+          "example": "Sans ces informations, on risque de partir sur des illusions et de découvrir trop tard que le projet n'est pas viable.",
+          "usage": "Adverbial; « découvrir trop tard »; regret of poor preparation."
+        },
+        {
+          "id": "SVC3-0377",
+          "kind": "expression",
+          "french": "plus élevé que prévu",
+          "english": "higher than expected",
+          "example": "Par exemple, beaucoup de personnes qui immigrent sans s'être renseignées sont surprises de constater que leur diplôme n'est pas reconnu sur place, ou que le coût de la vie est beaucoup plus élevé que prévu.",
+          "usage": "Comparative + « que prévu » = than expected; unpleasant surprise."
+        },
+        {
+          "id": "SVC3-0378",
+          "kind": "expression",
+          "french": "à l'avance",
+          "english": "in advance, beforehand",
+          "example": "En s'informant à l'avance, on sait à quoi s'attendre et on accepte plus facilement les choses qui ne correspondent pas à ses habitudes.",
+          "usage": "Adverbial; « s'informer à l'avance »; preparation expression."
+        },
+        {
+          "id": "SVC3-0379",
+          "kind": "expression",
+          "french": "au lieu d'en souffrir",
+          "english": "instead of suffering from it",
+          "example": "Par exemple, savoir avant de partir que les hivers sont longs, que le rythme de vie est différent ou que le rapport au travail n'est pas le même permet de mieux accepter ces réalités au lieu d'en souffrir.",
+          "usage": "« au lieu de + inf »; substitution; pronoun « en » = from it."
+        },
+        {
+          "id": "SVC3-0380",
+          "kind": "expression",
+          "french": "sur le plan psychologique",
+          "english": "on the psychological level",
+          "example": "Cela montre que la connaissance du pays joue aussi un rôle important sur le plan psychologique.",
+          "usage": "Idiom « sur le plan de »; frames a dimension of analysis."
+        },
+        {
+          "id": "SVC3-0381",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si bien connaître le pays d'accueil avant d'immigrer est vraiment important, ou si l'on peut tout apprendre une fois sur place.",
+          "usage": "Reformulation frame; « savoir si... ou... »."
+        },
+        {
+          "id": "SVC3-0382",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, il est important de bien connaître le pays d'accueil avant d'immigrer.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVC3-0383",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, cette connaissance facilite les démarches et la vie quotidienne une fois sur place.",
+          "usage": "Enumeration linker opening point one."
+        },
+        {
+          "id": "SVC3-0384",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, le marché du travail, le coût de la vie, les conditions de logement et les diplômes reconnus varient beaucoup d'un pays à l'autre.",
+          "usage": "Justifies preceding claim."
+        },
+        {
+          "id": "SVC3-0385",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, sans préparation, ces différences peuvent provoquer un vrai choc culturel et un sentiment de découragement les premiers mois.",
+          "usage": "Additive linker."
+        },
+        {
+          "id": "SVC3-0386",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, savoir avant de partir que les hivers sont longs, que le rythme de vie est différent ou que le rapport au travail n'est pas le même permet de mieux accepter ces réalités au lieu d'en souffrir.",
+          "usage": "Introduces an illustration."
+        },
+        {
+          "id": "SVC3-0387",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que connaître le pays d'accueil avant de partir évite beaucoup de stress et d'erreurs au début.",
+          "usage": "Consequence linker."
+        },
+        {
+          "id": "SVC3-0388",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il faut reconnaître qu'on ne peut jamais tout savoir d'un pays avant d'y vivre.",
+          "usage": "Concession linker opening the nuance."
+        },
+        {
+          "id": "SVC3-0389",
+          "kind": "tournure",
+          "french": "il faut reconnaître qu'on ne peut jamais tout savoir",
+          "english": "one has to acknowledge that one can never know everything",
+          "example": "Cependant, il faut reconnaître qu'on ne peut jamais tout savoir d'un pays avant d'y vivre.",
+          "usage": "Impersonal evaluation frame; it makes a nuance credible before the speaker qualifies a claim."
+        },
+        {
+          "id": "SVC3-0390",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense qu'il est vraiment important de bien connaître le pays d'accueil avant d'immigrer, parce que cela facilite les démarches du quotidien, rend le projet plus réaliste et prépare mentalement aux différences.",
+          "usage": "Closing linker; final synthesis."
+        },
+        {
+          "id": "SVC3-0391",
+          "kind": "phrase-modele",
+          "french": "il est très important de bien connaître le pays d'accueil avant d'immigrer, parce que cela facilite les démarches une fois sur place",
+          "english": "it is very important to know the host country well before immigrating, because it makes procedures easier once there",
+          "example": "À mon avis, il est très important de bien connaître le pays d'accueil avant d'immigrer, parce que cela facilite les démarches une fois sur place, permet de construire un projet réaliste et aide à se préparer aux différences culturelles.",
+          "usage": "Thesis model; « il est important de + inf »; « parce que »."
+        },
+        {
+          "id": "SVC3-0392",
+          "kind": "phrase-modele",
+          "french": "bien connaître le pays d'accueil facilite énormément les démarches concrètes et la vie de tous les jours",
+          "english": "knowing the host country well greatly eases concrete procedures and everyday life",
+          "example": "Je pense d'abord que bien connaître le pays d'accueil facilite énormément les démarches concrètes et la vie de tous les jours une fois sur place.",
+          "usage": "Model; « faciliter énormément »; infinitive subject."
+        },
+        {
+          "id": "SVC3-0393",
+          "kind": "phrase-modele",
+          "french": "chaque pays a ses propres procédures administratives, ses horaires et ses interlocuteurs",
+          "english": "each country has its own administrative procedures, hours and contacts",
+          "example": "De plus, chaque pays a ses propres procédures administratives, ses horaires et ses interlocuteurs, et tout prend beaucoup plus de temps quand on découvre ces règles seulement à l'arrivée.",
+          "usage": "Model; « ses propres + N »; tricolon of admin realities."
+        },
+        {
+          "id": "SVC3-0394",
+          "kind": "phrase-modele",
+          "french": "Cette accumulation de petites difficultés pratiques peut rendre les premiers mois très éprouvants",
+          "english": "This build-up of small practical difficulties can make the first months very trying",
+          "example": "Cette accumulation de petites difficultés pratiques peut rendre les premiers mois très éprouvants.",
+          "usage": "Model; « rendre + N + adj »; « éprouvant » = trying."
+        },
+        {
+          "id": "SVC3-0395",
+          "kind": "phrase-modele",
+          "french": "bien connaître le pays d'accueil permet de construire un projet d'immigration plus réaliste",
+          "english": "knowing the host country well lets you build a more realistic immigration project",
+          "example": "Ensuite, bien connaître le pays d'accueil permet de construire un projet d'immigration plus réaliste.",
+          "usage": "Model; « permettre de + inf »; comparative « plus réaliste »."
+        },
+        {
+          "id": "SVC3-0396",
+          "kind": "phrase-modele",
+          "french": "certains métiers très recherchés dans un pays peuvent être saturés dans un autre",
+          "english": "some jobs much in demand in one country can be saturated in another",
+          "example": "De plus, certains métiers très recherchés dans un pays peuvent être saturés dans un autre, et les salaires affichés ne disent rien tant qu'on ne connaît pas les charges et les loyers.",
+          "usage": "Model; « très recherché » = much sought-after; « saturé »."
+        },
+        {
+          "id": "SVC3-0397",
+          "kind": "phrase-modele",
+          "french": "on risque de partir sur des illusions et de découvrir trop tard que le projet n'est pas viable",
+          "english": "you risk setting off on illusions and finding out too late that the project isn't viable",
+          "example": "Sans ces informations, on risque de partir sur des illusions et de découvrir trop tard que le projet n'est pas viable.",
+          "usage": "Model; « risquer de + inf »; « n'est pas viable »."
+        },
+        {
+          "id": "SVC3-0398",
+          "kind": "phrase-modele",
+          "french": "vivre dans un autre pays signifie souvent affronter des codes sociaux, un climat ou un rythme de vie très différents",
+          "english": "living in another country often means facing different social codes, climate or pace of life",
+          "example": "En effet, vivre dans un autre pays signifie souvent affronter des codes sociaux, un climat ou un rythme de vie très différents de ce que l'on a connu.",
+          "usage": "Model; « signifier + inf »; « affronter » = to face."
+        },
+        {
+          "id": "SVC3-0399",
+          "kind": "phrase-modele",
+          "french": "En s'informant à l'avance, on sait à quoi s'attendre et on accepte plus facilement les choses",
+          "english": "By getting informed in advance, you know what to expect and accept things more easily",
+          "example": "En s'informant à l'avance, on sait à quoi s'attendre et on accepte plus facilement les choses qui ne correspondent pas à ses habitudes.",
+          "usage": "Model; gerund « en s'informant »; « savoir à quoi s'attendre »."
+        },
+        {
+          "id": "SVC3-0400",
+          "kind": "phrase-modele",
+          "french": "La préparation avant le départ ne remplace donc pas l'apprentissage sur place, mais elle évite beaucoup de mauvaises surprises",
+          "english": "Preparation before leaving thus doesn't replace on-site learning, but it avoids many bad surprises",
+          "example": "La préparation avant le départ ne remplace donc pas l'apprentissage sur place, mais elle évite beaucoup de mauvaises surprises au moment de l'arrivée.",
+          "usage": "Nuance model; « ne remplace pas... mais »; « éviter des surprises »."
+        }
+      ]
+    }
+  ]
+}

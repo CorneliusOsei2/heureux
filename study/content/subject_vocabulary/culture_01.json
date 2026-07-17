@@ -1,0 +1,3245 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "culture:p1",
+      "entries": [
+        {
+          "id": "SVC1-0001",
+          "kind": "mot-cle",
+          "french": "habitudes de vie",
+          "english": "life/lifestyle habits",
+          "example": "La vraie question est de savoir jusqu'où il faut changer ses habitudes de vie quand on s'installe dans un nouveau pays.",
+          "usage": "Noun phrase, 'habitude' fem.; the core topic. Reusable in Santé/Famille to discuss lifestyle."
+        },
+        {
+          "id": "SVC1-0002",
+          "kind": "mot-cle",
+          "french": "pays d'accueil",
+          "english": "host country",
+          "example": "D'abord, certaines habitudes doivent forcément évoluer parce que la vie quotidienne dans le pays d'accueil l'impose.",
+          "usage": "Set phrase, 'accueil' m.; contrast with 'pays d'origine'. Key for immigration/integration topics."
+        },
+        {
+          "id": "SVC1-0003",
+          "kind": "mot-cle",
+          "french": "vie quotidienne",
+          "english": "daily life",
+          "example": "Refuser ces adaptations rendrait sa vie quotidienne très compliquée.",
+          "usage": "Fem. noun phrase; used to point at concrete everyday constraints in an argument."
+        },
+        {
+          "id": "SVC1-0004",
+          "kind": "mot-cle",
+          "french": "vie privée",
+          "english": "private life",
+          "example": "En effet, certains éléments de la vie ne touchent que la vie privée.",
+          "usage": "Fem.; opposed here to 'vie publique'. Handy to defend a personal sphere in any debate."
+        },
+        {
+          "id": "SVC1-0005",
+          "kind": "mot-cle",
+          "french": "identité personnelle",
+          "english": "personal identity",
+          "example": "À mon avis, il faut changer les habitudes que la vie quotidienne dans le pays d'accueil impose, mais il n'est pas nécessaire de renoncer à celles qui appartiennent à la vie privée et à l'identité personnelle.",
+          "usage": "Abstract noun; the value being protected. Transfers to culture/technology privacy topics."
+        },
+        {
+          "id": "SVC1-0006",
+          "kind": "mot-cle",
+          "french": "s'installe dans un nouveau pays",
+          "english": "settles in a new country",
+          "example": "À mon avis, quand on s'installe dans un nouveau pays, il faut changer certaines habitudes, mais pas toutes.",
+          "usage": "Pronominal s'installer + dans; the source uses the present with on. A core frame for relocating abroad."
+        },
+        {
+          "id": "SVC1-0007",
+          "kind": "mot-cle",
+          "french": "adaptation",
+          "english": "adaptation / adjustment",
+          "example": "Enfin, l'adaptation est plus solide quand elle se fait progressivement et par choix, plutôt que sous la pression.",
+          "usage": "Fem. noun, verb s'adapter à; central concept, reusable across change/immigration essays."
+        },
+        {
+          "id": "SVC1-0008",
+          "kind": "mot-cle",
+          "french": "intégration",
+          "english": "integration",
+          "example": "Y renoncer ne facilite donc en rien l'intégration.",
+          "usage": "Fem.; the goal of adapting. Collocates: faciliter / réussir l'intégration."
+        },
+        {
+          "id": "SVC1-0009",
+          "kind": "mot-cle",
+          "french": "démarches administratives",
+          "english": "administrative procedures / paperwork",
+          "example": "En effet, certains aspects du quotidien sont imposés par le pays lui-même : le climat, le rythme du travail, les démarches administratives ou certains codes sociaux.",
+          "usage": "Fem. pl.; concrete example of imposed constraints. Useful realia for many oral topics."
+        },
+        {
+          "id": "SVC1-0010",
+          "kind": "mot-cle",
+          "french": "repères",
+          "english": "bearings / reference points",
+          "example": "La personne se sent forcée, perd ses repères et finit par mal vivre son installation.",
+          "usage": "M. pl.; 'perdre / garder ses repères'. Metaphor for psychological stability."
+        },
+        {
+          "id": "SVC1-0011",
+          "kind": "collocation",
+          "french": "changer ses habitudes de vie",
+          "english": "to change one's lifestyle habits",
+          "example": "La vraie question est de savoir jusqu'où il faut changer ses habitudes de vie quand on s'installe dans un nouveau pays.",
+          "usage": "Verb + object, the essay's key action; possessive 'ses' agrees with the subject."
+        },
+        {
+          "id": "SVC1-0012",
+          "kind": "collocation",
+          "french": "gagner en autonomie",
+          "english": "to gain (in) autonomy",
+          "example": "Cela permet de gagner en autonomie au quotidien, d'éviter les malentendus avec les voisins ou les collègues, et de se sentir vraiment à sa place dans la nouvelle société.",
+          "usage": "gagner en + noun = to grow in a quality; reusable: gagner en confiance / maturité."
+        },
+        {
+          "id": "SVC1-0013",
+          "kind": "collocation",
+          "french": "éviter les malentendus",
+          "english": "to avoid misunderstandings",
+          "example": "Cela permet de gagner en autonomie au quotidien, d'éviter les malentendus avec les voisins ou les collègues, et de se sentir vraiment à sa place dans la nouvelle société.",
+          "usage": "'un malentendu' m.; neat consequence phrasing for social/relational topics."
+        },
+        {
+          "id": "SVC1-0014",
+          "kind": "collocation",
+          "french": "se sentir vraiment à sa place",
+          "english": "to truly feel you belong",
+          "example": "Cela permet de gagner en autonomie au quotidien, d'éviter les malentendus avec les voisins ou les collègues, et de se sentir vraiment à sa place dans la nouvelle société.",
+          "usage": "se sentir + loc; 'à sa place' = belonging. Strong for integration / work topics."
+        },
+        {
+          "id": "SVC1-0015",
+          "kind": "collocation",
+          "french": "perd ses repères",
+          "english": "loses one's bearings",
+          "example": "La personne se sent forcée, perd ses repères et finit par mal vivre son installation.",
+          "usage": "perdre ses repères = to feel lost; opposite of 'garder ses repères'."
+        },
+        {
+          "id": "SVC1-0016",
+          "kind": "collocation",
+          "french": "préserver son équilibre psychologique",
+          "english": "to preserve one's psychological balance",
+          "example": "Cela permet de garder un lien fort avec son histoire, de préserver son équilibre psychologique et de transmettre ses repères à la génération suivante.",
+          "usage": "'équilibre' m.; formal register; transfers to Santé mentale arguments."
+        },
+        {
+          "id": "SVC1-0017",
+          "kind": "collocation",
+          "french": "garder un lien fort",
+          "english": "to keep a strong bond",
+          "example": "Cela permet de garder un lien fort avec son histoire, de préserver son équilibre psychologique et de transmettre ses repères à la génération suivante.",
+          "usage": "garder un lien avec = stay connected to; useful for family / roots topics."
+        },
+        {
+          "id": "SVC1-0018",
+          "kind": "collocation",
+          "french": "transmettre ses repères",
+          "english": "to pass on one's reference points",
+          "example": "Cela permet de garder un lien fort avec son histoire, de préserver son équilibre psychologique et de transmettre ses repères à la génération suivante.",
+          "usage": "transmettre à qn; generational transmission, reusable in Famille / Éducation."
+        },
+        {
+          "id": "SVC1-0019",
+          "kind": "collocation",
+          "french": "demander un vrai effort",
+          "english": "to require a real effort",
+          "example": "Même si certaines adaptations peuvent demander un vrai effort au début, elles restent une condition normale pour bien vivre dans le pays d'accueil.",
+          "usage": "demander here = to require / take, not 'ask'; watch this common false-friend nuance."
+        },
+        {
+          "id": "SVC1-0020",
+          "kind": "collocation",
+          "french": "renoncer à",
+          "english": "to give up / renounce (sth)",
+          "example": "À mon avis, il faut changer les habitudes que la vie quotidienne dans le pays d'accueil impose, mais il n'est pas nécessaire de renoncer à celles qui appartiennent à la vie privée et à l'identité personnelle.",
+          "usage": "renoncer à + noun/inf, always with à; more formal than 'abandonner'."
+        },
+        {
+          "id": "SVC1-0021",
+          "kind": "expression",
+          "french": "du jour au lendemain",
+          "english": "overnight / from one day to the next",
+          "example": "Enfin, l'adaptation est beaucoup plus solide quand elle se fait progressivement et par choix, et non du jour au lendemain.",
+          "usage": "Fixed idiom for 'suddenly'; here negated: 'et non du jour au lendemain'."
+        },
+        {
+          "id": "SVC1-0022",
+          "kind": "expression",
+          "french": "petit à petit",
+          "english": "little by little / gradually",
+          "example": "Par exemple, une personne qui apprend la langue petit à petit et qui adopte progressivement certaines coutumes du pays d'accueil s'intègre bien mieux que celle qui essaie de tout changer d'un coup.",
+          "usage": "Fixed adverbial idiom; synonym of 'progressivement'; very oral-friendly."
+        },
+        {
+          "id": "SVC1-0023",
+          "kind": "expression",
+          "french": "tout changer d'un coup",
+          "english": "to change everything all at once",
+          "example": "Par exemple, une personne qui apprend la langue petit à petit et qui adopte progressivement certaines coutumes du pays d'accueil s'intègre bien mieux que celle qui essaie de tout changer d'un coup.",
+          "usage": "'d'un coup' = in one go; sets up the contrast with gradual change."
+        },
+        {
+          "id": "SVC1-0024",
+          "kind": "expression",
+          "french": "à son rythme",
+          "english": "at one's own pace",
+          "example": "À l'inverse, quand l'adaptation se fait à son rythme, elle devient une vraie démarche personnelle, plus durable et plus profonde.",
+          "usage": "Possessive adapts to subject (à mon/ton rythme); argues for gradual adaptation."
+        },
+        {
+          "id": "SVC1-0025",
+          "kind": "expression",
+          "french": "au lieu d'opposer les deux",
+          "english": "instead of setting the two against each other",
+          "example": "Cela permet de construire une intégration vraiment choisie, dans laquelle on ajoute la nouvelle culture à la sienne au lieu d'opposer les deux.",
+          "usage": "au lieu de + inf = instead of; promotes complementarity over conflict."
+        },
+        {
+          "id": "SVC1-0026",
+          "kind": "expression",
+          "french": "un sentiment de vide",
+          "english": "a feeling of emptiness",
+          "example": "En revanche, les abandonner peut créer un sentiment de vide et fragiliser l'équilibre personnel.",
+          "usage": "'éprouver / créer un sentiment de vide'; emotional-consequence vocabulary."
+        },
+        {
+          "id": "SVC1-0027",
+          "kind": "expression",
+          "french": "sous la pression",
+          "english": "under pressure",
+          "example": "En effet, vouloir tout changer immédiatement, sous la pression, mène souvent à un blocage.",
+          "usage": "Fixed prepositional phrase; argues change forced 'sous la pression' backfires."
+        },
+        {
+          "id": "SVC1-0028",
+          "kind": "expression",
+          "french": "en plein hiver",
+          "english": "in the middle of winter",
+          "example": "Prenons l'exemple d'une personne qui arrive au Québec en plein hiver : elle doit demander sa carte d'assurance maladie, comprendre les pourboires au restaurant et apprendre à conduire sur la neige.",
+          "usage": "'en plein + noun' = right in the middle of; vivid example framing."
+        },
+        {
+          "id": "SVC1-0029",
+          "kind": "expression",
+          "french": "ni tout garder ni tout abandonner",
+          "english": "neither keep nor abandon everything",
+          "example": "En conclusion, je dirais qu'il ne faut ni tout garder ni tout abandonner.",
+          "usage": "ne...ni...ni correlative negation; a balanced-conclusion formula."
+        },
+        {
+          "id": "SVC1-0030",
+          "kind": "expression",
+          "french": "mal vivre son installation",
+          "english": "to struggle through settling in",
+          "example": "La personne se sent forcée, perd ses repères et finit par mal vivre son installation.",
+          "usage": "'mal vivre qch' = to take/experience sth badly; nuanced psychological verb."
+        },
+        {
+          "id": "SVC1-0031",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, quand on s'installe dans un nouveau pays, il faut changer certaines habitudes, mais pas toutes.",
+          "usage": "Opinion marker opening a stance; front position, comma after. Alt: selon moi, d'après moi."
+        },
+        {
+          "id": "SVC1-0032",
+          "kind": "tournure",
+          "french": "D'abord,",
+          "english": "First,",
+          "example": "D'abord, certaines habitudes doivent forcément évoluer parce que la vie quotidienne dans le pays d'accueil l'impose.",
+          "usage": "Enumerator introducing the first argument; pairs with Ensuite / Enfin."
+        },
+        {
+          "id": "SVC1-0033",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, d'autres habitudes peuvent et doivent être gardées, parce qu'elles ne gênent personne et qu'elles appartiennent à la vie privée.",
+          "usage": "Second-argument connector; keeps the three-part plan legible."
+        },
+        {
+          "id": "SVC1-0034",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, l'adaptation est plus solide quand elle se fait progressivement et par choix, plutôt que sous la pression.",
+          "usage": "Introduces the last argument; not 'at last' (emotional relief)."
+        },
+        {
+          "id": "SVC1-0035",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, la frontière entre ce qu'il faut adapter et ce qu'on peut garder n'est pas figée.",
+          "usage": "Concessive connector opening the nuance; more formal than 'mais'."
+        },
+        {
+          "id": "SVC1-0036",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je dirais qu'il ne faut ni tout garder ni tout abandonner.",
+          "usage": "Closes the oral and signals the synthesis. Alt: pour conclure, en somme."
+        },
+        {
+          "id": "SVC1-0037",
+          "kind": "tournure",
+          "french": "je dirais qu'",
+          "english": "I would say that",
+          "example": "En conclusion, je dirais qu'il ne faut ni tout garder ni tout abandonner.",
+          "usage": "Conditional 'dirais' softens the assertion; polite hedging for exams."
+        },
+        {
+          "id": "SVC1-0038",
+          "kind": "tournure",
+          "french": "et non",
+          "english": "and not",
+          "example": "Enfin, l'adaptation est beaucoup plus solide quand elle se fait progressivement et par choix, et non du jour au lendemain.",
+          "usage": "Contrastive corrective linking two opposed ideas; concise and formal."
+        },
+        {
+          "id": "SVC1-0039",
+          "kind": "tournure",
+          "french": "parce que",
+          "english": "because",
+          "example": "D'abord, certaines habitudes doivent forcément évoluer parce que la vie quotidienne dans le pays d'accueil l'impose.",
+          "usage": "Causal subordinator giving justification; 'parce que' (cause) vs 'pour que' (goal)."
+        },
+        {
+          "id": "SVC1-0040",
+          "kind": "tournure",
+          "french": "Avec le temps",
+          "english": "Over time",
+          "example": "Avec le temps, on adopte naturellement certaines habitudes du pays d'accueil, même dans la vie privée, simplement parce qu'on s'y sent bien.",
+          "usage": "Temporal connector introducing gradual evolution; ideal in nuance paragraphs."
+        },
+        {
+          "id": "SVC1-0041",
+          "kind": "phrase-modele",
+          "french": "il faut changer certaines habitudes, mais pas toutes",
+          "english": "you must change some habits, but not all",
+          "example": "À mon avis, quand on s'installe dans un nouveau pays, il faut changer certaines habitudes, mais pas toutes.",
+          "usage": "Balanced thesis 'certaines... mais pas toutes'; template for a nuanced position."
+        },
+        {
+          "id": "SVC1-0042",
+          "kind": "phrase-modele",
+          "french": "certaines habitudes doivent forcément changer",
+          "english": "some habits necessarily have to change",
+          "example": "Tout d'abord, certaines habitudes doivent forcément changer, parce que la vie quotidienne du pays d'accueil l'impose.",
+          "usage": "'devoir + forcément' expresses necessity; opens argument 1."
+        },
+        {
+          "id": "SVC1-0043",
+          "kind": "phrase-modele",
+          "french": "d'autres habitudes peuvent et doivent être gardées",
+          "english": "other habits can and must be kept",
+          "example": "Ensuite, d'autres habitudes peuvent et doivent être gardées, parce qu'elles ne gênent personne et qu'elles appartiennent à la vie privée.",
+          "usage": "Passive 'être gardées'; 'peuvent et doivent' stacks possibility and obligation."
+        },
+        {
+          "id": "SVC1-0044",
+          "kind": "phrase-modele",
+          "french": "l'adaptation est beaucoup plus solide quand elle se fait progressivement et par choix",
+          "english": "adaptation is much stronger when it happens gradually and by choice",
+          "example": "Enfin, l'adaptation est beaucoup plus solide quand elle se fait progressivement et par choix, et non du jour au lendemain.",
+          "usage": "Comparative 'plus solide' + 'se faire' (to happen); thesis of argument 3."
+        },
+        {
+          "id": "SVC1-0045",
+          "kind": "phrase-modele",
+          "french": "On n'a aucun pouvoir sur ces conditions extérieures",
+          "english": "We have no power over these external conditions",
+          "example": "On n'a aucun pouvoir sur ces conditions extérieures.",
+          "usage": "'n'... aucun' total negation; concise concession about constraints."
+        },
+        {
+          "id": "SVC1-0046",
+          "kind": "phrase-modele",
+          "french": "Refuser ces adaptations rendrait sa vie quotidienne très compliquée",
+          "english": "Refusing these adjustments would make daily life very complicated",
+          "example": "Refuser ces adaptations rendrait sa vie quotidienne très compliquée.",
+          "usage": "Conditional 'rendrait' + rendre + adj (to make sth ADJ); consequence framing."
+        },
+        {
+          "id": "SVC1-0047",
+          "kind": "phrase-modele",
+          "french": "les abandonner peut créer un sentiment de vide et fragiliser l'équilibre personnel",
+          "english": "abandoning them can create emptiness and weaken personal balance",
+          "example": "En revanche, les abandonner peut créer un sentiment de vide et fragiliser l'équilibre personnel.",
+          "usage": "Infinitive subject 'les abandonner'; two consequence verbs coordinated."
+        },
+        {
+          "id": "SVC1-0048",
+          "kind": "phrase-modele",
+          "french": "vouloir tout changer immédiatement, sous la pression, mène souvent à un blocage",
+          "english": "wanting to change everything at once, under pressure, often leads to a shutdown",
+          "example": "En effet, vouloir tout changer immédiatement, sous la pression, mène souvent à un blocage.",
+          "usage": "'mener à' = to lead to; 'un blocage' = mental block; cautionary chunk."
+        },
+        {
+          "id": "SVC1-0049",
+          "kind": "phrase-modele",
+          "french": "on ajoute la nouvelle culture à la sienne au lieu d'opposer les deux",
+          "english": "you add the new culture to your own instead of opposing the two",
+          "example": "Cela permet de construire une intégration vraiment choisie, dans laquelle on ajoute la nouvelle culture à la sienne au lieu d'opposer les deux.",
+          "usage": "'ajouter A à la sienne'; possessive pronoun 'la sienne'; integration ideal."
+        },
+        {
+          "id": "SVC1-0050",
+          "kind": "phrase-modele",
+          "french": "La meilleure adaptation est celle qui change ce que la vie quotidienne du pays d'accueil impose",
+          "english": "The best adaptation is the one that changes what host-country daily life imposes",
+          "example": "La meilleure adaptation est celle qui change ce que la vie quotidienne du pays d'accueil impose, qui garde ce qui appartient à la vie privée, et qui se fait progressivement et par choix.",
+          "usage": "Superlative + 'celle qui' relative; closing synthesis sentence."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p2",
+      "entries": [
+        {
+          "id": "SVC1-0051",
+          "kind": "mot-cle",
+          "french": "regard pessimiste",
+          "english": "pessimistic view",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "'porter un regard sur' = to view; 'regard' m. The essay's central image."
+        },
+        {
+          "id": "SVC1-0052",
+          "kind": "mot-cle",
+          "french": "jeunesse",
+          "english": "youth (the age / generation)",
+          "example": "La vraie question est de savoir si les adultes jugent aujourd'hui la jeunesse de manière trop négative.",
+          "usage": "Fem. abstract noun 'la jeunesse'; distinguish from 'les jeunes' (young people)."
+        },
+        {
+          "id": "SVC1-0053",
+          "kind": "mot-cle",
+          "french": "génération",
+          "english": "generation",
+          "example": "Les adultes finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Fem.; 'toute une génération'. Key to the over-generalisation argument."
+        },
+        {
+          "id": "SVC1-0054",
+          "kind": "mot-cle",
+          "french": "inquiétudes",
+          "english": "worries / concerns",
+          "example": "Cependant, certaines inquiétudes des adultes peuvent être légitimes.",
+          "usage": "Fem. pl.; concedes adults' legitimate 'inquiétudes' in the nuance."
+        },
+        {
+          "id": "SVC1-0055",
+          "kind": "mot-cle",
+          "french": "médias",
+          "english": "media",
+          "example": "Ensuite, ce regard pessimiste s'explique aussi par la manière dont la plupart des adultes voient les jeunes : surtout à travers les médias, et beaucoup moins à travers le contact direct.",
+          "usage": "M. pl.; source of the distorted image. Collocate: à travers les médias."
+        },
+        {
+          "id": "SVC1-0056",
+          "kind": "mot-cle",
+          "french": "comportements",
+          "english": "behaviours",
+          "example": "Ensuite, ils connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "M. pl.; 'les comportements négatifs / extrêmes'; useful social-science term."
+        },
+        {
+          "id": "SVC1-0057",
+          "kind": "mot-cle",
+          "french": "contact direct",
+          "english": "direct contact",
+          "example": "Le contact direct remplace l'image abstraite par une expérience humaine, ce qui rend les jugements beaucoup plus mesurés.",
+          "usage": "Opposed to the media image; 'le contact direct / réel' corrects prejudice."
+        },
+        {
+          "id": "SVC1-0058",
+          "kind": "mot-cle",
+          "french": "réseaux sociaux",
+          "english": "social networks / social media",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "M. pl.; amplify negative behaviour; ubiquitous in tech/society topics."
+        },
+        {
+          "id": "SVC1-0059",
+          "kind": "mot-cle",
+          "french": "minorité",
+          "english": "minority",
+          "example": "Les adultes finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Fem.; 'une petite minorité' vs 'toute une génération'; core of the argument."
+        },
+        {
+          "id": "SVC1-0060",
+          "kind": "mot-cle",
+          "french": "jugement",
+          "english": "judgement",
+          "example": "Enfin, dès qu'il existe un vrai contact entre jeunes et adultes, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "M.; 'un jugement négatif / abstrait'. Verb juger; evaluative vocabulary."
+        },
+        {
+          "id": "SVC1-0061",
+          "kind": "collocation",
+          "french": "portent souvent un regard trop pessimiste sur les jeunes",
+          "english": "often take too pessimistic a view of young people",
+          "example": "À mon avis, les adultes portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "porter un regard sur qn = to view sb; 'trop' intensifies; the thesis collocation."
+        },
+        {
+          "id": "SVC1-0062",
+          "kind": "collocation",
+          "french": "mettent surtout en avant les comportements extrêmes",
+          "english": "mainly highlight extreme behaviours",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "mettre en avant = to highlight; names the media mechanism."
+        },
+        {
+          "id": "SVC1-0063",
+          "kind": "collocation",
+          "french": "juger toute une génération",
+          "english": "to judge a whole generation",
+          "example": "Les adultes finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Over-generalisation; 'toute une' = a whole / an entire; a reusable rhetorical target."
+        },
+        {
+          "id": "SVC1-0064",
+          "kind": "collocation",
+          "french": "une image idéalisée du passé",
+          "english": "an idealised image of the past",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "idéaliser; a nostalgia critique that transfers to family / tradition debates."
+        },
+        {
+          "id": "SVC1-0065",
+          "kind": "collocation",
+          "french": "retiennent l'attention",
+          "english": "catch / hold attention",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "retenir l'attention = to be attention-grabbing; media mechanism."
+        },
+        {
+          "id": "SVC1-0066",
+          "kind": "collocation",
+          "french": "généraliser des cas extrêmes",
+          "english": "to generalise from extreme cases",
+          "example": "Cela conduit beaucoup d'adultes à généraliser des cas extrêmes à toute une génération, et à entretenir une image très éloignée de la vie réelle des jeunes.",
+          "usage": "généraliser à partir de; names a reasoning fallacy; strong for argument."
+        },
+        {
+          "id": "SVC1-0067",
+          "kind": "collocation",
+          "french": "voient concrètement les efforts",
+          "english": "concretely see the efforts",
+          "example": "En effet, dans les espaces où adultes et jeunes se côtoient réellement — la famille, l'école, le sport, les associations, le monde professionnel — les adultes voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes.",
+          "usage": "voir concrètement; the effect of real contact; opposes abstract judgement."
+        },
+        {
+          "id": "SVC1-0068",
+          "kind": "collocation",
+          "french": "juger injustement les jeunes",
+          "english": "to judge young people unfairly",
+          "example": "Cela pousse beaucoup d'adultes à juger injustement les jeunes d'aujourd'hui et à passer à côté de leurs vraies qualités.",
+          "usage": "Verb + adverb collocation; it precisely names an unfair generalization without overclaiming."
+        },
+        {
+          "id": "SVC1-0069",
+          "kind": "collocation",
+          "french": "un jugement négatif",
+          "english": "a negative judgement",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "'porter / justifier un jugement négatif'; the attitude being criticised."
+        },
+        {
+          "id": "SVC1-0070",
+          "kind": "collocation",
+          "french": "santé mentale",
+          "english": "mental health",
+          "example": "Le rapport aux écrans, la fragilité face à la pression scolaire ou la santé mentale des jeunes posent de vraies questions.",
+          "usage": "Fem.; a legitimate concern; very transferable to Santé topics."
+        },
+        {
+          "id": "SVC1-0071",
+          "kind": "expression",
+          "french": "De mon temps",
+          "english": "in my day / back in my time",
+          "example": "On l'entend dans des phrases comme « De mon temps, on travaillait dur et on respectait les profs », alors que les conflits scolaires, les baisses de motivation et les difficultés en lecture existaient déjà très largement à l'époque.",
+          "usage": "Nostalgic set phrase quoted to mock idealised memory; usually ironic."
+        },
+        {
+          "id": "SVC1-0072",
+          "kind": "expression",
+          "french": "en boucle",
+          "english": "on a loop / over and over",
+          "example": "Il suffit de penser aux vidéos de bagarres scolaires ou aux extraits de télé-réalité partagés en boucle : ces images donnent l'impression que tous les jeunes seraient agressifs, alors qu'elles ne représentent qu'une petite minorité.",
+          "usage": "'partagés en boucle' = shared on repeat; media-repetition idiom."
+        },
+        {
+          "id": "SVC1-0073",
+          "kind": "expression",
+          "french": "à travers les médias",
+          "english": "through the media",
+          "example": "Ensuite, ils connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "'à travers' = via / through; contrasts mediated with direct knowledge."
+        },
+        {
+          "id": "SVC1-0074",
+          "kind": "expression",
+          "french": "en grande partie",
+          "english": "largely / to a large extent",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Fixed degree adverbial, placed after the verb phrase; it softens a claim without making it vague."
+        },
+        {
+          "id": "SVC1-0075",
+          "kind": "expression",
+          "french": "avec le temps",
+          "english": "over time",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Fixed time expression; use it to present a gradual shift rather than an immediate result."
+        },
+        {
+          "id": "SVC1-0076",
+          "kind": "expression",
+          "french": "à partir de ce souvenir embelli",
+          "english": "from that embellished memory",
+          "example": "Juger les jeunes actuels à partir de ce souvenir embelli revient à les comparer à une jeunesse qui n'a jamais vraiment existé.",
+          "usage": "À partir de + noun names the basis of a judgement; embelli signals that memory idealizes reality."
+        },
+        {
+          "id": "SVC1-0077",
+          "kind": "expression",
+          "french": "dès qu'il existe un vrai contact",
+          "english": "as soon as there is real contact",
+          "example": "Enfin, dès qu'il existe un vrai contact entre jeunes et adultes, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Dès que + indicative introduces the moment a concrete condition is met; useful for cause-and-effect arguments."
+        },
+        {
+          "id": "SVC1-0078",
+          "kind": "expression",
+          "french": "à l'époque",
+          "english": "at the time / back then",
+          "example": "On l'entend dans des phrases comme « De mon temps, on travaillait dur et on respectait les profs », alors que les conflits scolaires, les baisses de motivation et les difficultés en lecture existaient déjà très largement à l'époque.",
+          "usage": "Temporal expression pointing to the past; here it debunks the rosy memory."
+        },
+        {
+          "id": "SVC1-0079",
+          "kind": "expression",
+          "french": "à condition qu'on leur fasse confiance",
+          "english": "provided they are trusted",
+          "example": "Par exemple, un enseignant qui suit ses élèves toute une année ou un entraîneur qui les accompagne en compétition décrit souvent des jeunes motivés, créatifs et capables d'engagement, à condition qu'on leur fasse confiance.",
+          "usage": "À condition que + subjunctive states a necessary condition; faire confiance à quelqu'un is a key social collocation."
+        },
+        {
+          "id": "SVC1-0080",
+          "kind": "expression",
+          "french": "passer à côté de leurs vraies qualités",
+          "english": "to miss their real qualities",
+          "example": "Cela pousse beaucoup d'adultes à juger injustement les jeunes d'aujourd'hui et à passer à côté de leurs vraies qualités.",
+          "usage": "Idiomatic passer à côté de means failing to notice or benefit from something important."
+        },
+        {
+          "id": "SVC1-0081",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, les adultes portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "Opinion marker; front position, comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0082",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "Emphatic first-argument opener; slightly stronger than 'D'abord'."
+        },
+        {
+          "id": "SVC1-0083",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, ils connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "Second connector; keeps the three arguments ordered."
+        },
+        {
+          "id": "SVC1-0084",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, dès qu'il existe un vrai contact entre jeunes et adultes, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Introduces the last (contact) argument."
+        },
+        {
+          "id": "SVC1-0085",
+          "kind": "tournure",
+          "french": "Mais",
+          "english": "But",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "Adversative connector; here reverses the idealised-memory claim."
+        },
+        {
+          "id": "SVC1-0086",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, certaines inquiétudes des adultes peuvent être légitimes.",
+          "usage": "Opens the concession about legitimate worries."
+        },
+        {
+          "id": "SVC1-0087",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que les adultes portent souvent un regard trop pessimiste sur les jeunes, parce qu'ils les comparent à un passé idéalisé et qu'ils les connaissent surtout à travers les médias.",
+          "usage": "Signals the synthesis and the practical remedy."
+        },
+        {
+          "id": "SVC1-0088",
+          "kind": "tournure",
+          "french": "donc",
+          "english": "therefore / so",
+          "example": "Les adultes finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Consecutive connector drawing a conclusion ('finissent donc par...')."
+        },
+        {
+          "id": "SVC1-0089",
+          "kind": "tournure",
+          "french": "au contraire",
+          "english": "on the contrary",
+          "example": "Si le pessimisme était fondé sur la réalité, il devrait au contraire se renforcer avec la proximité, et non l'inverse.",
+          "usage": "Reverses an expectation; 'il devrait au contraire se renforcer'."
+        },
+        {
+          "id": "SVC1-0090",
+          "kind": "tournure",
+          "french": "en général",
+          "english": "generally / usually",
+          "example": "Enfin, dès qu'il existe un vrai contact entre jeunes et adultes, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Hedging adverbial softening a generalisation; useful for measured claims."
+        },
+        {
+          "id": "SVC1-0091",
+          "kind": "phrase-modele",
+          "french": "les adultes portent souvent un regard trop pessimiste sur les jeunes",
+          "english": "adults often take too pessimistic a view of young people",
+          "example": "À mon avis, les adultes portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "The thesis sentence; memorise as a ready position statement."
+        },
+        {
+          "id": "SVC1-0092",
+          "kind": "phrase-modele",
+          "french": "elles ne suffisent pas à justifier un jugement aussi négatif sur toute une génération",
+          "english": "they are not enough to justify such a negative judgement of a whole generation",
+          "example": "Même si certaines inquiétudes peuvent être légitimes, elles ne suffisent pas à justifier un jugement aussi négatif sur toute une génération.",
+          "usage": "'suffire à + inf' = to be enough to; 'aussi négatif' = so negative."
+        },
+        {
+          "id": "SVC1-0093",
+          "kind": "phrase-modele",
+          "french": "ce regard pessimiste vient d'une comparaison injuste",
+          "english": "this pessimistic view comes from an unfair comparison",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "venir de = to stem from; the argument-1 topic sentence."
+        },
+        {
+          "id": "SVC1-0094",
+          "kind": "phrase-modele",
+          "french": "cette mémoire est en grande partie reconstruite",
+          "english": "this memory is largely reconstructed",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Passive + 'en grande partie' = largely; the nostalgia point."
+        },
+        {
+          "id": "SVC1-0095",
+          "kind": "phrase-modele",
+          "french": "les médias amplifient les comportements négatifs",
+          "english": "the media amplify negative behaviours",
+          "example": "Ensuite, ils connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "Present-tense general truth; a compact media critique."
+        },
+        {
+          "id": "SVC1-0096",
+          "kind": "phrase-modele",
+          "french": "juger toute une génération à partir d'une minorité visible et non représentative",
+          "english": "to judge a whole generation from a visible, unrepresentative minority",
+          "example": "Les adultes finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "'à partir de' + fallacy vocabulary; the over-generalisation in one line."
+        },
+        {
+          "id": "SVC1-0097",
+          "kind": "phrase-modele",
+          "french": "Le contact direct remplace l'image abstraite par une expérience humaine",
+          "english": "Direct contact replaces the abstract image with a human experience",
+          "example": "Le contact direct remplace l'image abstraite par une expérience humaine, ce qui rend les jugements beaucoup plus mesurés.",
+          "usage": "remplacer A par B; the essay's key mechanism; very quotable."
+        },
+        {
+          "id": "SVC1-0098",
+          "kind": "phrase-modele",
+          "french": "ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux",
+          "english": "these difficulties affect young people more than they are caused by them",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "'plus que ne' expletive ne + passive; the subtle concession in the nuance."
+        },
+        {
+          "id": "SVC1-0099",
+          "kind": "phrase-modele",
+          "french": "les adultes voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes",
+          "english": "adults concretely see young people's efforts, qualities, doubts and difficulties",
+          "example": "En effet, dans les espaces où adultes et jeunes se côtoient réellement — la famille, l'école, le sport, les associations, le monde professionnel — les adultes voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes.",
+          "usage": "voir concrètement + enumerated objects; the contact benefit."
+        },
+        {
+          "id": "SVC1-0100",
+          "kind": "phrase-modele",
+          "french": "passer plus de temps avec eux et juger à partir du contact réel",
+          "english": "spend more time with them and judge from real contact",
+          "example": "Le vrai remède est simple : passer plus de temps avec eux et juger à partir du contact réel.",
+          "usage": "Two infinitives as the prescriptive remedy; a strong closing chunk."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p3",
+      "entries": [
+        {
+          "id": "SVC1-0101",
+          "kind": "mot-cle",
+          "french": "l'État",
+          "english": "the State",
+          "example": "À mon avis, l'État ne peut pas tout contrôler dans une société moderne.",
+          "usage": "M., capital É; the actor of the essay. Distinguish from 'un état' (a condition)."
+        },
+        {
+          "id": "SVC1-0102",
+          "kind": "mot-cle",
+          "french": "société moderne",
+          "english": "modern society",
+          "example": "À mon avis, l'État ne peut pas tout contrôler dans une société moderne.",
+          "usage": "Fem.; frames the argument about complexity and limits."
+        },
+        {
+          "id": "SVC1-0103",
+          "kind": "mot-cle",
+          "french": "choix privés",
+          "english": "private choices",
+          "example": "D'abord, certains domaines de la vie échappent par nature à son contrôle, comme les choix privés ou les comportements quotidiens.",
+          "usage": "M. pl.; what escapes State control; 'privé' opposed to 'public'."
+        },
+        {
+          "id": "SVC1-0104",
+          "kind": "mot-cle",
+          "french": "intérêt général",
+          "english": "general / public interest",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "M.; what the State must protect; a classic civics term."
+        },
+        {
+          "id": "SVC1-0105",
+          "kind": "mot-cle",
+          "french": "liberté individuelle",
+          "english": "individual freedom",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "Fem.; the value threatened by over-control; very transferable."
+        },
+        {
+          "id": "SVC1-0106",
+          "kind": "mot-cle",
+          "french": "contrôle",
+          "english": "control",
+          "example": "Ensuite, même là où il pourrait essayer d'imposer un contrôle plus fort, ce serait contre-productif pour la société.",
+          "usage": "M.; 'un excès de contrôle'. Verb contrôler; the core keyword."
+        },
+        {
+          "id": "SVC1-0107",
+          "kind": "mot-cle",
+          "french": "responsabilité",
+          "english": "responsibility",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "Fem.; 'la responsabilité partagée / de chacun'; civic-ethics vocabulary."
+        },
+        {
+          "id": "SVC1-0108",
+          "kind": "mot-cle",
+          "french": "acteurs locaux",
+          "english": "local actors / stakeholders",
+          "example": "Enfin, l'action publique ne fonctionne vraiment que lorsqu'elle est partagée avec les citoyens, les entreprises et les acteurs locaux.",
+          "usage": "M. pl.; the actors that share public action."
+        },
+        {
+          "id": "SVC1-0109",
+          "kind": "mot-cle",
+          "french": "initiative",
+          "english": "initiative",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "Fem.; 'étouffer l'initiative'; part of a dynamism list with créativité / innovation."
+        },
+        {
+          "id": "SVC1-0110",
+          "kind": "mot-cle",
+          "french": "désordre",
+          "english": "disorder",
+          "example": "À l'inverse, l'absence totale de règles produit du désordre, des abus et des inégalités.",
+          "usage": "M.; consequence of 'l'absence totale de règles'; a contrast term."
+        },
+        {
+          "id": "SVC1-0111",
+          "kind": "collocation",
+          "french": "ne peut pas tout contrôler",
+          "english": "cannot control everything",
+          "example": "À mon avis, l'État ne peut pas tout contrôler dans une société moderne.",
+          "usage": "pouvoir + tout + inf; the thesis collocation; 'tout' before the infinitive."
+        },
+        {
+          "id": "SVC1-0112",
+          "kind": "collocation",
+          "french": "fixer des limites raisonnables",
+          "english": "to set reasonable limits",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "fixer des limites = to set limits; the State's proper role."
+        },
+        {
+          "id": "SVC1-0113",
+          "kind": "collocation",
+          "french": "protéger l'intérêt général",
+          "english": "to protect the general interest",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "protéger + abstract noun; a recurrent civic collocation."
+        },
+        {
+          "id": "SVC1-0114",
+          "kind": "collocation",
+          "french": "étouffer l'initiative",
+          "english": "to stifle initiative",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "étouffer = to smother; a vivid verb for over-regulation's effect."
+        },
+        {
+          "id": "SVC1-0115",
+          "kind": "collocation",
+          "french": "voter des lois",
+          "english": "to pass laws",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "voter une loi = to pass a law (not merely 'to vote'); institutional collocation."
+        },
+        {
+          "id": "SVC1-0116",
+          "kind": "collocation",
+          "french": "financer des services publics",
+          "english": "to fund public services",
+          "example": "En effet, l'État peut voter des lois et financer des services publics, mais il ne peut pas, à lui seul, gérer chaque aspect de la vie sociale.",
+          "usage": "financer = to fund; a State-action collocation, transferable to Économie."
+        },
+        {
+          "id": "SVC1-0117",
+          "kind": "collocation",
+          "french": "reconnaître les limites de son pouvoir",
+          "english": "to acknowledge the limits of one's power",
+          "example": "Cela oblige l'État à reconnaître les limites de son pouvoir et à accepter qu'une grande partie des choix individuels lui échappera toujours.",
+          "usage": "reconnaître = to acknowledge; the humility-of-power idea."
+        },
+        {
+          "id": "SVC1-0118",
+          "kind": "collocation",
+          "french": "un excès de contrôle",
+          "english": "an excess of control",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "excès de + noun; names the danger; pairs with 'étouffe'."
+        },
+        {
+          "id": "SVC1-0119",
+          "kind": "collocation",
+          "french": "la responsabilité de chacun",
+          "english": "everyone's responsibility",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "'à la responsabilité de chacun'; shared responsibility, the argument-3 idea."
+        },
+        {
+          "id": "SVC1-0120",
+          "kind": "collocation",
+          "french": "modifient leurs habitudes de déplacement",
+          "english": "change their travel habits",
+          "example": "Par exemple, pour réduire la pollution, il faut à la fois des lois strictes, des entreprises qui changent leurs procédés et des citoyens qui modifient leurs habitudes de déplacement.",
+          "usage": "modifier ses habitudes; a concrete citizen-action example (pollution)."
+        },
+        {
+          "id": "SVC1-0121",
+          "kind": "expression",
+          "french": "par nature",
+          "english": "by nature / inherently",
+          "example": "D'abord, certains domaines de la vie échappent par nature à son contrôle, comme les choix privés ou les comportements quotidiens.",
+          "usage": "'échappent par nature à son contrôle'; argues something is intrinsically so."
+        },
+        {
+          "id": "SVC1-0122",
+          "kind": "expression",
+          "french": "dans le détail",
+          "english": "in detail",
+          "example": "Aucune administration n'a les moyens, ni la légitimité, de surveiller ces choix dans le détail.",
+          "usage": "'surveiller ces choix dans le détail'; expression for close scrutiny."
+        },
+        {
+          "id": "SVC1-0123",
+          "kind": "expression",
+          "french": "sur le terrain",
+          "english": "on the ground / in practice",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "Idiom contrasting law with real-world effect ('un effet réel sur le terrain')."
+        },
+        {
+          "id": "SVC1-0124",
+          "kind": "expression",
+          "french": "à sa place",
+          "english": "in its place / instead of it",
+          "example": "Au contraire, il doit rester très solide dans certains domaines essentiels, comme la sécurité, la justice, l'école, la santé publique et la protection des plus fragiles, parce que personne d'autre ne peut le faire à sa place.",
+          "usage": "'le faire à sa place' = to do it instead; à la place de = in place of."
+        },
+        {
+          "id": "SVC1-0125",
+          "kind": "expression",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, il doit rester très solide dans certains domaines essentiels, comme la sécurité, la justice, l'école, la santé publique et la protection des plus fragiles, parce que personne d'autre ne peut le faire à sa place.",
+          "usage": "Reverses an expectation; 'Au contraire, il doit rester très solide'."
+        },
+        {
+          "id": "SVC1-0126",
+          "kind": "expression",
+          "french": "en jeu",
+          "english": "at stake",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "'là où l'intérêt général est en jeu'; être / mettre en jeu = to be at stake."
+        },
+        {
+          "id": "SVC1-0127",
+          "kind": "expression",
+          "french": "restent purement théoriques",
+          "english": "remain purely theoretical",
+          "example": "Sans cette coopération, beaucoup de règles publiques restent purement théoriques.",
+          "usage": "rester + adj; describes rules with no real effect; 'purement' intensifies."
+        },
+        {
+          "id": "SVC1-0128",
+          "kind": "expression",
+          "french": "concrets et durables",
+          "english": "concrete and lasting",
+          "example": "Cela permet à l'action publique de produire des effets concrets et durables, parce que chaque acteur fait sa part.",
+          "usage": "Evaluative pair praising real, lasting effects; reusable in any 'action' argument."
+        },
+        {
+          "id": "SVC1-0129",
+          "kind": "expression",
+          "french": "chaque jour",
+          "english": "every day",
+          "example": "En effet, dans une société moderne, des millions de personnes prennent chaque jour des décisions privées : ce qu'elles mangent, ce qu'elles dépensent, comment elles élèvent leurs enfants.",
+          "usage": "Frequency adverbial; here stresses the mass of private decisions."
+        },
+        {
+          "id": "SVC1-0130",
+          "kind": "expression",
+          "french": "un rôle direct",
+          "english": "a direct role",
+          "example": "Les familles, les écoles, les entreprises et les associations jouent un rôle direct dans l'éducation, la solidarité ou la protection de l'environnement.",
+          "usage": "jouer un rôle direct dans; names who really acts alongside the State."
+        },
+        {
+          "id": "SVC1-0131",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, l'État ne peut pas tout contrôler dans une société moderne.",
+          "usage": "Opinion marker opening the stance; comma after; alt: selon moi."
+        },
+        {
+          "id": "SVC1-0132",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, il existe des domaines de la vie qu'aucun État ne peut réellement contrôler, parce qu'ils dépendent de millions de décisions privées.",
+          "usage": "First-argument opener in the three-part plan."
+        },
+        {
+          "id": "SVC1-0133",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, même dans les domaines où l'État pourrait essayer de tout contrôler, ce serait mauvais pour la société.",
+          "usage": "Second connector; keeps the arguments ordered."
+        },
+        {
+          "id": "SVC1-0134",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, l'action publique n'est efficace que lorsqu'elle est partagée avec les autres acteurs de la société.",
+          "usage": "Introduces the last (shared-responsibility) argument."
+        },
+        {
+          "id": "SVC1-0135",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, l'État peut voter des lois et financer des services publics, mais il ne peut pas, à lui seul, gérer chaque aspect de la vie sociale.",
+          "usage": "Confirms and develops the preceding claim; introduces justification, not example."
+        },
+        {
+          "id": "SVC1-0136",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, dire que l'État ne peut pas tout contrôler ne veut pas dire qu'il doit être faible.",
+          "usage": "Opens the nuance: the State must still be strong somewhere."
+        },
+        {
+          "id": "SVC1-0137",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que l'État ne peut pas tout contrôler, parce qu'une société moderne dépend aussi des choix privés et de l'action des autres acteurs collectifs.",
+          "usage": "Signals the synthesis."
+        },
+        {
+          "id": "SVC1-0138",
+          "kind": "tournure",
+          "french": "Même s'il doit rester très solide",
+          "english": "even if it must remain very strong",
+          "example": "Même s'il doit rester très solide sur les enjeux essentiels comme la sécurité, la justice ou la santé publique, il ne peut ni surveiller ni encadrer chaque aspect de la vie quotidienne.",
+          "usage": "Même si + indicative grants a real counterpoint before the main claim; a useful concessive oral frame."
+        },
+        {
+          "id": "SVC1-0139",
+          "kind": "tournure",
+          "french": "donc",
+          "english": "therefore / so",
+          "example": "Son rôle est donc de fixer un cadre clair là où l'intérêt général est en jeu, et de laisser le reste à la liberté et à la responsabilité de chacun.",
+          "usage": "Consecutive connector; 'revient donc à agir'."
+        },
+        {
+          "id": "SVC1-0140",
+          "kind": "tournure",
+          "french": "mais",
+          "english": "but",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "Adversative; here 'il peut voter des lois, mais il dépend...'."
+        },
+        {
+          "id": "SVC1-0141",
+          "kind": "phrase-modele",
+          "french": "l'État ne peut pas tout contrôler dans une société moderne",
+          "english": "the State cannot control everything in a modern society",
+          "example": "À mon avis, l'État ne peut pas tout contrôler dans une société moderne.",
+          "usage": "The thesis; note 'tout' placed before the infinitive 'contrôler'."
+        },
+        {
+          "id": "SVC1-0142",
+          "kind": "phrase-modele",
+          "french": "certains domaines de la vie échappent par nature à son contrôle",
+          "english": "some areas of life inherently escape its control",
+          "example": "D'abord, certains domaines de la vie échappent par nature à son contrôle, comme les choix privés ou les comportements quotidiens.",
+          "usage": "échapper à = to escape / elude; the argument-1 sentence."
+        },
+        {
+          "id": "SVC1-0143",
+          "kind": "phrase-modele",
+          "french": "il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel",
+          "english": "it then depends on everyone's behaviour for them to have real effect",
+          "example": "L'État peut voter des lois, mais il dépend ensuite du comportement de chacun pour qu'elles aient un effet réel sur le terrain.",
+          "usage": "dépendre de + pour que + subjunctive ('aient'); the limits-of-law idea."
+        },
+        {
+          "id": "SVC1-0144",
+          "kind": "phrase-modele",
+          "french": "un excès de contrôle finit toujours par étouffer l'initiative",
+          "english": "an excess of control always ends up stifling initiative",
+          "example": "En effet, un excès de contrôle finit toujours par étouffer l'initiative, la créativité, l'innovation et la liberté individuelle, qui sont pourtant essentielles au dynamisme d'un pays.",
+          "usage": "finir par + inf = to end up doing; cautionary thesis of argument 2."
+        },
+        {
+          "id": "SVC1-0145",
+          "kind": "phrase-modele",
+          "french": "l'absence totale de règles produit du désordre, des abus et des inégalités",
+          "english": "a total absence of rules produces disorder, abuse and inequality",
+          "example": "À l'inverse, l'absence totale de règles produit du désordre, des abus et des inégalités.",
+          "usage": "The counter-case; partitive 'du / des' with mass nouns."
+        },
+        {
+          "id": "SVC1-0146",
+          "kind": "phrase-modele",
+          "french": "fixer des limites raisonnables, de protéger l'intérêt général",
+          "english": "to set reasonable limits, to protect the general interest",
+          "example": "Le rôle de l'État n'est donc pas de tout encadrer, mais de fixer des limites raisonnables, de protéger l'intérêt général et de laisser aux citoyens, aux associations et aux entreprises un véritable espace de liberté.",
+          "usage": "Infinitive series defining the State's role; parallel structure."
+        },
+        {
+          "id": "SVC1-0147",
+          "kind": "phrase-modele",
+          "french": "l'action publique n'est efficace que lorsqu'elle est partagée",
+          "english": "public action is only effective when it is shared",
+          "example": "Enfin, l'action publique n'est efficace que lorsqu'elle est partagée avec les autres acteurs de la société.",
+          "usage": "ne... que = only; restrictive; the argument-3 topic sentence."
+        },
+        {
+          "id": "SVC1-0148",
+          "kind": "phrase-modele",
+          "french": "beaucoup de règles publiques restent purement théoriques",
+          "english": "many public rules remain purely theoretical",
+          "example": "Sans cette coopération, beaucoup de règles publiques restent purement théoriques.",
+          "usage": "rester + adj; the consequence of no cooperation; quotable."
+        },
+        {
+          "id": "SVC1-0149",
+          "kind": "phrase-modele",
+          "french": "parce que chaque acteur fait sa part",
+          "english": "because each stakeholder does their part",
+          "example": "Cela permet à l'action publique de produire des effets concrets et durables, parce que chaque acteur fait sa part.",
+          "usage": "A civic formula for shared responsibility; oral-friendly."
+        },
+        {
+          "id": "SVC1-0150",
+          "kind": "phrase-modele",
+          "french": "il doit rester très solide dans certains domaines essentiels",
+          "english": "it must stay very strong in certain essential areas",
+          "example": "Au contraire, il doit rester très solide dans certains domaines essentiels, comme la sécurité, la justice, l'école, la santé publique et la protection des plus fragiles, parce que personne d'autre ne peut le faire à sa place.",
+          "usage": "devoir + rester + adj; the nuance that the State must not be weak."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p4",
+      "entries": [
+        {
+          "id": "SVC1-0151",
+          "kind": "mot-cle",
+          "french": "pauvreté",
+          "english": "poverty",
+          "example": "À mon avis, la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui.",
+          "usage": "Fem.; 'la lutte contre la pauvreté'; the central cause of the essay."
+        },
+        {
+          "id": "SVC1-0152",
+          "kind": "mot-cle",
+          "french": "exclusion",
+          "english": "exclusion / social exclusion",
+          "example": "À mon avis, la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui.",
+          "usage": "Fem.; paired with pauvreté; 'exclusion sociale'."
+        },
+        {
+          "id": "SVC1-0153",
+          "kind": "mot-cle",
+          "french": "dignité humaine",
+          "english": "human dignity",
+          "example": "Il suffit de penser à un parent qui doit choisir, en fin de mois, entre payer son loyer et bien nourrir ses enfants : derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu.",
+          "usage": "Fem.; the value at stake; a strong ethical keyword."
+        },
+        {
+          "id": "SVC1-0154",
+          "kind": "mot-cle",
+          "french": "urgence humaine",
+          "english": "human emergency / urgency",
+          "example": "D'abord, elle répond à une urgence humaine immédiate, qui touche directement la dignité des personnes.",
+          "usage": "Fem.; 'répondre à une urgence humaine immédiate'; a priority criterion."
+        },
+        {
+          "id": "SVC1-0155",
+          "kind": "mot-cle",
+          "french": "priorité",
+          "english": "priority",
+          "example": "En effet, une priorité doit être grave, mais elle doit aussi permettre une mobilisation réelle.",
+          "usage": "Fem.; adj prioritaire; 'la cause la plus prioritaire'; the core keyword."
+        },
+        {
+          "id": "SVC1-0156",
+          "kind": "mot-cle",
+          "french": "action collective",
+          "english": "collective action",
+          "example": "Enfin, c'est une cause sur laquelle une action collective réelle est possible, à plusieurs niveaux.",
+          "usage": "Fem.; the feasibility criterion for a priority; transferable to civic topics."
+        },
+        {
+          "id": "SVC1-0157",
+          "kind": "mot-cle",
+          "french": "cohésion sociale",
+          "english": "social cohesion",
+          "example": "Cela produit des effets en chaîne très positifs sur la santé, l'éducation, l'emploi et la cohésion sociale.",
+          "usage": "Fem.; a positive knock-on effect; sociology vocabulary."
+        },
+        {
+          "id": "SVC1-0158",
+          "kind": "mot-cle",
+          "french": "précarité",
+          "english": "precariousness / hardship",
+          "example": "Prenons l'exemple d'un enfant qui grandit dans une grande précarité : il aura souvent plus de mal à suivre régulièrement l'école, à trouver un emploi stable, et plus tard à offrir de meilleures conditions à ses propres enfants.",
+          "usage": "Fem.; 'une grande précarité'; an economic-vulnerability term."
+        },
+        {
+          "id": "SVC1-0159",
+          "kind": "mot-cle",
+          "french": "besoins",
+          "english": "needs",
+          "example": "Tout d'abord, une vraie priorité doit toucher aux besoins humains les plus essentiels, et c'est exactement ce qui caractérise la lutte contre la pauvreté et l'exclusion.",
+          "usage": "M. pl.; 'les besoins humains les plus essentiels'; a Maslow-style argument."
+        },
+        {
+          "id": "SVC1-0160",
+          "kind": "mot-cle",
+          "french": "mobilisation",
+          "english": "mobilisation",
+          "example": "En effet, une priorité doit être grave, mais elle doit aussi permettre une mobilisation réelle.",
+          "usage": "Fem.; 'permettre une mobilisation réelle'; verb mobiliser."
+        },
+        {
+          "id": "SVC1-0161",
+          "kind": "collocation",
+          "french": "la lutte contre la pauvreté et l'exclusion",
+          "english": "the fight against poverty and exclusion",
+          "example": "À mon avis, la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui.",
+          "usage": "lutte contre = fight against; the essay's fixed cause label."
+        },
+        {
+          "id": "SVC1-0162",
+          "kind": "collocation",
+          "french": "répond à une urgence humaine immédiate",
+          "english": "responds to an immediate human emergency",
+          "example": "D'abord, elle répond à une urgence humaine immédiate, qui touche directement la dignité des personnes.",
+          "usage": "répondre à = to address; a priority-criterion collocation."
+        },
+        {
+          "id": "SVC1-0163",
+          "kind": "collocation",
+          "french": "touche à la dignité humaine",
+          "english": "affects human dignity",
+          "example": "À mon avis, la cause la plus prioritaire aujourd'hui est la lutte contre la pauvreté et l'exclusion, parce qu'elle touche à la dignité humaine et qu'elle conditionne l'accès à toutes les autres causes.",
+          "usage": "toucher à = to concern / affect; note à after toucher here."
+        },
+        {
+          "id": "SVC1-0164",
+          "kind": "collocation",
+          "french": "manquent de logement, de nourriture, de soins",
+          "english": "lack housing, food, care",
+          "example": "En effet, quand des personnes manquent de logement, de nourriture, de soins médicaux ou d'accès à l'éducation, leur dignité est directement menacée et leur avenir devient très difficile à construire.",
+          "usage": "manquer de + noun without article; enumerates basic needs."
+        },
+        {
+          "id": "SVC1-0165",
+          "kind": "collocation",
+          "french": "aggravent la plupart des autres problèmes",
+          "english": "worsen most of the other problems",
+          "example": "Ensuite, la pauvreté et l'exclusion deviennent prioritaires parce qu'elles aggravent la plupart des autres problèmes de société.",
+          "usage": "aggraver = to worsen; the 'wide impact' collocation."
+        },
+        {
+          "id": "SVC1-0166",
+          "kind": "collocation",
+          "french": "se transmettent souvent d'une génération à l'autre",
+          "english": "are often passed on from one generation to the next",
+          "example": "De plus, elles se transmettent souvent d'une génération à l'autre, ce qui transforme une situation individuelle en problème collectif durable.",
+          "usage": "se transmettre; the intergenerational-poverty idea; reflexive passive."
+        },
+        {
+          "id": "SVC1-0167",
+          "kind": "collocation",
+          "french": "peut mobiliser à plusieurs niveaux",
+          "english": "can mobilise at several levels",
+          "example": "À l'inverse, la lutte contre la pauvreté peut mobiliser à plusieurs niveaux : pouvoirs publics, associations, entreprises et citoyens, chacun avec un rôle clair.",
+          "usage": "mobiliser + à; lists pouvoirs publics / associations / entreprises / citoyens."
+        },
+        {
+          "id": "SVC1-0168",
+          "kind": "collocation",
+          "french": "des résultats concrets et mesurables",
+          "english": "concrete and measurable results",
+          "example": "On peut citer, par exemple, l'aide alimentaire, l'hébergement d'urgence ou la lutte contre le décrochage scolaire : ces dispositifs mobilisent à la fois les écoles, les associations et les services sociaux, avec des résultats concrets et mesurables.",
+          "usage": "Evaluative collocation valuing effectiveness; reusable in any 'action' argument."
+        },
+        {
+          "id": "SVC1-0169",
+          "kind": "collocation",
+          "french": "protéger la dignité",
+          "english": "to protect dignity",
+          "example": "Cela permet de répondre à des souffrances réelles et immédiates, et de protéger la dignité de personnes qui n'ont pas le temps d'attendre des solutions de long terme.",
+          "usage": "protéger + abstract noun; ties action to the core value."
+        },
+        {
+          "id": "SVC1-0170",
+          "kind": "collocation",
+          "french": "produire des changements visibles",
+          "english": "to produce visible changes",
+          "example": "Cela permet de transformer une cause urgente en action concrète et coordonnée, et de produire des changements visibles dans la vie des personnes concernées.",
+          "usage": "produire des changements; an outcome-oriented collocation."
+        },
+        {
+          "id": "SVC1-0171",
+          "kind": "expression",
+          "french": "passer en premier",
+          "english": "to come first / take precedence",
+          "example": "La vraie question est de savoir quelle cause doit vraiment passer en premier dans le monde aujourd'hui.",
+          "usage": "'quelle cause doit vraiment passer en premier'; a priority idiom."
+        },
+        {
+          "id": "SVC1-0172",
+          "kind": "expression",
+          "french": "en fin de mois",
+          "english": "at the end of the month",
+          "example": "Il suffit de penser à un parent qui doit choisir, en fin de mois, entre payer son loyer et bien nourrir ses enfants : derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu.",
+          "usage": "Budget-pressure expression; a vivid concrete example."
+        },
+        {
+          "id": "SVC1-0173",
+          "kind": "expression",
+          "french": "en jeu",
+          "english": "at stake",
+          "example": "Il suffit de penser à un parent qui doit choisir, en fin de mois, entre payer son loyer et bien nourrir ses enfants : derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu.",
+          "usage": "'il y a une dignité humaine en jeu'; être / mettre en jeu = to be at stake."
+        },
+        {
+          "id": "SVC1-0174",
+          "kind": "expression",
+          "french": "en chaîne",
+          "english": "chain (reaction) / knock-on",
+          "example": "Cela produit des effets en chaîne très positifs sur la santé, l'éducation, l'emploi et la cohésion sociale.",
+          "usage": "'des effets en chaîne'; idiom for cascading effects."
+        },
+        {
+          "id": "SVC1-0175",
+          "kind": "expression",
+          "french": "au cœur de",
+          "english": "at the heart / core of",
+          "example": "Mais dans la plupart des situations, la pauvreté et l'exclusion restent au cœur des problèmes les plus graves.",
+          "usage": "'au cœur des problèmes les plus graves'; emphasises centrality."
+        },
+        {
+          "id": "SVC1-0176",
+          "kind": "expression",
+          "french": "à plusieurs niveaux",
+          "english": "at several levels",
+          "example": "Enfin, c'est une cause sur laquelle une action collective réelle est possible, à plusieurs niveaux.",
+          "usage": "Structures the feasibility argument; a scalable-action expression."
+        },
+        {
+          "id": "SVC1-0177",
+          "kind": "expression",
+          "french": "d'une génération à l'autre",
+          "english": "from one generation to the next",
+          "example": "De plus, elles se transmettent souvent d'une génération à l'autre, ce qui transforme une situation individuelle en problème collectif durable.",
+          "usage": "Fixed correlative 'd'un(e)... à l'autre'; transmission of poverty."
+        },
+        {
+          "id": "SVC1-0178",
+          "kind": "expression",
+          "french": "au stade du discours",
+          "english": "at the talk stage / mere words",
+          "example": "Un problème trop vague ou trop lointain décourage l'action et reste au stade du discours.",
+          "usage": "'rester au stade du discours' = to stay theoretical; contrasts talk with action."
+        },
+        {
+          "id": "SVC1-0179",
+          "kind": "expression",
+          "french": "Il suffit de penser à",
+          "english": "One only has to think of",
+          "example": "Il suffit de penser à un parent qui doit choisir, en fin de mois, entre payer son loyer et bien nourrir ses enfants : derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu.",
+          "usage": "'il suffit de + inf' = it is enough to; an example-introducing formula."
+        },
+        {
+          "id": "SVC1-0180",
+          "kind": "expression",
+          "french": "de long terme",
+          "english": "long-term",
+          "example": "Cela permet de répondre à des souffrances réelles et immédiates, et de protéger la dignité de personnes qui n'ont pas le temps d'attendre des solutions de long terme.",
+          "usage": "'des solutions de long terme'; a time-horizon expression."
+        },
+        {
+          "id": "SVC1-0181",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui.",
+          "usage": "Opinion marker; comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0182",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, une vraie priorité doit toucher aux besoins humains les plus essentiels, et c'est exactement ce qui caractérise la lutte contre la pauvreté et l'exclusion.",
+          "usage": "First-argument opener in the three-part plan."
+        },
+        {
+          "id": "SVC1-0183",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, ses effets se propagent à presque tous les autres problèmes sociaux, ce qui en fait une cause à très large impact.",
+          "usage": "Second connector; keeps arguments ordered."
+        },
+        {
+          "id": "SVC1-0184",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, c'est une cause sur laquelle une action collective réelle est possible, à plusieurs niveaux.",
+          "usage": "Introduces the last (feasibility) argument."
+        },
+        {
+          "id": "SVC1-0185",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, ces difficultés ne restent jamais isolées.",
+          "usage": "Confirms and develops a claim; introduces justification, not an example."
+        },
+        {
+          "id": "SVC1-0186",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, elles se transmettent souvent d'une génération à l'autre, ce qui transforme une situation individuelle en problème collectif durable.",
+          "usage": "Additive connector stacking a second reason ('De plus, elles se transmettent...')."
+        },
+        {
+          "id": "SVC1-0187",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, l'ordre des priorités peut varier selon les pays et les contextes.",
+          "usage": "Opens the nuance about context-dependent priorities."
+        },
+        {
+          "id": "SVC1-0188",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que la lutte contre la pauvreté et l'exclusion est la priorité la plus urgente, parce qu'elle réunit trois éléments essentiels : une urgence humaine directe, un impact très large sur les autres problèmes sociaux, et la possibilité d'une action collective réelle.",
+          "usage": "Signals the synthesis of the three arguments."
+        },
+        {
+          "id": "SVC1-0189",
+          "kind": "tournure",
+          "french": "À l'inverse,",
+          "english": "Conversely,",
+          "example": "À l'inverse, la lutte contre la pauvreté peut mobiliser à plusieurs niveaux : pouvoirs publics, associations, entreprises et citoyens, chacun avec un rôle clair.",
+          "usage": "Presents the opposite case ('À l'inverse, la lutte contre la pauvreté peut mobiliser...')."
+        },
+        {
+          "id": "SVC1-0190",
+          "kind": "tournure",
+          "french": "donc",
+          "english": "therefore / so",
+          "example": "Agir sur cette cause revient donc à agir, indirectement, sur de nombreux autres problèmes.",
+          "usage": "Consecutive connector; 'revient donc à agir'."
+        },
+        {
+          "id": "SVC1-0191",
+          "kind": "phrase-modele",
+          "french": "la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui",
+          "english": "the fight against poverty and exclusion is the most urgent cause today",
+          "example": "À mon avis, la lutte contre la pauvreté et l'exclusion est la cause la plus prioritaire aujourd'hui.",
+          "usage": "Superlative 'la plus prioritaire'; the thesis, ready to recite."
+        },
+        {
+          "id": "SVC1-0192",
+          "kind": "phrase-modele",
+          "french": "une vraie priorité doit toucher aux besoins humains les plus essentiels",
+          "english": "a real priority must address the most essential human needs",
+          "example": "Tout d'abord, une vraie priorité doit toucher aux besoins humains les plus essentiels, et c'est exactement ce qui caractérise la lutte contre la pauvreté et l'exclusion.",
+          "usage": "devoir + toucher à; defines the priority criterion."
+        },
+        {
+          "id": "SVC1-0193",
+          "kind": "phrase-modele",
+          "french": "derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu",
+          "english": "behind every poverty statistic there is human dignity at stake",
+          "example": "Il suffit de penser à un parent qui doit choisir, en fin de mois, entre payer son loyer et bien nourrir ses enfants : derrière chaque chiffre de la pauvreté, il y a une dignité humaine en jeu.",
+          "usage": "'derrière... il y a' framing; humanises data; very quotable."
+        },
+        {
+          "id": "SVC1-0194",
+          "kind": "phrase-modele",
+          "french": "ces difficultés ne restent jamais isolées",
+          "english": "these difficulties are never isolated",
+          "example": "En effet, ces difficultés ne restent jamais isolées.",
+          "usage": "rester + adj with 'ne... jamais'; opens the wide-impact argument."
+        },
+        {
+          "id": "SVC1-0195",
+          "kind": "phrase-modele",
+          "french": "elles se transmettent souvent d'une génération à l'autre",
+          "english": "they are often passed on from one generation to the next",
+          "example": "De plus, elles se transmettent souvent d'une génération à l'autre, ce qui transforme une situation individuelle en problème collectif durable.",
+          "usage": "Reflexive passive; the intergenerational transmission of poverty."
+        },
+        {
+          "id": "SVC1-0196",
+          "kind": "phrase-modele",
+          "french": "Agir sur cette cause revient donc à agir, indirectement, sur de nombreux autres problèmes",
+          "english": "Acting on this cause therefore means acting indirectly on many other problems",
+          "example": "Agir sur cette cause revient donc à agir, indirectement, sur de nombreux autres problèmes.",
+          "usage": "revenir à + inf = to amount to; the systemic-impact conclusion."
+        },
+        {
+          "id": "SVC1-0197",
+          "kind": "phrase-modele",
+          "french": "une cause n'est vraiment prioritaire que si l'on peut agir concrètement dessus",
+          "english": "a cause is only truly a priority if one can act concretely on it",
+          "example": "Enfin, une cause n'est vraiment prioritaire que si l'on peut agir concrètement dessus, et la lutte contre la pauvreté en fait clairement partie.",
+          "usage": "ne... que si = only if; 'agir dessus' (dessus = on it); feasibility criterion."
+        },
+        {
+          "id": "SVC1-0198",
+          "kind": "phrase-modele",
+          "french": "Un problème trop vague ou trop lointain décourage l'action",
+          "english": "A problem too vague or too distant discourages action",
+          "example": "Un problème trop vague ou trop lointain décourage l'action et reste au stade du discours.",
+          "usage": "décourager; explains why feasibility matters; a contrast setup."
+        },
+        {
+          "id": "SVC1-0199",
+          "kind": "phrase-modele",
+          "french": "transformer une cause urgente en action concrète et coordonnée",
+          "english": "to turn an urgent cause into concrete, coordinated action",
+          "example": "Cela permet de transformer une cause urgente en action concrète et coordonnée, et de produire des changements visibles dans la vie des personnes concernées.",
+          "usage": "transformer A en B; an outcome statement; a strong verb pattern."
+        },
+        {
+          "id": "SVC1-0200",
+          "kind": "phrase-modele",
+          "french": "elle réunit trois éléments essentiels",
+          "english": "it brings together three essential elements",
+          "example": "En conclusion, je pense que la lutte contre la pauvreté et l'exclusion est la priorité la plus urgente, parce qu'elle réunit trois éléments essentiels : une urgence humaine directe, un impact très large sur les autres problèmes sociaux, et la possibilité d'une action collective réelle.",
+          "usage": "réunir = to combine; the conclusion summarising the three arguments."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p5",
+      "entries": [
+        {
+          "id": "SVC1-0201",
+          "kind": "mot-cle",
+          "french": "objectifs",
+          "english": "objectives / goals",
+          "example": "En effet, atteindre ses objectifs ne dépend pas seulement de la compétence ou de la motivation personnelle.",
+          "usage": "M. pl.; 'atteindre ses objectifs'. Verb atteindre; the central keyword."
+        },
+        {
+          "id": "SVC1-0202",
+          "kind": "mot-cle",
+          "french": "à l'étranger",
+          "english": "abroad",
+          "example": "Cependant, il ne faut pas idéaliser l'expérience à l'étranger.",
+          "usage": "Fixed locative; 'partir / vivre à l'étranger'. Distinguish from 'un étranger' (a foreigner)."
+        },
+        {
+          "id": "SVC1-0203",
+          "kind": "mot-cle",
+          "french": "réussite",
+          "english": "success",
+          "example": "La réussite n'est jamais garantie par le simple fait de quitter son pays.",
+          "usage": "Fem.; 'cette réussite n'est jamais automatique'. Verb réussir."
+        },
+        {
+          "id": "SVC1-0204",
+          "kind": "mot-cle",
+          "french": "préparation",
+          "english": "preparation",
+          "example": "Ensuite, cette réussite n'est jamais automatique : elle dépend en grande partie de la préparation avec laquelle on part.",
+          "usage": "Fem.; 'une vraie préparation'; the key condition of argument 2."
+        },
+        {
+          "id": "SVC1-0205",
+          "kind": "mot-cle",
+          "french": "opportunités",
+          "english": "opportunities",
+          "example": "D'abord, partir peut ouvrir de vraies opportunités que l'on n'aurait pas dans son pays d'origine.",
+          "usage": "Fem. pl.; 'ouvrir de vraies opportunités'; the benefit of leaving."
+        },
+        {
+          "id": "SVC1-0206",
+          "kind": "mot-cle",
+          "french": "liens",
+          "english": "ties / bonds",
+          "example": "Enfin, le résultat dépend aussi des liens construits sur place, qui transforment un projet en réalité.",
+          "usage": "M. pl.; 'les liens construits sur place'; a social-capital keyword."
+        },
+        {
+          "id": "SVC1-0207",
+          "kind": "mot-cle",
+          "french": "isolement",
+          "english": "isolation / loneliness",
+          "example": "Cela permet de sortir de l'isolement, de gagner du temps et de faire avancer son projet dans des conditions beaucoup plus stables.",
+          "usage": "M.; a risk of going abroad; 'sortir de l'isolement'."
+        },
+        {
+          "id": "SVC1-0208",
+          "kind": "mot-cle",
+          "french": "adaptation",
+          "english": "adaptation",
+          "example": "Une bonne préparation suppose plusieurs éléments précis : un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation.",
+          "usage": "Fem.; 'une vraie capacité d'adaptation'; a personal quality needed."
+        },
+        {
+          "id": "SVC1-0209",
+          "kind": "mot-cle",
+          "french": "réseau humain",
+          "english": "human network",
+          "example": "Sans ce réseau humain, beaucoup de démarches deviennent plus longues, plus solitaires et parfois décourageantes.",
+          "usage": "M.; 'sans ce réseau humain'; who provides help and information."
+        },
+        {
+          "id": "SVC1-0210",
+          "kind": "mot-cle",
+          "french": "maturité",
+          "english": "maturity",
+          "example": "Cela permet d'accélérer son parcours, d'atteindre des objectifs autrement inaccessibles et de gagner en maturité personnelle.",
+          "usage": "Fem.; 'gagner en maturité personnelle'; a personal-growth benefit."
+        },
+        {
+          "id": "SVC1-0211",
+          "kind": "collocation",
+          "french": "atteindre ses objectifs",
+          "english": "to achieve one's goals",
+          "example": "En effet, atteindre ses objectifs ne dépend pas seulement de la compétence ou de la motivation personnelle.",
+          "usage": "atteindre un objectif = to reach a goal; the essay's key action."
+        },
+        {
+          "id": "SVC1-0212",
+          "kind": "collocation",
+          "french": "ouvrir de vraies opportunités",
+          "english": "to open up real opportunities",
+          "example": "D'abord, partir peut ouvrir de vraies opportunités que l'on n'aurait pas dans son pays d'origine.",
+          "usage": "ouvrir des opportunités; the benefit collocation of argument 1."
+        },
+        {
+          "id": "SVC1-0213",
+          "kind": "collocation",
+          "french": "se débrouiller seul",
+          "english": "to manage / get by on one's own",
+          "example": "De plus, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "se débrouiller = to cope; an independence skill; oral-friendly reflexive."
+        },
+        {
+          "id": "SVC1-0214",
+          "kind": "collocation",
+          "french": "gagner en maturité personnelle",
+          "english": "to grow in personal maturity",
+          "example": "Cela permet d'accélérer son parcours, d'atteindre des objectifs autrement inaccessibles et de gagner en maturité personnelle.",
+          "usage": "gagner en + noun; a personal-development collocation."
+        },
+        {
+          "id": "SVC1-0215",
+          "kind": "collocation",
+          "french": "dépend d'une vraie préparation",
+          "english": "depends on real preparation",
+          "example": "Ensuite, cette réussite dépend d'une vraie préparation personnelle, sans laquelle le départ peut au contraire fragiliser la situation.",
+          "usage": "dépendre de = to depend on; the conditional thesis of argument 2."
+        },
+        {
+          "id": "SVC1-0216",
+          "kind": "collocation",
+          "french": "un objectif défini",
+          "english": "a defined objective",
+          "example": "Une bonne préparation suppose plusieurs éléments précis : un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation.",
+          "usage": "Past participle as adjective; part of the 'good preparation' checklist."
+        },
+        {
+          "id": "SVC1-0217",
+          "kind": "collocation",
+          "french": "des emplois précaires",
+          "english": "precarious / insecure jobs",
+          "example": "Prenons l'exemple d'une personne qui arrive sans parler la langue ni avoir de diplôme reconnu sur place : elle risque de se retrouver dans des emplois précaires, très éloignés de ses qualifications de départ.",
+          "usage": "'précaire' = insecure; a risk of poor preparation; Économie-transferable."
+        },
+        {
+          "id": "SVC1-0218",
+          "kind": "collocation",
+          "french": "jouent un rôle décisif",
+          "english": "play a decisive role",
+          "example": "Enfin, les liens humains construits sur place jouent un rôle décisif dans la réussite d'un projet à l'étranger.",
+          "usage": "jouer un rôle + adj; the argument-3 collocation about human ties."
+        },
+        {
+          "id": "SVC1-0219",
+          "kind": "collocation",
+          "french": "sortir de l'isolement",
+          "english": "to get out of isolation",
+          "example": "Cela permet de sortir de l'isolement, de gagner du temps et de faire avancer son projet dans des conditions beaucoup plus stables.",
+          "usage": "sortir de = to escape (a state); a positive effect of a network."
+        },
+        {
+          "id": "SVC1-0220",
+          "kind": "collocation",
+          "french": "faire avancer son projet",
+          "english": "to move one's project forward",
+          "example": "Cela permet de sortir de l'isolement, de gagner du temps et de faire avancer son projet dans des conditions beaucoup plus stables.",
+          "usage": "faire avancer = to advance sth; a goal-oriented collocation."
+        },
+        {
+          "id": "SVC1-0221",
+          "kind": "expression",
+          "french": "sur place",
+          "english": "on the spot / locally",
+          "example": "Enfin, le résultat dépend aussi des liens construits sur place, qui transforment un projet en réalité.",
+          "usage": "'les liens construits sur place'; a key locative idiom (once you're there)."
+        },
+        {
+          "id": "SVC1-0222",
+          "kind": "expression",
+          "french": "au contraire",
+          "english": "on the contrary",
+          "example": "Ensuite, cette réussite dépend d'une vraie préparation personnelle, sans laquelle le départ peut au contraire fragiliser la situation.",
+          "usage": "Reverses an expectation; 'le départ peut au contraire isoler'."
+        },
+        {
+          "id": "SVC1-0223",
+          "kind": "expression",
+          "french": "en grande partie",
+          "english": "largely / in large part",
+          "example": "Ensuite, cette réussite n'est jamais automatique : elle dépend en grande partie de la préparation avec laquelle on part.",
+          "usage": "'elle dépend en grande partie de la préparation'; degree expression."
+        },
+        {
+          "id": "SVC1-0224",
+          "kind": "expression",
+          "french": "le plus souvent",
+          "english": "most often",
+          "example": "En effet, partir sans projet clair, sans connaître la langue et sans ressources suffisantes mène le plus souvent à la déception.",
+          "usage": "Frequency expression; 'mène le plus souvent à la déception'."
+        },
+        {
+          "id": "SVC1-0225",
+          "kind": "expression",
+          "french": "en restant chez elles",
+          "english": "by staying at home / in their own country",
+          "example": "Cette double dimension, professionnelle et personnelle, explique pourquoi beaucoup de personnes progressent plus vite à l'étranger qu'elles ne l'auraient fait en restant chez elles.",
+          "usage": "'chez soi' = at home; 'en + gérondif' expresses means."
+        },
+        {
+          "id": "SVC1-0226",
+          "kind": "expression",
+          "french": "un minimum de",
+          "english": "a minimum of / at least some",
+          "example": "Une bonne préparation suppose plusieurs éléments précis : un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation.",
+          "usage": "'un minimum de moyens financiers'; a hedged quantity expression."
+        },
+        {
+          "id": "SVC1-0227",
+          "kind": "expression",
+          "french": "n'est jamais automatique",
+          "english": "is never automatic",
+          "example": "Ensuite, cette réussite n'est jamais automatique : elle dépend en grande partie de la préparation avec laquelle on part.",
+          "usage": "'ne... jamais' with être + adj; stresses that success is conditional."
+        },
+        {
+          "id": "SVC1-0228",
+          "kind": "expression",
+          "french": "au lieu de la faire avancer",
+          "english": "instead of moving it forward",
+          "example": "Sans ces conditions, le départ peut fragiliser la situation au lieu de la faire avancer.",
+          "usage": "au lieu de + inf = instead of; frames the backfiring risk."
+        },
+        {
+          "id": "SVC1-0229",
+          "kind": "expression",
+          "french": "fermer plus de portes que d'en ouvrir",
+          "english": "to close more doors than it opens",
+          "example": "Cela transforme un projet ambitieux en situation précaire, et finit par fermer plus de portes que d'en ouvrir.",
+          "usage": "Idiom of missed opportunity; 'en' replaces 'de portes'."
+        },
+        {
+          "id": "SVC1-0230",
+          "kind": "expression",
+          "french": "une connaissance de base",
+          "english": "a basic knowledge",
+          "example": "Une bonne préparation suppose plusieurs éléments précis : un objectif défini, un minimum de moyens financiers, une connaissance de base de la langue et une vraie capacité d'adaptation.",
+          "usage": "'de base' = basic; part of the preparation checklist."
+        },
+        {
+          "id": "SVC1-0231",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, il est tout à fait possible d'atteindre ses objectifs à l'étranger, mais à certaines conditions.",
+          "usage": "Opinion marker; comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0232",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, partir à l'étranger peut ouvrir de vraies opportunités que l'on n'aurait pas dans son pays d'origine.",
+          "usage": "First-argument opener in the three-part plan."
+        },
+        {
+          "id": "SVC1-0233",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, cette réussite n'est jamais automatique : elle dépend en grande partie de la préparation avec laquelle on part.",
+          "usage": "Second connector; keeps arguments ordered."
+        },
+        {
+          "id": "SVC1-0234",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, le résultat dépend aussi des liens construits sur place, qui transforment un projet en réalité.",
+          "usage": "Introduces the last (human-ties) argument."
+        },
+        {
+          "id": "SVC1-0235",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, atteindre ses objectifs ne dépend pas seulement de la compétence ou de la motivation personnelle.",
+          "usage": "Confirms and develops a claim; introduces justification, not an example."
+        },
+        {
+          "id": "SVC1-0236",
+          "kind": "tournure",
+          "french": "De plus,",
+          "english": "Moreover,",
+          "example": "De plus, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "Additive connector ('De plus, vivre dans un nouvel environnement...')."
+        },
+        {
+          "id": "SVC1-0237",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, il ne faut pas idéaliser l'expérience à l'étranger.",
+          "usage": "Opens the nuance warning against idealising life abroad."
+        },
+        {
+          "id": "SVC1-0238",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense qu'il est tout à fait possible d'atteindre ses objectifs à l'étranger, à condition de partir avec un projet clair, une vraie préparation et une volonté de construire des liens sur place.",
+          "usage": "Signals the synthesis of conditions for success."
+        },
+        {
+          "id": "SVC1-0239",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "Par exemple, c'est souvent grâce à un collègue ou à un voisin que l'on entend parler d'un emploi avant qu'il ne soit publié, ou que l'on découvre la bonne marche à suivre pour une démarche administrative compliquée.",
+          "usage": "Introduces an illustration; comma after when fronted."
+        },
+        {
+          "id": "SVC1-0240",
+          "kind": "tournure",
+          "french": "mais",
+          "english": "but",
+          "example": "À mon avis, il est tout à fait possible d'atteindre ses objectifs à l'étranger, mais à certaines conditions.",
+          "usage": "Adversative connector; 'mais cette réussite n'est jamais automatique'."
+        },
+        {
+          "id": "SVC1-0241",
+          "kind": "phrase-modele",
+          "french": "il est tout à fait possible d'atteindre ses objectifs à l'étranger, mais à certaines conditions",
+          "english": "it is quite possible to achieve your goals abroad, but under certain conditions",
+          "example": "À mon avis, il est tout à fait possible d'atteindre ses objectifs à l'étranger, mais à certaines conditions.",
+          "usage": "'il est possible de + inf'; a thesis with a built-in condition clause."
+        },
+        {
+          "id": "SVC1-0242",
+          "kind": "phrase-modele",
+          "french": "cette réussite n'est jamais automatique",
+          "english": "this success is never automatic",
+          "example": "Ensuite, cette réussite n'est jamais automatique : elle dépend en grande partie de la préparation avec laquelle on part.",
+          "usage": "Present + 'jamais'; the guarded stance; very quotable."
+        },
+        {
+          "id": "SVC1-0243",
+          "kind": "phrase-modele",
+          "french": "partir à l'étranger peut ouvrir de vraies opportunités que l'on n'aurait pas dans son pays d'origine",
+          "english": "going abroad can open real opportunities you wouldn't have back home",
+          "example": "Tout d'abord, partir à l'étranger peut ouvrir de vraies opportunités que l'on n'aurait pas dans son pays d'origine.",
+          "usage": "Conditional 'aurait'; 'pays d'origine' vs 'pays d'accueil'; argument-1 line."
+        },
+        {
+          "id": "SVC1-0244",
+          "kind": "phrase-modele",
+          "french": "vivre dans un nouvel environnement oblige à se débrouiller seul",
+          "english": "living in a new environment forces you to fend for yourself",
+          "example": "De plus, vivre dans un nouvel environnement oblige à se débrouiller seul et à développer des qualités utiles pour toute une carrière.",
+          "usage": "obliger à + inf; the personal-growth mechanism."
+        },
+        {
+          "id": "SVC1-0245",
+          "kind": "phrase-modele",
+          "french": "partir sans projet clair, sans connaître la langue et sans ressources suffisantes mène le plus souvent à la déception",
+          "english": "leaving without a clear plan, language or resources most often leads to disappointment",
+          "example": "En effet, partir sans projet clair, sans connaître la langue et sans ressources suffisantes mène le plus souvent à la déception.",
+          "usage": "Triple 'sans' anaphora; mener à; cautionary argument-2 sentence."
+        },
+        {
+          "id": "SVC1-0246",
+          "kind": "phrase-modele",
+          "french": "les liens humains construits sur place jouent un rôle décisif",
+          "english": "the human ties built locally play a decisive role",
+          "example": "Enfin, les liens humains construits sur place jouent un rôle décisif dans la réussite d'un projet à l'étranger.",
+          "usage": "Past participle 'construits' + jouer un rôle décisif; argument-3 thesis."
+        },
+        {
+          "id": "SVC1-0247",
+          "kind": "phrase-modele",
+          "french": "des opportunités qui ne passent pas par les annonces",
+          "english": "opportunities that don't go through job ads",
+          "example": "Les contacts sur place donnent accès à plusieurs choses essentielles : des informations sur le marché du travail, des opportunités qui ne passent pas par les annonces, une aide pour les démarches et un soutien moral dans les moments difficiles.",
+          "usage": "passer par = to go through; the hidden-job-market idea."
+        },
+        {
+          "id": "SVC1-0248",
+          "kind": "phrase-modele",
+          "french": "il ne faut pas idéaliser l'expérience à l'étranger",
+          "english": "you must not idealise the experience abroad",
+          "example": "Cependant, il ne faut pas idéaliser l'expérience à l'étranger.",
+          "usage": "il ne faut pas + inf = you must not; opens the nuance."
+        },
+        {
+          "id": "SVC1-0249",
+          "kind": "phrase-modele",
+          "french": "La réussite n'est jamais garantie par le simple fait de quitter son pays",
+          "english": "Success is never guaranteed by the mere fact of leaving your country",
+          "example": "La réussite n'est jamais garantie par le simple fait de quitter son pays.",
+          "usage": "'le simple fait de + inf'; passive 'garantie par'; the nuance clincher."
+        },
+        {
+          "id": "SVC1-0250",
+          "kind": "phrase-modele",
+          "french": "Ce sont ces conditions, et non le départ lui-même, qui font la différence",
+          "english": "It is these conditions, not the departure itself, that make the difference",
+          "example": "Ce sont ces conditions, et non le départ lui-même, qui font la différence entre une réussite et une déception.",
+          "usage": "Cleft 'ce sont... qui' + 'et non' contrast; faire la différence; conclusion."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p6",
+      "entries": [
+        {
+          "id": "SVC1-0251",
+          "kind": "mot-cle",
+          "french": "le livre",
+          "english": "the book",
+          "example": "À mon avis, le livre n'est pas devenu inutile aujourd'hui.",
+          "usage": "M.; the subject defended; 'le livre' as a medium vs 'les écrans'."
+        },
+        {
+          "id": "SVC1-0252",
+          "kind": "mot-cle",
+          "french": "réflexion",
+          "english": "reflection / thinking",
+          "example": "D'abord, il développe la réflexion et la concentration.",
+          "usage": "Fem.; 'développer la réflexion'; a cognitive-benefit keyword."
+        },
+        {
+          "id": "SVC1-0253",
+          "kind": "mot-cle",
+          "french": "concentration",
+          "english": "concentration",
+          "example": "D'abord, il développe la réflexion et la concentration.",
+          "usage": "Fem.; paired with réflexion; an attention-related benefit."
+        },
+        {
+          "id": "SVC1-0254",
+          "kind": "mot-cle",
+          "french": "connaissances",
+          "english": "knowledge (items)",
+          "example": "Ensuite, il permet d'acquérir des connaissances solides et durables.",
+          "usage": "Fem. pl.; 'acquérir des connaissances solides'; note the plural form."
+        },
+        {
+          "id": "SVC1-0255",
+          "kind": "mot-cle",
+          "french": "imagination",
+          "english": "imagination",
+          "example": "Enfin, il nourrit l'imagination, la sensibilité et l'esprit critique.",
+          "usage": "Fem.; 'nourrir l'imagination'; a benefit of reading fiction."
+        },
+        {
+          "id": "SVC1-0256",
+          "kind": "mot-cle",
+          "french": "sensibilité",
+          "english": "sensitivity",
+          "example": "Enfin, il nourrit l'imagination, la sensibilité et l'esprit critique.",
+          "usage": "Fem.; an emotional / aesthetic faculty developed by books."
+        },
+        {
+          "id": "SVC1-0257",
+          "kind": "mot-cle",
+          "french": "esprit critique",
+          "english": "critical thinking",
+          "example": "Enfin, il nourrit l'imagination, la sensibilité et l'esprit critique.",
+          "usage": "M.; 'nourrit l'esprit critique'; a prized intellectual quality."
+        },
+        {
+          "id": "SVC1-0258",
+          "kind": "mot-cle",
+          "french": "écrans",
+          "english": "screens",
+          "example": "Les écrans, qui montrent des images toutes faites, demandent beaucoup moins ce travail intérieur.",
+          "usage": "M. pl.; 'les écrans et le numérique'; the contrast term."
+        },
+        {
+          "id": "SVC1-0259",
+          "kind": "mot-cle",
+          "french": "numérique",
+          "english": "digital (media)",
+          "example": "L'idéal est de combiner ces différentes ressources, plutôt que d'opposer le livre au numérique.",
+          "usage": "M. as noun; 'le numérique'; opposed to yet complementary with the book."
+        },
+        {
+          "id": "SVC1-0260",
+          "kind": "mot-cle",
+          "french": "empathie",
+          "english": "empathy",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien.",
+          "usage": "Fem.; 'développe l'empathie'; a benefit of imagining characters."
+        },
+        {
+          "id": "SVC1-0261",
+          "kind": "collocation",
+          "french": "développe la réflexion et la concentration",
+          "english": "develops reflection and concentration",
+          "example": "D'abord, il développe la réflexion et la concentration.",
+          "usage": "développer + abstract nouns; the argument-1 benefit collocation."
+        },
+        {
+          "id": "SVC1-0262",
+          "kind": "collocation",
+          "french": "acquérir des connaissances solides et durables",
+          "english": "to acquire solid and lasting knowledge",
+          "example": "Ensuite, il permet d'acquérir des connaissances solides et durables.",
+          "usage": "acquérir des connaissances; 'solides et durables' evaluative pair."
+        },
+        {
+          "id": "SVC1-0263",
+          "kind": "collocation",
+          "french": "nourrit l'imagination",
+          "english": "nourishes the imagination",
+          "example": "Enfin, il nourrit l'imagination, la sensibilité et l'esprit critique.",
+          "usage": "nourrir = to feed / nurture; a metaphorical collocation for culture."
+        },
+        {
+          "id": "SVC1-0264",
+          "kind": "collocation",
+          "french": "tenir son attention",
+          "english": "to hold one's attention",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures.",
+          "usage": "tenir l'attention; a concentration collocation; contrasts with short content."
+        },
+        {
+          "id": "SVC1-0265",
+          "kind": "collocation",
+          "french": "aller au fond d'un sujet",
+          "english": "to get to the bottom of a subject",
+          "example": "Il prend le temps d'aller au fond d'un sujet et il reste accessible des années plus tard.",
+          "usage": "aller au fond de = to go deeply into; the depth-of-book argument."
+        },
+        {
+          "id": "SVC1-0266",
+          "kind": "collocation",
+          "french": "se mettre à la place des personnages",
+          "english": "to put oneself in the characters' shoes",
+          "example": "En effet, lire un roman ou un témoignage oblige à imaginer les scènes, à se mettre à la place des personnages et à réfléchir à leurs choix.",
+          "usage": "se mettre à la place de qn; the empathy mechanism; very reusable."
+        },
+        {
+          "id": "SVC1-0267",
+          "kind": "collocation",
+          "french": "comprendre des points de vue différents",
+          "english": "to understand different viewpoints",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien.",
+          "usage": "point de vue = viewpoint; an open-mindedness benefit."
+        },
+        {
+          "id": "SVC1-0268",
+          "kind": "collocation",
+          "french": "construire une vraie culture personnelle",
+          "english": "to build a real personal culture",
+          "example": "Cela permet de construire une vraie culture personnelle, qui reste utile sur le long terme et qui ne dépend pas d'une connexion ou d'un algorithme.",
+          "usage": "construire une culture; a long-term-benefit collocation."
+        },
+        {
+          "id": "SVC1-0269",
+          "kind": "collocation",
+          "french": "des contenus très courts",
+          "english": "very short content",
+          "example": "Cette qualité de lecture est devenue rare aujourd'hui, parce que les écrans et les réseaux sociaux nous habituent à des contenus très courts, très rapides et souvent superficiels.",
+          "usage": "'contenu' m.; describes screen habits; a media-criticism collocation."
+        },
+        {
+          "id": "SVC1-0270",
+          "kind": "collocation",
+          "french": "combiner ces différentes ressources",
+          "english": "to combine these different resources",
+          "example": "L'idéal est de combiner ces différentes ressources, plutôt que d'opposer le livre au numérique.",
+          "usage": "combiner = to combine; the balanced recommendation of the nuance."
+        },
+        {
+          "id": "SVC1-0271",
+          "kind": "expression",
+          "french": "loin d'être inutile",
+          "english": "far from useless",
+          "example": "À mon avis, non, le livre est loin d'être inutile, parce qu'il garde des qualités que peu d'autres supports peuvent vraiment remplacer.",
+          "usage": "'loin de + inf' = far from being; emphatic negation; the thesis expression."
+        },
+        {
+          "id": "SVC1-0272",
+          "kind": "expression",
+          "french": "du jour au lendemain",
+          "english": "overnight",
+          "example": "À l'inverse, beaucoup de contenus en ligne sont rapides, partiels, parfois faux, et ils peuvent disparaître ou changer du jour au lendemain.",
+          "usage": "'ils peuvent disparaître ou changer du jour au lendemain'; instability idiom."
+        },
+        {
+          "id": "SVC1-0273",
+          "kind": "expression",
+          "french": "toutes faites",
+          "english": "ready-made",
+          "example": "Les écrans, qui montrent des images toutes faites, demandent beaucoup moins ce travail intérieur.",
+          "usage": "'des images toutes faites'; 'tout fait' = ready-made, needing no effort."
+        },
+        {
+          "id": "SVC1-0274",
+          "kind": "expression",
+          "french": "de grande qualité",
+          "english": "of high quality",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité.",
+          "usage": "'peuvent aussi être de grande qualité'; concedes value to other media."
+        },
+        {
+          "id": "SVC1-0275",
+          "kind": "expression",
+          "french": "prendre du temps",
+          "english": "to take time",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures.",
+          "usage": "'lire demande de prendre du temps'; contrasts with fast content."
+        },
+        {
+          "id": "SVC1-0276",
+          "kind": "expression",
+          "french": "des années plus tard",
+          "english": "years later",
+          "example": "Il prend le temps d'aller au fond d'un sujet et il reste accessible des années plus tard.",
+          "usage": "'il reste accessible des années plus tard'; stresses durability."
+        },
+        {
+          "id": "SVC1-0277",
+          "kind": "expression",
+          "french": "en ligne",
+          "english": "online",
+          "example": "Les documentaires, les podcasts et les conférences en ligne peuvent aussi être de grande qualité.",
+          "usage": "'les contenus que l'on trouve en ligne'; opposes book and web."
+        },
+        {
+          "id": "SVC1-0278",
+          "kind": "expression",
+          "french": "une heure chaque soir",
+          "english": "an hour every evening",
+          "example": "Prenons l'exemple d'une personne qui s'installe une heure chaque soir avec un essai exigeant : elle développe une attention longue et profonde, devenue très rare à l'ère des écrans.",
+          "usage": "A concrete routine example; 'chaque soir' = every evening."
+        },
+        {
+          "id": "SVC1-0279",
+          "kind": "expression",
+          "french": "peinent à transmettre",
+          "english": "struggle to convey",
+          "example": "Cela enrichit la vie intérieure et donne accès à des émotions, des idées et des cultures que les contenus numériques rapides peinent à transmettre.",
+          "usage": "peiner à + inf = to struggle to; underlines what screens lack."
+        },
+        {
+          "id": "SVC1-0280",
+          "kind": "expression",
+          "french": "à enchaîner des articles courts",
+          "english": "rattling off short articles",
+          "example": "Prenons l'exemple d'un étudiant qui prépare un examen ou d'un professionnel qui apprend un nouveau domaine : un bon livre lui apportera bien plus qu'une heure passée à enchaîner des articles courts ou des vidéos.",
+          "usage": "enchaîner = to string together; describes shallow reading."
+        },
+        {
+          "id": "SVC1-0281",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, le livre n'est pas devenu inutile aujourd'hui.",
+          "usage": "Opinion marker; comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0282",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, le livre reste un outil très puissant pour développer la réflexion et la concentration.",
+          "usage": "First-argument opener in the three-part plan."
+        },
+        {
+          "id": "SVC1-0283",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, il permet d'acquérir des connaissances solides et durables.",
+          "usage": "Second connector; keeps arguments ordered."
+        },
+        {
+          "id": "SVC1-0284",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, il nourrit l'imagination, la sensibilité et l'esprit critique.",
+          "usage": "Introduces the last (imagination) argument."
+        },
+        {
+          "id": "SVC1-0285",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, un livre est en général plus structuré, plus approfondi et plus stable que la plupart des contenus que l'on trouve en ligne.",
+          "usage": "Confirms and develops a claim; introduces justification, not an example."
+        },
+        {
+          "id": "SVC1-0286",
+          "kind": "tournure",
+          "french": "À l'inverse,",
+          "english": "Conversely,",
+          "example": "À l'inverse, beaucoup de contenus en ligne sont rapides, partiels, parfois faux, et ils peuvent disparaître ou changer du jour au lendemain.",
+          "usage": "Presents the opposite case ('À l'inverse, beaucoup de contenus en ligne...')."
+        },
+        {
+          "id": "SVC1-0287",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, le livre n'est pas la seule manière de s'informer ou de se cultiver.",
+          "usage": "Opens the nuance: the book is not the only good resource."
+        },
+        {
+          "id": "SVC1-0288",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que le livre est loin d'être inutile, parce qu'il développe la réflexion, transmet des connaissances solides et nourrit la sensibilité.",
+          "usage": "Signals the synthesis of the book's qualities."
+        },
+        {
+          "id": "SVC1-0289",
+          "kind": "tournure",
+          "french": "Même si",
+          "english": "Even if / although",
+          "example": "Même si les écrans et le numérique offrent un accès très rapide à l'information, le livre garde des qualités que les autres médias remplacent difficilement.",
+          "usage": "Concessive; grants the strengths of screens before qualifying."
+        },
+        {
+          "id": "SVC1-0290",
+          "kind": "tournure",
+          "french": "parce que",
+          "english": "because",
+          "example": "Cette qualité de lecture est devenue rare aujourd'hui, parce que les écrans et les réseaux sociaux nous habituent à des contenus très courts, très rapides et souvent superficiels.",
+          "usage": "Causal subordinator giving justification; 'parce que' vs 'pour que'."
+        },
+        {
+          "id": "SVC1-0291",
+          "kind": "phrase-modele",
+          "french": "le livre n'est pas devenu inutile aujourd'hui",
+          "english": "the book has not become useless today",
+          "example": "À mon avis, le livre n'est pas devenu inutile aujourd'hui.",
+          "usage": "Passé composé 'est devenu'; a direct rebuttal of the prompt."
+        },
+        {
+          "id": "SVC1-0292",
+          "kind": "phrase-modele",
+          "french": "le livre garde des qualités que les autres médias remplacent difficilement",
+          "english": "the book keeps qualities that other media struggle to replace",
+          "example": "Même si les écrans et le numérique offrent un accès très rapide à l'information, le livre garde des qualités que les autres médias remplacent difficilement.",
+          "usage": "Relative 'que... remplacent'; 'difficilement' = hardly; the thesis line."
+        },
+        {
+          "id": "SVC1-0293",
+          "kind": "phrase-modele",
+          "french": "lire demande de prendre du temps, de suivre une pensée longue",
+          "english": "reading requires taking time and following a long line of thought",
+          "example": "En effet, lire demande de prendre du temps, de suivre une pensée longue et de tenir son attention sur plusieurs pages, parfois plusieurs heures.",
+          "usage": "demander de + inf; enumerated infinitives; argument-1 development."
+        },
+        {
+          "id": "SVC1-0294",
+          "kind": "phrase-modele",
+          "french": "Le livre, lui, force à ralentir, à approfondir et à vraiment comprendre",
+          "english": "The book, for its part, forces you to slow down, go deeper and truly understand",
+          "example": "Le livre, lui, force à ralentir, à approfondir et à vraiment comprendre.",
+          "usage": "forcer à + inf series; emphatic 'lui'; contrasts with fast media."
+        },
+        {
+          "id": "SVC1-0295",
+          "kind": "phrase-modele",
+          "french": "un livre est en général plus structuré, plus approfondi et plus stable",
+          "english": "a book is generally more structured, deeper and more stable",
+          "example": "En effet, un livre est en général plus structuré, plus approfondi et plus stable que la plupart des contenus que l'on trouve en ligne.",
+          "usage": "Stacked comparatives 'plus... plus...'; the argument-2 topic sentence."
+        },
+        {
+          "id": "SVC1-0296",
+          "kind": "phrase-modele",
+          "french": "Il prend le temps d'aller au fond d'un sujet",
+          "english": "It takes the time to get to the bottom of a subject",
+          "example": "Il prend le temps d'aller au fond d'un sujet et il reste accessible des années plus tard.",
+          "usage": "prendre le temps de + inf; the depth argument; oral-friendly."
+        },
+        {
+          "id": "SVC1-0297",
+          "kind": "phrase-modele",
+          "french": "lire un roman ou un témoignage oblige à imaginer les scènes",
+          "english": "reading a novel or memoir forces you to imagine the scenes",
+          "example": "En effet, lire un roman ou un témoignage oblige à imaginer les scènes, à se mettre à la place des personnages et à réfléchir à leurs choix.",
+          "usage": "obliger à + inf; the empathy / imagination mechanism."
+        },
+        {
+          "id": "SVC1-0298",
+          "kind": "phrase-modele",
+          "french": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents",
+          "english": "This experience develops empathy, creativity and the ability to understand different viewpoints",
+          "example": "Cette expérience développe l'empathie, la créativité et la capacité de comprendre des points de vue différents du sien.",
+          "usage": "Triple object; the benefit synthesis of argument 3."
+        },
+        {
+          "id": "SVC1-0299",
+          "kind": "phrase-modele",
+          "french": "L'idéal est de combiner ces différentes ressources",
+          "english": "The ideal is to combine these different resources",
+          "example": "L'idéal est de combiner ces différentes ressources, plutôt que d'opposer le livre au numérique.",
+          "usage": "'l'idéal est de + inf'; the balanced nuance; avoids either / or."
+        },
+        {
+          "id": "SVC1-0300",
+          "kind": "phrase-modele",
+          "french": "il faut le voir comme un outil complémentaire, indispensable à une vraie culture personnelle",
+          "english": "it should be seen as a complementary tool, essential to a real personal culture",
+          "example": "Plutôt que de l'opposer au numérique, il faut le voir comme un outil complémentaire, indispensable à une vraie culture personnelle.",
+          "usage": "voir qch comme = to see sth as; 'indispensable à'; the conclusion."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p7",
+      "entries": [
+        {
+          "id": "SVC1-0301",
+          "kind": "mot-cle",
+          "french": "métiers artistiques",
+          "english": "artistic professions",
+          "example": "À mon avis, les métiers artistiques ne méritent absolument pas d'être considérés comme peu sérieux.",
+          "usage": "M. pl.; 'les métiers artistiques'; the subject defended."
+        },
+        {
+          "id": "SVC1-0302",
+          "kind": "mot-cle",
+          "french": "discipline",
+          "english": "discipline",
+          "example": "D'abord, ils exigent une vraie discipline et beaucoup de travail personnel.",
+          "usage": "Fem.; 'une vraie discipline'; a core quality proving seriousness."
+        },
+        {
+          "id": "SVC1-0303",
+          "kind": "mot-cle",
+          "french": "formation",
+          "english": "training / education",
+          "example": "Ensuite, ils nécessitent une formation longue et exigeante.",
+          "usage": "Fem.; 'une formation longue et exigeante'; the argument-2 keyword."
+        },
+        {
+          "id": "SVC1-0304",
+          "kind": "mot-cle",
+          "french": "engagement",
+          "english": "commitment",
+          "example": "À mon avis, non, les métiers artistiques sont de vrais métiers sérieux, qui demandent autant d'engagement, de discipline et de formation que beaucoup d'autres professions.",
+          "usage": "M.; 'un niveau d'engagement personnel'; an effort keyword."
+        },
+        {
+          "id": "SVC1-0305",
+          "kind": "mot-cle",
+          "french": "organisation professionnelle",
+          "english": "professional organisation",
+          "example": "Enfin, derrière chaque production artistique, il y a une vraie organisation professionnelle.",
+          "usage": "Fem.; the argument-3 keyword; the structure behind productions."
+        },
+        {
+          "id": "SVC1-0306",
+          "kind": "mot-cle",
+          "french": "technique",
+          "english": "technique",
+          "example": "L'artiste doit travailler sa technique et accepter les critiques.",
+          "usage": "Fem.; 'maîtriser une technique précise'; a craft keyword."
+        },
+        {
+          "id": "SVC1-0307",
+          "kind": "mot-cle",
+          "french": "vocation",
+          "english": "vocation / calling",
+          "example": "Cela transforme une vocation artistique en véritable métier, fondé sur des compétences précises et reconnues par les professionnels du secteur.",
+          "usage": "Fem.; 'une vocation artistique'; turned into a real métier."
+        },
+        {
+          "id": "SVC1-0308",
+          "kind": "mot-cle",
+          "french": "précarité",
+          "english": "precariousness / job insecurity",
+          "example": "Leur précarité est un vrai problème, mais cela ne change rien à la valeur du travail accompli.",
+          "usage": "Fem.; the nuance; 'plus précaires'; an economic reality."
+        },
+        {
+          "id": "SVC1-0309",
+          "kind": "mot-cle",
+          "french": "répétitions",
+          "english": "rehearsals",
+          "example": "En effet, derrière chaque film, chaque concert, chaque tableau ou chaque pièce de théâtre, il y a souvent des années d'efforts, de répétitions, de doutes et de remises en question.",
+          "usage": "Fem. pl.; 'des années d'efforts, de répétitions'; concrete work realia."
+        },
+        {
+          "id": "SVC1-0310",
+          "kind": "mot-cle",
+          "french": "budgets",
+          "english": "budgets",
+          "example": "Tous travaillent avec des contrats, des budgets précis, des délais de livraison et de vraies responsabilités vis-à-vis du public et des financeurs.",
+          "usage": "M. pl.; 'des budgets précis'; the managerial dimension of productions."
+        },
+        {
+          "id": "SVC1-0311",
+          "kind": "collocation",
+          "french": "exigent une vraie discipline",
+          "english": "require real discipline",
+          "example": "D'abord, ils exigent une vraie discipline et beaucoup de travail personnel.",
+          "usage": "exiger = to demand; the argument-1 collocation about effort."
+        },
+        {
+          "id": "SVC1-0312",
+          "kind": "collocation",
+          "french": "travailler sa technique",
+          "english": "to work on one's technique",
+          "example": "L'artiste doit travailler sa technique et accepter les critiques.",
+          "usage": "travailler qch (transitive) = to hone; a craft collocation."
+        },
+        {
+          "id": "SVC1-0313",
+          "kind": "collocation",
+          "french": "beaucoup de travail personnel",
+          "english": "a lot of personal work",
+          "example": "D'abord, ils exigent une vraie discipline et beaucoup de travail personnel.",
+          "usage": "'travail personnel' = individual practice; an effort collocation."
+        },
+        {
+          "id": "SVC1-0314",
+          "kind": "collocation",
+          "french": "répète plusieurs heures par jour",
+          "english": "rehearses several hours a day",
+          "example": "Pensons, par exemple, à un musicien classique : il commence souvent à pratiquer son instrument dès l'enfance, répète plusieurs heures par jour pendant des années, et continue à travailler tout au long de sa carrière pour rester au meilleur niveau.",
+          "usage": "répéter = to rehearse; an intensity-of-practice collocation."
+        },
+        {
+          "id": "SVC1-0315",
+          "kind": "collocation",
+          "french": "des années d'études",
+          "english": "years of study",
+          "example": "En effet, devenir comédien, musicien, peintre ou cinéaste suppose des années d'études dans des écoles spécialisées, des conservatoires ou des académies, où l'on apprend à la fois la théorie et la pratique.",
+          "usage": "'années d'études'; a length-of-training collocation, transferable."
+        },
+        {
+          "id": "SVC1-0316",
+          "kind": "collocation",
+          "french": "apprend à la fois la théorie et la pratique",
+          "english": "learns both theory and practice",
+          "example": "En effet, devenir comédien, musicien, peintre ou cinéaste suppose des années d'études dans des écoles spécialisées, des conservatoires ou des académies, où l'on apprend à la fois la théorie et la pratique.",
+          "usage": "apprendre; 'à la fois... et' correlative; training content."
+        },
+        {
+          "id": "SVC1-0317",
+          "kind": "collocation",
+          "french": "savoir collaborer avec d'autres professionnels",
+          "english": "to know how to collaborate with other professionals",
+          "example": "Il faut maîtriser une technique précise, connaître l'histoire de son art et savoir collaborer avec d'autres professionnels.",
+          "usage": "savoir + inf = to know how to; a teamwork collocation."
+        },
+        {
+          "id": "SVC1-0318",
+          "kind": "collocation",
+          "french": "mobilise souvent des dizaines",
+          "english": "often mobilises dozens (of people)",
+          "example": "En effet, un film, un concert, un festival ou une exposition mobilise souvent des dizaines, parfois des centaines de personnes : techniciens, costumiers, ingénieurs du son, producteurs, équipes commerciales et juridiques.",
+          "usage": "mobiliser; a scale-of-production collocation."
+        },
+        {
+          "id": "SVC1-0319",
+          "kind": "collocation",
+          "french": "des délais à respecter",
+          "english": "deadlines to meet",
+          "example": "Enfin, derrière chaque production artistique importante, il y a une véritable organisation professionnelle, avec des équipes, des budgets et des délais à respecter.",
+          "usage": "respecter un délai = to meet a deadline; a managerial collocation."
+        },
+        {
+          "id": "SVC1-0320",
+          "kind": "collocation",
+          "french": "des revenus irréguliers",
+          "english": "irregular income",
+          "example": "Cependant, c'est vrai que les métiers artistiques restent souvent plus précaires que d'autres, avec des revenus irréguliers et peu de stabilité.",
+          "usage": "'revenus' m. pl.; the nuance about precarity; Économie-transferable."
+        },
+        {
+          "id": "SVC1-0321",
+          "kind": "expression",
+          "french": "aux yeux du public",
+          "english": "in the eyes of the public",
+          "example": "Cela impose un niveau d'engagement personnel équivalent, voire supérieur, à celui de beaucoup de professions plus reconnues, même si ce travail reste souvent invisible aux yeux du public.",
+          "usage": "'invisible aux yeux du public'; 'aux yeux de' = from the standpoint of."
+        },
+        {
+          "id": "SVC1-0322",
+          "kind": "expression",
+          "french": "au meilleur niveau",
+          "english": "at the top level",
+          "example": "Pensons, par exemple, à un musicien classique : il commence souvent à pratiquer son instrument dès l'enfance, répète plusieurs heures par jour pendant des années, et continue à travailler tout au long de sa carrière pour rester au meilleur niveau.",
+          "usage": "'rester au meilleur niveau'; a high-standard expression."
+        },
+        {
+          "id": "SVC1-0323",
+          "kind": "expression",
+          "french": "dès l'enfance",
+          "english": "from childhood",
+          "example": "Pensons, par exemple, à un musicien classique : il commence souvent à pratiquer son instrument dès l'enfance, répète plusieurs heures par jour pendant des années, et continue à travailler tout au long de sa carrière pour rester au meilleur niveau.",
+          "usage": "'dès' = as early as; stresses very early training."
+        },
+        {
+          "id": "SVC1-0324",
+          "kind": "expression",
+          "french": "tout au long de sa carrière",
+          "english": "throughout one's career",
+          "example": "Pensons, par exemple, à un musicien classique : il commence souvent à pratiquer son instrument dès l'enfance, répète plusieurs heures par jour pendant des années, et continue à travailler tout au long de sa carrière pour rester au meilleur niveau.",
+          "usage": "'tout au long de' = all through; a duration idiom."
+        },
+        {
+          "id": "SVC1-0325",
+          "kind": "expression",
+          "french": "au même niveau",
+          "english": "on the same level",
+          "example": "Cela place les métiers artistiques au même niveau d'exigence professionnelle que beaucoup d'autres secteurs, avec les mêmes contraintes de budget, de délais et de qualité.",
+          "usage": "'place les métiers artistiques au même niveau'; a comparison expression."
+        },
+        {
+          "id": "SVC1-0326",
+          "kind": "expression",
+          "french": "n'importe quelle autre profession",
+          "english": "any other profession",
+          "example": "Il doit aussi savoir s'organiser et tenir des délais, exactement comme dans n'importe quelle autre profession.",
+          "usage": "'n'importe quel' = any (at all); a levelling comparison."
+        },
+        {
+          "id": "SVC1-0327",
+          "kind": "expression",
+          "french": "plus de cent personnes",
+          "english": "over a hundred people",
+          "example": "On peut citer, par exemple, le tournage d'un film, qui mobilise pendant plusieurs mois une équipe de plus de cent personnes, avec des budgets et des plannings aussi serrés que dans n'importe quel projet d'entreprise.",
+          "usage": "'plus de + number'; conveys the scale of a production."
+        },
+        {
+          "id": "SVC1-0328",
+          "kind": "expression",
+          "french": "vis-à-vis du public",
+          "english": "towards / vis-à-vis the public",
+          "example": "Tous travaillent avec des contrats, des budgets précis, des délais de livraison et de vraies responsabilités vis-à-vis du public et des financeurs.",
+          "usage": "'vis-à-vis de' = in relation to; expresses responsibility to others."
+        },
+        {
+          "id": "SVC1-0329",
+          "kind": "expression",
+          "french": "aussi serrés",
+          "english": "just as tight",
+          "example": "On peut citer, par exemple, le tournage d'un film, qui mobilise pendant plusieurs mois une équipe de plus de cent personnes, avec des budgets et des plannings aussi serrés que dans n'importe quel projet d'entreprise.",
+          "usage": "'des plannings aussi serrés que...'; aussi... que = as... as."
+        },
+        {
+          "id": "SVC1-0330",
+          "kind": "expression",
+          "french": "pendant des années",
+          "english": "for years",
+          "example": "Pensons, par exemple, à un musicien classique : il commence souvent à pratiquer son instrument dès l'enfance, répète plusieurs heures par jour pendant des années, et continue à travailler tout au long de sa carrière pour rester au meilleur niveau.",
+          "usage": "Duration expression stressing sustained effort."
+        },
+        {
+          "id": "SVC1-0331",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, les métiers artistiques ne méritent absolument pas d'être considérés comme peu sérieux.",
+          "usage": "Opinion marker; comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0332",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, les métiers artistiques exigent une vraie discipline et beaucoup de travail personnel, contrairement à l'image qu'on en a parfois.",
+          "usage": "First-argument opener in the three-part plan."
+        },
+        {
+          "id": "SVC1-0333",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, ils nécessitent une formation longue et exigeante.",
+          "usage": "Second connector; keeps arguments ordered."
+        },
+        {
+          "id": "SVC1-0334",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, derrière chaque production artistique, il y a une vraie organisation professionnelle.",
+          "usage": "Introduces the last (organisation) argument."
+        },
+        {
+          "id": "SVC1-0335",
+          "kind": "tournure",
+          "french": "En effet,",
+          "english": "Indeed,",
+          "example": "En effet, derrière chaque film, chaque concert, chaque tableau ou chaque pièce de théâtre, il y a souvent des années d'efforts, de répétitions, de doutes et de remises en question.",
+          "usage": "Confirms and develops a claim; introduces justification, not an example."
+        },
+        {
+          "id": "SVC1-0336",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, c'est vrai que les métiers artistiques restent souvent plus précaires que d'autres, avec des revenus irréguliers et peu de stabilité.",
+          "usage": "Opens the nuance about the precarity of artistic jobs."
+        },
+        {
+          "id": "SVC1-0337",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que les métiers artistiques sont des métiers parfaitement sérieux, parce qu'ils demandent une vraie discipline, une longue formation et reposent sur une vraie organisation professionnelle.",
+          "usage": "Signals the synthesis of the three arguments."
+        },
+        {
+          "id": "SVC1-0338",
+          "kind": "tournure",
+          "french": "exactement comme",
+          "english": "exactly like",
+          "example": "Il doit aussi savoir s'organiser et tenir des délais, exactement comme dans n'importe quelle autre profession.",
+          "usage": "Comparison turn equating the artist's work with any profession."
+        },
+        {
+          "id": "SVC1-0339",
+          "kind": "tournure",
+          "french": "Par exemple,",
+          "english": "For example,",
+          "example": "On peut citer, par exemple, le tournage d'un film, qui mobilise pendant plusieurs mois une équipe de plus de cent personnes, avec des budgets et des plannings aussi serrés que dans n'importe quel projet d'entreprise.",
+          "usage": "Introduces an illustration; comma after when fronted."
+        },
+        {
+          "id": "SVC1-0340",
+          "kind": "tournure",
+          "french": "voire",
+          "english": "or even / indeed",
+          "example": "Cela impose un niveau d'engagement personnel équivalent, voire supérieur, à celui de beaucoup de professions plus reconnues, même si ce travail reste souvent invisible aux yeux du public.",
+          "usage": "Gradation connector intensifying ('équivalent, voire supérieur')."
+        },
+        {
+          "id": "SVC1-0341",
+          "kind": "phrase-modele",
+          "french": "les métiers artistiques ne méritent absolument pas d'être considérés comme peu sérieux",
+          "english": "artistic jobs absolutely do not deserve to be seen as not serious",
+          "example": "À mon avis, les métiers artistiques ne méritent absolument pas d'être considérés comme peu sérieux.",
+          "usage": "mériter de + inf; passive 'être considérés comme'; the emphatic thesis."
+        },
+        {
+          "id": "SVC1-0342",
+          "kind": "phrase-modele",
+          "french": "ils demandent une vraie discipline, une vraie formation et reposent sur une vraie organisation professionnelle",
+          "english": "they require real discipline, real training and rest on a real professional organisation",
+          "example": "Même s'ils sont souvent moins reconnus financièrement et socialement, ils demandent une vraie discipline, une vraie formation et reposent sur une vraie organisation professionnelle.",
+          "usage": "reposer sur = to rest on; three-argument preview with anaphora 'une vraie'."
+        },
+        {
+          "id": "SVC1-0343",
+          "kind": "phrase-modele",
+          "french": "derrière chaque film, chaque concert, chaque tableau ou chaque pièce de théâtre, il y a souvent des années d'efforts",
+          "english": "behind every film, concert, painting or play there are often years of effort",
+          "example": "En effet, derrière chaque film, chaque concert, chaque tableau ou chaque pièce de théâtre, il y a souvent des années d'efforts, de répétitions, de doutes et de remises en question.",
+          "usage": "'derrière... il y a' + anaphora 'chaque'; a vivid argument-1 line."
+        },
+        {
+          "id": "SVC1-0344",
+          "kind": "phrase-modele",
+          "french": "Il doit aussi savoir s'organiser et tenir des délais",
+          "english": "He must also know how to organise himself and meet deadlines",
+          "example": "Il doit aussi savoir s'organiser et tenir des délais, exactement comme dans n'importe quelle autre profession.",
+          "usage": "devoir + savoir + inf; likens the artist to any professional."
+        },
+        {
+          "id": "SVC1-0345",
+          "kind": "phrase-modele",
+          "french": "devenir comédien, musicien, peintre ou cinéaste suppose des années d'études",
+          "english": "becoming an actor, musician, painter or filmmaker requires years of study",
+          "example": "En effet, devenir comédien, musicien, peintre ou cinéaste suppose des années d'études dans des écoles spécialisées, des conservatoires ou des académies, où l'on apprend à la fois la théorie et la pratique.",
+          "usage": "supposer = to entail; infinitive subject; the argument-2 topic sentence."
+        },
+        {
+          "id": "SVC1-0346",
+          "kind": "phrase-modele",
+          "french": "Il faut maîtriser une technique précise, connaître l'histoire de son art",
+          "english": "One must master a precise technique and know the history of one's art",
+          "example": "Il faut maîtriser une technique précise, connaître l'histoire de son art et savoir collaborer avec d'autres professionnels.",
+          "usage": "il faut + inf series; the content of artistic training."
+        },
+        {
+          "id": "SVC1-0347",
+          "kind": "phrase-modele",
+          "french": "derrière chaque production artistique importante, il y a une véritable organisation professionnelle",
+          "english": "behind every major artistic production there is a genuine professional organisation",
+          "example": "Enfin, derrière chaque production artistique importante, il y a une véritable organisation professionnelle, avec des équipes, des budgets et des délais à respecter.",
+          "usage": "The argument-3 thesis; 'véritable' intensifier; a quotable framing."
+        },
+        {
+          "id": "SVC1-0348",
+          "kind": "phrase-modele",
+          "french": "Tous travaillent avec des contrats, des budgets précis, des délais de livraison et de vraies responsabilités",
+          "english": "They all work with contracts, precise budgets, delivery deadlines and real responsibilities",
+          "example": "Tous travaillent avec des contrats, des budgets précis, des délais de livraison et de vraies responsabilités vis-à-vis du public et des financeurs.",
+          "usage": "Enumerated realia proving professionalism; parallel nouns."
+        },
+        {
+          "id": "SVC1-0349",
+          "kind": "phrase-modele",
+          "french": "Cette difficulté économique est réelle, mais elle ne dit rien sur le sérieux du métier lui-même",
+          "english": "This economic difficulty is real, but it says nothing about the seriousness of the job itself",
+          "example": "Cette difficulté économique est réelle, mais elle ne dit rien sur le sérieux du métier lui-même.",
+          "usage": "Concession 'réelle, mais'; 'ne rien dire sur' = to say nothing about; the nuance."
+        },
+        {
+          "id": "SVC1-0350",
+          "kind": "phrase-modele",
+          "french": "Leur précarité est un vrai problème, mais cela ne change rien à la valeur du travail accompli",
+          "english": "Their precarity is a real problem, but it changes nothing about the value of the work done",
+          "example": "Leur précarité est un vrai problème, mais cela ne change rien à la valeur du travail accompli.",
+          "usage": "ne rien changer à = to change nothing about; the conclusion clincher."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p8",
+      "entries": [
+        {
+          "id": "SVC1-0351",
+          "kind": "mot-cle",
+          "french": "personnes âgées",
+          "english": "elderly / older people",
+          "example": "Cependant, certaines inquiétudes des personnes âgées peuvent être légitimes.",
+          "usage": "Fem. pl.; the judging group; 'âgé(e)' = aged. Politer register than 'les vieux'."
+        },
+        {
+          "id": "SVC1-0352",
+          "kind": "mot-cle",
+          "french": "regard pessimiste",
+          "english": "pessimistic view",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "porter un regard sur; the central image; 'regard' m."
+        },
+        {
+          "id": "SVC1-0353",
+          "kind": "mot-cle",
+          "french": "jeunesse",
+          "english": "youth",
+          "example": "La vraie question est de savoir si les personnes âgées jugent aujourd'hui la jeunesse de manière trop négative.",
+          "usage": "Fem.; 'la jeunesse'; distinguish from 'les jeunes' (young people)."
+        },
+        {
+          "id": "SVC1-0354",
+          "kind": "mot-cle",
+          "french": "génération",
+          "english": "generation",
+          "example": "Les personnes âgées finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Fem.; 'toute une génération'; the over-generalisation keyword."
+        },
+        {
+          "id": "SVC1-0355",
+          "kind": "mot-cle",
+          "french": "inquiétudes",
+          "english": "concerns",
+          "example": "Cependant, certaines inquiétudes des personnes âgées peuvent être légitimes.",
+          "usage": "Fem. pl.; legitimate 'inquiétudes' conceded in the nuance."
+        },
+        {
+          "id": "SVC1-0356",
+          "kind": "mot-cle",
+          "french": "médias",
+          "english": "media",
+          "example": "Ensuite, ce regard pessimiste s'explique aussi par la manière dont la plupart des personnes âgées voient les jeunes : surtout à travers les médias, et beaucoup moins à travers le contact direct.",
+          "usage": "M. pl.; the distorting source; 'à travers les médias'."
+        },
+        {
+          "id": "SVC1-0357",
+          "kind": "mot-cle",
+          "french": "contact direct",
+          "english": "direct contact",
+          "example": "Le contact direct remplace l'image abstraite par une expérience humaine, ce qui rend les jugements beaucoup plus mesurés.",
+          "usage": "Corrects the media image; 'le contact direct / réel'."
+        },
+        {
+          "id": "SVC1-0358",
+          "kind": "mot-cle",
+          "french": "réseaux sociaux",
+          "english": "social media",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "M. pl.; amplify extreme behaviour."
+        },
+        {
+          "id": "SVC1-0359",
+          "kind": "mot-cle",
+          "french": "minorité",
+          "english": "minority",
+          "example": "Les personnes âgées finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Fem.; 'une petite minorité' vs a whole generation."
+        },
+        {
+          "id": "SVC1-0360",
+          "kind": "mot-cle",
+          "french": "voisinage",
+          "english": "neighbourhood",
+          "example": "En effet, dans les espaces où personnes âgées et jeunes se côtoient réellement — la famille, le voisinage et les associations — les personnes âgées voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes.",
+          "usage": "M.; a p8-specific space of real contact ('la famille, le voisinage')."
+        },
+        {
+          "id": "SVC1-0361",
+          "kind": "collocation",
+          "french": "portent souvent un regard trop pessimiste sur les jeunes",
+          "english": "often take too pessimistic a view of young people",
+          "example": "À mon avis, les personnes âgées portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "porter un regard sur; the thesis collocation (personnes âgées version)."
+        },
+        {
+          "id": "SVC1-0362",
+          "kind": "collocation",
+          "french": "mettent surtout en avant les comportements extrêmes",
+          "english": "mainly highlight extreme behaviours",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "mettre en avant = to highlight; the media mechanism."
+        },
+        {
+          "id": "SVC1-0363",
+          "kind": "collocation",
+          "french": "juger toute une génération",
+          "english": "to judge a whole generation",
+          "example": "Les personnes âgées finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Over-generalisation; 'toute une' = a whole / an entire."
+        },
+        {
+          "id": "SVC1-0364",
+          "kind": "collocation",
+          "french": "une image idéalisée du passé",
+          "english": "an idealised image of the past",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "idéaliser; a nostalgia critique."
+        },
+        {
+          "id": "SVC1-0365",
+          "kind": "collocation",
+          "french": "retiennent l'attention",
+          "english": "catch attention",
+          "example": "En effet, les chaînes d'information, les réseaux sociaux et les vidéos virales mettent surtout en avant les comportements extrêmes — violence, incivilités, provocations, accidents — parce que ce sont ces images qui retiennent l'attention.",
+          "usage": "retenir l'attention; the media mechanism."
+        },
+        {
+          "id": "SVC1-0366",
+          "kind": "collocation",
+          "french": "généraliser des cas extrêmes",
+          "english": "to generalise from extreme cases",
+          "example": "Cela conduit beaucoup de personnes âgées à généraliser des cas extrêmes à toute une génération, et à entretenir une image très éloignée de la vie réelle des jeunes.",
+          "usage": "généraliser à partir de; names a reasoning fallacy."
+        },
+        {
+          "id": "SVC1-0367",
+          "kind": "collocation",
+          "french": "voient concrètement les efforts",
+          "english": "concretely see the efforts",
+          "example": "En effet, dans les espaces où personnes âgées et jeunes se côtoient réellement — la famille, le voisinage et les associations — les personnes âgées voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes.",
+          "usage": "voir concrètement; the effect of real contact."
+        },
+        {
+          "id": "SVC1-0368",
+          "kind": "collocation",
+          "french": "juger injustement les jeunes",
+          "english": "to judge young people unfairly",
+          "example": "Cela pousse beaucoup de personnes âgées à juger injustement les jeunes d'aujourd'hui et à passer à côté de leurs vraies qualités.",
+          "usage": "Verb + adverb collocation; it precisely names an unfair generalization without overclaiming."
+        },
+        {
+          "id": "SVC1-0369",
+          "kind": "collocation",
+          "french": "un jugement négatif",
+          "english": "a negative judgement",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "'justifier un jugement négatif'; the attitude being criticised."
+        },
+        {
+          "id": "SVC1-0370",
+          "kind": "collocation",
+          "french": "santé mentale",
+          "english": "mental health",
+          "example": "Le rapport aux écrans, la fragilité face à la pression scolaire ou la santé mentale des jeunes posent de vraies questions.",
+          "usage": "Fem.; a legitimate concern; Santé-transferable."
+        },
+        {
+          "id": "SVC1-0371",
+          "kind": "expression",
+          "french": "De mon temps",
+          "english": "in my day / back in my time",
+          "example": "On l'entend dans des phrases comme « De mon temps, on travaillait dur et on respectait les profs », alors que les conflits scolaires, les baisses de motivation et les difficultés en lecture existaient déjà très largement à l'époque.",
+          "usage": "Nostalgic set phrase quoted to mock idealised memory; usually ironic."
+        },
+        {
+          "id": "SVC1-0372",
+          "kind": "expression",
+          "french": "en boucle",
+          "english": "on a loop / over and over",
+          "example": "Il suffit de penser aux vidéos de bagarres scolaires ou aux extraits de télé-réalité partagés en boucle : ces images donnent l'impression que tous les jeunes seraient agressifs, alors qu'elles ne représentent qu'une petite minorité.",
+          "usage": "'partagés en boucle' = shared on repeat; a media-repetition idiom."
+        },
+        {
+          "id": "SVC1-0373",
+          "kind": "expression",
+          "french": "à travers les médias",
+          "english": "through the media",
+          "example": "Ensuite, elles connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "'à travers' = via / through; contrasts mediated with direct knowledge."
+        },
+        {
+          "id": "SVC1-0374",
+          "kind": "expression",
+          "french": "en grande partie",
+          "english": "largely / to a large extent",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Fixed degree adverbial, placed after the verb phrase; it softens a claim without making it vague."
+        },
+        {
+          "id": "SVC1-0375",
+          "kind": "expression",
+          "french": "avec le temps",
+          "english": "over time",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Fixed time expression; use it to present a gradual shift rather than an immediate result."
+        },
+        {
+          "id": "SVC1-0376",
+          "kind": "expression",
+          "french": "à partir de ce souvenir embelli",
+          "english": "from that embellished memory",
+          "example": "Juger les jeunes actuels à partir de ce souvenir embelli revient à les comparer à une jeunesse qui n'a jamais vraiment existé.",
+          "usage": "À partir de + noun names the basis of a judgement; embelli signals that memory idealizes reality."
+        },
+        {
+          "id": "SVC1-0377",
+          "kind": "expression",
+          "french": "dès qu'il existe un vrai contact",
+          "english": "as soon as there is real contact",
+          "example": "Enfin, dès qu'il existe un vrai contact entre les jeunes et les personnes âgées, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Dès que + indicative introduces the moment a concrete condition is met; useful for cause-and-effect arguments."
+        },
+        {
+          "id": "SVC1-0378",
+          "kind": "expression",
+          "french": "à l'époque",
+          "english": "at the time / back then",
+          "example": "On l'entend dans des phrases comme « De mon temps, on travaillait dur et on respectait les profs », alors que les conflits scolaires, les baisses de motivation et les difficultés en lecture existaient déjà très largement à l'époque.",
+          "usage": "Temporal expression pointing to the past; debunks the rosy memory."
+        },
+        {
+          "id": "SVC1-0379",
+          "kind": "expression",
+          "french": "à condition qu'on leur fasse confiance",
+          "english": "provided they are trusted",
+          "example": "Par exemple, un grand-parent qui passe régulièrement du temps avec ses petits-enfants ou un retraité engagé dans une association décrit souvent des jeunes motivés, créatifs et capables d'engagement, à condition qu'on leur fasse confiance.",
+          "usage": "À condition que + subjunctive states a necessary condition; faire confiance à quelqu'un is a key social collocation."
+        },
+        {
+          "id": "SVC1-0380",
+          "kind": "expression",
+          "french": "passer à côté de leurs vraies qualités",
+          "english": "to miss their real qualities",
+          "example": "Cela pousse beaucoup de personnes âgées à juger injustement les jeunes d'aujourd'hui et à passer à côté de leurs vraies qualités.",
+          "usage": "Idiomatic passer à côté de means failing to notice or benefit from something important."
+        },
+        {
+          "id": "SVC1-0381",
+          "kind": "tournure",
+          "french": "À mon avis,",
+          "english": "In my opinion,",
+          "example": "À mon avis, les personnes âgées portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "Opinion marker; comma after; direct way to answer a prompt."
+        },
+        {
+          "id": "SVC1-0382",
+          "kind": "tournure",
+          "french": "Tout d'abord,",
+          "english": "First of all,",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "Emphatic first-argument opener."
+        },
+        {
+          "id": "SVC1-0383",
+          "kind": "tournure",
+          "french": "Ensuite,",
+          "english": "Next,",
+          "example": "Ensuite, elles connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "Second connector; keeps arguments ordered."
+        },
+        {
+          "id": "SVC1-0384",
+          "kind": "tournure",
+          "french": "Enfin,",
+          "english": "Finally,",
+          "example": "Enfin, dès qu'il existe un vrai contact entre les jeunes et les personnes âgées, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Introduces the last (contact) argument."
+        },
+        {
+          "id": "SVC1-0385",
+          "kind": "tournure",
+          "french": "Mais",
+          "english": "But",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "Adversative; reverses the idealised-memory claim."
+        },
+        {
+          "id": "SVC1-0386",
+          "kind": "tournure",
+          "french": "Cependant,",
+          "english": "However,",
+          "example": "Cependant, certaines inquiétudes des personnes âgées peuvent être légitimes.",
+          "usage": "Opens the concession about legitimate worries."
+        },
+        {
+          "id": "SVC1-0387",
+          "kind": "tournure",
+          "french": "En conclusion,",
+          "english": "In conclusion,",
+          "example": "En conclusion, je pense que les personnes âgées portent souvent un regard trop pessimiste sur les jeunes, parce qu'elles les comparent à un passé idéalisé et qu'elles les connaissent surtout à travers les médias.",
+          "usage": "Signals the synthesis and the remedy."
+        },
+        {
+          "id": "SVC1-0388",
+          "kind": "tournure",
+          "french": "donc",
+          "english": "therefore / so",
+          "example": "Les personnes âgées finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "Consecutive connector ('finissent donc par...')."
+        },
+        {
+          "id": "SVC1-0389",
+          "kind": "tournure",
+          "french": "au contraire",
+          "english": "on the contrary",
+          "example": "Si le pessimisme était fondé sur la réalité, il devrait au contraire se renforcer avec la proximité, et non l'inverse.",
+          "usage": "Reverses an expectation ('il devrait au contraire se renforcer')."
+        },
+        {
+          "id": "SVC1-0390",
+          "kind": "tournure",
+          "french": "en général",
+          "english": "generally / usually",
+          "example": "Enfin, dès qu'il existe un vrai contact entre les jeunes et les personnes âgées, ce jugement pessimiste devient en général beaucoup plus nuancé.",
+          "usage": "Hedging adverbial softening a generalisation."
+        },
+        {
+          "id": "SVC1-0391",
+          "kind": "phrase-modele",
+          "french": "les personnes âgées portent souvent un regard trop pessimiste sur les jeunes",
+          "english": "older people often take too pessimistic a view of young people",
+          "example": "À mon avis, les personnes âgées portent souvent un regard trop pessimiste sur les jeunes.",
+          "usage": "The thesis; a ready position statement (personnes âgées version)."
+        },
+        {
+          "id": "SVC1-0392",
+          "kind": "phrase-modele",
+          "french": "elles ne suffisent pas à justifier un jugement aussi négatif sur toute une génération",
+          "english": "they are not enough to justify such a negative judgement of a whole generation",
+          "example": "Même si certaines inquiétudes peuvent être légitimes, elles ne suffisent pas à justifier un jugement aussi négatif sur toute une génération.",
+          "usage": "'suffire à + inf' = to be enough to; 'aussi négatif' = so negative."
+        },
+        {
+          "id": "SVC1-0393",
+          "kind": "phrase-modele",
+          "french": "ce regard pessimiste vient d'une comparaison injuste",
+          "english": "this pessimistic view comes from an unfair comparison",
+          "example": "Tout d'abord, ce regard pessimiste vient d'une comparaison injuste entre les jeunes d'aujourd'hui et une image idéalisée du passé.",
+          "usage": "venir de = to stem from; the argument-1 topic sentence."
+        },
+        {
+          "id": "SVC1-0394",
+          "kind": "phrase-modele",
+          "french": "cette mémoire est en grande partie reconstruite",
+          "english": "this memory is largely reconstructed",
+          "example": "Mais cette mémoire est en grande partie reconstruite : avec le temps, on retient surtout les bons côtés et l'on oublie les conflits, les bêtises et les difficultés.",
+          "usage": "Passive + 'en grande partie' = largely; the nostalgia point."
+        },
+        {
+          "id": "SVC1-0395",
+          "kind": "phrase-modele",
+          "french": "les médias amplifient les comportements négatifs",
+          "english": "the media amplify negative behaviours",
+          "example": "Ensuite, elles connaissent souvent les jeunes à travers les médias plutôt qu'à travers le contact réel, et les médias amplifient les comportements négatifs.",
+          "usage": "Present-tense general truth; a compact media critique."
+        },
+        {
+          "id": "SVC1-0396",
+          "kind": "phrase-modele",
+          "french": "juger toute une génération à partir d'une minorité visible et non représentative",
+          "english": "to judge a whole generation from a visible, unrepresentative minority",
+          "example": "Les personnes âgées finissent donc par juger toute une génération à partir d'une minorité visible et non représentative.",
+          "usage": "'à partir de' + fallacy vocabulary; the over-generalisation in one line."
+        },
+        {
+          "id": "SVC1-0397",
+          "kind": "phrase-modele",
+          "french": "Le contact direct remplace l'image abstraite par une expérience humaine",
+          "english": "Direct contact replaces the abstract image with a human experience",
+          "example": "Le contact direct remplace l'image abstraite par une expérience humaine, ce qui rend les jugements beaucoup plus mesurés.",
+          "usage": "remplacer A par B; the essay's key mechanism; very quotable."
+        },
+        {
+          "id": "SVC1-0398",
+          "kind": "phrase-modele",
+          "french": "ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux",
+          "english": "these difficulties affect young people more than they are caused by them",
+          "example": "Mais ces difficultés concernent les jeunes plus qu'elles ne sont causées par eux, et elles ne justifient pas un jugement négatif sur toute une génération.",
+          "usage": "'plus que ne' expletive ne + passive; the subtle concession."
+        },
+        {
+          "id": "SVC1-0399",
+          "kind": "phrase-modele",
+          "french": "les personnes âgées voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes",
+          "english": "older people concretely see young people's efforts, qualities, doubts and difficulties",
+          "example": "En effet, dans les espaces où personnes âgées et jeunes se côtoient réellement — la famille, le voisinage et les associations — les personnes âgées voient concrètement les efforts, les qualités, les doutes et les difficultés des jeunes.",
+          "usage": "voir concrètement + enumerated objects; the contact benefit."
+        },
+        {
+          "id": "SVC1-0400",
+          "kind": "phrase-modele",
+          "french": "passer plus de temps avec eux et juger à partir du contact réel",
+          "english": "spend more time with them and judge from real contact",
+          "example": "Le vrai remède est simple : passer plus de temps avec eux et juger à partir du contact réel.",
+          "usage": "Two infinitives as the remedy; a strong closing chunk."
+        }
+      ]
+    }
+  ]
+}

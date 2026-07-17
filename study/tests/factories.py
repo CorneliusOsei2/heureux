@@ -3,11 +3,18 @@
 from __future__ import annotations
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from study.models import (
     Argument,
     Card,
     CardType,
+    ComprehensionAnswer,
+    ComprehensionAttempt,
+    ComprehensionAttemptStatus,
+    ComprehensionChoice,
+    ComprehensionQuestion,
+    ComprehensionTest,
     ExamPart,
     Family,
     Phrase,
@@ -88,6 +95,78 @@ def make_task(part=None, slug="tache-3", available=True) -> Task:
         defaults={"name": slug.replace("-", " ").title(), "available": available},
     )
     return task
+
+
+def make_comprehension_test(
+    *,
+    number=1,
+    question_count=3,
+    is_published=True,
+) -> ComprehensionTest:
+    test = ComprehensionTest.objects.create(
+        slug=f"test-{number}",
+        number=number,
+        title=f"Test {number}",
+        description=f"Test de compréhension {number}",
+        expected_question_count=question_count,
+        order=number,
+        is_published=is_published,
+    )
+    for question_number in range(1, question_count + 1):
+        question = ComprehensionQuestion.objects.create(
+            test=test,
+            content_key=f"ce:test-{number}:q{question_number:02d}",
+            number=question_number,
+            passage_fr=f"Passage français {question_number}.",
+            passage_en=f"English passage {question_number}.",
+            prompt_fr=f"Question française {question_number} ?",
+            prompt_en=f"English question {question_number}?",
+            correct_explanation=f"Correct explanation {question_number}.",
+        )
+        for letter in "ABCD":
+            ComprehensionChoice.objects.create(
+                question=question,
+                letter=letter,
+                text_fr=f"Choix {letter} français {question_number}",
+                text_en=f"English choice {letter} {question_number}",
+                rationale=(
+                    ""
+                    if letter == "A"
+                    else f"Rationale for {letter} on question {question_number}."
+                ),
+                is_correct=(letter == "A"),
+            )
+    return test
+
+
+def make_comprehension_attempt(
+    *,
+    user,
+    test,
+    status=ComprehensionAttemptStatus.IN_PROGRESS,
+    answered_questions=0,
+) -> ComprehensionAttempt:
+    questions = list(test.questions.prefetch_related("choices").order_by("number"))
+    attempt = ComprehensionAttempt.objects.create(
+        user=user,
+        test=test,
+        status=status,
+        current_question=min(answered_questions + 1, len(questions)),
+        total_questions=len(questions),
+    )
+    for question in questions[:answered_questions]:
+        choice = question.choices.get(letter="A")
+        ComprehensionAnswer.objects.create(
+            attempt=attempt,
+            question=question,
+            selected_choice=choice,
+            is_correct=True,
+        )
+    if status == ComprehensionAttemptStatus.COMPLETED:
+        attempt.score = attempt.answers.filter(is_correct=True).count()
+        attempt.completed_at = timezone.now()
+        attempt.save(update_fields=["score", "completed_at"])
+    return attempt
 
 
 def make_response(theme=None, family=None) -> Response:

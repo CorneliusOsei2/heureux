@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from .models import Card, CardType
+from .models import Card, CardType, PhraseTier
 from .personalization import effective_response
 
 
@@ -17,7 +17,7 @@ def scope_from_request(request) -> dict:
     data = request.POST if request.method == "POST" else request.GET
     scope = {}
     kind = data.get("kind")
-    if kind in {"spine", "phrase", "revisit", "weak"}:
+    if kind in {"spine", "phrase", "vocab", "revisit", "weak"}:
         scope["kind"] = kind
     for key in ("part", "task", "theme", "family", "category"):
         value = (data.get(key) or "").strip()
@@ -63,8 +63,13 @@ def scope_label(scope: dict) -> str:
             is_active=True,
         ).first()
         if response:
+            deck_name = (
+                "Vocabulaire"
+                if scope.get("kind") == "vocab"
+                else "Expressions"
+            )
             return with_batch(
-                f"Expressions · {response.theme.display_name} "
+                f"{deck_name} · {response.theme.display_name} "
                 f"· P{response.canonical_prompt.number}"
             )
     if scope.get("task"):
@@ -96,6 +101,8 @@ def scope_label(scope: dict) -> str:
         return with_batch("Réponses argumentées")
     if scope.get("kind") == "phrase":
         return with_batch("Expressions")
+    if scope.get("kind") == "vocab":
+        return with_batch("Vocabulaire des sujets")
     if scope.get("kind") == "revisit":
         return with_batch("Liste à revoir")
     if scope.get("kind") == "weak":
@@ -137,12 +144,20 @@ def _spine_payload(card: Card) -> dict:
 def _phrase_payload(card: Card) -> dict:
     phrase = card.phrase
     production = card.card_type == CardType.PHRASE_PRODUCTION
+    subject_vocabulary = phrase.tier == PhraseTier.SUBJECT
     return {
         "card": card,
         "kind": "phrase",
         "production": production,
+        "subject_vocabulary": subject_vocabulary,
         "kind_label": (
-            "Expression · production" if production else "Expression · sens"
+            "Vocabulaire du sujet"
+            if subject_vocabulary
+            else (
+                "Expression · production"
+                if production
+                else "Expression · sens"
+            )
         ),
         "phrase": phrase,
         "category": phrase.category,

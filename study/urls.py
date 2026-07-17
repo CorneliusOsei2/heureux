@@ -16,6 +16,33 @@ urlpatterns = [
     ),
     path("logout/", views.logout_view, name="logout"),
     path("", views.dashboard, name="dashboard"),
+    path(
+        "comprehension-ecrite/",
+        views.comprehension_overview,
+        name="comprehension_overview",
+    ),
+    path(
+        "comprehension-ecrite/<slug:test_slug>/",
+        views.comprehension_test_detail,
+        name="comprehension_test",
+    ),
+    path(
+        "comprehension-ecrite/<slug:test_slug>/commencer/",
+        views.comprehension_start,
+        name="comprehension_start",
+    ),
+    path(
+        "comprehension-ecrite/<slug:test_slug>/"
+        "tentative/<int:attempt_id>/question/<int:number>/",
+        views.comprehension_question,
+        name="comprehension_question",
+    ),
+    path(
+        "comprehension-ecrite/<slug:test_slug>/"
+        "tentative/<int:attempt_id>/resultats/",
+        views.comprehension_results,
+        name="comprehension_results",
+    ),
     path("reviser/", views.review_overview, name="review_overview"),
     path(
         "expressions/",

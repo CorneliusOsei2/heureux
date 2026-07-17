@@ -1,0 +1,3245 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "economie:p14",
+      "entries": [
+        {
+          "id": "SVE2-0001",
+          "kind": "mot-cle",
+          "french": "des départs vers l'étranger",
+          "english": "departures abroad",
+          "example": "La vraie question est de savoir si la plupart des départs vers l'étranger sont vraiment subis ou s'ils relèvent aussi d'un choix personnel.",
+          "usage": "Noun phrase (masc. pl.); 'un départ vers l'étranger'. Core topic term of the essay."
+        },
+        {
+          "id": "SVE2-0002",
+          "kind": "mot-cle",
+          "french": "une contrainte",
+          "english": "a constraint / necessity",
+          "example": "Pour ces personnes, partir est un choix, pas une contrainte.",
+          "usage": "Feminine noun contrasting with voluntary choice; useful for economic, family, and migration pressures."
+        },
+        {
+          "id": "SVE2-0003",
+          "kind": "mot-cle",
+          "french": "le manque d'emplois",
+          "english": "the lack of jobs",
+          "example": "En effet, dans certains pays, le manque d'emplois, les salaires trop faibles ou l'absence de perspectives d'avenir poussent les gens à chercher une vie meilleure ailleurs.",
+          "usage": "'manque de + noun' (no article) names a shortage; classic economic push factor."
+        },
+        {
+          "id": "SVE2-0004",
+          "kind": "mot-cle",
+          "french": "l'insécurité",
+          "english": "insecurity / lack of safety",
+          "example": "Ensuite, parce que d'autres fuient l'insécurité, les conflits ou l'absence d'avenir pour leurs enfants.",
+          "usage": "Feminine noun; social/political sense (violence, danger), not psychological."
+        },
+        {
+          "id": "SVE2-0005",
+          "kind": "mot-cle",
+          "french": "les conflits",
+          "english": "conflicts",
+          "example": "Ensuite, parce que d'autres fuient l'insécurité, les conflits ou l'absence d'avenir pour leurs enfants.",
+          "usage": "Masc. plural; pairs naturally with 'l'insécurité' in migration causes."
+        },
+        {
+          "id": "SVE2-0006",
+          "kind": "mot-cle",
+          "french": "la migration économique",
+          "english": "economic migration",
+          "example": "Cela montre que la migration économique est souvent davantage subie que choisie.",
+          "usage": "Fixed collocation; subject of the debate 'subie ou choisie'."
+        },
+        {
+          "id": "SVE2-0007",
+          "kind": "mot-cle",
+          "french": "l'instabilité politique",
+          "english": "political instability",
+          "example": "En effet, certaines personnes vivent dans des pays marqués par la violence, l'instabilité politique ou un système de santé et d'éducation très faible.",
+          "usage": "Feminine; a driver of forced departure alongside 'la violence'."
+        },
+        {
+          "id": "SVE2-0008",
+          "kind": "mot-cle",
+          "french": "un système de santé",
+          "english": "a health system",
+          "example": "En effet, certaines personnes vivent dans des pays marqués par la violence, l'instabilité politique ou un système de santé et d'éducation très faible.",
+          "usage": "'de santé' is an invariable complement; here contrasted with weak provision."
+        },
+        {
+          "id": "SVE2-0009",
+          "kind": "mot-cle",
+          "french": "perspectives d'avenir",
+          "english": "future prospects",
+          "example": "En effet, dans certains pays, le manque d'emplois, les salaires trop faibles ou l'absence de perspectives d'avenir poussent les gens à chercher une vie meilleure ailleurs.",
+          "usage": "Feminine plural; 'd'avenir' = for the future; often after 'absence de'."
+        },
+        {
+          "id": "SVE2-0010",
+          "kind": "mot-cle",
+          "french": "une vie meilleure",
+          "english": "a better life",
+          "example": "En effet, dans certains pays, le manque d'emplois, les salaires trop faibles ou l'absence de perspectives d'avenir poussent les gens à chercher une vie meilleure ailleurs.",
+          "usage": "Note the irregular comparative 'meilleure' (from 'bon'), placed after the noun."
+        },
+        {
+          "id": "SVE2-0011",
+          "kind": "collocation",
+          "french": "quittent leur pays",
+          "english": "leave their country",
+          "example": "Tout d'abord, beaucoup de personnes quittent leur pays parce qu'elles n'arrivent plus à y vivre correctement.",
+          "usage": "'quitter' takes a direct object (no preposition): quitter qqch/qqn."
+        },
+        {
+          "id": "SVE2-0012",
+          "kind": "collocation",
+          "french": "n'ont pas d'autre choix réel",
+          "english": "have no other real choice",
+          "example": "À mon avis, oui, beaucoup de personnes partent parce qu'elles n'ont pas d'autre choix réel, même si une partie des départs reste un vrai projet personnel.",
+          "usage": "'Ne pas avoir d'autre choix' is a fixed way to express constrained agency; 'réel' reinforces it."
+        },
+        {
+          "id": "SVE2-0013",
+          "kind": "collocation",
+          "french": "fuient l'insécurité",
+          "english": "flee insecurity",
+          "example": "Ensuite, parce que d'autres fuient l'insécurité, les conflits ou l'absence d'avenir pour leurs enfants.",
+          "usage": "'fuir + direct object'; strong verb signalling forced, not chosen, departure."
+        },
+        {
+          "id": "SVE2-0014",
+          "kind": "collocation",
+          "french": "offrir à leurs enfants une vraie scolarité",
+          "english": "give their children real schooling",
+          "example": "Par exemple, beaucoup de familles partent à l'étranger surtout pour offrir à leurs enfants une vraie scolarité et un environnement plus sûr.",
+          "usage": "Ditransitive: 'offrir qqch à qqn'; here the indirect object precedes."
+        },
+        {
+          "id": "SVE2-0015",
+          "kind": "collocation",
+          "french": "aller travailler dans un pays voisin",
+          "english": "go to work in a neighbouring country",
+          "example": "Par exemple, beaucoup de jeunes adultes quittent des régions à fort chômage pour aller travailler dans un pays voisin, simplement parce qu'ils ne trouvent rien chez eux.",
+          "usage": "'aller + infinitif' expresses purpose/movement toward an activity."
+        },
+        {
+          "id": "SVE2-0016",
+          "kind": "collocation",
+          "french": "quittent des régions à fort chômage",
+          "english": "leave high-unemployment areas",
+          "example": "Par exemple, beaucoup de jeunes adultes quittent des régions à fort chômage pour aller travailler dans un pays voisin, simplement parce qu'ils ne trouvent rien chez eux.",
+          "usage": "'à fort chômage' = 'à + adjective + noun' describes a defining trait."
+        },
+        {
+          "id": "SVE2-0017",
+          "kind": "collocation",
+          "french": "partent à l'étranger",
+          "english": "go abroad",
+          "example": "Par exemple, beaucoup de familles partent à l'étranger surtout pour offrir à leurs enfants une vraie scolarité et un environnement plus sûr.",
+          "usage": "'partir à l'étranger'; contrast with 'quitter son pays' (transitive)."
+        },
+        {
+          "id": "SVE2-0018",
+          "kind": "collocation",
+          "french": "progresser professionnellement",
+          "english": "progress professionally",
+          "example": "En effet, beaucoup de personnes qui partent « par choix » le font parce qu'elles ne voient pas d'autre moyen de progresser professionnellement ou d'exercer pleinement leur métier.",
+          "usage": "Adverb in -ment modifies the verb; career-advancement register."
+        },
+        {
+          "id": "SVE2-0019",
+          "kind": "collocation",
+          "french": "exercer pleinement leur métier",
+          "english": "fully practise their profession",
+          "example": "En effet, beaucoup de personnes qui partent « par choix » le font parce qu'elles ne voient pas d'autre moyen de progresser professionnellement ou d'exercer pleinement leur métier.",
+          "usage": "'exercer un métier' is the standard collocation; 'pleinement' intensifies."
+        },
+        {
+          "id": "SVE2-0020",
+          "kind": "collocation",
+          "french": "faire toute leur carrière",
+          "english": "spend their whole career",
+          "example": "Par exemple, de nombreux chercheurs, médecins ou ingénieurs quittent leur pays faute de laboratoires, d'équipements ou de perspectives d'évolution, alors qu'ils auraient préféré y faire toute leur carrière.",
+          "usage": "'faire carrière' idiom; 'toute leur carrière' = for their entire career."
+        },
+        {
+          "id": "SVE2-0021",
+          "kind": "expression",
+          "french": "un vrai projet personnel",
+          "english": "a genuine personal project",
+          "example": "À mon avis, oui, beaucoup de personnes partent parce qu'elles n'ont pas d'autre choix réel, même si une partie des départs reste un vrai projet personnel.",
+          "usage": "'vrai' before the noun means 'genuine/real', not literal truth."
+        },
+        {
+          "id": "SVE2-0022",
+          "kind": "expression",
+          "french": "un choix librement consenti",
+          "english": "a freely made choice",
+          "example": "Ce n'est pas un choix librement consenti : c'est plutôt une réponse à une situation économique qui ne laisse pas beaucoup d'options.",
+          "usage": "Formal register; 'consenti' = agreed to; often negated to show constraint."
+        },
+        {
+          "id": "SVE2-0023",
+          "kind": "expression",
+          "french": "ne laisse pas beaucoup d'options",
+          "english": "leaves few options",
+          "example": "Ce n'est pas un choix librement consenti : c'est plutôt une réponse à une situation économique qui ne laisse pas beaucoup d'options.",
+          "usage": "'Ne pas laisser beaucoup d'options' states that a situation severely limits possible choices."
+        },
+        {
+          "id": "SVE2-0024",
+          "kind": "expression",
+          "french": "l'idée même de tout quitter ne se poserait pas",
+          "english": "the very idea of leaving everything would not arise",
+          "example": "Au contraire, dans un pays sûr et stable, l'idée même de tout quitter ne se poserait pas avec la même urgence.",
+          "usage": "'L'idée de ... se poser' means that a possibility arises; the conditional makes a hypothetical contrast."
+        },
+        {
+          "id": "SVE2-0025",
+          "kind": "expression",
+          "french": "une question de survie ou de protection",
+          "english": "a matter of survival or protection",
+          "example": "Cela permet de comprendre que ces départs ne sont pas un caprice, mais souvent une question de survie ou de protection.",
+          "usage": "'une question de + noun' = it comes down to; dramatises the stakes."
+        },
+        {
+          "id": "SVE2-0026",
+          "kind": "expression",
+          "french": "la frontière entre départ choisi et départ subi",
+          "english": "the line between chosen and forced departure",
+          "example": "Cela montre que la frontière entre départ choisi et départ subi n'est pas aussi nette qu'on le pense.",
+          "usage": "'subi' (endured) opposes 'choisi'; 'la frontière entre X et Y' is reusable."
+        },
+        {
+          "id": "SVE2-0027",
+          "kind": "expression",
+          "french": "n'est pas aussi nette qu'on le pense",
+          "english": "is not as clear-cut as one thinks",
+          "example": "Cela montre que la frontière entre départ choisi et départ subi n'est pas aussi nette qu'on le pense.",
+          "usage": "'Ne pas être aussi ... que' qualifies an apparently simple distinction; 'nette' agrees with 'frontière'."
+        },
+        {
+          "id": "SVE2-0028",
+          "kind": "expression",
+          "french": "imposés par les circonstances",
+          "english": "imposed by circumstances",
+          "example": "Le départ vraiment libre existe, mais il reste minoritaire par rapport aux départs imposés par les circonstances.",
+          "usage": "Passive participle agreeing masc. pl.; conclusive framing of forced departure."
+        },
+        {
+          "id": "SVE2-0029",
+          "kind": "expression",
+          "french": "reste minoritaire",
+          "english": "remains a minority case",
+          "example": "Le départ vraiment libre existe, mais il reste minoritaire par rapport aux départs imposés par les circonstances.",
+          "usage": "'Rester minoritaire' is a concise way to acknowledge an exception without losing the main argument."
+        },
+        {
+          "id": "SVE2-0030",
+          "kind": "expression",
+          "french": "ne sont pas un caprice",
+          "english": "are not a whim",
+          "example": "Cela permet de comprendre que ces départs ne sont pas un caprice, mais souvent une question de survie ou de protection.",
+          "usage": "'un caprice' = whim; dismissive register countering the 'chosen' view."
+        },
+        {
+          "id": "SVE2-0031",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la plupart des départs vers l'étranger sont vraiment subis ou s'ils relèvent aussi d'un choix personnel.",
+          "usage": "Reformulation frame; 'savoir si' introduces an indirect yes/no question."
+        },
+        {
+          "id": "SVE2-0032",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, on quitte souvent son pays parce qu'on n'a pas vraiment d'autre choix.",
+          "usage": "Sentence-initial opinion marker; comma after; very frequent in oral tasks."
+        },
+        {
+          "id": "SVE2-0033",
+          "kind": "tournure",
+          "french": "D'abord, parce que",
+          "english": "First, because",
+          "example": "D'abord, parce que beaucoup de personnes partent à cause du manque de travail ou de stabilité chez elles.",
+          "usage": "Enumerator + cause; opens the first supporting reason."
+        },
+        {
+          "id": "SVE2-0034",
+          "kind": "tournure",
+          "french": "Ensuite, parce que",
+          "english": "Then, because",
+          "example": "Ensuite, parce que d'autres fuient l'insécurité, les conflits ou l'absence d'avenir pour leurs enfants.",
+          "usage": "Second-point connector mirroring 'D'abord, parce que'."
+        },
+        {
+          "id": "SVE2-0035",
+          "kind": "tournure",
+          "french": "Enfin, parce que",
+          "english": "Finally, because",
+          "example": "Enfin, parce que même quand le départ semble volontaire, il est souvent dicté par une situation que la personne ne maîtrise pas vraiment.",
+          "usage": "Closes a three-part enumeration of reasons."
+        },
+        {
+          "id": "SVE2-0036",
+          "kind": "tournure",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, certaines personnes vivent dans des pays marqués par la violence, l'instabilité politique ou un système de santé et d'éducation très faible.",
+          "usage": "Confirms/justifies the preceding claim; do not confuse with 'en fait'."
+        },
+        {
+          "id": "SVE2-0037",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, dans un pays où l'économie offre du travail correct, peu de personnes quitteraient durablement leur famille, leurs amis et tous leurs repères.",
+          "usage": "Introduces a symmetrical contrast; synonym of 'au contraire'."
+        },
+        {
+          "id": "SVE2-0038",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la migration économique est souvent davantage subie que choisie.",
+          "usage": "Argument-closing connector; takes the indicative."
+        },
+        {
+          "id": "SVE2-0039",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que ces départs ne sont pas un caprice, mais souvent une question de survie ou de protection.",
+          "usage": "Variant conclusion marker; 'permettre de + infinitif'."
+        },
+        {
+          "id": "SVE2-0040",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense qu'il est en grande partie vrai que ceux qui quittent leur pays le font par manque de choix, surtout pour des raisons économiques ou de sécurité.",
+          "usage": "Standard closing signpost for the final paragraph."
+        },
+        {
+          "id": "SVE2-0041",
+          "kind": "phrase-modele",
+          "french": "À mon avis, oui, beaucoup de personnes partent parce qu'elles n'ont pas d'autre choix réel, même si une partie des départs reste un vrai projet personnel.",
+          "english": "Opinion + nuanced concession",
+          "example": "À mon avis, oui, beaucoup de personnes partent parce qu'elles n'ont pas d'autre choix réel, même si une partie des départs reste un vrai projet personnel.",
+          "usage": "Reusable thesis template: strong stance + 'même si' concession clause."
+        },
+        {
+          "id": "SVE2-0042",
+          "kind": "phrase-modele",
+          "french": "Ce n'est pas un choix librement consenti : c'est plutôt une réponse à une situation économique qui ne laisse pas beaucoup d'options.",
+          "english": "Reframes a choice as a constrained response",
+          "example": "Ce n'est pas un choix librement consenti : c'est plutôt une réponse à une situation économique qui ne laisse pas beaucoup d'options.",
+          "usage": "Model 'ce n'est pas X : c'est plutôt Y' for correcting a framing."
+        },
+        {
+          "id": "SVE2-0043",
+          "kind": "phrase-modele",
+          "french": "Dans ce cas, partir n'est pas une envie mais une question de protection pour soi et pour sa famille.",
+          "english": "Not a desire but a matter of protection",
+          "example": "Dans ce cas, partir n'est pas une envie mais une question de protection pour soi et pour sa famille.",
+          "usage": "'ne ... pas X mais Y' opposition; 'pour soi et pour sa famille' reusable."
+        },
+        {
+          "id": "SVE2-0044",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la migration économique est souvent davantage subie que choisie.",
+          "english": "Shows migration is endured more than chosen",
+          "example": "Cela montre que la migration économique est souvent davantage subie que choisie.",
+          "usage": "Compact concluding sentence with a 'davantage ... que' comparison."
+        },
+        {
+          "id": "SVE2-0045",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que même quand le départ semble volontaire, il est rarement totalement libre.",
+          "english": "Even seemingly voluntary departures are rarely free",
+          "example": "Enfin, je pense que même quand le départ semble volontaire, il est rarement totalement libre.",
+          "usage": "'même quand + indicatif' concessive; good for third-argument openers."
+        },
+        {
+          "id": "SVE2-0046",
+          "kind": "phrase-modele",
+          "french": "Si elles trouvaient les mêmes opportunités sur place, la plupart resteraient près de leur famille.",
+          "english": "Counterfactual about staying if given chances",
+          "example": "Si elles trouvaient les mêmes opportunités sur place, la plupart resteraient près de leur famille.",
+          "usage": "Hypothesis type 2: 'si + imparfait, conditionnel présent'."
+        },
+        {
+          "id": "SVE2-0047",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la frontière entre départ choisi et départ subi n'est pas aussi nette qu'on le pense.",
+          "english": "The chosen/forced line is blurrier than thought",
+          "example": "Cela montre que la frontière entre départ choisi et départ subi n'est pas aussi nette qu'on le pense.",
+          "usage": "'ne ... pas aussi ... que' downplays a supposed clear-cut distinction."
+        },
+        {
+          "id": "SVE2-0048",
+          "kind": "phrase-modele",
+          "french": "Pour ces personnes, partir est un choix, pas une contrainte.",
+          "english": "For them, leaving is a choice, not a constraint",
+          "example": "Pour ces personnes, partir est un choix, pas une contrainte.",
+          "usage": "Crisp antithesis 'un choix, pas une contrainte'; useful in nuance paragraphs."
+        },
+        {
+          "id": "SVE2-0049",
+          "kind": "phrase-modele",
+          "french": "Le départ vraiment libre existe, mais il reste minoritaire par rapport aux départs imposés par les circonstances.",
+          "english": "Free departure exists but stays a minority",
+          "example": "Le départ vraiment libre existe, mais il reste minoritaire par rapport aux départs imposés par les circonstances.",
+          "usage": "Concession + 'par rapport à' comparison; balances the argument."
+        },
+        {
+          "id": "SVE2-0050",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense qu'il est en grande partie vrai que ceux qui quittent leur pays le font par manque de choix, surtout pour des raisons économiques ou de sécurité.",
+          "english": "Qualified concluding judgement",
+          "example": "En conclusion, je pense qu'il est en grande partie vrai que ceux qui quittent leur pays le font par manque de choix, surtout pour des raisons économiques ou de sécurité.",
+          "usage": "'en grande partie vrai' hedges; 'surtout pour des raisons de ...' lists causes."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p15",
+      "entries": [
+        {
+          "id": "SVE2-0051",
+          "kind": "mot-cle",
+          "french": "les démarches administratives",
+          "english": "administrative procedures",
+          "example": "D'abord, parce que les démarches administratives et juridiques sont longues et exigeantes.",
+          "usage": "Feminine plural; 'faire/gérer des démarches'; central obstacle of the essay."
+        },
+        {
+          "id": "SVE2-0052",
+          "kind": "mot-cle",
+          "french": "un visa de travail",
+          "english": "a work visa",
+          "example": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "usage": "'de travail' specifies the visa type; masc. noun."
+        },
+        {
+          "id": "SVE2-0053",
+          "kind": "mot-cle",
+          "french": "un permis de séjour",
+          "english": "a residence permit",
+          "example": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "usage": "'permis' is masculine and invariable in the plural."
+        },
+        {
+          "id": "SVE2-0054",
+          "kind": "mot-cle",
+          "french": "un titre de séjour",
+          "english": "a residence permit/document",
+          "example": "Par exemple, pour travailler au Canada ou dans un autre pays développé, il faut souvent obtenir un permis de travail avec l'appui d'un employeur, puis un titre de séjour à renouveler régulièrement.",
+          "usage": "Near-synonym of 'permis de séjour'; 'à renouveler régulièrement'."
+        },
+        {
+          "id": "SVE2-0055",
+          "kind": "mot-cle",
+          "french": "un permis de travail",
+          "english": "a work permit",
+          "example": "Par exemple, pour travailler au Canada ou dans un autre pays développé, il faut souvent obtenir un permis de travail avec l'appui d'un employeur, puis un titre de séjour à renouveler régulièrement.",
+          "usage": "Distinct from 'permis de séjour'; often needs employer sponsorship."
+        },
+        {
+          "id": "SVE2-0056",
+          "kind": "mot-cle",
+          "french": "l'installation",
+          "english": "settling in",
+          "example": "Ensuite, je pense que la langue et la culture rendent l'installation plus difficile que ce que l'on imagine.",
+          "usage": "Feminine noun from 's'installer'; it covers practical and social settlement in a new country."
+        },
+        {
+          "id": "SVE2-0057",
+          "kind": "mot-cle",
+          "french": "un entretien d'embauche",
+          "english": "a job interview",
+          "example": "En effet, sans une bonne maîtrise de la langue du pays d'accueil, il est difficile de passer un entretien d'embauche, de comprendre un contrat ou de gérer ses démarches quotidiennes.",
+          "usage": "'passer un entretien d'embauche' is the standard verb collocation."
+        },
+        {
+          "id": "SVE2-0058",
+          "kind": "mot-cle",
+          "french": "codes professionnels",
+          "english": "professional codes/norms",
+          "example": "À cela s'ajoutent les différences de codes professionnels, qui peuvent dérouter même les personnes très qualifiées.",
+          "usage": "Implicit workplace conventions; 'différences de codes professionnels'."
+        },
+        {
+          "id": "SVE2-0059",
+          "kind": "mot-cle",
+          "french": "la non-reconnaissance",
+          "english": "non-recognition",
+          "example": "Enfin, je pense que la non-reconnaissance des diplômes et de l'expérience est un vrai obstacle.",
+          "usage": "Feminine noun with the prefix 'non-'; specify what is not recognised, here diplomas and experience."
+        },
+        {
+          "id": "SVE2-0060",
+          "kind": "mot-cle",
+          "french": "les professions réglementées",
+          "english": "regulated professions",
+          "example": "En effet, dans beaucoup de pays, les diplômes étrangers doivent passer par une procédure d'équivalence avant d'être reconnus, surtout dans les professions réglementées comme la santé, le droit ou l'enseignement.",
+          "usage": "e.g. health, law, teaching; require official equivalence/authorisation."
+        },
+        {
+          "id": "SVE2-0061",
+          "kind": "collocation",
+          "french": "obtenir un visa de travail",
+          "english": "obtain a work visa",
+          "example": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "usage": "'obtenir' + document; core administrative step verb."
+        },
+        {
+          "id": "SVE2-0062",
+          "kind": "collocation",
+          "french": "gérer ses démarches quotidiennes",
+          "english": "handle one's day-to-day formalities",
+          "example": "En effet, sans une bonne maîtrise de la langue du pays d'accueil, il est difficile de passer un entretien d'embauche, de comprendre un contrat ou de gérer ses démarches quotidiennes.",
+          "usage": "'gérer des démarches'; possessive 'ses' agrees with the subject."
+        },
+        {
+          "id": "SVE2-0063",
+          "kind": "collocation",
+          "french": "passer un entretien d'embauche",
+          "english": "sit a job interview",
+          "example": "En effet, sans une bonne maîtrise de la langue du pays d'accueil, il est difficile de passer un entretien d'embauche, de comprendre un contrat ou de gérer ses démarches quotidiennes.",
+          "usage": "'passer' here = to take/undergo, not to pass; false-friend alert."
+        },
+        {
+          "id": "SVE2-0064",
+          "kind": "collocation",
+          "french": "une bonne maîtrise de la langue",
+          "english": "a good command of the language",
+          "example": "En effet, sans une bonne maîtrise de la langue du pays d'accueil, il est difficile de passer un entretien d'embauche, de comprendre un contrat ou de gérer ses démarches quotidiennes.",
+          "usage": "'la maîtrise de + language'; 'bonne maîtrise' is a fixed pairing."
+        },
+        {
+          "id": "SVE2-0065",
+          "kind": "collocation",
+          "french": "rendent l'installation plus difficile",
+          "english": "make settling in more difficult",
+          "example": "Ensuite, je pense que la langue et la culture rendent l'installation plus difficile que ce que l'on imagine.",
+          "usage": "From 'rendre' + object + adjective, this plural form expresses a consequence of administrative, linguistic, or cultural barriers."
+        },
+        {
+          "id": "SVE2-0066",
+          "kind": "collocation",
+          "french": "un titre de séjour à renouveler régulièrement",
+          "english": "a residence permit to be renewed regularly",
+          "example": "Par exemple, pour travailler au Canada ou dans un autre pays développé, il faut souvent obtenir un permis de travail avec l'appui d'un employeur, puis un titre de séjour à renouveler régulièrement.",
+          "usage": "'à + infinitif' expresses an obligation to be done."
+        },
+        {
+          "id": "SVE2-0067",
+          "kind": "collocation",
+          "french": "avoir le droit de travailler légalement",
+          "english": "to be legally entitled to work",
+          "example": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "usage": "'Avoir le droit de' + infinitive expresses a legal entitlement, not merely practical possibility."
+        },
+        {
+          "id": "SVE2-0068",
+          "kind": "collocation",
+          "french": "exercer sa profession",
+          "english": "practise one's profession",
+          "example": "Par exemple, un médecin formé à l'étranger doit souvent passer par plusieurs années de démarches avant de pouvoir réellement exercer sa profession dans le pays d'accueil.",
+          "usage": "'exercer une/sa profession'; used of regulated fields."
+        },
+        {
+          "id": "SVE2-0069",
+          "kind": "collocation",
+          "french": "acceptent des emplois en dessous de leur niveau réel",
+          "english": "accept jobs below their real level",
+          "example": "Faute de cette reconnaissance, beaucoup de personnes acceptent des emplois en dessous de leur niveau réel, très éloignés de leurs qualifications de départ.",
+          "usage": "'en dessous de' = below; describes deskilling/downgrading."
+        },
+        {
+          "id": "SVE2-0070",
+          "kind": "collocation",
+          "french": "comprendre un contrat",
+          "english": "understand a contract",
+          "example": "En effet, sans une bonne maîtrise de la langue du pays d'accueil, il est difficile de passer un entretien d'embauche, de comprendre un contrat ou de gérer ses démarches quotidiennes.",
+          "usage": "Everyday task made hard without language mastery."
+        },
+        {
+          "id": "SVE2-0071",
+          "kind": "expression",
+          "french": "longues et exigeantes",
+          "english": "long and demanding",
+          "example": "D'abord, parce que les démarches administratives et juridiques sont longues et exigeantes.",
+          "usage": "Coordinated adjectives; agree fem. pl. with 'démarches'."
+        },
+        {
+          "id": "SVE2-0072",
+          "kind": "expression",
+          "french": "la non-reconnaissance des diplômes et de l'expérience",
+          "english": "the non-recognition of diplomas and experience",
+          "example": "Enfin, je pense que la non-reconnaissance des diplômes et de l'expérience est un vrai obstacle.",
+          "usage": "Prefix 'non-' + noun; names the third obstacle."
+        },
+        {
+          "id": "SVE2-0073",
+          "kind": "expression",
+          "french": "un vrai obstacle",
+          "english": "a real obstacle",
+          "example": "Enfin, je pense que la non-reconnaissance des diplômes et de l'expérience est un vrai obstacle.",
+          "usage": "'vrai' before noun = genuine; common intensifier."
+        },
+        {
+          "id": "SVE2-0074",
+          "kind": "expression",
+          "french": "avant même la question de l'emploi",
+          "english": "even before the question of employment",
+          "example": "Cela montre que la première difficulté est administrative, avant même la question de l'emploi.",
+          "usage": "'Avant même' emphasises that one obstacle comes earlier than the issue expected by the listener."
+        },
+        {
+          "id": "SVE2-0075",
+          "kind": "expression",
+          "french": "en dessous de leur niveau réel",
+          "english": "below their real level",
+          "example": "Faute de cette reconnaissance, beaucoup de personnes acceptent des emplois en dessous de leur niveau réel, très éloignés de leurs qualifications de départ.",
+          "usage": "Prepositional phrase 'en dessous de'; underemployment idea."
+        },
+        {
+          "id": "SVE2-0076",
+          "kind": "expression",
+          "french": "secteurs en pénurie",
+          "english": "sectors facing shortages",
+          "example": "Cependant, dans certains secteurs en pénurie, comme l'informatique ou certains métiers techniques, la mobilité internationale peut être beaucoup plus simple.",
+          "usage": "'en pénurie' = short-staffed; introduces the counter-example."
+        },
+        {
+          "id": "SVE2-0077",
+          "kind": "expression",
+          "french": "la mobilité internationale",
+          "english": "international mobility",
+          "example": "Cependant, dans certains secteurs en pénurie, comme l'informatique ou certains métiers techniques, la mobilité internationale peut être beaucoup plus simple.",
+          "usage": "Set term; here said to be easier in shortage sectors."
+        },
+        {
+          "id": "SVE2-0078",
+          "kind": "expression",
+          "french": "à l'intérieur de son propre pays",
+          "english": "within one's own country",
+          "example": "En revanche, changer d'emploi à l'intérieur de son propre pays se fait avec beaucoup moins de formalités.",
+          "usage": "'À l'intérieur de' locates an action within a boundary; 'son propre pays' strengthens the domestic contrast."
+        },
+        {
+          "id": "SVE2-0079",
+          "kind": "expression",
+          "french": "partir ne suffit pas",
+          "english": "leaving is not enough",
+          "example": "Cela montre que partir ne suffit pas : il faut aussi pouvoir faire valoir son parcours sur place.",
+          "usage": "'ne pas suffire' with an infinitive subject; punchy argument opener."
+        },
+        {
+          "id": "SVE2-0080",
+          "kind": "expression",
+          "french": "beaucoup moins de formalités",
+          "english": "far fewer formalities",
+          "example": "En revanche, changer d'emploi à l'intérieur de son propre pays se fait avec beaucoup moins de formalités.",
+          "usage": "'beaucoup moins de + noun' comparative quantity."
+        },
+        {
+          "id": "SVE2-0081",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si partir travailler à l'étranger est réellement facile en pratique.",
+          "usage": "Reformulation frame; 'savoir si' + indirect question."
+        },
+        {
+          "id": "SVE2-0082",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, partir travailler à l'étranger n'est pas facile.",
+          "usage": "Opinion marker; place first, follow with a comma."
+        },
+        {
+          "id": "SVE2-0083",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que partir travailler à l'étranger demande de gérer un grand nombre de démarches administratives.",
+          "usage": "Opinion verb + 'd'abord' to open argument one; takes indicative."
+        },
+        {
+          "id": "SVE2-0084",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, changer d'emploi à l'intérieur de son propre pays se fait avec beaucoup moins de formalités.",
+          "usage": "Strong contrast connector; more formal than 'mais'."
+        },
+        {
+          "id": "SVE2-0085",
+          "kind": "tournure",
+          "french": "À cela s'ajoutent",
+          "english": "Added to this are",
+          "example": "À cela s'ajoutent les différences de codes professionnels, qui peuvent dérouter même les personnes très qualifiées.",
+          "usage": "Inversion after fronted 'à cela'; verb agrees with what follows."
+        },
+        {
+          "id": "SVE2-0086",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une personne très compétente dans son métier peut perdre beaucoup d'opportunités simplement parce qu'elle ne maîtrise pas encore assez bien la langue locale.",
+          "usage": "Introduces the illustrative sentence in each argument."
+        },
+        {
+          "id": "SVE2-0087",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la première difficulté est administrative, avant même la question de l'emploi.",
+          "usage": "Argument-closing connector + indicative."
+        },
+        {
+          "id": "SVE2-0088",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que partir travailler ailleurs demande aussi un vrai effort d'adaptation personnelle.",
+          "usage": "Variant conclusion; 'permettre de + infinitif'."
+        },
+        {
+          "id": "SVE2-0089",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, dans certains secteurs en pénurie, comme l'informatique ou certains métiers techniques, la mobilité internationale peut être beaucoup plus simple.",
+          "usage": "Opens the 'Nuance' paragraph; concessive pivot."
+        },
+        {
+          "id": "SVE2-0090",
+          "kind": "tournure",
+          "french": "En conclusion, je dirais",
+          "english": "In conclusion, I would say",
+          "example": "En conclusion, je dirais qu'il n'est pas vraiment facile de partir travailler à l'étranger, à cause des démarches, de la langue et de la reconnaissance des diplômes.",
+          "usage": "Softened closing with conditional 'dirais' for politeness/register."
+        },
+        {
+          "id": "SVE2-0091",
+          "kind": "phrase-modele",
+          "french": "À mon avis, partir travailler à l'étranger n'est pas facile.",
+          "english": "Clear thesis: it isn't easy",
+          "example": "À mon avis, partir travailler à l'étranger n'est pas facile.",
+          "usage": "Minimal, high-impact thesis; infinitive subject 'partir travailler'."
+        },
+        {
+          "id": "SVE2-0092",
+          "kind": "phrase-modele",
+          "french": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "english": "Lists administrative steps",
+          "example": "En effet, il faut souvent obtenir un visa de travail, un permis de séjour, parfois prouver un minimum de ressources et passer plusieurs étapes avant d'avoir le droit de travailler légalement.",
+          "usage": "'il faut + infinitif' impersonal obligation; useful enumeration template."
+        },
+        {
+          "id": "SVE2-0093",
+          "kind": "phrase-modele",
+          "french": "En revanche, changer d'emploi à l'intérieur de son propre pays se fait avec beaucoup moins de formalités.",
+          "english": "Contrasts with domestic job change",
+          "example": "En revanche, changer d'emploi à l'intérieur de son propre pays se fait avec beaucoup moins de formalités.",
+          "usage": "Pronominal 'se faire' = it is done; 'à l'intérieur de son propre pays'."
+        },
+        {
+          "id": "SVE2-0094",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la première difficulté est administrative, avant même la question de l'emploi.",
+          "english": "The first hurdle is administrative",
+          "example": "Cela montre que la première difficulté est administrative, avant même la question de l'emploi.",
+          "usage": "'avant même' = even before; ranks the obstacles."
+        },
+        {
+          "id": "SVE2-0095",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que la langue et la culture rendent l'installation plus difficile que ce que l'on imagine.",
+          "english": "Language and culture complicate settling in",
+          "example": "Ensuite, je pense que la langue et la culture rendent l'installation plus difficile que ce que l'on imagine.",
+          "usage": "'rendre + COD + adjectif' = to make something ...; comparative clause."
+        },
+        {
+          "id": "SVE2-0096",
+          "kind": "phrase-modele",
+          "french": "À l'inverse, dans son propre pays, on connaît la langue, les habitudes et les attentes des employeurs.",
+          "english": "At home one knows the norms",
+          "example": "À l'inverse, dans son propre pays, on connaît la langue, les habitudes et les attentes des employeurs.",
+          "usage": "Contrast frame 'à l'inverse'; generic subject 'on'."
+        },
+        {
+          "id": "SVE2-0097",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que partir travailler ailleurs demande aussi un vrai effort d'adaptation personnelle.",
+          "english": "Working abroad needs personal adaptation",
+          "example": "Cela permet de comprendre que partir travailler ailleurs demande aussi un vrai effort d'adaptation personnelle.",
+          "usage": "'demander + noun' = to require; reusable conclusion pattern."
+        },
+        {
+          "id": "SVE2-0098",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que la non-reconnaissance des diplômes et de l'expérience est un vrai obstacle.",
+          "english": "Non-recognition is a real obstacle",
+          "example": "Enfin, je pense que la non-reconnaissance des diplômes et de l'expérience est un vrai obstacle.",
+          "usage": "Third-argument opener; heavy nominal subject with 'non-'."
+        },
+        {
+          "id": "SVE2-0099",
+          "kind": "phrase-modele",
+          "french": "Cela montre que partir ne suffit pas : il faut aussi pouvoir faire valoir son parcours sur place.",
+          "english": "Leaving isn't enough; you must prove your worth",
+          "example": "Cela montre que partir ne suffit pas : il faut aussi pouvoir faire valoir son parcours sur place.",
+          "usage": "Colon links claim and explanation; 'faire valoir son parcours sur place'."
+        },
+        {
+          "id": "SVE2-0100",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je dirais qu'il n'est pas vraiment facile de partir travailler à l'étranger, à cause des démarches, de la langue et de la reconnaissance des diplômes.",
+          "english": "Concluding judgement with three causes",
+          "example": "En conclusion, je dirais qu'il n'est pas vraiment facile de partir travailler à l'étranger, à cause des démarches, de la langue et de la reconnaissance des diplômes.",
+          "usage": "'à cause de' + tripartite list summarises the arguments."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p16",
+      "entries": [
+        {
+          "id": "SVE2-0101",
+          "kind": "mot-cle",
+          "french": "le tourisme",
+          "english": "tourism",
+          "example": "À mon avis, développer le tourisme peut être très utile pour un pays, à condition que cela reste bien encadré.",
+          "usage": "Masculine mass noun and central economic sector; it can be qualified by 'durable', 'de masse', or 'de qualité'."
+        },
+        {
+          "id": "SVE2-0102",
+          "kind": "mot-cle",
+          "french": "l'arrivée de visiteurs",
+          "english": "the arrival of visitors",
+          "example": "En effet, l'arrivée de visiteurs encourage la protection des monuments, la valorisation des paysages, la promotion de la cuisine et la transmission des traditions locales.",
+          "usage": "Feminine noun phrase; visitor arrivals can support heritage protection, local activity, and a destination's image."
+        },
+        {
+          "id": "SVE2-0103",
+          "kind": "mot-cle",
+          "french": "l'économie locale",
+          "english": "the local economy",
+          "example": "En effet, les touristes dépensent dans les hôtels, les restaurants, les transports, les commerces et les sites culturels, ce qui fait entrer beaucoup d'argent dans l'économie locale.",
+          "usage": "Feminine; where tourist spending circulates."
+        },
+        {
+          "id": "SVE2-0104",
+          "kind": "mot-cle",
+          "french": "les sites culturels",
+          "english": "cultural sites",
+          "example": "En effet, les touristes dépensent dans les hôtels, les restaurants, les transports, les commerces et les sites culturels, ce qui fait entrer beaucoup d'argent dans l'économie locale.",
+          "usage": "Masc. plural; destinations that generate tourist spending."
+        },
+        {
+          "id": "SVE2-0105",
+          "kind": "mot-cle",
+          "french": "régions moins développées",
+          "english": "less developed regions",
+          "example": "Ensuite, parce que cela aide à dynamiser certaines régions moins développées.",
+          "usage": "'moins + adjectif' comparative; target of tourism-led revival."
+        },
+        {
+          "id": "SVE2-0106",
+          "kind": "mot-cle",
+          "french": "aménagement du territoire",
+          "english": "regional/spatial planning",
+          "example": "Cela permet de comprendre que le tourisme peut servir d'outil d'aménagement du territoire.",
+          "usage": "Set French policy term; tourism as 'un outil d'aménagement du territoire'."
+        },
+        {
+          "id": "SVE2-0107",
+          "kind": "mot-cle",
+          "french": "patrimoine culturel",
+          "english": "cultural heritage",
+          "example": "Par exemple, beaucoup de pays utilisent leur patrimoine culturel et leurs paysages comme une vitrine pour attirer aussi bien les touristes que les entreprises étrangères.",
+          "usage": "'patrimoine' masc.; monuments, traditions to be protected."
+        },
+        {
+          "id": "SVE2-0108",
+          "kind": "mot-cle",
+          "french": "des traditions locales",
+          "english": "local traditions",
+          "example": "En effet, l'arrivée de visiteurs encourage la protection des monuments, la valorisation des paysages, la promotion de la cuisine et la transmission des traditions locales.",
+          "usage": "Feminine plural; part of the cultural showcase argument."
+        },
+        {
+          "id": "SVE2-0109",
+          "kind": "mot-cle",
+          "french": "un tourisme de qualité",
+          "english": "quality tourism",
+          "example": "Le but doit donc être un tourisme de qualité, plus durable, plutôt qu'un tourisme uniquement orienté vers le volume.",
+          "usage": "Contrasted with mass 'tourisme orienté vers le volume'."
+        },
+        {
+          "id": "SVE2-0110",
+          "kind": "mot-cle",
+          "french": "des investisseurs",
+          "english": "investors",
+          "example": "Cela renforce aussi l'image du pays à l'international, ce qui peut attirer ensuite des étudiants, des entreprises ou des investisseurs.",
+          "usage": "Masc. plural; attracted by a country's improved image."
+        },
+        {
+          "id": "SVE2-0111",
+          "kind": "collocation",
+          "french": "dynamiser certaines régions moins développées",
+          "english": "boost less developed regions",
+          "example": "Ensuite, parce que cela aide à dynamiser certaines régions moins développées.",
+          "usage": "'dynamiser' = to revitalise; common with regions/economy."
+        },
+        {
+          "id": "SVE2-0112",
+          "kind": "collocation",
+          "french": "développer le tourisme",
+          "english": "to develop tourism",
+          "example": "À mon avis, développer le tourisme peut être très utile pour un pays, à condition que cela reste bien encadré.",
+          "usage": "Natural policy partnership: 'développer' + sector; it should be qualified by conditions such as sustainability."
+        },
+        {
+          "id": "SVE2-0113",
+          "kind": "collocation",
+          "french": "relancer l'activité locale",
+          "english": "revive local activity",
+          "example": "Par exemple, dans plusieurs petits villages bien situés, la rénovation de gîtes et de chemins de randonnée a permis de relancer l'activité locale.",
+          "usage": "'relancer' = to restart/boost; economic-recovery verb."
+        },
+        {
+          "id": "SVE2-0114",
+          "kind": "collocation",
+          "french": "attirer ensuite des étudiants, des entreprises ou des investisseurs",
+          "english": "then attract students, firms or investors",
+          "example": "Cela renforce aussi l'image du pays à l'international, ce qui peut attirer ensuite des étudiants, des entreprises ou des investisseurs.",
+          "usage": "'attirer' + list; image-related knock-on benefits."
+        },
+        {
+          "id": "SVE2-0115",
+          "kind": "collocation",
+          "french": "crée aussi des emplois directs et indirects",
+          "english": "also creates direct and indirect jobs",
+          "example": "Cette activité crée aussi des emplois directs et indirects, accessibles à des personnes peu ou très qualifiées.",
+          "usage": "'créer des emplois' key collocation; 'aussi' adds a benefit."
+        },
+        {
+          "id": "SVE2-0116",
+          "kind": "collocation",
+          "french": "fait entrer beaucoup d'argent dans l'économie locale",
+          "english": "brings a lot of money into the local economy",
+          "example": "En effet, les touristes dépensent dans les hôtels, les restaurants, les transports, les commerces et les sites culturels, ce qui fait entrer beaucoup d'argent dans l'économie locale.",
+          "usage": "'faire entrer de l'argent dans' = to inject money into."
+        },
+        {
+          "id": "SVE2-0117",
+          "kind": "collocation",
+          "french": "soutenir des régions",
+          "english": "support regions",
+          "example": "Ensuite, je pense que le tourisme permet aussi de soutenir des régions qui se vident ou qui se développent peu.",
+          "usage": "'soutenir' = to support/prop up; policy verb."
+        },
+        {
+          "id": "SVE2-0118",
+          "kind": "collocation",
+          "french": "garder des écoles, des commerces, des médecins et des services publics",
+          "english": "keep schools, shops, doctors and public services",
+          "example": "Cela permet de garder des écoles, des commerces, des médecins et des services publics dans ces zones.",
+          "usage": "'garder' + list of amenities lost to rural decline."
+        },
+        {
+          "id": "SVE2-0119",
+          "kind": "collocation",
+          "french": "encourage la protection des monuments",
+          "english": "encourages the protection of monuments",
+          "example": "En effet, l'arrivée de visiteurs encourage la protection des monuments, la valorisation des paysages, la promotion de la cuisine et la transmission des traditions locales.",
+          "usage": "'encourager qqch'; heritage-preservation benefit."
+        },
+        {
+          "id": "SVE2-0120",
+          "kind": "collocation",
+          "french": "faire monter les prix",
+          "english": "drive up prices",
+          "example": "Lorsqu'il devient trop massif, il peut faire monter les prix, dégrader l'environnement et rendre la vie difficile aux habitants.",
+          "usage": "'faire monter' = to push up; downside of over-tourism."
+        },
+        {
+          "id": "SVE2-0121",
+          "kind": "expression",
+          "french": "une vraie source de revenus et d'emplois",
+          "english": "a real source of income and jobs",
+          "example": "D'abord, parce que c'est une vraie source de revenus et d'emplois pour le pays.",
+          "usage": "Summary noun phrase; 'de revenus et d'emplois' as a pair."
+        },
+        {
+          "id": "SVE2-0122",
+          "kind": "expression",
+          "french": "un vrai rôle économique",
+          "english": "a real economic role",
+          "example": "Cela montre que le tourisme joue un vrai rôle économique pour le pays.",
+          "usage": "'jouer un vrai rôle'; 'vrai' before noun = genuine."
+        },
+        {
+          "id": "SVE2-0123",
+          "kind": "expression",
+          "french": "outil d'aménagement du territoire",
+          "english": "a spatial-planning tool",
+          "example": "Cela permet de comprendre que le tourisme peut servir d'outil d'aménagement du territoire.",
+          "usage": "Reframes tourism as policy instrument; 'outil de + noun'."
+        },
+        {
+          "id": "SVE2-0124",
+          "kind": "expression",
+          "french": "une vitrine pour attirer",
+          "english": "a showcase to attract",
+          "example": "Par exemple, beaucoup de pays utilisent leur patrimoine culturel et leurs paysages comme une vitrine pour attirer aussi bien les touristes que les entreprises étrangères.",
+          "usage": "'une vitrine' (shop window) used figuratively for image/soft power."
+        },
+        {
+          "id": "SVE2-0125",
+          "kind": "expression",
+          "french": "le déclin de ces régions",
+          "english": "the decline of these regions",
+          "example": "En revanche, sans cette activité, beaucoup de jeunes seraient obligés de partir travailler ailleurs, ce qui accélère le déclin de ces régions.",
+          "usage": "'le déclin de' = the decline of; rural depopulation."
+        },
+        {
+          "id": "SVE2-0126",
+          "kind": "expression",
+          "french": "bien encadré",
+          "english": "well regulated/supervised",
+          "example": "Cependant, le tourisme n'est utile que s'il reste bien encadré.",
+          "usage": "Past participle; condition attached to the thesis."
+        },
+        {
+          "id": "SVE2-0127",
+          "kind": "expression",
+          "french": "trop massif",
+          "english": "too mass-scale",
+          "example": "Lorsqu'il devient trop massif, il peut faire monter les prix, dégrader l'environnement et rendre la vie difficile aux habitants.",
+          "usage": "Describes over-tourism; 'trop + adjectif'."
+        },
+        {
+          "id": "SVE2-0128",
+          "kind": "expression",
+          "french": "plus durable",
+          "english": "more sustainable",
+          "example": "Le but doit donc être un tourisme de qualité, plus durable, plutôt qu'un tourisme uniquement orienté vers le volume.",
+          "usage": "Comparative of 'durable'; the desired model."
+        },
+        {
+          "id": "SVE2-0129",
+          "kind": "expression",
+          "french": "orienté vers le volume",
+          "english": "geared towards volume",
+          "example": "Le but doit donc être un tourisme de qualité, plus durable, plutôt qu'un tourisme uniquement orienté vers le volume.",
+          "usage": "'orienté vers' = oriented/geared towards; criticises mass tourism."
+        },
+        {
+          "id": "SVE2-0130",
+          "kind": "expression",
+          "french": "dépassent largement la simple dépense des visiteurs",
+          "english": "go well beyond visitors' mere spending",
+          "example": "Cela montre que le tourisme apporte des bénéfices qui dépassent largement la simple dépense des visiteurs.",
+          "usage": "'dépasser largement' = to far exceed; 'la simple dépense'."
+        },
+        {
+          "id": "SVE2-0131",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir pour quelles raisons",
+          "english": "The real question is for what reasons",
+          "example": "La vraie question est de savoir pour quelles raisons un pays a réellement intérêt à développer son tourisme.",
+          "usage": "Reformulation frame with 'pour quelles raisons' (why)."
+        },
+        {
+          "id": "SVE2-0132",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, on cherche à développer le tourisme pour plusieurs raisons solides.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0133",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que le tourisme est intéressant parce qu'il est une vraie source de revenus pour le pays.",
+          "usage": "Opens argument one; opinion verb + indicative."
+        },
+        {
+          "id": "SVE2-0134",
+          "kind": "tournure",
+          "french": "À l'opposé",
+          "english": "At the opposite end",
+          "example": "À l'opposé, sans tourisme, beaucoup de petits commerces et de services auraient du mal à survivre dans certaines régions.",
+          "usage": "Strong contrast connector; synonym of 'à l'inverse'."
+        },
+        {
+          "id": "SVE2-0135",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, sans cette activité, beaucoup de jeunes seraient obligés de partir travailler ailleurs, ce qui accélère le déclin de ces régions.",
+          "usage": "Formal contrast connector."
+        },
+        {
+          "id": "SVE2-0136",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, dans plusieurs petits villages bien situés, la rénovation de gîtes et de chemins de randonnée a permis de relancer l'activité locale.",
+          "usage": "Introduces the illustration."
+        },
+        {
+          "id": "SVE2-0137",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que le tourisme joue un vrai rôle économique pour le pays.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0138",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que le tourisme peut servir d'outil d'aménagement du territoire.",
+          "usage": "Variant conclusion marker."
+        },
+        {
+          "id": "SVE2-0139",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, le tourisme n'est utile que s'il reste bien encadré.",
+          "usage": "Opens the nuance/limitation paragraph."
+        },
+        {
+          "id": "SVE2-0140",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense qu'on a de bonnes raisons de développer le tourisme : revenus, emplois, soutien aux régions et image du pays.",
+          "usage": "Closing signpost."
+        },
+        {
+          "id": "SVE2-0141",
+          "kind": "phrase-modele",
+          "french": "À mon avis, développer le tourisme peut être très utile pour un pays, à condition que cela reste bien encadré.",
+          "english": "Useful, provided it is well regulated",
+          "example": "À mon avis, développer le tourisme peut être très utile pour un pays, à condition que cela reste bien encadré.",
+          "usage": "'à condition que + subjonctif' ('reste') attaches a condition to the thesis."
+        },
+        {
+          "id": "SVE2-0142",
+          "kind": "phrase-modele",
+          "french": "En effet, les touristes dépensent dans les hôtels, les restaurants, les transports, les commerces et les sites culturels, ce qui fait entrer beaucoup d'argent dans l'économie locale.",
+          "english": "Tourist spending feeds the local economy",
+          "example": "En effet, les touristes dépensent dans les hôtels, les restaurants, les transports, les commerces et les sites culturels, ce qui fait entrer beaucoup d'argent dans l'économie locale.",
+          "usage": "'ce qui + verbe' relative clause summarising a consequence."
+        },
+        {
+          "id": "SVE2-0143",
+          "kind": "phrase-modele",
+          "french": "À l'opposé, sans tourisme, beaucoup de petits commerces et de services auraient du mal à survivre dans certaines régions.",
+          "english": "Without tourism many small businesses would struggle",
+          "example": "À l'opposé, sans tourisme, beaucoup de petits commerces et de services auraient du mal à survivre dans certaines régions.",
+          "usage": "'sans + noun' hypothetical + conditional 'auraient du mal à'."
+        },
+        {
+          "id": "SVE2-0144",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le tourisme joue un vrai rôle économique pour le pays.",
+          "english": "Tourism plays a real economic role",
+          "example": "Cela montre que le tourisme joue un vrai rôle économique pour le pays.",
+          "usage": "'jouer un rôle' idiom; compact conclusion."
+        },
+        {
+          "id": "SVE2-0145",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que le tourisme permet aussi de soutenir des régions qui se vident ou qui se développent peu.",
+          "english": "Tourism also supports emptying regions",
+          "example": "Ensuite, je pense que le tourisme permet aussi de soutenir des régions qui se vident ou qui se développent peu.",
+          "usage": "'permettre de + infinitif'; 'se vider' = to empty out."
+        },
+        {
+          "id": "SVE2-0146",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que le tourisme peut servir d'outil d'aménagement du territoire.",
+          "english": "Tourism can serve as a planning tool",
+          "example": "Cela permet de comprendre que le tourisme peut servir d'outil d'aménagement du territoire.",
+          "usage": "'servir de + noun' = to act as; policy-framing conclusion."
+        },
+        {
+          "id": "SVE2-0147",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que développer le tourisme permet aussi de mettre en valeur la culture et l'image du pays.",
+          "english": "It also showcases culture and image",
+          "example": "Enfin, je pense que développer le tourisme permet aussi de mettre en valeur la culture et l'image du pays.",
+          "usage": "Third-argument opener; two coordinated infinitive goals."
+        },
+        {
+          "id": "SVE2-0148",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le tourisme apporte des bénéfices qui dépassent largement la simple dépense des visiteurs.",
+          "english": "Benefits exceed mere visitor spending",
+          "example": "Cela montre que le tourisme apporte des bénéfices qui dépassent largement la simple dépense des visiteurs.",
+          "usage": "'apporter des bénéfices' + relative clause; strong closing claim."
+        },
+        {
+          "id": "SVE2-0149",
+          "kind": "phrase-modele",
+          "french": "Lorsqu'il devient trop massif, il peut faire monter les prix, dégrader l'environnement et rendre la vie difficile aux habitants.",
+          "english": "Over-tourism has clear downsides",
+          "example": "Lorsqu'il devient trop massif, il peut faire monter les prix, dégrader l'environnement et rendre la vie difficile aux habitants.",
+          "usage": "'lorsque + indicatif' temporal clause; lists three harms."
+        },
+        {
+          "id": "SVE2-0150",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense qu'on a de bonnes raisons de développer le tourisme : revenus, emplois, soutien aux régions et image du pays.",
+          "english": "Concluding recap of reasons",
+          "example": "En conclusion, je pense qu'on a de bonnes raisons de développer le tourisme : revenus, emplois, soutien aux régions et image du pays.",
+          "usage": "Colon introduces a summarising list; 'avoir de bonnes raisons de'."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p17",
+      "entries": [
+        {
+          "id": "SVE2-0151",
+          "kind": "mot-cle",
+          "french": "le sexe du responsable",
+          "english": "the manager's sex",
+          "example": "La vraie question est de savoir si le sexe du responsable change vraiment quelque chose à la qualité du travail.",
+          "usage": "'responsable' is epicene (le/la responsable); topic of the debate."
+        },
+        {
+          "id": "SVE2-0152",
+          "kind": "mot-cle",
+          "french": "la compétence",
+          "english": "competence/skill",
+          "example": "Ce qui compte vraiment, c'est la compétence, la manière de diriger et le respect de l'équipe.",
+          "usage": "Feminine; the true criterion opposed to sex."
+        },
+        {
+          "id": "SVE2-0153",
+          "kind": "mot-cle",
+          "french": "l'autorité",
+          "english": "authority",
+          "example": "En effet, l'écoute, la rigueur, l'autorité ou la capacité à motiver une équipe se rencontrent autant chez les hommes que chez les femmes.",
+          "usage": "Feminine noun; distinguish authority as a leadership quality from a gender stereotype about who possesses it."
+        },
+        {
+          "id": "SVE2-0154",
+          "kind": "mot-cle",
+          "french": "qualités de management",
+          "english": "management qualities",
+          "example": "Ensuite, je pense qu'il n'y a pas de qualités de management réservées aux hommes ou aux femmes.",
+          "usage": "Anglicism 'management' is standard in French business register."
+        },
+        {
+          "id": "SVE2-0155",
+          "kind": "mot-cle",
+          "french": "une discrimination",
+          "english": "a form of discrimination",
+          "example": "Enfin, parce que choisir selon le sexe serait une discrimination, injuste et contraire à l'intérêt de l'équipe.",
+          "usage": "Feminine; choosing by sex is framed as discrimination."
+        },
+        {
+          "id": "SVE2-0156",
+          "kind": "mot-cle",
+          "french": "postes de direction",
+          "english": "leadership positions",
+          "example": "C'est exactement ce type de préjugé qui a longtemps empêché les femmes d'accéder aux postes de direction, alors qu'elles en étaient parfaitement capables.",
+          "usage": "'poste de direction' = senior/managerial post."
+        },
+        {
+          "id": "SVE2-0157",
+          "kind": "mot-cle",
+          "french": "ces stéréotypes",
+          "english": "these stereotypes",
+          "example": "De plus, ces stéréotypes peuvent même empêcher de voir les vraies compétences des personnes.",
+          "usage": "Masc. plural; anaphoric 'ces stéréotypes' refers to gender clichés."
+        },
+        {
+          "id": "SVE2-0158",
+          "kind": "mot-cle",
+          "french": "l'identité de genre",
+          "english": "gender identity",
+          "example": "Cela montre que le vrai critère de jugement est la qualité du management, pas l'identité de genre.",
+          "usage": "Contrasted with actual managerial quality."
+        },
+        {
+          "id": "SVE2-0159",
+          "kind": "mot-cle",
+          "french": "un service technique",
+          "english": "a technical department",
+          "example": "Par exemple, beaucoup d'équipes constatent qu'une femme peut très bien diriger un service technique, et qu'un homme peut être très à l'écoute du bien-être de son équipe.",
+          "usage": "Example workplace unit; 'diriger un service'."
+        },
+        {
+          "id": "SVE2-0160",
+          "kind": "mot-cle",
+          "french": "bien-être de son équipe",
+          "english": "the well-being of one's team",
+          "example": "Par exemple, beaucoup d'équipes constatent qu'une femme peut très bien diriger un service technique, et qu'un homme peut être très à l'écoute du bien-être de son équipe.",
+          "usage": "'bien-être' invariable; manager's attentiveness to the team."
+        },
+        {
+          "id": "SVE2-0161",
+          "kind": "collocation",
+          "french": "organiser le travail",
+          "english": "organise the work",
+          "example": "En effet, un bon responsable doit savoir organiser le travail, écouter son équipe, prendre des décisions claires et gérer les tensions.",
+          "usage": "Core managerial task verb + object."
+        },
+        {
+          "id": "SVE2-0162",
+          "kind": "collocation",
+          "french": "choisir son responsable selon son sexe",
+          "english": "to choose a manager on the basis of sex",
+          "example": "Enfin, je pense que choisir son responsable selon son sexe n'est pas une simple préférence : c'est une forme de discrimination.",
+          "usage": "'Selon' introduces the criterion used for a choice; this construction is criticised as discriminatory here."
+        },
+        {
+          "id": "SVE2-0163",
+          "kind": "collocation",
+          "french": "gérer les tensions",
+          "english": "manage tensions/conflicts",
+          "example": "En effet, un bon responsable doit savoir organiser le travail, écouter son équipe, prendre des décisions claires et gérer les tensions.",
+          "usage": "'gérer' = to handle/manage; workplace-conflict context."
+        },
+        {
+          "id": "SVE2-0164",
+          "kind": "collocation",
+          "french": "motiver une équipe",
+          "english": "motivate a team",
+          "example": "En effet, l'écoute, la rigueur, l'autorité ou la capacité à motiver une équipe se rencontrent autant chez les hommes que chez les femmes.",
+          "usage": "'la capacité à motiver une équipe'; leadership skill."
+        },
+        {
+          "id": "SVE2-0165",
+          "kind": "collocation",
+          "french": "diriger un service technique",
+          "english": "run a technical department",
+          "example": "Par exemple, beaucoup d'équipes constatent qu'une femme peut très bien diriger un service technique, et qu'un homme peut être très à l'écoute du bien-être de son équipe.",
+          "usage": "'diriger' = to lead/run; counters a gender stereotype."
+        },
+        {
+          "id": "SVE2-0166",
+          "kind": "collocation",
+          "french": "accéder aux postes de direction",
+          "english": "reach leadership positions",
+          "example": "C'est exactement ce type de préjugé qui a longtemps empêché les femmes d'accéder aux postes de direction, alors qu'elles en étaient parfaitement capables.",
+          "usage": "'accéder à qqch' = to gain access to; career-progression verb."
+        },
+        {
+          "id": "SVE2-0167",
+          "kind": "collocation",
+          "french": "nommer une femme à un poste de direction",
+          "english": "appoint a woman to a leadership post",
+          "example": "Par exemple, une entreprise qui refuserait de nommer une femme à un poste de direction uniquement à cause de son sexe se couperait de la moitié des candidats compétents et y perdrait en efficacité.",
+          "usage": "'nommer qqn à un poste' fixed structure."
+        },
+        {
+          "id": "SVE2-0168",
+          "kind": "collocation",
+          "french": "juger un responsable sur son sexe",
+          "english": "judge a manager on their sex",
+          "example": "Cela montre que juger un responsable sur son sexe est à la fois injuste et contraire à l'intérêt de l'entreprise.",
+          "usage": "'juger qqn sur qqch' = to judge someone by; criticised here."
+        },
+        {
+          "id": "SVE2-0169",
+          "kind": "collocation",
+          "french": "écouter son équipe",
+          "english": "listen to one's team",
+          "example": "En effet, un bon responsable doit savoir organiser le travail, écouter son équipe, prendre des décisions claires et gérer les tensions.",
+          "usage": "'écouter qqn' (no preposition); a valued managerial quality."
+        },
+        {
+          "id": "SVE2-0170",
+          "kind": "collocation",
+          "french": "voir les vraies compétences des personnes",
+          "english": "see people's real skills",
+          "example": "De plus, ces stéréotypes peuvent même empêcher de voir les vraies compétences des personnes.",
+          "usage": "Stereotypes 'empêchent de voir les vraies compétences'."
+        },
+        {
+          "id": "SVE2-0171",
+          "kind": "expression",
+          "french": "ce qui compte",
+          "english": "what matters",
+          "example": "À mon avis, le sexe du responsable n'est pas un vrai critère ; ce qui compte, c'est la manière dont la personne dirige.",
+          "usage": "Fixed cleft opening, typically followed by 'c'est ...', to foreground the decisive criterion."
+        },
+        {
+          "id": "SVE2-0172",
+          "kind": "expression",
+          "french": "un mauvais responsable",
+          "english": "a bad manager",
+          "example": "Au contraire, une personne incompétente reste un mauvais responsable, qu'elle soit un homme ou une femme.",
+          "usage": "'mauvais' before noun; sex-independent judgement."
+        },
+        {
+          "id": "SVE2-0173",
+          "kind": "expression",
+          "french": "il n'est pas logique de",
+          "english": "it makes no sense to",
+          "example": "Cela permet de comprendre qu'il n'est pas logique de préférer un sexe ou un autre dans la fonction de responsable.",
+          "usage": "Impersonal evaluative frame followed by an infinitive; it is useful for a reasoned rejection of a practice."
+        },
+        {
+          "id": "SVE2-0174",
+          "kind": "expression",
+          "french": "injuste et contraire à l'intérêt de l'équipe",
+          "english": "unfair and against the team's interest",
+          "example": "Enfin, parce que choisir selon le sexe serait une discrimination, injuste et contraire à l'intérêt de l'équipe.",
+          "usage": "Coordinated predicate; 'contraire à qqch' = contrary to."
+        },
+        {
+          "id": "SVE2-0175",
+          "kind": "expression",
+          "french": "la moitié des candidats compétents",
+          "english": "half of the competent candidates",
+          "example": "Par exemple, une entreprise qui refuserait de nommer une femme à un poste de direction uniquement à cause de son sexe se couperait de la moitié des candidats compétents et y perdrait en efficacité.",
+          "usage": "'la moitié de + noun'; cost of gender bias."
+        },
+        {
+          "id": "SVE2-0176",
+          "kind": "expression",
+          "french": "une simple préférence",
+          "english": "a mere preference",
+          "example": "Enfin, je pense que choisir son responsable selon son sexe n'est pas une simple préférence : c'est une forme de discrimination.",
+          "usage": "'simple' before noun = mere/plain; downplays then rejects it."
+        },
+        {
+          "id": "SVE2-0177",
+          "kind": "expression",
+          "french": "n'ai pas de préférence entre",
+          "english": "I have no preference between",
+          "example": "À mon avis, je n'ai pas de préférence entre un responsable homme ou femme.",
+          "usage": "'Avoir une préférence entre X et Y' states a comparison; the negation expresses neutrality."
+        },
+        {
+          "id": "SVE2-0178",
+          "kind": "expression",
+          "french": "sur son comportement réel",
+          "english": "on their actual behaviour",
+          "example": "La bonne approche est de juger chaque responsable individuellement, sur son comportement réel.",
+          "usage": "'juger sur son comportement réel'; the fair approach."
+        },
+        {
+          "id": "SVE2-0179",
+          "kind": "expression",
+          "french": "réservées aux hommes ou aux femmes",
+          "english": "reserved for men or women",
+          "example": "Ensuite, je pense qu'il n'y a pas de qualités de management réservées aux hommes ou aux femmes.",
+          "usage": "'réservé à qqn'; here denied for management qualities."
+        },
+        {
+          "id": "SVE2-0180",
+          "kind": "expression",
+          "french": "autant chez les hommes que chez les femmes",
+          "english": "as much in men as in women",
+          "example": "Ensuite, parce que les qualités utiles à un bon responsable existent autant chez les hommes que chez les femmes.",
+          "usage": "'autant ... que' equality comparison; 'chez' = among/in."
+        },
+        {
+          "id": "SVE2-0181",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si le sexe du responsable change vraiment quelque chose à la qualité du travail.",
+          "usage": "Reformulation frame + indirect question."
+        },
+        {
+          "id": "SVE2-0182",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, je n'ai pas de préférence entre un responsable homme ou femme.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0183",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, ce qui compte vraiment chez un responsable, c'est sa compétence et sa façon de diriger.",
+          "usage": "Enumerator opening the first argument."
+        },
+        {
+          "id": "SVE2-0184",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, une personne incompétente reste un mauvais responsable, qu'elle soit un homme ou une femme.",
+          "usage": "Reverses the expected claim; strong contrast."
+        },
+        {
+          "id": "SVE2-0185",
+          "kind": "tournure",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, ces stéréotypes peuvent même empêcher de voir les vraies compétences des personnes.",
+          "usage": "Additive connector piling on an argument."
+        },
+        {
+          "id": "SVE2-0186",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, on peut très bien avoir travaillé pour un homme autoritaire et peu organisé, et apprécier ensuite une responsable femme calme et structurée, ou l'inverse.",
+          "usage": "Introduces the illustration."
+        },
+        {
+          "id": "SVE2-0187",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que le vrai critère de jugement est la qualité du management, pas l'identité de genre.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0188",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre",
+          "english": "This helps to understand",
+          "example": "Cela permet de comprendre qu'il n'est pas logique de préférer un sexe ou un autre dans la fonction de responsable.",
+          "usage": "Variant conclusion marker; here elided to 'comprendre qu''.'"
+        },
+        {
+          "id": "SVE2-0189",
+          "kind": "tournure",
+          "french": "Cependant, je comprends que",
+          "english": "However, I understand that",
+          "example": "Cependant, je comprends que certaines personnes aient une préférence personnelle, souvent liée à leur expérience passée.",
+          "usage": "Concessive empathy; 'comprendre que + subjonctif' ('aient')."
+        },
+        {
+          "id": "SVE2-0190",
+          "kind": "tournure",
+          "french": "En conclusion, je dirais que",
+          "english": "In conclusion, I would say that",
+          "example": "En conclusion, je dirais que je n'ai pas de préférence entre un responsable homme ou femme.",
+          "usage": "Conditional 'dirais' softens the closing statement."
+        },
+        {
+          "id": "SVE2-0191",
+          "kind": "phrase-modele",
+          "french": "À mon avis, le sexe du responsable n'est pas un vrai critère ; ce qui compte, c'est la manière dont la personne dirige.",
+          "english": "Sex isn't the real criterion",
+          "example": "À mon avis, le sexe du responsable n'est pas un vrai critère ; ce qui compte, c'est la manière dont la personne dirige.",
+          "usage": "French spacing 'critère ;'; cleft 'ce qui compte, c'est ...' emphasis."
+        },
+        {
+          "id": "SVE2-0192",
+          "kind": "phrase-modele",
+          "french": "En effet, un bon responsable doit savoir organiser le travail, écouter son équipe, prendre des décisions claires et gérer les tensions.",
+          "english": "Defines a good manager's tasks",
+          "example": "En effet, un bon responsable doit savoir organiser le travail, écouter son équipe, prendre des décisions claires et gérer les tensions.",
+          "usage": "'savoir + infinitif' = to know how to; four coordinated skills."
+        },
+        {
+          "id": "SVE2-0193",
+          "kind": "phrase-modele",
+          "french": "Ces qualités ne dépendent absolument pas du sexe de la personne.",
+          "english": "These qualities don't depend on sex",
+          "example": "Ces qualités ne dépendent absolument pas du sexe de la personne.",
+          "usage": "'dépendre de qqch'; 'absolument pas' reinforces the negation."
+        },
+        {
+          "id": "SVE2-0194",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le vrai critère de jugement est la qualité du management, pas l'identité de genre.",
+          "english": "The criterion is management quality, not gender",
+          "example": "Cela montre que le vrai critère de jugement est la qualité du management, pas l'identité de genre.",
+          "usage": "'X, pas Y' antithesis; compact conclusion."
+        },
+        {
+          "id": "SVE2-0195",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense qu'il n'y a pas de qualités de management réservées aux hommes ou aux femmes.",
+          "english": "No management qualities are gender-reserved",
+          "example": "Ensuite, je pense qu'il n'y a pas de qualités de management réservées aux hommes ou aux femmes.",
+          "usage": "'il n'y a pas de + noun' generalising negation."
+        },
+        {
+          "id": "SVE2-0196",
+          "kind": "phrase-modele",
+          "french": "Les anciens stéréotypes qui associaient l'autorité aux hommes et l'écoute aux femmes ne correspondent plus à la réalité du travail.",
+          "english": "Old gender stereotypes are outdated",
+          "example": "Les anciens stéréotypes qui associaient l'autorité aux hommes et l'écoute aux femmes ne correspondent plus à la réalité du travail.",
+          "usage": "'associer X à Y'; 'ne ... plus' = no longer."
+        },
+        {
+          "id": "SVE2-0197",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre qu'il n'est pas logique de préférer un sexe ou un autre dans la fonction de responsable.",
+          "english": "Preferring one sex is illogical",
+          "example": "Cela permet de comprendre qu'il n'est pas logique de préférer un sexe ou un autre dans la fonction de responsable.",
+          "usage": "'il n'est pas logique de + infinitif' impersonal judgement."
+        },
+        {
+          "id": "SVE2-0198",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que choisir son responsable selon son sexe n'est pas une simple préférence : c'est une forme de discrimination.",
+          "english": "Choosing by sex is discrimination",
+          "example": "Enfin, je pense que choisir son responsable selon son sexe n'est pas une simple préférence : c'est une forme de discrimination.",
+          "usage": "Infinitive subject 'choisir ...'; colon reframes the idea."
+        },
+        {
+          "id": "SVE2-0199",
+          "kind": "phrase-modele",
+          "french": "Cela montre que juger un responsable sur son sexe est à la fois injuste et contraire à l'intérêt de l'entreprise.",
+          "english": "Judging by sex is unfair and inefficient",
+          "example": "Cela montre que juger un responsable sur son sexe est à la fois injuste et contraire à l'intérêt de l'entreprise.",
+          "usage": "'à la fois X et Y' pairs two objections."
+        },
+        {
+          "id": "SVE2-0200",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je dirais que je n'ai pas de préférence entre un responsable homme ou femme.",
+          "english": "I have no preference",
+          "example": "En conclusion, je dirais que je n'ai pas de préférence entre un responsable homme ou femme.",
+          "usage": "'ne pas avoir de préférence entre'; clean closing stance."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p18",
+      "entries": [
+        {
+          "id": "SVE2-0201",
+          "kind": "mot-cle",
+          "french": "l'argent",
+          "english": "money",
+          "example": "La vraie question est de savoir si l'argent est vraiment indispensable pour profiter de la vie.",
+          "usage": "Masculine mass noun; use 'beaucoup d'argent' for quantity and distinguish it from 'revenu', a regular income."
+        },
+        {
+          "id": "SVE2-0202",
+          "kind": "mot-cle",
+          "french": "les relations humaines",
+          "english": "human relationships",
+          "example": "D'abord, parce que beaucoup de choses essentielles, comme la santé, le temps ou les relations humaines, ne s'achètent pas.",
+          "usage": "Feminine plural; a non-purchasable source of happiness."
+        },
+        {
+          "id": "SVE2-0203",
+          "kind": "mot-cle",
+          "french": "le temps libre",
+          "english": "free time",
+          "example": "En effet, la santé, le temps libre, les amis, la famille, la confiance ou un bon environnement de vie ne se trouvent pas dans un magasin.",
+          "usage": "'temps libre' fixed pairing; counts more than extra money."
+        },
+        {
+          "id": "SVE2-0204",
+          "kind": "mot-cle",
+          "french": "confort matériel",
+          "english": "material comfort",
+          "example": "En effet, à partir du moment où l'on peut payer son logement, sa nourriture, ses soins et quelques loisirs, l'argent supplémentaire apporte surtout du confort matériel.",
+          "usage": "What extra income mostly buys; 's'habitue vite'."
+        },
+        {
+          "id": "SVE2-0205",
+          "kind": "mot-cle",
+          "french": "bonheur quotidien",
+          "english": "everyday happiness",
+          "example": "Ensuite, parce qu'au-delà d'un certain niveau de revenus, l'argent supplémentaire change peu de chose au bonheur quotidien.",
+          "usage": "'quotidien' as adjective; little changed by extra money."
+        },
+        {
+          "id": "SVE2-0206",
+          "kind": "mot-cle",
+          "french": "un bonheur durable",
+          "english": "lasting happiness",
+          "example": "Or, ce confort s'habitue très vite et ne crée pas un bonheur durable.",
+          "usage": "'durable' = long-lasting; opposed to fleeting comfort."
+        },
+        {
+          "id": "SVE2-0207",
+          "kind": "mot-cle",
+          "french": "niveau de revenu",
+          "english": "the income level",
+          "example": "Ensuite, je pense qu'au-delà d'un certain niveau de revenus, gagner plus n'augmente pas vraiment le bonheur.",
+          "usage": "'niveau de revenu' fixed pairing; not what enjoyment depends on."
+        },
+        {
+          "id": "SVE2-0208",
+          "kind": "mot-cle",
+          "french": "des sacrifices personnels",
+          "english": "personal sacrifices",
+          "example": "En effet, beaucoup de personnes acceptent des horaires lourds, du stress et des sacrifices personnels pour augmenter leurs revenus, et finissent par ne plus avoir le temps ni l'énergie de profiter de leur vie.",
+          "usage": "'faire des sacrifices'; the price of chasing money."
+        },
+        {
+          "id": "SVE2-0209",
+          "kind": "mot-cle",
+          "french": "le sens donné à sa vie",
+          "english": "the meaning given to one's life",
+          "example": "Au contraire, ce qui continue à compter sur la durée, c'est la qualité des relations, la santé et le sens donné à sa vie.",
+          "usage": "'le sens de la vie'; 'donné à' = given to; durable value."
+        },
+        {
+          "id": "SVE2-0210",
+          "kind": "mot-cle",
+          "french": "besoins de base",
+          "english": "basic needs",
+          "example": "Quand on n'arrive pas à payer son loyer ou ses besoins de base, parler de « profiter de la vie » devient irréaliste.",
+          "usage": "'besoins de base'; below which enjoyment is unrealistic."
+        },
+        {
+          "id": "SVE2-0211",
+          "kind": "collocation",
+          "french": "gagner sa vie",
+          "english": "to earn a living",
+          "example": "Par exemple, une personne qui travaille soixante heures par semaine pour mieux gagner sa vie peut finir par ne plus voir ses enfants grandir.",
+          "usage": "Fixed expression for earning enough to live on; 'mieux gagner sa vie' means to earn a better living."
+        },
+        {
+          "id": "SVE2-0212",
+          "kind": "collocation",
+          "french": "gagner beaucoup d'argent",
+          "english": "earn a lot of money",
+          "example": "À mon avis, on n'a pas besoin de gagner beaucoup d'argent pour profiter de la vie.",
+          "usage": "'gagner de l'argent'; 'beaucoup d'argent' with 'de'."
+        },
+        {
+          "id": "SVE2-0213",
+          "kind": "collocation",
+          "french": "vivre correctement",
+          "english": "to live decently",
+          "example": "En conclusion, je pense qu'il faut un revenu suffisant pour vivre correctement, mais pas forcément beaucoup d'argent pour profiter de la vie.",
+          "usage": "'Vivre' + adverb assesses a standard of living; it is more precise than simply saying 'être riche'."
+        },
+        {
+          "id": "SVE2-0214",
+          "kind": "collocation",
+          "french": "payer son logement",
+          "english": "pay for one's housing",
+          "example": "En effet, à partir du moment où l'on peut payer son logement, sa nourriture, ses soins et quelques loisirs, l'argent supplémentaire apporte surtout du confort matériel.",
+          "usage": "'payer qqch' (no preposition); basic-needs list."
+        },
+        {
+          "id": "SVE2-0215",
+          "kind": "collocation",
+          "french": "passe du temps de qualité",
+          "english": "spends quality time",
+          "example": "Prenons l'exemple d'une personne qui passe du temps de qualité avec sa famille et ses amis, en faisant des choses simples : elle peut être bien plus heureuse qu'une personne très riche mais isolée.",
+          "usage": "'passer du temps'; 'de qualité' as an invariable qualifier."
+        },
+        {
+          "id": "SVE2-0216",
+          "kind": "collocation",
+          "french": "augmenter leurs revenus",
+          "english": "increase their income",
+          "example": "En effet, beaucoup de personnes acceptent des horaires lourds, du stress et des sacrifices personnels pour augmenter leurs revenus, et finissent par ne plus avoir le temps ni l'énergie de profiter de leur vie.",
+          "usage": "'augmenter' + object; 'revenus' plural = income."
+        },
+        {
+          "id": "SVE2-0217",
+          "kind": "collocation",
+          "french": "empêcher de profiter du présent",
+          "english": "prevent enjoying the present",
+          "example": "Enfin, parce que vouloir toujours gagner plus peut au contraire nous empêcher de profiter du présent.",
+          "usage": "'empêcher de + infinitif'; downside of over-working."
+        },
+        {
+          "id": "SVE2-0218",
+          "kind": "collocation",
+          "french": "payer son loyer",
+          "english": "pay one's rent",
+          "example": "Quand on n'arrive pas à payer son loyer ou ses besoins de base, parler de « profiter de la vie » devient irréaliste.",
+          "usage": "'loyer' = rent (vs 'louer' = to rent); basic need."
+        },
+        {
+          "id": "SVE2-0219",
+          "kind": "collocation",
+          "french": "mieux gagner sa vie",
+          "english": "make a better living",
+          "example": "Par exemple, une personne qui travaille soixante heures par semaine pour mieux gagner sa vie peut finir par ne plus voir ses enfants grandir.",
+          "usage": "'gagner sa vie' idiom = to earn a living; 'mieux' modifies it."
+        },
+        {
+          "id": "SVE2-0220",
+          "kind": "collocation",
+          "french": "ne plus voir ses enfants grandir",
+          "english": "no longer see one's children grow up",
+          "example": "Par exemple, une personne qui travaille soixante heures par semaine pour mieux gagner sa vie peut finir par ne plus voir ses enfants grandir.",
+          "usage": "'ne plus + infinitif'; poignant cost of overwork."
+        },
+        {
+          "id": "SVE2-0221",
+          "kind": "expression",
+          "french": "ne se trouvent pas dans un magasin",
+          "english": "cannot be found in a shop",
+          "example": "En effet, la santé, le temps libre, les amis, la famille, la confiance ou un bon environnement de vie ne se trouvent pas dans un magasin.",
+          "usage": "Concrete figurative rebuttal: important non-material goods are not available for purchase."
+        },
+        {
+          "id": "SVE2-0222",
+          "kind": "expression",
+          "french": "ne plus avoir le temps ni l'énergie",
+          "english": "to no longer have either the time or the energy",
+          "example": "En effet, beaucoup de personnes acceptent des horaires lourds, du stress et des sacrifices personnels pour augmenter leurs revenus, et finissent par ne plus avoir le temps ni l'énergie de profiter de leur vie.",
+          "usage": "'Ne plus' marks a lost state; 'ni ... ni' coordinates the two things sacrificed to overwork."
+        },
+        {
+          "id": "SVE2-0223",
+          "kind": "expression",
+          "french": "au-delà d'un certain niveau de revenus",
+          "english": "beyond a certain income level",
+          "example": "Ensuite, je pense qu'au-delà d'un certain niveau de revenus, gagner plus n'augmente pas vraiment le bonheur.",
+          "usage": "'au-delà de' = beyond; diminishing-returns idea."
+        },
+        {
+          "id": "SVE2-0224",
+          "kind": "expression",
+          "french": "s'habitue très vite",
+          "english": "gets used to it very quickly",
+          "example": "Or, ce confort s'habitue très vite et ne crée pas un bonheur durable.",
+          "usage": "Pronominal 's'habituer à' takes a complement; it explains why extra material comfort quickly loses its effect."
+        },
+        {
+          "id": "SVE2-0225",
+          "kind": "expression",
+          "french": "garde du temps pour ses proches",
+          "english": "keeps time for loved ones",
+          "example": "À l'opposé, une personne qui gagne moins, mais qui garde du temps pour ses proches et pour elle-même, peut être bien plus heureuse au quotidien.",
+          "usage": "'Garder du temps pour' is a natural way to protect time for family or other priorities."
+        },
+        {
+          "id": "SVE2-0226",
+          "kind": "expression",
+          "french": "très riche mais isolée",
+          "english": "very rich but isolated",
+          "example": "Prenons l'exemple d'une personne qui passe du temps de qualité avec sa famille et ses amis, en faisant des choses simples : elle peut être bien plus heureuse qu'une personne très riche mais isolée.",
+          "usage": "Adjectives agree fem.; concessive 'mais' contrast."
+        },
+        {
+          "id": "SVE2-0227",
+          "kind": "expression",
+          "french": "ce qu'on vit que de ce qu'on possède",
+          "english": "what one lives than what one owns",
+          "example": "Cela montre que profiter de la vie dépend davantage de ce qu'on vit que de ce qu'on possède.",
+          "usage": "Part of 'davantage de X que de Y'; experience vs possession."
+        },
+        {
+          "id": "SVE2-0228",
+          "kind": "expression",
+          "french": "un obstacle au bonheur",
+          "english": "an obstacle to happiness",
+          "example": "Enfin, je pense que vouloir toujours gagner plus peut même devenir un obstacle au bonheur.",
+          "usage": "'un obstacle à qqch'; chasing money can hinder happiness."
+        },
+        {
+          "id": "SVE2-0229",
+          "kind": "expression",
+          "french": "des horaires lourds",
+          "english": "heavy work hours",
+          "example": "En effet, beaucoup de personnes acceptent des horaires lourds, du stress et des sacrifices personnels pour augmenter leurs revenus, et finissent par ne plus avoir le temps ni l'énergie de profiter de leur vie.",
+          "usage": "'horaires' masc. pl.; 'lourds' = heavy/demanding."
+        },
+        {
+          "id": "SVE2-0230",
+          "kind": "expression",
+          "french": "pas suffisant à lui seul",
+          "english": "not sufficient on its own",
+          "example": "Un certain niveau d'argent reste donc nécessaire, même s'il n'est pas suffisant à lui seul.",
+          "usage": "'à lui seul' = by itself; money necessary but not enough."
+        },
+        {
+          "id": "SVE2-0231",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si l'argent est vraiment indispensable pour profiter de la vie.",
+          "usage": "Reformulation frame + indirect question."
+        },
+        {
+          "id": "SVE2-0232",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, on n'a pas besoin de gagner beaucoup d'argent pour profiter de la vie.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0233",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que beaucoup de choses essentielles dans la vie ne dépendent pas de l'argent.",
+          "usage": "Opens argument one; opinion verb + indicative."
+        },
+        {
+          "id": "SVE2-0234",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, on peut très bien avoir beaucoup d'argent et se sentir seul ou stressé.",
+          "usage": "Introduces a symmetrical contrast."
+        },
+        {
+          "id": "SVE2-0235",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Enfin, parce que vouloir toujours gagner plus peut au contraire nous empêcher de profiter du présent.",
+          "usage": "Reverses the expected point; strong contrast."
+        },
+        {
+          "id": "SVE2-0236",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une personne qui travaille soixante heures par semaine pour mieux gagner sa vie peut finir par ne plus voir ses enfants grandir.",
+          "usage": "Introduces the illustration."
+        },
+        {
+          "id": "SVE2-0237",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que profiter de la vie dépend davantage de ce qu'on vit que de ce qu'on possède.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0238",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que profiter de la vie n'est pas une question de niveau de revenu, mais de manière de vivre.",
+          "usage": "Variant conclusion marker."
+        },
+        {
+          "id": "SVE2-0239",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître que",
+          "english": "However, it must be acknowledged that",
+          "example": "Cependant, il faut reconnaître que vivre avec des revenus trop faibles rend tout beaucoup plus difficile.",
+          "usage": "Concessive frame; 'il faut reconnaître que' + indicative."
+        },
+        {
+          "id": "SVE2-0240",
+          "kind": "tournure",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, je pense qu'il faut un revenu suffisant pour vivre correctement, mais pas forcément beaucoup d'argent pour profiter de la vie.",
+          "usage": "Closing signpost."
+        },
+        {
+          "id": "SVE2-0241",
+          "kind": "phrase-modele",
+          "french": "À mon avis, non, il n'est pas nécessaire de gagner beaucoup d'argent pour profiter de la vie, même si un revenu suffisant reste important.",
+          "english": "Not necessary to be rich to enjoy life",
+          "example": "À mon avis, non, il n'est pas nécessaire de gagner beaucoup d'argent pour profiter de la vie, même si un revenu suffisant reste important.",
+          "usage": "'il n'est pas nécessaire de + infinitif' + 'même si' concession."
+        },
+        {
+          "id": "SVE2-0242",
+          "kind": "phrase-modele",
+          "french": "En effet, la santé, le temps libre, les amis, la famille, la confiance ou un bon environnement de vie ne se trouvent pas dans un magasin.",
+          "english": "Key goods aren't sold in shops",
+          "example": "En effet, la santé, le temps libre, les amis, la famille, la confiance ou un bon environnement de vie ne se trouvent pas dans un magasin.",
+          "usage": "Enumeration + pronominal 'ne se trouvent pas'; concrete image."
+        },
+        {
+          "id": "SVE2-0243",
+          "kind": "phrase-modele",
+          "french": "À l'inverse, on peut très bien avoir beaucoup d'argent et se sentir seul ou stressé.",
+          "english": "One can be rich yet lonely",
+          "example": "À l'inverse, on peut très bien avoir beaucoup d'argent et se sentir seul ou stressé.",
+          "usage": "'on peut très bien + infinitif' concessive possibility."
+        },
+        {
+          "id": "SVE2-0244",
+          "kind": "phrase-modele",
+          "french": "Cela montre que profiter de la vie dépend davantage de ce qu'on vit que de ce qu'on possède.",
+          "english": "Enjoyment depends on living, not owning",
+          "example": "Cela montre que profiter de la vie dépend davantage de ce qu'on vit que de ce qu'on possède.",
+          "usage": "'davantage de X que de Y' comparison; experiences over possessions."
+        },
+        {
+          "id": "SVE2-0245",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense qu'au-delà d'un certain niveau de revenus, gagner plus n'augmente pas vraiment le bonheur.",
+          "english": "Beyond a point, more money adds little",
+          "example": "Ensuite, je pense qu'au-delà d'un certain niveau de revenus, gagner plus n'augmente pas vraiment le bonheur.",
+          "usage": "Fronted 'au-delà de ...'; diminishing-returns claim."
+        },
+        {
+          "id": "SVE2-0246",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que profiter de la vie n'est pas une question de niveau de revenu, mais de manière de vivre.",
+          "english": "It's about lifestyle, not income",
+          "example": "Cela permet de comprendre que profiter de la vie n'est pas une question de niveau de revenu, mais de manière de vivre.",
+          "usage": "'ne ... pas une question de X, mais de Y' reframing."
+        },
+        {
+          "id": "SVE2-0247",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que vouloir toujours gagner plus peut même devenir un obstacle au bonheur.",
+          "english": "Chasing money can hinder happiness",
+          "example": "Enfin, je pense que vouloir toujours gagner plus peut même devenir un obstacle au bonheur.",
+          "usage": "Infinitive subject; 'peut même devenir' escalates the claim."
+        },
+        {
+          "id": "SVE2-0248",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la course à l'argent peut justement nous priver de ce qui rend la vie agréable.",
+          "english": "The race for money can deprive us of joy",
+          "example": "Cela montre que la course à l'argent peut justement nous priver de ce qui rend la vie agréable.",
+          "usage": "'priver qqn de qqch'; 'ce qui rend la vie agréable' relative."
+        },
+        {
+          "id": "SVE2-0249",
+          "kind": "phrase-modele",
+          "french": "Un certain niveau d'argent reste donc nécessaire, même s'il n'est pas suffisant à lui seul.",
+          "english": "Some money is needed but not enough",
+          "example": "Un certain niveau d'argent reste donc nécessaire, même s'il n'est pas suffisant à lui seul.",
+          "usage": "Balanced nuance; 'nécessaire ... mais pas suffisant'."
+        },
+        {
+          "id": "SVE2-0250",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense qu'il faut un revenu suffisant pour vivre correctement, mais pas forcément beaucoup d'argent pour profiter de la vie.",
+          "english": "Enough to live, not necessarily rich",
+          "example": "En conclusion, je pense qu'il faut un revenu suffisant pour vivre correctement, mais pas forcément beaucoup d'argent pour profiter de la vie.",
+          "usage": "'pas forcément' = not necessarily; contrasts needs and enjoyment."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p20",
+      "entries": [
+        {
+          "id": "SVE2-0251",
+          "kind": "mot-cle",
+          "french": "la propreté",
+          "english": "the cleaning sector",
+          "example": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "usage": "Feminine noun; 'les métiers de la propreté' is the neutral sector term, preferable to an overly narrow job title."
+        },
+        {
+          "id": "SVE2-0252",
+          "kind": "mot-cle",
+          "french": "niveau de salaire",
+          "english": "the pay level",
+          "example": "La vraie question est de savoir si la difficulté d'un métier détermine vraiment son niveau de salaire.",
+          "usage": "'salaire' masc.; what difficulty supposedly determines (but doesn't)."
+        },
+        {
+          "id": "SVE2-0253",
+          "kind": "mot-cle",
+          "french": "la responsabilité",
+          "english": "responsibility",
+          "example": "Mais ce sont surtout la rareté et la responsabilité qui justifient ces salaires, pas seulement la difficulté en elle-même.",
+          "usage": "Feminine noun; alongside risk and rare expertise, it is presented as a factor that can justify pay."
+        },
+        {
+          "id": "SVE2-0254",
+          "kind": "mot-cle",
+          "french": "pouvoir de négociation",
+          "english": "bargaining power",
+          "example": "Ensuite, parce que le salaire dépend surtout de la rareté des compétences et du pouvoir de négociation, pas de la difficulté.",
+          "usage": "'pouvoir de + infinitif/noun'; determines wages."
+        },
+        {
+          "id": "SVE2-0255",
+          "kind": "mot-cle",
+          "french": "la concurrence",
+          "english": "competition",
+          "example": "En revanche, un métier très éprouvant, mais que beaucoup de personnes peuvent exercer, reste souvent mal payé parce que la concurrence entre candidats est forte.",
+          "usage": "Feminine noun; 'la concurrence entre candidats' helps explain why difficult but common jobs can remain poorly paid."
+        },
+        {
+          "id": "SVE2-0256",
+          "kind": "mot-cle",
+          "french": "le salaire minimum",
+          "english": "the minimum wage",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "Fixed term; hard jobs 'rarement plus que le salaire minimum'."
+        },
+        {
+          "id": "SVE2-0257",
+          "kind": "mot-cle",
+          "french": "la valeur marchande",
+          "english": "the market value",
+          "example": "Cela permet de comprendre que le salaire suit la valeur marchande, plus que l'effort fourni.",
+          "usage": "What pay follows, per the second argument."
+        },
+        {
+          "id": "SVE2-0258",
+          "kind": "mot-cle",
+          "french": "l'utilité sociale",
+          "english": "social usefulness",
+          "example": "Cela montre qu'il existe un vrai décalage entre l'utilité sociale et la reconnaissance salariale.",
+          "usage": "Feminine; essential jobs' worth, often underpaid."
+        },
+        {
+          "id": "SVE2-0259",
+          "kind": "mot-cle",
+          "french": "la rémunération réelle",
+          "english": "actual pay",
+          "example": "Le salaire dépend surtout de la rareté des compétences et du marché, ce qui crée parfois de vraies injustices entre l'effort fourni et la rémunération réelle.",
+          "usage": "Feminine noun phrase; 'rémunération' is more formal and broader than a fixed monthly 'salaire'."
+        },
+        {
+          "id": "SVE2-0260",
+          "kind": "mot-cle",
+          "french": "un employé de bureau",
+          "english": "an office worker",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "Comparison point: comfortable yet better paid."
+        },
+        {
+          "id": "SVE2-0261",
+          "kind": "collocation",
+          "french": "restent mal payés",
+          "english": "remain badly paid",
+          "example": "Je pense d'abord que beaucoup de métiers physiquement difficiles restent mal payés dans la réalité.",
+          "usage": "'rester + adjectif' = to stay/remain; 'mal payé' fixed pairing."
+        },
+        {
+          "id": "SVE2-0262",
+          "kind": "collocation",
+          "french": "demandent beaucoup d'efforts physiques",
+          "english": "require a lot of physical effort",
+          "example": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "usage": "'demander + noun' = to require; 'efforts physiques'."
+        },
+        {
+          "id": "SVE2-0263",
+          "kind": "collocation",
+          "french": "des horaires lourds",
+          "english": "demanding working hours",
+          "example": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "usage": "'Horaires' is masculine plural; 'lourd' figuratively describes a burdensome schedule."
+        },
+        {
+          "id": "SVE2-0264",
+          "kind": "collocation",
+          "french": "rarement plus que le salaire minimum",
+          "english": "rarely more than minimum wage",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "'plus que + noun' comparative; underpayment."
+        },
+        {
+          "id": "SVE2-0265",
+          "kind": "collocation",
+          "french": "dépend surtout de la rareté des compétences",
+          "english": "depends mainly on skill scarcity",
+          "example": "Ensuite, je pense que le salaire dépend surtout de la rareté des compétences et du marché.",
+          "usage": "'dépendre de qqch'; 'surtout' = mainly."
+        },
+        {
+          "id": "SVE2-0266",
+          "kind": "collocation",
+          "french": "rendent des services essentiels",
+          "english": "provide essential services",
+          "example": "En effet, les infirmiers, les enseignants, les éboueurs ou les pompiers rendent des services essentiels au quotidien, dans des conditions souvent éprouvantes.",
+          "usage": "'rendre un service' = to render/provide a service."
+        },
+        {
+          "id": "SVE2-0267",
+          "kind": "collocation",
+          "french": "combinent risque, responsabilité et expertise rare",
+          "english": "combine risk, responsibility and rare expertise",
+          "example": "Cependant, il faut reconnaître que certains métiers difficiles sont effectivement bien payés, notamment ceux qui combinent risque, responsabilité et expertise rare, comme certains métiers du chantier qualifié ou du transport.",
+          "usage": "'combiner' + list; what justifies high pay in the nuance."
+        },
+        {
+          "id": "SVE2-0268",
+          "kind": "collocation",
+          "french": "exposé au froid et aux risques",
+          "english": "exposed to cold and hazards",
+          "example": "Par exemple, un développeur informatique très spécialisé peut gagner beaucoup en travaillant dans un bureau, alors qu'un ouvrier du bâtiment exposé au froid et aux risques gagne souvent bien moins.",
+          "usage": "'exposé à qqch'; describes tough manual work."
+        },
+        {
+          "id": "SVE2-0269",
+          "kind": "collocation",
+          "french": "ne se traduit pas automatiquement dans le salaire",
+          "english": "isn't automatically reflected in pay",
+          "example": "Cela montre que la difficulté d'un métier ne se traduit pas automatiquement dans le salaire.",
+          "usage": "Pronominal 'se traduire dans' = to translate into."
+        },
+        {
+          "id": "SVE2-0270",
+          "kind": "collocation",
+          "french": "suit la valeur marchande",
+          "english": "follows market value",
+          "example": "Cela permet de comprendre que le salaire suit la valeur marchande, plus que l'effort fourni.",
+          "usage": "'le salaire suit la valeur marchande'; pay logic."
+        },
+        {
+          "id": "SVE2-0271",
+          "kind": "expression",
+          "french": "les mieux payés",
+          "english": "the best paid",
+          "example": "À mon avis, les métiers difficiles ne sont pas forcément les mieux payés.",
+          "usage": "Superlative 'les mieux payés'; often negated ('pas toujours')."
+        },
+        {
+          "id": "SVE2-0272",
+          "kind": "expression",
+          "french": "physiquement durs",
+          "english": "physically hard",
+          "example": "D'abord, parce que beaucoup de métiers physiquement durs restent au contraire mal rémunérés.",
+          "usage": "Adverb + adjective; 'des métiers physiquement durs'."
+        },
+        {
+          "id": "SVE2-0273",
+          "kind": "expression",
+          "french": "une vraie endurance",
+          "english": "real stamina",
+          "example": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "usage": "'endurance' fem.; physical demand of tough jobs."
+        },
+        {
+          "id": "SVE2-0274",
+          "kind": "expression",
+          "french": "installé au chaud",
+          "english": "settled in the warmth",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "Idiomatic contrast (indoors) with outdoor labour."
+        },
+        {
+          "id": "SVE2-0275",
+          "kind": "expression",
+          "french": "la fiche de paie",
+          "english": "the payslip",
+          "example": "Enfin, parce que la valeur sociale d'un métier n'est pas toujours reconnue dans la fiche de paie.",
+          "usage": "'fiche de paie' fixed term; where social value isn't recognised."
+        },
+        {
+          "id": "SVE2-0276",
+          "kind": "expression",
+          "french": "plus une logique économique qu'une logique de justice",
+          "english": "more an economic logic than a logic of fairness",
+          "example": "Le salaire reflète donc plus une logique économique qu'une logique de justice.",
+          "usage": "The comparison 'plus X que Y' contrasts the market rationale with the fairness rationale."
+        },
+        {
+          "id": "SVE2-0277",
+          "kind": "expression",
+          "french": "se paie cher",
+          "english": "commands a high price",
+          "example": "En effet, plus une compétence est rare et recherchée, plus elle se paie cher, indépendamment de la difficulté physique du métier.",
+          "usage": "Figurative pricing expression: a rare, sought-after skill 'se paie cher' on the labour market."
+        },
+        {
+          "id": "SVE2-0278",
+          "kind": "expression",
+          "french": "physiquement épuisantes",
+          "english": "physically exhausting",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "Adverb + adjective, fem. pl. ('journées'); intensifies hardship."
+        },
+        {
+          "id": "SVE2-0279",
+          "kind": "expression",
+          "french": "indépendamment de la difficulté physique",
+          "english": "regardless of the physical difficulty",
+          "example": "En effet, plus une compétence est rare et recherchée, plus elle se paie cher, indépendamment de la difficulté physique du métier.",
+          "usage": "'Indépendamment de' is a formal preposition meaning 'regardless of'; it introduces a factor set aside."
+        },
+        {
+          "id": "SVE2-0280",
+          "kind": "expression",
+          "french": "la difficulté en elle-même",
+          "english": "difficulty in itself",
+          "example": "Mais ce sont surtout la rareté et la responsabilité qui justifient ces salaires, pas seulement la difficulté en elle-même.",
+          "usage": "'en elle-même' = in itself; isolates difficulty as a factor."
+        },
+        {
+          "id": "SVE2-0281",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la difficulté d'un métier détermine vraiment son niveau de salaire.",
+          "usage": "Reformulation frame + indirect question."
+        },
+        {
+          "id": "SVE2-0282",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, les métiers difficiles ne sont pas forcément les mieux payés.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0283",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que beaucoup de métiers physiquement difficiles restent mal payés dans la réalité.",
+          "usage": "Opens argument one; opinion verb + indicative."
+        },
+        {
+          "id": "SVE2-0284",
+          "kind": "tournure",
+          "french": "À l'opposé",
+          "english": "At the opposite end",
+          "example": "À l'opposé, certains postes confortables, dans des bureaux, peuvent être bien mieux rémunérés.",
+          "usage": "Strong contrast connector."
+        },
+        {
+          "id": "SVE2-0285",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, un métier très éprouvant, mais que beaucoup de personnes peuvent exercer, reste souvent mal payé parce que la concurrence entre candidats est forte.",
+          "usage": "Formal contrast connector."
+        },
+        {
+          "id": "SVE2-0286",
+          "kind": "tournure",
+          "french": "Prenons l'exemple d'",
+          "english": "Let us take the example of",
+          "example": "Prenons l'exemple d'un agent d'entretien ou d'un ouvrier agricole : malgré des journées physiquement épuisantes, il gagne rarement plus que le salaire minimum, bien moins qu'un employé de bureau installé au chaud.",
+          "usage": "Imperative 'prenons' introduces an illustration; 'de' elides to d'."
+        },
+        {
+          "id": "SVE2-0287",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la difficulté d'un métier ne se traduit pas automatiquement dans le salaire.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0288",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que le salaire suit la valeur marchande, plus que l'effort fourni.",
+          "usage": "Variant conclusion marker."
+        },
+        {
+          "id": "SVE2-0289",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître que",
+          "english": "However, it must be acknowledged that",
+          "example": "Cependant, il faut reconnaître que certains métiers difficiles sont effectivement bien payés, notamment ceux qui combinent risque, responsabilité et expertise rare, comme certains métiers du chantier qualifié ou du transport.",
+          "usage": "Concessive frame + indicative."
+        },
+        {
+          "id": "SVE2-0290",
+          "kind": "tournure",
+          "french": "En conclusion, je dirais que",
+          "english": "In conclusion, I would say that",
+          "example": "En conclusion, je dirais que les métiers difficiles ne sont pas toujours les mieux payés.",
+          "usage": "Conditional 'dirais' softens the closing statement."
+        },
+        {
+          "id": "SVE2-0291",
+          "kind": "phrase-modele",
+          "french": "À mon avis, non, les métiers difficiles ne sont pas toujours les mieux payés ; le salaire suit d'autres logiques.",
+          "english": "Hard jobs aren't always best paid",
+          "example": "À mon avis, non, les métiers difficiles ne sont pas toujours les mieux payés ; le salaire suit d'autres logiques.",
+          "usage": "French spacing 'payés ;'; 'suivre d'autres logiques'."
+        },
+        {
+          "id": "SVE2-0292",
+          "kind": "phrase-modele",
+          "french": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "english": "Lists tough yet low-paid sectors",
+          "example": "En effet, des métiers comme ceux de la propreté, de l'aide à la personne, de l'agriculture ou de la restauration demandent beaucoup d'efforts physiques, des horaires lourds et une vraie endurance.",
+          "usage": "'des métiers comme ceux de ...' introduces examples; tripartite demand."
+        },
+        {
+          "id": "SVE2-0293",
+          "kind": "phrase-modele",
+          "french": "À l'opposé, certains postes confortables, dans des bureaux, peuvent être bien mieux rémunérés.",
+          "english": "Comfortable office jobs can pay far more",
+          "example": "À l'opposé, certains postes confortables, dans des bureaux, peuvent être bien mieux rémunérés.",
+          "usage": "'bien mieux + participe' comparative; contrast frame."
+        },
+        {
+          "id": "SVE2-0294",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la difficulté d'un métier ne se traduit pas automatiquement dans le salaire.",
+          "english": "Difficulty isn't automatically paid",
+          "example": "Cela montre que la difficulté d'un métier ne se traduit pas automatiquement dans le salaire.",
+          "usage": "Pronominal 'se traduire dans'; compact conclusion."
+        },
+        {
+          "id": "SVE2-0295",
+          "kind": "phrase-modele",
+          "french": "En effet, plus une compétence est rare et recherchée, plus elle se paie cher, indépendamment de la difficulté physique du métier.",
+          "english": "Rarer skills pay more",
+          "example": "En effet, plus une compétence est rare et recherchée, plus elle se paie cher, indépendamment de la difficulté physique du métier.",
+          "usage": "Correlative 'plus ..., plus ...'; 'indépendamment de' = regardless of."
+        },
+        {
+          "id": "SVE2-0296",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que le salaire suit la valeur marchande, plus que l'effort fourni.",
+          "english": "Pay follows market value, not effort",
+          "example": "Cela permet de comprendre que le salaire suit la valeur marchande, plus que l'effort fourni.",
+          "usage": "'suivre qqch, plus que qqch' contrast; conclusion pattern."
+        },
+        {
+          "id": "SVE2-0297",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que les métiers les plus utiles à la société ne sont pas non plus toujours les mieux payés.",
+          "english": "The most useful jobs aren't best paid either",
+          "example": "Enfin, je pense que les métiers les plus utiles à la société ne sont pas non plus toujours les mieux payés.",
+          "usage": "'ne ... pas non plus' = not ... either; third-argument opener."
+        },
+        {
+          "id": "SVE2-0298",
+          "kind": "phrase-modele",
+          "french": "Cela montre qu'il existe un vrai décalage entre l'utilité sociale et la reconnaissance salariale.",
+          "english": "A real gap between usefulness and pay",
+          "example": "Cela montre qu'il existe un vrai décalage entre l'utilité sociale et la reconnaissance salariale.",
+          "usage": "'il existe un décalage entre X et Y'; strong closing claim."
+        },
+        {
+          "id": "SVE2-0299",
+          "kind": "phrase-modele",
+          "french": "Mais ce sont surtout la rareté et la responsabilité qui justifient ces salaires, pas seulement la difficulté en elle-même.",
+          "english": "Rarity and responsibility justify high pay",
+          "example": "Mais ce sont surtout la rareté et la responsabilité qui justifient ces salaires, pas seulement la difficulté en elle-même.",
+          "usage": "Cleft 'ce sont ... qui'; nuance qualifying the thesis."
+        },
+        {
+          "id": "SVE2-0300",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je dirais que les métiers difficiles ne sont pas toujours les mieux payés.",
+          "english": "Hard jobs aren't always best paid",
+          "example": "En conclusion, je dirais que les métiers difficiles ne sont pas toujours les mieux payés.",
+          "usage": "Clean restating conclusion; 'ne ... pas toujours' = not always."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p22",
+      "entries": [
+        {
+          "id": "SVE2-0301",
+          "kind": "mot-cle",
+          "french": "les transports en commun",
+          "english": "public transport",
+          "example": "La vraie question est de savoir si rendre les transports en commun gratuits en ville serait une bonne mesure pour la société.",
+          "usage": "'en commun' fixed; masc. pl.; central topic of the essay."
+        },
+        {
+          "id": "SVE2-0302",
+          "kind": "mot-cle",
+          "french": "les transports publics",
+          "english": "public transport",
+          "example": "Quand le prix devient nul, beaucoup de personnes seraient prêtes à essayer les transports publics, surtout pour les trajets quotidiens.",
+          "usage": "Near-synonym of 'transports en commun'; buses, trams, metros."
+        },
+        {
+          "id": "SVE2-0303",
+          "kind": "mot-cle",
+          "french": "la gratuité",
+          "english": "free provision",
+          "example": "Tout d'abord, la gratuité des transports en ville aiderait surtout les personnes à faibles revenus.",
+          "usage": "Feminine abstract noun for the fact that a service is free; use 'la gratuité des transports'."
+        },
+        {
+          "id": "SVE2-0304",
+          "kind": "mot-cle",
+          "french": "budget mensuel",
+          "english": "the monthly budget",
+          "example": "En effet, pour beaucoup de familles modestes, le coût des transports représente une part importante du budget mensuel.",
+          "usage": "'mensuel' = monthly; transport as a big share of it."
+        },
+        {
+          "id": "SVE2-0305",
+          "kind": "mot-cle",
+          "french": "les trajets quotidiens",
+          "english": "daily journeys",
+          "example": "Quand le prix devient nul, beaucoup de personnes seraient prêtes à essayer les transports publics, surtout pour les trajets quotidiens.",
+          "usage": "'trajet' masc.; 'quotidien' = daily; commuting context."
+        },
+        {
+          "id": "SVE2-0306",
+          "kind": "mot-cle",
+          "french": "difficultés de circulation",
+          "english": "traffic problems",
+          "example": "Au contraire, une ville saturée de voitures connaît plus de pollution, plus de bruit et plus de difficultés de circulation.",
+          "usage": "'circulation' = road traffic; downside of car-saturated cities."
+        },
+        {
+          "id": "SVE2-0307",
+          "kind": "mot-cle",
+          "french": "lieux culturels",
+          "english": "cultural venues",
+          "example": "Cette circulation profite directement aux commerces, aux marchés et aux lieux culturels, qui voient venir plus de monde.",
+          "usage": "Masc. pl.; benefit from freer movement across the city."
+        },
+        {
+          "id": "SVE2-0308",
+          "kind": "mot-cle",
+          "french": "les ménages les plus fragiles",
+          "english": "the most vulnerable households",
+          "example": "Cela montre que cette mesure aurait un vrai effet social, surtout pour les ménages les plus fragiles.",
+          "usage": "'ménage' = household; social-policy register."
+        },
+        {
+          "id": "SVE2-0309",
+          "kind": "mot-cle",
+          "french": "le financement",
+          "english": "funding",
+          "example": "À mon avis, c'est une mesure intéressante, mais à condition que le service reste de qualité et que le financement soit assuré.",
+          "usage": "Masculine noun; public measures need a 'financement assuré' or 'clair', not merely a lower price."
+        },
+        {
+          "id": "SVE2-0310",
+          "kind": "mot-cle",
+          "french": "un financement clair",
+          "english": "clear funding",
+          "example": "Mais elle n'a vraiment de sens que si elle s'appuie sur un service de qualité et un financement clair.",
+          "usage": "'financement' masc.; the other condition attached."
+        },
+        {
+          "id": "SVE2-0311",
+          "kind": "collocation",
+          "french": "rendre les transports en commun gratuits",
+          "english": "make public transport free",
+          "example": "La vraie question est de savoir si rendre les transports en commun gratuits en ville serait une bonne mesure pour la société.",
+          "usage": "'rendre + COD + adjectif' = to make something ...; 'gratuits' agrees."
+        },
+        {
+          "id": "SVE2-0312",
+          "kind": "collocation",
+          "french": "laisser la voiture",
+          "english": "leave the car (behind)",
+          "example": "Ensuite, parce que cela encouragerait à laisser la voiture, ce qui est positif pour l'environnement.",
+          "usage": "'laisser la voiture'; encourages modal shift."
+        },
+        {
+          "id": "SVE2-0313",
+          "kind": "collocation",
+          "french": "utiliser moins la voiture",
+          "english": "use the car less",
+          "example": "Ensuite, je pense que la gratuité des transports en commun encouragerait à utiliser moins la voiture en ville.",
+          "usage": "'utiliser moins qqch' = to use less; environmental goal."
+        },
+        {
+          "id": "SVE2-0314",
+          "kind": "collocation",
+          "french": "faciliterait l'accès des plus modestes",
+          "english": "would ease access for the poorest",
+          "example": "D'abord, parce que cela faciliterait l'accès des plus modestes aux services et à l'emploi.",
+          "usage": "Conditional 'faciliterait'; 'l'accès de qqn à qqch'."
+        },
+        {
+          "id": "SVE2-0315",
+          "kind": "collocation",
+          "french": "économiser plusieurs dizaines d'euros par mois",
+          "english": "save several dozen euros a month",
+          "example": "Par exemple, une famille qui doit prendre le bus chaque jour pour aller travailler ou conduire les enfants à l'école pourrait économiser plusieurs dizaines d'euros par mois.",
+          "usage": "'économiser' + amount; 'par mois' = per month."
+        },
+        {
+          "id": "SVE2-0316",
+          "kind": "collocation",
+          "french": "prendre le bus chaque jour",
+          "english": "take the bus every day",
+          "example": "Par exemple, une famille qui doit prendre le bus chaque jour pour aller travailler ou conduire les enfants à l'école pourrait économiser plusieurs dizaines d'euros par mois.",
+          "usage": "'prendre le bus/le métro'; 'chaque jour' = daily."
+        },
+        {
+          "id": "SVE2-0317",
+          "kind": "collocation",
+          "french": "conduire les enfants à l'école",
+          "english": "drive the children to school",
+          "example": "Par exemple, une famille qui doit prendre le bus chaque jour pour aller travailler ou conduire les enfants à l'école pourrait économiser plusieurs dizaines d'euros par mois.",
+          "usage": "'conduire qqn à' = to drive someone to; daily-trip example."
+        },
+        {
+          "id": "SVE2-0318",
+          "kind": "collocation",
+          "french": "soutient ainsi la vie économique et sociale",
+          "english": "thus supports economic and social life",
+          "example": "La gratuité soutient ainsi la vie économique et sociale de toute la ville, bien au-delà des seuls usagers.",
+          "usage": "'soutenir la vie économique'; city-wide benefit."
+        },
+        {
+          "id": "SVE2-0319",
+          "kind": "collocation",
+          "french": "aurait un vrai effet social",
+          "english": "would have a real social effect",
+          "example": "Cela montre que cette mesure aurait un vrai effet social, surtout pour les ménages les plus fragiles.",
+          "usage": "Conditional 'aurait'; 'avoir un effet sur' understood."
+        },
+        {
+          "id": "SVE2-0320",
+          "kind": "collocation",
+          "french": "rend ses transports gratuits",
+          "english": "makes its transport free",
+          "example": "Par exemple, une ville qui rend ses transports gratuits voit souvent son centre et ses commerces plus fréquentés, parce que chacun peut s'y rendre sans compter.",
+          "usage": "'rendre ... gratuit' again, subject = a city."
+        },
+        {
+          "id": "SVE2-0321",
+          "kind": "expression",
+          "french": "n'a de sens que si",
+          "english": "only makes sense if",
+          "example": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "usage": "Restrictive oral-ready frame followed by the indicative; it states a condition for a policy to be worthwhile."
+        },
+        {
+          "id": "SVE2-0322",
+          "kind": "expression",
+          "french": "ne sert à rien",
+          "english": "is of no use",
+          "example": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "usage": "Fixed everyday expression for something ineffective; it is followed here by 'si' + indicative."
+        },
+        {
+          "id": "SVE2-0323",
+          "kind": "expression",
+          "french": "bien au-delà des seuls usagers",
+          "english": "well beyond users alone",
+          "example": "La gratuité soutient ainsi la vie économique et sociale de toute la ville, bien au-delà des seuls usagers.",
+          "usage": "'Bien au-delà de' strengthens the scope of a benefit beyond the immediately affected group."
+        },
+        {
+          "id": "SVE2-0324",
+          "kind": "expression",
+          "french": "rendrait toute la ville plus accessible",
+          "english": "would make the whole city more accessible",
+          "example": "Enfin, parce qu'elle rendrait toute la ville plus accessible et soutiendrait la vie économique et sociale locale.",
+          "usage": "'Rendre' + object + adjective is a productive causative frame; the conditional presents a projected benefit."
+        },
+        {
+          "id": "SVE2-0325",
+          "kind": "expression",
+          "french": "saturée de voitures",
+          "english": "saturated with cars",
+          "example": "Au contraire, une ville saturée de voitures connaît plus de pollution, plus de bruit et plus de difficultés de circulation.",
+          "usage": "'saturé de qqch'; describes congestion."
+        },
+        {
+          "id": "SVE2-0326",
+          "kind": "expression",
+          "french": "le bon équilibre selon les villes",
+          "english": "the right balance depending on the city",
+          "example": "L'essentiel est de trouver le bon équilibre selon les villes.",
+          "usage": "'selon' = depending on; policy nuance."
+        },
+        {
+          "id": "SVE2-0327",
+          "kind": "expression",
+          "french": "réservée aux plus modestes",
+          "english": "reserved for the poorest",
+          "example": "Dans certains cas, des tarifs très bas ou une gratuité réservée aux plus modestes peuvent d'ailleurs être plus justes et plus faciles à financer.",
+          "usage": "'réservé à qqn'; a targeted alternative to full free travel."
+        },
+        {
+          "id": "SVE2-0328",
+          "kind": "expression",
+          "french": "bondés ou en retard",
+          "english": "packed or late",
+          "example": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "usage": "'bondé' = crammed; risks if service quality drops."
+        },
+        {
+          "id": "SVE2-0329",
+          "kind": "expression",
+          "french": "au-delà des seuls usagers",
+          "english": "beyond just the users",
+          "example": "La gratuité soutient ainsi la vie économique et sociale de toute la ville, bien au-delà des seuls usagers.",
+          "usage": "'au-delà de' + 'les seuls usagers' = only the users; broad benefit."
+        },
+        {
+          "id": "SVE2-0330",
+          "kind": "expression",
+          "french": "d'autres besoins essentiels",
+          "english": "other essential needs",
+          "example": "À l'inverse, un transport gratuit permettrait à ces familles de garder cet argent pour d'autres besoins essentiels comme la nourriture ou la santé.",
+          "usage": "'besoins essentiels'; what saved money could fund."
+        },
+        {
+          "id": "SVE2-0331",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si rendre les transports en commun gratuits en ville serait une bonne mesure pour la société.",
+          "usage": "Reformulation frame + indirect question."
+        },
+        {
+          "id": "SVE2-0332",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, c'est une mesure intéressante, mais à condition que le service reste de qualité et que le financement soit assuré.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0333",
+          "kind": "tournure",
+          "french": "Tout d'abord",
+          "english": "First of all",
+          "example": "Tout d'abord, la gratuité des transports en ville aiderait surtout les personnes à faibles revenus.",
+          "usage": "Enumerator opening the first argument."
+        },
+        {
+          "id": "SVE2-0334",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, un transport gratuit permettrait à ces familles de garder cet argent pour d'autres besoins essentiels comme la nourriture ou la santé.",
+          "usage": "Introduces a symmetrical contrast."
+        },
+        {
+          "id": "SVE2-0335",
+          "kind": "tournure",
+          "french": "Au contraire",
+          "english": "On the contrary",
+          "example": "Au contraire, une ville saturée de voitures connaît plus de pollution, plus de bruit et plus de difficultés de circulation.",
+          "usage": "Reverses the expected point; strong contrast."
+        },
+        {
+          "id": "SVE2-0336",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une ville qui rend ses transports gratuits voit souvent son centre et ses commerces plus fréquentés, parce que chacun peut s'y rendre sans compter.",
+          "usage": "Introduces the illustration."
+        },
+        {
+          "id": "SVE2-0337",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que cette mesure aurait un vrai effet social, surtout pour les ménages les plus fragiles.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0338",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que cette mesure a aussi un vrai intérêt environnemental.",
+          "usage": "Variant conclusion marker."
+        },
+        {
+          "id": "SVE2-0339",
+          "kind": "tournure",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "usage": "Opens the nuance/condition paragraph."
+        },
+        {
+          "id": "SVE2-0340",
+          "kind": "tournure",
+          "french": "En conclusion, je dirais que",
+          "english": "In conclusion, I would say that",
+          "example": "En conclusion, je dirais que rendre les transports en commun gratuits en ville est une mesure intéressante, sur le plan social, environnemental et économique.",
+          "usage": "Conditional 'dirais' softens the closing statement."
+        },
+        {
+          "id": "SVE2-0341",
+          "kind": "phrase-modele",
+          "french": "À mon avis, c'est une mesure intéressante, mais à condition que le service reste de qualité et que le financement soit assuré.",
+          "english": "Interesting, but with conditions",
+          "example": "À mon avis, c'est une mesure intéressante, mais à condition que le service reste de qualité et que le financement soit assuré.",
+          "usage": "Two 'à condition que + subjonctif' clauses ('reste', 'soit')."
+        },
+        {
+          "id": "SVE2-0342",
+          "kind": "phrase-modele",
+          "french": "Tout d'abord, la gratuité des transports en ville aiderait surtout les personnes à faibles revenus.",
+          "english": "Free transport chiefly helps low-income people",
+          "example": "Tout d'abord, la gratuité des transports en ville aiderait surtout les personnes à faibles revenus.",
+          "usage": "Conditional 'aiderait'; 'la gratuité de qqch' = the free provision of."
+        },
+        {
+          "id": "SVE2-0343",
+          "kind": "phrase-modele",
+          "french": "À l'inverse, un transport gratuit permettrait à ces familles de garder cet argent pour d'autres besoins essentiels comme la nourriture ou la santé.",
+          "english": "Free transport frees money for essentials",
+          "example": "À l'inverse, un transport gratuit permettrait à ces familles de garder cet argent pour d'autres besoins essentiels comme la nourriture ou la santé.",
+          "usage": "'permettre à qqn de + infinitif'; conditional 'permettrait'."
+        },
+        {
+          "id": "SVE2-0344",
+          "kind": "phrase-modele",
+          "french": "Cela montre que cette mesure aurait un vrai effet social, surtout pour les ménages les plus fragiles.",
+          "english": "The measure has a real social effect",
+          "example": "Cela montre que cette mesure aurait un vrai effet social, surtout pour les ménages les plus fragiles.",
+          "usage": "Conditional 'aurait'; 'surtout pour' targets a group."
+        },
+        {
+          "id": "SVE2-0345",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que la gratuité des transports en commun encouragerait à utiliser moins la voiture en ville.",
+          "english": "Free transport would cut car use",
+          "example": "Ensuite, je pense que la gratuité des transports en commun encouragerait à utiliser moins la voiture en ville.",
+          "usage": "'encourager à + infinitif'; conditional 'encouragerait'."
+        },
+        {
+          "id": "SVE2-0346",
+          "kind": "phrase-modele",
+          "french": "Au contraire, une ville saturée de voitures connaît plus de pollution, plus de bruit et plus de difficultés de circulation.",
+          "english": "Car-clogged cities suffer more",
+          "example": "Au contraire, une ville saturée de voitures connaît plus de pollution, plus de bruit et plus de difficultés de circulation.",
+          "usage": "'connaître' = to experience; anaphoric 'plus de ...' triple."
+        },
+        {
+          "id": "SVE2-0347",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que cette mesure a aussi un vrai intérêt environnemental.",
+          "english": "It also has an environmental benefit",
+          "example": "Cela permet de comprendre que cette mesure a aussi un vrai intérêt environnemental.",
+          "usage": "'avoir un intérêt environnemental'; conclusion pattern."
+        },
+        {
+          "id": "SVE2-0348",
+          "kind": "phrase-modele",
+          "french": "La gratuité soutient ainsi la vie économique et sociale de toute la ville, bien au-delà des seuls usagers.",
+          "english": "It supports the whole city's life",
+          "example": "La gratuité soutient ainsi la vie économique et sociale de toute la ville, bien au-delà des seuls usagers.",
+          "usage": "'ainsi' = thus; 'bien au-delà de' = well beyond."
+        },
+        {
+          "id": "SVE2-0349",
+          "kind": "phrase-modele",
+          "french": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "english": "Only makes sense if funded and reliable",
+          "example": "Cependant, cette mesure n'a de sens que si son financement est assuré et si le service reste fiable : la gratuité ne sert à rien si les bus sont bondés ou en retard.",
+          "usage": "'n'a de sens que si ...' restrictive; 'ne sert à rien si ...'."
+        },
+        {
+          "id": "SVE2-0350",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je dirais que rendre les transports en commun gratuits en ville est une mesure intéressante, sur le plan social, environnemental et économique.",
+          "english": "Interesting on three fronts",
+          "example": "En conclusion, je dirais que rendre les transports en commun gratuits en ville est une mesure intéressante, sur le plan social, environnemental et économique.",
+          "usage": "'sur le plan + adjectif' = in terms of; tripartite framing."
+        }
+      ]
+    },
+    {
+      "response_key": "economie:p23",
+      "entries": [
+        {
+          "id": "SVE2-0351",
+          "kind": "mot-cle",
+          "french": "les associations et les ONG",
+          "english": "associations and NGOs",
+          "example": "À mon avis, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres.",
+          "usage": "'ONG' (organisation non gouvernementale) is invariable; central actors."
+        },
+        {
+          "id": "SVE2-0352",
+          "kind": "mot-cle",
+          "french": "la lutte contre la pauvreté",
+          "english": "the fight against poverty",
+          "example": "Cela permet de comprendre que l'action publique reste essentielle dans la lutte contre la pauvreté.",
+          "usage": "'la lutte contre qqch'; the essay's topic."
+        },
+        {
+          "id": "SVE2-0353",
+          "kind": "mot-cle",
+          "french": "des moyens limités",
+          "english": "limited means/resources",
+          "example": "D'abord, parce que leur action repose sur des moyens limités et parfois instables.",
+          "usage": "'moyens' masc. pl. = means/resources; charities' weakness."
+        },
+        {
+          "id": "SVE2-0354",
+          "kind": "mot-cle",
+          "french": "des aides sociales",
+          "english": "social benefits",
+          "example": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "usage": "Feminine plural; state welfare payments."
+        },
+        {
+          "id": "SVE2-0355",
+          "kind": "mot-cle",
+          "french": "une école gratuite",
+          "english": "free schooling",
+          "example": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "usage": "Feminine noun phrase; it names a concrete universal public service in an anti-poverty policy list."
+        },
+        {
+          "id": "SVE2-0356",
+          "kind": "mot-cle",
+          "french": "la pauvreté",
+          "english": "poverty",
+          "example": "La vraie question est de savoir si la lutte contre la pauvreté peut vraiment reposer uniquement sur les associations et les ONG.",
+          "usage": "Feminine abstract noun and the central issue; it commonly follows 'lutte contre' or 'traiter le problème de'."
+        },
+        {
+          "id": "SVE2-0357",
+          "kind": "mot-cle",
+          "french": "des politiques de l'emploi",
+          "english": "employment policies",
+          "example": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "usage": "'politique de l'emploi'; large-scale state action."
+        },
+        {
+          "id": "SVE2-0358",
+          "kind": "mot-cle",
+          "french": "la solidarité",
+          "english": "solidarity",
+          "example": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "usage": "Feminine; shared responsibility toward the poorest."
+        },
+        {
+          "id": "SVE2-0359",
+          "kind": "mot-cle",
+          "french": "les allocations familiales",
+          "english": "family allowances",
+          "example": "Par exemple, ce sont les retraites, les allocations familiales ou l'assurance maladie qui empêchent beaucoup de personnes de basculer dans une grande précarité.",
+          "usage": "Feminine plural; welfare that prevents precarity."
+        },
+        {
+          "id": "SVE2-0360",
+          "kind": "mot-cle",
+          "french": "l'assurance maladie",
+          "english": "health insurance",
+          "example": "Par exemple, ce sont les retraites, les allocations familiales ou l'assurance maladie qui empêchent beaucoup de personnes de basculer dans une grande précarité.",
+          "usage": "Feminine; part of social protection cited as example."
+        },
+        {
+          "id": "SVE2-0361",
+          "kind": "collocation",
+          "french": "aider les plus pauvres",
+          "english": "help the poorest",
+          "example": "À mon avis, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres.",
+          "usage": "'les plus pauvres' superlative as noun; 'aider qqn'."
+        },
+        {
+          "id": "SVE2-0362",
+          "kind": "collocation",
+          "french": "dépendent souvent de dons, de subventions ou de bénévoles",
+          "english": "often depend on donations, grants or volunteers",
+          "example": "En effet, ces structures dépendent souvent de dons, de subventions ou de bénévoles, ce qui rend leur budget fragile.",
+          "usage": "'dépendre de qqch'; lists fragile funding sources."
+        },
+        {
+          "id": "SVE2-0363",
+          "kind": "collocation",
+          "french": "agir à grande échelle",
+          "english": "act on a large scale",
+          "example": "Ensuite, parce que seul l'État a les moyens d'agir à grande échelle et dans la durée.",
+          "usage": "'à grande échelle' idiom; only the state can, per argument two."
+        },
+        {
+          "id": "SVE2-0364",
+          "kind": "collocation",
+          "french": "mettre en place des aides sociales",
+          "english": "set up social benefits",
+          "example": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "usage": "'mettre en place qqch' = to introduce/establish."
+        },
+        {
+          "id": "SVE2-0365",
+          "kind": "collocation",
+          "french": "proposant des emplois stables",
+          "english": "offering stable jobs",
+          "example": "En effet, les entreprises peuvent agir en proposant des emplois stables, des salaires corrects et en respectant leurs salariés les plus fragiles.",
+          "usage": "'proposer + noun'; firms' contribution."
+        },
+        {
+          "id": "SVE2-0366",
+          "kind": "collocation",
+          "french": "soutenir les associations",
+          "english": "support associations",
+          "example": "Les citoyens, de leur côté, peuvent soutenir les associations, faire des dons, donner du temps ou simplement faire attention aux personnes en difficulté autour d'eux.",
+          "usage": "'soutenir' = to support; citizens' role."
+        },
+        {
+          "id": "SVE2-0367",
+          "kind": "collocation",
+          "french": "faire des dons",
+          "english": "make donations",
+          "example": "Les citoyens, de leur côté, peuvent soutenir les associations, faire des dons, donner du temps ou simplement faire attention aux personnes en difficulté autour d'eux.",
+          "usage": "'faire un don / des dons'; individual solidarity."
+        },
+        {
+          "id": "SVE2-0368",
+          "kind": "collocation",
+          "french": "seul l'État dispose des moyens nécessaires",
+          "english": "only the State has the necessary means",
+          "example": "Ensuite, je pense que seul l'État dispose des moyens nécessaires pour traiter le problème de la pauvreté à grande échelle.",
+          "usage": "Formal verb 'disposer de' + noun; this cleft-like subject stresses that large-scale action requires sufficient resources."
+        },
+        {
+          "id": "SVE2-0369",
+          "kind": "collocation",
+          "french": "embauche des personnes éloignées de l'emploi",
+          "english": "hires people far from employment",
+          "example": "Par exemple, une entreprise qui embauche des personnes éloignées de l'emploi joue souvent un rôle plus durable qu'une simple aide ponctuelle.",
+          "usage": "'éloigné de l'emploi' = long-term jobless; inclusion hiring."
+        },
+        {
+          "id": "SVE2-0370",
+          "kind": "collocation",
+          "french": "répondre à toutes les demandes",
+          "english": "meet all the requests",
+          "example": "Par exemple, beaucoup d'associations d'aide alimentaire ont du mal à répondre à toutes les demandes lors des périodes difficiles, alors même qu'elles font déjà beaucoup.",
+          "usage": "'répondre à qqch'; charities struggle to in crises."
+        },
+        {
+          "id": "SVE2-0371",
+          "kind": "expression",
+          "french": "ont du mal à répondre à toutes les demandes",
+          "english": "struggle to meet all the demand",
+          "example": "Par exemple, beaucoup d'associations d'aide alimentaire ont du mal à répondre à toutes les demandes lors des périodes difficiles, alors même qu'elles font déjà beaucoup.",
+          "usage": "'Avoir du mal à' + infinitive expresses difficulty; it concretely shows the capacity limits of aid associations."
+        },
+        {
+          "id": "SVE2-0372",
+          "kind": "expression",
+          "french": "ne peut pas reposer uniquement sur",
+          "english": "cannot rely solely on",
+          "example": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "usage": "'Reposer sur' means 'to rest on/rely on'; 'uniquement' sharply limits an unacceptable basis."
+        },
+        {
+          "id": "SVE2-0373",
+          "kind": "expression",
+          "french": "porter seules la lutte contre la pauvreté",
+          "english": "to carry the fight against poverty alone",
+          "example": "En conclusion, je dirais que les associations et les ONG sont précieuses, mais qu'elles ne peuvent pas porter seules la lutte contre la pauvreté.",
+          "usage": "Figurative 'porter' means to bear a burden; 'seules' agrees with the feminine plural associations and NGOs."
+        },
+        {
+          "id": "SVE2-0374",
+          "kind": "expression",
+          "french": "une responsabilité partagée",
+          "english": "a shared responsibility",
+          "example": "À mon avis, non, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres ; c'est une responsabilité partagée.",
+          "usage": "Natural civic-policy phrase for an obligation distributed among the state, organisations, and citizens."
+        },
+        {
+          "id": "SVE2-0375",
+          "kind": "expression",
+          "french": "à grande échelle et dans la durée",
+          "english": "on a large scale and over time",
+          "example": "Ensuite, parce que seul l'État a les moyens d'agir à grande échelle et dans la durée.",
+          "usage": "Pairs scope and duration; only the state manages both."
+        },
+        {
+          "id": "SVE2-0376",
+          "kind": "expression",
+          "french": "proximité avec le terrain",
+          "english": "closeness to the field",
+          "example": "Leur proximité avec le terrain leur permet d'aider rapidement et concrètement.",
+          "usage": "'le terrain' = the ground/field; NGOs' practical advantage."
+        },
+        {
+          "id": "SVE2-0377",
+          "kind": "expression",
+          "french": "en période de crise",
+          "english": "in times of crisis",
+          "example": "En revanche, les besoins des plus pauvres restent constants, voire augmentent en période de crise.",
+          "usage": "Fixed time frame used for economic, health, and social-policy changes that worsen during a crisis."
+        },
+        {
+          "id": "SVE2-0378",
+          "kind": "expression",
+          "french": "du tissu associatif",
+          "english": "the network of associations",
+          "example": "Cette mission demande l'action coordonnée de l'État, des entreprises, des citoyens et du tissu associatif.",
+          "usage": "'tissu associatif' = the fabric of voluntary bodies; set term."
+        },
+        {
+          "id": "SVE2-0379",
+          "kind": "expression",
+          "french": "rapidement et concrètement",
+          "english": "quickly and concretely",
+          "example": "Leur proximité avec le terrain leur permet d'aider rapidement et concrètement.",
+          "usage": "Two adverbs; how NGOs help on the ground."
+        },
+        {
+          "id": "SVE2-0380",
+          "kind": "expression",
+          "french": "des structures aussi fragiles",
+          "english": "such fragile structures",
+          "example": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "usage": "'aussi + adjectif' = so/such; solidarity can't rest on them alone."
+        },
+        {
+          "id": "SVE2-0381",
+          "kind": "tournure",
+          "french": "La vraie question est de savoir si",
+          "english": "The real question is whether",
+          "example": "La vraie question est de savoir si la lutte contre la pauvreté peut vraiment reposer uniquement sur les associations et les ONG.",
+          "usage": "Reformulation frame + indirect question."
+        },
+        {
+          "id": "SVE2-0382",
+          "kind": "tournure",
+          "french": "À mon avis",
+          "english": "In my opinion",
+          "example": "À mon avis, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres.",
+          "usage": "Opinion marker; sentence-initial."
+        },
+        {
+          "id": "SVE2-0383",
+          "kind": "tournure",
+          "french": "Je pense d'abord que",
+          "english": "I first think that",
+          "example": "Je pense d'abord que les associations et les ONG, malgré leur engagement, ont des moyens limités et instables.",
+          "usage": "Opens argument one; opinion verb + indicative."
+        },
+        {
+          "id": "SVE2-0384",
+          "kind": "tournure",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, les besoins des plus pauvres restent constants, voire augmentent en période de crise.",
+          "usage": "Formal contrast connector."
+        },
+        {
+          "id": "SVE2-0385",
+          "kind": "tournure",
+          "french": "À l'inverse",
+          "english": "Conversely",
+          "example": "À l'inverse, aucune association, même très bien organisée, ne peut remplacer un système de protection sociale complet.",
+          "usage": "Introduces a symmetrical contrast."
+        },
+        {
+          "id": "SVE2-0386",
+          "kind": "tournure",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une entreprise qui embauche des personnes éloignées de l'emploi joue souvent un rôle plus durable qu'une simple aide ponctuelle.",
+          "usage": "Introduces the illustration."
+        },
+        {
+          "id": "SVE2-0387",
+          "kind": "tournure",
+          "french": "Cela montre que",
+          "english": "This shows that",
+          "example": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "usage": "Argument-closing connector."
+        },
+        {
+          "id": "SVE2-0388",
+          "kind": "tournure",
+          "french": "Cela permet de comprendre que",
+          "english": "This helps to understand that",
+          "example": "Cela permet de comprendre que l'action publique reste essentielle dans la lutte contre la pauvreté.",
+          "usage": "Variant conclusion marker."
+        },
+        {
+          "id": "SVE2-0389",
+          "kind": "tournure",
+          "french": "Cependant, il faut reconnaître que",
+          "english": "However, it must be acknowledged that",
+          "example": "Cependant, il faut reconnaître que les associations et les ONG jouent un rôle irremplaçable, notamment auprès des personnes que l'État a du mal à atteindre.",
+          "usage": "Concessive frame + indicative; opens the nuance."
+        },
+        {
+          "id": "SVE2-0390",
+          "kind": "tournure",
+          "french": "En conclusion, je dirais que",
+          "english": "In conclusion, I would say that",
+          "example": "En conclusion, je dirais que les associations et les ONG sont précieuses, mais qu'elles ne peuvent pas porter seules la lutte contre la pauvreté.",
+          "usage": "Conditional 'dirais' softens the closing statement."
+        },
+        {
+          "id": "SVE2-0391",
+          "kind": "phrase-modele",
+          "french": "À mon avis, non, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres ; c'est une responsabilité partagée.",
+          "english": "NGOs can't be the only helpers",
+          "example": "À mon avis, non, les associations et les ONG ne peuvent pas être les seules à aider les plus pauvres ; c'est une responsabilité partagée.",
+          "usage": "'être les seuls à + infinitif' = to be the only ones to; French spacing."
+        },
+        {
+          "id": "SVE2-0392",
+          "kind": "phrase-modele",
+          "french": "En effet, ces structures dépendent souvent de dons, de subventions ou de bénévoles, ce qui rend leur budget fragile.",
+          "english": "They rely on fragile funding",
+          "example": "En effet, ces structures dépendent souvent de dons, de subventions ou de bénévoles, ce qui rend leur budget fragile.",
+          "usage": "'ce qui rend + COD + adjectif' summarising relative clause."
+        },
+        {
+          "id": "SVE2-0393",
+          "kind": "phrase-modele",
+          "french": "En revanche, les besoins des plus pauvres restent constants, voire augmentent en période de crise.",
+          "english": "Needs stay constant or rise in crises",
+          "example": "En revanche, les besoins des plus pauvres restent constants, voire augmentent en période de crise.",
+          "usage": "'voire' = or even; 'en période de crise' time frame."
+        },
+        {
+          "id": "SVE2-0394",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "english": "Solidarity can't rest on fragile bodies alone",
+          "example": "Cela montre que la solidarité ne peut pas reposer uniquement sur des structures aussi fragiles.",
+          "usage": "'reposer sur qqch' = to rest on; 'uniquement' = solely."
+        },
+        {
+          "id": "SVE2-0395",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que seul l'État dispose des moyens nécessaires pour traiter le problème de la pauvreté à grande échelle.",
+          "english": "Only the state has large-scale means",
+          "example": "Ensuite, je pense que seul l'État dispose des moyens nécessaires pour traiter le problème de la pauvreté à grande échelle.",
+          "usage": "'seul l'État' = only the state; 'disposer de qqch' = to have."
+        },
+        {
+          "id": "SVE2-0396",
+          "kind": "phrase-modele",
+          "french": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "english": "Lists state anti-poverty tools",
+          "example": "En effet, l'État peut mettre en place des aides sociales, un système de santé accessible, une école gratuite, des logements à loyer modéré et des politiques de l'emploi.",
+          "usage": "'mettre en place' + long enumeration of welfare instruments."
+        },
+        {
+          "id": "SVE2-0397",
+          "kind": "phrase-modele",
+          "french": "Cela permet de comprendre que l'action publique reste essentielle dans la lutte contre la pauvreté.",
+          "english": "Public action stays essential",
+          "example": "Cela permet de comprendre que l'action publique reste essentielle dans la lutte contre la pauvreté.",
+          "usage": "'l'action publique' = state/public action; conclusion pattern."
+        },
+        {
+          "id": "SVE2-0398",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que les entreprises et les citoyens partagent eux aussi cette responsabilité.",
+          "english": "Firms and citizens share the duty too",
+          "example": "Enfin, je pense que les entreprises et les citoyens partagent eux aussi cette responsabilité.",
+          "usage": "'eux aussi' = they too; broadens responsibility."
+        },
+        {
+          "id": "SVE2-0399",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la lutte contre la pauvreté est une responsabilité partagée par tous les acteurs de la société.",
+          "english": "Fighting poverty is everyone's duty",
+          "example": "Cela montre que la lutte contre la pauvreté est une responsabilité partagée par tous les acteurs de la société.",
+          "usage": "'partagé par qqn' passive; 'les acteurs de la société'."
+        },
+        {
+          "id": "SVE2-0400",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je dirais que les associations et les ONG sont précieuses, mais qu'elles ne peuvent pas porter seules la lutte contre la pauvreté.",
+          "english": "NGOs are precious but can't act alone",
+          "example": "En conclusion, je dirais que les associations et les ONG sont précieuses, mais qu'elles ne peuvent pas porter seules la lutte contre la pauvreté.",
+          "usage": "'porter seules qqch' = to bear alone; balanced conclusion."
+        }
+      ]
+    }
+  ]
+}

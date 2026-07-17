@@ -1,0 +1,2840 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "response_key": "culture:p27",
+      "entries": [
+        {
+          "id": "SVC4-0001",
+          "kind": "mot-cle",
+          "french": "culture d'origine",
+          "english": "one's culture of origin / heritage",
+          "example": "La vraie question est de savoir si vivre longtemps à l'étranger conduit forcément à oublier sa culture d'origine, ou si ce lien peut se maintenir malgré le temps.",
+          "usage": "Feminine noun phrase; recurring keyword of the essay; note elision culture d'origine, no article after de."
+        },
+        {
+          "id": "SVC4-0002",
+          "kind": "mot-cle",
+          "french": "identité profonde",
+          "english": "deep / core identity",
+          "example": "Ensuite, l'identité profonde et les valeurs apprises pendant l'enfance restent, en général, beaucoup plus solides.",
+          "usage": "Feminine; contrasts with surface habitudes; use to name what survives emigration."
+        },
+        {
+          "id": "SVC4-0003",
+          "kind": "mot-cle",
+          "french": "transmission familiale",
+          "english": "passing on within the family",
+          "example": "Enfin, le fait que ce lien se conserve ou non dépend surtout de la volonté personnelle et de la transmission familiale.",
+          "usage": "Feminine noun; key factor deciding whether the link survives; pairs with transmettre à ses enfants."
+        },
+        {
+          "id": "SVC4-0004",
+          "kind": "mot-cle",
+          "french": "habitudes du quotidien",
+          "english": "everyday habits",
+          "example": "D'abord, certaines habitudes du quotidien finissent naturellement par changer avec le temps.",
+          "usage": "Feminine plural; du = de+le; the visible, changeable layer of culture."
+        },
+        {
+          "id": "SVC4-0005",
+          "kind": "mot-cle",
+          "french": "langue maternelle",
+          "english": "mother tongue",
+          "example": "En effet, une personne peut faire le choix de continuer à pratiquer des gestes simples comme parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, puis de transmettre tout cela à ses enfants.",
+          "usage": "Feminine; adjective follows noun; concrete marker of cultural transmission."
+        },
+        {
+          "id": "SVC4-0006",
+          "kind": "mot-cle",
+          "french": "fêtes traditionnelles",
+          "english": "traditional festivals/holidays",
+          "example": "En effet, une personne peut faire le choix de continuer à pratiquer des gestes simples comme parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, puis de transmettre tout cela à ses enfants.",
+          "usage": "Feminine plural; example of practised heritage; note adjective agreement -elles."
+        },
+        {
+          "id": "SVC4-0007",
+          "kind": "mot-cle",
+          "french": "mode de vie local",
+          "english": "local way of life",
+          "example": "Par exemple, une personne installée à l'étranger depuis vingt ou trente ans, parfaitement à l'aise dans le mode de vie local, peut garder exactement la même vision de la famille, du respect et des relations humaines, et continuer à se sentir profondément liée à son pays d'origine.",
+          "usage": "Masculine; mode de vie is fixed; adjective local agrees masculine singular."
+        },
+        {
+          "id": "SVC4-0008",
+          "kind": "mot-cle",
+          "french": "volonté personnelle",
+          "english": "personal willingness/resolve",
+          "example": "Enfin, le fait que ce lien se conserve ou non dépend surtout de la volonté personnelle et de la transmission familiale.",
+          "usage": "Feminine; names the decisive subjective factor; pairs with dépend de."
+        },
+        {
+          "id": "SVC4-0009",
+          "kind": "mot-cle",
+          "french": "une partie de ses formes extérieures",
+          "english": "some of its outward forms",
+          "example": "Ce n'est donc pas tant la culture qui s'efface qu'une partie de ses formes extérieures.",
+          "usage": "Feminine noun phrase; it distinguishes visible practices from deeper identity."
+        },
+        {
+          "id": "SVC4-0010",
+          "kind": "mot-cle",
+          "french": "pays d'accueil",
+          "english": "host country",
+          "example": "Par exemple, des familles installées depuis vingt ou trente ans à l'étranger finissent souvent par cuisiner plus de plats locaux que de plats traditionnels, et par parler la langue du pays d'accueil même à la maison.",
+          "usage": "Masculine; set phrase; contrast with pays d'origine."
+        },
+        {
+          "id": "SVC4-0011",
+          "kind": "collocation",
+          "french": "garder ce lien vivant",
+          "english": "keep this bond alive",
+          "example": "À mon avis, vivre longtemps à l'étranger peut effectivement éloigner de certaines habitudes de la culture d'origine, mais l'oubli total n'est ni automatique ni définitif : tout dépend de la volonté de garder ce lien vivant.",
+          "usage": "garder + N + adjective vivant; strong closing collocation for maintaining identity."
+        },
+        {
+          "id": "SVC4-0012",
+          "kind": "collocation",
+          "french": "finissent naturellement par changer",
+          "english": "eventually change naturally",
+          "example": "D'abord, certaines habitudes du quotidien finissent naturellement par changer avec le temps.",
+          "usage": "finir par + infinitive = end up doing; adverb naturellement inserted; 3rd person plural."
+        },
+        {
+          "id": "SVC4-0013",
+          "kind": "collocation",
+          "french": "transmettre ses traditions",
+          "english": "pass on one's traditions",
+          "example": "Par exemple, deux familles parties dans le même pays peuvent évoluer très différemment : l'une continue à parler sa langue d'origine et à transmettre ses traditions, l'autre adopte presque entièrement le mode de vie local en une génération.",
+          "usage": "transmettre + N; core verb of cultural continuity; often + à ses enfants."
+        },
+        {
+          "id": "SVC4-0014",
+          "kind": "collocation",
+          "french": "parler sa langue maternelle",
+          "english": "speak one's mother tongue",
+          "example": "En effet, une personne peut faire le choix de continuer à pratiquer des gestes simples comme parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, puis de transmettre tout cela à ses enfants.",
+          "usage": "Concrete heritage-keeping action; possessive sa agrees with langue."
+        },
+        {
+          "id": "SVC4-0015",
+          "kind": "collocation",
+          "french": "cuisiner les plats de son pays",
+          "english": "cook the dishes of one's country",
+          "example": "En effet, une personne peut faire le choix de continuer à pratiquer des gestes simples comme parler sa langue maternelle à la maison, cuisiner les plats de son pays, célébrer ses fêtes traditionnelles, puis de transmettre tout cela à ses enfants.",
+          "usage": "cuisiner + N; vivid everyday example of maintained culture."
+        },
+        {
+          "id": "SVC4-0016",
+          "kind": "collocation",
+          "french": "se fondre complètement dans le pays d'accueil",
+          "english": "blend completely into the host country",
+          "example": "À l'inverse, d'autres préfèrent se fondre complètement dans le pays d'accueil et laissent peu à peu ce lien s'éloigner.",
+          "usage": "se fondre dans = to merge/assimilate; reflexive; opposite of keeping the link."
+        },
+        {
+          "id": "SVC4-0017",
+          "kind": "collocation",
+          "french": "transforme réellement certaines parties visibles",
+          "english": "really transforms certain visible parts",
+          "example": "Cela montre que vivre longtemps à l'étranger transforme réellement certaines parties visibles de la culture d'origine.",
+          "usage": "transformer + N; adverb réellement stresses reality; used in a conclusion clause."
+        },
+        {
+          "id": "SVC4-0018",
+          "kind": "collocation",
+          "french": "choisir ce que l'on veut conserver",
+          "english": "choose what one wants to keep",
+          "example": "La vraie question n'est donc pas de garder sa culture intacte, mais de choisir ce que l'on veut conserver et transmettre.",
+          "usage": "choisir + relative ce que; note euphonic l'on; expresses agency over heritage."
+        },
+        {
+          "id": "SVC4-0019",
+          "kind": "collocation",
+          "french": "rendent ce maintien beaucoup plus facile",
+          "english": "make this upkeep much easier",
+          "example": "De plus, internet, les voyages et les communautés présentes à l'étranger rendent ce maintien beaucoup plus facile qu'avant.",
+          "usage": "rendre + N + adjective = make something (adj); comparative plus facile."
+        },
+        {
+          "id": "SVC4-0020",
+          "kind": "collocation",
+          "french": "adopte presque entièrement le mode de vie local",
+          "english": "adopts almost entirely the local way of life",
+          "example": "Par exemple, deux familles parties dans le même pays peuvent évoluer très différemment : l'une continue à parler sa langue d'origine et à transmettre ses traditions, l'autre adopte presque entièrement le mode de vie local en une génération.",
+          "usage": "adopter + N; adverb entièrement; describes full assimilation."
+        },
+        {
+          "id": "SVC4-0021",
+          "kind": "expression",
+          "french": "malgré le temps",
+          "english": "despite the passing of time",
+          "example": "La vraie question est de savoir si vivre longtemps à l'étranger conduit forcément à oublier sa culture d'origine, ou si ce lien peut se maintenir malgré le temps.",
+          "usage": "Concessive prepositional phrase; malgré + noun, no de; good for arguing continuity."
+        },
+        {
+          "id": "SVC4-0022",
+          "kind": "expression",
+          "french": "en général",
+          "english": "generally / as a rule",
+          "example": "Ensuite, l'identité profonde et les valeurs apprises pendant l'enfance restent, en général, beaucoup plus solides.",
+          "usage": "Adverbial hedge; softens a claim; place after verb or clause-initial."
+        },
+        {
+          "id": "SVC4-0023",
+          "kind": "expression",
+          "french": "peu à peu",
+          "english": "little by little / gradually",
+          "example": "À l'inverse, d'autres préfèrent se fondre complètement dans le pays d'accueil et laissent peu à peu ce lien s'éloigner.",
+          "usage": "Fixed adverbial; describes slow change; synonym progressivement."
+        },
+        {
+          "id": "SVC4-0024",
+          "kind": "expression",
+          "french": "À l'inverse",
+          "english": "conversely / the other way round",
+          "example": "À l'inverse, d'autres préfèrent se fondre complètement dans le pays d'accueil et laissent peu à peu ce lien s'éloigner.",
+          "usage": "Sentence connector introducing a contrasting case; capital À sentence-initial."
+        },
+        {
+          "id": "SVC4-0025",
+          "kind": "expression",
+          "french": "comme sur place",
+          "english": "as (if) back home / on site",
+          "example": "On ne peut pas la pratiquer exactement comme sur place, et certains éléments se perdent inévitablement avec le temps.",
+          "usage": "Fixed comparative phrase; here = as one would in the origin country."
+        },
+        {
+          "id": "SVC4-0026",
+          "kind": "expression",
+          "french": "en une génération",
+          "english": "within one generation",
+          "example": "Par exemple, deux familles parties dans le même pays peuvent évoluer très différemment : l'une continue à parler sa langue d'origine et à transmettre ses traditions, l'autre adopte presque entièrement le mode de vie local en une génération.",
+          "usage": "en + duration = time span to complete; note en (not dans) for elapsed span."
+        },
+        {
+          "id": "SVC4-0027",
+          "kind": "expression",
+          "french": "après de longues années",
+          "english": "after many long years",
+          "example": "En effet, la manière de penser la famille, le respect, le travail ou les relations humaines reste souvent fortement marquée par la culture d'origine, même après de longues années à l'étranger.",
+          "usage": "de + adjective + plural noun (no article) after après; register: written."
+        },
+        {
+          "id": "SVC4-0028",
+          "kind": "expression",
+          "french": "depuis vingt ou trente ans",
+          "english": "for twenty or thirty years",
+          "example": "Par exemple, des familles installées depuis vingt ou trente ans à l'étranger finissent souvent par cuisiner plus de plats locaux que de plats traditionnels, et par parler la langue du pays d'accueil même à la maison.",
+          "usage": "depuis + duration with present/past to show ongoing situation."
+        },
+        {
+          "id": "SVC4-0029",
+          "kind": "expression",
+          "french": "même quand elles n'y vivent plus",
+          "english": "even when they no longer live there",
+          "example": "De plus, beaucoup de personnes disent qu'elles se sentent encore profondément liées à leur pays d'origine, même quand elles n'y vivent plus depuis longtemps.",
+          "usage": "Concessive même quand; pronoun y = there; ne...plus = no longer."
+        },
+        {
+          "id": "SVC4-0030",
+          "kind": "expression",
+          "french": "beaucoup plus facile qu'avant",
+          "english": "much easier than before",
+          "example": "De plus, internet, les voyages et les communautés présentes à l'étranger rendent ce maintien beaucoup plus facile qu'avant.",
+          "usage": "Comparative beaucoup plus + adj + que; qu'avant = than before."
+        },
+        {
+          "id": "SVC4-0031",
+          "kind": "tournure",
+          "french": "ni automatique ni définitif",
+          "english": "neither automatic nor final",
+          "example": "À mon avis, vivre longtemps à l'étranger peut effectivement éloigner de certaines habitudes de la culture d'origine, mais l'oubli total n'est ni automatique ni définitif : tout dépend de la volonté de garder ce lien vivant.",
+          "usage": "ne...ni...ni... double negation (verb takes ne); adjectives agree masculine."
+        },
+        {
+          "id": "SVC4-0032",
+          "kind": "tournure",
+          "french": "sans forcément l'effacer",
+          "english": "without necessarily erasing it",
+          "example": "À mon avis, vivre longtemps à l'étranger peut modifier le lien avec sa culture d'origine, mais sans forcément l'effacer.",
+          "usage": "sans + infinitive; adverb forcément; object pronoun l' before infinitive."
+        },
+        {
+          "id": "SVC4-0033",
+          "kind": "tournure",
+          "french": "tout dépend de la volonté de garder ce lien vivant",
+          "english": "it all depends on the will to keep this bond alive",
+          "example": "À mon avis, vivre longtemps à l'étranger peut effectivement éloigner de certaines habitudes de la culture d'origine, mais l'oubli total n'est ni automatique ni définitif : tout dépend de la volonté de garder ce lien vivant.",
+          "usage": "tout dépend de + N; then de + infinitive; thesis-style hinge sentence."
+        },
+        {
+          "id": "SVC4-0034",
+          "kind": "tournure",
+          "french": "le fait que ce lien se conserve ou non",
+          "english": "the fact that this bond is kept or not",
+          "example": "Enfin, le fait que ce lien se conserve ou non dépend surtout de la volonté personnelle et de la transmission familiale.",
+          "usage": "le fait que + clause (often subjunctive); ou non = or not; nominalises a condition."
+        },
+        {
+          "id": "SVC4-0035",
+          "kind": "tournure",
+          "french": "ne conduit pas forcément à l'oubli de sa culture d'origine",
+          "english": "does not necessarily lead to forgetting one's heritage",
+          "example": "En conclusion, je pense que vivre longtemps à l'étranger peut éloigner de certaines habitudes, mais ne conduit pas forcément à l'oubli de sa culture d'origine.",
+          "usage": "conduire à + N; ne...pas forcément softens; key thesis formulation."
+        },
+        {
+          "id": "SVC4-0036",
+          "kind": "tournure",
+          "french": "finissent souvent par cuisiner plus de plats locaux",
+          "english": "often end up cooking more local dishes",
+          "example": "Par exemple, des familles installées depuis vingt ou trente ans à l'étranger finissent souvent par cuisiner plus de plats locaux que de plats traditionnels, et par parler la langue du pays d'accueil même à la maison.",
+          "usage": "finir par + infinitive; plus de + noun (quantity); example-sentence pattern."
+        },
+        {
+          "id": "SVC4-0037",
+          "kind": "tournure",
+          "french": "même après de longues années à l'étranger",
+          "english": "even after many long years abroad",
+          "example": "En effet, la manière de penser la famille, le respect, le travail ou les relations humaines reste souvent fortement marquée par la culture d'origine, même après de longues années à l'étranger.",
+          "usage": "Concessive même après + N; useful to concede time while defending continuity."
+        },
+        {
+          "id": "SVC4-0038",
+          "kind": "tournure",
+          "french": "surtout si l'on fait l'effort de le transmettre",
+          "english": "especially if one makes the effort to pass it on",
+          "example": "L'identité reste solide et le lien peut se maintenir, surtout si l'on fait l'effort de le transmettre et de le garder vivant.",
+          "usage": "surtout si + indicative; faire l'effort de + infinitive; conclusion nuance."
+        },
+        {
+          "id": "SVC4-0039",
+          "kind": "tournure",
+          "french": "beaucoup plus solides que les habitudes quotidiennes",
+          "english": "much more solid than everyday habits",
+          "example": "Ensuite, je pense que l'identité profonde et les valeurs apprises pendant l'enfance restent, en général, beaucoup plus solides que les habitudes quotidiennes.",
+          "usage": "Comparative of superiority plus...que; ranks deep identity above habits."
+        },
+        {
+          "id": "SVC4-0040",
+          "kind": "tournure",
+          "french": "dépend surtout de la volonté personnelle et de la transmission familiale",
+          "english": "depends above all on personal will and family transmission",
+          "example": "Enfin, le fait que ce lien se conserve ou non dépend surtout de la volonté personnelle et de la transmission familiale.",
+          "usage": "dépendre de + N (repeat de before each noun); surtout adds emphasis."
+        },
+        {
+          "id": "SVC4-0041",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si vivre longtemps à l'étranger conduit forcément à oublier sa culture d'origine, ou si ce lien peut se maintenir malgré le temps.",
+          "english": "Reframing sentence: the real question is whether long emigration forces forgetting one's heritage.",
+          "example": "La vraie question est de savoir si vivre longtemps à l'étranger conduit forcément à oublier sa culture d'origine, ou si ce lien peut se maintenir malgré le temps.",
+          "usage": "Reformulation template: La vraie question est de savoir si... ou si...; reusable to reframe any prompt."
+        },
+        {
+          "id": "SVC4-0042",
+          "kind": "phrase-modele",
+          "french": "À mon avis, vivre longtemps à l'étranger peut modifier le lien avec sa culture d'origine, mais sans forcément l'effacer.",
+          "english": "Position: living abroad can alter the bond with one's heritage without necessarily erasing it.",
+          "example": "À mon avis, vivre longtemps à l'étranger peut modifier le lien avec sa culture d'origine, mais sans forcément l'effacer.",
+          "usage": "Position template À mon avis...peut...mais sans forcément...; nuanced stance."
+        },
+        {
+          "id": "SVC4-0043",
+          "kind": "phrase-modele",
+          "french": "Ce n'est donc pas tant la culture qui s'efface qu'une partie de ses formes extérieures.",
+          "english": "It is not so much the culture that fades as part of its outward forms.",
+          "example": "Ce n'est donc pas tant la culture qui s'efface qu'une partie de ses formes extérieures.",
+          "usage": "ne...pas tant X que Y = not so much X as Y; elegant nuance construction."
+        },
+        {
+          "id": "SVC4-0044",
+          "kind": "phrase-modele",
+          "french": "Cela montre que vivre longtemps à l'étranger transforme réellement certaines parties visibles de la culture d'origine.",
+          "english": "Consequence (arg 1): long emigration really transforms visible parts of one's heritage.",
+          "example": "Cela montre que vivre longtemps à l'étranger transforme réellement certaines parties visibles de la culture d'origine.",
+          "usage": "Cela montre que + indicative; standard consequence connector closing an argument."
+        },
+        {
+          "id": "SVC4-0045",
+          "kind": "phrase-modele",
+          "french": "Cela montre que le lien à la culture d'origine peut évoluer, mais qu'il ne disparaît pas vraiment.",
+          "english": "Consequence (arg 2): the bond can evolve but does not truly disappear.",
+          "example": "Cela montre que le lien à la culture d'origine peut évoluer, mais qu'il ne disparaît pas vraiment.",
+          "usage": "Cela montre que...mais que...; balanced consequence with concession."
+        },
+        {
+          "id": "SVC4-0046",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'oubli de la culture d'origine n'est jamais automatique, mais qu'il dépend de choix personnels.",
+          "english": "Consequence (arg 3): forgetting one's heritage is never automatic but depends on personal choices.",
+          "example": "Cela montre que l'oubli de la culture d'origine n'est jamais automatique, mais qu'il dépend de choix personnels.",
+          "usage": "n'est jamais + adj, mais...dépend de...; asserts contingency, not fate."
+        },
+        {
+          "id": "SVC4-0047",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut reconnaître que vivre loin de son pays modifie forcément la manière dont on vit sa culture.",
+          "english": "Nuance: one must admit that living far away inevitably changes how one lives one's culture.",
+          "example": "Cependant, il faut reconnaître que vivre loin de son pays modifie forcément la manière dont on vit sa culture.",
+          "usage": "Cependant, il faut reconnaître que + indicative; concession opener for the nuance paragraph."
+        },
+        {
+          "id": "SVC4-0048",
+          "kind": "phrase-modele",
+          "french": "La vraie question n'est donc pas de garder sa culture intacte, mais de choisir ce que l'on veut conserver et transmettre.",
+          "english": "Nuance: the real question is not keeping culture intact but choosing what to keep and pass on.",
+          "example": "La vraie question n'est donc pas de garder sa culture intacte, mais de choisir ce que l'on veut conserver et transmettre.",
+          "usage": "n'est pas de + inf, mais de + inf; reframes the debate toward selection."
+        },
+        {
+          "id": "SVC4-0049",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que vivre longtemps à l'étranger peut éloigner de certaines habitudes, mais ne conduit pas forcément à l'oubli de sa culture d'origine.",
+          "english": "Conclusion: long emigration can distance some habits but not necessarily cause loss of heritage.",
+          "example": "En conclusion, je pense que vivre longtemps à l'étranger peut éloigner de certaines habitudes, mais ne conduit pas forcément à l'oubli de sa culture d'origine.",
+          "usage": "En conclusion, je pense que...mais...; conclusion template restating the thesis."
+        },
+        {
+          "id": "SVC4-0050",
+          "kind": "phrase-modele",
+          "french": "L'identité reste solide et le lien peut se maintenir, surtout si l'on fait l'effort de le transmettre et de le garder vivant.",
+          "english": "Closing: identity stays solid and the bond can endure, especially with the effort to transmit and keep it alive.",
+          "example": "L'identité reste solide et le lien peut se maintenir, surtout si l'on fait l'effort de le transmettre et de le garder vivant.",
+          "usage": "Two coordinated clauses + surtout si...; upbeat final sentence."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p29",
+      "entries": [
+        {
+          "id": "SVC4-0051",
+          "kind": "mot-cle",
+          "french": "barrières concrètes",
+          "english": "concrete/practical barriers",
+          "example": "À mon avis, oui, vivre à l'étranger est souvent difficile, surtout à cause des barrières concrètes du quotidien, de l'éloignement de ses proches et de la précarité professionnelle et administrative.",
+          "usage": "Feminine plural; adjective agrees; names the everyday obstacles argument."
+        },
+        {
+          "id": "SVC4-0052",
+          "kind": "mot-cle",
+          "french": "réseau de soutien",
+          "english": "support network",
+          "example": "Ensuite, l'éloignement de la famille et des amis fait perdre tout un réseau de soutien et crée une vraie fatigue mentale.",
+          "usage": "Masculine; réseau de + noun; lost on emigrating, key of arg 2."
+        },
+        {
+          "id": "SVC4-0053",
+          "kind": "mot-cle",
+          "french": "précarité du travail",
+          "english": "job insecurity",
+          "example": "Enfin, la précarité du travail et du statut administratif ajoute une insécurité que l'on n'imagine pas avant de partir.",
+          "usage": "Feminine; précarité de + N; register: formal; core of arg 3."
+        },
+        {
+          "id": "SVC4-0054",
+          "kind": "mot-cle",
+          "french": "fatigue mentale",
+          "english": "mental fatigue/exhaustion",
+          "example": "Ensuite, l'éloignement de la famille et des amis fait perdre tout un réseau de soutien et crée une vraie fatigue mentale.",
+          "usage": "Feminine; adjective follows; consequence of isolation."
+        },
+        {
+          "id": "SVC4-0055",
+          "kind": "mot-cle",
+          "french": "statut administratif",
+          "english": "administrative/legal status",
+          "example": "Enfin, la précarité du travail et du statut administratif ajoute une insécurité que l'on n'imagine pas avant de partir.",
+          "usage": "Masculine; tied to visas and residence; source of insecurity."
+        },
+        {
+          "id": "SVC4-0056",
+          "kind": "mot-cle",
+          "french": "démarches administratives",
+          "english": "administrative procedures/paperwork",
+          "example": "En effet, dans les premiers mois, presque tout est à réapprendre : la langue, les démarches administratives, le système de santé et même les habitudes alimentaires.",
+          "usage": "Feminine plural; faire des démarches; concrete daily hurdle."
+        },
+        {
+          "id": "SVC4-0057",
+          "kind": "mot-cle",
+          "french": "titre de séjour",
+          "english": "residence permit",
+          "example": "Par exemple, une personne dont le titre de séjour dépend de son emploi peut perdre, en quelques semaines, à la fois son travail, son logement et son droit de rester dans le pays.",
+          "usage": "Masculine set phrase; often dépend de l'emploi; precariousness marker."
+        },
+        {
+          "id": "SVC4-0058",
+          "kind": "mot-cle",
+          "french": "sentiment d'isolement",
+          "english": "feeling of isolation",
+          "example": "Cela provoque chez beaucoup de nouveaux arrivants un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale.",
+          "usage": "Masculine; sentiment de + N; consequence of losing one's network."
+        },
+        {
+          "id": "SVC4-0059",
+          "kind": "mot-cle",
+          "french": "réseau humain",
+          "english": "human/social network",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Masculine; the web of people built over years; lost abroad."
+        },
+        {
+          "id": "SVC4-0060",
+          "kind": "mot-cle",
+          "french": "conditions du départ",
+          "english": "the terms/circumstances of leaving",
+          "example": "Mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Feminine plural; du = de+le; the essay's key qualifier: difficulty depends on these."
+        },
+        {
+          "id": "SVC4-0061",
+          "kind": "collocation",
+          "french": "perdre tout un réseau de soutien",
+          "english": "lose an entire support network",
+          "example": "Ensuite, l'éloignement de la famille et des amis fait perdre tout un réseau de soutien et crée une vraie fatigue mentale.",
+          "usage": "perdre + tout un + N; tout un = a whole; dramatic loss of arg 2."
+        },
+        {
+          "id": "SVC4-0062",
+          "kind": "collocation",
+          "french": "se sentir isolée le soir",
+          "english": "feel isolated in the evening",
+          "example": "Par exemple, une personne installée seule dans une grande ville étrangère peut se sentir isolée le soir, après des journées entières où elle n'a parlé à personne en profondeur ; et lorsqu'elle apprend la maladie d'un proche resté au pays, elle se retrouve totalement impuissante, sans pouvoir être présente.",
+          "usage": "se sentir + adjective (agrees: isolée fem.); concrete emotional example."
+        },
+        {
+          "id": "SVC4-0063",
+          "kind": "collocation",
+          "french": "avancer beaucoup plus vite",
+          "english": "move forward much faster",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "avancer + comparative adverb; positive outcome of joining a network."
+        },
+        {
+          "id": "SVC4-0064",
+          "kind": "collocation",
+          "french": "accepte souvent des emplois précaires",
+          "english": "often accepts precarious jobs",
+          "example": "De plus, sans réseau ni statut stable, on accepte souvent des emplois précaires, très éloignés de ses qualifications de départ.",
+          "usage": "accepter + N; adjective précaires agrees; describes downgraded work."
+        },
+        {
+          "id": "SVC4-0065",
+          "kind": "collocation",
+          "french": "anticiper en permanence",
+          "english": "to plan/anticipate constantly",
+          "example": "Cette insécurité empêche de se projeter sereinement et oblige à anticiper en permanence.",
+          "usage": "anticiper + adverbial; en permanence = at all times; insecurity effect."
+        },
+        {
+          "id": "SVC4-0066",
+          "kind": "collocation",
+          "french": "rejoindre rapidement une association",
+          "english": "quickly join an association",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "rejoindre + N; practical remedy against isolation in the nuance."
+        },
+        {
+          "id": "SVC4-0067",
+          "kind": "collocation",
+          "french": "ouvrir un compte bancaire",
+          "english": "open a bank account",
+          "example": "Par exemple, ouvrir un compte bancaire, se loger sans garant ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "ouvrir + N; classic bureaucratic hurdle example."
+        },
+        {
+          "id": "SVC4-0068",
+          "kind": "collocation",
+          "french": "faire reconnaître un diplôme étranger",
+          "english": "get a foreign degree recognised",
+          "example": "Par exemple, ouvrir un compte bancaire, se loger sans garant ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "faire + infinitive (causative) = have something done; administrative difficulty."
+        },
+        {
+          "id": "SVC4-0069",
+          "kind": "collocation",
+          "french": "se loger sans garant",
+          "english": "find housing without a guarantor",
+          "example": "Par exemple, ouvrir un compte bancaire, se loger sans garant ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "se loger = to find accommodation; sans + N; concrete barrier abroad."
+        },
+        {
+          "id": "SVC4-0070",
+          "kind": "collocation",
+          "french": "son travail, son logement et son droit de rester dans le pays",
+          "english": "one's job, housing and right to stay in the country",
+          "example": "Par exemple, une personne dont le titre de séjour dépend de son emploi peut perdre, en quelques semaines, à la fois son travail, son logement et son droit de rester dans le pays.",
+          "usage": "Tricolon of possessions lost at once; illustrates cascading precariousness."
+        },
+        {
+          "id": "SVC4-0071",
+          "kind": "expression",
+          "french": "du jour au lendemain",
+          "english": "overnight / from one day to the next",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Fixed idiom for sudden change; here the network vanishes suddenly."
+        },
+        {
+          "id": "SVC4-0072",
+          "kind": "expression",
+          "french": "à partir de zéro",
+          "english": "from scratch",
+          "example": "À l'étranger, ce réseau disparaît du jour au lendemain, et il faut tout reconstruire à partir de zéro.",
+          "usage": "Fixed phrase; often reconstruire à partir de zéro; register: neutral."
+        },
+        {
+          "id": "SVC4-0073",
+          "kind": "expression",
+          "french": "en quelques semaines",
+          "english": "in a few weeks",
+          "example": "Par exemple, une personne dont le titre de séjour dépend de son emploi peut perdre, en quelques semaines, à la fois son travail, son logement et son droit de rester dans le pays.",
+          "usage": "en + duration = time to complete; contrasts with slow bureaucracy."
+        },
+        {
+          "id": "SVC4-0074",
+          "kind": "expression",
+          "french": "sans s'en rendre compte",
+          "english": "without realising it",
+          "example": "En effet, dans son pays d'origine, on s'appuie sans s'en rendre compte sur un réseau humain qu'on a mis des années à construire : famille, amis, voisins, collègues, médecin, commerçants.",
+          "usage": "Fixed reflexive idiom; se rendre compte de qch; en = of it."
+        },
+        {
+          "id": "SVC4-0075",
+          "kind": "expression",
+          "french": "au quotidien",
+          "english": "on a daily basis / day to day",
+          "example": "La vraie question est de savoir si vivre à l'étranger est, dans la pratique, une expérience difficile à porter au quotidien.",
+          "usage": "Adverbial; describes ongoing lived experience."
+        },
+        {
+          "id": "SVC4-0076",
+          "kind": "expression",
+          "french": "dans les premiers mois",
+          "english": "in the first months",
+          "example": "Je pense d'abord que vivre à l'étranger est difficile parce que, dans les premiers mois, presque tout est à réapprendre.",
+          "usage": "Time frame introducing the acclimatisation phase."
+        },
+        {
+          "id": "SVC4-0077",
+          "kind": "expression",
+          "french": "en particulier dans les premières années",
+          "english": "particularly in the first years",
+          "example": "À mon avis, vivre à l'étranger est souvent difficile, en particulier dans les premières années.",
+          "usage": "en particulier = especially; scopes the claim to the early period."
+        },
+        {
+          "id": "SVC4-0078",
+          "kind": "expression",
+          "french": "fait de hauts et de bas",
+          "english": "made of ups and downs",
+          "example": "Il faut seulement accepter que l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "fait de + N; idiom des hauts et des bas; describes a long uneven process."
+        },
+        {
+          "id": "SVC4-0079",
+          "kind": "expression",
+          "french": "De même",
+          "english": "Likewise / similarly",
+          "example": "De même, rejoindre rapidement une association, un cours de langue ou un milieu professionnel actif permet de rompre l'isolement et d'avancer beaucoup plus vite.",
+          "usage": "Additive connector introducing a parallel remedy; capitalised sentence-initial."
+        },
+        {
+          "id": "SVC4-0080",
+          "kind": "expression",
+          "french": "À l'inverse",
+          "english": "conversely",
+          "example": "À l'inverse, dans son pays d'origine, ces questions ne se posent presque jamais.",
+          "usage": "Contrastive connector; introduces the home-country comparison."
+        },
+        {
+          "id": "SVC4-0081",
+          "kind": "tournure",
+          "french": "cette difficulté n'est pas une fatalité",
+          "english": "this difficulty is not inevitable",
+          "example": "Mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "ne pas être une fatalité = not to be inevitable; key optimistic hinge."
+        },
+        {
+          "id": "SVC4-0082",
+          "kind": "tournure",
+          "french": "il existe de vraies barrières concrètes au quotidien",
+          "english": "there really are concrete daily barriers",
+          "example": "D'abord, il existe de vraies barrières concrètes au quotidien, parce que presque tout est à réapprendre dans un système que l'on ne connaît pas.",
+          "usage": "il existe + de + adj + N (de replaces des before adjective); presentational."
+        },
+        {
+          "id": "SVC4-0083",
+          "kind": "tournure",
+          "french": "elle dépend largement des conditions du départ",
+          "english": "it largely depends on the terms of departure",
+          "example": "Mais cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "dépendre de + N; adverb largement; states the decisive variable."
+        },
+        {
+          "id": "SVC4-0084",
+          "kind": "tournure",
+          "french": "ne vient pas seulement du quotidien, mais aussi du sentiment de fragilité de sa situation",
+          "english": "comes not only from daily life but also from a sense of fragility",
+          "example": "Cela montre que la difficulté de vivre à l'étranger ne vient pas seulement du quotidien, mais aussi du sentiment de fragilité de sa situation.",
+          "usage": "ne...pas seulement...mais aussi...; two-sided causal construction."
+        },
+        {
+          "id": "SVC4-0085",
+          "kind": "tournure",
+          "french": "Chaque tâche simple devient longue et stressante",
+          "english": "every simple task becomes long and stressful",
+          "example": "Chaque tâche simple devient longue et stressante et demande énormément d'énergie, parce qu'on doit tout comprendre dans un système que l'on ne connaît pas encore.",
+          "usage": "Chaque + singular noun + singular verb; devenir + adjectives; generalising claim."
+        },
+        {
+          "id": "SVC4-0086",
+          "kind": "tournure",
+          "french": "peut prendre des semaines, voire des mois",
+          "english": "can take weeks, even months",
+          "example": "Par exemple, ouvrir un compte bancaire, se loger sans garant ou faire reconnaître un diplôme étranger peut prendre des semaines, voire des mois, surtout quand on ne maîtrise pas encore bien la langue locale.",
+          "usage": "voire = even (upward gradation); adds an intensifying alternative."
+        },
+        {
+          "id": "SVC4-0087",
+          "kind": "tournure",
+          "french": "dont le titre de séjour dépend de son emploi",
+          "english": "whose residence permit depends on their job",
+          "example": "Par exemple, une personne dont le titre de séjour dépend de son emploi peut perdre, en quelques semaines, à la fois son travail, son logement et son droit de rester dans le pays.",
+          "usage": "Relative dont (= de qui/duquel) linking possession; formal relative."
+        },
+        {
+          "id": "SVC4-0088",
+          "kind": "tournure",
+          "french": "Il faut seulement accepter que l'adaptation reste un processus long",
+          "english": "one must simply accept that adaptation stays a long process",
+          "example": "Il faut seulement accepter que l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "il faut accepter que + subjunctive/indicative; concessive realism."
+        },
+        {
+          "id": "SVC4-0089",
+          "kind": "tournure",
+          "french": "sans pouvoir être présente",
+          "english": "without being able to be present",
+          "example": "Par exemple, une personne installée seule dans une grande ville étrangère peut se sentir isolée le soir, après des journées entières où elle n'a parlé à personne en profondeur ; et lorsqu'elle apprend la maladie d'un proche resté au pays, elle se retrouve totalement impuissante, sans pouvoir être présente.",
+          "usage": "sans + infinitive (pouvoir); adjective présente agrees feminine; expresses helplessness."
+        },
+        {
+          "id": "SVC4-0090",
+          "kind": "tournure",
+          "french": "elle peut même devenir une expérience très formatrice",
+          "english": "it can even become a very formative experience",
+          "example": "Mais cette difficulté n'est pas une fatalité : avec une vraie préparation et un réseau sur place, elle peut même devenir une expérience très formatrice.",
+          "usage": "pouvoir même + infinitive; même = even, upgrading; positive final turn."
+        },
+        {
+          "id": "SVC4-0091",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si vivre à l'étranger est, dans la pratique, une expérience difficile à porter au quotidien.",
+          "english": "Reframing: the real question is whether living abroad is, in practice, hard to bear day to day.",
+          "example": "La vraie question est de savoir si vivre à l'étranger est, dans la pratique, une expérience difficile à porter au quotidien.",
+          "usage": "Reformulation template with inserted dans la pratique; difficile à + infinitive."
+        },
+        {
+          "id": "SVC4-0092",
+          "kind": "phrase-modele",
+          "french": "À mon avis, vivre à l'étranger est souvent difficile, en particulier dans les premières années.",
+          "english": "Position: in my view living abroad is often hard, especially in the early years.",
+          "example": "À mon avis, vivre à l'étranger est souvent difficile, en particulier dans les premières années.",
+          "usage": "Position template À mon avis...souvent...en particulier...; scoped claim."
+        },
+        {
+          "id": "SVC4-0093",
+          "kind": "phrase-modele",
+          "french": "Cela transforme les premiers mois à l'étranger en une période très exigeante, où la moindre démarche du quotidien demande un effort important.",
+          "english": "Consequence (arg 1): it turns the first months into a very demanding period where the slightest task is an effort.",
+          "example": "Cela transforme les premiers mois à l'étranger en une période très exigeante, où la moindre démarche du quotidien demande un effort important.",
+          "usage": "transformer X en Y; relative où; la moindre = the slightest."
+        },
+        {
+          "id": "SVC4-0094",
+          "kind": "phrase-modele",
+          "french": "Cela provoque chez beaucoup de nouveaux arrivants un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale.",
+          "english": "Consequence (arg 2): it causes real isolation that can weaken motivation and mental health.",
+          "example": "Cela provoque chez beaucoup de nouveaux arrivants un sentiment d'isolement réel, qui peut affaiblir leur motivation et leur santé mentale.",
+          "usage": "provoquer chez qqn un + N; qui-relative extending the effect."
+        },
+        {
+          "id": "SVC4-0095",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la difficulté de vivre à l'étranger ne vient pas seulement du quotidien, mais aussi du sentiment de fragilité de sa situation.",
+          "english": "Consequence (arg 3): the difficulty comes not only from daily life but also from felt insecurity.",
+          "example": "Cela montre que la difficulté de vivre à l'étranger ne vient pas seulement du quotidien, mais aussi du sentiment de fragilité de sa situation.",
+          "usage": "Cela montre que...ne...pas seulement...mais aussi...; layered consequence."
+        },
+        {
+          "id": "SVC4-0096",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que vivre à l'étranger est difficile parce que l'éloignement de la famille et des amis fait disparaître d'un coup tout un réseau de soutien.",
+          "english": "Argument 2 topic sentence: distance from family and friends suddenly removes a whole support network.",
+          "example": "Ensuite, je pense que vivre à l'étranger est difficile parce que l'éloignement de la famille et des amis fait disparaître d'un coup tout un réseau de soutien.",
+          "usage": "Ensuite, je pense que...parce que...; faire disparaître = to make vanish; d'un coup = all at once."
+        },
+        {
+          "id": "SVC4-0097",
+          "kind": "phrase-modele",
+          "french": "Cependant, cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "english": "Nuance: however, this difficulty is not inevitable; it largely depends on how one leaves.",
+          "example": "Cependant, cette difficulté n'est pas une fatalité : elle dépend largement des conditions du départ.",
+          "usage": "Cependant...: elle dépend de...; colon introduces the qualifying reason."
+        },
+        {
+          "id": "SVC4-0098",
+          "kind": "phrase-modele",
+          "french": "Il faut seulement accepter que l'adaptation reste un processus long, fait de hauts et de bas.",
+          "english": "Nuance detail: one must just accept that adaptation is a long process of ups and downs.",
+          "example": "Il faut seulement accepter que l'adaptation reste un processus long, fait de hauts et de bas.",
+          "usage": "Realistic concession; fait de hauts et de bas as final apposition."
+        },
+        {
+          "id": "SVC4-0099",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que vivre à l'étranger est souvent difficile, à cause des barrières concrètes du quotidien, de l'éloignement des proches et de la précarité de la situation.",
+          "english": "Conclusion: living abroad is often hard because of daily barriers, distance from loved ones and precariousness.",
+          "example": "En conclusion, je pense que vivre à l'étranger est souvent difficile, à cause des barrières concrètes du quotidien, de l'éloignement des proches et de la précarité de la situation.",
+          "usage": "En conclusion...à cause de + tricolon (repeat de); summarises the three arguments."
+        },
+        {
+          "id": "SVC4-0100",
+          "kind": "phrase-modele",
+          "french": "Mais cette difficulté n'est pas une fatalité : avec une vraie préparation et un réseau sur place, elle peut même devenir une expérience très formatrice.",
+          "english": "Closing: but with real preparation and a local network it can even become very formative.",
+          "example": "Mais cette difficulté n'est pas une fatalité : avec une vraie préparation et un réseau sur place, elle peut même devenir une expérience très formatrice.",
+          "usage": "Mais...: avec..., elle peut même devenir...; optimistic final reversal."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p30",
+      "entries": [
+        {
+          "id": "SVC4-0101",
+          "kind": "mot-cle",
+          "french": "codes culturels",
+          "english": "cultural codes",
+          "example": "À mon avis, non, s'intégrer dans un pays étranger n'est pas vraiment facile : il faut du temps pour maîtriser la langue et les codes culturels, pour être accepté par la société d'accueil et pour finir par se sentir vraiment chez soi.",
+          "usage": "Masculine plural; unwritten norms; core of arg 1; se devinent peu à peu."
+        },
+        {
+          "id": "SVC4-0102",
+          "kind": "mot-cle",
+          "french": "sentiment de décalage",
+          "english": "feeling of being out of step",
+          "example": "Or vivre dans un autre pays, c'est aussi affronter un rythme de vie et une mentalité différents, qui peuvent laisser un sentiment de décalage pendant longtemps.",
+          "usage": "Masculine; sentiment de + N; describes cultural mismatch."
+        },
+        {
+          "id": "SVC4-0103",
+          "kind": "mot-cle",
+          "french": "décalage culturel",
+          "english": "cultural gap/mismatch",
+          "example": "Par exemple, une personne qui parle couramment la langue, possède un bon emploi et un logement stable peut très bien se sentir encore étrangère, en décalage culturel, même après plusieurs années dans le pays.",
+          "usage": "Masculine; en décalage culturel = culturally out of sync."
+        },
+        {
+          "id": "SVC4-0104",
+          "kind": "mot-cle",
+          "french": "réseaux professionnels",
+          "english": "professional networks",
+          "example": "De plus, même dans un pays accueillant, les groupes d'amis et les réseaux professionnels sont déjà formés : un nouvel arrivant doit faire ses preuves longtemps avant d'y être pleinement inclus et reste souvent à la périphérie de ces cercles.",
+          "usage": "Masculine plural; already formed, hard for newcomers to enter."
+        },
+        {
+          "id": "SVC4-0105",
+          "kind": "mot-cle",
+          "french": "nouveaux arrivants",
+          "english": "newcomers",
+          "example": "Ensuite, je pense que l'intégration est difficile parce qu'elle ne dépend pas seulement des efforts de la personne, mais aussi de l'ouverture de la société d'accueil et du temps qu'elle accorde aux nouveaux arrivants.",
+          "usage": "Masculine plural; adjective precedes; the people who must prove themselves."
+        },
+        {
+          "id": "SVC4-0106",
+          "kind": "mot-cle",
+          "french": "rythme de vie",
+          "english": "pace of life",
+          "example": "Or vivre dans un autre pays, c'est aussi affronter un rythme de vie et une mentalité différents, qui peuvent laisser un sentiment de décalage pendant longtemps.",
+          "usage": "Masculine set phrase; affronter un rythme de vie différent."
+        },
+        {
+          "id": "SVC4-0107",
+          "kind": "mot-cle",
+          "french": "les sous-entendus",
+          "english": "the unspoken implications",
+          "example": "En effet, les cours et les livres donnent une base, mais c'est seulement en parlant régulièrement avec les habitants que l'on devient vraiment à l'aise dans la langue et que l'on saisit les sous-entendus, l'humour et les manières de penser.",
+          "usage": "Plural noun; saisir les sous-entendus is essential for nuanced cultural and language discussions."
+        },
+        {
+          "id": "SVC4-0108",
+          "kind": "mot-cle",
+          "french": "maîtrise fine de la langue",
+          "english": "fine command of the language",
+          "example": "Cela montre que la vraie intégration suppose une maîtrise fine de la langue et des codes, qui ne s'acquiert que lentement.",
+          "usage": "Feminine; maîtrise de + N; adjective fine = subtle; higher than basic fluency."
+        },
+        {
+          "id": "SVC4-0109",
+          "kind": "mot-cle",
+          "french": "vie sociale",
+          "english": "social life",
+          "example": "On peut ainsi habiter physiquement dans un pays sans participer vraiment à sa vie sociale, c'est-à-dire vivre à côté de ce pays plutôt que dedans.",
+          "usage": "Feminine; participer à la vie sociale; marker of true integration."
+        },
+        {
+          "id": "SVC4-0110",
+          "kind": "mot-cle",
+          "french": "processus à deux sens",
+          "english": "two-way process",
+          "example": "Cela montre que l'intégration est un processus à deux sens, qui se construit lentement et ne dépend jamais d'une seule personne.",
+          "usage": "Masculine; à deux sens = mutual; thesis about shared responsibility."
+        },
+        {
+          "id": "SVC4-0111",
+          "kind": "collocation",
+          "french": "apprendre la langue et surtout les codes culturels",
+          "english": "learn the language and above all the cultural codes",
+          "example": "D'abord, apprendre la langue et surtout les codes culturels du pays demande beaucoup de temps.",
+          "usage": "apprendre + N; surtout ranks codes above language; arg 1 core."
+        },
+        {
+          "id": "SVC4-0112",
+          "kind": "collocation",
+          "french": "faire tous les efforts du monde",
+          "english": "make every possible effort",
+          "example": "En effet, on peut faire tous les efforts du monde — apprendre la langue, respecter les codes, chercher à connaître les habitants — mais si la société qui nous reçoit reste fermée ou méfiante, l'intégration restera limitée.",
+          "usage": "Idiomatic hyperbole faire tous les efforts du monde; concessive setup."
+        },
+        {
+          "id": "SVC4-0113",
+          "kind": "collocation",
+          "french": "se sentir maladroit dans ses échanges quotidiens",
+          "english": "feel awkward in one's daily interactions",
+          "example": "Tant que ces codes ne sont pas maîtrisés, on continue souvent à mal interpréter les situations et à se sentir maladroit dans ses échanges quotidiens.",
+          "usage": "se sentir + adjective; maladroit = clumsy; consequence of unmastered codes."
+        },
+        {
+          "id": "SVC4-0114",
+          "kind": "collocation",
+          "french": "respecter les codes",
+          "english": "respect/observe the codes",
+          "example": "En effet, on peut faire tous les efforts du monde — apprendre la langue, respecter les codes, chercher à connaître les habitants — mais si la société qui nous reçoit reste fermée ou méfiante, l'intégration restera limitée.",
+          "usage": "respecter + N; short useful collocation about social norms."
+        },
+        {
+          "id": "SVC4-0115",
+          "kind": "collocation",
+          "french": "entrer dans le groupe d'amis",
+          "english": "get into the group of friends",
+          "example": "Par exemple, un nouvel arrivant peut être invité à déjeuner par politesse pendant des mois, sans jamais entrer dans le groupe d'amis qui se retrouve le week-end, simplement parce que ces liens s'étaient formés bien avant son arrivée.",
+          "usage": "entrer dans + N; social inclusion image; often negated sans jamais entrer."
+        },
+        {
+          "id": "SVC4-0116",
+          "kind": "collocation",
+          "french": "accepter ou refuser une invitation",
+          "english": "accept or decline an invitation",
+          "example": "Par exemple, c'est souvent après des années seulement que l'on comprend spontanément quand il faut tutoyer ou vouvoyer, comment accepter ou refuser une invitation, ou pourquoi certaines choses se font d'une manière plutôt que d'une autre.",
+          "usage": "Paired verbs + N; example of a subtle social code."
+        },
+        {
+          "id": "SVC4-0117",
+          "kind": "collocation",
+          "french": "se sentir encore étrangère",
+          "english": "still feel like an outsider",
+          "example": "Par exemple, une personne qui parle couramment la langue, possède un bon emploi et un logement stable peut très bien se sentir encore étrangère, en décalage culturel, même après plusieurs années dans le pays.",
+          "usage": "se sentir + adjective (étrangère fem.); encore = still; belonging lag."
+        },
+        {
+          "id": "SVC4-0118",
+          "kind": "collocation",
+          "french": "développer un vrai sentiment d'appartenance",
+          "english": "develop a real sense of belonging",
+          "example": "En conclusion, je pense que s'intégrer dans un pays étranger n'est pas vraiment facile, parce que cela demande de maîtriser la langue et les codes culturels, d'être accepté par la société d'accueil et de développer un vrai sentiment d'appartenance.",
+          "usage": "développer + N; the inner goal of integration; arg 3."
+        },
+        {
+          "id": "SVC4-0119",
+          "kind": "collocation",
+          "french": "chercher à connaître les habitants",
+          "english": "seek to get to know the locals",
+          "example": "En effet, on peut faire tous les efforts du monde — apprendre la langue, respecter les codes, chercher à connaître les habitants — mais si la société qui nous reçoit reste fermée ou méfiante, l'intégration restera limitée.",
+          "usage": "chercher à + infinitive = to try to; effort side of integration."
+        },
+        {
+          "id": "SVC4-0120",
+          "kind": "collocation",
+          "french": "participer vraiment à sa vie sociale",
+          "english": "really take part in its social life",
+          "example": "On peut ainsi habiter physiquement dans un pays sans participer vraiment à sa vie sociale, c'est-à-dire vivre à côté de ce pays plutôt que dedans.",
+          "usage": "participer à + N; vraiment stresses genuine involvement vs mere presence."
+        },
+        {
+          "id": "SVC4-0121",
+          "kind": "expression",
+          "french": "peu à peu",
+          "english": "little by little",
+          "example": "De plus, beaucoup de codes culturels ne s'apprennent pas dans un manuel : ils se devinent peu à peu, à travers les conversations, les remarques et les habitudes au travail.",
+          "usage": "Fixed adverbial; codes se devinent peu à peu; gradual learning."
+        },
+        {
+          "id": "SVC4-0122",
+          "kind": "expression",
+          "french": "plus ou moins",
+          "english": "more or less",
+          "example": "Ensuite, l'intégration ne dépend pas seulement de soi : il faut aussi être accepté par une société d'accueil plus ou moins ouverte.",
+          "usage": "Fixed hedge; une société plus ou moins ouverte; varies the claim."
+        },
+        {
+          "id": "SVC4-0123",
+          "kind": "expression",
+          "french": "tout à fait",
+          "english": "entirely / perfectly",
+          "example": "L'intégration est donc un objectif tout à fait possible, mais qui reste un processus long, fait de hauts et de bas, et jamais une simple formalité.",
+          "usage": "Intensifier; un objectif tout à fait possible; register neutral."
+        },
+        {
+          "id": "SVC4-0124",
+          "kind": "expression",
+          "french": "c'est-à-dire",
+          "english": "that is to say / i.e.",
+          "example": "On peut ainsi habiter physiquement dans un pays sans participer vraiment à sa vie sociale, c'est-à-dire vivre à côté de ce pays plutôt que dedans.",
+          "usage": "Reformulation connector introducing a gloss; note hyphens."
+        },
+        {
+          "id": "SVC4-0125",
+          "kind": "expression",
+          "french": "à côté de ce pays plutôt que dedans",
+          "english": "alongside the country rather than in it",
+          "example": "On peut ainsi habiter physiquement dans un pays sans participer vraiment à sa vie sociale, c'est-à-dire vivre à côté de ce pays plutôt que dedans.",
+          "usage": "Spatial metaphor à côté de...plutôt que dedans; vivid non-integration image."
+        },
+        {
+          "id": "SVC4-0126",
+          "kind": "expression",
+          "french": "pendant longtemps",
+          "english": "for a long time",
+          "example": "Or vivre dans un autre pays, c'est aussi affronter un rythme de vie et une mentalité différents, qui peuvent laisser un sentiment de décalage pendant longtemps.",
+          "usage": "Duration adverbial pendant + N; un sentiment de décalage pendant longtemps."
+        },
+        {
+          "id": "SVC4-0127",
+          "kind": "expression",
+          "french": "à la périphérie de ces cercles",
+          "english": "on the edge of these circles",
+          "example": "De plus, même dans un pays accueillant, les groupes d'amis et les réseaux professionnels sont déjà formés : un nouvel arrivant doit faire ses preuves longtemps avant d'y être pleinement inclus et reste souvent à la périphérie de ces cercles.",
+          "usage": "rester à la périphérie de + N; metaphor of social exclusion."
+        },
+        {
+          "id": "SVC4-0128",
+          "kind": "expression",
+          "french": "fait de hauts et de bas",
+          "english": "made of ups and downs",
+          "example": "L'intégration est donc un objectif tout à fait possible, mais qui reste un processus long, fait de hauts et de bas, et jamais une simple formalité.",
+          "usage": "fait de + N; describes integration as an uneven long process."
+        },
+        {
+          "id": "SVC4-0129",
+          "kind": "expression",
+          "french": "par politesse",
+          "english": "out of politeness",
+          "example": "Par exemple, un nouvel arrivant peut être invité à déjeuner par politesse pendant des mois, sans jamais entrer dans le groupe d'amis qui se retrouve le week-end, simplement parce que ces liens s'étaient formés bien avant son arrivée.",
+          "usage": "par + N (cause/manner); invité par politesse = invited only formally."
+        },
+        {
+          "id": "SVC4-0130",
+          "kind": "expression",
+          "french": "bien avant son arrivée",
+          "english": "well before his/her arrival",
+          "example": "Par exemple, un nouvel arrivant peut être invité à déjeuner par politesse pendant des mois, sans jamais entrer dans le groupe d'amis qui se retrouve le week-end, simplement parce que ces liens s'étaient formés bien avant son arrivée.",
+          "usage": "bien + avant (intensifier); explains pre-formed social bonds."
+        },
+        {
+          "id": "SVC4-0131",
+          "kind": "tournure",
+          "french": "il ne suffit pas d'apprendre la langue",
+          "english": "it is not enough to learn the language",
+          "example": "Je pense d'abord que l'intégration n'est pas facile parce qu'il ne suffit pas d'apprendre la langue : il faut aussi comprendre les codes culturels du pays, ce qui demande beaucoup de temps.",
+          "usage": "il ne suffit pas de + infinitive; sets up a further requirement."
+        },
+        {
+          "id": "SVC4-0132",
+          "kind": "tournure",
+          "french": "ne dépend pas seulement des efforts de la personne",
+          "english": "does not depend only on the person's efforts",
+          "example": "Ensuite, je pense que l'intégration est difficile parce qu'elle ne dépend pas seulement des efforts de la personne, mais aussi de l'ouverture de la société d'accueil et du temps qu'elle accorde aux nouveaux arrivants.",
+          "usage": "ne...pas seulement de + N; opens a two-sided argument."
+        },
+        {
+          "id": "SVC4-0133",
+          "kind": "tournure",
+          "french": "sans pour autant se sentir vraiment chez soi",
+          "english": "without however truly feeling at home",
+          "example": "Enfin, on peut remplir toutes les conditions visibles — langue, travail, logement — sans pour autant se sentir vraiment chez soi.",
+          "usage": "sans pour autant + infinitive = without for all that; strong concession."
+        },
+        {
+          "id": "SVC4-0134",
+          "kind": "tournure",
+          "french": "Tant que ces codes ne sont pas maîtrisés",
+          "english": "as long as these codes are not mastered",
+          "example": "Tant que ces codes ne sont pas maîtrisés, on continue souvent à mal interpréter les situations et à se sentir maladroit dans ses échanges quotidiens.",
+          "usage": "Tant que + negative clause; temporal-conditional; passive ne sont pas maîtrisés."
+        },
+        {
+          "id": "SVC4-0135",
+          "kind": "tournure",
+          "french": "ne se résume pas à des éléments visibles",
+          "english": "cannot be reduced to visible elements",
+          "example": "En effet, l'intégration ne se résume pas à des éléments visibles comme le travail, le logement ou la maîtrise de la langue.",
+          "usage": "se résumer à + N; ne...pas; distinguishes surface from depth."
+        },
+        {
+          "id": "SVC4-0136",
+          "kind": "tournure",
+          "french": "mais si la société qui nous reçoit reste fermée ou méfiante",
+          "english": "but if the society receiving us stays closed or wary",
+          "example": "En effet, on peut faire tous les efforts du monde — apprendre la langue, respecter les codes, chercher à connaître les habitants — mais si la société qui nous reçoit reste fermée ou méfiante, l'intégration restera limitée.",
+          "usage": "mais si + indicative (real condition); relative qui nous reçoit."
+        },
+        {
+          "id": "SVC4-0137",
+          "kind": "tournure",
+          "french": "c'est seulement en parlant régulièrement avec les habitants que l'on devient vraiment à l'aise",
+          "english": "it is only by speaking regularly with locals that one becomes truly comfortable",
+          "example": "En effet, les cours et les livres donnent une base, mais c'est seulement en parlant régulièrement avec les habitants que l'on devient vraiment à l'aise dans la langue et que l'on saisit les sous-entendus, l'humour et les manières de penser.",
+          "usage": "Cleft c'est...que + gerund en parlant; ne...que via seulement; emphasises means."
+        },
+        {
+          "id": "SVC4-0138",
+          "kind": "tournure",
+          "french": "même quand on s'en donne les moyens",
+          "english": "even when one gives oneself the means",
+          "example": "À mon avis, s'intégrer dans un pays étranger n'est pas vraiment facile, même quand on s'en donne les moyens.",
+          "usage": "Concessive même quand + indicative; se donner les moyens = to make the effort."
+        },
+        {
+          "id": "SVC4-0139",
+          "kind": "tournure",
+          "french": "on observe le pays plus qu'on ne le vit vraiment",
+          "english": "one observes the country more than one truly lives it",
+          "example": "Tant que ce sentiment d'appartenance n'est pas là, on observe le pays plus qu'on ne le vit vraiment.",
+          "usage": "plus que + ne explétif; comparative of observing vs living."
+        },
+        {
+          "id": "SVC4-0140",
+          "kind": "tournure",
+          "french": "qui ne s'acquiert que lentement",
+          "english": "which is acquired only slowly",
+          "example": "Cela montre que la vraie intégration suppose une maîtrise fine de la langue et des codes, qui ne s'acquiert que lentement.",
+          "usage": "ne...que = only; reflexive s'acquérir; restricts pace of mastery."
+        },
+        {
+          "id": "SVC4-0141",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si l'intégration dans un pays étranger se fait facilement, ou si elle demande au contraire beaucoup de temps et d'efforts.",
+          "english": "Reframing: the real question is whether integration happens easily or demands time and effort.",
+          "example": "La vraie question est de savoir si l'intégration dans un pays étranger se fait facilement, ou si elle demande au contraire beaucoup de temps et d'efforts.",
+          "usage": "Reformulation template ...se fait facilement, ou si...au contraire...; sets up the debate."
+        },
+        {
+          "id": "SVC4-0142",
+          "kind": "phrase-modele",
+          "french": "À mon avis, s'intégrer dans un pays étranger n'est pas vraiment facile, même quand on s'en donne les moyens.",
+          "english": "Position: integrating is not really easy, even when one makes the effort.",
+          "example": "À mon avis, s'intégrer dans un pays étranger n'est pas vraiment facile, même quand on s'en donne les moyens.",
+          "usage": "Position template À mon avis...n'est pas vraiment...même quand...; conceding effort."
+        },
+        {
+          "id": "SVC4-0143",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la vraie intégration suppose une maîtrise fine de la langue et des codes, qui ne s'acquiert que lentement.",
+          "english": "Consequence (arg 1): true integration requires a fine command of language and codes, acquired only slowly.",
+          "example": "Cela montre que la vraie intégration suppose une maîtrise fine de la langue et des codes, qui ne s'acquiert que lentement.",
+          "usage": "Cela montre que...suppose...qui ne...que...; consequence with restriction."
+        },
+        {
+          "id": "SVC4-0144",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'intégration est un processus à deux sens, qui se construit lentement et ne dépend jamais d'une seule personne.",
+          "english": "Consequence (arg 2): integration is a two-way process, built slowly and never depending on one person.",
+          "example": "Cela montre que l'intégration est un processus à deux sens, qui se construit lentement et ne dépend jamais d'une seule personne.",
+          "usage": "Cela montre que...à deux sens...ne...jamais...; mutuality thesis."
+        },
+        {
+          "id": "SVC4-0145",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'intégration va bien au-delà de l'adaptation pratique : c'est surtout une question de sentiment d'appartenance.",
+          "english": "Consequence (arg 3): integration goes well beyond practical adaptation; it is above all a question of belonging.",
+          "example": "Cela montre que l'intégration va bien au-delà de l'adaptation pratique : c'est surtout une question de sentiment d'appartenance.",
+          "usage": "aller bien au-delà de + N; colon introducing the core point."
+        },
+        {
+          "id": "SVC4-0146",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que l'intégration est difficile parce qu'on peut parler la langue, travailler et être bien installé sans pour autant se sentir vraiment chez soi.",
+          "english": "Argument 3 topic sentence: one can speak the language, work and be settled without feeling at home.",
+          "example": "Enfin, je pense que l'intégration est difficile parce qu'on peut parler la langue, travailler et être bien installé sans pour autant se sentir vraiment chez soi.",
+          "usage": "Enfin, je pense que...parce qu'on peut...sans pour autant...; concessive argument."
+        },
+        {
+          "id": "SVC4-0147",
+          "kind": "phrase-modele",
+          "french": "Tant que ce sentiment d'appartenance n'est pas là, on observe le pays plus qu'on ne le vit vraiment.",
+          "english": "Development: until that sense of belonging is there, one observes rather than lives the country.",
+          "example": "Tant que ce sentiment d'appartenance n'est pas là, on observe le pays plus qu'on ne le vit vraiment.",
+          "usage": "Tant que...ne...pas..., on...plus qu'on ne...; conditional plus comparative."
+        },
+        {
+          "id": "SVC4-0148",
+          "kind": "phrase-modele",
+          "french": "L'intégration est donc un objectif tout à fait possible, mais qui reste un processus long, fait de hauts et de bas, et jamais une simple formalité.",
+          "english": "Nuance: integration is entirely possible but stays a long uneven process, never a mere formality.",
+          "example": "L'intégration est donc un objectif tout à fait possible, mais qui reste un processus long, fait de hauts et de bas, et jamais une simple formalité.",
+          "usage": "...est donc un objectif possible, mais qui reste...; balanced nuance."
+        },
+        {
+          "id": "SVC4-0149",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que s'intégrer dans un pays étranger n'est pas vraiment facile, parce que cela demande de maîtriser la langue et les codes culturels, d'être accepté par la société d'accueil et de développer un vrai sentiment d'appartenance.",
+          "english": "Conclusion: integrating is not really easy because it demands language, acceptance and belonging.",
+          "example": "En conclusion, je pense que s'intégrer dans un pays étranger n'est pas vraiment facile, parce que cela demande de maîtriser la langue et les codes culturels, d'être accepté par la société d'accueil et de développer un vrai sentiment d'appartenance.",
+          "usage": "En conclusion...parce que cela demande de + tricolon of infinitives; summary."
+        },
+        {
+          "id": "SVC4-0150",
+          "kind": "phrase-modele",
+          "french": "C'est un objectif atteignable, mais qui se construit lentement et qui ne peut pas se réduire à de simples critères pratiques.",
+          "english": "Closing: it is an attainable goal, built slowly and irreducible to practical criteria.",
+          "example": "C'est un objectif atteignable, mais qui se construit lentement et qui ne peut pas se réduire à de simples critères pratiques.",
+          "usage": "C'est...mais qui...et qui ne peut pas se réduire à...; nuanced final line."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p31",
+      "entries": [
+        {
+          "id": "SVC4-0151",
+          "kind": "mot-cle",
+          "french": "modèles très superficiels",
+          "english": "very superficial role models",
+          "example": "D'abord, elle valorise des modèles très superficiels, centrés sur l'apparence, l'argent et la célébrité.",
+          "usage": "Masculine plural; adjective + intensifier très; centred on apparence/argent/célébrité."
+        },
+        {
+          "id": "SVC4-0152",
+          "kind": "mot-cle",
+          "french": "comportements problématiques",
+          "english": "problematic behaviours",
+          "example": "À mon avis, la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et touche un public encore en construction.",
+          "usage": "Masculine plural; what reality TV normalises; arg 2 keyword."
+        },
+        {
+          "id": "SVC4-0153",
+          "kind": "mot-cle",
+          "french": "esprit critique",
+          "english": "critical thinking",
+          "example": "L'éducation à l'esprit critique reste donc indispensable face à ce type de programmes.",
+          "usage": "Masculine set phrase; l'éducation à l'esprit critique; the essay's remedy."
+        },
+        {
+          "id": "SVC4-0154",
+          "kind": "mot-cle",
+          "french": "regard critique",
+          "english": "critical eye/perspective",
+          "example": "Enfin, son effet est plus fort sur les jeunes parce que leur identité et leur regard critique sont encore en construction.",
+          "usage": "Masculine; still forming in adolescents; note regard vs esprit nuance."
+        },
+        {
+          "id": "SVC4-0155",
+          "kind": "mot-cle",
+          "french": "exposition médiatique",
+          "english": "media exposure",
+          "example": "Par exemple, sur les réseaux sociaux, on voit des adolescents imiter les codes de candidats de télé-réalité : vêtements de luxe, mises en scène de richesse, phrases provocatrices, alors que ces candidats sont surtout connus pour leur exposition médiatique.",
+          "usage": "Feminine; why some are famous; connus pour leur exposition médiatique."
+        },
+        {
+          "id": "SVC4-0156",
+          "kind": "mot-cle",
+          "french": "consommation passive",
+          "english": "passive consumption",
+          "example": "Le vrai problème, c'est surtout l'effet répété d'une consommation passive, sans regard critique ni discussion.",
+          "usage": "Feminine; the real problem per the nuance; opposed to regard critique."
+        },
+        {
+          "id": "SVC4-0157",
+          "kind": "mot-cle",
+          "french": "phrases provocatrices",
+          "english": "provocative lines/statements",
+          "example": "Par exemple, sur les réseaux sociaux, on voit des adolescents imiter les codes de candidats de télé-réalité : vêtements de luxe, mises en scène de richesse, phrases provocatrices, alors que ces candidats sont surtout connus pour leur exposition médiatique.",
+          "usage": "Feminine plural; adjective agrees; imitated codes of contestants."
+        },
+        {
+          "id": "SVC4-0158",
+          "kind": "mot-cle",
+          "french": "vêtements de luxe",
+          "english": "luxury clothes",
+          "example": "Par exemple, sur les réseaux sociaux, on voit des adolescents imiter les codes de candidats de télé-réalité : vêtements de luxe, mises en scène de richesse, phrases provocatrices, alors que ces candidats sont surtout connus pour leur exposition médiatique.",
+          "usage": "Masculine plural; vêtements de + N; sign of staged wealth."
+        },
+        {
+          "id": "SVC4-0159",
+          "kind": "mot-cle",
+          "french": "mises en scène de richesse",
+          "english": "staged displays of wealth",
+          "example": "Par exemple, sur les réseaux sociaux, on voit des adolescents imiter les codes de candidats de télé-réalité : vêtements de luxe, mises en scène de richesse, phrases provocatrices, alors que ces candidats sont surtout connus pour leur exposition médiatique.",
+          "usage": "Feminine plural; mise en scène = staging; pluralised here."
+        },
+        {
+          "id": "SVC4-0160",
+          "kind": "mot-cle",
+          "french": "public particulièrement exposé",
+          "english": "a particularly exposed audience",
+          "example": "En conclusion, je pense que la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et s'adresse à un public particulièrement exposé.",
+          "usage": "Masculine; adjective + adverb; why the impact hits youth harder."
+        },
+        {
+          "id": "SVC4-0161",
+          "kind": "collocation",
+          "french": "imiter les codes de candidats de télé-réalité",
+          "english": "imitate the codes of reality-TV contestants",
+          "example": "Par exemple, sur les réseaux sociaux, on voit des adolescents imiter les codes de candidats de télé-réalité : vêtements de luxe, mises en scène de richesse, phrases provocatrices, alors que ces candidats sont surtout connus pour leur exposition médiatique.",
+          "usage": "imiter + N; codes de + N; describes teens copying contestants."
+        },
+        {
+          "id": "SVC4-0162",
+          "kind": "collocation",
+          "french": "rêvent ensuite de devenir célèbres",
+          "english": "then dream of becoming famous",
+          "example": "De plus, ces personnes deviennent des références pour beaucoup de jeunes, qui rêvent ensuite de devenir célèbres sans effort particulier.",
+          "usage": "rêver de + infinitive; ensuite = then; effect on aspirations."
+        },
+        {
+          "id": "SVC4-0163",
+          "kind": "collocation",
+          "french": "passent beaucoup de temps devant les écrans",
+          "english": "spend a lot of time in front of screens",
+          "example": "De plus, les jeunes passent beaucoup de temps devant les écrans, et les contenus de télé-réalité sont souvent partagés sur les réseaux sociaux, ce qui multiplie leur présence dans leur vie quotidienne.",
+          "usage": "passer du temps à/devant; beaucoup de + N; exposure factor."
+        },
+        {
+          "id": "SVC4-0164",
+          "kind": "collocation",
+          "french": "partagés sur les réseaux sociaux",
+          "english": "shared on social media",
+          "example": "De plus, les jeunes passent beaucoup de temps devant les écrans, et les contenus de télé-réalité sont souvent partagés sur les réseaux sociaux, ce qui multiplie leur présence dans leur vie quotidienne.",
+          "usage": "Past participle + sur; multiplies reality-TV presence."
+        },
+        {
+          "id": "SVC4-0165",
+          "kind": "collocation",
+          "french": "reprendre les mêmes expressions agressives",
+          "english": "pick up the same aggressive expressions",
+          "example": "Par exemple, dans un groupe d'amis, un adolescent qui suit quotidiennement ces programmes peut reprendre les mêmes expressions agressives, juger les autres sur leur apparence et considérer le buzz comme une preuve de valeur.",
+          "usage": "reprendre + N; les mêmes = the same; imitation of behaviour."
+        },
+        {
+          "id": "SVC4-0166",
+          "kind": "collocation",
+          "french": "juger les autres sur leur apparence",
+          "english": "judge others on their appearance",
+          "example": "Par exemple, dans un groupe d'amis, un adolescent qui suit quotidiennement ces programmes peut reprendre les mêmes expressions agressives, juger les autres sur leur apparence et considérer le buzz comme une preuve de valeur.",
+          "usage": "juger qqn sur qch; harmful learned attitude."
+        },
+        {
+          "id": "SVC4-0167",
+          "kind": "collocation",
+          "french": "considérer le buzz comme une preuve de valeur",
+          "english": "see buzz as proof of worth",
+          "example": "Par exemple, dans un groupe d'amis, un adolescent qui suit quotidiennement ces programmes peut reprendre les mêmes expressions agressives, juger les autres sur leur apparence et considérer le buzz comme une preuve de valeur.",
+          "usage": "considérer X comme Y; distorted value system."
+        },
+        {
+          "id": "SVC4-0168",
+          "kind": "collocation",
+          "french": "provoquer du buzz",
+          "english": "generate buzz",
+          "example": "En effet, ces programmes mettent souvent en avant des personnes connues surtout pour leur apparence, leur argent ou leur capacité à provoquer du buzz, et non pour leur travail ou leurs idées.",
+          "usage": "provoquer + du + N (uncountable); what shallow fame rewards."
+        },
+        {
+          "id": "SVC4-0169",
+          "kind": "collocation",
+          "french": "rediffusée plusieurs fois",
+          "english": "rebroadcast several times",
+          "example": "Par exemple, dans certaines émissions, une dispute autour d'un couple ou d'une trahison est rediffusée plusieurs fois, transformée en extrait viral, puis commentée comme un spectacle plutôt que comme un vrai manque de respect.",
+          "usage": "Past participle rediffusée (fem. agreement); amplification of conflict."
+        },
+        {
+          "id": "SVC4-0170",
+          "kind": "collocation",
+          "french": "prendre du recul",
+          "english": "step back / gain perspective",
+          "example": "Certaines émissions sont plus intelligentes que d'autres, et beaucoup de jeunes savent très bien prendre du recul.",
+          "usage": "Idiom prendre du recul; the healthy critical response."
+        },
+        {
+          "id": "SVC4-0171",
+          "kind": "expression",
+          "french": "peu à peu",
+          "english": "little by little",
+          "example": "Cela montre que la télé-réalité installe peu à peu une vision déformée de la réussite chez les jeunes.",
+          "usage": "Fixed adverbial expression; it presents a gradual effect without claiming an abrupt change."
+        },
+        {
+          "id": "SVC4-0172",
+          "kind": "expression",
+          "french": "y sont sensibles de la même manière",
+          "english": "are affected in the same way",
+          "example": "Cependant, il serait exagéré de dire que tous les programmes de télé-réalité sont nuisibles ou que tous les jeunes y sont sensibles de la même manière.",
+          "usage": "être sensible à (y = to it); de la même manière = in the same way."
+        },
+        {
+          "id": "SVC4-0173",
+          "kind": "expression",
+          "french": "encore en pleine construction",
+          "english": "still fully developing",
+          "example": "En effet, à l'adolescence, l'identité, les valeurs et le regard critique sont encore en pleine construction.",
+          "usage": "en pleine construction = in full development; about adolescent identity."
+        },
+        {
+          "id": "SVC4-0174",
+          "kind": "expression",
+          "french": "sans effort particulier",
+          "english": "without any particular effort",
+          "example": "De plus, ces personnes deviennent des références pour beaucoup de jeunes, qui rêvent ensuite de devenir célèbres sans effort particulier.",
+          "usage": "Negative prepositional phrase; useful for qualifying an apparently effortless outcome."
+        },
+        {
+          "id": "SVC4-0175",
+          "kind": "expression",
+          "french": "À force d'en voir",
+          "english": "after seeing it again and again",
+          "example": "À force d'en voir, les jeunes peuvent finir par les considérer comme une manière acceptable de gérer les relations ou les conflits.",
+          "usage": "À force de + infinitive expresses the cumulative effect of repeated exposure."
+        },
+        {
+          "id": "SVC4-0176",
+          "kind": "expression",
+          "french": "comme un spectacle plutôt que comme un vrai manque de respect",
+          "english": "as a show rather than as real disrespect",
+          "example": "Par exemple, dans certaines émissions, une dispute autour d'un couple ou d'une trahison est rediffusée plusieurs fois, transformée en extrait viral, puis commentée comme un spectacle plutôt que comme un vrai manque de respect.",
+          "usage": "comme X plutôt que comme Y; contrasts framing vs reality."
+        },
+        {
+          "id": "SVC4-0177",
+          "kind": "expression",
+          "french": "la réussite passe surtout par le paraître",
+          "english": "success is mainly about appearances",
+          "example": "Cela donne l'impression que la réussite passe surtout par le paraître, plutôt que par les études, le travail ou les compétences.",
+          "usage": "passer par + N = to go through; le paraître (nominalised) = appearance."
+        },
+        {
+          "id": "SVC4-0178",
+          "kind": "expression",
+          "french": "à l'adolescence",
+          "english": "during adolescence",
+          "example": "En effet, à l'adolescence, l'identité, les valeurs et le regard critique sont encore en pleine construction.",
+          "usage": "Temporal noun phrase; useful for discussing development, identity, and vulnerability."
+        },
+        {
+          "id": "SVC4-0179",
+          "kind": "expression",
+          "french": "dans un groupe d'amis",
+          "english": "in a group of friends",
+          "example": "Par exemple, dans un groupe d'amis, un adolescent qui suit quotidiennement ces programmes peut reprendre les mêmes expressions agressives, juger les autres sur leur apparence et considérer le buzz comme une preuve de valeur.",
+          "usage": "Prepositional setting phrase; it anchors an example in an ordinary social situation."
+        },
+        {
+          "id": "SVC4-0180",
+          "kind": "expression",
+          "french": "face à ce type de programmes",
+          "english": "when faced with this type of programme",
+          "example": "L'éducation à l'esprit critique reste donc indispensable face à ce type de programmes.",
+          "usage": "face à + N = faced with; ce type de + singular noun."
+        },
+        {
+          "id": "SVC4-0181",
+          "kind": "tournure",
+          "french": "il serait exagéré de dire que tous les programmes de télé-réalité sont nuisibles",
+          "english": "it would be an exaggeration to say all reality-TV shows are harmful",
+          "example": "Cependant, il serait exagéré de dire que tous les programmes de télé-réalité sont nuisibles ou que tous les jeunes y sont sensibles de la même manière.",
+          "usage": "Conditional il serait exagéré de + infinitive; hedges the nuance."
+        },
+        {
+          "id": "SVC4-0182",
+          "kind": "tournure",
+          "french": "ne se résume pas à un divertissement",
+          "english": "is not reducible to entertainment",
+          "example": "Cela montre que l'influence de la télé-réalité ne se résume pas à un divertissement, mais touche vraiment la construction des jeunes.",
+          "usage": "se résumer à + N; ne...pas; asserts deeper stakes."
+        },
+        {
+          "id": "SVC4-0183",
+          "kind": "tournure",
+          "french": "les jeunes peuvent finir par les considérer comme une manière acceptable",
+          "english": "young people may end up seeing them as acceptable",
+          "example": "À force d'en voir, les jeunes peuvent finir par les considérer comme une manière acceptable de gérer les relations ou les conflits.",
+          "usage": "finir par + infinitive; considérer X comme Y; gradual normalisation."
+        },
+        {
+          "id": "SVC4-0184",
+          "kind": "tournure",
+          "french": "et non pour leur travail ou leurs idées",
+          "english": "and not for their work or ideas",
+          "example": "En effet, ces programmes mettent souvent en avant des personnes connues surtout pour leur apparence, leur argent ou leur capacité à provoquer du buzz, et non pour leur travail ou leurs idées.",
+          "usage": "et non pour + N; contrastive negation of reason."
+        },
+        {
+          "id": "SVC4-0185",
+          "kind": "tournure",
+          "french": "plus facilement influencés que des adultes",
+          "english": "more easily influenced than adults",
+          "example": "Ils sont donc particulièrement exposés à ces modèles et plus facilement influencés que des adultes.",
+          "usage": "plus + adverb + adjective + que; comparative of susceptibility."
+        },
+        {
+          "id": "SVC4-0186",
+          "kind": "tournure",
+          "french": "Cela donne l'impression que la réussite passe surtout par le paraître",
+          "english": "it gives the impression that success is mainly about appearances",
+          "example": "Cela donne l'impression que la réussite passe surtout par le paraître, plutôt que par les études, le travail ou les compétences.",
+          "usage": "donner l'impression que + indicative; reports a misleading effect."
+        },
+        {
+          "id": "SVC4-0187",
+          "kind": "tournure",
+          "french": "sont souvent présentés comme amusants",
+          "english": "are often shown as funny",
+          "example": "De plus, ces comportements sont souvent présentés comme amusants, et non critiqués.",
+          "usage": "être présenté comme + adjective (passive); normalisation device."
+        },
+        {
+          "id": "SVC4-0188",
+          "kind": "tournure",
+          "french": "qui ne devraient pas être considérés comme normaux",
+          "english": "which should not be regarded as normal",
+          "example": "Ensuite, je pense que la télé-réalité banalise des comportements qui ne devraient pas être considérés comme normaux.",
+          "usage": "ne devraient pas + infinitive; être considéré comme + adjective."
+        },
+        {
+          "id": "SVC4-0189",
+          "kind": "tournure",
+          "french": "son effet est plus fort sur les jeunes",
+          "english": "its effect is stronger on the young",
+          "example": "Enfin, son effet est plus fort sur les jeunes parce que leur identité et leur regard critique sont encore en construction.",
+          "usage": "plus fort sur + N; comparative without explicit que; targeted impact."
+        },
+        {
+          "id": "SVC4-0190",
+          "kind": "tournure",
+          "french": "Ils sont donc particulièrement exposés à ces modèles",
+          "english": "they are therefore particularly exposed to these models",
+          "example": "Ils sont donc particulièrement exposés à ces modèles et plus facilement influencés que des adultes.",
+          "usage": "être exposé à + N; donc draws the conclusion of the paragraph."
+        },
+        {
+          "id": "SVC4-0191",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si la télé-réalité, telle qu'elle existe aujourd'hui, a vraiment une mauvaise influence sur les jeunes.",
+          "english": "Reframing: the real question is whether reality TV, as it exists today, truly harms the young.",
+          "example": "La vraie question est de savoir si la télé-réalité, telle qu'elle existe aujourd'hui, a vraiment une mauvaise influence sur les jeunes.",
+          "usage": "Reformulation template with apposition telle qu'elle existe aujourd'hui."
+        },
+        {
+          "id": "SVC4-0192",
+          "kind": "phrase-modele",
+          "french": "À mon avis, la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et touche un public encore en construction.",
+          "english": "Position: reality TV often harms the young by promoting shallow models, normalising bad behaviour and reaching an unformed audience.",
+          "example": "À mon avis, la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et touche un public encore en construction.",
+          "usage": "Position template À mon avis...parce qu'elle + three verbs; announces the three arguments."
+        },
+        {
+          "id": "SVC4-0193",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la télé-réalité installe peu à peu une vision déformée de la réussite chez les jeunes.",
+          "english": "Consequence (arg 1): reality TV gradually instils a distorted view of success.",
+          "example": "Cela montre que la télé-réalité installe peu à peu une vision déformée de la réussite chez les jeunes.",
+          "usage": "Cela montre que...installe peu à peu...; standard consequence sentence."
+        },
+        {
+          "id": "SVC4-0194",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la télé-réalité contribue à rendre ordinaires des comportements qui posent en réalité de vrais problèmes.",
+          "english": "Consequence (arg 2): it helps make genuinely problematic behaviours seem ordinary.",
+          "example": "Cela montre que la télé-réalité contribue à rendre ordinaires des comportements qui posent en réalité de vrais problèmes.",
+          "usage": "contribuer à + infinitive; rendre + adjective + N; consequence."
+        },
+        {
+          "id": "SVC4-0195",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'influence de la télé-réalité ne se résume pas à un divertissement, mais touche vraiment la construction des jeunes.",
+          "english": "Consequence (arg 3): its influence is not mere entertainment but really shapes young people.",
+          "example": "Cela montre que l'influence de la télé-réalité ne se résume pas à un divertissement, mais touche vraiment la construction des jeunes.",
+          "usage": "ne se résume pas à..., mais...; consequence with contrast."
+        },
+        {
+          "id": "SVC4-0196",
+          "kind": "phrase-modele",
+          "french": "Je pense d'abord que la télé-réalité a une mauvaise influence parce qu'elle valorise des modèles très superficiels.",
+          "english": "Argument 1 topic sentence: first, reality TV harms because it promotes very shallow models.",
+          "example": "Je pense d'abord que la télé-réalité a une mauvaise influence parce qu'elle valorise des modèles très superficiels.",
+          "usage": "Je pense d'abord que...parce qu'elle...; first-argument opener."
+        },
+        {
+          "id": "SVC4-0197",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que la télé-réalité banalise des comportements qui ne devraient pas être considérés comme normaux.",
+          "english": "Argument 2 topic sentence: then, it trivialises behaviours that should not be seen as normal.",
+          "example": "Ensuite, je pense que la télé-réalité banalise des comportements qui ne devraient pas être considérés comme normaux.",
+          "usage": "Ensuite, je pense que...qui ne devraient pas...; second-argument opener."
+        },
+        {
+          "id": "SVC4-0198",
+          "kind": "phrase-modele",
+          "french": "Le vrai problème, c'est surtout l'effet répété d'une consommation passive, sans regard critique ni discussion.",
+          "english": "Nuance: the real problem is the repeated effect of passive consumption without critical thought or discussion.",
+          "example": "Le vrai problème, c'est surtout l'effet répété d'une consommation passive, sans regard critique ni discussion.",
+          "usage": "Le vrai problème, c'est...; sans...ni...; pinpoints the true issue."
+        },
+        {
+          "id": "SVC4-0199",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et s'adresse à un public particulièrement exposé.",
+          "english": "Conclusion: reality TV often harms the young via shallow models, normalised bad behaviour and an exposed audience.",
+          "example": "En conclusion, je pense que la télé-réalité a souvent une mauvaise influence sur les jeunes, parce qu'elle valorise des modèles superficiels, banalise des comportements problématiques et s'adresse à un public particulièrement exposé.",
+          "usage": "En conclusion...parce qu'elle + three verbs; restates the thesis."
+        },
+        {
+          "id": "SVC4-0200",
+          "kind": "phrase-modele",
+          "french": "L'éducation à l'esprit critique reste donc indispensable face à ce type de programmes.",
+          "english": "Closing: education in critical thinking therefore remains essential against such programmes.",
+          "example": "L'éducation à l'esprit critique reste donc indispensable face à ce type de programmes.",
+          "usage": "rester indispensable; face à + N; solution-oriented final line."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p33",
+      "entries": [
+        {
+          "id": "SVC4-0201",
+          "kind": "mot-cle",
+          "french": "notoriété",
+          "english": "fame / public recognition",
+          "example": "La vraie question est de savoir si une célébrité, du seul fait de sa notoriété, a vraiment sa place dans la politique.",
+          "usage": "Feminine; the essay's pivot: notoriété alone is not a competence."
+        },
+        {
+          "id": "SVC4-0202",
+          "kind": "mot-cle",
+          "french": "légitimité politique",
+          "english": "political legitimacy",
+          "example": "Par exemple, une ancienne sportive ou une artiste qui commence par s'engager localement, participe aux réunions publiques, travaille avec des experts et défend un programme précis peut gagner une légitimité politique réelle avec le temps.",
+          "usage": "Feminine; what a celebrity must earn; adjective follows."
+        },
+        {
+          "id": "SVC4-0203",
+          "kind": "mot-cle",
+          "french": "intérêt général",
+          "english": "the common good / public interest",
+          "example": "À mon avis, une célébrité peut entrer en politique, mais sa notoriété ne suffit jamais : sa légitimité dépend surtout de sa compétence, de son sérieux et de la manière dont elle se met au service de l'intérêt général.",
+          "usage": "Masculine set phrase; au service de l'intérêt général; goal of politics."
+        },
+        {
+          "id": "SVC4-0204",
+          "kind": "mot-cle",
+          "french": "visibilité internationale",
+          "english": "international visibility",
+          "example": "De plus, sa notoriété peut faciliter le dialogue avec d'autres acteurs et donner une visibilité internationale à un message.",
+          "usage": "Feminine; the potential asset of a celebrity's fame."
+        },
+        {
+          "id": "SVC4-0205",
+          "kind": "mot-cle",
+          "french": "réunions publiques",
+          "english": "public meetings",
+          "example": "Par exemple, une ancienne sportive ou une artiste qui commence par s'engager localement, participe aux réunions publiques, travaille avec des experts et défend un programme précis peut gagner une légitimité politique réelle avec le temps.",
+          "usage": "Feminine plural; participer aux réunions publiques; real political groundwork."
+        },
+        {
+          "id": "SVC4-0206",
+          "kind": "mot-cle",
+          "french": "dossiers économiques",
+          "english": "economic files/issues",
+          "example": "En effet, être connu dans le sport, le cinéma ou la musique n'apprend pas à comprendre les dossiers économiques, sociaux ou diplomatiques d'un pays.",
+          "usage": "Masculine plural; comprendre les dossiers = master the briefs; competence."
+        },
+        {
+          "id": "SVC4-0207",
+          "kind": "mot-cle",
+          "french": "programme clair",
+          "english": "a clear manifesto/platform",
+          "example": "En effet, une célébrité qui se présente à une élection doit étudier les dossiers, défendre un programme clair, s'entourer de personnes compétentes et accepter d'être jugée non pas sur son image, mais sur ses résultats.",
+          "usage": "Masculine; défendre un programme clair; substance over image."
+        },
+        {
+          "id": "SVC4-0208",
+          "kind": "mot-cle",
+          "french": "la confrontation",
+          "english": "confrontation",
+          "example": "De plus, elle doit accepter le débat, la critique et la confrontation avec ses adversaires comme tout autre candidat.",
+          "usage": "Feminine noun; it pairs naturally with débat and critique in political discussion."
+        },
+        {
+          "id": "SVC4-0209",
+          "kind": "mot-cle",
+          "french": "le sérieux du parcours",
+          "english": "the seriousness of the record/track",
+          "example": "Le vrai critère ne doit donc pas être la célébrité, mais la qualité du programme, le sérieux du parcours et la capacité à exercer la fonction.",
+          "usage": "Masculine; le sérieux = seriousness (nominalised adj); criterion of legitimacy."
+        },
+        {
+          "id": "SVC4-0210",
+          "kind": "mot-cle",
+          "french": "la seule popularité",
+          "english": "popularity alone",
+          "example": "La politique est un métier sérieux, qui demande des connaissances, du temps et de l'expérience, et qu'on ne peut pas improviser sur la base de la seule popularité.",
+          "usage": "Feminine noun phrase; seule restricts the criterion and supports critique of image-based legitimacy."
+        },
+        {
+          "id": "SVC4-0211",
+          "kind": "collocation",
+          "french": "mobiliser un public qui ne s'intéressait pas à la politique",
+          "english": "mobilise an audience that was not interested in politics",
+          "example": "En effet, une personne connue peut attirer l'attention sur des sujets importants, mobiliser un public qui ne s'intéressait pas à la politique et faire entendre certaines causes plus largement.",
+          "usage": "mobiliser + N; relative + s'intéresser à; positive use of fame."
+        },
+        {
+          "id": "SVC4-0212",
+          "kind": "collocation",
+          "french": "faciliter le dialogue avec d'autres acteurs",
+          "english": "ease dialogue with other actors",
+          "example": "De plus, sa notoriété peut faciliter le dialogue avec d'autres acteurs et donner une visibilité internationale à un message.",
+          "usage": "faciliter + N; avec + N; diplomatic advantage of visibility."
+        },
+        {
+          "id": "SVC4-0213",
+          "kind": "collocation",
+          "french": "doit étudier les dossiers",
+          "english": "must study the files/briefs",
+          "example": "En effet, une célébrité qui se présente à une élection doit étudier les dossiers, défendre un programme clair, s'entourer de personnes compétentes et accepter d'être jugée non pas sur son image, mais sur ses résultats.",
+          "usage": "devoir + infinitive; étudier les dossiers = do the homework; seriousness."
+        },
+        {
+          "id": "SVC4-0214",
+          "kind": "collocation",
+          "french": "défendre un programme clair",
+          "english": "defend a clear platform",
+          "example": "En effet, une célébrité qui se présente à une élection doit étudier les dossiers, défendre un programme clair, s'entourer de personnes compétentes et accepter d'être jugée non pas sur son image, mais sur ses résultats.",
+          "usage": "défendre + N; the substantive work expected of any candidate."
+        },
+        {
+          "id": "SVC4-0215",
+          "kind": "collocation",
+          "french": "s'entourer de personnes compétentes",
+          "english": "surround oneself with competent people",
+          "example": "En effet, une célébrité qui se présente à une élection doit étudier les dossiers, défendre un programme clair, s'entourer de personnes compétentes et accepter d'être jugée non pas sur son image, mais sur ses résultats.",
+          "usage": "s'entourer de + N; team-building requirement."
+        },
+        {
+          "id": "SVC4-0216",
+          "kind": "collocation",
+          "french": "accepter le débat, la critique et la confrontation",
+          "english": "accept debate, criticism and confrontation",
+          "example": "De plus, elle doit accepter le débat, la critique et la confrontation avec ses adversaires comme tout autre candidat.",
+          "usage": "accepter + tricolon of nouns; democratic accountability."
+        },
+        {
+          "id": "SVC4-0217",
+          "kind": "collocation",
+          "french": "prendre des décisions importantes",
+          "english": "make important decisions",
+          "example": "De plus, une célébrité élue uniquement grâce à sa popularité risque de prendre des décisions importantes sans en mesurer toutes les conséquences.",
+          "usage": "prendre des décisions; the risk if elected on fame alone."
+        },
+        {
+          "id": "SVC4-0218",
+          "kind": "collocation",
+          "french": "gagner une légitimité politique réelle",
+          "english": "earn real political legitimacy",
+          "example": "Par exemple, une ancienne sportive ou une artiste qui commence par s'engager localement, participe aux réunions publiques, travaille avec des experts et défend un programme précis peut gagner une légitimité politique réelle avec le temps.",
+          "usage": "gagner + N; adjective réelle; outcome of serious engagement."
+        },
+        {
+          "id": "SVC4-0219",
+          "kind": "collocation",
+          "french": "commence par s'engager localement",
+          "english": "starts by getting involved locally",
+          "example": "Par exemple, une ancienne sportive ou une artiste qui commence par s'engager localement, participe aux réunions publiques, travaille avec des experts et défend un programme précis peut gagner une légitimité politique réelle avec le temps.",
+          "usage": "commencer par + infinitive; s'engager = to commit; grassroots path."
+        },
+        {
+          "id": "SVC4-0220",
+          "kind": "collocation",
+          "french": "soutenir une campagne contre le racisme",
+          "english": "support a campaign against racism",
+          "example": "Par exemple, un artiste très suivi peut encourager des milliers de jeunes à s'inscrire sur les listes électorales ou à soutenir une campagne contre le racisme, alors qu'un discours institutionnel aurait eu beaucoup moins d'écho.",
+          "usage": "soutenir + N; contre + N; example of fame serving a cause."
+        },
+        {
+          "id": "SVC4-0221",
+          "kind": "expression",
+          "french": "à elle seule",
+          "english": "on its own / by itself",
+          "example": "D'abord, la notoriété, à elle seule, n'est pas une compétence politique.",
+          "usage": "Reinforcing phrase agreeing with a feminine noun; la notoriété, à elle seule..."
+        },
+        {
+          "id": "SVC4-0222",
+          "kind": "expression",
+          "french": "tout de même",
+          "english": "all the same / nevertheless",
+          "example": "Ensuite, sa visibilité peut tout de même être utile pour mobiliser le public et porter certains sujets.",
+          "usage": "Concessive adverbial; peut tout de même être utile; concedes a point."
+        },
+        {
+          "id": "SVC4-0223",
+          "kind": "expression",
+          "french": "à condition de servir un message sérieux",
+          "english": "provided it serves a serious message",
+          "example": "Cela montre que la célébrité peut jouer un rôle positif en politique, à condition de servir un message sérieux.",
+          "usage": "à condition de + infinitive; states a condition on fame's usefulness."
+        },
+        {
+          "id": "SVC4-0224",
+          "kind": "expression",
+          "french": "en elle-même",
+          "english": "in itself",
+          "example": "Je pense d'abord que la notoriété, en elle-même, ne donne aucune compétence politique.",
+          "usage": "Reflexive intensifier agreeing feminine; la notoriété, en elle-même..."
+        },
+        {
+          "id": "SVC4-0225",
+          "kind": "expression",
+          "french": "comme tout autre candidat",
+          "english": "like any other candidate",
+          "example": "De plus, elle doit accepter le débat, la critique et la confrontation avec ses adversaires comme tout autre candidat.",
+          "usage": "comme tout autre + N; equality-of-standard argument."
+        },
+        {
+          "id": "SVC4-0226",
+          "kind": "expression",
+          "french": "avec le temps",
+          "english": "over time / in time",
+          "example": "Par exemple, une ancienne sportive ou une artiste qui commence par s'engager localement, participe aux réunions publiques, travaille avec des experts et défend un programme précis peut gagner une légitimité politique réelle avec le temps.",
+          "usage": "Temporal idiom; legitimacy gagnée avec le temps."
+        },
+        {
+          "id": "SVC4-0227",
+          "kind": "expression",
+          "french": "plus largement",
+          "english": "more widely",
+          "example": "En effet, une personne connue peut attirer l'attention sur des sujets importants, mobiliser un public qui ne s'intéressait pas à la politique et faire entendre certaines causes plus largement.",
+          "usage": "Comparative adverbial; faire entendre certaines causes plus largement."
+        },
+        {
+          "id": "SVC4-0228",
+          "kind": "expression",
+          "french": "beaucoup moins d'écho",
+          "english": "far less resonance",
+          "example": "Par exemple, un artiste très suivi peut encourager des milliers de jeunes à s'inscrire sur les listes électorales ou à soutenir une campagne contre le racisme, alors qu'un discours institutionnel aurait eu beaucoup moins d'écho.",
+          "usage": "avoir de l'écho = to resonate; beaucoup moins de + N; comparison of impact."
+        },
+        {
+          "id": "SVC4-0229",
+          "kind": "expression",
+          "french": "comme tout autre responsable politique",
+          "english": "like any other political figure",
+          "example": "Elle doit prouver sa compétence, accepter un vrai travail de fond et se mettre au service de l'intérêt général, comme tout autre responsable politique.",
+          "usage": "comme tout autre + N; closing equality standard."
+        },
+        {
+          "id": "SVC4-0230",
+          "kind": "expression",
+          "french": "sur la base de la seule popularité",
+          "english": "on the basis of popularity alone",
+          "example": "La politique est un métier sérieux, qui demande des connaissances, du temps et de l'expérience, et qu'on ne peut pas improviser sur la base de la seule popularité.",
+          "usage": "sur la base de + N; la seule popularité = popularity alone; insufficient ground."
+        },
+        {
+          "id": "SVC4-0231",
+          "kind": "tournure",
+          "french": "mais sa notoriété ne suffit jamais",
+          "english": "but their fame is never enough",
+          "example": "À mon avis, une célébrité peut entrer en politique, mais sa notoriété ne suffit jamais : sa légitimité dépend surtout de sa compétence, de son sérieux et de la manière dont elle se met au service de l'intérêt général.",
+          "usage": "ne...jamais suffire; mais introduces the essay's key reservation."
+        },
+        {
+          "id": "SVC4-0232",
+          "kind": "tournure",
+          "french": "n'est légitime que si elle accepte le même travail de fond que les autres responsables",
+          "english": "is legitimate only if it accepts the same groundwork as others",
+          "example": "Enfin, son entrée en politique n'est légitime que si elle accepte le même travail de fond que les autres responsables.",
+          "usage": "ne...que si + indicative; le même...que...; conditional legitimacy."
+        },
+        {
+          "id": "SVC4-0233",
+          "kind": "tournure",
+          "french": "ne donne aucune compétence politique",
+          "english": "gives no political competence at all",
+          "example": "Je pense d'abord que la notoriété, en elle-même, ne donne aucune compétence politique.",
+          "usage": "ne...aucun(e) + N; strong negation; fame confers nothing."
+        },
+        {
+          "id": "SVC4-0234",
+          "kind": "tournure",
+          "french": "qu'on ne peut pas improviser sur la base de la seule popularité",
+          "english": "which one cannot improvise on popularity alone",
+          "example": "La politique est un métier sérieux, qui demande des connaissances, du temps et de l'expérience, et qu'on ne peut pas improviser sur la base de la seule popularité.",
+          "usage": "ne pouvoir pas + infinitive; relative qu'; politics is not improvised."
+        },
+        {
+          "id": "SVC4-0235",
+          "kind": "tournure",
+          "french": "il serait injuste d'exclure les célébrités de la politique simplement parce qu'elles sont connues",
+          "english": "it would be unfair to exclude celebrities just because they are famous",
+          "example": "Cependant, il serait injuste d'exclure les célébrités de la politique simplement parce qu'elles sont connues.",
+          "usage": "Conditional il serait injuste de + infinitive; exclure X de Y; fairness nuance."
+        },
+        {
+          "id": "SVC4-0236",
+          "kind": "tournure",
+          "french": "à condition qu'elle s'appuie sur un vrai contenu",
+          "english": "provided it rests on real substance",
+          "example": "Utilisée de cette manière, la célébrité devient un outil utile, à condition qu'elle s'appuie sur un vrai contenu.",
+          "usage": "à condition que + subjunctive (s'appuie); s'appuyer sur = to rely on."
+        },
+        {
+          "id": "SVC4-0237",
+          "kind": "tournure",
+          "french": "être jugée non pas sur son image, mais sur ses résultats",
+          "english": "be judged not on image but on results",
+          "example": "En effet, une célébrité qui se présente à une élection doit étudier les dossiers, défendre un programme clair, s'entourer de personnes compétentes et accepter d'être jugée non pas sur son image, mais sur ses résultats.",
+          "usage": "non pas...mais...; jugé sur + N; accountability criterion."
+        },
+        {
+          "id": "SVC4-0238",
+          "kind": "tournure",
+          "french": "risque de prendre des décisions importantes sans en mesurer toutes les conséquences",
+          "english": "risks making major decisions without gauging their consequences",
+          "example": "De plus, une célébrité élue uniquement grâce à sa popularité risque de prendre des décisions importantes sans en mesurer toutes les conséquences.",
+          "usage": "risquer de + infinitive; sans + infinitive; en = of them; danger of incompetence."
+        },
+        {
+          "id": "SVC4-0239",
+          "kind": "tournure",
+          "french": "Sans ce sérieux, sa présence en politique reste une simple opération de communication",
+          "english": "without that seriousness, their presence is mere PR",
+          "example": "Sans ce sérieux, sa présence en politique reste une simple opération de communication.",
+          "usage": "Sans + N, ... reste...; hypothetical condition; une simple + N = mere."
+        },
+        {
+          "id": "SVC4-0240",
+          "kind": "tournure",
+          "french": "mais à condition d'y entrer avec la même exigence que les autres",
+          "english": "but only if entering it with the same demands as others",
+          "example": "Cela montre qu'une célébrité peut très bien réussir en politique, mais à condition d'y entrer avec la même exigence que les autres.",
+          "usage": "à condition de + infinitive; y = into it; la même...que...; equality condition."
+        },
+        {
+          "id": "SVC4-0241",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si une célébrité, du seul fait de sa notoriété, a vraiment sa place dans la politique.",
+          "english": "Reframing: the real question is whether a celebrity, purely because of fame, truly belongs in politics.",
+          "example": "La vraie question est de savoir si une célébrité, du seul fait de sa notoriété, a vraiment sa place dans la politique.",
+          "usage": "Reformulation template with du seul fait de + N = purely because of."
+        },
+        {
+          "id": "SVC4-0242",
+          "kind": "phrase-modele",
+          "french": "À mon avis, une célébrité peut avoir sa place en politique, mais à certaines conditions strictes.",
+          "english": "Position: a celebrity can have a place in politics, but under strict conditions.",
+          "example": "À mon avis, une célébrité peut avoir sa place en politique, mais à certaines conditions strictes.",
+          "usage": "Position template À mon avis...peut...mais à certaines conditions...; conditional stance."
+        },
+        {
+          "id": "SVC4-0243",
+          "kind": "phrase-modele",
+          "french": "Je pense d'abord que la notoriété, en elle-même, ne donne aucune compétence politique.",
+          "english": "Argument 1 topic sentence: first, fame in itself gives no political competence.",
+          "example": "Je pense d'abord que la notoriété, en elle-même, ne donne aucune compétence politique.",
+          "usage": "Je pense d'abord que...ne donne aucune...; first-argument opener with strong negation."
+        },
+        {
+          "id": "SVC4-0244",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la célébrité ne peut jamais remplacer la compétence dans une fonction politique.",
+          "english": "Consequence (arg 1): fame can never replace competence in political office.",
+          "example": "Cela montre que la célébrité ne peut jamais remplacer la compétence dans une fonction politique.",
+          "usage": "Cela montre que...ne peut jamais + infinitive; consequence."
+        },
+        {
+          "id": "SVC4-0245",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la célébrité peut jouer un rôle positif en politique, à condition de servir un message sérieux.",
+          "english": "Consequence (arg 2): fame can play a positive role, provided it serves a serious message.",
+          "example": "Cela montre que la célébrité peut jouer un rôle positif en politique, à condition de servir un message sérieux.",
+          "usage": "Cela montre que...peut jouer un rôle...à condition de...; conditional consequence."
+        },
+        {
+          "id": "SVC4-0246",
+          "kind": "phrase-modele",
+          "french": "Cela montre qu'une célébrité peut très bien réussir en politique, mais à condition d'y entrer avec la même exigence que les autres.",
+          "english": "Consequence (arg 3): a celebrity can succeed, but only with the same demands as others.",
+          "example": "Cela montre qu'une célébrité peut très bien réussir en politique, mais à condition d'y entrer avec la même exigence que les autres.",
+          "usage": "Cela montre que...mais à condition d'y entrer...; conditional consequence."
+        },
+        {
+          "id": "SVC4-0247",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que la place d'une célébrité en politique n'est légitime que si elle accepte le même travail que les autres responsables.",
+          "english": "Argument 3 topic sentence: a celebrity's place is legitimate only with the same work as others.",
+          "example": "Enfin, je pense que la place d'une célébrité en politique n'est légitime que si elle accepte le même travail que les autres responsables.",
+          "usage": "Enfin, je pense que...n'est légitime que si...; third-argument opener."
+        },
+        {
+          "id": "SVC4-0248",
+          "kind": "phrase-modele",
+          "french": "Le vrai critère ne doit donc pas être la célébrité, mais la qualité du programme, le sérieux du parcours et la capacité à exercer la fonction.",
+          "english": "Nuance: the true criterion is not fame but the quality of the platform, the record and the capacity to serve.",
+          "example": "Le vrai critère ne doit donc pas être la célébrité, mais la qualité du programme, le sérieux du parcours et la capacité à exercer la fonction.",
+          "usage": "ne doit pas être...mais...; tricolon of real criteria; nuance."
+        },
+        {
+          "id": "SVC4-0249",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense qu'une célébrité peut avoir sa place en politique, mais que sa notoriété ne suffit jamais.",
+          "english": "Conclusion: a celebrity can have a place in politics, but fame is never enough.",
+          "example": "En conclusion, je pense qu'une célébrité peut avoir sa place en politique, mais que sa notoriété ne suffit jamais.",
+          "usage": "En conclusion, je pense que...mais que...; restates the qualified thesis."
+        },
+        {
+          "id": "SVC4-0250",
+          "kind": "phrase-modele",
+          "french": "Elle doit prouver sa compétence, accepter un vrai travail de fond et se mettre au service de l'intérêt général, comme tout autre responsable politique.",
+          "english": "Closing: she must prove competence, do real groundwork and serve the common good like any other.",
+          "example": "Elle doit prouver sa compétence, accepter un vrai travail de fond et se mettre au service de l'intérêt général, comme tout autre responsable politique.",
+          "usage": "devoir + three infinitives; se mettre au service de + N; final standard."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p34",
+      "entries": [
+        {
+          "id": "SVC4-0251",
+          "kind": "mot-cle",
+          "french": "surconsommation",
+          "english": "overconsumption",
+          "example": "D'abord, l'achat en ligne et la mode rapide encouragent fortement le gaspillage et la surconsommation.",
+          "usage": "Feminine; prefix sur- = excess; core problem of the essay."
+        },
+        {
+          "id": "SVC4-0252",
+          "kind": "mot-cle",
+          "french": "gaspillage",
+          "english": "waste",
+          "example": "D'abord, l'achat en ligne et la mode rapide encouragent fortement le gaspillage et la surconsommation.",
+          "usage": "Masculine; encourager le gaspillage; arg 1 keyword."
+        },
+        {
+          "id": "SVC4-0253",
+          "kind": "mot-cle",
+          "french": "immédiateté",
+          "english": "immediacy / instant gratification",
+          "example": "À mon avis, les nouvelles habitudes de consommation apportent un certain confort, mais elles posent surtout de vrais problèmes, parce qu'elles encouragent l'excès, l'immédiateté et une consommation peu réfléchie.",
+          "usage": "Feminine; l'immédiateté a un coût caché; arg 2 keyword."
+        },
+        {
+          "id": "SVC4-0254",
+          "kind": "mot-cle",
+          "french": "mode rapide",
+          "english": "fast fashion",
+          "example": "D'abord, l'achat en ligne et la mode rapide encouragent fortement le gaspillage et la surconsommation.",
+          "usage": "Feminine (la mode); adjective rapide; driver of waste."
+        },
+        {
+          "id": "SVC4-0255",
+          "kind": "mot-cle",
+          "french": "achat en ligne",
+          "english": "online shopping",
+          "example": "D'abord, l'achat en ligne et la mode rapide encouragent fortement le gaspillage et la surconsommation.",
+          "usage": "Masculine; achat en ligne; both problem and, in nuance, convenience."
+        },
+        {
+          "id": "SVC4-0256",
+          "kind": "mot-cle",
+          "french": "perte d'autonomie",
+          "english": "loss of autonomy",
+          "example": "Cela montre que les nouvelles habitudes de consommation s'accompagnent d'une vraie perte d'autonomie dans nos choix.",
+          "usage": "Feminine; perte de + N; consequence of algorithms; arg 3."
+        },
+        {
+          "id": "SVC4-0257",
+          "kind": "mot-cle",
+          "french": "coût caché",
+          "english": "hidden cost",
+          "example": "Cela montre que l'immédiateté a un coût caché : elle réduit la valeur que l'on accorde aux choses.",
+          "usage": "Masculine; un coût caché; the price of immediacy."
+        },
+        {
+          "id": "SVC4-0258",
+          "kind": "mot-cle",
+          "french": "consommation continue",
+          "english": "continuous consumption",
+          "example": "Cela crée une consommation continue, qui pèse à la fois sur le portefeuille des gens et sur l'environnement.",
+          "usage": "Feminine; adjective continue; endless buying cycle."
+        },
+        {
+          "id": "SVC4-0259",
+          "kind": "mot-cle",
+          "french": "algorithmes",
+          "english": "algorithms",
+          "example": "Enfin, la publicité et les algorithmes influencent nos choix au point d'affaiblir notre esprit critique de consommateurs.",
+          "usage": "Masculine plural; les algorithmes influencent nos choix; arg 3 agent."
+        },
+        {
+          "id": "SVC4-0260",
+          "kind": "mot-cle",
+          "french": "une promotion",
+          "english": "a special offer / a promotion",
+          "example": "Par exemple, certaines personnes commandent plusieurs tailles d'un même vêtement pour essayer chez elles, renvoient une partie des colis, puis rachètent de nouveaux articles dès qu'une promotion apparaît sur leur téléphone.",
+          "usage": "Feminine noun; frequent with apparaître and useful for naming a purchase incentive."
+        },
+        {
+          "id": "SVC4-0261",
+          "kind": "collocation",
+          "french": "poussent les gens à acheter beaucoup plus",
+          "english": "push people to buy much more",
+          "example": "En effet, l'achat en ligne, la livraison rapide et la mode très bon marché poussent les gens à acheter beaucoup plus que ce dont ils ont vraiment besoin.",
+          "usage": "pousser qqn à + infinitive; beaucoup plus = much more; overbuying."
+        },
+        {
+          "id": "SVC4-0262",
+          "kind": "collocation",
+          "french": "commander presque n'importe quel produit",
+          "english": "order almost any product",
+          "example": "En effet, on peut aujourd'hui commander presque n'importe quel produit et le recevoir le lendemain, voire le jour même.",
+          "usage": "commander + N; n'importe quel + noun = any at all; on-demand buying."
+        },
+        {
+          "id": "SVC4-0263",
+          "kind": "collocation",
+          "french": "recevoir le lendemain",
+          "english": "receive it the next day",
+          "example": "En effet, on peut aujourd'hui commander presque n'importe quel produit et le recevoir le lendemain, voire le jour même.",
+          "usage": "recevoir + time expression; le lendemain = the next day; instant delivery."
+        },
+        {
+          "id": "SVC4-0264",
+          "kind": "collocation",
+          "french": "commandent plusieurs tailles d'un même vêtement",
+          "english": "order several sizes of the same garment",
+          "example": "Par exemple, certaines personnes commandent plusieurs tailles d'un même vêtement pour essayer chez elles, renvoient une partie des colis, puis rachètent de nouveaux articles dès qu'une promotion apparaît sur leur téléphone.",
+          "usage": "commander + N; plusieurs...d'un même...; wasteful ordering habit."
+        },
+        {
+          "id": "SVC4-0265",
+          "kind": "collocation",
+          "french": "renvoient une partie des colis",
+          "english": "return part of the parcels",
+          "example": "Par exemple, certaines personnes commandent plusieurs tailles d'un même vêtement pour essayer chez elles, renvoient une partie des colis, puis rachètent de nouveaux articles dès qu'une promotion apparaît sur leur téléphone.",
+          "usage": "renvoyer + N; une partie de + N; the return-culture example."
+        },
+        {
+          "id": "SVC4-0266",
+          "kind": "collocation",
+          "french": "rachètent de nouveaux articles",
+          "english": "buy new items again",
+          "example": "Par exemple, certaines personnes commandent plusieurs tailles d'un même vêtement pour essayer chez elles, renvoient une partie des colis, puis rachètent de nouveaux articles dès qu'une promotion apparaît sur leur téléphone.",
+          "usage": "racheter = to buy again (re-); de nouveaux (de before adjective)."
+        },
+        {
+          "id": "SVC4-0267",
+          "kind": "collocation",
+          "french": "connaissent nos goûts, nos achats et nos habitudes",
+          "english": "know our tastes, purchases and habits",
+          "example": "En effet, les sites et les applications connaissent nos goûts, nos achats et nos habitudes, et utilisent ces informations pour nous proposer en permanence ce que nous sommes le plus susceptibles d'acheter.",
+          "usage": "connaître + tricolon; how platforms profile us."
+        },
+        {
+          "id": "SVC4-0268",
+          "kind": "collocation",
+          "french": "pèsent de plus en plus sur nos choix de consommateurs",
+          "english": "weigh more and more on our choices as consumers",
+          "example": "Enfin, je pense que la publicité et les algorithmes pèsent de plus en plus sur nos choix de consommateurs.",
+          "usage": "peser sur + N; de plus en plus = increasingly; algorithmic pressure."
+        },
+        {
+          "id": "SVC4-0269",
+          "kind": "collocation",
+          "french": "transforme vite le désir en simple réflexe d'achat",
+          "english": "quickly turns desire into a mere buying reflex",
+          "example": "Par exemple, après quelques clics, on peut recevoir le lendemain des écouteurs, un vêtement ou un repas livré à domicile ; cette facilité donne du confort, mais elle transforme vite le désir en simple réflexe d'achat.",
+          "usage": "transformer X en Y; une simple + N; loss of deliberate choice."
+        },
+        {
+          "id": "SVC4-0270",
+          "kind": "collocation",
+          "french": "garder leurs avantages pratiques",
+          "english": "keep their practical advantages",
+          "example": "Le défi est de garder leurs avantages pratiques tout en apprenant à consommer de manière plus consciente et plus mesurée.",
+          "usage": "garder + N; the balanced goal in the conclusion."
+        },
+        {
+          "id": "SVC4-0271",
+          "kind": "expression",
+          "french": "en permanence",
+          "english": "permanently / constantly",
+          "example": "En effet, les sites et les applications connaissent nos goûts, nos achats et nos habitudes, et utilisent ces informations pour nous proposer en permanence ce que nous sommes le plus susceptibles d'acheter.",
+          "usage": "Adverbial; nous proposer en permanence...; nonstop targeting."
+        },
+        {
+          "id": "SVC4-0272",
+          "kind": "expression",
+          "french": "voire le jour même",
+          "english": "or even the same day",
+          "example": "En effet, on peut aujourd'hui commander presque n'importe quel produit et le recevoir le lendemain, voire le jour même.",
+          "usage": "voire = even (gradation); le jour même = that very day; speed of delivery."
+        },
+        {
+          "id": "SVC4-0273",
+          "kind": "expression",
+          "french": "en soi",
+          "english": "in itself / inherently",
+          "example": "Cependant, il faut reconnaître que toutes ces nouvelles habitudes ne sont pas mauvaises en soi.",
+          "usage": "ne sont pas mauvaises en soi; concedes the tools are not bad per se."
+        },
+        {
+          "id": "SVC4-0274",
+          "kind": "expression",
+          "french": "à domicile",
+          "english": "to one's home / home-delivered",
+          "example": "Par exemple, après quelques clics, on peut recevoir le lendemain des écouteurs, un vêtement ou un repas livré à domicile ; cette facilité donne du confort, mais elle transforme vite le désir en simple réflexe d'achat.",
+          "usage": "livré à domicile; fixed prepositional phrase."
+        },
+        {
+          "id": "SVC4-0275",
+          "kind": "expression",
+          "french": "après quelques clics",
+          "english": "after a few clicks",
+          "example": "Par exemple, après quelques clics, on peut recevoir le lendemain des écouteurs, un vêtement ou un repas livré à domicile ; cette facilité donne du confort, mais elle transforme vite le désir en simple réflexe d'achat.",
+          "usage": "après + N; quelques = a few; ease of online purchase."
+        },
+        {
+          "id": "SVC4-0276",
+          "kind": "expression",
+          "french": "sans effort et sans attente",
+          "english": "with no effort and no waiting",
+          "example": "Cela rend les choses plus pratiques, mais aussi moins précieuses : on apprécie moins ce que l'on obtient sans effort et sans attente.",
+          "usage": "sans + N repeated; explains why goods feel less precious."
+        },
+        {
+          "id": "SVC4-0277",
+          "kind": "expression",
+          "french": "de plus en plus",
+          "english": "increasingly / more and more",
+          "example": "Enfin, je pense que la publicité et les algorithmes pèsent de plus en plus sur nos choix de consommateurs.",
+          "usage": "Fixed comparative adverbial; use it with verbs, adjectives, or adverbs to mark a growing trend."
+        },
+        {
+          "id": "SVC4-0278",
+          "kind": "expression",
+          "french": "en continu",
+          "english": "continuously / streaming",
+          "example": "De plus, les services de livraison, de musique ou de vidéo en continu ont habitué les gens à ne plus jamais attendre.",
+          "usage": "services de vidéo en continu = streaming; fixed adverbial."
+        },
+        {
+          "id": "SVC4-0279",
+          "kind": "expression",
+          "french": "pendant plusieurs jours",
+          "english": "for several days",
+          "example": "Par exemple, après avoir regardé une seule paire de chaussures en ligne, une personne peut voir le même modèle revenir pendant plusieurs jours sur ses réseaux sociaux, jusqu'à finir par l'acheter sans en avoir vraiment besoin.",
+          "usage": "pendant + duration; retargeting example."
+        },
+        {
+          "id": "SVC4-0280",
+          "kind": "expression",
+          "french": "tout en apprenant à consommer",
+          "english": "while learning to consume",
+          "example": "Le défi est de garder leurs avantages pratiques tout en apprenant à consommer de manière plus consciente et plus mesurée.",
+          "usage": "tout en + gerund = while (simultaneity); apprendre à + infinitive."
+        },
+        {
+          "id": "SVC4-0281",
+          "kind": "tournure",
+          "french": "acheter beaucoup plus que ce dont ils ont vraiment besoin",
+          "english": "buy much more than what they really need",
+          "example": "En effet, l'achat en ligne, la livraison rapide et la mode très bon marché poussent les gens à acheter beaucoup plus que ce dont ils ont vraiment besoin.",
+          "usage": "plus que + relative ce dont (avoir besoin de qch); overbuying construction."
+        },
+        {
+          "id": "SVC4-0282",
+          "kind": "tournure",
+          "french": "pèse à la fois sur le portefeuille des gens et sur l'environnement",
+          "english": "weighs both on people's wallets and on the environment",
+          "example": "Cela crée une consommation continue, qui pèse à la fois sur le portefeuille des gens et sur l'environnement.",
+          "usage": "à la fois sur...et sur...; dual burden; repeat preposition."
+        },
+        {
+          "id": "SVC4-0283",
+          "kind": "tournure",
+          "french": "il devient difficile de savoir si nous choisissons vraiment",
+          "english": "it becomes hard to know whether we really choose",
+          "example": "Dans ces conditions, il devient difficile de savoir si nous choisissons vraiment ou si nous suivons surtout ce que d'autres veulent nous faire acheter.",
+          "usage": "il devient difficile de + infinitive; savoir si + clause; loss of agency."
+        },
+        {
+          "id": "SVC4-0284",
+          "kind": "tournure",
+          "french": "on apprécie moins ce que l'on obtient sans effort",
+          "english": "we value less what we get without effort",
+          "example": "Cela rend les choses plus pratiques, mais aussi moins précieuses : on apprécie moins ce que l'on obtient sans effort et sans attente.",
+          "usage": "apprécier moins + relative ce que; sans effort; devaluation effect."
+        },
+        {
+          "id": "SVC4-0285",
+          "kind": "tournure",
+          "french": "il faut reconnaître que toutes ces nouvelles habitudes ne sont pas mauvaises en soi",
+          "english": "one must admit these new habits are not bad in themselves",
+          "example": "Cependant, il faut reconnaître que toutes ces nouvelles habitudes ne sont pas mauvaises en soi.",
+          "usage": "il faut reconnaître que + indicative; opens the nuance paragraph."
+        },
+        {
+          "id": "SVC4-0286",
+          "kind": "tournure",
+          "french": "Le vrai problème n'est donc pas la modernité elle-même, mais l'excès",
+          "english": "the real problem is not modernity itself but excess",
+          "example": "Le vrai problème n'est donc pas la modernité elle-même, mais l'excès et le manque de recul avec lequel on l'utilise.",
+          "usage": "n'est pas...mais...; ...elle-même = itself; reframes the target."
+        },
+        {
+          "id": "SVC4-0287",
+          "kind": "tournure",
+          "french": "Cela rend les choses plus pratiques, mais aussi moins précieuses",
+          "english": "it makes things more convenient but also less precious",
+          "example": "Cela rend les choses plus pratiques, mais aussi moins précieuses : on apprécie moins ce que l'on obtient sans effort et sans attente.",
+          "usage": "rendre + adjective; plus...mais aussi moins...; balanced trade-off."
+        },
+        {
+          "id": "SVC4-0288",
+          "kind": "tournure",
+          "french": "jusqu'à finir par l'acheter",
+          "english": "until finally buying it",
+          "example": "Par exemple, après avoir regardé une seule paire de chaussures en ligne, une personne peut voir le même modèle revenir pendant plusieurs jours sur ses réseaux sociaux, jusqu'à finir par l'acheter sans en avoir vraiment besoin.",
+          "usage": "jusqu'à + infinitive; finir par + infinitive; end-point of pressure."
+        },
+        {
+          "id": "SVC4-0289",
+          "kind": "tournure",
+          "french": "ce que nous sommes le plus susceptibles d'acheter",
+          "english": "what we are most likely to buy",
+          "example": "En effet, les sites et les applications connaissent nos goûts, nos achats et nos habitudes, et utilisent ces informations pour nous proposer en permanence ce que nous sommes le plus susceptibles d'acheter.",
+          "usage": "le plus susceptible de + infinitive; superlative relative; targeting logic."
+        },
+        {
+          "id": "SVC4-0290",
+          "kind": "tournure",
+          "french": "beaucoup de produits sont conçus pour être remplacés rapidement",
+          "english": "many products are designed to be replaced quickly",
+          "example": "De plus, beaucoup de produits sont conçus pour être remplacés rapidement, qu'il s'agisse de vêtements, de téléphones ou d'appareils électroniques.",
+          "usage": "être conçu pour + infinitive (passive); planned obsolescence."
+        },
+        {
+          "id": "SVC4-0291",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si les nouvelles habitudes de consommation dans les pays développés représentent un vrai progrès ou si elles posent surtout de nouveaux problèmes.",
+          "english": "Reframing: the real question is whether new consumption habits are real progress or mainly new problems.",
+          "example": "La vraie question est de savoir si les nouvelles habitudes de consommation dans les pays développés représentent un vrai progrès ou si elles posent surtout de nouveaux problèmes.",
+          "usage": "Reformulation template ...représentent un vrai progrès ou si...posent...; sets the debate."
+        },
+        {
+          "id": "SVC4-0292",
+          "kind": "phrase-modele",
+          "french": "À mon avis, ces nouvelles habitudes de consommation méritent un regard très critique.",
+          "english": "Position: in my view these new consumption habits deserve a very critical look.",
+          "example": "À mon avis, ces nouvelles habitudes de consommation méritent un regard très critique.",
+          "usage": "Position template À mon avis...méritent un regard très critique; concise stance."
+        },
+        {
+          "id": "SVC4-0293",
+          "kind": "phrase-modele",
+          "french": "Cela montre que ces nouvelles habitudes encouragent un mode de vie où l'on achète beaucoup plus que l'on n'utilise vraiment.",
+          "english": "Consequence (arg 1): these habits foster a lifestyle of buying far more than one uses.",
+          "example": "Cela montre que ces nouvelles habitudes encouragent un mode de vie où l'on achète beaucoup plus que l'on n'utilise vraiment.",
+          "usage": "Cela montre que...où l'on achète...que l'on n'utilise...; ne explétif after plus que."
+        },
+        {
+          "id": "SVC4-0294",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'immédiateté a un coût caché : elle réduit la valeur que l'on accorde aux choses.",
+          "english": "Consequence (arg 2): immediacy has a hidden cost; it lowers the value we give to things.",
+          "example": "Cela montre que l'immédiateté a un coût caché : elle réduit la valeur que l'on accorde aux choses.",
+          "usage": "Cela montre que...: elle réduit...; colon introduces the explanation."
+        },
+        {
+          "id": "SVC4-0295",
+          "kind": "phrase-modele",
+          "french": "Cela montre que les nouvelles habitudes de consommation s'accompagnent d'une vraie perte d'autonomie dans nos choix.",
+          "english": "Consequence (arg 3): these habits come with a real loss of autonomy in our choices.",
+          "example": "Cela montre que les nouvelles habitudes de consommation s'accompagnent d'une vraie perte d'autonomie dans nos choix.",
+          "usage": "s'accompagner de + N; consequence sentence."
+        },
+        {
+          "id": "SVC4-0296",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que l'accès immédiat à tout transforme notre rapport au temps et à la valeur des choses.",
+          "english": "Argument 2 topic sentence: instant access to everything changes our relation to time and value.",
+          "example": "Ensuite, je pense que l'accès immédiat à tout transforme notre rapport au temps et à la valeur des choses.",
+          "usage": "Ensuite, je pense que...transforme notre rapport à...; second-argument opener."
+        },
+        {
+          "id": "SVC4-0297",
+          "kind": "phrase-modele",
+          "french": "Enfin, je pense que la publicité et les algorithmes pèsent de plus en plus sur nos choix de consommateurs.",
+          "english": "Argument 3 topic sentence: ads and algorithms weigh ever more on our consumer choices.",
+          "example": "Enfin, je pense que la publicité et les algorithmes pèsent de plus en plus sur nos choix de consommateurs.",
+          "usage": "Enfin, je pense que...pèsent de plus en plus sur...; third-argument opener."
+        },
+        {
+          "id": "SVC4-0298",
+          "kind": "phrase-modele",
+          "french": "Le vrai problème n'est donc pas la modernité elle-même, mais l'excès et le manque de recul avec lequel on l'utilise.",
+          "english": "Nuance: the real problem is not modernity but the excess and lack of perspective in using it.",
+          "example": "Le vrai problème n'est donc pas la modernité elle-même, mais l'excès et le manque de recul avec lequel on l'utilise.",
+          "usage": "n'est pas...mais...; avec lequel = with which (relative); nuance."
+        },
+        {
+          "id": "SVC4-0299",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que les nouvelles habitudes de consommation des pays développés méritent un regard critique, parce qu'elles encouragent le gaspillage, l'immédiateté et une perte d'autonomie dans nos choix.",
+          "english": "Conclusion: these habits deserve a critical look because they foster waste, immediacy and loss of autonomy.",
+          "example": "En conclusion, je pense que les nouvelles habitudes de consommation des pays développés méritent un regard critique, parce qu'elles encouragent le gaspillage, l'immédiateté et une perte d'autonomie dans nos choix.",
+          "usage": "En conclusion...parce qu'elles encouragent + tricolon; summary."
+        },
+        {
+          "id": "SVC4-0300",
+          "kind": "phrase-modele",
+          "french": "Le défi est de garder leurs avantages pratiques tout en apprenant à consommer de manière plus consciente et plus mesurée.",
+          "english": "Closing: the challenge is to keep their practical benefits while learning to consume more consciously.",
+          "example": "Le défi est de garder leurs avantages pratiques tout en apprenant à consommer de manière plus consciente et plus mesurée.",
+          "usage": "Le défi est de + infinitive tout en + gerund; de manière + adjective; forward-looking close."
+        }
+      ]
+    },
+    {
+      "response_key": "culture:p35",
+      "entries": [
+        {
+          "id": "SVC4-0301",
+          "kind": "mot-cle",
+          "french": "diversité culturelle",
+          "english": "cultural diversity",
+          "example": "Ensuite, ils apportent une diversité culturelle qui enrichit la société, à travers la langue, la cuisine, l'art et les manières de penser.",
+          "usage": "Feminine; apporter une diversité culturelle; arg 2 keyword."
+        },
+        {
+          "id": "SVC4-0302",
+          "kind": "mot-cle",
+          "french": "équilibre démographique",
+          "english": "demographic balance",
+          "example": "En conclusion, je pense que les immigrés sont une vraie richesse pour le pays, parce qu'ils contribuent à son économie, à sa culture et à son équilibre démographique.",
+          "usage": "Masculine; contribuer à l'équilibre démographique; arg 3."
+        },
+        {
+          "id": "SVC4-0303",
+          "kind": "mot-cle",
+          "french": "vieillissement de la population",
+          "english": "population ageing",
+          "example": "Enfin, dans beaucoup de pays développés, ils répondent aussi à un vrai besoin démographique lié au vieillissement de la population.",
+          "usage": "Masculine; lié au vieillissement de la population; the demographic problem."
+        },
+        {
+          "id": "SVC4-0304",
+          "kind": "mot-cle",
+          "french": "richesse culturelle",
+          "english": "cultural richness",
+          "example": "Ensuite, je pense que les immigrés apportent une richesse culturelle qui transforme positivement la société d'accueil.",
+          "usage": "Feminine; une vraie richesse culturelle; positive contribution."
+        },
+        {
+          "id": "SVC4-0305",
+          "kind": "mot-cle",
+          "french": "emplois essentiels",
+          "english": "essential jobs",
+          "example": "D'abord, ils jouent un rôle économique important, en occupant souvent des emplois essentiels et en participant pleinement à l'activité du pays.",
+          "usage": "Masculine plural; occuper des emplois essentiels; economic role."
+        },
+        {
+          "id": "SVC4-0306",
+          "kind": "mot-cle",
+          "french": "contribution importante",
+          "english": "significant contribution",
+          "example": "À mon avis, les immigrés sont une vraie richesse pour le pays d'accueil, parce qu'ils apportent une contribution importante sur le plan économique, culturel et démographique, à condition que leur intégration soit bien accompagnée.",
+          "usage": "Feminine; une contribution importante sur le plan...; thesis noun."
+        },
+        {
+          "id": "SVC4-0307",
+          "kind": "mot-cle",
+          "french": "systèmes sociaux",
+          "english": "social/welfare systems",
+          "example": "Par exemple, quand des travailleurs immigrés occupent des postes d'aides-soignants, de techniciens ou de chauffeurs, ils assurent des services nécessaires et cotisent aussi aux systèmes sociaux qui financent les retraites.",
+          "usage": "Masculine plural; cotiser aux systèmes sociaux; funding pensions."
+        },
+        {
+          "id": "SVC4-0308",
+          "kind": "mot-cle",
+          "french": "reconnaissance des diplômes",
+          "english": "recognition of qualifications",
+          "example": "Sans efforts sérieux du pays d'accueil pour faciliter l'apprentissage de la langue, l'accès au travail et la reconnaissance des diplômes, beaucoup d'immigrés se retrouvent dans des situations difficiles, ce qui empêche leur contribution réelle.",
+          "usage": "Feminine; reconnaissance de + N; key to real integration in the nuance."
+        },
+        {
+          "id": "SVC4-0309",
+          "kind": "mot-cle",
+          "french": "mélange culturel",
+          "english": "cultural mix/blend",
+          "example": "De plus, ce mélange culturel pousse les habitants à s'ouvrir, à découvrir et à sortir d'une vision trop fermée d'eux-mêmes.",
+          "usage": "Masculine; ce mélange culturel pousse à s'ouvrir; enrichment."
+        },
+        {
+          "id": "SVC4-0310",
+          "kind": "mot-cle",
+          "french": "financement des retraites",
+          "english": "pension funding",
+          "example": "En effet, beaucoup de pays développés voient leur population vieillir, avec moins de naissances et plus de retraités, ce qui pose des problèmes de financement des retraites et de manque de main-d'œuvre.",
+          "usage": "Masculine; financement de + N; strained by ageing populations."
+        },
+        {
+          "id": "SVC4-0311",
+          "kind": "collocation",
+          "french": "occupent des emplois essentiels que peu de gens veulent faire",
+          "english": "fill essential jobs few people want to do",
+          "example": "En effet, dans beaucoup de pays, ils occupent des emplois essentiels que peu de gens veulent faire, dans la construction, l'agriculture, la restauration ou les soins aux personnes.",
+          "usage": "occuper + N + relative que; peu de gens = few people; labour role."
+        },
+        {
+          "id": "SVC4-0312",
+          "kind": "collocation",
+          "french": "renforcer des secteurs comme la recherche",
+          "english": "strengthen sectors such as research",
+          "example": "De plus, beaucoup d'immigrés très qualifiés viennent renforcer des secteurs comme la recherche, l'ingénierie, la santé ou le numérique, où la main-d'œuvre locale ne suffit pas.",
+          "usage": "renforcer + N; comme = such as; high-skilled contribution."
+        },
+        {
+          "id": "SVC4-0313",
+          "kind": "collocation",
+          "french": "assurent chaque jour des services indispensables",
+          "english": "provide essential services every day",
+          "example": "Par exemple, dans de nombreux hôpitaux, chantiers ou exploitations agricoles, des infirmiers, maçons, chauffeurs et saisonniers venus d'ailleurs assurent chaque jour des services indispensables que la population locale utilise directement.",
+          "usage": "assurer + N; chaque jour = daily; concrete daily contribution."
+        },
+        {
+          "id": "SVC4-0314",
+          "kind": "collocation",
+          "french": "à s'ouvrir, à découvrir et à sortir d'une vision trop fermée",
+          "english": "to open up, discover and leave a too-narrow view",
+          "example": "De plus, ce mélange culturel pousse les habitants à s'ouvrir, à découvrir et à sortir d'une vision trop fermée d'eux-mêmes.",
+          "usage": "pousser à + infinitives (repeat à); sortir de + N; cultural benefit."
+        },
+        {
+          "id": "SVC4-0315",
+          "kind": "collocation",
+          "french": "faire partie intégrante de l'identité du pays",
+          "english": "become an integral part of the country's identity",
+          "example": "Avec le temps, beaucoup de ces apports finissent par faire partie intégrante de l'identité du pays.",
+          "usage": "faire partie intégrante de + N; how contributions become native over time."
+        },
+        {
+          "id": "SVC4-0316",
+          "kind": "collocation",
+          "french": "répondent à un vrai besoin démographique",
+          "english": "meet a real demographic need",
+          "example": "Enfin, je pense que les immigrés représentent une richesse parce qu'ils répondent à un vrai besoin démographique des pays d'accueil.",
+          "usage": "répondre à + N; the demographic argument."
+        },
+        {
+          "id": "SVC4-0317",
+          "kind": "collocation",
+          "french": "prêts à fonder une famille",
+          "english": "ready to start a family",
+          "example": "De plus, les immigrés sont souvent jeunes, en âge de travailler et prêts à fonder une famille, ce qui contribue à équilibrer la population.",
+          "usage": "prêt à + infinitive; fonder une famille; young workforce point."
+        },
+        {
+          "id": "SVC4-0318",
+          "kind": "collocation",
+          "french": "faciliter l'apprentissage de la langue",
+          "english": "make learning the language easier",
+          "example": "Sans efforts sérieux du pays d'accueil pour faciliter l'apprentissage de la langue, l'accès au travail et la reconnaissance des diplômes, beaucoup d'immigrés se retrouvent dans des situations difficiles, ce qui empêche leur contribution réelle.",
+          "usage": "faciliter + N; apprentissage de + N; integration policy lever."
+        },
+        {
+          "id": "SVC4-0319",
+          "kind": "collocation",
+          "french": "assurent des services nécessaires",
+          "english": "provide necessary services",
+          "example": "Par exemple, quand des travailleurs immigrés occupent des postes d'aides-soignants, de techniciens ou de chauffeurs, ils assurent des services nécessaires et cotisent aussi aux systèmes sociaux qui financent les retraites.",
+          "usage": "assurer + N; adjective nécessaires; welfare contribution."
+        },
+        {
+          "id": "SVC4-0320",
+          "kind": "collocation",
+          "french": "financent les retraites",
+          "english": "fund pensions",
+          "example": "Par exemple, quand des travailleurs immigrés occupent des postes d'aides-soignants, de techniciens ou de chauffeurs, ils assurent des services nécessaires et cotisent aussi aux systèmes sociaux qui financent les retraites.",
+          "usage": "financer + N; les retraites = pensions; fiscal contribution."
+        },
+        {
+          "id": "SVC4-0321",
+          "kind": "expression",
+          "french": "à condition que leur intégration soit bien accompagnée",
+          "english": "provided their integration is well supported",
+          "example": "À mon avis, les immigrés sont une vraie richesse pour le pays d'accueil, parce qu'ils apportent une contribution importante sur le plan économique, culturel et démographique, à condition que leur intégration soit bien accompagnée.",
+          "usage": "à condition que + subjunctive (soit); the essay's key proviso."
+        },
+        {
+          "id": "SVC4-0322",
+          "kind": "expression",
+          "french": "à long terme",
+          "english": "in the long run",
+          "example": "Cela montre que l'immigration n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme.",
+          "usage": "Temporal idiom; indispensable à long terme; time horizon."
+        },
+        {
+          "id": "SVC4-0323",
+          "kind": "expression",
+          "french": "venus d'ailleurs",
+          "english": "who came from elsewhere",
+          "example": "Par exemple, dans de nombreux hôpitaux, chantiers ou exploitations agricoles, des infirmiers, maçons, chauffeurs et saisonniers venus d'ailleurs assurent chaque jour des services indispensables que la population locale utilise directement.",
+          "usage": "Past participle venus + d'ailleurs = from elsewhere; refers to immigrants."
+        },
+        {
+          "id": "SVC4-0324",
+          "kind": "expression",
+          "french": "en partie",
+          "english": "partly / in part",
+          "example": "Par exemple, dans la plupart des grandes villes, la cuisine, la musique et même certains mots du quotidien viennent en partie de communautés immigrées installées depuis plusieurs générations.",
+          "usage": "Adverbial; viennent en partie de...; hedges an origin claim."
+        },
+        {
+          "id": "SVC4-0325",
+          "kind": "expression",
+          "french": "Avec le temps",
+          "english": "over time / with time",
+          "example": "Avec le temps, beaucoup de ces apports finissent par faire partie intégrante de l'identité du pays.",
+          "usage": "Temporal connector, sentence-initial; gradual integration of contributions."
+        },
+        {
+          "id": "SVC4-0326",
+          "kind": "expression",
+          "french": "depuis plusieurs générations",
+          "english": "for several generations",
+          "example": "Par exemple, dans la plupart des grandes villes, la cuisine, la musique et même certains mots du quotidien viennent en partie de communautés immigrées installées depuis plusieurs générations.",
+          "usage": "depuis + duration; installées depuis plusieurs générations; long presence."
+        },
+        {
+          "id": "SVC4-0327",
+          "kind": "expression",
+          "french": "en grande partie",
+          "english": "largely / to a great extent",
+          "example": "La richesse de l'immigration est donc en grande partie une question de politique d'accueil.",
+          "usage": "Adverbial; est en grande partie une question de...; degree qualifier."
+        },
+        {
+          "id": "SVC4-0328",
+          "kind": "expression",
+          "french": "dans beaucoup de cas",
+          "english": "in many cases",
+          "example": "Cela montre que l'immigration n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme.",
+          "usage": "Adverbial; elle est, dans beaucoup de cas, indispensable; scopes the claim."
+        },
+        {
+          "id": "SVC4-0329",
+          "kind": "expression",
+          "french": "sur le plan économique, culturel et démographique",
+          "english": "on the economic, cultural and demographic level",
+          "example": "À mon avis, les immigrés sont une vraie richesse pour le pays d'accueil, parce qu'ils apportent une contribution importante sur le plan économique, culturel et démographique, à condition que leur intégration soit bien accompagnée.",
+          "usage": "sur le plan + adjective(s); tricolon summarising the three arguments."
+        },
+        {
+          "id": "SVC4-0330",
+          "kind": "expression",
+          "french": "en âge de travailler",
+          "english": "of working age",
+          "example": "De plus, les immigrés sont souvent jeunes, en âge de travailler et prêts à fonder une famille, ce qui contribue à équilibrer la population.",
+          "usage": "Fixed adjective phrase; useful in demographic and labour-market arguments."
+        },
+        {
+          "id": "SVC4-0331",
+          "kind": "tournure",
+          "french": "Sans leur présence, beaucoup d'activités auraient du mal à fonctionner normalement",
+          "english": "without them, many activities would struggle to function",
+          "example": "Sans leur présence, beaucoup d'activités auraient du mal à fonctionner normalement.",
+          "usage": "Sans + N, ... conditional; avoir du mal à + infinitive; counterfactual."
+        },
+        {
+          "id": "SVC4-0332",
+          "kind": "tournure",
+          "french": "Sans cet apport, le poids économique et social du vieillissement serait beaucoup plus difficile à gérer",
+          "english": "without this input, the burden of ageing would be far harder to manage",
+          "example": "Sans cet apport, le poids économique et social du vieillissement serait beaucoup plus difficile à gérer.",
+          "usage": "Sans + N, ... serait...; hypothetical conditional; difficile à + infinitive."
+        },
+        {
+          "id": "SVC4-0333",
+          "kind": "tournure",
+          "french": "ne fait pas que coexister avec la culture locale",
+          "english": "does not merely coexist with local culture",
+          "example": "Cela montre que l'immigration ne fait pas que coexister avec la culture locale : elle l'enrichit et la fait évoluer.",
+          "usage": "ne faire que + infinitive = to only do; here negated = more than just coexist."
+        },
+        {
+          "id": "SVC4-0334",
+          "kind": "tournure",
+          "french": "n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme",
+          "english": "is not only useful but, in many cases, indispensable long term",
+          "example": "Cela montre que l'immigration n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme.",
+          "usage": "ne...pas seulement...: elle est...; escalates from useful to indispensable."
+        },
+        {
+          "id": "SVC4-0335",
+          "kind": "tournure",
+          "french": "il s'enrichit toujours de la cuisine, de la musique",
+          "english": "it is always enriched by cuisine, music",
+          "example": "En effet, un pays moderne est rarement homogène : il s'enrichit toujours de la cuisine, de la musique, des fêtes et des langues apportées par celles et ceux qui viennent d'ailleurs.",
+          "usage": "s'enrichir de + N (repeat de); toujours = always; cultural gain."
+        },
+        {
+          "id": "SVC4-0336",
+          "kind": "tournure",
+          "french": "cette richesse ne se réalise pleinement que si l'intégration est bien accompagnée",
+          "english": "this richness is fully realised only if integration is well supported",
+          "example": "Cependant, il faut reconnaître que cette richesse ne se réalise pleinement que si l'intégration est bien accompagnée.",
+          "usage": "ne...que si + indicative; se réaliser pleinement; conditional nuance."
+        },
+        {
+          "id": "SVC4-0337",
+          "kind": "tournure",
+          "french": "ce qui contribue à équilibrer la population",
+          "english": "which helps balance the population",
+          "example": "De plus, les immigrés sont souvent jeunes, en âge de travailler et prêts à fonder une famille, ce qui contribue à équilibrer la population.",
+          "usage": "ce qui + verb (relative to a clause); contribuer à + infinitive."
+        },
+        {
+          "id": "SVC4-0338",
+          "kind": "tournure",
+          "french": "beaucoup de pays développés voient leur population vieillir",
+          "english": "many developed countries see their population age",
+          "example": "En effet, beaucoup de pays développés voient leur population vieillir, avec moins de naissances et plus de retraités, ce qui pose des problèmes de financement des retraites et de manque de main-d'œuvre.",
+          "usage": "voir + N + infinitive (perception verb); demographic premise."
+        },
+        {
+          "id": "SVC4-0339",
+          "kind": "tournure",
+          "french": "ce qui empêche leur contribution réelle",
+          "english": "which prevents their real contribution",
+          "example": "Sans efforts sérieux du pays d'accueil pour faciliter l'apprentissage de la langue, l'accès au travail et la reconnaissance des diplômes, beaucoup d'immigrés se retrouvent dans des situations difficiles, ce qui empêche leur contribution réelle.",
+          "usage": "ce qui empêche + N; relative to a clause; consequence of poor support."
+        },
+        {
+          "id": "SVC4-0340",
+          "kind": "tournure",
+          "french": "ce qui permet à chacun de participer vraiment à la vie de la société",
+          "english": "which lets everyone truly take part in society",
+          "example": "Cette richesse devient pleinement visible lorsque l'intégration est sérieusement accompagnée, ce qui permet à chacun de participer vraiment à la vie de la société.",
+          "usage": "permettre à qqn de + infinitive; ce qui-relative; positive final effect."
+        },
+        {
+          "id": "SVC4-0341",
+          "kind": "phrase-modele",
+          "french": "La vraie question est de savoir si les immigrés représentent vraiment une richesse pour le pays qui les accueille, ou si cette idée doit être nuancée.",
+          "english": "Reframing: the real question is whether immigrants are truly an asset or if that idea needs nuance.",
+          "example": "La vraie question est de savoir si les immigrés représentent vraiment une richesse pour le pays qui les accueille, ou si cette idée doit être nuancée.",
+          "usage": "Reformulation template ...représentent vraiment...ou si cette idée doit être nuancée."
+        },
+        {
+          "id": "SVC4-0342",
+          "kind": "phrase-modele",
+          "french": "À mon avis, les immigrés sont une vraie richesse pour le pays d'accueil, parce qu'ils apportent une contribution importante sur le plan économique, culturel et démographique, à condition que leur intégration soit bien accompagnée.",
+          "english": "Position: immigrants are a real asset economically, culturally and demographically, provided integration is supported.",
+          "example": "À mon avis, les immigrés sont une vraie richesse pour le pays d'accueil, parce qu'ils apportent une contribution importante sur le plan économique, culturel et démographique, à condition que leur intégration soit bien accompagnée.",
+          "usage": "Position template À mon avis...parce qu'ils apportent...à condition que + subjunctive; announces the three arguments and the proviso."
+        },
+        {
+          "id": "SVC4-0343",
+          "kind": "phrase-modele",
+          "french": "Je pense d'abord que les immigrés représentent une richesse économique importante pour le pays d'accueil.",
+          "english": "Argument 1 topic sentence: first, immigrants are a major economic asset for the host country.",
+          "example": "Je pense d'abord que les immigrés représentent une richesse économique importante pour le pays d'accueil.",
+          "usage": "Je pense d'abord que...représentent une richesse économique...; first-argument opener."
+        },
+        {
+          "id": "SVC4-0344",
+          "kind": "phrase-modele",
+          "french": "Cela montre que la contribution économique des immigrés est très concrète et largement sous-estimée.",
+          "english": "Consequence (arg 1): the economic contribution of immigrants is very concrete and widely underestimated.",
+          "example": "Cela montre que la contribution économique des immigrés est très concrète et largement sous-estimée.",
+          "usage": "Cela montre que...est très concrète et largement sous-estimée; consequence."
+        },
+        {
+          "id": "SVC4-0345",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'immigration ne fait pas que coexister avec la culture locale : elle l'enrichit et la fait évoluer.",
+          "english": "Consequence (arg 2): immigration does not merely coexist with local culture; it enriches and evolves it.",
+          "example": "Cela montre que l'immigration ne fait pas que coexister avec la culture locale : elle l'enrichit et la fait évoluer.",
+          "usage": "Cela montre que...ne fait pas que...: elle l'enrichit...; consequence with colon."
+        },
+        {
+          "id": "SVC4-0346",
+          "kind": "phrase-modele",
+          "french": "Cela montre que l'immigration n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme.",
+          "english": "Consequence (arg 3): immigration is not only useful but often indispensable long term.",
+          "example": "Cela montre que l'immigration n'est pas seulement utile : elle est, dans beaucoup de cas, indispensable à long terme.",
+          "usage": "Cela montre que...n'est pas seulement...: elle est...indispensable...; escalating consequence."
+        },
+        {
+          "id": "SVC4-0347",
+          "kind": "phrase-modele",
+          "french": "Ensuite, je pense que les immigrés apportent une richesse culturelle qui transforme positivement la société d'accueil.",
+          "english": "Argument 2 topic sentence: immigrants bring cultural richness that positively transforms the host society.",
+          "example": "Ensuite, je pense que les immigrés apportent une richesse culturelle qui transforme positivement la société d'accueil.",
+          "usage": "Ensuite, je pense que...apportent une richesse culturelle qui...; second-argument opener."
+        },
+        {
+          "id": "SVC4-0348",
+          "kind": "phrase-modele",
+          "french": "La richesse de l'immigration est donc en grande partie une question de politique d'accueil.",
+          "english": "Nuance: the richness of immigration is thus largely a matter of reception policy.",
+          "example": "La richesse de l'immigration est donc en grande partie une question de politique d'accueil.",
+          "usage": "...est donc en grande partie une question de + N; nuance linking outcome to policy."
+        },
+        {
+          "id": "SVC4-0349",
+          "kind": "phrase-modele",
+          "french": "En conclusion, je pense que les immigrés sont une vraie richesse pour le pays, parce qu'ils contribuent à son économie, à sa culture et à son équilibre démographique.",
+          "english": "Conclusion: immigrants are a real asset because they contribute to economy, culture and demographic balance.",
+          "example": "En conclusion, je pense que les immigrés sont une vraie richesse pour le pays, parce qu'ils contribuent à son économie, à sa culture et à son équilibre démographique.",
+          "usage": "En conclusion...parce qu'ils contribuent à + tricolon (repeat à); summary."
+        },
+        {
+          "id": "SVC4-0350",
+          "kind": "phrase-modele",
+          "french": "Cette richesse devient pleinement visible lorsque l'intégration est sérieusement accompagnée, ce qui permet à chacun de participer vraiment à la vie de la société.",
+          "english": "Closing: this richness becomes fully visible when integration is seriously supported, letting everyone take part.",
+          "example": "Cette richesse devient pleinement visible lorsque l'intégration est sérieusement accompagnée, ce qui permet à chacun de participer vraiment à la vie de la société.",
+          "usage": "devenir pleinement visible lorsque...; ce qui permet à chacun de...; conditional close."
+        }
+      ]
+    }
+  ]
+}

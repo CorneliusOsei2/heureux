@@ -236,7 +236,32 @@ class QueueCountsTests(TestCase):
         self.assertTrue(response_cards.filter(pk=production.pk).exists())
         self.assertFalse(response_cards.filter(pk=recognition.pk).exists())
 
-    def test_category_batch_scope_contains_at_most_fifteen_cards(self):
+    def test_subject_vocabulary_only_enters_its_subject_deck(self):
+        response = make_spine_card().response
+        phrase = make_phrase(tier=PhraseTier.SUBJECT)
+        phrase.source_prompts.add(response.prompts.first())
+        production = make_phrase_card(phrase=phrase)
+        local_phrase = make_phrase(tier=PhraseTier.RESPONSE)
+        local_phrase.source_prompts.add(response.prompts.first())
+        local_production = make_phrase_card(phrase=local_phrase)
+
+        self.assertFalse(
+            q.scoped_cards(
+                {"kind": "phrase", "response": str(response.pk)}
+            ).filter(pk=production.pk).exists()
+        )
+        self.assertTrue(
+            q.scoped_cards(
+                {"kind": "vocab", "response": str(response.pk)}
+            ).filter(pk=production.pk).exists()
+        )
+        self.assertFalse(
+            q.scoped_cards(
+                {"kind": "vocab", "response": str(response.pk)}
+            ).filter(pk=local_production.pk).exists()
+        )
+
+    def test_category_batch_scope_contains_at_most_ten_cards(self):
         cards = [make_phrase_card() for _ in range(32)]
         scope = {
             "kind": "phrase",
@@ -248,8 +273,8 @@ class QueueCountsTests(TestCase):
             q.scoped_cards(scope).order_by("id").values_list("id", flat=True)
         )
 
-        self.assertEqual(batch_ids, [card.id for card in cards[15:30]])
-        self.assertEqual(q.queue_counts(scope, now=self.now)["new_available"], 15)
+        self.assertEqual(batch_ids, [card.id for card in cards[10:20]])
+        self.assertEqual(q.queue_counts(scope, now=self.now)["new_available"], 10)
 
     def test_batch_membership_does_not_shift_when_a_card_is_suspended(self):
         cards = [make_phrase_card() for _ in range(20)]
@@ -265,9 +290,9 @@ class QueueCountsTests(TestCase):
             q.scoped_cards(scope).order_by("id").values_list("id", flat=True)
         )
 
-        self.assertEqual(batch_ids, [card.id for card in cards[15:]])
+        self.assertEqual(batch_ids, [card.id for card in cards[10:20]])
 
-    def test_phrase_lot_contains_fifteen_expressions_and_keeps_twins_together(self):
+    def test_phrase_lot_contains_ten_expressions_and_keeps_twins_together(self):
         phrases = [make_phrase() for _ in range(16)]
         pairs = [
             (
@@ -287,11 +312,11 @@ class QueueCountsTests(TestCase):
 
         lot = q.scoped_cards(scope)
 
-        self.assertEqual(lot.values("phrase_id").distinct().count(), 15)
-        self.assertEqual(lot.count(), 30)
+        self.assertEqual(lot.values("phrase_id").distinct().count(), 10)
+        self.assertEqual(lot.count(), 20)
         self.assertEqual(
             set(lot.values_list("pk", flat=True)),
-            {card.pk for pair in pairs[:15] for card in pair},
+            {card.pk for pair in pairs[:10] for card in pair},
         )
 
     def test_phrase_lot_membership_uses_stable_lot_order(self):

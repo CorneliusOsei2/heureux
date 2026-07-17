@@ -260,6 +260,7 @@ class PhraseCategory(models.Model):
 class PhraseTier(models.TextChoices):
     SHARED = "shared", "Shared catalog"
     RESPONSE = "response", "Response vocabulary"
+    SUBJECT = "subject", "Subject vocabulary"
 
 
 class Phrase(models.Model):
@@ -332,6 +333,195 @@ class ContentImportState(models.Model):
     key = models.CharField(max_length=32, primary_key=True)
     fingerprint = models.CharField(max_length=64)
     imported_at = models.DateTimeField(auto_now=True)
+
+
+class ComprehensionTest(models.Model):
+    """A persisted written-comprehension practice test."""
+
+    slug = models.SlugField(unique=True, max_length=64)
+    number = models.PositiveSmallIntegerField(unique=True)
+    title = models.CharField(max_length=80)
+    description = models.CharField(max_length=240, blank=True)
+    expected_question_count = models.PositiveSmallIntegerField(default=36)
+    order = models.PositiveSmallIntegerField(default=0)
+    is_published = models.BooleanField(default=False, db_index=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+
+    class Meta:
+        ordering = ["order", "number"]
+
+    def __str__(self) -> str:
+        return self.title
+
+    @property
+    def question_count(self) -> int:
+        return self.questions.filter(is_active=True).count()
+
+
+class ComprehensionQuestion(models.Model):
+    """One bilingual multiple-choice item within a comprehension test."""
+
+    test = models.ForeignKey(
+        ComprehensionTest,
+        on_delete=models.CASCADE,
+        related_name="questions",
+    )
+    content_key = models.CharField(max_length=120, unique=True)
+    number = models.PositiveSmallIntegerField()
+    passage_fr = models.TextField()
+    passage_en = models.TextField(blank=True)
+    prompt_fr = models.TextField()
+    prompt_en = models.TextField(blank=True)
+    correct_explanation = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+
+    class Meta:
+        ordering = ["test__order", "number"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["test", "number"],
+                name="unique_comprehension_test_question",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.test.title} · Q{self.number}"
+
+
+class ComprehensionChoice(models.Model):
+    """A possible response and its post-answer rationale."""
+
+    question = models.ForeignKey(
+        ComprehensionQuestion,
+        on_delete=models.CASCADE,
+        related_name="choices",
+    )
+    letter = models.CharField(max_length=1)
+    text_fr = models.TextField()
+    text_en = models.TextField(blank=True)
+    rationale = models.TextField(blank=True)
+    is_correct = models.BooleanField(default=False, db_index=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+
+    class Meta:
+        ordering = ["letter"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["question", "letter"],
+                name="unique_comprehension_question_choice",
+            ),
+            models.CheckConstraint(
+                condition=Q(letter__in=["A", "B", "C", "D"]),
+                name="valid_comprehension_choice_letter",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.question} · {self.letter}"
+
+
+class ComprehensionAttemptStatus(models.TextChoices):
+    IN_PROGRESS = "in_progress", "En cours"
+    COMPLETED = "completed", "Terminé"
+    ABANDONED = "abandoned", "Abandonné"
+
+
+class ComprehensionAttempt(models.Model):
+    """A learner-owned run through a comprehension test."""
+
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="comprehension_attempts",
+    )
+    test = models.ForeignKey(
+        ComprehensionTest,
+        on_delete=models.PROTECT,
+        related_name="attempts",
+    )
+    status = models.CharField(
+        max_length=16,
+        choices=ComprehensionAttemptStatus.choices,
+        default=ComprehensionAttemptStatus.IN_PROGRESS,
+        db_index=True,
+    )
+    current_question = models.PositiveSmallIntegerField(default=1)
+    score = models.PositiveSmallIntegerField(null=True, blank=True)
+    total_questions = models.PositiveSmallIntegerField(default=0)
+    content_snapshot = models.JSONField(default=dict, blank=True)
+    started_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-started_at", "-id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "test"],
+                condition=Q(status=ComprehensionAttemptStatus.IN_PROGRESS),
+                name="unique_active_comprehension_attempt",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "test", "status"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user} · {self.test} · {self.get_status_display()}"
+
+    @property
+    def answered_count(self) -> int:
+        return self.answers.count()
+
+    @property
+    def percentage(self) -> int:
+        if self.score is None or not self.total_questions:
+            return 0
+        return round((self.score / self.total_questions) * 100)
+
+
+class ComprehensionAnswer(models.Model):
+    """An immutable submitted answer within one learner attempt."""
+
+    attempt = models.ForeignKey(
+        ComprehensionAttempt,
+        on_delete=models.CASCADE,
+        related_name="answers",
+    )
+    question = models.ForeignKey(
+        ComprehensionQuestion,
+        on_delete=models.PROTECT,
+        related_name="submitted_answers",
+    )
+    selected_choice = models.ForeignKey(
+        ComprehensionChoice,
+        on_delete=models.PROTECT,
+        related_name="submitted_answers",
+    )
+    is_correct = models.BooleanField()
+    question_snapshot = models.JSONField(default=dict, blank=True)
+    submitted_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ["question__number"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["attempt", "question"],
+                name="unique_comprehension_attempt_answer",
+            ),
+        ]
+
+    def clean(self):
+        super().clean()
+        if self.question_id and self.attempt_id:
+            if self.question.test_id != self.attempt.test_id:
+                raise ValidationError("The question does not belong to this test.")
+        if self.question_id and self.selected_choice_id:
+            if self.selected_choice.question_id != self.question_id:
+                raise ValidationError("The choice does not belong to this question.")
+
+    def __str__(self) -> str:
+        return f"{self.attempt} · Q{self.question.number}: {self.selected_choice.letter}"
 
 
 class AnnotationKind(models.TextChoices):

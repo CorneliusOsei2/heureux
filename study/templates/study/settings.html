@@ -58,7 +58,7 @@
   <section class="card card--pad">
     <p class="eyebrow">Vos données</p>
     <h2 class="mt-0">Exporter le profil</h2>
-    <p class="muted">Téléchargez un fichier JSON privé avec vos cartes, révisions, notes, highlights et votre session en cours. Aucun secret d'authentification n'y figure.</p>
+    <p class="muted">Téléchargez un fichier JSON privé avec vos cartes, révisions, tests de compréhension, notes, highlights et votre session en cours. Aucun secret d'authentification n'y figure.</p>
     <a class="btn" href="{% url 'study:export_account' %}">Télécharger mes données</a>
   </section>
 </div>
@@ -79,7 +79,7 @@
 <section class="card card--pad danger-zone settings-section">
   <p class="eyebrow">Zone sensible</p>
   <h2 class="mt-0">Réinitialiser la progression</h2>
-  <p class="muted">Remet toutes les cartes à zéro, réactive les cartes suspendues et efface l'historique de révision. Les réponses, notes et highlights restent intacts.</p>
+  <p class="muted">Remet toutes les cartes à zéro, réactive les cartes suspendues et efface l'historique de révision ainsi que les tentatives, réponses et scores des tests de compréhension. Les fiches de réponses, notes et highlights restent intacts.</p>
   <form method="post" action="{% url 'study:reset_progress' %}" class="settings-form settings-form--compact" novalidate>
     {% csrf_token %}
     {% if reset_form.non_field_errors %}<div class="auth-error">{{ reset_form.non_field_errors|striptags }}</div>{% endif %}
