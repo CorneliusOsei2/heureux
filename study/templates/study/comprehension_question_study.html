@@ -8,11 +8,13 @@
     <span aria-hidden="true">›</span>
     <a href="{% url 'study:comprehension_hub' %}">Compréhension</a>
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_overview' %}">Compréhension écrite</a>
+    <a href="{% url test.overview_route %}">{{ test.mode_title }}</a>
+    {% if test.group_number %}
+      <span aria-hidden="true">›</span>
+      <a href="{% url 'study:comprehension_group' test.group_number %}">Groupe {{ test.group_number }}</a>
+    {% endif %}
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_group' test.group_number %}">Groupe {{ test.group_number }}</a>
-    <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_test' test.slug %}">{{ test.title }}</a>
+    <a href="{% url test.detail_route test.slug %}">{{ test.title }}</a>
     <span aria-hidden="true">›</span>
     <span>Question {{ question.number }}</span>
   </nav>
@@ -25,11 +27,11 @@
   <div class="detail-grid">
     <div class="answer-columns">
       <section class="card section-card">
-        <div class="spine-label">Document</div>
+        <div class="spine-label">{{ test.source_label }}</div>
         <p class="spine-text ce-study-passage">{{ question.passage_fr }}</p>
         {% if question.prompt_en or question.passage_en %}
           <details class="ce-study-translation">
-            <summary>Voir la question et le document en anglais</summary>
+            <summary>Voir la question et le {{ test.source_label|lower }} en anglais</summary>
             <div class="ce-study-translation__body">
               {% if question.prompt_en %}
                 <section>
@@ -39,7 +41,7 @@
               {% endif %}
               {% if question.passage_en %}
                 <section>
-                  <small>Document</small>
+                  <small>{{ test.source_label }}</small>
                   <p>{{ question.passage_en }}</p>
                 </section>
               {% endif %}
@@ -107,7 +109,7 @@
           <div><dt>Bonne réponse</dt><dd>{{ correct_choice.letter }}</dd></div>
         </dl>
         {% include "study/_comprehension_practice_action.html" %}
-        <a class="btn btn--block" href="{% url 'study:comprehension_test' test.slug %}">Toutes les questions</a>
+        <a class="btn btn--block" href="{% url test.detail_route test.slug %}">Toutes les questions</a>
       </div>
 
       <div class="card section-card ce-study-tip">
@@ -119,14 +121,14 @@
 
   <nav class="ce-study-detail__nav" aria-label="Navigation entre les questions">
     {% if previous_question %}
-      <a class="btn" href="{% url 'study:comprehension_question_study' test.slug previous_question.number %}"><span aria-hidden="true">←</span> Question précédente</a>
+      <a class="btn" href="{% url test.study_route test.slug previous_question.number %}"><span aria-hidden="true">←</span> Question précédente</a>
     {% else %}
       <span></span>
     {% endif %}
     {% if next_question %}
-      <a class="btn btn--primary" href="{% url 'study:comprehension_question_study' test.slug next_question.number %}">Question suivante <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.study_route test.slug next_question.number %}">Question suivante <span aria-hidden="true">→</span></a>
     {% else %}
-      <a class="btn btn--primary" href="{% url 'study:comprehension_test' test.slug %}">Retour au test <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.detail_route test.slug %}">Retour au test <span aria-hidden="true">→</span></a>
     {% endif %}
   </nav>
 </div>

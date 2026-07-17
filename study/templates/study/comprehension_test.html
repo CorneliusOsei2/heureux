@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ test.title }} · Compréhension écrite · Heureux{% endblock %}
+{% block title %}{{ test.title }} · {{ test.mode_title }} · Heureux{% endblock %}
 
 {% block content %}
 <div class="ce-shell ce-study-index">
@@ -8,9 +8,11 @@
     <span aria-hidden="true">›</span>
     <a href="{% url 'study:comprehension_hub' %}">Compréhension</a>
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_overview' %}">Compréhension écrite</a>
-    <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_group' test.group_number %}">Groupe {{ test.group_number }}</a>
+    <a href="{% url test.overview_route %}">{{ test.mode_title }}</a>
+    {% if test.group_number %}
+      <span aria-hidden="true">›</span>
+      <a href="{% url 'study:comprehension_group' test.group_number %}">Groupe {{ test.group_number }}</a>
+    {% endif %}
     <span aria-hidden="true">›</span>
     <span>{{ test.title }}</span>
   </nav>
@@ -36,7 +38,7 @@
           <details class="ce-restart">
             <summary>Recommencer depuis le début</summary>
             <p>La tentative en cours sera classée comme abandonnée.</p>
-            <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+            <form method="post" action="{% url test.start_route test.slug %}">
               {% csrf_token %}
               <input type="hidden" name="action" value="restart">
               <button class="btn btn--block" type="submit">Confirmer le redémarrage</button>
@@ -44,7 +46,11 @@
           </details>
         {% endif %}
       {% else %}
-        <a class="btn btn--block" href="{% url 'study:comprehension_group' test.group_number %}">Retour au groupe</a>
+        {% if test.group_number %}
+          <a class="btn btn--block" href="{% url 'study:comprehension_group' test.group_number %}">Retour au groupe</a>
+        {% else %}
+          <a class="btn btn--block" href="{% url test.overview_route %}">Retour aux tests</a>
+        {% endif %}
       {% endif %}
     </aside>
   </header>
@@ -57,7 +63,7 @@
 
       <div class="qlist ce-study-question-list">
         {% for item in questions %}
-          <a class="qrow ce-study-question-row" href="{% url 'study:comprehension_question_study' test.slug item.question.number %}">
+          <a class="qrow ce-study-question-row" href="{% url test.study_route test.slug item.question.number %}">
             <span class="qrow__num">{{ item.question.number }}</span>
             <span class="qrow__text">
               <strong>{{ item.question.prompt_fr }}</strong>
@@ -92,7 +98,7 @@
       </div>
       <div class="ce-history__list">
         {% for attempt in attempt_history %}
-          <a href="{% url 'study:comprehension_results' test.slug attempt.pk %}">
+          <a href="{% url test.results_route test.slug attempt.pk %}">
             <span>
               <strong>{{ attempt.completed_at|date:"j M Y" }}</strong>
               <small>{{ attempt.completed_at|date:"H:i" }}</small>

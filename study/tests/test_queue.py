@@ -82,26 +82,26 @@ class QueueCountsTests(TestCase):
         self.assertEqual(counts["new_total"], 1)
 
     def test_task_scope_includes_responses_and_linked_phrases(self):
-        task = make_task(part=make_part("orale"), slug="tache-3")
+        task = make_task(part=make_part("eo"), slug="tache-3")
         theme = make_theme(slug="culture", task=task)
         response_card = make_spine_card(theme=theme)
         phrase = make_phrase()
         phrase.source_prompts.add(response_card.response.prompts.first())
         phrase_card = make_phrase_card(phrase=phrase)
 
-        other_task = make_task(part=make_part("ecrit"), slug="tache-1")
+        other_task = make_task(part=make_part("ee"), slug="tache-1")
         make_spine_card(theme=make_theme(slug="economie", task=other_task))
 
-        scope = {"part": "orale", "task": "tache-3"}
+        scope = {"part": "eo", "task": "tache-3"}
         ids = set(q.scoped_cards(scope).values_list("id", flat=True))
         self.assertEqual(ids, {response_card.id, phrase_card.id})
 
     def test_part_and_task_must_match_the_same_phrase_source(self):
-        oral_t1 = make_task(part=make_part("orale"), slug="tache-1")
+        oral_t1 = make_task(part=make_part("eo"), slug="tache-1")
         oral_theme = make_theme(slug="culture", task=oral_t1)
         oral_response = make_spine_card(theme=oral_theme).response
 
-        written_t3 = make_task(part=make_part("ecrit"), slug="tache-3")
+        written_t3 = make_task(part=make_part("ee"), slug="tache-3")
         written_theme = make_theme(slug="economie", task=written_t3)
         written_response = make_spine_card(theme=written_theme).response
 
@@ -115,24 +115,24 @@ class QueueCountsTests(TestCase):
         self.assertNotIn(
             phrase_card.id,
             q.scoped_cards(
-                {"part": "orale", "task": "tache-3"}
+                {"part": "eo", "task": "tache-3"}
             ).values_list("id", flat=True),
         )
 
     def test_task_availability_ignores_reviews_from_other_tasks(self):
-        oral_task = make_task(part=make_part("orale"), slug="tache-3")
+        oral_task = make_task(part=make_part("eo"), slug="tache-3")
         oral_theme = make_theme(slug="culture", task=oral_task)
         make_spine_card(theme=oral_theme)
         make_spine_card(theme=oral_theme)
 
-        other_task = make_task(part=make_part("ecrit"), slug="tache-1")
+        other_task = make_task(part=make_part("ee"), slug="tache-1")
         other_card = make_spine_card(
             theme=make_theme(slug="economie", task=other_task)
         )
         srs.review(other_card, Rating.GOOD)
 
         counts = q.queue_counts(
-            {"part": "orale", "task": "tache-3"},
+            {"part": "eo", "task": "tache-3"},
             now=timezone.now(),
         )
         self.assertEqual(counts["new_available"], 2)

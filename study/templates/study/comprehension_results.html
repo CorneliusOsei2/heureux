@@ -8,11 +8,13 @@
     <span aria-hidden="true">›</span>
     <a href="{% url 'study:comprehension_hub' %}">Compréhension</a>
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_overview' %}">Écrite</a>
+    <a href="{% url test.overview_route %}">{{ test.get_mode_display }}</a>
+    {% if group_number %}
+      <span aria-hidden="true">›</span>
+      <a href="{% url 'study:comprehension_group' group_number %}">Groupe {{ group_number }}</a>
+    {% endif %}
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_group' group_number %}">Groupe {{ group_number }}</a>
-    <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_test' test.slug %}">{{ test.title }}</a>
+    <a href="{% url test.detail_route test.slug %}">{{ test.title }}</a>
     <span aria-hidden="true">›</span>
     <span>Résultats</span>
   </nav>
@@ -44,7 +46,7 @@
     </div>
     <div class="ce-results-hero__actions">
       {% if wrong_count and test.is_active and test.is_published %}
-      <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+      <form method="post" action="{% url test.start_route test.slug %}">
         {% csrf_token %}
         <input type="hidden" name="action" value="errors">
         <input type="hidden" name="attempt_id" value="{{ attempt.pk }}">
@@ -52,7 +54,7 @@
       </form>
       {% endif %}
       {% if test.is_active and test.is_published %}
-      <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+      <form method="post" action="{% url test.start_route test.slug %}">
         {% csrf_token %}
         <input type="hidden" name="action" value="continue">
         <button class="btn{% if not wrong_count %} btn--primary{% endif %}" type="submit">Refaire le test complet</button>
@@ -60,8 +62,14 @@
       {% else %}
         <span class="ce-results-archived">Ce test n’est plus disponible et ne peut pas être recommencé.</span>
       {% endif %}
-      <a class="btn" href="{% url 'study:vocabulary' %}?test={{ test.slug }}">Pratiquer le vocabulaire</a>
-      <a class="btn" href="{% url 'study:comprehension_group' group_number %}">Retour au groupe</a>
+      {% if has_vocabulary %}
+        <a class="btn" href="{% url 'study:vocabulary' %}?test={{ test.slug }}">Pratiquer le vocabulaire</a>
+      {% endif %}
+      {% if group_number %}
+        <a class="btn" href="{% url 'study:comprehension_group' group_number %}">Retour au groupe</a>
+      {% else %}
+        <a class="btn" href="{% url test.overview_route %}">Retour aux tests</a>
+      {% endif %}
     </div>
   </header>
 
@@ -140,7 +148,7 @@
             <div class="ce-translation__body">
               {% if item.question.passage_en %}
                 <section>
-                  <small>Document</small>
+                  <small>{{ test.source_label }}</small>
                   <p>{{ item.question.passage_en }}</p>
                 </section>
               {% endif %}

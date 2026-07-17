@@ -13,6 +13,12 @@ COMPREHENSION_ROUTES = {
     "comprehension_start",
     "comprehension_question",
     "comprehension_results",
+    "comprehension_oral_overview",
+    "comprehension_oral_test",
+    "comprehension_oral_question_study",
+    "comprehension_oral_start",
+    "comprehension_oral_question",
+    "comprehension_oral_results",
 }
 EXPRESSION_ROUTES = {
     "expression",

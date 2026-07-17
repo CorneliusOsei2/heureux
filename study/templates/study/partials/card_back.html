@@ -64,7 +64,7 @@
       <div class="phrase__foot">
         <span class="faint">Tiré de :</span>
         {% for source in question_sources %}
-          <a class="chip" href="{% url 'study:comprehension_question_study' source.test.slug source.number %}">{{ source.test.title }} · Q{{ source.number }}</a>
+          <a class="chip" href="{% if source.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' source.test.slug source.number %}{% else %}{% url 'study:comprehension_question_study' source.test.slug source.number %}{% endif %}">{{ source.test.title }} · Q{{ source.number }}</a>
         {% endfor %}
       </div>
     {% endif %}

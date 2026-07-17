@@ -229,6 +229,7 @@ class ComprehensionQuestionData:
 @dataclass(frozen=True)
 class ComprehensionTestData:
     slug: str
+    mode: str
     number: int
     title: str
     description: str
@@ -334,8 +335,15 @@ def _parse_comprehension_source(
     path: Path,
     *,
     slug: str,
+    mode: str = "ecrite",
+    first_question_number: int = 1,
     allow_missing_passage_translations: bool = False,
 ) -> Tuple[ComprehensionQuestionData, ...]:
+    if mode not in {"ecrite", "orale"}:
+        raise ValueError(f"Invalid comprehension mode: {mode!r}")
+    if first_question_number < 1:
+        raise ValueError("Comprehension question numbering must start above zero")
+
     text = path.read_text(encoding="utf-8")
     parts = re.split(
         r"(?m)^## \*\*Q(\d+)\*\*\s*$",
@@ -349,7 +357,7 @@ def _parse_comprehension_source(
         number = int(parts[index])
         block = parts[index + 1]
         passage_match = re.search(
-            r"### \*\*Passage\*\*\s*```\s*\n(.*?)\n```",
+            r"### \*\*(?:Passage|Dialogue)\*\*\s*```\s*\n(.*?)\n```",
             block,
             flags=re.DOTALL,
         )
@@ -453,7 +461,10 @@ def _parse_comprehension_source(
             )
         questions.append(
             ComprehensionQuestionData(
-                content_key=f"ce:{slug}:q{number:02d}",
+                content_key=(
+                    f"{'ce' if mode == 'ecrite' else 'co'}:"
+                    f"{slug}:q{number:02d}"
+                ),
                 number=number,
                 passage_fr=passage_fr,
                 passage_en=passage_en,
@@ -465,10 +476,16 @@ def _parse_comprehension_source(
         )
 
     question_numbers = [question.number for question in questions]
-    expected_numbers = list(range(1, len(questions) + 1))
+    expected_numbers = list(
+        range(
+            first_question_number,
+            first_question_number + len(questions),
+        )
+    )
     if question_numbers != expected_numbers:
         raise ValueError(
-            f"{path.name} question numbers must be consecutive from Q1"
+            f"{path.name} question numbers must be consecutive from "
+            f"Q{first_question_number}"
         )
     return tuple(questions)
 
@@ -479,6 +496,12 @@ def load_comprehension_tests() -> List[ComprehensionTestData]:
     seen_slugs = set()
     seen_numbers = set()
     for item in raw.get("tests", []):
+        mode = item.get("mode", "ecrite")
+        if mode not in {"ecrite", "orale"}:
+            raise ValueError(
+                f"Invalid comprehension mode for {item.get('slug')!r}: "
+                f"{mode!r}"
+            )
         source_name = item["source"]
         if Path(source_name).name != source_name:
             raise ValueError(f"Invalid comprehension source path: {source_name!r}")
@@ -486,6 +509,8 @@ def load_comprehension_tests() -> List[ComprehensionTestData]:
         questions = _parse_comprehension_source(
             path,
             slug=item["slug"],
+            mode=mode,
+            first_question_number=int(item.get("first_question_number", 1)),
             allow_missing_passage_translations=bool(
                 item.get("allow_missing_passage_translations", False)
             ),
@@ -497,13 +522,17 @@ def load_comprehension_tests() -> List[ComprehensionTestData]:
                 f"Published {item['slug']} needs {expected_count} questions, "
                 f"found {len(questions)}"
             )
-        if item["slug"] in seen_slugs or item["number"] in seen_numbers:
-            raise ValueError("Comprehension test slugs and numbers must be unique")
+        number_key = (mode, int(item["number"]))
+        if item["slug"] in seen_slugs or number_key in seen_numbers:
+            raise ValueError(
+                "Comprehension test slugs and mode/number pairs must be unique"
+            )
         seen_slugs.add(item["slug"])
-        seen_numbers.add(item["number"])
+        seen_numbers.add(number_key)
         tests.append(
             ComprehensionTestData(
                 slug=item["slug"],
+                mode=mode,
                 number=int(item["number"]),
                 title=item.get("title") or f"Test {item['number']}",
                 description=item.get("description", ""),
@@ -513,7 +542,14 @@ def load_comprehension_tests() -> List[ComprehensionTestData]:
                 questions=questions,
             )
         )
-    tests.sort(key=lambda item: (item.order, item.number))
+    mode_order = {"ecrite": 0, "orale": 1}
+    tests.sort(
+        key=lambda item: (
+            mode_order[item.mode],
+            item.order,
+            item.number,
+        )
+    )
     return tests
 
 
@@ -1102,7 +1138,9 @@ def parse_comprehension_vocabulary(
     if tests is None:
         tests = load_comprehension_tests()
 
-    tests_by_slug = {test.slug: test for test in tests}
+    tests_by_slug = {
+        test.slug: test for test in tests if test.mode == "ecrite"
+    }
     seen_tests: Dict[str, str] = {}
     seen_ids: Dict[str, str] = {}
     vocabulary: List[ComprehensionVocabularyData] = []

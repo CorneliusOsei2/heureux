@@ -269,6 +269,7 @@ class Command(BaseCommand):
             test, _ = ComprehensionTest.objects.update_or_create(
                 slug=test_data.slug,
                 defaults={
+                    "mode": test_data.mode,
                     "number": test_data.number,
                     "title": test_data.title,
                     "description": test_data.description,

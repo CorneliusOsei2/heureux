@@ -341,11 +341,21 @@ class ContentImportState(models.Model):
     imported_at = models.DateTimeField(auto_now=True)
 
 
+class ComprehensionMode(models.TextChoices):
+    ECRITE = "ecrite", "Écrite"
+    ORALE = "orale", "Orale"
+
+
 class ComprehensionTest(models.Model):
-    """A persisted written-comprehension practice test."""
+    """A persisted written- or oral-comprehension practice test."""
 
     slug = models.SlugField(unique=True, max_length=64)
-    number = models.PositiveSmallIntegerField(unique=True)
+    mode = models.CharField(
+        max_length=8,
+        choices=ComprehensionMode.choices,
+        default=ComprehensionMode.ECRITE,
+    )
+    number = models.PositiveSmallIntegerField()
     title = models.CharField(max_length=80)
     description = models.CharField(max_length=240, blank=True)
     expected_question_count = models.PositiveSmallIntegerField(default=36)
@@ -354,7 +364,13 @@ class ComprehensionTest(models.Model):
     is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
-        ordering = ["order", "number"]
+        ordering = ["mode", "order", "number"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["mode", "number"],
+                name="unique_comprehension_mode_test_number",
+            ),
+        ]
 
     def __str__(self) -> str:
         return self.title

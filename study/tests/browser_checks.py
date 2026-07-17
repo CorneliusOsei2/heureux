@@ -49,7 +49,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
     def setUp(self):
         self.user = factories.make_user("browser-user", pin="482731")
-        self.part = factories.make_part("orale")
+        self.part = factories.make_part("eo")
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
         self.first = factories.make_spine_card(

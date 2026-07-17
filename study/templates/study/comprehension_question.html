@@ -8,11 +8,13 @@
     <span aria-hidden="true">›</span>
     <a href="{% url 'study:comprehension_hub' %}">Compréhension</a>
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_overview' %}">Écrite</a>
+    <a href="{% url test.overview_route %}">{{ test.get_mode_display }}</a>
+    {% if group_number %}
+      <span aria-hidden="true">›</span>
+      <a href="{% url 'study:comprehension_group' group_number %}">Groupe {{ group_number }}</a>
+    {% endif %}
     <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_group' group_number %}">Groupe {{ group_number }}</a>
-    <span aria-hidden="true">›</span>
-    <a href="{% url 'study:comprehension_test' test.slug %}">{{ test.title }}</a>
+    <a href="{% url test.detail_route test.slug %}">{{ test.title }}</a>
     <span aria-hidden="true">›</span>
     <span>Question {{ question.number }}</span>
   </nav>
@@ -36,7 +38,7 @@
     <div class="ce-question-map__grid">
       {% for item in navigator %}
         {% if item.is_available %}
-          <a href="{% url 'study:comprehension_question' test.slug attempt.pk item.number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}" class="{% if item.is_current %}is-current{% elif item.is_answered %}is-answered{% endif %}" aria-label="Question {{ item.number }}{% if item.is_answered %}, répondue{% endif %}"{% if item.is_current %} aria-current="step"{% endif %}>
+          <a href="{% url test.question_route test.slug attempt.pk item.number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}" class="{% if item.is_current %}is-current{% elif item.is_answered %}is-answered{% endif %}" aria-label="Question {{ item.number }}{% if item.is_answered %}, répondue{% endif %}"{% if item.is_current %} aria-current="step"{% endif %}>
             {{ item.number }}
           </a>
         {% else %}
@@ -56,8 +58,8 @@
           </svg>
         </span>
         <div>
-          <small>Document</small>
-          <strong>Lisez le texte</strong>
+          <small>{{ test.source_label }}</small>
+          <strong>{{ test.source_instruction }}</strong>
         </div>
       </header>
       <div class="ce-passage-card__text">{{ question.passage_fr }}</div>
@@ -170,7 +172,7 @@
         <div class="ce-translation__body">
           {% if question.passage_en %}
             <section>
-              <small>Document</small>
+              <small>{{ test.source_label }}</small>
               <p>{{ question.passage_en }}</p>
             </section>
           {% endif %}
@@ -190,14 +192,14 @@
 
   <footer class="ce-quiz__footer">
     {% if previous_number %}
-      <a class="btn" href="{% url 'study:comprehension_question' test.slug attempt.pk previous_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}"><span aria-hidden="true">←</span> Question précédente</a>
+      <a class="btn" href="{% url test.question_route test.slug attempt.pk previous_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}"><span aria-hidden="true">←</span> Question précédente</a>
     {% else %}
       <span></span>
     {% endif %}
     {% if next_number %}
-      <a class="btn btn--primary" href="{% url 'study:comprehension_question' test.slug attempt.pk next_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">Question suivante <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.question_route test.slug attempt.pk next_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">Question suivante <span aria-hidden="true">→</span></a>
     {% elif attempt.status == "completed" %}
-      <a class="btn btn--primary" href="{% url 'study:comprehension_results' test.slug attempt.pk %}">Voir mes résultats <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.results_route test.slug attempt.pk %}">Voir mes résultats <span aria-hidden="true">→</span></a>
     {% endif %}
   </footer>
 </div>

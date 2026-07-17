@@ -52,7 +52,7 @@
     <h2 class="search-section-heading">Compréhension <span>{{ comprehension_result_count }}</span></h2>
     <div class="qlist">
       {% for question in comprehension_results %}
-        <a class="qrow" href="{% url 'study:comprehension_question_study' question.test.slug question.number %}">
+        <a class="qrow" href="{% if question.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' question.test.slug question.number %}{% else %}{% url 'study:comprehension_question_study' question.test.slug question.number %}{% endif %}">
           <span class="qrow__num qrow__num--tag"><span class="chip">{{ question.test.title }} · Q{{ question.number }}</span></span>
           <span class="qrow__text">{{ question.prompt_fr }}</span>
           <span class="qrow__meta"><span class="muted">Voir la correction →</span></span>

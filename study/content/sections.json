@@ -1,9 +1,9 @@
 {
   "parts": [
     {
-      "slug": "orale",
+      "slug": "eo",
       "name": "Expression orale",
-      "short_name": "Expr. orale",
+      "short_name": "EO",
       "emoji": "🎙️",
       "color": "#173f90",
       "order": 1,
@@ -39,9 +39,9 @@
       ]
     },
     {
-      "slug": "ecrit",
+      "slug": "ee",
       "name": "Expression écrite",
-      "short_name": "Expr. écrite",
+      "short_name": "EE",
       "emoji": "✍️",
       "color": "#8a94a6",
       "order": 2,

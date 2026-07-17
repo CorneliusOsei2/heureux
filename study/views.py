@@ -59,6 +59,7 @@ from .models import (
     ComprehensionAttempt,
     ComprehensionAttemptStatus,
     ComprehensionChoice,
+    ComprehensionMode,
     ComprehensionQuestion,
     ComprehensionTest,
     ExamPart,
@@ -627,9 +628,54 @@ def _phrase_deck_stats(now, user=None, task=None):
 
 COMPREHENSION_GROUP_SIZE = 5
 COMPREHENSION_GROUP_COUNT = 8
+COMPREHENSION_ROUTE_NAMES = {
+    ComprehensionMode.ECRITE: {
+        "overview": "study:comprehension_overview",
+        "test": "study:comprehension_test",
+        "study": "study:comprehension_question_study",
+        "start": "study:comprehension_start",
+        "question": "study:comprehension_question",
+        "results": "study:comprehension_results",
+    },
+    ComprehensionMode.ORALE: {
+        "overview": "study:comprehension_oral_overview",
+        "test": "study:comprehension_oral_test",
+        "study": "study:comprehension_oral_question_study",
+        "start": "study:comprehension_oral_start",
+        "question": "study:comprehension_oral_question",
+        "results": "study:comprehension_oral_results",
+    },
+}
 
 
-def _comprehension_test_cards(user, *, published_only=False):
+def _prepare_comprehension_test(test):
+    routes = COMPREHENSION_ROUTE_NAMES[test.mode]
+    test.group_number = (
+        _comprehension_group_number(test.number)
+        if test.mode == ComprehensionMode.ECRITE
+        else None
+    )
+    test.overview_route = routes["overview"]
+    test.detail_route = routes["test"]
+    test.study_route = routes["study"]
+    test.start_route = routes["start"]
+    test.question_route = routes["question"]
+    test.results_route = routes["results"]
+    test.mode_title = f"Compréhension {test.get_mode_display().lower()}"
+    test.source_label = (
+        "Document"
+        if test.mode == ComprehensionMode.ECRITE
+        else "Dialogue"
+    )
+    test.source_instruction = (
+        "Lisez le texte"
+        if test.mode == ComprehensionMode.ECRITE
+        else "Lisez le dialogue"
+    )
+    return test
+
+
+def _comprehension_test_cards(user, *, mode=None, published_only=False):
     attempts = (
         ComprehensionAttempt.objects.filter(user=user)
         .annotate(
@@ -640,6 +686,8 @@ def _comprehension_test_cards(user, *, published_only=False):
     tests = ComprehensionTest.objects.filter(
         Q(is_active=True) | Q(attempts__user=user)
     ).distinct()
+    if mode:
+        tests = tests.filter(mode=mode)
     if published_only:
         tests = tests.filter(is_active=True, is_published=True)
     tests = list(
@@ -654,7 +702,7 @@ def _comprehension_test_cards(user, *, published_only=False):
         )
     )
     for test in tests:
-        test.group_number = _comprehension_group_number(test.number)
+        _prepare_comprehension_test(test)
         test.active_attempt = next(
             (
                 attempt
@@ -687,10 +735,14 @@ def _comprehension_test_cards(user, *, published_only=False):
     return tests
 
 
-def _comprehension_summary(user):
-    tests = _comprehension_test_cards(user, published_only=True)
+def _comprehension_mode_summary(tests, *, group_count=0):
+    available_tests = [
+        test
+        for test in tests
+        if test.is_active and test.is_published
+    ]
     active_test = next(
-        (test for test in tests if test.active_attempt),
+        (test for test in available_tests if test.active_attempt),
         None,
     )
     completed_attempts = [
@@ -699,18 +751,23 @@ def _comprehension_summary(user):
         for attempt in test.completed_attempts
     ]
     next_test = active_test or next(
-        (test for test in tests if not test.completed_attempts),
-        tests[0] if tests else None,
+        (
+            test
+            for test in available_tests
+            if not test.completed_attempts
+        ),
+        available_tests[0] if available_tests else None,
     )
     return {
-        "group_count": COMPREHENSION_GROUP_COUNT,
+        "group_count": group_count,
         "test_count": len(tests),
+        "available_test_count": len(available_tests),
+        "path_available": bool(tests),
         "completed_test_count": sum(
             bool(test.completed_attempts) for test in tests
         ),
-        "active_attempt": next(
-            (test.active_attempt for test in tests if test.active_attempt),
-            None,
+        "active_attempt": (
+            active_test.active_attempt if active_test else None
         ),
         "active_answered_count": (
             active_test.active_answered_count if active_test else 0
@@ -723,7 +780,51 @@ def _comprehension_summary(user):
             default=None,
         ),
         "next_test": next_test,
+        "next_test_url": (
+            reverse(next_test.detail_route, args=[next_test.slug])
+            if next_test
+            else ""
+        ),
+        "active_attempt_url": (
+            reverse(
+                active_test.question_route,
+                args=[
+                    active_test.slug,
+                    active_test.active_attempt.pk,
+                    active_test.active_attempt.current_question,
+                ],
+            )
+            if active_test
+            else ""
+        ),
     }
+
+
+def _comprehension_summary(user):
+    tests = [
+        test
+        for test in _comprehension_test_cards(user)
+        if (
+            (test.is_active and test.is_published)
+            or test.user_attempts
+        )
+    ]
+    written_tests = [
+        test for test in tests if test.mode == ComprehensionMode.ECRITE
+    ]
+    oral_tests = [
+        test for test in tests if test.mode == ComprehensionMode.ORALE
+    ]
+    summary = _comprehension_mode_summary(
+        tests,
+        group_count=COMPREHENSION_GROUP_COUNT,
+    )
+    summary["ecrite"] = _comprehension_mode_summary(
+        written_tests,
+        group_count=COMPREHENSION_GROUP_COUNT,
+    )
+    summary["orale"] = _comprehension_mode_summary(oral_tests)
+    return summary
 
 
 def _home_expression_paths(parts):
@@ -755,7 +856,7 @@ def _home_expression_paths(parts):
         )
     paths.sort(
         key=lambda item: (
-            {"ecrit": 0, "ecrite": 0, "orale": 1}.get(
+            {"ee": 0, "eo": 1}.get(
                 item["part"].slug,
                 2,
             ),
@@ -771,13 +872,13 @@ def _vocabulary_expression_paths(now, user):
         {
             "title": "Écrite",
             "short_name": "EE",
-            "slugs": {"ecrit", "ecrite"},
+            "slugs": {"ee"},
             "fallback_emoji": "✍️",
         },
         {
             "title": "Orale",
             "short_name": "EO",
-            "slugs": {"oral", "orale"},
+            "slugs": {"eo"},
             "fallback_emoji": "🎙️",
         },
     )
@@ -908,6 +1009,10 @@ def redirect_expression(request):
 
 @require_GET
 def redirect_vocabulary(request, part_slug=None, task_slug=None):
+    if part_slug is not None or task_slug is not None:
+        task = _route_task(part_slug, task_slug)
+        part_slug = task.part.slug
+        task_slug = task.slug
     return _redirect_to(
         request,
         "study:vocabulary",
@@ -918,6 +1023,10 @@ def redirect_vocabulary(request, part_slug=None, task_slug=None):
 
 @require_GET
 def redirect_search(request, part_slug=None, task_slug=None):
+    if part_slug is not None or task_slug is not None:
+        task = _route_task(part_slug, task_slug)
+        part_slug = task.part.slug
+        task_slug = task.slug
     return _redirect_to(
         request,
         "study:search",
@@ -930,7 +1039,8 @@ def redirect_search(request, part_slug=None, task_slug=None):
 def redirect_notes(request, part_slug=None, task_slug=None):
     scope = {}
     if part_slug and task_slug:
-        scope = {"part": part_slug, "task": task_slug}
+        task = _route_task(part_slug, task_slug)
+        scope = {"part": task.part.slug, "task": task.slug}
     elif part_slug or task_slug:
         return HttpResponseBadRequest("Incomplete notes scope.")
     else:
@@ -940,6 +1050,10 @@ def redirect_notes(request, part_slug=None, task_slug=None):
 
 @require_GET
 def redirect_stats(request, part_slug=None, task_slug=None):
+    if part_slug is not None or task_slug is not None:
+        task = _route_task(part_slug, task_slug)
+        part_slug = task.part.slug
+        task_slug = task.slug
     return _redirect_to(
         request,
         "study:stats",
@@ -1258,7 +1372,10 @@ def _comprehension_answer_snapshot(answer):
 
 @require_GET
 def comprehension_overview(request):
-    tests = _comprehension_test_cards(request.user)
+    tests = _comprehension_test_cards(
+        request.user,
+        mode=ComprehensionMode.ECRITE,
+    )
     published = [
         test
         for test in tests
@@ -1287,11 +1404,47 @@ def comprehension_overview(request):
 
 
 @require_GET
+def comprehension_oral_overview(request):
+    tests = _comprehension_test_cards(
+        request.user,
+        mode=ComprehensionMode.ORALE,
+    )
+    published = [
+        test
+        for test in tests
+        if test.is_active and test.is_published
+    ]
+    completed_attempts = [
+        attempt
+        for test in published
+        for attempt in test.completed_attempts
+    ]
+    return render(
+        request,
+        "study/comprehension_oral_overview.html",
+        {
+            "tests": tests,
+            "published_count": len(published),
+            "completed_count": sum(
+                bool(test.completed_attempts) for test in published
+            ),
+            "best_percentage": max(
+                (attempt.percentage for attempt in completed_attempts),
+                default=None,
+            ),
+        },
+    )
+
+
+@require_GET
 def comprehension_group_detail(request, group_number):
     if not 1 <= group_number <= COMPREHENSION_GROUP_COUNT:
         raise Http404
 
-    tests = _comprehension_test_cards(request.user)
+    tests = _comprehension_test_cards(
+        request.user,
+        mode=ComprehensionMode.ECRITE,
+    )
     group = _comprehension_groups(tests)[group_number - 1]
     tests_by_number = {
         test.number: test
@@ -1312,11 +1465,15 @@ def comprehension_group_detail(request, group_number):
 
 
 @require_GET
-def comprehension_test_detail(request, test_slug):
+def comprehension_test_detail(
+    request,
+    test_slug,
+    mode=ComprehensionMode.ECRITE,
+):
     test = next(
         (
             item
-            for item in _comprehension_test_cards(request.user)
+            for item in _comprehension_test_cards(request.user, mode=mode)
             if item.slug == test_slug
             and (
                 (item.is_active and item.is_published)
@@ -1369,12 +1526,18 @@ def comprehension_test_detail(request, test_slug):
 
 
 @require_GET
-def comprehension_question_study(request, test_slug, number):
+def comprehension_question_study(
+    request,
+    test_slug,
+    number,
+    mode=ComprehensionMode.ECRITE,
+):
     test = next(
         (
             item
             for item in _comprehension_test_cards(
                 request.user,
+                mode=mode,
                 published_only=True,
             )
             if item.slug == test_slug
@@ -1437,9 +1600,28 @@ def comprehension_question_study(request, test_slug, number):
 
 
 def _comprehension_question_url(attempt, number):
+    _prepare_comprehension_test(attempt.test)
     return reverse(
-        "study:comprehension_question",
+        attempt.test.question_route,
         args=[attempt.test.slug, attempt.pk, number],
+    )
+
+
+def _comprehension_test_url(test):
+    _prepare_comprehension_test(test)
+    return reverse(test.detail_route, args=[test.slug])
+
+
+def _comprehension_overview_url(test):
+    _prepare_comprehension_test(test)
+    return reverse(test.overview_route)
+
+
+def _comprehension_results_url(attempt):
+    _prepare_comprehension_test(attempt.test)
+    return reverse(
+        attempt.test.results_route,
+        args=[attempt.test.slug, attempt.pk],
     )
 
 
@@ -1481,7 +1663,11 @@ def _sync_comprehension_attempt_position(attempt):
 
 
 @require_POST
-def comprehension_start(request, test_slug):
+def comprehension_start(
+    request,
+    test_slug,
+    mode=ComprehensionMode.ECRITE,
+):
     action = request.POST.get("action", "continue")
     if action not in {"continue", "restart", "errors"}:
         return HttpResponseBadRequest("Action de test invalide.")
@@ -1491,9 +1677,11 @@ def comprehension_start(request, test_slug):
         test = get_object_or_404(
             ComprehensionTest.objects.select_for_update(),
             slug=test_slug,
+            mode=mode,
             is_active=True,
             is_published=True,
         )
+        _prepare_comprehension_test(test)
         active_attempt = (
             ComprehensionAttempt.objects.select_for_update()
             .filter(
@@ -1530,11 +1718,7 @@ def comprehension_start(request, test_slug):
                 if question["id"] in wrong_question_ids
             ]
             if not focused_questions:
-                return redirect(
-                    "study:comprehension_results",
-                    test_slug=test.slug,
-                    attempt_id=source_attempt.pk,
-                )
+                return redirect(_comprehension_results_url(source_attempt))
             focused_snapshot = {
                 "practice_mode": "errors",
                 "source_attempt_id": source_attempt.pk,
@@ -1565,11 +1749,7 @@ def comprehension_start(request, test_slug):
         resume_number = _sync_comprehension_attempt_position(active_attempt)
 
     if resume_number is None:
-        return redirect(
-            "study:comprehension_results",
-            test_slug=test.slug,
-            attempt_id=active_attempt.pk,
-        )
+        return redirect(_comprehension_results_url(active_attempt))
     return redirect(
         _comprehension_question_url(
             active_attempt,
@@ -1578,13 +1758,16 @@ def comprehension_start(request, test_slug):
     )
 
 
-def _comprehension_attempt(request, test_slug, attempt_id):
-    return get_object_or_404(
+def _comprehension_attempt(request, test_slug, attempt_id, mode):
+    attempt = get_object_or_404(
         ComprehensionAttempt.objects.select_related("test"),
         pk=attempt_id,
         user=request.user,
         test__slug=test_slug,
+        test__mode=mode,
     )
+    _prepare_comprehension_test(attempt.test)
+    return attempt
 
 
 def _comprehension_question_context(attempt, question_number, error=""):
@@ -1674,7 +1857,7 @@ def _comprehension_question_context(attempt, question_number, error=""):
     return {
         "attempt": attempt,
         "test": attempt.test,
-        "group_number": _comprehension_group_number(attempt.test.number),
+        "group_number": attempt.test.group_number,
         "question": display_question,
         "question_model": question_model,
         "choices": display_choices,
@@ -1699,13 +1882,24 @@ def _comprehension_question_context(attempt, question_number, error=""):
 
 
 @require_http_methods(["GET", "POST"])
-def comprehension_question(request, test_slug, attempt_id, number):
-    attempt = _comprehension_attempt(request, test_slug, attempt_id)
+def comprehension_question(
+    request,
+    test_slug,
+    attempt_id,
+    number,
+    mode=ComprehensionMode.ECRITE,
+):
+    attempt = _comprehension_attempt(
+        request,
+        test_slug,
+        attempt_id,
+        mode,
+    )
     if (
         not attempt.test.is_active
         or not attempt.test.is_published
     ):
-        return redirect("study:comprehension_overview")
+        return redirect(_comprehension_overview_url(attempt.test))
     if (
         attempt.status == ComprehensionAttemptStatus.COMPLETED
         and not (
@@ -1713,13 +1907,9 @@ def comprehension_question(request, test_slug, attempt_id, number):
             and request.GET.get("correction") == "1"
         )
     ):
-        return redirect(
-            "study:comprehension_results",
-            test_slug=test_slug,
-            attempt_id=attempt.pk,
-        )
+        return redirect(_comprehension_results_url(attempt))
     if attempt.status == ComprehensionAttemptStatus.ABANDONED:
-        return redirect("study:comprehension_test", test_slug=test_slug)
+        return redirect(_comprehension_test_url(attempt.test))
 
     context = _comprehension_question_context(attempt, number)
     if context is None:
@@ -1733,11 +1923,7 @@ def comprehension_question(request, test_slug, attempt_id, number):
             )
             resume_number = _sync_comprehension_attempt_position(locked_attempt)
         if resume_number is None:
-            return redirect(
-                "study:comprehension_results",
-                test_slug=test_slug,
-                attempt_id=attempt.pk,
-            )
+            return redirect(_comprehension_results_url(attempt))
         return redirect(
             _comprehension_question_url(locked_attempt, resume_number)
         )
@@ -1795,7 +1981,7 @@ def comprehension_question(request, test_slug, attempt_id, number):
                 "?correction=1"
             )
         if locked_attempt.status != ComprehensionAttemptStatus.IN_PROGRESS:
-            return redirect("study:comprehension_test", test_slug=test_slug)
+            return redirect(_comprehension_test_url(attempt.test))
         ComprehensionAnswer.objects.get_or_create(
             attempt=locked_attempt,
             question=context["question_model"],
@@ -1819,14 +2005,24 @@ def comprehension_question(request, test_slug, attempt_id, number):
 
 
 @require_GET
-def comprehension_results(request, test_slug, attempt_id):
-    attempt = _comprehension_attempt(request, test_slug, attempt_id)
+def comprehension_results(
+    request,
+    test_slug,
+    attempt_id,
+    mode=ComprehensionMode.ECRITE,
+):
+    attempt = _comprehension_attempt(
+        request,
+        test_slug,
+        attempt_id,
+        mode,
+    )
     if attempt.status == ComprehensionAttemptStatus.IN_PROGRESS:
         return redirect(
             _comprehension_question_url(attempt, attempt.current_question)
         )
     if attempt.status != ComprehensionAttemptStatus.COMPLETED:
-        return redirect("study:comprehension_test", test_slug=test_slug)
+        return redirect(_comprehension_test_url(attempt.test))
 
     submitted_answers = list(
         attempt.answers.select_related(
@@ -1861,15 +2057,18 @@ def comprehension_results(request, test_slug, attempt_id):
         {
             "attempt": attempt,
             "test": attempt.test,
-            "group_number": _comprehension_group_number(
-                attempt.test.number,
-            ),
+            "group_number": attempt.test.group_number,
             "review_items": review_items,
             "wrong_count": attempt.total_questions - (attempt.score or 0),
             "is_error_practice": (
                 isinstance(attempt.content_snapshot, dict)
                 and attempt.content_snapshot.get("practice_mode") == "errors"
             ),
+            "has_vocabulary": Phrase.objects.filter(
+                is_active=True,
+                tier=PhraseTier.COMPREHENSION,
+                source_questions__test=attempt.test,
+            ).exists(),
         },
     )
 
@@ -3740,7 +3939,7 @@ def response_detail(request, pk):
             "can_edit_response": response.prompts.filter(
                 is_active=True,
                 theme__task__slug="tache-3",
-                theme__task__part__slug="orale",
+                theme__task__part__slug="eo",
             ).exists(),
             "personal_saved": request.GET.get("saved") == "1",
             "personal_reset": request.GET.get("reset") == "1",
@@ -3754,7 +3953,7 @@ def edit_response(request, pk):
             is_active=True,
             prompts__is_active=True,
             prompts__theme__task__slug="tache-3",
-            prompts__theme__task__part__slug="orale",
+            prompts__theme__task__part__slug="eo",
         )
         .select_related("theme__task__part", "family")
         .prefetch_related("arguments")
@@ -3821,7 +4020,7 @@ def phrases(request, part_slug=None, task_slug=None):
         return HttpResponseBadRequest("Choose both a part and a task.")
     if vocabulary_domain not in {"", "comprehension"}:
         return HttpResponseBadRequest("Unknown vocabulary domain.")
-    if vocabulary_mode not in {"", "ecrite"}:
+    if vocabulary_mode not in {"", "ce"}:
         return HttpResponseBadRequest("Unknown vocabulary mode.")
     if vocabulary_mode and vocabulary_domain != "comprehension":
         return HttpResponseBadRequest(
@@ -3934,6 +4133,7 @@ def phrases(request, part_slug=None, task_slug=None):
         selected_test = get_object_or_404(
             ComprehensionTest,
             slug=test_slug,
+            mode=ComprehensionMode.ECRITE,
             is_active=True,
             is_published=True,
         )
@@ -4069,6 +4269,7 @@ def phrases(request, part_slug=None, task_slug=None):
 
         tests = (
             ComprehensionTest.objects.filter(
+                mode=ComprehensionMode.ECRITE,
                 is_active=True,
                 is_published=True,
             )

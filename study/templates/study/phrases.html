@@ -4,7 +4,7 @@
 {% block content %}
 {% if selected or selected_test %}
 <nav class="phrase-category-back" aria-label="Retour au vocabulaire">
-  <a href="{% url 'study:vocabulary' %}{% if selected_test %}?domain=comprehension&amp;mode=ecrite{% elif task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
+  <a href="{% url 'study:vocabulary' %}{% if selected_test %}?domain=comprehension&amp;mode=ce{% elif task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
 </nav>
 
 <header class="phrase-category-hero card">
@@ -92,7 +92,7 @@
                 <div class="phrase__foot">
                   <span class="faint">Tiré de&nbsp;:</span>
                   {% for source in questions %}
-                    <a class="chip" href="{% url 'study:comprehension_question_study' source.test.slug source.number %}">{{ source.test.title }} · Q{{ source.number }}</a>
+                    <a class="chip" href="{% if source.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' source.test.slug source.number %}{% else %}{% url 'study:comprehension_question_study' source.test.slug source.number %}{% endif %}">{{ source.test.title }} · Q{{ source.number }}</a>
                   {% endfor %}
                 </div>
               {% endif %}
@@ -161,7 +161,7 @@
     </div>
     <div class="expression-paths">
       {% if comprehension_decks %}
-        <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{% url 'study:vocabulary' %}?domain=comprehension&amp;mode=ecrite">
+        <a class="expression-path card vocabulary-path-card" data-vocabulary-path href="{% url 'study:vocabulary' %}?domain=comprehension&amp;mode=ce">
           <span class="expression-path__icon" aria-hidden="true">📄</span>
           <span class="expression-path__copy">
             <span class="eyebrow">CE</span>
@@ -326,12 +326,29 @@
       {% for deck in comprehension_decks %}
         <article class="comprehension-vocabulary-card card">
           <div class="comprehension-vocabulary-card__head">
-            <span>CE {{ deck.test.number|stringformat:"02d" }}</span>
+            <span class="comprehension-vocabulary-card__number">CE {{ deck.test.number|stringformat:"02d" }}</span>
             {% if deck.counts.total_due %}<span class="pill pill--due">{{ deck.counts.total_due }} disponibles</span>{% endif %}
           </div>
-          <div>
+          <div class="comprehension-vocabulary-card__copy">
             <h3>{{ deck.test.title }}</h3>
             <p>{{ deck.vocabulary_count }} entrées · {{ deck.batch_count }} lots · {{ deck.stats.mature }} maîtrisées</p>
+          </div>
+          <div class="learning-progress">
+            <div class="learning-progress__summary">
+              {% if deck.stats.total and deck.stats.mature == deck.stats.total %}
+                <span class="progress-status progress-status--done">Maîtrisé</span>
+              {% elif deck.stats.seen %}
+                <span class="progress-status progress-status--active">En cours</span>
+              {% else %}
+                <span class="progress-status progress-status--new">À commencer</span>
+              {% endif %}
+              <span class="learning-progress__count">{{ deck.stats.mature }}/{{ deck.stats.total }} maîtrisées</span>
+            </div>
+            <div class="progress progress--learning" role="progressbar" aria-valuemin="0" aria-valuemax="{{ deck.stats.total }}" aria-valuenow="{{ deck.stats.seen }}" aria-label="{{ deck.stats.seen }} entrées vues sur {{ deck.stats.total }}, dont {{ deck.stats.mature }} maîtrisées">
+              <span class="bg-mature" style="width: {% widthratio deck.stats.mature deck.stats.total 100 %}%;"></span>
+              <span class="bg-review" style="width: {% widthratio deck.stats.review_young deck.stats.total 100 %}%;"></span>
+              <span class="bg-learning" style="width: {% widthratio deck.stats.learning deck.stats.total 100 %}%;"></span>
+            </div>
           </div>
           <div class="comprehension-vocabulary-card__actions">
             <a class="btn btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;test={{ deck.test.slug }}&amp;batch=1">Pratiquer</a>

@@ -13,6 +13,7 @@ from study.models import (
     ComprehensionAttempt,
     ComprehensionAttemptStatus,
     ComprehensionChoice,
+    ComprehensionMode,
     ComprehensionQuestion,
     ComprehensionTest,
     ExamPart,
@@ -74,12 +75,20 @@ def make_family(slug="famille-1") -> Family:
     return family
 
 
-def make_part(slug="orale", available=True) -> ExamPart:
+def make_part(slug="eo", available=True) -> ExamPart:
+    names = {
+        "eo": ("Expression orale", "EO"),
+        "ee": ("Expression écrite", "EE"),
+    }
+    name, short_name = names.get(
+        slug,
+        (f"Expression {slug}", slug.title()),
+    )
     part, _ = ExamPart.objects.get_or_create(
         slug=slug,
         defaults={
-            "name": f"Expression {slug}",
-            "short_name": slug.title(),
+            "name": name,
+            "short_name": short_name,
             "available": available,
             "order": _uid(),
         },
@@ -101,10 +110,19 @@ def make_comprehension_test(
     *,
     number=1,
     question_count=3,
+    first_question_number=1,
+    mode=ComprehensionMode.ECRITE,
     is_published=True,
 ) -> ComprehensionTest:
+    slug = (
+        f"test-{number}"
+        if mode == ComprehensionMode.ECRITE
+        else f"oral-test-{number}"
+    )
+    content_prefix = "ce" if mode == ComprehensionMode.ECRITE else "co"
     test = ComprehensionTest.objects.create(
-        slug=f"test-{number}",
+        slug=slug,
+        mode=mode,
         number=number,
         title=f"Test {number}",
         description=f"Test de compréhension {number}",
@@ -112,10 +130,15 @@ def make_comprehension_test(
         order=number,
         is_published=is_published,
     )
-    for question_number in range(1, question_count + 1):
+    for question_number in range(
+        first_question_number,
+        first_question_number + question_count,
+    ):
         question = ComprehensionQuestion.objects.create(
             test=test,
-            content_key=f"ce:test-{number}:q{question_number:02d}",
+            content_key=(
+                f"{content_prefix}:{slug}:q{question_number:02d}"
+            ),
             number=question_number,
             passage_fr=f"Passage français {question_number}.",
             passage_en=f"English passage {question_number}.",
@@ -151,7 +174,9 @@ def make_comprehension_attempt(
         user=user,
         test=test,
         status=status,
-        current_question=min(answered_questions + 1, len(questions)),
+        current_question=questions[
+            min(answered_questions, len(questions) - 1)
+        ].number,
         total_questions=len(questions),
     )
     for question in questions[:answered_questions]:

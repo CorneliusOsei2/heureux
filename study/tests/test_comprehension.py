@@ -19,6 +19,7 @@ from study.models import (
     ComprehensionAttempt,
     ComprehensionAttemptStatus,
     ComprehensionChoice,
+    ComprehensionMode,
     ComprehensionQuestion,
     ComprehensionTest,
     Phrase,
@@ -34,15 +35,31 @@ class ComprehensionContentTests(SimpleTestCase):
 
         self.assertEqual(
             [test.slug for test in tests],
-            ["test-1", "test-2", "test-3", "test-4", "test-5"],
+            [
+                "test-1",
+                "test-2",
+                "test-3",
+                "test-4",
+                "test-5",
+                "oral-test-1",
+            ],
         )
         self.assertEqual(
             [len(test.questions) for test in tests],
-            [39, 39, 39, 39, 39],
+            [39, 39, 39, 39, 39, 31],
         )
         self.assertEqual(
             [test.is_published for test in tests],
-            [True, True, True, True, True],
+            [True, True, True, True, True, True],
+        )
+        oral = tests[-1]
+        self.assertEqual(oral.mode, "orale")
+        self.assertEqual(
+            [question.number for question in oral.questions],
+            list(range(9, 40)),
+        )
+        self.assertTrue(
+            all(question.content_key.startswith("co:") for question in oral.questions)
         )
         self.assertTrue(
             all(not question.passage_en for question in tests[2].questions)
@@ -109,25 +126,42 @@ class ComprehensionImportTests(TestCase):
 
         self.assertEqual(
             list(
-                ComprehensionTest.objects.order_by("number").values_list(
+                ComprehensionTest.objects.order_by(
+                    "mode",
+                    "number",
+                ).values_list(
+                    "mode",
                     "number",
                     "is_published",
                 )
             ),
             [
-                (1, True),
-                (2, True),
-                (3, True),
-                (4, True),
-                (5, True),
+                ("ecrite", 1, True),
+                ("ecrite", 2, True),
+                ("ecrite", 3, True),
+                ("ecrite", 4, True),
+                ("ecrite", 5, True),
+                ("orale", 1, True),
             ],
         )
         self.assertEqual(
             {
-                test.number: test.questions.filter(is_active=True).count()
-                for test in ComprehensionTest.objects.order_by("number")
+                (test.mode, test.number): test.questions.filter(
+                    is_active=True
+                ).count()
+                for test in ComprehensionTest.objects.order_by(
+                    "mode",
+                    "number",
+                )
             },
-            {1: 39, 2: 39, 3: 39, 4: 39, 5: 39},
+            {
+                ("ecrite", 1): 39,
+                ("ecrite", 2): 39,
+                ("ecrite", 3): 39,
+                ("ecrite", 4): 39,
+                ("ecrite", 5): 39,
+                ("orale", 1): 31,
+            },
         )
 
     def test_import_is_idempotent_and_preserves_learner_answers(self):
@@ -253,6 +287,25 @@ class ComprehensionImportTests(TestCase):
 
 
 class ComprehensionModelTests(TestCase):
+    def test_test_numbers_are_unique_within_each_mode(self):
+        factories.make_comprehension_test(
+            number=1,
+            mode=ComprehensionMode.ECRITE,
+        )
+        oral = factories.make_comprehension_test(
+            number=1,
+            mode=ComprehensionMode.ORALE,
+        )
+
+        self.assertEqual(oral.number, 1)
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            ComprehensionTest.objects.create(
+                slug="another-oral-test",
+                mode=ComprehensionMode.ORALE,
+                number=1,
+                title="Another oral test",
+            )
+
     def test_only_one_active_attempt_is_allowed_per_user_and_test(self):
         user = factories.make_user("ce-unique")
         test = factories.make_comprehension_test()
@@ -919,4 +972,144 @@ class ComprehensionFlowTests(TestCase):
         )
         self.assertTrue(
             ComprehensionAttempt.objects.filter(pk=other_attempt.pk).exists()
+        )
+
+
+class OralComprehensionFlowTests(TestCase):
+    def setUp(self):
+        self.user = factories.make_user("co-learner")
+        self.client.force_login(self.user)
+        self.test = factories.make_comprehension_test(
+            number=1,
+            question_count=31,
+            first_question_number=9,
+            mode=ComprehensionMode.ORALE,
+        )
+
+    def test_oral_library_and_test_keep_original_question_numbers(self):
+        overview = self.client.get(
+            reverse("study:comprehension_oral_overview")
+        )
+        detail = self.client.get(
+            reverse(
+                "study:comprehension_oral_test",
+                args=[self.test.slug],
+            )
+        )
+
+        self.assertEqual(overview.status_code, 200)
+        self.assertContains(overview, "31 questions")
+        self.assertContains(
+            overview,
+            reverse(
+                "study:comprehension_oral_test",
+                args=[self.test.slug],
+            ),
+        )
+        self.assertContains(detail, "Compréhension orale")
+        self.assertContains(detail, ">9</span>")
+        self.assertContains(detail, ">39</span>")
+        self.assertNotContains(detail, "Groupe 1")
+        self.assertEqual(
+            self.client.get(
+                reverse(
+                    "study:comprehension_test",
+                    args=[self.test.slug],
+                )
+            ).status_code,
+            404,
+        )
+
+    def test_oral_attempt_runs_from_q9_through_q39(self):
+        start = self.client.post(
+            reverse(
+                "study:comprehension_oral_start",
+                args=[self.test.slug],
+            ),
+            {"action": "continue"},
+        )
+        attempt = ComprehensionAttempt.objects.get(
+            user=self.user,
+            test=self.test,
+        )
+        q9_url = reverse(
+            "study:comprehension_oral_question",
+            args=[self.test.slug, attempt.pk, 9],
+        )
+
+        self.assertRedirects(
+            start,
+            q9_url,
+            fetch_redirect_response=False,
+        )
+        q9 = self.client.get(q9_url)
+        self.assertEqual(q9.context["position"], 1)
+        self.assertEqual(q9.context["question"]["number"], 9)
+        self.assertContains(q9, "Dialogue")
+
+        for number in range(9, 40):
+            question = self.test.questions.get(number=number)
+            choice = question.choices.get(letter="A")
+            response = self.client.post(
+                reverse(
+                    "study:comprehension_oral_question",
+                    args=[self.test.slug, attempt.pk, number],
+                ),
+                {"choice": choice.pk},
+            )
+            if number == 9:
+                attempt.refresh_from_db()
+                self.assertEqual(attempt.current_question, 10)
+
+        attempt.refresh_from_db()
+        self.assertEqual(attempt.status, ComprehensionAttemptStatus.COMPLETED)
+        self.assertEqual(attempt.current_question, 39)
+        self.assertEqual(attempt.total_questions, 31)
+        self.assertRedirects(
+            response,
+            reverse(
+                "study:comprehension_oral_question",
+                args=[self.test.slug, attempt.pk, 39],
+            )
+            + "?correction=1",
+            fetch_redirect_response=False,
+        )
+        results = self.client.get(
+            reverse(
+                "study:comprehension_oral_results",
+                args=[self.test.slug, attempt.pk],
+            )
+        )
+        self.assertEqual(results.status_code, 200)
+        self.assertContains(results, "sur 31")
+        self.assertNotContains(results, "Pratiquer le vocabulaire")
+
+    def test_archived_oral_history_remains_reachable_from_the_hub(self):
+        factories.make_comprehension_attempt(
+            user=self.user,
+            test=self.test,
+            status=ComprehensionAttemptStatus.COMPLETED,
+            answered_questions=31,
+        )
+        self.test.is_active = False
+        self.test.is_published = False
+        self.test.save(update_fields=["is_active", "is_published"])
+
+        hub = self.client.get(reverse("study:comprehension_hub"))
+        overview = self.client.get(
+            reverse("study:comprehension_oral_overview")
+        )
+
+        self.assertContains(
+            hub,
+            reverse("study:comprehension_oral_overview"),
+        )
+        self.assertContains(hub, "dans l’historique")
+        self.assertContains(overview, "Archivé")
+        self.assertContains(
+            overview,
+            reverse(
+                "study:comprehension_oral_test",
+                args=[self.test.slug],
+            ),
         )

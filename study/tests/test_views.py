@@ -102,6 +102,7 @@ class SmokeTests(TestCase):
             "study:dashboard",
             "study:comprehension_hub",
             "study:comprehension_overview",
+            "study:comprehension_oral_overview",
             "study:expression",
             "study:vocabulary",
             "study:notes_overview",
@@ -132,7 +133,7 @@ class SmokeTests(TestCase):
         self.assertContains(
             response,
             reverse("study:vocabulary")
-            + "?part=orale&amp;task=tache-3",
+            + "?part=eo&amp;task=tache-3",
         )
 
     def test_written_comprehension_card_opens_only_test_decks(self):
@@ -148,12 +149,12 @@ class SmokeTests(TestCase):
         self.assertContains(
             landing,
             reverse("study:vocabulary")
-            + "?domain=comprehension&amp;mode=ecrite",
+            + "?domain=comprehension&amp;mode=ce",
         )
 
         response = self.client.get(
             reverse("study:vocabulary"),
-            {"domain": "comprehension", "mode": "ecrite"},
+            {"domain": "comprehension", "mode": "ce"},
         )
         self.assertTrue(response.context["comprehension_directory"])
         self.assertFalse(response.context["vocabulary_landing"])
@@ -222,12 +223,12 @@ class SmokeTests(TestCase):
 
     def test_hierarchy_pages_render(self):
         self.assertEqual(
-            self.client.get(reverse("study:part_detail", args=["orale"])).status_code,
+            self.client.get(reverse("study:part_detail", args=["eo"])).status_code,
             200,
         )
         self.assertEqual(
             self.client.get(
-                reverse("study:task_detail", args=["orale", "tache-3"])
+                reverse("study:task_detail", args=["eo", "tache-3"])
             ).status_code,
             200,
         )
@@ -239,25 +240,25 @@ class SmokeTests(TestCase):
         for name in nested_names:
             with self.subTest(name=name):
                 response = self.client.get(
-                    reverse(name, args=["orale", "tache-3"])
+                    reverse(name, args=["eo", "tache-3"])
                 )
                 self.assertEqual(response.status_code, 200)
 
         redirects = {
             "study:task_phrases": (
-                reverse("study:vocabulary") + "?part=orale&task=tache-3"
+                reverse("study:vocabulary") + "?part=eo&task=tache-3"
             ),
             "study:task_stats": (
-                reverse("study:stats") + "?part=orale&task=tache-3"
+                reverse("study:stats") + "?part=eo&task=tache-3"
             ),
             "study:task_search": (
-                reverse("study:search") + "?part=orale&task=tache-3"
+                reverse("study:search") + "?part=eo&task=tache-3"
             ),
         }
         for name, expected in redirects.items():
             with self.subTest(name=name):
                 response = self.client.get(
-                    reverse(name, args=["orale", "tache-3"])
+                    reverse(name, args=["eo", "tache-3"])
                 )
                 self.assertRedirects(
                     response,
@@ -269,13 +270,13 @@ class SmokeTests(TestCase):
         response = self.client.get(
             reverse(
                 "study:task_family_detail",
-                args=["orale", "tache-3", family.slug],
+                args=["eo", "tache-3", family.slug],
             )
         )
         self.assertEqual(response.status_code, 200)
 
     def test_expression_hub_groups_content_by_part_and_task(self):
-        written = factories.make_part("ecrite", available=False)
+        written = factories.make_part("ee", available=False)
         written.name = "Expression écrite"
         written.save(update_fields=["name"])
         factories.make_task(written, "ecrit", available=False)
@@ -286,7 +287,7 @@ class SmokeTests(TestCase):
         self.assertContains(response, "À venir")
         self.assertContains(
             response,
-            reverse("study:part_detail", args=["orale"]),
+            reverse("study:part_detail", args=["eo"]),
         )
         self.assertIsNone(response.context["content_task"])
 
@@ -310,6 +311,10 @@ class SmokeTests(TestCase):
 
     def test_comprehension_hub_is_the_parent_of_written_and_oral_paths(self):
         factories.make_comprehension_test()
+        factories.make_comprehension_test(
+            mode="orale",
+            question_count=2,
+        )
 
         response = self.client.get(reverse("study:comprehension_hub"))
 
@@ -321,8 +326,12 @@ class SmokeTests(TestCase):
             response,
             reverse("study:comprehension_overview"),
         )
+        self.assertContains(
+            response,
+            reverse("study:comprehension_oral_overview"),
+        )
         self.assertContains(response, "<b>8</b> groupes", html=True)
-        self.assertContains(response, "Parcours en préparation")
+        self.assertNotContains(response, "Parcours en préparation")
         self.assertContains(
             response,
             f'href="{reverse("study:comprehension_hub")}" '
@@ -331,7 +340,7 @@ class SmokeTests(TestCase):
 
     def test_primary_navigation_opens_canonical_areas(self):
         response = self.client.get(
-            reverse("study:task_detail", args=["orale", "tache-3"])
+            reverse("study:task_detail", args=["eo", "tache-3"])
         )
 
         for name in (
@@ -350,7 +359,7 @@ class SmokeTests(TestCase):
         session.current_card = card
         session.scope = {
             "kind": "spine",
-            "part": "orale",
+            "part": "eo",
             "task": "tache-3",
         }
         session.save(update_fields=["current_card", "scope"])
@@ -361,7 +370,7 @@ class SmokeTests(TestCase):
 
     def test_task_hub_uses_navigation_without_duplicate_modules(self):
         response = self.client.get(
-            reverse("study:task_detail", args=["orale", "tache-3"])
+            reverse("study:task_detail", args=["eo", "tache-3"])
         )
         self.assertContains(response, "Sujets &amp; réponses")
         self.assertNotContains(response, "Pratiquer les réponses")
@@ -407,17 +416,52 @@ class SmokeTests(TestCase):
         )
 
     def test_hierarchy_uses_expression_paths(self):
-        url = reverse("study:task_detail", args=["orale", "tache-3"])
-        self.assertEqual(url, "/expression/orale/tache-3/")
-        response = self.client.get(
-            "/epreuve/orale/tache-3/?source=bookmark"
+        url = reverse("study:task_detail", args=["eo", "tache-3"])
+        self.assertEqual(url, "/expression/eo/tache-3/")
+
+    def test_all_skill_routes_use_canonical_codes(self):
+        self.assertEqual(
+            reverse("study:comprehension_overview"),
+            "/comprehension/ce/",
         )
-        self.assertRedirects(
-            response,
-            "/expression/orale/tache-3/?source=bookmark",
-            status_code=301,
-            fetch_redirect_response=False,
+        self.assertEqual(
+            reverse(
+                "study:comprehension_question_study",
+                args=["test-1", 2],
+            ),
+            "/comprehension/ce/test-1/question/2/",
         )
+        self.assertEqual(
+            reverse("study:comprehension_oral_overview"),
+            "/comprehension/co/",
+        )
+        self.assertEqual(
+            reverse(
+                "study:comprehension_oral_question_study",
+                args=["oral-test-1", 2],
+            ),
+            "/comprehension/co/oral-test-1/question/2/",
+        )
+        self.assertEqual(
+            reverse("study:part_detail", args=["ee"]),
+            "/expression/ee/",
+        )
+        self.assertEqual(
+            reverse("study:task_detail", args=["eo", "tache-3"]),
+            "/expression/eo/tache-3/",
+        )
+
+    def test_noncanonical_skill_paths_are_not_available(self):
+        for path in (
+            "/comprehension-ecrite/",
+            "/comprehension-orale/",
+            "/expression/orale/",
+            "/expression/ecrit/",
+            "/notes/orale/tache-3/",
+            "/epreuve/orale/tache-3/",
+        ):
+            with self.subTest(path=path):
+                self.assertEqual(self.client.get(path).status_code, 404)
 
 
 class TaskOrganizationTests(TestCase):
@@ -425,7 +469,7 @@ class TaskOrganizationTests(TestCase):
         self.user = factories.make_user("organizer")
         self.client.force_login(self.user)
         Settings.load(self.user)
-        self.part = factories.make_part("orale")
+        self.part = factories.make_part("eo")
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
         self.response_card = factories.make_spine_card(theme=self.theme)
@@ -437,7 +481,7 @@ class TaskOrganizationTests(TestCase):
         )
         self.phrase_card = factories.make_phrase_card(phrase=self.phrase)
 
-        other_part = factories.make_part("ecrit")
+        other_part = factories.make_part("ee")
         other_task = factories.make_task(other_part, "tache-1")
         other_theme = factories.make_theme("economie", task=other_task)
         other_response = factories.make_spine_card(theme=other_theme).response
@@ -719,7 +763,7 @@ class TaskOrganizationTests(TestCase):
         )
         self.assertContains(
             response,
-            "?kind=spine&amp;part=orale&amp;task=tache-3",
+            "?kind=spine&amp;part=eo&amp;task=tache-3",
         )
         self.assertContains(response, "Choisir un thème")
         self.assertContains(response, "Réponses fragiles")

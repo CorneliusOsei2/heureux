@@ -12,7 +12,7 @@ class PersonalResponseTests(TestCase):
     def setUp(self):
         self.owner = factories.make_user("response-owner")
         self.other = factories.make_user("response-other")
-        self.part = factories.make_part("orale")
+        self.part = factories.make_part("eo")
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
         self.response = factories.make_response(theme=self.theme)
@@ -163,7 +163,7 @@ class PersonalResponseTests(TestCase):
         self.assertEqual(self.owner_card.reps, 6)
 
     def test_editor_is_limited_to_expression_orale_tache_3(self):
-        written_part = factories.make_part("ecrite")
+        written_part = factories.make_part("ee")
         written_task = factories.make_task(written_part, "tache-3")
         written_theme = factories.make_theme(
             "written-theme",

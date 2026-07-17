@@ -43,9 +43,9 @@
   --easy: #4a73c3;
 
   --new: #8c99ad;
-  --learn: #e3263b;
-  --review: #3e68b6;
-  --mature: #173f90;
+  --learn: #d49a18;
+  --review: #b97808;
+  --mature: #237a4b;
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06),
     0 1px 3px rgba(15, 23, 42, 0.05);
@@ -88,9 +88,9 @@
   --easy: #b3ccff;
 
   --new: #8b97ab;
-  --learn: #ff6676;
-  --review: #83a9ef;
-  --mature: #c0d3ff;
+  --learn: #f2bd54;
+  --review: #dca63a;
+  --mature: #71d69f;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
@@ -492,10 +492,17 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 
 /* ---------- Cards / surfaces ---------- */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 96%, white), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--border) 88%, var(--text));
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 8px 24px -18px rgba(15, 23, 42, 0.32);
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 .card--pad { padding: 1rem 1.1rem; }
 
@@ -524,26 +531,68 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 
 /* ---------- Buttons ---------- */
 .btn {
-  min-height: 44px;
+  min-height: 46px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border: 1px solid var(--border-strong);
-  background: var(--surface);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, white), var(--surface));
   color: var(--text);
-  padding: 0.52rem 0.95rem;
-  border-radius: 10px;
-  font-weight: 600;
+  padding: 0.58rem 1.12rem;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  font-weight: 700;
   font-size: 0.95rem;
+  line-height: 1.15;
   cursor: pointer;
-  transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease;
 }
-.btn:hover { text-decoration: none; box-shadow: var(--shadow-md); transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
-.btn--primary { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
-.btn--lg { padding: 0.62rem 1.15rem; font-size: 0.94rem; border-radius: 10px; }
-.btn--sm { padding: 0.4rem 0.9rem; font-size: 0.85rem; border-radius: 9px; }
+.btn:hover {
+  border-color: color-mix(in srgb, var(--primary) 38%, var(--border-strong));
+  background: var(--primary-soft);
+  text-decoration: none;
+  box-shadow:
+    0 8px 18px -12px color-mix(in srgb, var(--primary) 60%, transparent),
+    0 2px 5px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+}
+.btn:active {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  transform: translateY(0) scale(0.98);
+}
+.btn--primary {
+  border-color: color-mix(in srgb, var(--primary) 82%, black);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 82%, white), var(--primary) 58%, color-mix(in srgb, var(--primary) 84%, black));
+  color: var(--primary-ink);
+  box-shadow:
+    0 10px 20px -13px color-mix(in srgb, var(--primary) 88%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 24%, transparent);
+}
+.btn--primary:hover {
+  border-color: color-mix(in srgb, var(--primary) 74%, black);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 76%, white), var(--primary) 52%, color-mix(in srgb, var(--primary) 78%, black));
+  color: var(--primary-ink);
+  box-shadow:
+    0 14px 24px -14px color-mix(in srgb, var(--primary) 92%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.55;
+  transform: none;
+}
+.btn--lg { min-height: 50px; padding: 0.68rem 1.3rem; font-size: 0.96rem; }
+.btn--sm { min-height: 38px; padding: 0.42rem 0.9rem; font-size: 0.85rem; }
 .btn--ghost { background: transparent; }
 .btn--block { width: 100%; }
 
@@ -582,26 +631,78 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
 .state-relearning { color: var(--learn); }
 .state-review { color: var(--review); }
 .bg-new { background: var(--new); }
-.bg-learning { background: var(--learn); }
-.bg-relearning { background: var(--learn); }
-.bg-review { background: var(--review); }
-.bg-mature { background: var(--mature); }
+.bg-learning,
+.bg-relearning {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--learn) 72%, var(--surface)), var(--learn));
+}
+.bg-review {
+  background: linear-gradient(90deg, var(--review), color-mix(in srgb, var(--review) 76%, var(--learn)));
+}
+.bg-mature {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--mature) 78%, var(--surface)), var(--mature));
+}
 
 /* ---------- Progress ---------- */
 .progress {
-  height: 8px;
+  height: 10px;
   border-radius: 999px;
-  background: var(--bg-soft);
+  background: color-mix(in srgb, var(--bg-soft) 78%, var(--border));
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--text) 10%, transparent);
   overflow: hidden;
   display: flex;
 }
-.progress > span { display: block; height: 100%; }
+.progress > span {
+  display: block;
+  height: 100%;
+  transition: width 0.28s ease;
+}
 .progress__label {
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
   color: var(--text-soft);
   margin-bottom: 0.35rem;
+}
+.progress-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  width: fit-content;
+  min-height: 27px;
+  padding: 0.2rem 0.62rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.progress-status::before {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 14%, transparent);
+  content: "";
+}
+.progress-status--new {
+  border-color: color-mix(in srgb, var(--primary) 20%, var(--border));
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.progress-status--active {
+  border-color: color-mix(in srgb, var(--warning) 28%, var(--border));
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+.progress-status--done {
+  border-color: color-mix(in srgb, var(--success) 28%, var(--border));
+  background: var(--success-soft);
+  color: var(--success);
 }
 
 /* ---------- Hero (dashboard) ---------- */
@@ -747,6 +848,7 @@ a.learning-path-card:focus-visible {
 .learning-path-card__status {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   grid-column: 3;
   grid-row: 1;
   justify-self: end;
@@ -760,6 +862,14 @@ a.learning-path-card:focus-visible {
   font-weight: 750;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+.learning-path-card__status::before {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
 }
 .learning-path-card__status--progress {
   border-color: color-mix(in srgb, var(--warning) 24%, var(--border));
@@ -3197,9 +3307,9 @@ kbd {
   letter-spacing: 0.025em;
 }
 .ce-status--progress {
-  border-color: color-mix(in srgb, var(--ce-blue) 22%, var(--border));
-  background: var(--ce-blue-soft);
-  color: var(--ce-ink);
+  border-color: color-mix(in srgb, var(--warning) 28%, var(--border));
+  background: var(--warning-soft);
+  color: var(--warning);
 }
 .ce-status--done {
   border-color: color-mix(in srgb, var(--success) 28%, var(--border));
@@ -4817,9 +4927,26 @@ button.ce-choice:focus-visible .ce-choice__radio {
   gap: 0.75rem;
 }
 .comprehension-vocabulary-card {
+  position: relative;
   display: grid;
-  gap: 1rem;
-  padding: 1.1rem;
+  gap: 1.05rem;
+  padding: 1.2rem;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 42%),
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 96%, white), var(--surface));
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 14px 30px -24px rgba(15, 23, 42, 0.48);
+}
+.comprehension-vocabulary-card:hover,
+.comprehension-vocabulary-card:focus-within {
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+  box-shadow:
+    0 3px 8px rgba(15, 23, 42, 0.07),
+    0 18px 36px -24px color-mix(in srgb, var(--primary) 42%, transparent);
+  transform: translateY(-2px);
 }
 .comprehension-vocabulary-card__head,
 .comprehension-vocabulary-card__actions {
@@ -4829,14 +4956,62 @@ button.ce-choice:focus-visible .ce-choice__radio {
   gap: 0.6rem;
   flex-wrap: wrap;
 }
-.comprehension-vocabulary-card__head > span:first-child {
+.comprehension-vocabulary-card__number {
+  display: inline-flex;
+  align-items: center;
+  min-height: 31px;
+  padding: 0.3rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
+  border-radius: 999px;
+  background: var(--primary-soft);
   color: var(--primary);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
-.comprehension-vocabulary-card h3 { margin: 0; }
-.comprehension-vocabulary-card p { margin: 0.25rem 0 0; color: var(--text-soft); font-size: 0.8rem; }
+.comprehension-vocabulary-card .pill--due {
+  min-height: 29px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.62rem;
+  box-shadow: 0 6px 14px -10px color-mix(in srgb, var(--primary) 70%, transparent);
+}
+.comprehension-vocabulary-card__copy h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+.comprehension-vocabulary-card__copy p {
+  margin: 0.28rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+.learning-progress {
+  display: grid;
+  gap: 0.62rem;
+  padding: 0.72rem 0.78rem 0.78rem;
+  border: 1px solid color-mix(in srgb, var(--border) 86%, var(--text));
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
+}
+.learning-progress__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+.learning-progress__count {
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.progress--learning { height: 9px; }
+.comprehension-vocabulary-card__actions {
+  padding-top: 0.05rem;
+}
+.comprehension-vocabulary-card__actions .btn {
+  min-height: 43px;
+}
 .phrase-group > h3 {
   margin: 1.5rem 0 0.7rem;
   color: var(--text-soft);

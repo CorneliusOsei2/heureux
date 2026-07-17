@@ -2,6 +2,7 @@
   "tests": [
     {
       "slug": "test-1",
+      "mode": "ecrite",
       "number": 1,
       "title": "Test 1",
       "description": "39 questions de compréhension écrite avec corrections détaillées.",
@@ -12,6 +13,7 @@
     },
     {
       "slug": "test-2",
+      "mode": "ecrite",
       "number": 2,
       "title": "Test 2",
       "description": "39 questions de compréhension écrite avec corrections détaillées.",
@@ -22,6 +24,7 @@
     },
     {
       "slug": "test-3",
+      "mode": "ecrite",
       "number": 3,
       "title": "Test 3",
       "description": "39 questions de compréhension écrite avec corrections détaillées.",
@@ -33,6 +36,7 @@
     },
     {
       "slug": "test-4",
+      "mode": "ecrite",
       "number": 4,
       "title": "Test 4",
       "description": "39 questions de compréhension écrite avec corrections détaillées.",
@@ -43,6 +47,7 @@
     },
     {
       "slug": "test-5",
+      "mode": "ecrite",
       "number": 5,
       "title": "Test 5",
       "description": "39 questions de compréhension écrite avec corrections détaillées.",
@@ -50,6 +55,19 @@
       "order": 5,
       "is_published": true,
       "source": "test_05.md"
+    },
+    {
+      "slug": "oral-test-1",
+      "mode": "orale",
+      "number": 1,
+      "title": "Test 1",
+      "description": "31 questions de compréhension orale.",
+      "expected_question_count": 31,
+      "first_question_number": 9,
+      "order": 1,
+      "source": "oral_test_01.md",
+      "is_published": true,
+      "is_active": true
     }
   ]
 }

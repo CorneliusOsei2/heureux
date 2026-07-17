@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Compréhension orale · Heureux{% endblock %}
+
+{% block content %}
+<div class="ce-shell ce-group-page">
+  <nav class="ce-breadcrumb" aria-label="Fil d’Ariane">
+    <a href="{% url 'study:dashboard' %}">Accueil</a>
+    <span aria-hidden="true">›</span>
+    <a href="{% url 'study:comprehension_hub' %}">Compréhension</a>
+    <span aria-hidden="true">›</span>
+    <span>Compréhension orale</span>
+  </nav>
+
+  <header class="ce-library-hero">
+    <div class="ce-library-hero__copy">
+      <p class="eyebrow">Dialogues et questions</p>
+      <h1>Compréhension orale</h1>
+    </div>
+    <div class="ce-library-hero__metrics" aria-label="Progression en compréhension orale">
+      <div>
+        <strong>{{ published_count }}</strong>
+        <span>test{{ published_count|pluralize }} disponible{{ published_count|pluralize }}</span>
+      </div>
+      <div>
+        <strong>{{ completed_count }}</strong>
+        <span>test{{ completed_count|pluralize }} terminé{{ completed_count|pluralize }}</span>
+      </div>
+      <div>
+        <strong>{% if best_percentage is not None %}{{ best_percentage }} %{% else %}—{% endif %}</strong>
+        <span>meilleur résultat</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="ce-section-heading">
+    <h2>Tests</h2>
+  </div>
+
+  <section class="qlist ce-group-test-list" aria-label="Tests de compréhension orale">
+    {% for test in tests %}
+      {% if test.is_active and test.is_published or test.user_attempts %}
+        <a class="qrow ce-group-test-row" href="{% url test.detail_route test.slug %}">
+      {% else %}
+        <article class="qrow ce-group-test-row ce-group-test-row--pending" aria-disabled="true">
+      {% endif %}
+        <span class="qrow__num">{{ test.number|stringformat:"02d" }}</span>
+        <span class="qrow__text">
+          <strong>{{ test.title }}</strong>
+          {% if test.is_active and test.is_published and test.description %}<small>{{ test.description }}</small>{% endif %}
+          {% if test.active_attempt %}
+            <progress class="ce-group-test-row__progress" value="{{ test.active_answered_count }}" max="{{ test.attempt_question_count }}" aria-label="{{ test.active_answered_count }} questions répondues sur {{ test.attempt_question_count }}"></progress>
+          {% endif %}
+        </span>
+        <span class="qrow__meta ce-group-test-row__meta">
+          {% if not test.is_active %}
+            <span class="ce-status ce-status--soon">Archivé</span>
+          {% elif not test.is_published %}
+            <span class="ce-status ce-status--soon">Indisponible</span>
+          {% elif test.active_attempt %}
+            <span class="ce-status ce-status--progress">En cours</span>
+          {% elif test.latest_attempt %}
+            <span class="ce-status ce-status--done">Terminé</span>
+          {% else %}
+            <span class="ce-status">Nouveau</span>
+          {% endif %}
+          <span class="ce-group-test-row__facts">
+            {% if test.is_active and test.is_published %}
+              {{ test.active_question_count }} questions
+              {% if test.active_attempt %}
+                · {{ test.active_answered_count }}/{{ test.attempt_question_count }} répondues
+              {% elif test.best_attempt %}
+                · {{ test.best_attempt.percentage }} %
+              {% endif %}
+            {% elif test.user_attempts %}
+              {{ test.completed_attempts|length }} tentative{{ test.completed_attempts|length|pluralize }}
+            {% endif %}
+          </span>
+          <span class="ce-group-test-row__action">
+            {% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}
+            <span aria-hidden="true">→</span>
+          </span>
+        </span>
+      {% if test.is_active and test.is_published or test.user_attempts %}
+        </a>
+      {% else %}
+        </article>
+      {% endif %}
+    {% empty %}
+      <p class="empty">Aucun test oral n’est disponible.</p>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

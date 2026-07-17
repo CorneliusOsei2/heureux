@@ -581,7 +581,7 @@ class AuthenticationTests(TestCase):
         self.assertFalse(Card.objects.filter(user__isnull=True).exists())
 
     def test_legacy_claim_merges_preexisting_user_rows(self):
-        part = factories.make_part("orale")
+        part = factories.make_part("eo")
         task = factories.make_task(part, "tache-3")
         theme = factories.make_theme(task=task)
         family = factories.make_family()
@@ -672,7 +672,7 @@ class AuthenticationTests(TestCase):
 )
 class UserProgressIsolationTests(TestCase):
     def setUp(self):
-        self.part = factories.make_part("orale")
+        self.part = factories.make_part("eo")
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
         self.response = factories.make_response(theme=self.theme)

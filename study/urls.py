@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import RedirectView
 
 from . import views
 
@@ -22,41 +21,83 @@ urlpatterns = [
         name="comprehension_hub",
     ),
     path(
-        "comprehension-ecrite/",
+        "comprehension/ce/",
         views.comprehension_overview,
         name="comprehension_overview",
     ),
     path(
-        "comprehension-ecrite/groupe/<int:group_number>/",
+        "comprehension/ce/groupe/<int:group_number>/",
         views.comprehension_group_detail,
         name="comprehension_group",
     ),
     path(
-        "comprehension-ecrite/<slug:test_slug>/",
+        "comprehension/ce/<slug:test_slug>/",
         views.comprehension_test_detail,
+        {"mode": "ecrite"},
         name="comprehension_test",
     ),
     path(
-        "comprehension-ecrite/<slug:test_slug>/question/<int:number>/",
+        "comprehension/ce/<slug:test_slug>/question/<int:number>/",
         views.comprehension_question_study,
+        {"mode": "ecrite"},
         name="comprehension_question_study",
     ),
     path(
-        "comprehension-ecrite/<slug:test_slug>/commencer/",
+        "comprehension/ce/<slug:test_slug>/commencer/",
         views.comprehension_start,
+        {"mode": "ecrite"},
         name="comprehension_start",
     ),
     path(
-        "comprehension-ecrite/<slug:test_slug>/"
+        "comprehension/ce/<slug:test_slug>/"
         "tentative/<int:attempt_id>/question/<int:number>/",
         views.comprehension_question,
+        {"mode": "ecrite"},
         name="comprehension_question",
     ),
     path(
-        "comprehension-ecrite/<slug:test_slug>/"
+        "comprehension/ce/<slug:test_slug>/"
         "tentative/<int:attempt_id>/resultats/",
         views.comprehension_results,
+        {"mode": "ecrite"},
         name="comprehension_results",
+    ),
+    path(
+        "comprehension/co/",
+        views.comprehension_oral_overview,
+        name="comprehension_oral_overview",
+    ),
+    path(
+        "comprehension/co/<slug:test_slug>/",
+        views.comprehension_test_detail,
+        {"mode": "orale"},
+        name="comprehension_oral_test",
+    ),
+    path(
+        "comprehension/co/<slug:test_slug>/question/<int:number>/",
+        views.comprehension_question_study,
+        {"mode": "orale"},
+        name="comprehension_oral_question_study",
+    ),
+    path(
+        "comprehension/co/<slug:test_slug>/commencer/",
+        views.comprehension_start,
+        {"mode": "orale"},
+        name="comprehension_oral_start",
+    ),
+    path(
+        "comprehension/co/<slug:test_slug>/"
+        "tentative/<int:attempt_id>/question/<int:number>/",
+        views.comprehension_question,
+        {"mode": "orale"},
+        name="comprehension_oral_question",
+    ),
+    path(
+        "comprehension/co/<slug:test_slug>/"
+        "tentative/<int:attempt_id>/resultats/",
+        views.comprehension_results,
+        {"mode": "orale"},
+        name="comprehension_oral_results",
     ),
     path("reviser/", views.redirect_home, name="review_overview"),
     path(
@@ -192,13 +233,5 @@ urlpatterns = [
         "settings/account/delete/",
         views.delete_account,
         name="delete_account",
-    ),
-    path(
-        "epreuve/<path:remainder>",
-        RedirectView.as_view(
-            url="/expression/%(remainder)s",
-            permanent=True,
-            query_string=True,
-        ),
     ),
 ]

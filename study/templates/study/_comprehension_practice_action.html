@@ -5,7 +5,7 @@
       <progress value="{{ test.active_answered_count }}" max="{{ test.attempt_question_count }}" aria-label="{{ test.active_answered_count }} questions répondues sur {{ test.attempt_question_count }}"></progress>
     </div>
   {% endif %}
-  <form method="post" action="{% url 'study:comprehension_start' test.slug %}">
+  <form method="post" action="{% url test.start_route test.slug %}">
     {% csrf_token %}
     <input type="hidden" name="action" value="continue">
     <button class="btn btn--primary btn--block" type="submit">

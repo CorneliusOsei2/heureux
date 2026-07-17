@@ -15,7 +15,7 @@ class AnnotationTests(TestCase):
         self.user = factories.make_user("notes-owner")
         self.other = factories.make_user("notes-other")
         self.client.force_login(self.user)
-        self.part = factories.make_part(slug="orale")
+        self.part = factories.make_part(slug="eo")
         self.task = factories.make_task(part=self.part, slug="tache-3")
         self.source_path = reverse(
             "study:task_detail",
@@ -657,7 +657,7 @@ class AnnotationTests(TestCase):
             body="Le mot toujours est trop fort.",
         )
         other_task = factories.make_task(
-            part=factories.make_part(slug="ecrite"),
+            part=factories.make_part(slug="ee"),
             slug="tache-1",
         )
         other_note = Annotation.objects.create(

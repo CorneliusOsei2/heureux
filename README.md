@@ -21,6 +21,9 @@ Built with Django. Clean, fast, keyboard-driven UI with light/dark themes.
 - **Compréhension écrite → Test N** — persisted multiple-choice tests present
   one French document at a time, save each answer immediately, and unlock the
   English translation plus detailed answer rationales after submission.
+- **Compréhension orale → Test N** — dialogue-based tests use the same
+  resumable correction flow while preserving the question numbers from the
+  original source.
   Unfinished tests resume at the next unanswered question; completed attempts
   keep their score, full correction, history, and retake path.
 - **Vocabulaire** — one library groups reusable expression turns, the 50-entry

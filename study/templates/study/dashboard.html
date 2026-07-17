@@ -75,9 +75,9 @@
           {% endif %}
         </div>
         {% if comprehension.active_attempt %}
-          <a class="btn btn--primary" href="{% url 'study:comprehension_question' comprehension.next_test.slug comprehension.active_attempt.id comprehension.active_attempt.current_question %}">Continuer</a>
+          <a class="btn btn--primary" href="{{ comprehension.active_attempt_url }}">Continuer</a>
         {% elif comprehension.next_test %}
-          <a class="btn btn--primary" href="{% url 'study:comprehension_test' comprehension.next_test.slug %}">Ouvrir le test</a>
+          <a class="btn btn--primary" href="{{ comprehension.next_test_url }}">Ouvrir le test</a>
         {% else %}
           <a class="btn" href="{% url 'study:comprehension_hub' %}">Voir le parcours</a>
         {% endif %}

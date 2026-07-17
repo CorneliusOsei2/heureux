@@ -49,12 +49,13 @@ class ComprehensionChoiceInline(admin.TabularInline):
 class ComprehensionTestAdmin(admin.ModelAdmin):
     list_display = (
         "title",
+        "mode",
         "number",
         "is_published",
         "is_active",
         "expected_question_count",
     )
-    list_filter = ("is_published", "is_active")
+    list_filter = ("mode", "is_published", "is_active")
     inlines = [ComprehensionQuestionInline]
 
 
