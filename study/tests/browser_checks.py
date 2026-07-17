@@ -16,6 +16,7 @@ from study.models import (
     CardState,
     CardType,
     PhraseCategory,
+    PersonalResponse,
     Rating,
     ReviewLog,
     ReviewSession,
@@ -329,6 +330,72 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             ).exists()
         )
 
+    def test_personalized_response_keeps_unchanged_text_highlighted(self):
+        response = self.first.response
+        detail_url = reverse("study:response_detail", args=[response.id])
+        self.page.goto(self.live_server_url + detail_url)
+        target = self.page.locator(".arg__part p").first
+        target.wait_for()
+        quote = target.text_content()
+        target.evaluate(
+            """
+            element => {
+              const range = document.createRange();
+              range.selectNodeContents(element);
+              const selection = window.getSelection();
+              selection.removeAllRanges();
+              selection.addRange(range);
+              document.dispatchEvent(new Event("selectionchange"));
+            }
+            """
+        )
+        highlight_button = self.page.locator("[data-highlight-selection]")
+        highlight_button.wait_for(state="visible")
+        with self.page.expect_response(
+            lambda browser_response: (
+                "/annotations/create/" in browser_response.url
+            )
+        ):
+            highlight_button.click()
+        target.locator("mark.user-highlight").wait_for()
+        saved = Annotation.objects.get(
+            user=self.user,
+            kind=AnnotationKind.HIGHLIGHT,
+        )
+
+        argument = response.arguments.get()
+        PersonalResponse.objects.create(
+            user=self.user,
+            response=response,
+            reformulation=(
+                "Une nouvelle reformulation beaucoup plus longue déplace "
+                "le reste de la réponse."
+            ),
+            position="Ma position personnelle ajoute encore du texte.",
+            position_claire="Une introduction personnelle détaillée.",
+            arguments=[
+                {
+                    "order": argument.order,
+                    "idea": "Mon idée personnalisée.",
+                    "developpement": "Un développement ajouté avant l'exemple.",
+                    "exemple": argument.exemple,
+                    "consequence": "Une conséquence personnalisée.",
+                }
+            ],
+            nuance="Ma nuance personnelle.",
+            conclusion="Ma conclusion personnelle.",
+        )
+
+        self.page.goto(self.live_server_url + detail_url + "?saved=1")
+        restored = self.page.locator(
+            "mark.user-highlight",
+            has_text=quote,
+        )
+        restored.wait_for()
+        self.assertEqual(restored.text_content(), quote)
+        saved.refresh_from_db()
+        self.assertEqual(saved.quote, quote)
+
     def test_mobile_review_recovers_a_rotated_presentation_token(self):
         self.page.goto(
             self.live_server_url
@@ -626,7 +693,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "heading",
             name="Les 5 tests du groupe 1",
         ).wait_for()
-        self.assertEqual(self.page.locator(".ce-test-card").count(), 5)
+        self.assertEqual(self.page.locator(".ce-group-test-row").count(), 5)
         self.assert_no_horizontal_overflow()
 
         self.page.get_by_role("link", name="Découvrir le test").click()
@@ -649,7 +716,6 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             0,
         )
         self.assert_no_horizontal_overflow()
-        self.page.locator(".ce-choice", has_text="Choix B français 1").click()
         self.page.locator(".ce-choice", has_text="Choix B français 1").click()
         self.page.get_by_role("heading", name="La bonne réponse était A.").wait_for()
         self.page.get_by_text(

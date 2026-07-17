@@ -20,11 +20,17 @@
 
 <div class="detail-grid">
   <div class="answer-columns">
-    {% if response_content.position or response_content.position_claire %}
+    {% if response_content.position %}
       <section class="card section-card">
         <div class="spine-label">Position</div>
-        {% if response_content.position %}<p class="spine-text">{{ response_content.position }}</p>{% endif %}
-        {% if response_content.position_claire %}<p class="position-claire"><b>{{ response_content.position_claire }}</b></p>{% endif %}
+        <p class="spine-text">{{ response_content.position }}</p>
+      </section>
+    {% endif %}
+
+    {% if response_content.position_claire %}
+      <section class="card section-card">
+        <div class="spine-label">Introduction</div>
+        <p class="spine-text">{{ response_content.position_claire }}</p>
       </section>
     {% endif %}
 

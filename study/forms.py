@@ -281,7 +281,7 @@ class PersonalResponseForm(forms.Form):
         widget=forms.Textarea(attrs={"rows": 3}),
     )
     position_claire = forms.CharField(
-        label="Position claire",
+        label="Introduction",
         required=False,
         max_length=5000,
         widget=forms.Textarea(attrs={"rows": 2}),

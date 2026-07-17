@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from django.test import TestCase
 from django.urls import reverse
 
@@ -332,6 +334,9 @@ class AnnotationTests(TestCase):
                 **self.selection,
                 "kind": AnnotationKind.HIGHLIGHT,
                 "overlap_ids": str(annotation.id),
+                "overlap_revisions": json.dumps(
+                    {str(annotation.id): annotation.updated_at.isoformat()}
+                ),
             },
         )
 
@@ -386,6 +391,12 @@ class AnnotationTests(TestCase):
                 **self.selection,
                 "kind": AnnotationKind.HIGHLIGHT,
                 "overlap_ids": f"{first.id},{second.id}",
+                "overlap_revisions": json.dumps(
+                    {
+                        str(first.id): first.updated_at.isoformat(),
+                        str(second.id): second.updated_at.isoformat(),
+                    }
+                ),
             },
         )
 
@@ -422,6 +433,9 @@ class AnnotationTests(TestCase):
                 **self.selection,
                 "kind": AnnotationKind.HIGHLIGHT,
                 "overlap_ids": str(resolved.id),
+                "overlap_revisions": json.dumps(
+                    {str(resolved.id): resolved.updated_at.isoformat()}
+                ),
             },
         )
 
@@ -461,6 +475,9 @@ class AnnotationTests(TestCase):
                 **self.selection,
                 "kind": AnnotationKind.HIGHLIGHT,
                 "overlap_ids": str(resolved.id),
+                "overlap_revisions": json.dumps(
+                    {str(resolved.id): resolved.updated_at.isoformat()}
+                ),
             },
         )
 
@@ -471,6 +488,74 @@ class AnnotationTests(TestCase):
         self.assertEqual(resolved.start_offset, 100)
         self.assertEqual(resolved.end_offset, 115)
         self.assertEqual(stale_collision.quote, "Autre passage déplacé")
+
+    def test_stale_expansion_cannot_overwrite_a_concurrent_expansion(self):
+        highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="nuancer cette",
+            source_path=self.source_path,
+            start_offset=32,
+            end_offset=45,
+        )
+        saved = self.client.get(
+            reverse("study:annotations_for_source"),
+            {"source_path": self.source_path},
+        ).json()["highlights"][0]
+        revisions = json.dumps({str(highlight.id): saved["revision"]})
+
+        first = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "quote": "Il faut nuancer cette",
+                "end_offset": "45",
+                "overlap_ids": str(highlight.id),
+                "overlap_revisions": revisions,
+            },
+        )
+        stale = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "quote": "nuancer cette affirmation.",
+                "start_offset": "32",
+                "overlap_ids": str(highlight.id),
+                "overlap_revisions": revisions,
+            },
+        )
+
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(stale.status_code, 409)
+        self.assertIn("autre onglet", stale.json()["error"])
+        highlight.refresh_from_db()
+        self.assertEqual(highlight.start_offset, 24)
+        self.assertEqual(highlight.end_offset, 45)
+
+    def test_response_query_variants_share_saved_highlights(self):
+        detail_path = reverse(
+            "study:response_detail",
+            args=[self.task.pk],
+        )
+        highlight = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Texte inchangé",
+            source_path=detail_path + "?prompt=7",
+            start_offset=100,
+            end_offset=115,
+        )
+
+        restored = self.client.get(
+            reverse("study:annotations_for_source"),
+            {"source_path": detail_path + "?saved=1"},
+        ).json()["highlights"]
+
+        self.assertEqual([item["id"] for item in restored], [highlight.id])
 
     def test_annotation_validation_rejects_empty_or_external_selection(self):
         empty = self.client.post(

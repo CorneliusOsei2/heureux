@@ -1933,17 +1933,44 @@ def _annotation_overlap_ids(value):
     return list(dict.fromkeys(ids))
 
 
+def _annotation_overlap_revisions(value):
+    if value is None:
+        return None
+    revisions = json.loads(value)
+    if not isinstance(revisions, dict) or len(revisions) > 100:
+        raise ValueError("Invalid highlight revisions.")
+    parsed = {}
+    for raw_id, revision in revisions.items():
+        pk = int(raw_id)
+        if pk <= 0 or not isinstance(revision, str) or len(revision) > 64:
+            raise ValueError("Invalid highlight revision.")
+        parsed[pk] = revision
+    return parsed
+
+
+def _annotation_source_scope(source_path):
+    base_path = source_path.split("?", 1)[0]
+    if re.fullmatch(r"/response/\d+/", base_path):
+        return (
+            base_path,
+            Q(source_path=base_path)
+            | Q(source_path__startswith=f"{base_path}?"),
+        )
+    return source_path, Q(source_path=source_path)
+
+
 @require_GET
 def annotations_for_source(request):
     try:
         source_path = _safe_source_path(request.GET.get("source_path"))
     except ValueError:
         return HttpResponseBadRequest("Invalid source path.")
+    _, source_filter = _annotation_source_scope(source_path)
     highlights = list(
         Annotation.objects.filter(
+            source_filter,
             user=request.user,
             kind=AnnotationKind.HIGHLIGHT,
-            source_path=source_path,
         ).values(
             "id",
             "quote",
@@ -1952,9 +1979,11 @@ def annotations_for_source(request):
             "end_offset",
             "prefix",
             "suffix",
+            "updated_at",
         )
     )
     for highlight in highlights:
+        highlight["revision"] = highlight.pop("updated_at").isoformat()
         highlight["delete_url"] = reverse(
             "study:annotation_delete",
             args=[highlight["id"]],
@@ -1987,14 +2016,23 @@ def annotation_create(request):
     try:
         task = _annotation_task(request.POST.get("task_id"))
         source_path = _safe_source_path(request.POST.get("source_path"))
+        source_path, source_filter = _annotation_source_scope(source_path)
         source_key = _annotation_source_key(request.POST.get("source_key"))
         overlap_ids = _annotation_overlap_ids(request.POST.get("overlap_ids"))
+        overlap_revisions = _annotation_overlap_revisions(
+            request.POST.get("overlap_revisions")
+        )
         start_offset = int(request.POST.get("start_offset", ""))
         end_offset = int(request.POST.get("end_offset", ""))
     except (TypeError, ValueError):
         return HttpResponseBadRequest("Invalid annotation data.")
     if start_offset < 0 or end_offset <= start_offset:
         return HttpResponseBadRequest("Invalid annotation offsets.")
+    if overlap_ids and (
+        overlap_revisions is None
+        or set(overlap_ids) != set(overlap_revisions)
+    ):
+        return HttpResponseBadRequest("Invalid highlight revisions.")
 
     values = {
         "task": task,
@@ -2009,9 +2047,9 @@ def annotation_create(request):
         if kind == AnnotationKind.HIGHLIGHT:
             with transaction.atomic():
                 candidates = Annotation.objects.select_for_update().filter(
+                    source_filter,
                     user=request.user,
                     kind=kind,
-                    source_path=source_path,
                     source_key=source_key,
                 )
                 if overlap_ids is None:
@@ -2029,6 +2067,23 @@ def annotation_create(request):
                             "-id",
                         )
                     )
+                    if overlap_revisions is not None and (
+                        len(overlapping) != len(overlap_ids)
+                        or any(
+                            item.updated_at.isoformat()
+                            != overlap_revisions[item.id]
+                            for item in overlapping
+                        )
+                    ):
+                        return JsonResponse(
+                            {
+                                "error": (
+                                    "Ce surlignage a changé dans un autre onglet. "
+                                    "Réessayez avec la version actualisée."
+                                )
+                            },
+                            status=409,
+                        )
                     exact_retry = (
                         candidates.filter(
                             start_offset=start_offset,
@@ -2139,6 +2194,7 @@ def annotation_create(request):
             "id": annotation.id,
             "created": created,
             "removed_ids": removed_ids,
+            "revision": annotation.updated_at.isoformat(),
             "delete_url": reverse(
                 "study:annotation_delete",
                 args=[annotation.id],

@@ -97,6 +97,7 @@
       suffix: pageText.slice(end, end + 160),
       fullyHighlighted: coverage.fullyHighlighted,
       highlightIds: coverage.ids,
+      highlightRevisions: coverage.revisions,
       highlight: {
         quote: pageText.slice(highlightStart, highlightEnd),
         start: highlightStart,
@@ -160,7 +161,9 @@
       throw new Error("La réponse du serveur est invalide.");
     }).then(function (data) {
       if (!response.ok) {
-        throw new Error(data.error || "L'enregistrement a échoué.");
+        var error = new Error(data.error || "L'enregistrement a échoué.");
+        error.status = response.status;
+        throw error;
       }
       return data;
     });
@@ -181,6 +184,10 @@
     values.set("body", body || "");
     if (kind === "highlight") {
       values.set("overlap_ids", details.highlightIds.join(","));
+      values.set(
+        "overlap_revisions",
+        JSON.stringify(details.highlightRevisions)
+      );
     }
     var taskId = document.body.dataset.annotationTaskId;
     if (taskId) values.set("task_id", taskId);
@@ -278,6 +285,7 @@
       if (!offsets || offsets.end <= start || offsets.start >= end) return;
       intervals.push({
         id: item.id,
+        revision: item.revision,
         start: Math.max(start, offsets.start),
         end: Math.min(end, offsets.end),
         originalStart: offsets.start,
@@ -291,13 +299,18 @@
     var coveredUntil = start;
     var hasGap = false;
     var ids = [];
+    var revisions = {};
     intervals.forEach(function (interval) {
       if (interval.start > coveredUntil) hasGap = true;
       coveredUntil = Math.max(coveredUntil, interval.end);
-      if (ids.indexOf(interval.id) === -1) ids.push(interval.id);
+      if (ids.indexOf(interval.id) === -1) {
+        ids.push(interval.id);
+        revisions[String(interval.id)] = interval.revision;
+      }
     });
     return {
       ids: ids,
+      revisions: revisions,
       fullyHighlighted: intervals.length > 0 && !hasGap && coveredUntil >= end,
       start: intervals.reduce(function (minimum, interval) {
         return Math.min(minimum, interval.originalStart);
@@ -490,6 +503,7 @@
           prefix: selected.prefix,
           suffix: selected.suffix,
           source_key: details.sourceKey || "",
+          revision: data.revision,
           delete_url: data.delete_url
         };
         var removedIds = (data.removed_ids || []).map(String);
@@ -512,6 +526,7 @@
       .catch(function (error) {
         showToast(error.message);
         highlightButton.disabled = false;
+        if (error.status === 409) fetchHighlights();
       });
   }
 

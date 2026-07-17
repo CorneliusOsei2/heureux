@@ -58,6 +58,41 @@ class PersonalResponseTests(TestCase):
         self.assertContains(page, "Sujet non modifiable")
         self.assertNotContains(page, 'name="prompt"')
 
+    def test_introduction_and_position_are_labeled_independently(self):
+        editor = self.client.get(self.edit_url)
+
+        self.assertEqual(editor.context["form"].fields["position"].label, "Position")
+        self.assertEqual(
+            editor.context["form"].fields["position_claire"].label,
+            "Introduction",
+        )
+
+        self.client.post(self.edit_url, self.payload)
+        detail = self.client.get(
+            reverse("study:response_detail", args=[self.response.pk])
+        )
+
+        self.assertContains(
+            detail,
+            """
+            <section class="card section-card">
+              <div class="spine-label">Position</div>
+              <p class="spine-text">Ma position personnelle.</p>
+            </section>
+            """,
+            html=True,
+        )
+        self.assertContains(
+            detail,
+            """
+            <section class="card section-card">
+              <div class="spine-label">Introduction</div>
+              <p class="spine-text">Je suis clairement favorable.</p>
+            </section>
+            """,
+            html=True,
+        )
+
     def test_personal_edit_keeps_shared_prompt_and_response_unchanged(self):
         original_prompt = self.response.prompt
         original_position = self.response.position
