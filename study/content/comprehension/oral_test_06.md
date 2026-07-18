@@ -883,7 +883,7 @@ Bonjour Yassine, tu manges au lycee aujourd'hui?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the question) | (Response to the question) |
+| **Prompt** | Répondez à la question. | (Response to the question) |
 | A | Ah, oui, j'adore les légumes | Oh yes, I love vegetables |
 | B | Oui, je peux diner avec toi | Yes, I can have dinner with you |
 | C | Oui, je préfère manger chez moi | Yes, I prefer eating at home |
@@ -919,7 +919,7 @@ vacation?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the question) | (Response to the question) |
+| **Prompt** | Répondez à la question. | (Response to the question) |
 | **A** | **J'ai mon vol mardi prochain** | **I have my flight next Tuesday** |
 | B | Je reste cinq jours sur place | I'm staying five days there |
 | C | Je vais visiter l'Italie | I'm going to visit Italy |
@@ -955,7 +955,7 @@ with me?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the invitation) | (Response to the invitation) |
+| **Prompt** | Répondez à l'invitation. | (Response to the invitation) |
 | A | Attends, je prends mes lunettes de soleil | Wait, I'll get my sunglasses |
 | **B** | **Bonne idée, on pourra aller en forêt** | **Good idea, we can go to the forest** |
 | C | C'est d'accord, j'arrive tout de suite | Okay, I'm coming right away |
@@ -990,7 +990,7 @@ offrir?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the question) | (Response to the question) |
+| **Prompt** | Répondez à la question. | (Response to the question) |
 | A | Ce jouet est beaucoup trop cher | This toy is way too expensive |
 | B | C'est un très joli prénom | It's a very nice name |
 | **C** | **Pose la question à ses parents** | **Ask his parents** |
@@ -1026,7 +1026,7 @@ you agree?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the invitation) | (Response to the invitation) |
+| **Prompt** | Répondez à l'invitation. | (Response to the invitation) |
 | **A** | **Désolé, je mange avec mes collègues** | **Sorry, I'm eating with my colleagues** |
 | B | Désolé, je ne peux pas t'aider | Sorry, I can't help you |
 | C | Désolé, je préfère le menu à 18 euros | Sorry, I prefer the 18-euro menu |
@@ -1061,7 +1061,7 @@ problème?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the doctor) | (Response to the doctor) |
+| **Prompt** | Répondez au médecin. | (Response to the doctor) |
 | A | Ah, il fait très chaud | Oh, it's very hot |
 | **B** | **J'ai mal au ventre** | **I have a stomachache** |
 | C | Je cherche mes clés | I'm looking for my keys |
@@ -1095,7 +1095,7 @@ Excusez-moi, je suis perdu. Je veux aller à la mairie.
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Response to the request) | (Response to the request) |
+| **Prompt** | Répondez à la demande. | (Response to the request) |
 | A | Oui, allez-y. C'est ouvert maintenant | Yes, go ahead. It's open now |
 | B | Oui, attendez. Elle va bientôt arriver | Yes, wait. She'll arrive soon |
 | C | Oui, cherchez dans la bibliothèque | Yes, look in the library |

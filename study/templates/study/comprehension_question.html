@@ -30,23 +30,19 @@
     </div>
   </header>
 
-  <details class="ce-question-map">
-    <summary>
+  <section class="ce-question-map" aria-label="Vue d’ensemble des questions">
+    <div class="ce-question-map__head">
       <span>Vue d’ensemble</span>
       <span>{{ answered_count }}/{{ total_questions }}</span>
-    </summary>
+    </div>
     <div class="ce-question-map__grid">
       {% for item in navigator %}
-        {% if item.is_available %}
-          <a href="{% url test.question_route test.slug attempt.pk item.number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}" class="{% if item.is_current %}is-current{% elif item.is_answered %}is-answered{% endif %}" aria-label="Question {{ item.number }}{% if item.is_answered %}, répondue{% endif %}"{% if item.is_current %} aria-current="step"{% endif %}>
-            {{ item.number }}
-          </a>
-        {% else %}
-          <span class="is-locked" aria-label="Question {{ item.number }}, verrouillée">{{ item.number }}</span>
-        {% endif %}
+        <a href="{% url test.question_route test.slug attempt.pk item.number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}" class="{% if item.is_current %}is-current{% elif item.is_answered %}is-answered{% endif %}" aria-label="Question {{ item.number }}{% if item.is_answered %}, répondue{% endif %}"{% if item.is_current %} aria-current="step"{% endif %}>
+          {{ item.number }}
+        </a>
       {% endfor %}
     </div>
-  </details>
+  </section>
 
   <div class="ce-question-layout">
     <article class="ce-passage-card">
@@ -63,6 +59,9 @@
         </div>
       </header>
       <div class="ce-passage-card__text">{{ question.passage_fr }}</div>
+      {% if test.mode == "orale" %}
+        {% include "study/_comprehension_audio_reader.html" with question=question embedded=True only %}
+      {% endif %}
     </article>
 
     <section class="ce-answer-card" aria-labelledby="ce-question-prompt">
@@ -115,20 +114,9 @@
         <span class="ce-correction__mark" aria-hidden="true">{% if answer.is_correct %}✓{% else %}×{% endif %}</span>
         <div>
           <p class="eyebrow">{% if answer.is_correct %}Bonne réponse{% else %}Réponse à revoir{% endif %}</p>
-          <h2 id="ce-correction-title">
-            {% if answer.is_correct %}
-              Bien joué, vous avez repéré l’information essentielle.
-            {% else %}
-              La bonne réponse était {{ correct_choice.letter }}.
-            {% endif %}
-          </h2>
+          <h2 id="ce-correction-title">{{ correct_choice.letter }} · {{ correct_choice.text_fr }}</h2>
         </div>
       </header>
-
-      <div class="ce-correction__answer">
-        <span>{{ correct_choice.letter }}</span>
-        <strong>{{ correct_choice.text_fr }}</strong>
-      </div>
 
       {% if question.correct_explanation or not answer.is_correct and selected_choice.rationale %}
         <details class="ce-rationales ce-rationales--explanation" open>

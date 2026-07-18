@@ -1,0 +1,64 @@
+<div class="co-audio-reader{% if embedded %} co-audio-reader--embedded{% endif %}{% if compact %} co-audio-reader--compact{% endif %}"
+     data-co-audio-reader
+     aria-label="Lecteur audio français">
+  <div class="co-audio-reader__meta">
+    <span class="co-audio-reader__mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M5 10v4h3l4 3.5v-11L8 10H5z"></path>
+        <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"></path>
+      </svg>
+    </span>
+    <span>
+      <small data-co-audio-status aria-live="polite">Préparation de la voix…</small>
+    </span>
+  </div>
+
+  <div class="co-audio-reader__controls">
+    <button class="co-audio-reader__button"
+            type="button"
+            data-co-audio-play
+            data-co-audio-target="dialogue"
+            data-co-audio-name="dialogue"
+            aria-label="Écouter le dialogue en français"
+            aria-pressed="false"
+            disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m9 7 8 5-8 5z"></path>
+      </svg>
+      <span data-co-audio-button-label>Dialogue</span>
+    </button>
+    <button class="co-audio-reader__button"
+            type="button"
+            data-co-audio-play
+            data-co-audio-target="question"
+            data-co-audio-name="question"
+            aria-label="Écouter la question en français"
+            aria-pressed="false"
+            disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m9 7 8 5-8 5z"></path>
+      </svg>
+      <span data-co-audio-button-label>Question</span>
+    </button>
+    <label class="co-audio-reader__rate">
+      <span class="sr-only">Vitesse de lecture</span>
+      <select data-co-audio-rate aria-label="Vitesse de lecture" disabled>
+        <option value="0.75">0,75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1,25×</option>
+      </select>
+    </label>
+    <button class="co-audio-reader__stop"
+            type="button"
+            data-co-audio-stop
+            aria-label="Arrêter la lecture"
+            disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="7" y="7" width="10" height="10" rx="1"></rect>
+      </svg>
+    </button>
+  </div>
+
+  <span hidden data-co-audio-text="dialogue">{{ question.passage_fr }}</span>
+  <span hidden data-co-audio-text="question">{{ question.prompt_fr }}</span>
+</div>

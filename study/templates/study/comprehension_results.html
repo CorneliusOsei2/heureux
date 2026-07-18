@@ -107,6 +107,9 @@
         </summary>
         <div class="ce-review-item__body">
           <div class="ce-review-item__passage">{{ item.question.passage_fr }}</div>
+          {% if test.mode == "orale" %}
+            {% include "study/_comprehension_audio_reader.html" with question=item.question compact=True only %}
+          {% endif %}
           <div class="ce-review-item__choices">
             {% for choice in item.choices %}
               <div class="{% if choice.is_correct %}is-correct{% elif choice.letter == item.selected_letter %}is-wrong{% endif %}">

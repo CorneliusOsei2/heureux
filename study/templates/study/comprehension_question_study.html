@@ -29,6 +29,9 @@
       <section class="card section-card">
         <div class="spine-label">{{ test.source_label }}</div>
         <p class="spine-text ce-study-passage">{{ question.passage_fr }}</p>
+        {% if test.mode == "orale" %}
+          {% include "study/_comprehension_audio_reader.html" with question=question only %}
+        {% endif %}
         {% if question.prompt_en or question.passage_en %}
           <details class="ce-study-translation">
             <summary>Voir la question et le {{ test.source_label|lower }} en anglais</summary>

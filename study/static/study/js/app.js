@@ -254,6 +254,353 @@
     if (isIOS()) { installBtn.hidden = false; }
   })();
 
+  /* ---------- CO French audio ---------- */
+  (function () {
+    var readers = Array.from(
+      document.querySelectorAll("[data-co-audio-reader]")
+    );
+    if (!readers.length) return;
+
+    var synthesis = window.speechSynthesis;
+    var Utterance = window.SpeechSynthesisUtterance;
+    var frenchVoices = [];
+    var feminineVoiceNames = [
+      "amelie",
+      "audrey",
+      "aurelie",
+      "caroline",
+      "celine",
+      "charlotte",
+      "chloe",
+      "claire",
+      "denise",
+      "elise",
+      "eloise",
+      "francoise",
+      "hortense",
+      "julie",
+      "lea",
+      "manon",
+      "marie",
+      "sandrine",
+      "sylvie",
+      "valerie",
+      "virginie",
+      "vivienne"
+    ];
+    var active = null;
+    var playbackId = 0;
+
+    function setStatus(reader, message) {
+      var status = reader.querySelector("[data-co-audio-status]");
+      if (status) status.textContent = message;
+    }
+
+    function setButtonLabel(button, label) {
+      var node = button.querySelector("[data-co-audio-button-label]");
+      if (node) node.textContent = label;
+    }
+
+    function resetReader(reader, message) {
+      reader.classList.remove("is-playing", "is-paused");
+      reader.querySelectorAll("[data-co-audio-play]").forEach(function (button) {
+        setButtonLabel(button, button.dataset.coAudioName === "question"
+          ? "Question"
+          : "Dialogue");
+        button.classList.remove("is-active");
+        button.setAttribute("aria-pressed", "false");
+        button.setAttribute(
+          "aria-label",
+          "Écouter " + (button.dataset.coAudioName === "question"
+            ? "la question"
+            : "le dialogue") + " en français"
+        );
+      });
+      var stop = reader.querySelector("[data-co-audio-stop]");
+      if (stop) stop.disabled = true;
+      setStatus(reader, message || readyVoiceStatus());
+    }
+
+    function cancelPlayback(message) {
+      var previous = active;
+      active = null;
+      playbackId += 1;
+      synthesis.cancel();
+      synthesis.resume();
+      if (previous) resetReader(previous.reader, message);
+    }
+
+    function refreshVoices() {
+      frenchVoices = synthesis.getVoices().filter(function (voice) {
+        return /^fr(?:[-_]|$)/i.test(voice.lang || "");
+      });
+      readers.forEach(function (reader) {
+        if (!active || active.reader !== reader) {
+          setStatus(reader, readyVoiceStatus());
+        }
+      });
+    }
+
+    function normalizedVoiceName(voice) {
+      return (voice.name || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
+
+    function isFeminineVoice(voice) {
+      var name = normalizedVoiceName(voice);
+      return feminineVoiceNames.some(function (candidate) {
+        return name.indexOf(candidate) !== -1;
+      });
+    }
+
+    function preferredVoice() {
+      return frenchVoices.slice().sort(function (first, second) {
+        function score(voice) {
+          var language = (voice.lang || "").replace("_", "-").toLowerCase();
+          var value = language === "fr-fr" ? 100 : 50;
+          var name = normalizedVoiceName(voice);
+          if (isFeminineVoice(voice)) value += 1000;
+          else if (name.indexOf("google") !== -1) value += 500;
+          if (voice.localService) value += 10;
+          if (voice.default) value += 1;
+          return value;
+        }
+        return score(second) - score(first);
+      })[0] || null;
+    }
+
+    function readyVoiceStatus() {
+      var voice = preferredVoice();
+      if (!voice) return "Prêt à écouter · voix française";
+      return (isFeminineVoice(voice) ? "Voix féminine · " : "Voix française · ")
+        + voice.name;
+    }
+
+    function splitLongSegment(segment) {
+      var chunks = [];
+      var remainder = segment.trim();
+      while (remainder.length > 220) {
+        var splitAt = remainder.lastIndexOf(", ", 220);
+        if (splitAt < 120) splitAt = remainder.lastIndexOf("; ", 220);
+        if (splitAt < 120) splitAt = remainder.lastIndexOf(" ", 220);
+        if (splitAt < 1) splitAt = 220;
+        chunks.push(remainder.slice(0, splitAt + 1).trim());
+        remainder = remainder.slice(splitAt + 1).trim();
+      }
+      if (remainder) chunks.push(remainder);
+      return chunks;
+    }
+
+    function speechChunks(text) {
+      var normalized = text
+        .replace(/\u00a0/g, " ")
+        .replace(/^\s*--\s*/, "")
+        .replace(/\s+--\s+/g, ". ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (!normalized) return [];
+
+      var sentences;
+      if (typeof Intl !== "undefined" && Intl.Segmenter) {
+        var segmenter = new Intl.Segmenter("fr", { granularity: "sentence" });
+        sentences = Array.from(segmenter.segment(normalized)).map(
+          function (part) { return part.segment.trim(); }
+        );
+      } else {
+        sentences = normalized.match(/[^.!?…]+(?:[.!?…]+|$)/g) || [normalized];
+      }
+
+      return sentences.reduce(function (chunks, sentence) {
+        return chunks.concat(splitLongSegment(sentence));
+      }, []).filter(Boolean);
+    }
+
+    function finishPlayback(message) {
+      if (!active) return;
+      var reader = active.reader;
+      active = null;
+      resetReader(reader, message || "Lecture terminée · cliquez pour réécouter");
+    }
+
+    function scheduleSpeech(id) {
+      window.setTimeout(function () {
+        if (!active || active.id !== id || active.state !== "playing") return;
+        synthesis.resume();
+        speakNext(id);
+      }, 120);
+    }
+
+    function speakNext(id) {
+      if (!active || active.id !== id || active.state !== "playing") return;
+      if (active.index >= active.chunks.length) {
+        finishPlayback();
+        return;
+      }
+
+      var utterance = new Utterance(active.chunks[active.index]);
+      var utteranceId = active.utteranceId + 1;
+      active.utteranceId = utteranceId;
+      var voice = preferredVoice();
+      utterance.lang = "fr-FR";
+      utterance.rate = active.rate;
+      utterance.pitch = 1;
+      if (voice) utterance.voice = voice;
+
+      utterance.onend = function () {
+        if (
+          !active ||
+          active.id !== id ||
+          active.utteranceId !== utteranceId ||
+          active.state !== "playing"
+        ) return;
+        active.index += 1;
+        speakNext(id);
+      };
+      utterance.onerror = function () {
+        if (
+          !active ||
+          active.id !== id ||
+          active.utteranceId !== utteranceId ||
+          active.state !== "playing"
+        ) return;
+        finishPlayback("Lecture indisponible. Vérifiez la voix de l’appareil.");
+      };
+      active.utterance = utterance;
+      synthesis.speak(utterance);
+    }
+
+    function startPlayback(reader, button) {
+      var target = button.dataset.coAudioTarget;
+      var textNode = reader.querySelector(
+        '[data-co-audio-text="' + target + '"]'
+      );
+      var chunks = speechChunks(textNode ? textNode.textContent : "");
+      if (!chunks.length) {
+        setStatus(reader, "Aucun texte français à lire.");
+        return;
+      }
+
+      cancelPlayback();
+      var rateControl = reader.querySelector("[data-co-audio-rate]");
+      var rate = rateControl ? parseFloat(rateControl.value) : 1;
+      var id = playbackId + 1;
+      playbackId = id;
+      active = {
+        id: id,
+        reader: reader,
+        button: button,
+        chunks: chunks,
+        index: 0,
+        rate: rate,
+        state: "playing",
+        utteranceId: 0
+      };
+
+      reader.classList.add("is-playing");
+      button.classList.add("is-active");
+      button.setAttribute("aria-pressed", "true");
+      button.setAttribute(
+        "aria-label",
+        "Mettre en pause " + (target === "question"
+          ? "la question"
+          : "le dialogue")
+      );
+      setButtonLabel(button, "Pause");
+      var stop = reader.querySelector("[data-co-audio-stop]");
+      if (stop) stop.disabled = false;
+      setStatus(
+        reader,
+        "Lecture de " + (target === "question" ? "la question" : "du dialogue")
+          + " en français…"
+      );
+      scheduleSpeech(id);
+    }
+
+    function pausePlayback() {
+      if (!active || active.state !== "playing") return;
+      active.state = "paused";
+      active.utteranceId += 1;
+      synthesis.cancel();
+      synthesis.resume();
+      active.reader.classList.remove("is-playing");
+      active.reader.classList.add("is-paused");
+      setButtonLabel(active.button, "Reprendre");
+      active.button.setAttribute("aria-label", "Reprendre la lecture");
+      setStatus(active.reader, "Lecture en pause.");
+    }
+
+    function resumePlayback() {
+      if (!active || active.state !== "paused") return;
+      active.state = "playing";
+      active.reader.classList.remove("is-paused");
+      active.reader.classList.add("is-playing");
+      setButtonLabel(active.button, "Pause");
+      active.button.setAttribute("aria-label", "Mettre la lecture en pause");
+      setStatus(active.reader, "Lecture reprise en français…");
+      scheduleSpeech(active.id);
+    }
+
+    if (!synthesis || !Utterance) {
+      readers.forEach(function (reader) {
+        reader.classList.add("is-unavailable");
+        setStatus(reader, "Audio français indisponible dans ce navigateur.");
+      });
+      return;
+    }
+
+    refreshVoices();
+    if (synthesis.addEventListener) {
+      synthesis.addEventListener("voiceschanged", refreshVoices);
+    } else {
+      synthesis.onvoiceschanged = refreshVoices;
+    }
+
+    readers.forEach(function (reader) {
+      reader.querySelectorAll("[data-co-audio-play]").forEach(function (button) {
+        button.disabled = false;
+        button.addEventListener("click", function () {
+          if (active && active.reader === reader && active.button === button) {
+            if (active.state === "paused") resumePlayback();
+            else pausePlayback();
+            return;
+          }
+          startPlayback(reader, button);
+        });
+      });
+
+      var stop = reader.querySelector("[data-co-audio-stop]");
+      if (stop) {
+        stop.addEventListener("click", function () {
+          if (active && active.reader === reader) {
+            cancelPlayback("Lecture arrêtée.");
+          }
+        });
+      }
+
+      var rate = reader.querySelector("[data-co-audio-rate]");
+      if (rate) {
+        rate.disabled = false;
+        rate.addEventListener("change", function () {
+          if (active && active.reader === reader) {
+            cancelPlayback("Vitesse réglée sur " + rate.options[rate.selectedIndex].text + ".");
+          } else {
+            setStatus(
+              reader,
+              "Vitesse réglée sur " + rate.options[rate.selectedIndex].text + "."
+            );
+          }
+        });
+      }
+      resetReader(reader);
+    });
+
+    window.addEventListener("pagehide", function () {
+      if (active) cancelPlayback();
+    });
+  })();
+
   /* ---------- Review session ---------- */
   var app = document.getElementById("review-app");
   if (!app) return;

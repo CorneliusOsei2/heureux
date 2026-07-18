@@ -3,8 +3,7 @@
 ### **Dialogue**
 
 ```
-(Image matching -- listen to 4 statements, choose the
-one that matches the image.)
+(Écoutez les quatre propositions et choisissez celle qui correspond à l'image.)
 
 1. Bienvenue à Paris Agora.
 2. Deux cents euros, s'il vous plaît.
@@ -21,7 +20,7 @@ one that matches the image.)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Match the image) | (Match the image) |
+| **Prompt** | Associez l'image à la phrase appropriée. | (Match the image) |
 | **A** | **Bienvenue à Paris Agora** | **Welcome to Paris Agora** |
 | B | Deux cents euros, s'il vous plaît | Two hundred euros, please |
 | C | Il est vingt heures trente | It is 8:30 PM |
@@ -38,8 +37,7 @@ The image matches a welcome/greeting scene. "Bienvenue à Paris Agora" correspon
 ### **Dialogue**
 
 ```
-(Image matching -- listen to 4 statements, choose the
-one that matches the image.)
+(Écoutez les quatre propositions et choisissez celle qui correspond à l'image.)
 
 a. Tu aimes le bœuf à la québécoise ?
 b. Tu connais l'heure du prochain film ?
@@ -56,7 +54,7 @@ d. Can you see where I live on this map?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Match the image) | (Match the image) |
+| **Prompt** | Associez l'image à la phrase appropriée. | (Match the image) |
 | **A** | **Tu aimes le bœuf à la québécoise ?** | **Do you like Quebec-style beef?** |
 | B | Tu connais l'heure du prochain film ? | Do you know the time of the next movie? |
 | C | Tu sais où est la station de métro ? | Do you know where the metro station is? |
@@ -73,8 +71,7 @@ The image matches a food/dining scene. The question about Quebec-style beef corr
 ### **Dialogue**
 
 ```
-(Image matching -- listen to 4 statements, choose the
-one that matches the image.)
+(Écoutez les quatre propositions et choisissez celle qui correspond à l'image.)
 
 A. C'est au troisième étage.
 B. Entreprise Lapex, bonjour.
@@ -91,7 +88,7 @@ D. Here is your badge, sir.)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Match the image) | (Match the image) |
+| **Prompt** | Associez l'image à la phrase appropriée. | (Match the image) |
 | **A** | **C'est au troisième étage** | **It's on the third floor** |
 | B | Entreprise Lapex, bonjour | Lapex company, hello |
 | C | La cafétéria est derrière vous | The cafeteria is behind you |
@@ -108,8 +105,7 @@ The image matches someone giving directions within a building. "It's on the thir
 ### **Dialogue**
 
 ```
-(Image matching -- listen to 4 statements, choose the
-one that matches the image.)
+(Écoutez les quatre propositions et choisissez celle qui correspond à l'image.)
 
 A. Deux baguettes, s'il vous plaît.
 B. Cette boutique est magnifique.
@@ -126,7 +122,7 @@ D. Wow, I'm buying this jacket.)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Match the image) | (Match the image) |
+| **Prompt** | Associez l'image à la phrase appropriée. | (Match the image) |
 | A | Deux baguettes, s'il vous plaît | Two baguettes, please |
 | **B** | **Cette boutique est magnifique** | **This shop is magnificent** |
 | C | J'adore toutes ces chaussures | I love all these shoes |
@@ -160,7 +156,7 @@ Vous pouvez fermer la porte, s'il vous plaît ?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Bien sûr** | **Of course** |
 | B | C'est vrai | That's true |
 | C | Très souvent | Very often |
@@ -194,7 +190,7 @@ Tu viens au cinéma avec moi ?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Bonne journée, à ce soir | Have a good day, see you tonight |
 | **B** | **C'est une bonne idée** | **That's a good idea** |
 | C | Merci de ta visite | Thanks for your visit |
@@ -230,7 +226,7 @@ the restaurant with friends. Do you want to come?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Désolée, je ne suis pas libre** | **Sorry, I'm not free** |
 | B | Non merci, j'ai déjà mangé | No thanks, I've already eaten |
 | C | Non, j'ai un rendez-vous pour le déjeuner | No, I have a lunch appointment |
@@ -266,7 +262,7 @@ working harder than last year?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Oui, il a de mauvaises notes | Yes, he has bad grades |
 | B | Oui, il refuse d'aller en cours | Yes, he refuses to attend class |
 | **C** | **Oui, il révise tous les jours** | **Yes, he studies every day** |
@@ -307,7 +303,7 @@ you? What are you doing this afternoon?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Bien sûr. Voilà une bonne sortie culturelle** | **Of course. That's a good cultural outing** |
 | B | Certainement. Ils adorent faire les magasins | Certainly. They love shopping |
 | C | D'accord. N'oublie pas leur maillot de bain | OK. Don't forget their swimsuit |

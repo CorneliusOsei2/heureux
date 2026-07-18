@@ -1792,24 +1792,8 @@ def _comprehension_question_context(attempt, question_number, error=""):
             "selected_choice",
         )
     }
-    next_unanswered = next(
-        (
-            question
-            for question in questions
-            if question["id"] not in answers
-        ),
-        None,
-    )
     question = questions[question_index]
     answer = answers.get(question["id"])
-    if (
-        answer is None
-        and next_unanswered
-        and question["id"] != next_unanswered["id"]
-    ):
-        return {
-            "redirect_number": next_unanswered["number"],
-        }
 
     question_model = ComprehensionQuestion.objects.filter(
         pk=question["id"],
@@ -1846,11 +1830,6 @@ def _comprehension_question_context(attempt, question_number, error=""):
             "number": item["number"],
             "is_answered": item["id"] in answers,
             "is_current": item["id"] == question["id"],
-            "is_available": (
-                item["id"] in answers
-                or next_unanswered is None
-                or item["id"] == next_unanswered["id"]
-            ),
         }
         for item in questions
     ]
@@ -1873,7 +1852,7 @@ def _comprehension_question_context(attempt, question_number, error=""):
         ),
         "next_number": (
             questions[question_index + 1]["number"]
-            if answer and question_index + 1 < len(questions)
+            if question_index + 1 < len(questions)
             else None
         ),
         "navigator": navigator,
@@ -1926,13 +1905,6 @@ def comprehension_question(
             return redirect(_comprehension_results_url(attempt))
         return redirect(
             _comprehension_question_url(locked_attempt, resume_number)
-        )
-    if context.get("redirect_number"):
-        return redirect(
-            _comprehension_question_url(
-                attempt,
-                context["redirect_number"],
-            )
         )
     if request.method != "POST":
         return render(request, "study/comprehension_question.html", context)

@@ -14,7 +14,7 @@ about to leave. Can you help me?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Oui, à seize heures | Yes, at four o'clock |
 | **B** | **Oui, bien sûr** | **Yes, of course** |
 | C | Oui, il arrive | Yes, it's arriving |
@@ -50,7 +50,7 @@ please.)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Oui, à 10h aujourd'hui ?** | **Yes, at 10 AM today?** |
 | B | Oui, c'est à quelle adresse ? | Yes, what address is it at? |
 | C | Oui, pour combien de personnes ? | Yes, for how many people? |
@@ -86,7 +86,7 @@ birthday Saturday evening. Can you come?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Oui, avec plaisir, je serai là** | **Yes, with pleasure, I'll be there** |
 | B | Oui, ce matin, je serai disponible | Yes, this morning I'll be available |
 | C | Oui, je serai absent aujourd'hui | Yes, I'll be absent today |
@@ -122,7 +122,7 @@ Asia-Europe conference. Where are you from?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **Je viens de Chine** | **I come from China** |
 | B | Je m'appelle Feng Li | My name is Feng Li |
 | C | J'aime beaucoup la France | I love France very much |
@@ -156,7 +156,7 @@ Qu'est-ce que tu fais dans la vie ?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | J'aime le sport | I like sports |
 | B | Je suis célibataire | I'm single |
 | C | Je vis au Maroc | I live in Morocco |
@@ -192,7 +192,7 @@ it be?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Oui, attendez, j'ai la monnaie, je crois | Yes, wait, I have change, I think |
 | B | Laisse, c'est moi qui t'invite aujourd'hui | No, it's my treat today |
 | **C** | **Un grand verre de lait, s'il vous plaît** | **A large glass of milk, please** |
@@ -228,7 +228,7 @@ sportswear.)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | **A** | **C'est au deuxième étage** | **It's on the second floor** |
 | B | Ils existent dans ces deux couleurs | They come in these two colors |
 | C | Les soldes commencent demain | The sales start tomorrow |
@@ -264,7 +264,7 @@ tomorrow evening?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Ça va commencer tard | It's going to start late |
 | B | C'est un bel endroit | It's a nice place |
 | **C** | **Je t'emmène en voiture ?** | **I'll take you by car?** |
@@ -298,7 +298,7 @@ Qu'est-ce que tu prends pour aller à la plage ?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | Avec quelques amis | With some friends |
 | **B** | **Juste mon maillot de bain** | **Just my swimsuit** |
 | C | Nous y allons à pied | We're going on foot |
@@ -333,7 +333,7 @@ s'il te plaît ?
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the reply) | (Choose the reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the reply) |
 | A | C'est beaucoup trop cher | That's way too expensive |
 | B | Je lui envoie un courriel | I'm sending her an email |
 | **C** | **Regarde dans mon carnet** | **Look in my notebook** |

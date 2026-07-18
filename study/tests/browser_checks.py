@@ -1062,14 +1062,25 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             0,
         )
         self.assert_no_horizontal_overflow()
+        question_buttons = self.page.locator(".ce-question-map__grid > *")
+        question_box = question_buttons.first.bounding_box()
+        self.assertLessEqual(question_box["width"], 34)
+        self.assertAlmostEqual(
+            question_box["width"],
+            question_box["height"],
+            delta=1,
+        )
         self.page.locator(".ce-choice", has_text="Choix B français 1").click()
-        self.page.get_by_role("heading", name="La bonne réponse était A.").wait_for()
+        self.page.get_by_role(
+            "heading",
+            name="A · Choix A français 1",
+        ).wait_for()
         explanation = self.page.locator(".ce-rationales--explanation")
         self.assertTrue(explanation.evaluate("element => element.open"))
-        answer_box = self.page.locator(".ce-correction__answer").bounding_box()
+        header_box = self.page.locator(".ce-correction__head").bounding_box()
         explanation_box = explanation.bounding_box()
         self.assertGreaterEqual(
-            explanation_box["y"] - answer_box["y"] - answer_box["height"],
+            explanation_box["y"] - header_box["y"] - header_box["height"],
             8,
         )
         self.page.get_by_text(

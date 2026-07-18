@@ -3932,8 +3932,8 @@ a.ce-group-test-row:hover {
 .ce-study-english-explanation p {
   margin: 0.25rem 0 0;
   color: var(--text-soft);
-  font-size: 0.76rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.65;
 }
 .ce-study-correct-answer {
   display: flex;
@@ -4068,55 +4068,58 @@ a.ce-group-test-row:hover {
   border-radius: 12px;
   background: var(--surface);
 }
-.ce-question-map > summary {
+.ce-question-map__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 42px;
   padding: 0.55rem 0.8rem;
   color: var(--text-soft);
-  cursor: pointer;
   font-size: 0.72rem;
   font-weight: 700;
-  list-style: none;
 }
-.ce-question-map > summary::-webkit-details-marker { display: none; }
-.ce-question-map > summary::before {
+.ce-question-map__head::before {
   margin-right: 0.5rem;
   color: var(--text-faint);
   content: "▦";
 }
-.ce-question-map > summary span:first-child { margin-right: auto; }
-.ce-question-map > summary span:last-child {
+.ce-question-map__head span:first-child { margin-right: auto; }
+.ce-question-map__head span:last-child {
   padding: 0.15rem 0.45rem;
   border-radius: 99px;
   background: var(--bg-soft);
   font-size: 0.65rem;
 }
 .ce-question-map__grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 0.35rem;
-  padding: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  padding: 0.75rem 0.8rem;
   border-top: 1px solid var(--border);
 }
-.ce-question-map__grid a,
-.ce-question-map__grid span {
+.ce-question-map__grid a {
   display: grid;
+  flex: 0 0 32px;
   place-items: center;
-  aspect-ratio: 1;
-  min-height: 32px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 50%;
   background: var(--surface-2);
   color: var(--text-faint);
   font-size: 0.68rem;
   font-weight: 750;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
 }
 .ce-question-map__grid a:hover {
   border-color: var(--ce-blue);
   color: var(--ce-ink);
   text-decoration: none;
+  transform: translateY(-1px);
 }
 .ce-question-map__grid .is-answered {
   border-color: color-mix(in srgb, var(--success) 25%, var(--border));
@@ -4129,7 +4132,6 @@ a.ce-group-test-row:hover {
   color: var(--primary-ink);
   box-shadow: 0 4px 10px -6px var(--ce-blue);
 }
-.ce-question-map__grid .is-locked { opacity: 0.58; }
 .ce-question-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -4190,6 +4192,155 @@ a.ce-group-test-row:hover {
   line-height: 1.82;
   overflow-wrap: anywhere;
 }
+.co-audio-reader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--ce-blue) 18%, var(--border));
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--ce-blue) 7%, var(--surface-2)), var(--surface));
+}
+.co-audio-reader--embedded {
+  margin-top: 0;
+  border-width: 1px 0 0;
+  border-radius: 0;
+}
+.co-audio-reader--compact {
+  margin-top: 0.65rem;
+  padding: 0.55rem;
+}
+.co-audio-reader__meta {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.55rem;
+}
+.co-audio-reader__meta > span:last-child {
+  display: grid;
+  min-width: 0;
+  gap: 0.08rem;
+}
+.co-audio-reader__meta strong {
+  color: var(--text);
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+.co-audio-reader__meta small {
+  overflow: hidden;
+  max-width: 17rem;
+  color: var(--text-faint);
+  font-size: 0.62rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.co-audio-reader__mark {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--ce-blue-soft);
+  color: var(--ce-ink);
+}
+.co-audio-reader__mark svg,
+.co-audio-reader__button svg,
+.co-audio-reader__stop svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+.co-audio-reader__button svg { fill: currentColor; stroke: none; }
+.co-audio-reader__stop svg { width: 15px; height: 15px; }
+.co-audio-reader__controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+}
+.co-audio-reader__button,
+.co-audio-reader__stop,
+.co-audio-reader__rate {
+  min-height: 36px;
+  border: 1px solid color-mix(in srgb, var(--ce-blue) 18%, var(--border));
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-soft);
+}
+.co-audio-reader__button,
+.co-audio-reader__stop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+.co-audio-reader__button {
+  gap: 0.32rem;
+  padding: 0.45rem 0.62rem;
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+.co-audio-reader__stop {
+  width: 36px;
+  padding: 0;
+}
+.co-audio-reader__button:hover:not(:disabled):not(.is-active),
+.co-audio-reader__stop:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--ce-blue) 46%, var(--border));
+  color: var(--ce-ink);
+  transform: translateY(-1px);
+}
+.co-audio-reader__button.is-active {
+  border-color: var(--ce-blue);
+  background: var(--ce-blue);
+  color: var(--primary-ink);
+}
+.co-audio-reader__button:disabled,
+.co-audio-reader__stop:disabled,
+.co-audio-reader__rate select:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.co-audio-reader__rate {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: var(--text-faint);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+.co-audio-reader__rate select {
+  height: 34px;
+  min-width: 4.25rem;
+  padding: 0 0.55rem;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.co-audio-reader.is-paused .co-audio-reader__mark {
+  background: color-mix(in srgb, var(--warning-soft) 76%, var(--surface));
+  color: var(--warning);
+}
+.co-audio-reader.is-unavailable .co-audio-reader__controls { display: none; }
 .ce-answer-card { padding: clamp(1.1rem, 3vw, 1.45rem); }
 .ce-answer-card__head {
   display: grid;
@@ -4373,41 +4524,22 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .ce-correction--wrong .ce-correction__mark { background: var(--again); }
 .ce-correction__head .eyebrow { margin: 0 0 0.1rem; }
-.ce-correction__head h2 { margin: 0; font-size: 1.1rem; }
-.ce-correction__answer {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 1.15rem 1.2rem 0;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--success) 32%, var(--border));
-  border-radius: 11px;
-  background: var(--success-soft);
-  color: var(--success);
+.ce-correction__head h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.45;
 }
-.ce-correction__answer > span {
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: var(--success);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 850;
-}
-.ce-correction__answer strong { font-size: 0.85rem; }
 .ce-correction__explanation,
 .ce-selected-rationale {
   margin: 1rem 1.2rem;
   color: var(--text-soft);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 .ce-correction__explanation h3 {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.35rem;
   color: var(--text);
-  font-size: 0.88rem;
+  font-size: 1rem;
 }
 .ce-correction__explanation p,
 .ce-selected-rationale p { margin: 0; }
@@ -4419,9 +4551,9 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .ce-selected-rationale strong {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   color: var(--again);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
 }
 .ce-rationales,
 .ce-translation {
@@ -4476,7 +4608,8 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .ce-rationales article p {
   margin: 0;
   color: var(--text-soft);
-  font-size: 0.76rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 .ce-rationales article.is-selected {
   background: color-mix(in srgb, var(--again) 5%, var(--surface));
@@ -4798,12 +4931,13 @@ button.ce-choice:focus-visible .ce-choice__radio {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--ce-blue) 5%, var(--surface)), var(--surface));
   color: var(--text-soft);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
 }
 .ce-review-item__explanation h3 {
   margin: 0 0 0.2rem;
   color: var(--text);
-  font-size: 0.82rem;
+  font-size: 0.98rem;
 }
 .ce-review-item__explanation p { margin: 0; }
 .ce-review-item .ce-rationales,
@@ -6254,7 +6388,6 @@ button.ce-choice:focus-visible .ce-choice__radio {
   .ce-quiz__header { align-items: start; flex-direction: column; gap: 0.6rem; }
   .ce-quiz__progress { width: 100%; }
   .ce-quiz__progress span { text-align: left; }
-  .ce-question-map__grid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
   .ce-question-layout { grid-template-columns: 1fr; }
   .ce-translation__body { grid-template-columns: 1fr; }
   .ce-translation__body section + section {
@@ -6312,8 +6445,19 @@ button.ce-choice:focus-visible .ce-choice__radio {
     gap: 0.65rem;
   }
   .ce-history__list > a > span:last-child { display: none; }
-  .ce-question-map__grid,
   .ce-results-map__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .co-audio-reader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .co-audio-reader__meta small { max-width: none; }
+  .co-audio-reader__controls {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .co-audio-reader__button { flex: 1 1 calc(50% - 0.2rem); }
+  .co-audio-reader__rate { flex: 1 1 5rem; }
+  .co-audio-reader__rate select { width: 100%; }
   .ce-passage-card__text,
   .ce-answer-card { padding: 1rem; }
   .ce-answer-card__head { grid-template-columns: 1fr; }
@@ -6323,7 +6467,6 @@ button.ce-choice:focus-visible .ce-choice__radio {
   .ce-choice__text { font-size: 0.78rem; }
   .ce-correction__head { align-items: flex-start; padding: 0.9rem; }
   .ce-correction__mark { width: 36px; height: 36px; border-radius: 10px; }
-  .ce-correction__answer,
   .ce-correction__explanation,
   .ce-selected-rationale,
   .ce-rationales,

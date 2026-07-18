@@ -12,7 +12,7 @@ Question d'observation audio-visuelle.
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Identify the appropriate statement for the scene) | (Identify the appropriate statement for the scene) |
+| **Prompt** | Choisissez la phrase qui correspond à la scène. | (Identify the appropriate statement for the scene) |
 | A | On sent bon le marchand de légumes | The vegetable merchant smells good |
 | B | Demandez un plan de la ville | Ask for a city map |
 | C | L'entrée de la préfecture est là-bas | The prefecture entrance is over there |
@@ -45,7 +45,7 @@ The image likely shows a car or parking context. "Ma voiture est au parking" is 
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the appropriate reply) | (Choose the appropriate reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the appropriate reply) |
 | A | (Audio option) | (Audio option) |
 | B | Il va bientôt faire nuit | It will soon be night |
 | **C** | **Je commence a avoir froid** | **I'm starting to get cold** |
@@ -77,7 +77,7 @@ Question d'observation audio-visuelle.
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Describe the weather shown) | (Describe the weather shown) |
+| **Prompt** | Décrivez le temps représenté. | (Describe the weather shown) |
 | A | Ah! Il neige encore! | Oh! It's snowing again! |
 | B | J'attends le soleil | I'm waiting for the sun |
 | **C** | **Quelle belle journée!** | **What a beautiful day!** |
@@ -110,7 +110,7 @@ The scene must depict pleasant, sunny weather. "Quelle belle journée!" is the e
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the appropriate reply) | (Choose the appropriate reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the appropriate reply) |
 | A | Oui, j'admire les surfeurs | Yes, I admire surfers |
 | B | Oui, j'ai un ballon | Yes, I have a ball |
 | **C** | **Oui, je fais du velo** | **Yes, I cycle** |
@@ -145,7 +145,7 @@ three months. I'm an IT specialist. And you, what do you do?)
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the appropriate reply) | (Choose the appropriate reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the appropriate reply) |
 | A | Je joue au tennis le dimanche | I play tennis on Sundays |
 | B | Je suis toujours célibataire | I'm still single |
 | **C** | **Je travaille dans une école** | **I work in a school** |
@@ -178,7 +178,7 @@ Bertrand introduces himself with his NAME, LOCATION, and OCCUPATION, then asks "
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the appropriate reply) | (Choose the appropriate reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the appropriate reply) |
 | A | J'ai consulté mon calendrier hier soir | I consulted my calendar last night |
 | **B** | **J'ai eu un rendez-vous pour demain matin** | **I have an appointment for tomorrow morning** |
 | C | J'ai répondu à son courrier aujourd'hui | I answered his mail today |
@@ -211,7 +211,7 @@ The question asks WHEN ("quand") you must go to the prefecture. Only option B pr
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose the appropriate reply) | (Choose the appropriate reply) |
+| **Prompt** | Choisissez la réponse appropriée. | (Choose the appropriate reply) |
 | **A** | **C'est de la part de qui?** | **Who's calling?** |
 | B | Elle à un numéro de téléphone? | Does she have a phone number? |
 | C | Je suis bien au 01 42 35 80 96? | Is this 01 42 35 80 96? |
@@ -244,7 +244,7 @@ When someone calls asking to speak to a specific person, the standard French té
 
 |  | French | English |
 | --- | --- | --- |
-| **Prompt** | (Choose what follows logically) | (Choose what follows logically) |
+| **Prompt** | Choisissez la suite logique. | (Choose what follows logically) |
 | **A** | **Je vais vous faire découvrir ce musee** | **I'm going to show you this museum** |
 | B | Je vais vous indiquer la salle d'attente | I'll show you the waiting room |
 | C | Je vais vous installer à une table | I'm going to seat you at a table |

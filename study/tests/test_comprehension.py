@@ -159,6 +159,30 @@ class ComprehensionContentTests(SimpleTestCase):
             ):
                 content._parse_comprehension_source(path, slug="test")
 
+    def test_oral_audio_text_has_no_english_placeholders(self):
+        english_markers = (
+            "choose the reply",
+            "choose the appropriate reply",
+            "match the image",
+            "response to the",
+            "identify the appropriate statement",
+            "describe the weather shown",
+            "choose what follows logically",
+            "image matching --",
+        )
+
+        for test in content.load_comprehension_tests():
+            if test.mode != "orale":
+                continue
+            for question in test.questions:
+                spoken_text = (
+                    f"{question.passage_fr} {question.prompt_fr}".casefold()
+                )
+                with self.subTest(test=test.slug, question=question.number):
+                    self.assertFalse(
+                        any(marker in spoken_text for marker in english_markers)
+                    )
+
 
 class ComprehensionImportTests(TestCase):
     def test_import_publishes_the_complete_group_one_content(self):
@@ -526,6 +550,7 @@ class ComprehensionFlowTests(TestCase):
         self.assertContains(response, "Bonne réponse")
         self.assertContains(response, "Pratiquer ce test")
         self.assertContains(response, "Toutes les questions")
+        self.assertNotContains(response, "data-co-audio-reader")
 
     def test_unpublished_question_cannot_be_studied(self):
         response = self.client.get(
@@ -600,6 +625,21 @@ class ComprehensionFlowTests(TestCase):
             after,
             '<details class="ce-rationales ce-rationales--explanation" open>',
         )
+        correct_choice = question.choices.get(is_correct=True)
+        self.assertContains(
+            after,
+            (
+                '<h2 id="ce-correction-title">'
+                f"{correct_choice.letter} · {correct_choice.text_fr}"
+                "</h2>"
+            ),
+            html=True,
+        )
+        self.assertNotContains(after, "ce-correction__answer")
+        self.assertNotContains(
+            after,
+            "Bien joué, vous avez repéré l’information essentielle.",
+        )
         self.assertContains(after, "Question suivante")
 
         self.submit(attempt, 1, "A")
@@ -652,21 +692,33 @@ class ComprehensionFlowTests(TestCase):
         self.assertEqual(rejected.status_code, 400)
         self.assertEqual(attempt.answers.count(), 0)
 
-    def test_future_questions_stay_locked_and_resume_advances(self):
+    def test_free_navigation_allows_jumping_and_resume_advances(self):
         attempt = self.start()
         future_url = reverse(
             "study:comprehension_question",
             args=[self.test.slug, attempt.pk, 3],
         )
-        first = self.client.get(future_url)
-        self.assertRedirects(
-            first,
+
+        future = self.client.get(future_url)
+        self.assertEqual(future.status_code, 200)
+        self.assertNotContains(future, "is-locked")
+        self.assertEqual(len(future.context["navigator"]), 3)
+        self.assertTrue(
+            all(
+                not item["is_answered"]
+                for item in future.context["navigator"]
+            )
+        )
+
+        middle = self.client.get(
             reverse(
                 "study:comprehension_question",
-                args=[self.test.slug, attempt.pk, 1],
-            ),
-            fetch_redirect_response=False,
+                args=[self.test.slug, attempt.pk, 2],
+            )
         )
+        self.assertContains(middle, "Question suivante")
+        self.assertContains(middle, "Question précédente")
+        self.assertEqual(attempt.answers.count(), 0)
 
         self.submit(attempt, 1, "A")
         resume = self.client.post(
@@ -1108,6 +1160,20 @@ class OralComprehensionFlowTests(TestCase):
         self.assertEqual(q9.context["position"], 1)
         self.assertEqual(q9.context["question"]["number"], 9)
         self.assertContains(q9, "Dialogue")
+        self.assertContains(q9, 'aria-label="Lecteur audio français"')
+        self.assertContains(q9, 'data-co-audio-reader')
+        self.assertContains(q9, 'data-co-audio-target="dialogue"')
+        self.assertContains(q9, 'data-co-audio-target="question"')
+        self.assertContains(q9, 'data-co-audio-rate')
+
+        study = self.client.get(
+            reverse(
+                "study:comprehension_oral_question_study",
+                args=[self.test.slug, 9],
+            )
+        )
+        self.assertContains(study, 'data-co-audio-reader')
+        self.assertContains(study, self.test.questions.get(number=9).passage_fr)
 
         for number in range(9, 40):
             question = self.test.questions.get(number=number)
@@ -1144,6 +1210,7 @@ class OralComprehensionFlowTests(TestCase):
         )
         self.assertEqual(results.status_code, 200)
         self.assertContains(results, "sur 31")
+        self.assertContains(results, 'data-co-audio-reader', count=31)
         self.assertNotContains(results, "Pratiquer le vocabulaire")
 
     def test_archived_oral_history_remains_reachable_from_the_hub(self):
