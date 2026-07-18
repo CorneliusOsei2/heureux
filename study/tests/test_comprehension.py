@@ -41,25 +41,67 @@ class ComprehensionContentTests(SimpleTestCase):
                 "test-3",
                 "test-4",
                 "test-5",
+                "test-6",
+                "test-7",
+                "test-9",
+                "test-10",
                 "oral-test-1",
+                "oral-test-4",
+                "oral-test-5",
+                "oral-test-6",
+                "oral-test-8",
+                "oral-test-9",
+                "oral-test-10",
             ],
         )
         self.assertEqual(
             [len(test.questions) for test in tests],
-            [39, 39, 39, 39, 39, 31],
+            [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                31,
+                24,
+                28,
+                37,
+                35,
+                39,
+                39,
+            ],
         )
         self.assertEqual(
             [test.is_published for test in tests],
-            [True, True, True, True, True, True],
+            [True] * 16,
         )
-        oral = tests[-1]
-        self.assertEqual(oral.mode, "orale")
         self.assertEqual(
-            [question.number for question in oral.questions],
-            list(range(9, 40)),
+            {
+                test.slug: [question.number for question in test.questions]
+                for test in tests
+                if test.mode == "orale"
+            },
+            {
+                "oral-test-1": list(range(9, 40)),
+                "oral-test-4": list(range(5, 29)),
+                "oral-test-5": list(range(1, 29)),
+                "oral-test-6": list(range(1, 38)),
+                "oral-test-8": list(range(1, 36)),
+                "oral-test-9": list(range(1, 40)),
+                "oral-test-10": list(range(1, 40)),
+            },
         )
         self.assertTrue(
-            all(question.content_key.startswith("co:") for question in oral.questions)
+            all(
+                question.content_key.startswith("co:")
+                for test in tests
+                if test.mode == "orale"
+                for question in test.questions
+            )
         )
         self.assertTrue(
             all(not question.passage_en for question in tests[2].questions)
@@ -141,7 +183,17 @@ class ComprehensionImportTests(TestCase):
                 ("ecrite", 3, True),
                 ("ecrite", 4, True),
                 ("ecrite", 5, True),
+                ("ecrite", 6, True),
+                ("ecrite", 7, True),
+                ("ecrite", 9, True),
+                ("ecrite", 10, True),
                 ("orale", 1, True),
+                ("orale", 4, True),
+                ("orale", 5, True),
+                ("orale", 6, True),
+                ("orale", 8, True),
+                ("orale", 9, True),
+                ("orale", 10, True),
             ],
         )
         self.assertEqual(
@@ -160,7 +212,17 @@ class ComprehensionImportTests(TestCase):
                 ("ecrite", 3): 39,
                 ("ecrite", 4): 39,
                 ("ecrite", 5): 39,
+                ("ecrite", 6): 39,
+                ("ecrite", 7): 39,
+                ("ecrite", 9): 39,
+                ("ecrite", 10): 39,
                 ("orale", 1): 31,
+                ("orale", 4): 24,
+                ("orale", 5): 28,
+                ("orale", 6): 37,
+                ("orale", 8): 35,
+                ("orale", 9): 39,
+                ("orale", 10): 39,
             },
         )
 
@@ -233,7 +295,7 @@ class ComprehensionImportTests(TestCase):
                 tier=PhraseTier.COMPREHENSION,
                 is_active=True,
             ).count(),
-            250,
+            450,
         )
         first_item = vocabulary[0]
         first_phrase = Phrase.objects.get(
@@ -264,7 +326,7 @@ class ComprehensionImportTests(TestCase):
             user=user,
             phrase__tier=PhraseTier.COMPREHENSION,
         )
-        self.assertEqual(cards.count(), 250)
+        self.assertEqual(cards.count(), 450)
         self.assertEqual(
             set(cards.values_list("card_type", flat=True)),
             {CardType.PHRASE_PRODUCTION},

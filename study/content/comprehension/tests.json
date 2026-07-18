@@ -57,6 +57,50 @@
       "source": "test_05.md"
     },
     {
+      "slug": "test-6",
+      "mode": "ecrite",
+      "number": 6,
+      "title": "Test 6",
+      "description": "39 questions de compréhension écrite avec corrections détaillées.",
+      "expected_question_count": 39,
+      "order": 6,
+      "is_published": true,
+      "source": "test_06.md"
+    },
+    {
+      "slug": "test-7",
+      "mode": "ecrite",
+      "number": 7,
+      "title": "Test 7",
+      "description": "39 questions de compréhension écrite avec corrections détaillées.",
+      "expected_question_count": 39,
+      "order": 7,
+      "is_published": true,
+      "source": "test_07.md"
+    },
+    {
+      "slug": "test-9",
+      "mode": "ecrite",
+      "number": 9,
+      "title": "Test 9",
+      "description": "39 questions de compréhension écrite avec corrections détaillées.",
+      "expected_question_count": 39,
+      "order": 9,
+      "is_published": true,
+      "source": "test_09.md"
+    },
+    {
+      "slug": "test-10",
+      "mode": "ecrite",
+      "number": 10,
+      "title": "Test 10",
+      "description": "39 questions de compréhension écrite avec corrections détaillées.",
+      "expected_question_count": 39,
+      "order": 10,
+      "is_published": true,
+      "source": "test_10.md"
+    },
+    {
       "slug": "oral-test-1",
       "mode": "orale",
       "number": 1,
@@ -68,6 +112,74 @@
       "source": "oral_test_01.md",
       "is_published": true,
       "is_active": true
+    },
+    {
+      "slug": "oral-test-4",
+      "mode": "orale",
+      "number": 4,
+      "title": "Test 4",
+      "description": "24 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 24,
+      "first_question_number": 5,
+      "order": 4,
+      "source": "oral_test_04.md",
+      "is_published": true
+    },
+    {
+      "slug": "oral-test-5",
+      "mode": "orale",
+      "number": 5,
+      "title": "Test 5",
+      "description": "28 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 28,
+      "order": 5,
+      "source": "oral_test_05.md",
+      "is_published": true
+    },
+    {
+      "slug": "oral-test-6",
+      "mode": "orale",
+      "number": 6,
+      "title": "Test 6",
+      "description": "37 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 37,
+      "order": 6,
+      "source": "oral_test_06.md",
+      "is_published": true
+    },
+    {
+      "slug": "oral-test-8",
+      "mode": "orale",
+      "number": 8,
+      "title": "Test 8",
+      "description": "35 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 35,
+      "order": 8,
+      "source": "oral_test_08.md",
+      "is_published": true
+    },
+    {
+      "slug": "oral-test-9",
+      "mode": "orale",
+      "number": 9,
+      "title": "Test 9",
+      "description": "39 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 39,
+      "order": 9,
+      "source": "oral_test_09.md",
+      "is_published": true
+    },
+    {
+      "slug": "oral-test-10",
+      "mode": "orale",
+      "number": 10,
+      "title": "Test 10",
+      "description": "39 questions de compréhension orale avec corrections détaillées.",
+      "expected_question_count": 39,
+      "allow_missing_passage_translations": true,
+      "order": 10,
+      "source": "oral_test_10.md",
+      "is_published": true
     }
   ]
 }

@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-9",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE09V001",
+      "kind": "mot-cle",
+      "french": "Location deux pièces",
+      "english": "two-room flat for rent",
+      "example": "500 euros/mois : Location deux pièces.",
+      "usage": "Core noun phrase for “two-room flat for rent”; learn it as one lexical unit.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE09V002",
+      "kind": "mot-cle",
+      "french": "groupes de conversation",
+      "english": "conversation groups",
+      "example": "Inscrivez-vous dans l'association de l'Université pour : — Discuter avec des étudiants français — Participer à des groupes de conversation — Faire des activités ensemble : sport, shopping, visites, sorties ET TOUT EST GRATUIT !",
+      "usage": "Core noun phrase for “conversation groups”; learn it as one lexical unit.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE09V003",
+      "kind": "mot-cle",
+      "french": "travail temporaire",
+      "english": "temporary work",
+      "example": "Le centre culturel met à la disposition de ses élèves un service de petites annonces pour trouver un travail temporaire (garde d'enfants, cours de langue).",
+      "usage": "Core noun phrase for “temporary work”; learn it as one lexical unit.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE09V004",
+      "kind": "mot-cle",
+      "french": "petit-déjeuner",
+      "english": "breakfast",
+      "example": "Week-end du goût : offrez-vous une nuit avec dîner et petit-déjeuner pour 70 €.",
+      "usage": "Core noun phrase for “breakfast”; learn it as one lexical unit.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE09V005",
+      "kind": "mot-cle",
+      "french": "produits bio",
+      "english": "organic products",
+      "example": "Selon les résultats d'un sondage, 7 Français sur 10 déclarent acheter régulièrement des produits bio.",
+      "usage": "Core noun phrase for “organic products”; learn it as one lexical unit.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE09V006",
+      "kind": "mot-cle",
+      "french": "Maison de l'Adoption",
+      "english": "Adoption Centre",
+      "example": "Pousser la porte de la Maison de l'Adoption, c'est déjà franchir une étape.",
+      "usage": "Core noun phrase for “Adoption Centre”; learn it as one lexical unit.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE09V007",
+      "kind": "mot-cle",
+      "french": "supports de lecture",
+      "english": "reading formats",
+      "example": "C'est pourquoi, afin de faire connaître les nouveaux supports de lecture, 1100 liseuses sont disponibles dans les bibliothèques de Paris, et des tablettes sont aussi proposées en libre accès.",
+      "usage": "Core noun phrase for “reading formats”; learn it as one lexical unit.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE09V008",
+      "kind": "mot-cle",
+      "french": "frais d'électricité",
+      "english": "electricity costs",
+      "example": "Cette aide peut aller jusqu'à 75 % de votre loyer et vous permet d'obtenir une réduction sur les frais d'électricité et de gaz.",
+      "usage": "Core noun phrase for “electricity costs”; learn it as one lexical unit.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE09V009",
+      "kind": "mot-cle",
+      "french": "pistes cyclables",
+      "english": "cycle lanes",
+      "example": "Décidée à déployer 700 km de nouvelles pistes cyclables à Paris d'ici 2020, elle n'entend pas laisser le préfet de police lui mettre des bâtons dans les roues.",
+      "usage": "Core noun phrase for “cycle lanes”; learn it as one lexical unit.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE09V010",
+      "kind": "mot-cle",
+      "french": "troubles du langage",
+      "english": "language disorders",
+      "example": "Âgés de 11 à 13 ans, ces enfants souffrant de troubles du langage sont accueillis depuis la rentrée au collège Petite-Lande dans une classe intégrée, entourée d'une équipe de professionnels.",
+      "usage": "Core noun phrase for “language disorders”; learn it as one lexical unit.",
+      "questions": [
+        30
+      ]
+    },
+    {
+      "id": "CE09V011",
+      "kind": "verbe-action",
+      "french": "Inscrivez-vous",
+      "english": "Sign up",
+      "example": "Inscrivez-vous dans l'association de l'Université pour : — Discuter avec des étudiants français — Participer à des groupes de conversation — Faire des activités ensemble : sport, shopping, visites, sorties ET TOUT EST GRATUIT !",
+      "usage": "Action wording for “Sign up”; notice the exact form used in context.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE09V012",
+      "kind": "verbe-action",
+      "french": "retrouver",
+      "english": "to see again / welcome back",
+      "example": "Nous aurons le plaisir de vous retrouver à partir du 2.",
+      "usage": "Action wording for “to see again / welcome back”; notice the exact form used in context.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE09V013",
+      "kind": "verbe-action",
+      "french": "rencontré",
+      "english": "met",
+      "example": "J'ai rencontré un étudiant mexicain.",
+      "usage": "Action wording for “met”; notice the exact form used in context.",
+      "questions": [
+        5
+      ]
+    },
+    {
+      "id": "CE09V014",
+      "kind": "verbe-action",
+      "french": "bénéficier",
+      "english": "to benefit",
+      "example": "Important : lors de votre réservation, utilisez le code de promotion DIRECT pour bénéficier de cette offre.",
+      "usage": "Action wording for “to benefit”; notice the exact form used in context.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE09V015",
+      "kind": "verbe-action",
+      "french": "consacrée",
+      "english": "devoted",
+      "example": "Mon émission consacrée au jazz et au blues existe depuis sept ans.",
+      "usage": "Action wording for “devoted”; notice the exact form used in context.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE09V016",
+      "kind": "verbe-action",
+      "french": "faire connaître",
+      "english": "to publicize / introduce",
+      "example": "C'est pourquoi, afin de faire connaître les nouveaux supports de lecture, 1100 liseuses sont disponibles dans les bibliothèques de Paris, et des tablettes sont aussi proposées en libre accès.",
+      "usage": "Action wording for “to publicize / introduce”; notice the exact form used in context.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE09V017",
+      "kind": "verbe-action",
+      "french": "fouiller",
+      "english": "to delve into",
+      "example": "L'écrivain aime fouiller l'histoire de la capitale et fréquente de nombreuses bibliothèques.",
+      "usage": "Action wording for “to delve into”; notice the exact form used in context.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE09V018",
+      "kind": "verbe-action",
+      "french": "conserver",
+      "english": "to maintain",
+      "example": "Il est ainsi primordial, après la soixantaine, de conserver une vie active, physiquement par une pratique sportive régulière et aussi intellectuellement en sollicitant nos fonctions mentales par un apprentissage permanent.",
+      "usage": "Action wording for “to maintain”; notice the exact form used in context.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE09V019",
+      "kind": "verbe-action",
+      "french": "déployer",
+      "english": "to roll out",
+      "example": "Décidée à déployer 700 km de nouvelles pistes cyclables à Paris d'ici 2020, elle n'entend pas laisser le préfet de police lui mettre des bâtons dans les roues.",
+      "usage": "Action wording for “to roll out”; notice the exact form used in context.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE09V020",
+      "kind": "verbe-action",
+      "french": "encourager",
+      "english": "to encourage",
+      "example": "Suite au peu d'intérêt porté à la formation professionnelle à Montréal, cinq comités scolaires ont décidé de lancer un projet pour encourager les élèves à choisir cette voie plutôt que celle des études longues.",
+      "usage": "Action wording for “to encourage”; notice the exact form used in context.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE09V021",
+      "kind": "expression",
+      "french": "un peu d'avance",
+      "english": "a little early",
+      "example": "Louisa est arrivée avec un peu d'avance le 14 mars, pour le plus grand bonheur de sa famille !",
+      "usage": "Reusable expression meaning “a little early”; learn the whole chunk.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE09V022",
+      "kind": "expression",
+      "french": "pour le plus grand bonheur de",
+      "english": "to the great delight of",
+      "example": "Louisa est arrivée avec un peu d'avance le 14 mars, pour le plus grand bonheur de sa famille !",
+      "usage": "Reusable expression meaning “to the great delight of”; learn the whole chunk.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE09V023",
+      "kind": "expression",
+      "french": "met à la disposition de",
+      "english": "makes available to",
+      "example": "Le centre culturel met à la disposition de ses élèves un service de petites annonces pour trouver un travail temporaire (garde d'enfants, cours de langue).",
+      "usage": "Reusable expression meaning “makes available to”; learn the whole chunk.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE09V024",
+      "kind": "expression",
+      "french": "par ordre de préférence",
+      "english": "in order of preference",
+      "example": "Avec, par ordre de préférence, les fruits et légumes, le lait et les produits laitiers, les œufs, l'épicerie, la viande.",
+      "usage": "Reusable expression meaning “in order of preference”; learn the whole chunk.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE09V025",
+      "kind": "expression",
+      "french": "avant tout",
+      "english": "above all",
+      "example": "C'est avant tout une façon d'amener les gens sur son terrain, sur les choses qu'on aime et de leur faire comprendre pourquoi on les aime, leur donner envie d'en savoir plus.",
+      "usage": "Reusable expression meaning “above all”; learn the whole chunk.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE09V026",
+      "kind": "expression",
+      "french": "au-delà de",
+      "english": "beyond",
+      "example": "Et là, on comprend qu'au-delà de notre propre désir d'enfant, l'intérêt de l'enfant prime.",
+      "usage": "Reusable expression meaning “beyond”; learn the whole chunk.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE09V027",
+      "kind": "expression",
+      "french": "en libre accès",
+      "english": "freely available",
+      "example": "C'est pourquoi, afin de faire connaître les nouveaux supports de lecture, 1100 liseuses sont disponibles dans les bibliothèques de Paris, et des tablettes sont aussi proposées en libre accès.",
+      "usage": "Reusable expression meaning “freely available”; learn the whole chunk.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE09V028",
+      "kind": "expression",
+      "french": "faire part de",
+      "english": "to inform / share",
+      "example": "Faire part de la réponse d'un responsable",
+      "usage": "Reusable expression meaning “to inform / share”; learn the whole chunk.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE09V029",
+      "kind": "expression",
+      "french": "mettre des bâtons dans les roues",
+      "english": "to put obstacles in the way",
+      "example": "Décidée à déployer 700 km de nouvelles pistes cyclables à Paris d'ici 2020, elle n'entend pas laisser le préfet de police lui mettre des bâtons dans les roues.",
+      "usage": "Reusable expression meaning “to put obstacles in the way”; learn the whole chunk.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE09V030",
+      "kind": "expression",
+      "french": "peu à peu",
+      "english": "little by little",
+      "example": "Longtemps délaissées, les algues semblent peu à peu séduire les consommateurs.",
+      "usage": "Reusable expression meaning “little by little”; learn the whole chunk.",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE09V031",
+      "kind": "reformulation",
+      "french": "vue sur mer",
+      "english": "sea view",
+      "example": "Cuisine, vue sur mer.",
+      "usage": "Useful paraphrase for “sea view”; recognize the same idea in new wording.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE09V032",
+      "kind": "reformulation",
+      "french": "NE RESTEZ PAS SEULS",
+      "english": "DO NOT REMAIN ISOLATED",
+      "example": "ÉTUDIANTS INTERNATIONAUX, NE RESTEZ PAS SEULS !",
+      "usage": "Useful paraphrase for “DO NOT REMAIN ISOLATED”; recognize the same idea in new wording.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE09V033",
+      "kind": "reformulation",
+      "french": "actuellement en vacances",
+      "english": "currently on holiday",
+      "example": "Nous informons notre aimable clientèle que nous sommes actuellement en vacances jusqu'au dimanche 1er septembre.",
+      "usage": "Useful paraphrase for “currently on holiday”; recognize the same idea in new wording.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE09V034",
+      "kind": "reformulation",
+      "french": "l'argument prioritaire",
+      "english": "the main consideration",
+      "example": "Pour les deux tiers des personnes interrogées, la santé est l'argument prioritaire, devant les considérations écologiques.",
+      "usage": "Useful paraphrase for “the main consideration”; recognize the same idea in new wording.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE09V035",
+      "kind": "reformulation",
+      "french": "l'intérêt de l'enfant prime",
+      "english": "the child's interests come first",
+      "example": "Et là, on comprend qu'au-delà de notre propre désir d'enfant, l'intérêt de l'enfant prime.",
+      "usage": "Useful paraphrase for “the child's interests come first”; recognize the same idea in new wording.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE09V036",
+      "kind": "reformulation",
+      "french": "à court terme",
+      "english": "short-term",
+      "example": "Ralentissement du traitement de l'information, baisse de l'attention et de notre mémorisation à court terme.",
+      "usage": "Useful paraphrase for “short-term”; recognize the same idea in new wording.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE09V037",
+      "kind": "reformulation",
+      "french": "La voie est libre",
+      "english": "The way is clear",
+      "example": "La voie est libre pour la maire de Paris, mais pas sans embûches.",
+      "usage": "Useful paraphrase for “The way is clear”; recognize the same idea in new wording.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE09V038",
+      "kind": "reformulation",
+      "french": "outils de contrôle",
+      "english": "monitoring tools",
+      "example": "Ils peuvent être utilisés comme outils de contrôle",
+      "usage": "Useful paraphrase for “monitoring tools”; recognize the same idea in new wording.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE09V039",
+      "kind": "reformulation",
+      "french": "l'apprentissage d'un métier",
+      "english": "learning a trade",
+      "example": "Faire la promotion de l'apprentissage d'un métier auprès des jeunes",
+      "usage": "Useful paraphrase for “learning a trade”; recognize the same idea in new wording.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE09V040",
+      "kind": "reformulation",
+      "french": "encadrement spécifique",
+      "english": "specialized support",
+      "example": "Profiter d'un encadrement spécifique",
+      "usage": "Useful paraphrase for “specialized support”; recognize the same idea in new wording.",
+      "questions": [
+        30
+      ]
+    },
+    {
+      "id": "CE09V041",
+      "kind": "phrase-modele",
+      "french": "Nous aurons le plaisir de vous retrouver",
+      "english": "We will be pleased to welcome you back",
+      "example": "Nous aurons le plaisir de vous retrouver à partir du 2.",
+      "usage": "Reusable pattern for “We will be pleased to welcome you back”; adapt its complements to the situation.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE09V042",
+      "kind": "phrase-modele",
+      "french": "Vous pouvez venir lui dire bonjour",
+      "english": "You can come and say hello to her",
+      "example": "Vous pouvez venir lui dire bonjour au 3, rue des Bleuets à Laval.",
+      "usage": "Reusable pattern for “You can come and say hello to her”; adapt its complements to the situation.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE09V043",
+      "kind": "phrase-modele",
+      "french": "Le centre culturel met à la disposition de ses élèves",
+      "english": "The cultural centre makes available to its students",
+      "example": "Le centre culturel met à la disposition de ses élèves un service de petites annonces pour trouver un travail temporaire (garde d'enfants, cours de langue).",
+      "usage": "Reusable pattern for “The cultural centre makes available to its students”; adapt its complements to the situation.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE09V044",
+      "kind": "phrase-modele",
+      "french": "Il peut partager sa passion avec un public",
+      "english": "He can share his passion with an audience",
+      "example": "Il peut partager sa passion avec un public",
+      "usage": "Reusable pattern for “He can share his passion with an audience”; adapt its complements to the situation.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE09V045",
+      "kind": "phrase-modele",
+      "french": "Les Parisiens peuvent accéder facilement à des livres électroniques",
+      "english": "Parisians can easily access e-books",
+      "example": "Les Parisiens peuvent accéder facilement à des livres électroniques",
+      "usage": "Reusable pattern for “Parisians can easily access e-books”; adapt its complements to the situation.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE09V046",
+      "kind": "phrase-modele",
+      "french": "Pour savoir si vous pouvez recevoir",
+      "english": "To find out whether you can receive",
+      "example": "Pour savoir si vous pouvez recevoir cette aide, plusieurs solutions s'offrent à vous : 1 — Vous rencontrez un des conseillers de notre association qui ouvrira un dossier de demande avec vous.",
+      "usage": "Reusable pattern for “To find out whether you can receive”; adapt its complements to the situation.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE09V047",
+      "kind": "phrase-modele",
+      "french": "Je vous écris suite à",
+      "english": "I am writing following",
+      "example": "Madame Bertrand, Je vous écris suite à votre message électronique du 13 avril dernier au sujet de l'offre d'emploi n°23.",
+      "usage": "Reusable pattern for “I am writing following”; adapt its complements to the situation.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE09V048",
+      "kind": "phrase-modele",
+      "french": "les algues semblent peu à peu séduire les consommateurs",
+      "english": "seaweed seems gradually to be winning over consumers",
+      "example": "Longtemps délaissées, les algues semblent peu à peu séduire les consommateurs.",
+      "usage": "Reusable pattern for “seaweed seems gradually to be winning over consumers”; adapt its complements to the situation.",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE09V049",
+      "kind": "phrase-modele",
+      "french": "Avez-vous déjà observé des familles",
+      "english": "Have you ever observed families",
+      "example": "Avez-vous déjà observé des familles en train de remplir des sachets de bonbons sur un stand de confiserie ?",
+      "usage": "Reusable pattern for “Have you ever observed families”; adapt its complements to the situation.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE09V050",
+      "kind": "phrase-modele",
+      "french": "La question de la substitution des énergies doit être posée préalablement",
+      "english": "The question of replacing energy sources must be addressed beforehand",
+      "example": "La question de la substitution des énergies doit être posée préalablement et particulièrement pour la filière bois.",
+      "usage": "Reusable pattern for “The question of replacing energy sources must be addressed beforehand”; adapt its complements to the situation.",
+      "questions": [
+        29
+      ]
+    }
+  ]
+}

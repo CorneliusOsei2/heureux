@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-7",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE07V001",
+      "kind": "mot-cle",
+      "french": "reunion de travail",
+      "english": "work meeting",
+      "example": "Commencez la reunion de travail sans moi.",
+      "usage": "Core noun phrase for “work meeting”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE07V002",
+      "kind": "mot-cle",
+      "french": "patisseries",
+      "english": "pastries",
+      "example": "Des patisseries",
+      "usage": "Core noun phrase for “pastries”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE07V003",
+      "kind": "mot-cle",
+      "french": "nouvelles coordonnees",
+      "english": "new contact details",
+      "example": "Le document emploie « nouvelles coordonnees » comme formulation centrale.",
+      "usage": "Core noun phrase for “new contact details”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE07V004",
+      "kind": "mot-cle",
+      "french": "ambiance chaleureuse",
+      "english": "warm atmosphere",
+      "example": "Tapas, coeurs de canard, jambon serrano et foie gras s'y rencontrent dans une ambiance chaleureuse, nous faisant voyager entre le sud-ouest de la France et l'Espagne.",
+      "usage": "Core noun phrase for “warm atmosphere”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE07V005",
+      "kind": "mot-cle",
+      "french": "ecole de danse",
+      "english": "dance school",
+      "example": "L'ecole de danse \"Studio Celine\" ouvre ses portes au public le 16 septembre.",
+      "usage": "Core noun phrase for “dance school”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE07V006",
+      "kind": "mot-cle",
+      "french": "qualites relationnelles",
+      "english": "people skills",
+      "example": "Votre sens de l'observation et vos qualites relationnelles sont vos meilleurs atouts pour reussir dans votre mission.",
+      "usage": "Core noun phrase for “people skills”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE07V007",
+      "kind": "mot-cle",
+      "french": "ecran tactile",
+      "english": "touchscreen",
+      "example": "En hiver et a l'exterieur, pour piloter n'importe quel appareil a ecran tactile, il faut enlever ses gants, au risque d'attraper des engelures par les temps de grand froid.",
+      "usage": "Core noun phrase for “touchscreen”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE07V008",
+      "kind": "mot-cle",
+      "french": "salaire motivant",
+      "english": "attractive salary",
+      "example": "VOUS CHERCHEZ UN CONTRAT A DUREE INDETERMINEE AVEC UN SALAIRE MOTIVANT ET FIXE?",
+      "usage": "Core noun phrase for “attractive salary”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE07V009",
+      "kind": "mot-cle",
+      "french": "insectes volants",
+      "english": "flying insects",
+      "example": "La population d'insectes volants, essentiels aux ecosystemes, a diminue de plus de 75% en pres de trente ans en Allemagne sans que les scientifiques ne parviennent a en determiner la cause avec certitude.",
+      "usage": "Core noun phrase for “flying insects”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE07V010",
+      "kind": "mot-cle",
+      "french": "huile de palme",
+      "english": "palm oil",
+      "example": "L'huile de palme est l'huile la plus produite au monde.",
+      "usage": "Core noun phrase for “palm oil”; learn it as one lexical unit. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE07V011",
+      "kind": "verbe-action",
+      "french": "Faites votre choix",
+      "english": "Make your choice",
+      "example": "Faites votre choix.",
+      "usage": "Action wording for “Make your choice”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE07V012",
+      "kind": "verbe-action",
+      "french": "gouter",
+      "english": "to taste",
+      "example": "Si vous voulez gouter a l'Espagne contemporaine pour votre pause dejeuner, cet endroit est pour vous.",
+      "usage": "Action wording for “to taste”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE07V013",
+      "kind": "verbe-action",
+      "french": "feter",
+      "english": "to celebrate",
+      "example": "Pour feter la retraite de Jean-Louis apres 15 ans dans l'entreprise, nous vous proposons de nous retrouver autour d'un verre a 18 heures en salle 6.",
+      "usage": "Action wording for “to celebrate”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE07V014",
+      "kind": "verbe-action",
+      "french": "conseille",
+      "english": "advises / recommends",
+      "example": "\"Marche facile\" est une application pour telephone portable qui vous conseille les bons fruits et legumes de saison dans les supermarches.",
+      "usage": "Action wording for “advises / recommends”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        11
+      ]
+    },
+    {
+      "id": "CE07V015",
+      "kind": "verbe-action",
+      "french": "proteger",
+      "english": "to protect",
+      "example": "Vous pourrez proteger, assister, securiser les voyageurs et les agents de l'entreprise et intervenir en cas de besoin.",
+      "usage": "Action wording for “to protect”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE07V016",
+      "kind": "verbe-action",
+      "french": "Partagez",
+      "english": "Share",
+      "example": "Partagez vos images, montrez que l'Europe fait partie de votre vie.",
+      "usage": "Action wording for “Share”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE07V017",
+      "kind": "verbe-action",
+      "french": "se sont retrouvees",
+      "english": "found each other again",
+      "example": "Adoptees separement a la naissance, des jumelles indonesiennes se sont retrouvees 29 ans plus tard en Suede.",
+      "usage": "Action wording for “found each other again”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE07V018",
+      "kind": "verbe-action",
+      "french": "fouiller",
+      "english": "to delve into",
+      "example": "L'ecrivain aime fouiller l'histoire de la capitale et frequente de nombreuses bibliotheques.",
+      "usage": "Action wording for “to delve into”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE07V019",
+      "kind": "verbe-action",
+      "french": "detruit",
+      "english": "destroys",
+      "example": "Une technique laser, experimentee en laboratoire, detruit a vie les pigments de l'iris pour l'eclaircir.",
+      "usage": "Action wording for “destroys”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE07V020",
+      "kind": "verbe-action",
+      "french": "a fait progresser",
+      "english": "advanced / increased",
+      "example": "Le productivisme soutenu par la chimie a fait progresser comme jamais les rendements agricoles, nourri la planete et abaisse le prix des denrees.",
+      "usage": "Action wording for “advanced / increased”; notice the exact form used in context. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        29
+      ]
+    },
+    {
+      "id": "CE07V021",
+      "kind": "expression",
+      "french": "Sur place ou a emporter",
+      "english": "eat in or take away",
+      "example": "Sur place ou a emporter.",
+      "usage": "Reusable expression meaning “eat in or take away”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE07V022",
+      "kind": "expression",
+      "french": "autour d'un verre",
+      "english": "over a drink",
+      "example": "Pour feter la retraite de Jean-Louis apres 15 ans dans l'entreprise, nous vous proposons de nous retrouver autour d'un verre a 18 heures en salle 6.",
+      "usage": "Reusable expression meaning “over a drink”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE07V023",
+      "kind": "expression",
+      "french": "entre amis",
+      "english": "among friends",
+      "example": "Nous sommes entre amis.",
+      "usage": "Reusable expression meaning “among friends”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        10
+      ]
+    },
+    {
+      "id": "CE07V024",
+      "kind": "expression",
+      "french": "en poche",
+      "english": "under one's belt",
+      "example": "\"Avec un Master Commerce en poche, je ne pensais pas qu'il serait a ce point difficile de trouver mon premier emploi.",
+      "usage": "Reusable expression meaning “under one's belt”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE07V025",
+      "kind": "expression",
+      "french": "rien en vue",
+      "english": "nothing in sight",
+      "example": "Tout le monde me disait 'Ne t'inquiete pas, dans deux ou trois mois tu auras trouve.' Sept mois plus tard, toujours rien en vue.",
+      "usage": "Reusable expression meaning “nothing in sight”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE07V026",
+      "kind": "expression",
+      "french": "au risque d'attraper",
+      "english": "at the risk of catching",
+      "example": "En hiver et a l'exterieur, pour piloter n'importe quel appareil a ecran tactile, il faut enlever ses gants, au risque d'attraper des engelures par les temps de grand froid.",
+      "usage": "Reusable expression meaning “at the risk of catching”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE07V027",
+      "kind": "expression",
+      "french": "Coup de coeur",
+      "english": "favourite / top pick",
+      "example": "Coup de coeur: LE DIRIGEABLE.",
+      "usage": "Reusable expression meaning “favourite / top pick”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        17
+      ]
+    },
+    {
+      "id": "CE07V028",
+      "kind": "expression",
+      "french": "faire connaissance",
+      "english": "to get acquainted",
+      "example": "\"Le roquefort etait simplement un moyen de faire connaissance avec les habitants.",
+      "usage": "Reusable expression meaning “to get acquainted”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE07V029",
+      "kind": "expression",
+      "french": "a la lumiere de",
+      "english": "in light of",
+      "example": "\"Au coeur de l'histoire.\" Revisiter l'histoire de France a la lumiere de la societe contemporaine, c'est le concept du nouveau magazine propose par la chaine de television France 5.",
+      "usage": "Reusable expression meaning “in light of”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE07V030",
+      "kind": "expression",
+      "french": "a de nombreux egards",
+      "english": "in many respects",
+      "example": "\"Renaissance\" -- un mot porteur de sens a de nombreux egards.",
+      "usage": "Reusable expression meaning “in many respects”; learn the whole chunk. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        27
+      ]
+    },
+    {
+      "id": "CE07V031",
+      "kind": "reformulation",
+      "french": "moins de 12 ans",
+      "english": "under 12 years old",
+      "example": "VISITE DU CHATEAU Gratuit pour les moins de 12 ans.",
+      "usage": "Useful paraphrase for “under 12 years old”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE07V032",
+      "kind": "reformulation",
+      "french": "Ouverture-Fermeture",
+      "english": "opening and closing times",
+      "example": "Jardin de la Fontaine Ouverture-Fermeture: Du 1er septembre au 31 mars: 7h30-18h30 Du 1er avril au 30 juin: 7h30-20h30 Du 1er juillet au 31 aout: 7h00-22h30",
+      "usage": "Useful paraphrase for “opening and closing times”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        7
+      ]
+    },
+    {
+      "id": "CE07V033",
+      "kind": "reformulation",
+      "french": "toute la journee",
+      "english": "all day",
+      "example": "Venez essayer nos cours toute la journee.",
+      "usage": "Useful paraphrase for “all day”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE07V034",
+      "kind": "reformulation",
+      "french": "en cas de besoin",
+      "english": "if needed",
+      "example": "Vous pourrez proteger, assister, securiser les voyageurs et les agents de l'entreprise et intervenir en cas de besoin.",
+      "usage": "Useful paraphrase for “if needed”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE07V035",
+      "kind": "reformulation",
+      "french": "un Paris meconnu",
+      "english": "a little-known side of Paris",
+      "example": "Partez a la decouverte d'un Paris meconnu, celui des passages secrets, des curiosites historiques, des panoramas etonnants, et meme des beautes naturelles en pleine ville.",
+      "usage": "Useful paraphrase for “a little-known side of Paris”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE07V036",
+      "kind": "reformulation",
+      "french": "contrat a duree indeterminee",
+      "english": "permanent employment contract",
+      "example": "VOUS CHERCHEZ UN CONTRAT A DUREE INDETERMINEE AVEC UN SALAIRE MOTIVANT ET FIXE?",
+      "usage": "Useful paraphrase for “permanent employment contract”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE07V037",
+      "kind": "reformulation",
+      "french": "sur deux etages",
+      "english": "across two floors",
+      "example": "Pres de 500 ecrans alignes sur deux etages et 1200 m2: la plus grande salle de jeux video en reseau d'Europe a ouvert ses portes au public a Paris.",
+      "usage": "Useful paraphrase for “across two floors”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE07V038",
+      "kind": "reformulation",
+      "french": "tout le contraire",
+      "english": "the complete opposite",
+      "example": "\"C'est tout le contraire.",
+      "usage": "Useful paraphrase for “the complete opposite”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE07V039",
+      "kind": "reformulation",
+      "french": "consommation courante",
+      "english": "everyday consumption",
+      "example": "Un tiers de nos produits de consommation courante en contiennent.",
+      "usage": "Useful paraphrase for “everyday consumption”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE07V040",
+      "kind": "reformulation",
+      "french": "petit retraite maltraite",
+      "english": "mistreated little retiree",
+      "example": "Claire Nadeau, tres drole, et Gerard Rinaldi, tres inattendu dans le role d'un petit retraite maltraite par sa femme, jouent \"Apres l'amour.\" Cette comedie, creee il y a dix ans, est reprise au Splendide.",
+      "usage": "Useful paraphrase for “mistreated little retiree”; recognize the same idea in new wording. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        30
+      ]
+    },
+    {
+      "id": "CE07V041",
+      "kind": "phrase-modele",
+      "french": "Commencez la reunion de travail sans moi",
+      "english": "Start the work meeting without me",
+      "example": "Commencez la reunion de travail sans moi.",
+      "usage": "Reusable pattern for “Start the work meeting without me”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE07V042",
+      "kind": "phrase-modele",
+      "french": "Merci d'ecrire maintenant au",
+      "english": "Please write from now on to",
+      "example": "Merci d'ecrire maintenant au: 10, rue Lalou, 34110 Frontignan.",
+      "usage": "Reusable pattern for “Please write from now on to”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE07V043",
+      "kind": "phrase-modele",
+      "french": "cet endroit est pour vous",
+      "english": "this place is for you",
+      "example": "Si vous voulez gouter a l'Espagne contemporaine pour votre pause dejeuner, cet endroit est pour vous.",
+      "usage": "Reusable pattern for “this place is for you”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE07V044",
+      "kind": "phrase-modele",
+      "french": "Venez essayer nos cours",
+      "english": "Come and try our classes",
+      "example": "Venez essayer nos cours toute la journee.",
+      "usage": "Reusable pattern for “Come and try our classes”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE07V045",
+      "kind": "phrase-modele",
+      "french": "Votre sens de l'observation",
+      "english": "Your powers of observation",
+      "example": "Votre sens de l'observation et vos qualites relationnelles sont vos meilleurs atouts pour reussir dans votre mission.",
+      "usage": "Reusable pattern for “Your powers of observation”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE07V046",
+      "kind": "phrase-modele",
+      "french": "Partez a la decouverte",
+      "english": "Set off to discover",
+      "example": "Partez a la decouverte d'un Paris meconnu, celui des passages secrets, des curiosites historiques, des panoramas etonnants, et meme des beautes naturelles en pleine ville.",
+      "usage": "Reusable pattern for “Set off to discover”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE07V047",
+      "kind": "phrase-modele",
+      "french": "Si vous etes un commercial",
+      "english": "If you are a salesperson",
+      "example": "Si vous etes un commercial, si vous etes dynamique et motive, contactez-nous.",
+      "usage": "Reusable pattern for “If you are a salesperson”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE07V048",
+      "kind": "phrase-modele",
+      "french": "Il est desormais possible de modifier",
+      "english": "It is now possible to change",
+      "example": "Il est desormais possible de modifier la couleur des yeux.",
+      "usage": "Reusable pattern for “It is now possible to change”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE07V049",
+      "kind": "phrase-modele",
+      "french": "sans que les scientifiques ne parviennent a en determiner la cause",
+      "english": "without scientists managing to determine the cause",
+      "example": "La population d'insectes volants, essentiels aux ecosystemes, a diminue de plus de 75% en pres de trente ans en Allemagne sans que les scientifiques ne parviennent a en determiner la cause avec certitude.",
+      "usage": "Reusable pattern for “without scientists managing to determine the cause”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE07V050",
+      "kind": "phrase-modele",
+      "french": "La langue francaise n'a pas besoin de se defendre",
+      "english": "The French language does not need defending",
+      "example": "La langue francaise n'a pas besoin de se defendre.",
+      "usage": "Reusable pattern for “The French language does not need defending”; adapt its complements to the situation. Preserve this source spelling; restore standard accents in normal writing where needed.",
+      "questions": [
+        31
+      ]
+    }
+  ]
+}

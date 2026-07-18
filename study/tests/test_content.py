@@ -286,15 +286,18 @@ class ComprehensionVocabularyParserTests(SimpleTestCase):
             )
         }
 
-        self.assertEqual(len(vocabulary), 250)
+        self.assertEqual(len(vocabulary), 450)
         self.assertEqual(
             Counter(item.test_slug for item in vocabulary),
-            {f"test-{number}": 50 for number in range(1, 6)},
+            {
+                f"test-{number}": 50
+                for number in (1, 2, 3, 4, 5, 6, 7, 9, 10)
+            },
         )
         self.assertEqual(
             Counter(item.phrase.category for item in vocabulary),
             {
-                category: 50
+                category: 90
                 for category in content.COMPREHENSION_VOCABULARY_CATEGORIES.values()
             },
         )
@@ -304,7 +307,7 @@ class ComprehensionVocabularyParserTests(SimpleTestCase):
         comprehension_ids = {
             item.phrase.phrase_id.casefold() for item in vocabulary
         }
-        self.assertEqual(len(comprehension_ids), 250)
+        self.assertEqual(len(comprehension_ids), 450)
         self.assertTrue(comprehension_ids.isdisjoint(response_ids))
         self.assertTrue(comprehension_ids.isdisjoint(subject_ids))
 

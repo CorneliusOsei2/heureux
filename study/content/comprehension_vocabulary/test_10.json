@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-10",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE10V001",
+      "kind": "mot-cle",
+      "french": "grippe",
+      "english": "flu",
+      "example": "Il ne vient pas aujourd'hui car il a la grippe.",
+      "usage": "Core noun phrase for “flu”; learn it as one lexical unit.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE10V002",
+      "kind": "mot-cle",
+      "french": "station de métro",
+      "english": "metro station",
+      "example": "Du 10 avril au 15 septembre, les ascenseurs de votre station de métro sont en réparation.",
+      "usage": "Core noun phrase for “metro station”; learn it as one lexical unit.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE10V003",
+      "kind": "mot-cle",
+      "french": "salle des jouets",
+      "english": "playroom",
+      "example": "AU CLUB DES ENFANTS CINÉ-GOÛTER SAMEDI 16 HEURES SALLE DES JOUETS « L'HISTOIRE SANS FIN »",
+      "usage": "Core noun phrase for “playroom”; learn it as one lexical unit.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE10V004",
+      "kind": "mot-cle",
+      "french": "Palais des Congrès",
+      "english": "convention centre",
+      "example": "De : Société BALY INFORMATIQUE À : Monsieur Lefort Objet : Printemps des conférences — Lyon Monsieur, Une voiture de notre société va vous attendre à votre arrivée à l'aéroport (porte F) pour vous conduire au Palais des Congrès.",
+      "usage": "Core noun phrase for “convention centre”; learn it as one lexical unit.",
+      "questions": [
+        5
+      ]
+    },
+    {
+      "id": "CE10V005",
+      "kind": "mot-cle",
+      "french": "stage",
+      "english": "course / training session",
+      "example": "Vous pouvez bénéficier de cette offre spéciale pour un stage d'une ou plusieurs semaines de juin à septembre.",
+      "usage": "Core noun phrase for “course / training session”; learn it as one lexical unit.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE10V006",
+      "kind": "mot-cle",
+      "french": "carte jeune",
+      "english": "youth card",
+      "example": "L'Union européenne va offrir une « carte jeune » aux étudiants du continent qui ont vingt ans cette année.",
+      "usage": "Core noun phrase for “youth card”; learn it as one lexical unit.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE10V007",
+      "kind": "mot-cle",
+      "french": "nouvelles chaises",
+      "english": "new chairs",
+      "example": "Depuis quelques années, leurs établissements, de la maternelle au lycée, ont de nouvelles chaises aux formes arrondies et colorées.",
+      "usage": "Core noun phrase for “new chairs”; learn it as one lexical unit.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE10V008",
+      "kind": "mot-cle",
+      "french": "salon automobile",
+      "english": "motor show",
+      "example": "Un salon automobile est un lieu de rêve, mais pas le salon de cette année.",
+      "usage": "Core noun phrase for “motor show”; learn it as one lexical unit.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE10V009",
+      "kind": "mot-cle",
+      "french": "développement durable",
+      "english": "sustainable development",
+      "example": "« L'art et ses modes de production contribuent à sensibiliser les gens au développement durable », commente Élise Morin, créatrice de l'œuvre Waste Landscape composée de vieux CD.",
+      "usage": "Core noun phrase for “sustainable development”; learn it as one lexical unit.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE10V010",
+      "kind": "mot-cle",
+      "french": "opinion publique",
+      "english": "public opinion",
+      "example": "La prise en compte de l'opinion publique",
+      "usage": "Core noun phrase for “public opinion”; learn it as one lexical unit.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE10V011",
+      "kind": "verbe-action",
+      "french": "conduire",
+      "english": "to drive / take",
+      "example": "De : Société BALY INFORMATIQUE À : Monsieur Lefort Objet : Printemps des conférences — Lyon Monsieur, Une voiture de notre société va vous attendre à votre arrivée à l'aéroport (porte F) pour vous conduire au Palais des Congrès.",
+      "usage": "Action wording for “to drive / take”; notice the exact form used in context.",
+      "questions": [
+        5
+      ]
+    },
+    {
+      "id": "CE10V012",
+      "kind": "verbe-action",
+      "french": "prévu",
+      "english": "planned",
+      "example": "Nous avons prévu quelques réparations dans l'appartement à la fin de la semaine.",
+      "usage": "Action wording for “planned”; notice the exact form used in context.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE10V013",
+      "kind": "verbe-action",
+      "french": "se retrouve",
+      "english": "meet up",
+      "example": "On pourrait partir vers 19 h et aller ensemble chez lui : où est-ce qu'on se retrouve ?",
+      "usage": "Action wording for “meet up”; notice the exact form used in context.",
+      "questions": [
+        7
+      ]
+    },
+    {
+      "id": "CE10V014",
+      "kind": "verbe-action",
+      "french": "bénéficier",
+      "english": "to benefit",
+      "example": "Vous pouvez bénéficier de cette offre spéciale pour un stage d'une ou plusieurs semaines de juin à septembre.",
+      "usage": "Action wording for “to benefit”; notice the exact form used in context.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE10V015",
+      "kind": "verbe-action",
+      "french": "prendre le train",
+      "english": "to take the train",
+      "example": "Pendant un mois maximum, les jeunes pourront prendre le train gratuitement pour visiter plus de quinze pays.",
+      "usage": "Action wording for “to take the train”; notice the exact form used in context.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE10V016",
+      "kind": "verbe-action",
+      "french": "acheter",
+      "english": "to buy",
+      "example": "Peux-tu acheter du pain et du fromage pour le dîner ?",
+      "usage": "Action wording for “to buy”; notice the exact form used in context.",
+      "questions": [
+        11
+      ]
+    },
+    {
+      "id": "CE10V017",
+      "kind": "verbe-action",
+      "french": "consacrent",
+      "english": "devote / spend",
+      "example": "Selon une étude, les salariés passent chaque jour en moyenne une heure et demie à surfer au bureau et consacrent un peu plus d'une demi-heure à un usage professionnel, contre 53 minutes à des fins personnelles.",
+      "usage": "Action wording for “devote / spend”; notice the exact form used in context.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE10V018",
+      "kind": "verbe-action",
+      "french": "encadrer",
+      "english": "to supervise / set limits",
+      "example": "Plus de 95 % des enfants français disent avoir reçu les consignes parentales de base destinées à encadrer leur navigation sur internet : ne pas se rendre seul à un rendez-vous avec un inconnu, ne pas répondre aux messages de gens qu'ils ne connaissent pas, ne pas dévoiler d'informations privées comme son nom, son adresse, celle de son école, etc.",
+      "usage": "Action wording for “to supervise / set limits”; notice the exact form used in context.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE10V019",
+      "kind": "verbe-action",
+      "french": "réutiliser",
+      "english": "to reuse",
+      "example": "De réutiliser des objets",
+      "usage": "Action wording for “to reuse”; notice the exact form used in context.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE10V020",
+      "kind": "verbe-action",
+      "french": "se reconvertir",
+      "english": "to change careers",
+      "example": "Les salariés européens seraient 74 % à songer à se reconvertir et seuls 8 % se déclarent satisfaits de leur carrière.",
+      "usage": "Action wording for “to change careers”; notice the exact form used in context.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE10V021",
+      "kind": "expression",
+      "french": "à la fin de la semaine",
+      "english": "at the end of the week",
+      "example": "Nous avons prévu quelques réparations dans l'appartement à la fin de la semaine.",
+      "usage": "Reusable expression meaning “at the end of the week”; learn the whole chunk.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE10V022",
+      "kind": "expression",
+      "french": "N'oublie pas",
+      "english": "Don't forget",
+      "example": "Adèle, N'oublie pas l'anniversaire de Raphaël.",
+      "usage": "Reusable expression meaning “Don't forget”; learn the whole chunk.",
+      "questions": [
+        7
+      ]
+    },
+    {
+      "id": "CE10V023",
+      "kind": "expression",
+      "french": "d'une ou plusieurs semaines",
+      "english": "for one or more weeks",
+      "example": "Vous pouvez bénéficier de cette offre spéciale pour un stage d'une ou plusieurs semaines de juin à septembre.",
+      "usage": "Reusable expression meaning “for one or more weeks”; learn the whole chunk.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE10V024",
+      "kind": "expression",
+      "french": "à des fins personnelles",
+      "english": "for personal purposes",
+      "example": "Selon une étude, les salariés passent chaque jour en moyenne une heure et demie à surfer au bureau et consacrent un peu plus d'une demi-heure à un usage professionnel, contre 53 minutes à des fins personnelles.",
+      "usage": "Reusable expression meaning “for personal purposes”; learn the whole chunk.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE10V025",
+      "kind": "expression",
+      "french": "en toute liberté",
+      "english": "with complete freedom",
+      "example": "Ils se connectent en toute liberté",
+      "usage": "Reusable expression meaning “with complete freedom”; learn the whole chunk.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE10V026",
+      "kind": "expression",
+      "french": "ça ne se passe pas que",
+      "english": "it is not only about",
+      "example": "« Le recyclage, ça ne se passe pas que dans la poubelle », intervient le photographe Joachim Romain, dont le travail est centré sur les affiches promotionnelles.",
+      "usage": "Reusable expression meaning “it is not only about”; learn the whole chunk.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE10V027",
+      "kind": "expression",
+      "french": "ont besoin d'avoir",
+      "english": "need to have",
+      "example": "Le téléphone mobile étant un objet technique, les clients ont besoin d'avoir quelqu'un en face d'eux qui les rassure, qui leur explique le fonctionnement de l'appareil.",
+      "usage": "Reusable expression meaning “need to have”; learn the whole chunk.",
+      "questions": [
+        17
+      ]
+    },
+    {
+      "id": "CE10V028",
+      "kind": "expression",
+      "french": "par rapport à",
+      "english": "compared with",
+      "example": "Les parents affirment que « la santé de leur enfant a peu varié par rapport à l'an dernier ».",
+      "usage": "Reusable expression meaning “compared with”; learn the whole chunk.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE10V029",
+      "kind": "expression",
+      "french": "s'avérer aussi efficace",
+      "english": "prove just as effective",
+      "example": "S'il irrite parfois notre conjoint, le bavardage peut libérer les tensions et s'avérer aussi efficace qu'une thérapie.",
+      "usage": "Reusable expression meaning “prove just as effective”; learn the whole chunk.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE10V030",
+      "kind": "expression",
+      "french": "prise à la légère",
+      "english": "taken lightly",
+      "example": "Changer de métier : éviter les aléas Changer de métier ne doit pas être une décision prise à la légère.",
+      "usage": "Reusable expression meaning “taken lightly”; learn the whole chunk.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE10V031",
+      "kind": "reformulation",
+      "french": "très malade",
+      "english": "very ill",
+      "example": "Il est très malade",
+      "usage": "Useful paraphrase for “very ill”; recognize the same idea in new wording.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE10V032",
+      "kind": "reformulation",
+      "french": "en réparation",
+      "english": "under repair",
+      "example": "Du 10 avril au 15 septembre, les ascenseurs de votre station de métro sont en réparation.",
+      "usage": "Useful paraphrase for “under repair”; recognize the same idea in new wording.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE10V033",
+      "kind": "reformulation",
+      "french": "faire des travaux",
+      "english": "carry out building work",
+      "example": "Ils vont faire des travaux",
+      "usage": "Useful paraphrase for “carry out building work”; recognize the same idea in new wording.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE10V034",
+      "kind": "reformulation",
+      "french": "offre spéciale",
+      "english": "special offer",
+      "example": "Vous pouvez bénéficier de cette offre spéciale pour un stage d'une ou plusieurs semaines de juin à septembre.",
+      "usage": "Useful paraphrase for “special offer”; recognize the same idea in new wording.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE10V035",
+      "kind": "reformulation",
+      "french": "présence est obligatoire",
+      "english": "attendance is compulsory",
+      "example": "Votre présence est obligatoire.",
+      "usage": "Useful paraphrase for “attendance is compulsory”; recognize the same idea in new wording.",
+      "questions": [
+        10
+      ]
+    },
+    {
+      "id": "CE10V036",
+      "kind": "reformulation",
+      "french": "nouvelle philosophie de l'enseignement",
+      "english": "new philosophy of education",
+      "example": "Ces chaises, pensées pour les besoins des écoliers, répondent à une nouvelle philosophie de l'enseignement.",
+      "usage": "Useful paraphrase for “new philosophy of education”; recognize the same idea in new wording.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE10V037",
+      "kind": "reformulation",
+      "french": "chute de productivité",
+      "english": "drop in productivity",
+      "example": "L'étude chiffre cette chute de productivité à 12,4 %.",
+      "usage": "Useful paraphrase for “drop in productivity”; recognize the same idea in new wording.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE10V038",
+      "kind": "reformulation",
+      "french": "informations privées",
+      "english": "private information",
+      "example": "Plus de 95 % des enfants français disent avoir reçu les consignes parentales de base destinées à encadrer leur navigation sur internet : ne pas se rendre seul à un rendez-vous avec un inconnu, ne pas répondre aux messages de gens qu'ils ne connaissent pas, ne pas dévoiler d'informations privées comme son nom, son adresse, celle de son école, etc.",
+      "usage": "Useful paraphrase for “private information”; recognize the same idea in new wording.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE10V039",
+      "kind": "reformulation",
+      "french": "Les échanges en famille s'améliorent",
+      "english": "Family communication improves",
+      "example": "Les échanges en famille s'améliorent",
+      "usage": "Useful paraphrase for “Family communication improves”; recognize the same idea in new wording.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE10V040",
+      "kind": "reformulation",
+      "french": "interaction sociale",
+      "english": "social interaction",
+      "example": "Le besoin d'interaction sociale",
+      "usage": "Useful paraphrase for “social interaction”; recognize the same idea in new wording.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE10V041",
+      "kind": "phrase-modele",
+      "french": "Il ne vient pas aujourd'hui car",
+      "english": "He is not coming today because",
+      "example": "Il ne vient pas aujourd'hui car il a la grippe.",
+      "usage": "Reusable pattern for “He is not coming today because”; adapt its complements to the situation.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE10V042",
+      "kind": "phrase-modele",
+      "french": "Pour faciliter vos déplacements",
+      "english": "To make your journeys easier",
+      "example": "Pour faciliter vos déplacements, les installations changent.",
+      "usage": "Reusable pattern for “To make your journeys easier”; adapt its complements to the situation.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE10V043",
+      "kind": "phrase-modele",
+      "french": "Une voiture de notre société va vous attendre",
+      "english": "A car from our company will be waiting for you",
+      "example": "De : Société BALY INFORMATIQUE À : Monsieur Lefort Objet : Printemps des conférences — Lyon Monsieur, Une voiture de notre société va vous attendre à votre arrivée à l'aéroport (porte F) pour vous conduire au Palais des Congrès.",
+      "usage": "Reusable pattern for “A car from our company will be waiting for you”; adapt its complements to the situation.",
+      "questions": [
+        5
+      ]
+    },
+    {
+      "id": "CE10V044",
+      "kind": "phrase-modele",
+      "french": "Veuillez nous excuser pour le bruit",
+      "english": "Please excuse us for the noise",
+      "example": "Veuillez nous excuser pour le bruit.",
+      "usage": "Reusable pattern for “Please excuse us for the noise”; adapt its complements to the situation.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE10V045",
+      "kind": "phrase-modele",
+      "french": "Vous trouverez le calendrier et le programme",
+      "english": "You will find the schedule and programme",
+      "example": "Vous trouverez le calendrier et le programme des formations sur notre site www.coursdefrançais.org.",
+      "usage": "Reusable pattern for “You will find the schedule and programme”; adapt its complements to the situation.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE10V046",
+      "kind": "phrase-modele",
+      "french": "Votre présence est obligatoire",
+      "english": "Your attendance is compulsory",
+      "example": "Votre présence est obligatoire.",
+      "usage": "Reusable pattern for “Your attendance is compulsory”; adapt its complements to the situation.",
+      "questions": [
+        10
+      ]
+    },
+    {
+      "id": "CE10V047",
+      "kind": "phrase-modele",
+      "french": "Le recyclage, ça ne se passe pas que dans la poubelle",
+      "english": "Recycling does not happen only in the bin",
+      "example": "« Le recyclage, ça ne se passe pas que dans la poubelle », intervient le photographe Joachim Romain, dont le travail est centré sur les affiches promotionnelles.",
+      "usage": "Reusable pattern for “Recycling does not happen only in the bin”; adapt its complements to the situation.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE10V048",
+      "kind": "phrase-modele",
+      "french": "70 % des ventes se font dans les magasins",
+      "english": "70% of sales take place in shops",
+      "example": "En effet, malgré le développement d'internet, 70 % des ventes se font dans les magasins.",
+      "usage": "Reusable pattern for “70% of sales take place in shops”; adapt its complements to the situation.",
+      "questions": [
+        17
+      ]
+    },
+    {
+      "id": "CE10V049",
+      "kind": "phrase-modele",
+      "french": "Les parents affirment que",
+      "english": "Parents state that",
+      "example": "Les parents affirment que « la santé de leur enfant a peu varié par rapport à l'an dernier ».",
+      "usage": "Reusable pattern for “Parents state that”; adapt its complements to the situation.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE10V050",
+      "kind": "phrase-modele",
+      "french": "Il est essentiel de bien s'orienter",
+      "english": "It is essential to choose the right direction",
+      "example": "Il est essentiel de bien s'orienter pour la recherche d'un nouveau travail, surtout si vous êtes dans le flou par rapport à vos envies.",
+      "usage": "Reusable pattern for “It is essential to choose the right direction”; adapt its complements to the situation.",
+      "questions": [
+        23
+      ]
+    }
+  ]
+}

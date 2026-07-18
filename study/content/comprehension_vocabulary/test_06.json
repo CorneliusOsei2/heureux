@@ -1,0 +1,556 @@
+{
+  "test_slug": "test-6",
+  "mode": "ecrite",
+  "entries": [
+    {
+      "id": "CE06V001",
+      "kind": "mot-cle",
+      "french": "ascenseurs",
+      "english": "lifts / elevators",
+      "example": "Du 10 avril au 15 septembre, les ascenseurs de votre station de métro sont en réparation.",
+      "usage": "Core noun phrase for “lifts / elevators”; learn it as one lexical unit.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE06V002",
+      "kind": "mot-cle",
+      "french": "viande rouge",
+      "english": "red meat",
+      "example": "Limitez la quantité de viande rouge, de beurre, de sucre et de sel, et buvez au moins huit verres d'eau par jour !",
+      "usage": "Core noun phrase for “red meat”; learn it as one lexical unit.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE06V003",
+      "kind": "mot-cle",
+      "french": "langue étrangère",
+      "english": "foreign language",
+      "example": "Vous souhaitez améliorer votre niveau en langue étrangère ?",
+      "usage": "Core noun phrase for “foreign language”; learn it as one lexical unit.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE06V004",
+      "kind": "mot-cle",
+      "french": "nouvelle boutique",
+      "english": "new shop",
+      "example": "Anne, gérante de Somya, nouvelle boutique spécialisée dans la décoration, vous attend pour vous proposer de nombreux produits et livres spécialisés.",
+      "usage": "Core noun phrase for “new shop”; learn it as one lexical unit.",
+      "questions": [
+        7
+      ]
+    },
+    {
+      "id": "CE06V005",
+      "kind": "mot-cle",
+      "french": "mode express",
+      "english": "express delivery",
+      "example": "Pour que vos colis arrivent avant les fêtes, nous vous proposons de les transporter en mode express.",
+      "usage": "Core noun phrase for “express delivery”; learn it as one lexical unit.",
+      "questions": [
+        10
+      ]
+    },
+    {
+      "id": "CE06V006",
+      "kind": "mot-cle",
+      "french": "stage",
+      "english": "course / workshop",
+      "example": "Sur place, une jeune agence spécialisée vous propose un stage pour découvrir la ville autrement.",
+      "usage": "Core noun phrase for “course / workshop”; learn it as one lexical unit.",
+      "questions": [
+        12
+      ]
+    },
+    {
+      "id": "CE06V007",
+      "kind": "mot-cle",
+      "french": "financement participatif",
+      "english": "crowdfunding",
+      "example": "Numéro 1 français de badminton, Brice Leverdez a lancé lundi une opération de financement participatif pour sa préparation aux jeux Olympiques.",
+      "usage": "Core noun phrase for “crowdfunding”; learn it as one lexical unit.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE06V008",
+      "kind": "mot-cle",
+      "french": "savoir-faire",
+      "english": "expertise / know-how",
+      "example": "Venez y découvrir le savoir-faire de notre région.",
+      "usage": "Core noun phrase for “expertise / know-how”; learn it as one lexical unit.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE06V009",
+      "kind": "mot-cle",
+      "french": "nuisances sonores",
+      "english": "noise pollution",
+      "example": "D'après une étude, les nuisances sonores importantes peuvent en effet réduire la sensibilité des palais, rendant la nourriture peu savoureuse.",
+      "usage": "Core noun phrase for “noise pollution”; learn it as one lexical unit.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE06V010",
+      "kind": "mot-cle",
+      "french": "manuel scolaire",
+      "english": "school textbook",
+      "example": "Il n'y a presque plus aujourd'hui de manuel scolaire qui paraisse sans avoir une double traduction, numérique et en ligne.",
+      "usage": "Core noun phrase for “school textbook”; learn it as one lexical unit.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE06V011",
+      "kind": "verbe-action",
+      "french": "revenez",
+      "english": "come back",
+      "example": "Je suis en consultation, revenez dans quelques minutes.",
+      "usage": "Action wording for “come back”; notice the exact form used in context.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE06V012",
+      "kind": "verbe-action",
+      "french": "Limitez",
+      "english": "limit",
+      "example": "Limitez la quantité de viande rouge, de beurre, de sucre et de sel, et buvez au moins huit verres d'eau par jour !",
+      "usage": "Action wording for “limit”; notice the exact form used in context.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE06V013",
+      "kind": "verbe-action",
+      "french": "apporter",
+      "english": "to bring",
+      "example": "Stéphane, Tu peux apporter le dessert jeudi soir ?",
+      "usage": "Action wording for “to bring”; notice the exact form used in context.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE06V014",
+      "kind": "verbe-action",
+      "french": "satisfaire",
+      "english": "to satisfy / meet",
+      "example": "En espérant que vous pourrez satisfaire votre clientèle, nous vous remercions pour vos futurs achats.",
+      "usage": "Action wording for “to satisfy / meet”; notice the exact form used in context.",
+      "questions": [
+        9
+      ]
+    },
+    {
+      "id": "CE06V015",
+      "kind": "verbe-action",
+      "french": "célébrons",
+      "english": "are celebrating",
+      "example": "Nous célébrons nos 40 ans ce soir !",
+      "usage": "Action wording for “are celebrating”; notice the exact form used in context.",
+      "questions": [
+        11
+      ]
+    },
+    {
+      "id": "CE06V016",
+      "kind": "verbe-action",
+      "french": "raconte",
+      "english": "recounts / tells",
+      "example": "Fils et petit-fils de vendeurs de fruits et légumes, Anthony Palou raconte les moments drôles et tendres de son enfance à Quimper, en Bretagne, dans les années 1970.",
+      "usage": "Action wording for “recounts / tells”; notice the exact form used in context.",
+      "questions": [
+        14
+      ]
+    },
+    {
+      "id": "CE06V017",
+      "kind": "verbe-action",
+      "french": "s'entraîner régulièrement",
+      "english": "to train regularly",
+      "example": "C'est une course qui nécessite de s'entraîner régulièrement et d'être capable de surmonter le « mur de douleur » qui survient chez tous les marathoniens entre le 32e et 37e kilomètre.",
+      "usage": "Action wording for “to train regularly”; notice the exact form used in context.",
+      "questions": [
+        17
+      ]
+    },
+    {
+      "id": "CE06V018",
+      "kind": "verbe-action",
+      "french": "restituer",
+      "english": "to refund / return",
+      "example": "Ainsi, je vous prie de bien vouloir me restituer la somme de 75 euros, correspondant à la somme versée le 5 mars par chèque.",
+      "usage": "Action wording for “to refund / return”; notice the exact form used in context.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE06V019",
+      "kind": "verbe-action",
+      "french": "donner des cours",
+      "english": "to teach classes",
+      "example": "Depuis plusieurs années, Thierry Marx, un grand chef français, intervient pour donner des cours de cuisine en prison.",
+      "usage": "Action wording for “to teach classes”; notice the exact form used in context.",
+      "questions": [
+        27
+      ]
+    },
+    {
+      "id": "CE06V020",
+      "kind": "verbe-action",
+      "french": "modifie",
+      "english": "changes / alters",
+      "example": "En rendant accessible à tout moment une multitude d'informations, internet modifie profondément notre relation à la connaissance.",
+      "usage": "Action wording for “changes / alters”; notice the exact form used in context.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE06V021",
+      "kind": "expression",
+      "french": "dès maintenant",
+      "english": "right now / from now on",
+      "example": "Inscrivez-vous dès maintenant pour les cours d'italien et d'allemand.",
+      "usage": "Reusable expression meaning “right now / from now on”; learn the whole chunk.",
+      "questions": [
+        4
+      ]
+    },
+    {
+      "id": "CE06V022",
+      "kind": "expression",
+      "french": "à partir de",
+      "english": "starting from",
+      "example": "Pour avoir un rendez-vous, vous pourrez la contacter demain à partir de 14 heures.",
+      "usage": "Reusable expression meaning “starting from”; learn the whole chunk.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE06V023",
+      "kind": "expression",
+      "french": "fait suite à",
+      "english": "follows on from / concerns",
+      "example": "Madame, Monsieur, Ce courrier fait suite à mon achat d'un téléphone le 4 mars dernier.",
+      "usage": "Reusable expression meaning “follows on from / concerns”; learn the whole chunk.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE06V024",
+      "kind": "expression",
+      "french": "faisait grand bruit",
+      "english": "caused a stir",
+      "example": "L'année dernière, une étude publiée par la revue Nature faisait grand bruit.",
+      "usage": "Reusable expression meaning “caused a stir”; learn the whole chunk.",
+      "questions": [
+        22
+      ]
+    },
+    {
+      "id": "CE06V025",
+      "kind": "expression",
+      "french": "sans un sou",
+      "english": "penniless",
+      "example": "On réserve trop facilement le covoiturage aux étudiants sans un sou.",
+      "usage": "Reusable expression meaning “penniless”; learn the whole chunk.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE06V026",
+      "kind": "expression",
+      "french": "bel et bien",
+      "english": "well and truly",
+      "example": "Pourtant, le temps de la petite annonce papier accrochée près de la machine à café est bel et bien terminé.",
+      "usage": "Reusable expression meaning “well and truly”; learn the whole chunk.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE06V027",
+      "kind": "expression",
+      "french": "Au lieu de",
+      "english": "instead of",
+      "example": "Au lieu de ne scanner des livres qu'à des fins de recherche, les écrivains ont demandé à ce qu'ils soient remis dans le circuit commercial.",
+      "usage": "Reusable expression meaning “instead of”; learn the whole chunk.",
+      "questions": [
+        26
+      ]
+    },
+    {
+      "id": "CE06V028",
+      "kind": "expression",
+      "french": "à tout moment",
+      "english": "at any time",
+      "example": "En rendant accessible à tout moment une multitude d'informations, internet modifie profondément notre relation à la connaissance.",
+      "usage": "Reusable expression meaning “at any time”; learn the whole chunk.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE06V029",
+      "kind": "expression",
+      "french": "à force de",
+      "english": "by dint of / through repeated effort",
+      "example": "Néanmoins, chaque fois qu'il change d'époque, le cinéaste repart à la recherche de l'émotion perdue qu'il retrouve, d'ailleurs, à force de pudeur et de retenue.",
+      "usage": "Reusable expression meaning “by dint of / through repeated effort”; learn the whole chunk.",
+      "questions": [
+        30
+      ]
+    },
+    {
+      "id": "CE06V030",
+      "kind": "expression",
+      "french": "n'en sont pas revenus",
+      "english": "could not believe it",
+      "example": "Ceux qui l'ont vu cet été aux Francofolies n'en sont pas revenus.",
+      "usage": "Reusable expression meaning “could not believe it”; learn the whole chunk.",
+      "questions": [
+        35
+      ]
+    },
+    {
+      "id": "CE06V031",
+      "kind": "reformulation",
+      "french": "quelques minutes",
+      "english": "a few minutes",
+      "example": "Je suis en consultation, revenez dans quelques minutes.",
+      "usage": "Useful paraphrase for “a few minutes”; recognize the same idea in new wording.",
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": "CE06V032",
+      "kind": "reformulation",
+      "french": "plat principal",
+      "english": "main course",
+      "example": "Claude s'occupe des entrées, Dominique des boissons et moi du plat principal.",
+      "usage": "Useful paraphrase for “main course”; recognize the same idea in new wording.",
+      "questions": [
+        6
+      ]
+    },
+    {
+      "id": "CE06V033",
+      "kind": "reformulation",
+      "french": "offres exceptionnelles",
+      "english": "special offers",
+      "example": "À partir du 10 août, plus de 1000 OFFRES EXCEPTIONNELLES et des réductions JUSQU'À 50% sur les articles vous attendent.",
+      "usage": "Useful paraphrase for “special offers”; recognize the same idea in new wording.",
+      "questions": [
+        13
+      ]
+    },
+    {
+      "id": "CE06V034",
+      "kind": "reformulation",
+      "french": "langue des affaires",
+      "english": "business language",
+      "example": "Apprenez à parler la langue des affaires et à comprendre les comportements et la culture du travail en France.",
+      "usage": "Useful paraphrase for “business language”; recognize the same idea in new wording.",
+      "questions": [
+        15
+      ]
+    },
+    {
+      "id": "CE06V035",
+      "kind": "reformulation",
+      "french": "mur de douleur",
+      "english": "pain barrier",
+      "example": "C'est une course qui nécessite de s'entraîner régulièrement et d'être capable de surmonter le « mur de douleur » qui survient chez tous les marathoniens entre le 32e et 37e kilomètre.",
+      "usage": "Useful paraphrase for “pain barrier”; recognize the same idea in new wording.",
+      "questions": [
+        17
+      ]
+    },
+    {
+      "id": "CE06V036",
+      "kind": "reformulation",
+      "french": "réduire la sensibilité",
+      "english": "reduce sensitivity",
+      "example": "D'après une étude, les nuisances sonores importantes peuvent en effet réduire la sensibilité des palais, rendant la nourriture peu savoureuse.",
+      "usage": "Useful paraphrase for “reduce sensitivity”; recognize the same idea in new wording.",
+      "questions": [
+        19
+      ]
+    },
+    {
+      "id": "CE06V037",
+      "kind": "reformulation",
+      "french": "société de consommation",
+      "english": "consumer society",
+      "example": "Pendant un an, la journaliste allemande Gret Taubert a décidé de quitter la société de consommation sans quitter son appartement berlinois.",
+      "usage": "Useful paraphrase for “consumer society”; recognize the same idea in new wording.",
+      "questions": [
+        21
+      ]
+    },
+    {
+      "id": "CE06V038",
+      "kind": "reformulation",
+      "french": "goût de la vie retrouvé",
+      "english": "renewed zest for life",
+      "example": "Le temps des cerises Pièce de théâtre de Niels Arestrup Un vieil homme, dérangé dans sa vieille maison par une jeune femme : dispute, goût de la vie retrouvé, moments de tendresse.",
+      "usage": "Useful paraphrase for “renewed zest for life”; recognize the same idea in new wording.",
+      "questions": [
+        25
+      ]
+    },
+    {
+      "id": "CE06V039",
+      "kind": "reformulation",
+      "french": "franchir la masse",
+      "english": "make one's way through the crowd",
+      "example": "La première difficulté, qu'il avait en réalité sous-estimée, fut de réussir à atteindre l'extrémité du trottoir, c'est-à-dire de franchir la masse mouvante et compacte des hommes et des femmes qui marchaient devant lui, frange large de deux ou trois mètres mais dont la texture était dense, mobile, paisiblement hostile.",
+      "usage": "Useful paraphrase for “make one's way through the crowd”; recognize the same idea in new wording.",
+      "questions": [
+        32
+      ]
+    },
+    {
+      "id": "CE06V040",
+      "kind": "reformulation",
+      "french": "fait l'objet d'une polémique",
+      "english": "is the subject of controversy",
+      "example": "La bioéthique fait l'objet d'une polémique qui confronte deux écoles.",
+      "usage": "Useful paraphrase for “is the subject of controversy”; recognize the same idea in new wording.",
+      "questions": [
+        36
+      ]
+    },
+    {
+      "id": "CE06V041",
+      "kind": "phrase-modele",
+      "french": "Pour faciliter vos déplacements",
+      "english": "To make your journeys easier",
+      "example": "Pour faciliter vos déplacements, les installations changent.",
+      "usage": "Reusable pattern for “To make your journeys easier”; adapt its complements to the situation.",
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": "CE06V042",
+      "kind": "phrase-modele",
+      "french": "Vous ferez le plein d'énergie",
+      "english": "You will fill up on energy",
+      "example": "Vous ferez le plein d'énergie !",
+      "usage": "Reusable pattern for “You will fill up on energy”; adapt its complements to the situation.",
+      "questions": [
+        3
+      ]
+    },
+    {
+      "id": "CE06V043",
+      "kind": "phrase-modele",
+      "french": "Merci de votre compréhension",
+      "english": "Thank you for your understanding",
+      "example": "Merci de votre compréhension.",
+      "usage": "Reusable pattern for “Thank you for your understanding”; adapt its complements to the situation.",
+      "questions": [
+        8
+      ]
+    },
+    {
+      "id": "CE06V044",
+      "kind": "phrase-modele",
+      "french": "C'est un moyen pour les gens de faire partie du projet",
+      "english": "It is a way for people to be part of the project",
+      "example": "« C'est un moyen pour les gens de faire partie du projet.",
+      "usage": "Reusable pattern for “It is a way for people to be part of the project”; adapt its complements to the situation.",
+      "questions": [
+        16
+      ]
+    },
+    {
+      "id": "CE06V045",
+      "kind": "phrase-modele",
+      "french": "Venez y découvrir",
+      "english": "Come and discover there",
+      "example": "Venez y découvrir le savoir-faire de notre région.",
+      "usage": "Reusable pattern for “Come and discover there”; adapt its complements to the situation.",
+      "questions": [
+        18
+      ]
+    },
+    {
+      "id": "CE06V046",
+      "kind": "phrase-modele",
+      "french": "je vous prie de bien vouloir",
+      "english": "I kindly ask you to",
+      "example": "Ainsi, je vous prie de bien vouloir me restituer la somme de 75 euros, correspondant à la somme versée le 5 mars par chèque.",
+      "usage": "Reusable pattern for “I kindly ask you to”; adapt its complements to the situation.",
+      "questions": [
+        20
+      ]
+    },
+    {
+      "id": "CE06V047",
+      "kind": "phrase-modele",
+      "french": "Il n'y a presque plus aujourd'hui",
+      "english": "Nowadays there are hardly any",
+      "example": "Il n'y a presque plus aujourd'hui de manuel scolaire qui paraisse sans avoir une double traduction, numérique et en ligne.",
+      "usage": "Reusable pattern for “Nowadays there are hardly any”; adapt its complements to the situation.",
+      "questions": [
+        23
+      ]
+    },
+    {
+      "id": "CE06V048",
+      "kind": "phrase-modele",
+      "french": "Les nouveaux moyens de communication ont changé les choses",
+      "english": "New means of communication have changed things",
+      "example": "Les nouveaux moyens de communication ont changé les choses.",
+      "usage": "Reusable pattern for “New means of communication have changed things”; adapt its complements to the situation.",
+      "questions": [
+        24
+      ]
+    },
+    {
+      "id": "CE06V049",
+      "kind": "phrase-modele",
+      "french": "Il serait pourtant tout à fait illusoire d'imaginer",
+      "english": "Yet it would be completely unrealistic to imagine",
+      "example": "Il serait pourtant tout à fait illusoire d'imaginer que ce qui est accessible sur la toile n'a pas besoin d'être appris pour la simple raison de sa disponibilité permanente, car posséder tous les livres du monde, comme pouvoir accéder à tous les sites du monde, ne se substitue pas à la connaissance.",
+      "usage": "Reusable pattern for “Yet it would be completely unrealistic to imagine”; adapt its complements to the situation.",
+      "questions": [
+        28
+      ]
+    },
+    {
+      "id": "CE06V050",
+      "kind": "phrase-modele",
+      "french": "Le résultat de ces calculs est fourni sous forme de cartes",
+      "english": "The result of these calculations is supplied as maps",
+      "example": "Le résultat de ces calculs est fourni sous forme de cartes des vents, des pluies ou des températures.",
+      "usage": "Reusable pattern for “The result of these calculations is supplied as maps”; adapt its complements to the situation.",
+      "questions": [
+        38
+      ]
+    }
+  ]
+}
