@@ -15,6 +15,230 @@
     });
   });
 
+  /* ---------- Collection view toggle ---------- */
+  (function () {
+    var toggles = Array.from(
+      document.querySelectorAll("[data-collection-view-toggle]")
+    );
+    var collections = document.querySelectorAll("[data-collection-view]");
+    if (!toggles.length || !collections.length) return;
+
+    function scrollActiveAnnotationAnchor() {
+      var anchorId = window.location.hash.slice(1);
+      if (!anchorId) return;
+      try { anchorId = decodeURIComponent(anchorId); } catch (e) {}
+
+      document.querySelectorAll(".is-annotation-anchor").forEach(
+        function (element) {
+          element.classList.remove("is-annotation-anchor");
+        }
+      );
+      var target = document.getElementById(anchorId);
+      if (target && target.offsetParent === null) {
+        target = Array.from(
+          document.querySelectorAll("[data-annotation-anchor]")
+        ).find(function (candidate) {
+          return candidate.dataset.annotationAnchor === anchorId;
+        });
+      }
+      if (!target || target.offsetParent === null) return;
+
+      target.classList.add("is-annotation-anchor");
+      window.requestAnimationFrame(function () {
+        target.scrollIntoView({ block: "center" });
+      });
+    }
+
+    function setCollectionView(mode, persist) {
+      if (mode !== "cards" && mode !== "table") mode = "cards";
+      root.setAttribute("data-collection-view-mode", mode);
+      toggles.forEach(function (toggle) {
+        toggle.querySelectorAll("[data-collection-view-option]").forEach(
+          function (button) {
+            button.setAttribute(
+              "aria-pressed",
+              button.dataset.collectionViewOption === mode ? "true" : "false"
+            );
+          }
+        );
+      });
+      if (persist) {
+        try { localStorage.setItem("collectionViewMode", mode); } catch (e) {}
+      }
+      scrollActiveAnnotationAnchor();
+    }
+
+    var initial =
+      root.getAttribute("data-collection-view-mode") === "table"
+        ? "table"
+        : "cards";
+    setCollectionView(initial, false);
+
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener("click", function (event) {
+        var button = event.target.closest("[data-collection-view-option]");
+        if (!button || !toggle.contains(button)) return;
+        setCollectionView(button.dataset.collectionViewOption, true);
+      });
+    });
+    window.addEventListener("hashchange", scrollActiveAnnotationAnchor);
+  })();
+
+  /* ---------- Form dialogs ---------- */
+  (function () {
+    var dialogs = Array.from(document.querySelectorAll(".form-dialog"));
+    if (!dialogs.length) return;
+
+    function openDialog(dialog, trigger) {
+      if (!dialog || dialog.open) return;
+      dialog._returnFocus = trigger || document.activeElement;
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "");
+      }
+      window.requestAnimationFrame(function () {
+        var firstField = dialog.querySelector("input:not([type='hidden']), textarea");
+        if (firstField) firstField.focus();
+      });
+    }
+
+    function closeDialog(dialog) {
+      if (!dialog || !dialog.open) return;
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
+    }
+
+    document.querySelectorAll("[data-dialog-open]").forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openDialog(
+          document.getElementById(trigger.dataset.dialogOpen),
+          trigger
+        );
+      });
+    });
+
+    dialogs.forEach(function (dialog) {
+      dialog.querySelectorAll("[data-dialog-close]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          closeDialog(dialog);
+        });
+      });
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) closeDialog(dialog);
+      });
+      dialog.addEventListener("close", function () {
+        if (
+          dialog._returnFocus &&
+          dialog._returnFocus.isConnected
+        ) {
+          dialog._returnFocus.focus();
+        }
+      });
+    });
+
+    var editDialog = document.getElementById("note-edit-dialog");
+    var editForm = editDialog
+      ? editDialog.querySelector("[data-annotation-edit-form]")
+      : null;
+    var editError = editDialog
+      ? editDialog.querySelector("[data-annotation-edit-error]")
+      : null;
+    function setEditError(message) {
+      if (!editError) return;
+      editError.textContent = message || "";
+      editError.hidden = !message;
+    }
+    document.querySelectorAll("[data-annotation-edit]").forEach(
+      function (button) {
+        button.addEventListener("click", function () {
+          if (!editDialog || !editForm) return;
+          var annotationId = button.dataset.annotationEdit;
+          var source = Array.from(
+            document.querySelectorAll("[data-annotation-edit-source]")
+          ).find(function (candidate) {
+            return candidate.dataset.annotationEditSource === annotationId;
+          });
+          if (!source) return;
+          editForm.action = button.dataset.annotationUpdateUrl;
+          editForm.querySelector("[data-annotation-edit-title]").value =
+            source.dataset.annotationEditTitle || "";
+          editForm.querySelector("[data-annotation-edit-body]").value =
+            source.dataset.annotationEditBody || "";
+          setEditError("");
+          openDialog(editDialog, button);
+        });
+      }
+    );
+    if (editForm && window.fetch) {
+      editForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var submitButton =
+          event.submitter || editForm.querySelector("[type='submit']");
+        submitButton.disabled = true;
+        setEditError("");
+        fetch(editForm.action, {
+          method: "POST",
+          body: new FormData(editForm),
+          credentials: "same-origin",
+          headers: {
+            "Accept": "application/json",
+            "X-Requested-With": "fetch"
+          }
+        })
+          .then(function (response) {
+            return response.json().then(
+              function (payload) {
+                return { response: response, payload: payload };
+              },
+              function () {
+                throw new Error(
+                  "Impossible de lire la réponse d’enregistrement."
+                );
+              }
+            );
+          })
+          .then(function (result) {
+            if (!result.response.ok) {
+              throw new Error(
+                result.payload.error ||
+                "Impossible d’enregistrer cette note."
+              );
+            }
+            if (!result.payload.redirect_url) {
+              throw new Error("La réponse d’enregistrement est incomplète.");
+            }
+            var target = new URL(
+              result.payload.redirect_url,
+              window.location.origin
+            );
+            if (
+              target.pathname === window.location.pathname &&
+              target.search === window.location.search
+            ) {
+              window.location.hash = target.hash;
+              window.location.reload();
+            } else {
+              window.location.assign(target.href);
+            }
+          })
+          .catch(function (error) {
+            submitButton.disabled = false;
+            setEditError(error.message);
+          });
+      });
+    }
+
+    dialogs.forEach(function (dialog) {
+      if (dialog.hasAttribute("data-dialog-open-on-load")) {
+        openDialog(dialog);
+      }
+    });
+  })();
+
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector("[data-nav-toggle]");
   var links = document.querySelector("[data-nav-links]");

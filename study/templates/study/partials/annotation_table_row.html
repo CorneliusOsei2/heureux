@@ -1,0 +1,42 @@
+<tr
+  class="annotation-table__row annotation-table__row--{{ annotation.kind }}"
+  id="{% if variant == 'notes' %}note{% else %}highlight{% endif %}-{{ annotation.id }}">
+  <td class="annotation-table__content" data-label="{% if variant == 'notes' %}Note{% else %}Passage{% endif %}">
+    {% if annotation.title %}<strong class="annotation-table__title">{{ annotation.title }}</strong>{% endif %}
+    {% if annotation.quote %}
+      <blockquote class="annotation-table__quote">
+        {% if annotation.kind == "highlight" %}<mark>{{ annotation.quote }}</mark>{% else %}{{ annotation.quote }}{% endif %}
+      </blockquote>
+    {% endif %}
+    {% if annotation.body %}<p class="annotation-table__body">{{ annotation.body }}</p>{% endif %}
+  </td>
+  <td class="annotation-table__context" data-label="{% if variant == 'notes' %}Contexte{% else %}Origine{% endif %}">
+    <div class="annotation-table__context-meta">
+      {% if annotation.origin_label %}<span class="annotation-card__origin">{{ annotation.origin_label }}</span>{% endif %}
+      <span class="annotation-table__scope">
+        {% if annotation.task %}{{ annotation.task.part.short_name }} · {{ annotation.task.name }}{% else %}Notes générales{% endif %}
+      </span>
+    </div>
+    {% if annotation.source_path %}
+      <a class="annotation-table__source" href="{{ annotation.source_path }}">↗ {{ annotation.source_title|default:"Voir la source" }}</a>
+    {% endif %}
+  </td>
+  <td class="annotation-table__date" data-label="Date">
+    <time datetime="{{ annotation.created_at|date:'c' }}">
+      <span>{{ annotation.created_at|date:"j M Y" }}</span>
+      <small>{{ annotation.created_at|date:"H:i" }}</small>
+    </time>
+  </td>
+  <td class="annotation-table__status" data-label="Statut">
+    {% if annotation.study_later %}
+      <span class="annotation-card__study">À étudier</span>
+    {% else %}
+      <span class="annotation-table__status-empty" aria-label="Non marqué">—</span>
+    {% endif %}
+  </td>
+  <td class="annotation-table__actions-cell" data-label="Actions">
+    <div class="annotation-card__actions annotation-table__actions">
+      {% include "study/partials/annotation_actions.html" with annotation=annotation variant=variant %}
+    </div>
+  </td>
+</tr>

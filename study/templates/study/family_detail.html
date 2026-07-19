@@ -12,9 +12,13 @@
   <p>{{ rows|length }} sujet{{ rows|length|pluralize }} à travers les thèmes.</p>
 </div>
 
-<div class="qlist">
+{% if rows %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
+<div class="qlist" data-collection-view="adaptive">
   {% for row in rows %}
-    <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
+    <a class="qrow" data-collection-item href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
       <span class="qrow__num qrow__num--tag">
         <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{{ row.prompt.theme.emoji }} P{{ row.prompt.number }}</span>
       </span>

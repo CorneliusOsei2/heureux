@@ -157,7 +157,7 @@ class CardStartedAtMigrationTests(TestCase):
         )
 
         migration = importlib.import_module(
-            "study.migrations.0025_card_started_at"
+            "study.migrations.0026_backfill_card_started_at"
         )
         migration.backfill_card_started_at(apps, None)
 

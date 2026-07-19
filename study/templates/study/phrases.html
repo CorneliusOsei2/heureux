@@ -35,6 +35,10 @@
   </div>
 </header>
 
+{% if review_batches or grouped %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
 {% if review_batches %}
 <section class="review-batches" aria-labelledby="vocabulary-batches-title">
   <div class="review-batches__head">
@@ -44,7 +48,7 @@
     </div>
     <p>Travaille un petit ensemble stable, puis passe au suivant quand les cartes deviennent familières.</p>
   </div>
-  <div class="batch-grid">
+  <div class="batch-grid" data-collection-view="adaptive">
     {% for batch in review_batches %}
       {% include "study/partials/batch_card.html" with batch=batch item_noun="Entrées" only %}
     {% endfor %}
@@ -63,9 +67,9 @@
   {% for group in grouped %}
     <div class="phrase-group">
       {% if selected_test %}<h3>{{ group.category.name|cut:"Compréhension · " }}</h3>{% endif %}
-      <div class="grid grid--phrases">
+      <div class="grid grid--phrases" data-collection-view="adaptive">
         {% for phrase in group.phrases %}
-          <article class="phrase card" id="phrase-{{ phrase.phrase_id }}">
+          <article class="phrase card" data-collection-item id="phrase-{{ phrase.phrase_id }}">
             <div class="phrase__expr">{{ phrase.expression }}</div>
             <div class="phrase__cue">{{ phrase.english_cue }}</div>
             <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
@@ -124,6 +128,14 @@
       <div><dt>Cartes maîtrisées</dt><dd>{{ vocabulary_stats.mature }}<span class="hero-metric__total">/ {{ vocabulary_stats.total }}</span></dd></div>
     </dl>
   </header>
+
+  {% if task %}
+    {% if functional_categories or subject_theme_groups %}
+      {% include "study/partials/collection_view_toggle.html" %}
+    {% endif %}
+  {% elif comprehension_directory and comprehension_decks %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
 
   <section class="vocabulary-status-grid" aria-label="Votre vocabulaire à travailler">
     <a class="vocabulary-status vocabulary-status--due card" href="{% url 'study:review' %}?content=vocabulary">
@@ -209,16 +221,16 @@
       <p>Commence par les tournures réutilisables, puis ouvre le deck riche de 50 vocabs du sujet que tu prépares.</p>
     </div>
 
-    <div class="expression-category-grid">
+    <div class="expression-category-grid" data-collection-view="adaptive">
       {% for category in functional_categories %}
-        <a class="expression-category-card card" href="{% url 'study:vocabulary' %}?{% if task %}part={{ part.slug }}&amp;task={{ task.slug }}&amp;{% endif %}category={{ category.slug }}">
+        <a class="expression-category-card card" data-collection-item href="{% url 'study:vocabulary' %}?{% if task %}part={{ part.slug }}&amp;task={{ task.slug }}&amp;{% endif %}category={{ category.slug }}">
           <span class="expression-category-card__icon" aria-hidden="true">“</span>
           <span class="expression-category-card__copy">
             <strong>{{ category.name }}</strong>
             <small>{{ category.learning_description }}</small>
           </span>
           <span class="expression-category-card__meta">{{ category.phrase_count }} expressions · {{ category.batch_count }} lots</span>
-          <span class="expression-category-card__action">Ouvrir →</span>
+          <span class="expression-category-card__action"><span class="table-action-label">Ouvrir</span> <span aria-hidden="true">→</span></span>
         </a>
       {% empty %}
         <p class="muted">Aucune expression transversale n’est encore disponible.</p>
@@ -244,9 +256,9 @@
         <p role="status" aria-live="polite" data-subject-vocabulary-status>{{ subject_prompt_count }} sujets · {{ subject_response_count }} decks uniques</p>
       </div>
 
-      <div class="subject-theme-list" data-subject-vocabulary-directory>
+      <div class="subject-theme-list" data-collection-view="adaptive" data-subject-vocabulary-directory>
         {% for group in subject_theme_groups %}
-          <details class="subject-theme card" data-subject-theme>
+          <details class="subject-theme card" data-collection-item data-subject-theme>
             <summary>
               <span class="subject-theme__identity">
                 <span class="subject-theme__emoji" aria-hidden="true">{{ group.theme.emoji }}</span>
@@ -298,9 +310,9 @@
       </div>
       <p>Chaque test écrit possède 50 entrées reliées aux questions où elles apparaissent.</p>
     </div>
-    <div class="comprehension-vocabulary-grid">
+    <div class="comprehension-vocabulary-grid" data-collection-view="adaptive">
       {% for deck in comprehension_decks %}
-        <article class="comprehension-vocabulary-card card">
+        <article class="comprehension-vocabulary-card card" data-collection-item>
           <div class="comprehension-vocabulary-card__head">
             <span class="comprehension-vocabulary-card__number">CE {{ deck.test.number|stringformat:"02d" }}</span>
             {% if deck.counts.total_due %}<span class="pill pill--due">{{ deck.counts.total_due }} disponibles</span>{% endif %}
@@ -328,8 +340,14 @@
             </div>
           </div>
           <div class="comprehension-vocabulary-card__actions">
-            <a class="btn btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;test={{ deck.test.slug }}&amp;batch=1">Pratiquer</a>
-            <a class="btn" href="{% url 'study:vocabulary' %}?test={{ deck.test.slug }}">Voir les 50 entrées</a>
+            <a class="btn btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;test={{ deck.test.slug }}&amp;batch=1" aria-label="Pratiquer le vocabulaire de {{ deck.test.title }}" title="Pratiquer">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 9 6-9 6Z"></path></svg>
+              <span class="table-action-label">Pratiquer</span>
+            </a>
+            <a class="btn" href="{% url 'study:vocabulary' %}?test={{ deck.test.slug }}" aria-label="Voir les 50 entrées de {{ deck.test.title }}" title="Voir les entrées">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3ZM5 17a3 3 0 0 1 3-3h11"></path></svg>
+              <span class="table-action-label">Voir les 50 entrées</span>
+            </a>
           </div>
         </article>
       {% empty %}

@@ -34,7 +34,10 @@
     <input type="checkbox" name="study" value="1" {% if study_only %}checked{% endif %}>
     <span>À étudier uniquement</span>
   </label>
-  <button class="btn btn--primary" type="submit">Rechercher</button>
+  <button class="btn btn--primary" type="submit">
+    <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+    <span>Rechercher</span>
+  </button>
 </form>
 
 <div class="section-heading annotation-results-heading">
@@ -45,9 +48,13 @@
   <a class="btn btn--sm" href="{% url 'study:annotation_study' %}">Étudier ma sélection</a>
 </div>
 
-<div class="annotations-grid">
+{% if results %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
+<div class="annotations-grid" data-collection-view="adaptive">
   {% for annotation in results %}
-    {% include "study/partials/annotation_card.html" with annotation=annotation variant="search" %}
+    {% include "study/partials/annotation_card.html" with annotation=annotation variant="search" anchor_prefix="annotation" %}
   {% empty %}
     <div class="empty annotation-empty">
       <p>Aucun élément ne correspond à cette recherche.</p>

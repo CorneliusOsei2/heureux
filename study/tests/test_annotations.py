@@ -40,13 +40,13 @@ class AnnotationTests(TestCase):
         }
 
     def test_notes_hierarchy_and_subsections_render(self):
-        Annotation.objects.create(
+        note = Annotation.objects.create(
             user=self.user,
             task=self.task,
             kind=AnnotationKind.NOTE,
             body="Réutiliser cette structure.",
         )
-        Annotation.objects.create(
+        highlight = Annotation.objects.create(
             user=self.user,
             task=self.task,
             kind=AnnotationKind.HIGHLIGHT,
@@ -66,18 +66,70 @@ class AnnotationTests(TestCase):
         self.assertContains(notes_tab, 'role="tablist"')
         self.assertContains(
             notes_tab,
+            'class="annotation-table annotation-table--notes"',
+        )
+        self.assertContains(notes_tab, "data-collection-view-toggle", count=1)
+        self.assertContains(
+            notes_tab,
+            'data-collection-view-option="cards"',
+        )
+        self.assertContains(
+            notes_tab,
+            'data-collection-view-option="table"',
+        )
+        self.assertContains(notes_tab, 'scope="col">Note</th>')
+        self.assertContains(notes_tab, f'id="note-{note.id}"', count=1)
+        self.assertContains(notes_tab, f'id="note-{note.id}-card"', count=1)
+        self.assertContains(
+            notes_tab,
             'id="notes-tab"',
         )
         self.assertContains(notes_tab, 'aria-selected="true"')
         self.assertContains(notes_tab, "Réutiliser cette structure.")
         self.assertNotContains(notes_tab, "Passage important")
+        self.assertContains(
+            notes_tab,
+            "annotation-action__icon--study",
+        )
+        self.assertContains(
+            notes_tab,
+            "annotation-action__icon--edit",
+        )
+        self.assertContains(
+            notes_tab,
+            "annotation-action__icon--delete",
+        )
 
         highlights_tab = self.client.get(
             self.task_notes_url + "&tab=highlights"
         )
         self.assertEqual(highlights_tab.context["active_tab"], "highlights")
+        self.assertContains(
+            highlights_tab,
+            'class="annotation-table annotation-table--highlights"',
+        )
+        self.assertContains(highlights_tab, 'scope="col">Passage</th>')
+        self.assertContains(
+            highlights_tab,
+            f'id="highlight-{highlight.id}"',
+            count=1,
+        )
+        self.assertContains(
+            highlights_tab,
+            f'id="highlight-{highlight.id}-card"',
+            count=1,
+        )
         self.assertContains(highlights_tab, "Passage important")
         self.assertNotContains(highlights_tab, "Réutiliser cette structure.")
+
+    def test_empty_notes_and_highlights_hide_the_view_toggle(self):
+        notes_tab = self.client.get(self.task_notes_url)
+        self.assertNotContains(notes_tab, "data-collection-view-toggle")
+
+        highlights_tab = self.client.get(
+            self.task_notes_url + "&tab=highlights"
+        )
+        self.assertNotContains(highlights_tab, "data-collection-view-toggle")
 
     def test_highlights_show_source_origin_and_group_by_date(self):
         response_highlight = Annotation.objects.create(
@@ -170,6 +222,22 @@ class AnnotationTests(TestCase):
             general_url + f"&tab=notes#note-{general_note.id}",
         )
         self.assertIsNone(general_note.task)
+
+    def test_note_dialog_preserves_a_safe_filtered_return_url(self):
+        return_url = self.task_notes_url + "&q=transition"
+        response = self.client.post(
+            self.task_notes_url,
+            {
+                "title": "Transition",
+                "body": "Conserver cette transition.",
+                "next": return_url,
+            },
+        )
+        note = Annotation.objects.get(title="Transition")
+        self.assertRedirects(
+            response,
+            return_url + f"#note-{note.id}",
+        )
 
     def test_selected_note_is_private_and_source_linked(self):
         response = self.client.post(
@@ -646,6 +714,32 @@ class AnnotationTests(TestCase):
         note.refresh_from_db()
         self.assertEqual(note.title, "Version finale")
         self.assertEqual(note.body, "Note corrigée")
+
+        response = self.client.post(
+            reverse("study:annotation_update", args=[note.id]),
+            {"title": "", "body": "", "next": detail_url},
+            HTTP_X_REQUESTED_WITH="fetch",
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("error", response.json())
+
+        response = self.client.post(
+            reverse("study:annotation_update", args=[note.id]),
+            {
+                "title": "Version via dialogue",
+                "body": "Note enregistrée sans quitter la fenêtre.",
+                "next": detail_url,
+            },
+            HTTP_X_REQUESTED_WITH="fetch",
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json()["redirect_url"],
+            detail_url + f"#note-{note.id}",
+        )
+        note.refresh_from_db()
+        self.assertEqual(note.title, "Version via dialogue")
+        self.assertEqual(note.body, "Note enregistrée sans quitter la fenêtre.")
 
         response = self.client.post(
             reverse("study:annotation_delete", args=[highlight.id]),

@@ -12,6 +12,10 @@
 {% include "study/_scope_filter.html" %}
 {% endif %}
 
+{% if themes or families %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
 <div class="section-heading">
   <div>
     <h2>Par thème</h2>
@@ -20,7 +24,7 @@
     <a href="{% url 'study:task_phrases' part.slug task.slug %}">{{ phrase_count }} expressions associées →</a>
   {% endif %}
 </div>
-<div class="grid grid--decks">
+<div class="grid grid--decks" data-collection-view="adaptive">
   {% for item in themes %}
     {% url 'study:theme_detail' item.theme.slug as theme_url %}
     {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total only %}
@@ -31,9 +35,9 @@
 
 <h2 style="margin-top:2rem;">Par famille de sujets</h2>
 <p class="muted mt-0">Regroupez les formulations proches pour réutiliser les mêmes structures et arguments.</p>
-<div class="qlist">
+<div class="qlist" data-collection-view="adaptive">
   {% for family in families %}
-    <a class="qrow" href="{% if task %}{% url 'study:task_family_detail' part.slug task.slug family.slug %}{% else %}{% url 'study:family_detail' family.slug %}{% endif %}">
+    <a class="qrow" data-collection-item href="{% if task %}{% url 'study:task_family_detail' part.slug task.slug family.slug %}{% else %}{% url 'study:family_detail' family.slug %}{% endif %}">
       <span class="qrow__num">{{ family.order }}</span>
       <span class="qrow__text">{{ family.name }}</span>
       <span class="qrow__meta"><span class="chip">{{ family.n }} sujet{{ family.n|pluralize }}</span></span>

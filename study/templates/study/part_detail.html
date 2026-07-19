@@ -15,7 +15,11 @@
   </dl>
 </header>
 
-<div class="grid grid--decks area-section">
+{% if tasks %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
+<div class="grid grid--decks area-section" data-collection-view="adaptive">
   {% for t in tasks %}
     {% url 'study:task_detail' part.slug t.task.slug as task_url %}
     {% if t.task.available %}

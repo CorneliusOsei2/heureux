@@ -1,0 +1,20 @@
+<div class="notes-date-sections" data-collection-view data-collection-view-panel="cards">
+  {% for section in sections %}
+    <section class="notes-date-section" aria-labelledby="{{ variant }}-cards-{{ section.key }}-heading">
+      <div class="notes-date-section__head">
+        <h2 id="{{ variant }}-cards-{{ section.key }}-heading">{{ section.title }}</h2>
+        <span class="notes-date-section__count">{{ section.items|length }}</span>
+        <span class="notes-date-section__rule" aria-hidden="true"></span>
+      </div>
+      <div class="annotations-grid">
+        {% for annotation in section.items %}
+        {% if variant == "notes" %}
+          {% include "study/partials/annotation_card.html" with annotation=annotation variant=variant anchor_prefix="note" anchor_suffix="-card" %}
+        {% else %}
+          {% include "study/partials/annotation_card.html" with annotation=annotation variant=variant anchor_prefix="highlight" anchor_suffix="-card" %}
+        {% endif %}
+      {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

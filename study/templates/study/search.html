@@ -10,7 +10,9 @@
     {% if task %}<input type="hidden" name="part" value="{{ part.slug }}"><input type="hidden" name="task" value="{{ task.slug }}">{% endif %}
     <label class="sr-only" for="global-search">Rechercher dans le contenu</label>
     <input id="global-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
-    <button class="btn btn--primary" type="submit">Chercher</button>
+    <button class="btn btn--primary btn--icon" type="submit" aria-label="Chercher" title="Chercher">
+      <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+    </button>
   </form>
 </div>
 
@@ -22,11 +24,15 @@
     {% endif %}
   </div>
 
+  {% if result_count %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+
   {% if prompt_results %}
     <h2 class="search-section-heading">Sujets &amp; réponses <span>{{ prompt_result_count }}</span></h2>
-    <div class="qlist">
+    <div class="qlist" data-collection-view="adaptive">
       {% for prompt in prompt_results %}
-        <a class="qrow" href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}">
+        <a class="qrow" data-collection-item href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}">
           <span class="qrow__num qrow__num--tag"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
           <span class="qrow__text">{{ prompt.text }}</span>
           <span class="qrow__meta">
@@ -40,9 +46,9 @@
 
   {% if phrase_results %}
     <h2 class="search-section-heading">Expressions <span>{{ phrase_result_count }}</span></h2>
-    <div class="grid grid--phrases">
+    <div class="grid grid--phrases" data-collection-view="adaptive">
       {% for phrase in phrase_results %}
-        <div class="phrase card">
+        <div class="phrase card" data-collection-item>
           <div class="phrase__expr">{{ phrase.expression }}</div>
           <div class="phrase__cue">{{ phrase.english_cue }}</div>
           <p class="phrase__ex">{{ phrase.example_html|safe }}</p>
@@ -53,12 +59,12 @@
 
   {% if comprehension_results %}
     <h2 class="search-section-heading">Compréhension <span>{{ comprehension_result_count }}</span></h2>
-    <div class="qlist">
+    <div class="qlist" data-collection-view="adaptive">
       {% for question in comprehension_results %}
-        <a class="qrow" href="{% if question.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' question.test.slug question.number %}{% else %}{% url 'study:comprehension_question_study' question.test.slug question.number %}{% endif %}">
+        <a class="qrow" data-collection-item href="{% if question.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' question.test.slug question.number %}{% else %}{% url 'study:comprehension_question_study' question.test.slug question.number %}{% endif %}">
           <span class="qrow__num qrow__num--tag"><span class="chip">{{ question.test.title }} · Q{{ question.number }}</span></span>
           <span class="qrow__text">{{ question.prompt_fr }}</span>
-          <span class="qrow__meta"><span class="muted">Voir la correction →</span></span>
+          <span class="qrow__meta"><span class="muted"><span class="table-action-label">Voir la correction</span> <span aria-hidden="true">→</span></span></span>
         </a>
       {% endfor %}
     </div>

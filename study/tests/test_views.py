@@ -69,11 +69,10 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v70"', body)
-        self.assertIn("study/css/app.css", body)
-        self.assertIn("?v=63", body)
-        self.assertIn("study/js/app.js", body)
-        self.assertIn("?v=29", body)
+        self.assertIn('var CACHE = "heureux-v74"', body)
+        self.assertIn("study/css/app.css?v=67", body)
+        self.assertIn("study/js/theme-init.js?v=2", body)
+        self.assertIn("study/js/app.js?v=31", body)
         self.assertIn("study/js/translate.js", body)
         self.assertIn("study/js/annotations.js", body)
         self.assertIn("SKIP_WAITING", body)
@@ -1019,6 +1018,45 @@ class CategoryBatchViewsTests(TestCase):
         )
         self.assertContains(page, "Lot 1 · 10 expressions")
         self.assertContains(page, "Lot 2 · 6 expressions")
+
+    def test_linked_expression_study_does_not_start_its_responses(self):
+        response = factories.make_response()
+        other_response = factories.make_response()
+        response_card = Card.objects.create(
+            user=self.user,
+            card_type=CardType.SPINE,
+            response=response,
+        )
+        other_response_card = Card.objects.create(
+            user=self.user,
+            card_type=CardType.SPINE,
+            response=other_response,
+        )
+        phrase = factories.make_phrase(tier="response")
+        phrase.source_prompts.add(
+            response.prompts.get(is_canonical=True),
+            other_response.prompts.get(is_canonical=True),
+        )
+        phrase_card = factories.make_phrase_card(
+            phrase=phrase,
+            user=self.user,
+        )
+
+        state = self.client.get(
+            reverse("study:review_next"),
+            {
+                "kind": "phrase",
+                "response": str(response.pk),
+            },
+        ).json()
+
+        phrase_card.refresh_from_db()
+        response_card.refresh_from_db()
+        other_response_card.refresh_from_db()
+        self.assertEqual(state["card_id"], phrase_card.pk)
+        self.assertIsNotNone(phrase_card.started_at)
+        self.assertIsNone(response_card.started_at)
+        self.assertIsNone(other_response_card.started_at)
 
     def test_response_sheet_offers_five_ten_card_subject_vocabulary_lots(self):
         response = factories.make_response()

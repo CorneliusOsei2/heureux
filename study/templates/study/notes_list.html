@@ -33,15 +33,28 @@
     {% endif %}
     <label class="sr-only" for="notes-search">Rechercher dans les notes et surlignages</label>
     <input id="notes-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Rechercher dans mes notes…">
-    <button class="btn" type="submit">Rechercher</button>
+    <button class="btn btn--icon" type="submit" aria-label="Rechercher" title="Rechercher">
+      <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+    </button>
   </form>
-  {% if task %}
-    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:task_annotation_study' part.slug task.slug %}">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
-  {% elif aggregate %}
-    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
-  {% else %}
-    <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}?scope=general">Étudier{% if study_count %} · {{ study_count }}{% endif %}</a>
-  {% endif %}
+  <div class="notes-toolbar__actions">
+    {% if active_tab == "notes" %}
+      <button class="btn" type="button" aria-haspopup="dialog" aria-controls="note-create-dialog" data-dialog-open="note-create-dialog">
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        <span>Nouvelle note</span>
+      </button>
+    {% endif %}
+    {% if task %}
+      <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:task_annotation_study' part.slug task.slug %}">
+    {% elif aggregate %}
+      <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">
+    {% else %}
+      <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}?scope=general">
+    {% endif %}
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.75L6 21Z"></path></svg>
+        <span>Étudier{% if study_count %} · {{ study_count }}{% endif %}</span>
+      </a>
+  </div>
 </div>
 
 <nav class="notes-tabs" role="tablist" aria-label="Type de contenu">
@@ -68,43 +81,21 @@
 </nav>
 
 {% if active_tab == "notes" %}
+  {% if notes %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+{% elif highlights %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
+{% if active_tab == "notes" %}
 <div class="notes-tab-panel" id="notes-panel" role="tabpanel" aria-labelledby="notes-tab">
-<details class="card notes-compose" {% if form.errors %}open{% endif %}>
-  <summary><span aria-hidden="true">＋</span> Nouvelle note</summary>
-  <form method="post">
-    {% csrf_token %}
-    <div class="notes-form-field">
-      <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
-      {{ form.title }}
-      {% for error in form.title.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
-    </div>
-    <div class="notes-form-field">
-      <label for="{{ form.body.id_for_label }}">{{ form.body.label }}</label>
-      {{ form.body }}
-      {% for error in form.body.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
-    </div>
-    <button class="btn btn--primary" type="submit">Enregistrer la note</button>
-  </form>
-</details>
+{% include "study/partials/annotation_dialogs.html" %}
 
 <section class="annotations-section" aria-label="Notes">
   {% if notes %}
-    <div class="notes-date-sections">
-      {% for section in notes_sections %}
-        <section class="notes-date-section" aria-labelledby="notes-{{ section.key }}-heading">
-          <div class="notes-date-section__head">
-            <h2 id="notes-{{ section.key }}-heading">{{ section.title }}</h2>
-            <span class="notes-date-section__count">{{ section.items|length }}</span>
-            <span class="notes-date-section__rule" aria-hidden="true"></span>
-          </div>
-          <div class="annotations-grid">
-            {% for note in section.items %}
-              {% include "study/partials/annotation_card.html" with annotation=note variant="notes" %}
-            {% endfor %}
-          </div>
-        </section>
-      {% endfor %}
-    </div>
+    {% include "study/partials/annotation_cards.html" with sections=notes_sections variant="notes" %}
+    {% include "study/partials/annotation_table.html" with sections=notes_sections variant="notes" %}
   {% else %}
     <div class="empty annotation-empty">
       <p>Aucune note ici. Écrivez-en une ou sélectionnez du texte ailleurs dans l'application.</p>
@@ -116,22 +107,8 @@
 <div class="notes-tab-panel" id="highlights-panel" role="tabpanel" aria-labelledby="highlights-tab">
 <section class="annotations-section" aria-label="Surlignages">
   {% if highlights %}
-    <div class="notes-date-sections">
-      {% for section in highlights_sections %}
-        <section class="notes-date-section" aria-labelledby="highlights-{{ section.key }}-heading">
-          <div class="notes-date-section__head">
-            <h2 id="highlights-{{ section.key }}-heading">{{ section.title }}</h2>
-            <span class="notes-date-section__count">{{ section.items|length }}</span>
-            <span class="notes-date-section__rule" aria-hidden="true"></span>
-          </div>
-          <div class="annotations-grid">
-            {% for highlight in section.items %}
-              {% include "study/partials/annotation_card.html" with annotation=highlight variant="highlights" %}
-            {% endfor %}
-          </div>
-        </section>
-      {% endfor %}
-    </div>
+    {% include "study/partials/annotation_cards.html" with sections=highlights_sections variant="highlights" %}
+    {% include "study/partials/annotation_table.html" with sections=highlights_sections variant="highlights" %}
   {% else %}
     <div class="notes-empty-hint">
       Sélectionnez un passage, puis choisissez l'icône de surlignage.

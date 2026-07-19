@@ -37,7 +37,10 @@
     </div>
     <a href="{% url 'study:task_browse' part.slug task.slug %}">Voir tous les sujets →</a>
   </div>
-  <div class="grid grid--decks">
+  {% if themes %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+  <div class="grid grid--decks" data-collection-view="adaptive">
     {% for item in themes %}
       {% url 'study:theme_detail' item.theme.slug as theme_url %}
       {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_mature=True count_mature=item.stats.mature only %}

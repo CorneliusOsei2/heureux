@@ -685,6 +685,57 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             ".annotation-card__body",
             has_text="Une note personnelle.",
         ).wait_for()
+        self.assertFalse(
+            self.page.locator(".annotation-table--notes").is_visible()
+        )
+        action_icons = self.page.locator(
+            ".annotation-card",
+            has_text="Une note personnelle.",
+        ).locator(".annotation-action__icon")
+        self.assertEqual(action_icons.count(), 3)
+
+        self.page.get_by_role("button", name="Tableau").click()
+        self.page.locator(
+            ".annotation-table__body",
+            has_text="Une note personnelle.",
+        ).wait_for()
+        notes_table = self.page.locator(".annotation-table--notes")
+        self.assertEqual(
+            notes_table.evaluate("table => getComputedStyle(table).display"),
+            "block",
+        )
+        self.assertEqual(
+            notes_table.locator(".annotation-table__row").evaluate(
+                "row => getComputedStyle(row).display"
+            ),
+            "grid",
+        )
+        action_icons = self.page.locator(
+            ".annotation-table__row",
+            has_text="Une note personnelle.",
+        ).locator(".annotation-action__icon")
+        self.assertEqual(action_icons.count(), 3)
+        icon_styles = action_icons.evaluate_all(
+            """
+            icons => icons.map(icon => {
+              const style = getComputedStyle(icon);
+              return {
+                color: style.color,
+                background: style.backgroundColor,
+              };
+            })
+            """
+        )
+        self.assertEqual(
+            len({style["color"] for style in icon_styles}),
+            3,
+        )
+        self.assertTrue(
+            all(
+                style["background"] != "rgba(0, 0, 0, 0)"
+                for style in icon_styles
+            )
+        )
         self.assertEqual(
             self.page.locator("#notes-tab").get_attribute("aria-selected"),
             "true",
@@ -714,11 +765,11 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         ).wait_for()
 
         response_card = self.page.locator(
-            ".annotation-card",
+            ".annotation-table__row",
             has_text="Passage retenu dans une réponse.",
         )
         expression_card = self.page.locator(
-            ".annotation-card",
+            ".annotation-table__row",
             has_text="Passage retenu dans une expression.",
         )
         self.assertEqual(
@@ -732,6 +783,254 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             .text_content()
             .strip(),
             "Expression",
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 1200, "height": 800})
+        self.page.reload()
+        highlights_table = self.page.locator(
+            ".annotation-table--highlights"
+        )
+        highlights_table.get_by_role(
+            "columnheader",
+            name="Passage",
+        ).wait_for()
+        self.assertEqual(
+            highlights_table.evaluate(
+                "table => getComputedStyle(table).display"
+            ),
+            "table",
+        )
+        self.assertEqual(
+            highlights_table.locator(".annotation-table__row")
+            .first.evaluate("row => getComputedStyle(row).display"),
+            "table-row",
+        )
+        self.page.get_by_role("button", name="Cartes").click()
+        self.page.locator(
+            ".annotation-card",
+            has_text="Passage retenu dans une réponse.",
+        ).wait_for()
+        self.assertFalse(highlights_table.is_visible())
+        self.assert_no_horizontal_overflow()
+
+    def test_collection_view_choice_persists_across_catalogs(self):
+        note = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            body="Préférence globale d’affichage.",
+        )
+        self.page.set_viewport_size({"width": 1200, "height": 800})
+        task_url = self.live_server_url + reverse(
+            "study:task_detail",
+            args=[self.part.slug, self.task.slug],
+        )
+        self.page.goto(task_url)
+
+        collection = self.page.locator(
+            ".task-themes [data-collection-view='adaptive']"
+        )
+        collection.locator("[data-collection-item]").first.wait_for()
+        self.assertEqual(
+            collection.evaluate(
+                "element => getComputedStyle(element).display"
+            ),
+            "grid",
+        )
+        self.assertEqual(
+            self.page.get_by_role("button", name="Cartes").get_attribute(
+                "aria-pressed"
+            ),
+            "true",
+        )
+
+        self.page.get_by_role("button", name="Tableau").click()
+        self.assertEqual(
+            collection.evaluate(
+                "element => getComputedStyle(element).display"
+            ),
+            "flex",
+        )
+        self.assertEqual(
+            collection.locator("[data-collection-item]").first.evaluate(
+                "item => getComputedStyle(item).borderRadius"
+            ),
+            "0px",
+        )
+        self.assertLess(
+            collection.locator("[data-collection-item]")
+            .first.bounding_box()["height"],
+            80,
+        )
+        self.assertEqual(
+            self.page.evaluate(
+                "localStorage.getItem('collectionViewMode')"
+            ),
+            "table",
+        )
+        self.page.set_viewport_size({"width": 390, "height": 844})
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 1200, "height": 800})
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:theme_detail", args=[self.theme.slug])
+        )
+        response_list = self.page.locator(
+            ".qlist[data-collection-view='adaptive']"
+        )
+        response_list.locator("[data-collection-item]").first.wait_for()
+        self.assertEqual(
+            response_list.evaluate(
+                "element => getComputedStyle(element).display"
+            ),
+            "flex",
+        )
+        self.assertEqual(
+            response_list.locator("[data-collection-item]").first.evaluate(
+                "item => getComputedStyle(item).borderRadius"
+            ),
+            "0px",
+        )
+
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:notes_overview")
+            + f"?part={self.part.slug}&task={self.task.slug}"
+        )
+        note_table = self.page.locator(".annotation-table--notes")
+        note_table.locator(
+            ".annotation-table__body",
+            has_text="Préférence globale d’affichage.",
+        ).wait_for()
+        self.assertTrue(note_table.is_visible())
+        self.assertEqual(
+            self.page.get_by_role("button", name="Tableau").get_attribute(
+                "aria-pressed"
+            ),
+            "true",
+        )
+
+        self.page.get_by_role("button", name="Cartes").click()
+        self.page.locator(
+            ".annotation-card",
+            has_text="Préférence globale d’affichage.",
+        ).wait_for()
+        self.assertFalse(note_table.is_visible())
+        self.page.goto(
+            self.page.url.split("#", 1)[0] + f"#note-{note.id}"
+        )
+        note_card = self.page.locator(f"#note-{note.id}-card")
+        self.assertTrue(
+            note_card.evaluate(
+                "card => card.classList.contains('is-annotation-anchor')"
+            )
+        )
+        self.page.get_by_role("button", name="Tableau").click()
+        self.assertTrue(
+            self.page.locator(f"#note-{note.id}").evaluate(
+                "row => row.classList.contains('is-annotation-anchor')"
+            )
+        )
+        self.page.get_by_role("button", name="Cartes").click()
+        self.page.goto(task_url)
+        self.assertEqual(
+            collection.evaluate(
+                "element => getComputedStyle(element).display"
+            ),
+            "grid",
+        )
+        self.assert_no_horizontal_overflow()
+
+    def test_mobile_note_dialogs_create_and_edit_cleanly(self):
+        notes_url = (
+            self.live_server_url
+            + reverse("study:notes_overview")
+            + f"?part={self.part.slug}&task={self.task.slug}"
+        )
+        self.page.goto(notes_url)
+        self.page.get_by_role("button", name="Nouvelle note").click()
+
+        create_dialog = self.page.locator("#note-create-dialog")
+        create_dialog.wait_for(state="visible")
+        dialog_box = create_dialog.bounding_box()
+        viewport = self.page.viewport_size
+        self.assertIsNotNone(dialog_box)
+        self.assertLess(
+            abs(
+                dialog_box["x"]
+                + dialog_box["width"] / 2
+                - viewport["width"] / 2
+            ),
+            4,
+        )
+        self.assertLess(
+            abs(
+                dialog_box["y"]
+                + dialog_box["height"] / 2
+                - viewport["height"] / 2
+            ),
+            24,
+        )
+
+        create_dialog.get_by_label("Titre (facultatif)").fill(
+            "Note créée dans la fenêtre"
+        )
+        create_dialog.get_by_label("Votre note").fill(
+            "Première version de la note."
+        )
+        create_dialog.get_by_role("button", name="Enregistrer").click()
+
+        note_card = self.page.locator(
+            ".annotation-card",
+            has_text="Note créée dans la fenêtre",
+        )
+        note_card.wait_for()
+        self.assertTrue(self.page.url.split("#")[-1].startswith("note-"))
+
+        note_card.get_by_role("button", name="Modifier la note").click()
+        edit_dialog = self.page.locator("#note-edit-dialog")
+        edit_dialog.wait_for(state="visible")
+        self.assertEqual(
+            edit_dialog.get_by_label("Titre (facultatif)").input_value(),
+            "Note créée dans la fenêtre",
+        )
+        edit_dialog.get_by_label("Votre note").fill("")
+        edit_dialog.get_by_role("button", name="Enregistrer").click()
+        edit_dialog.get_by_text(
+            "Corrigez la note avant de l'enregistrer."
+        ).wait_for()
+        self.assertTrue(edit_dialog.is_visible())
+        edit_dialog.get_by_label("Votre note").fill(
+            "Version corrigée depuis la fenêtre."
+        )
+        edit_dialog.get_by_role("button", name="Enregistrer").click()
+        self.page.locator(
+            ".annotation-card__body",
+            has_text="Version corrigée depuis la fenêtre.",
+        ).wait_for()
+
+        self.page.get_by_role("button", name="Tableau").click()
+        note_row = self.page.locator(
+            ".annotation-table__row",
+            has_text="Version corrigée depuis la fenêtre.",
+        )
+        note_row.wait_for()
+        action_buttons = note_row.locator(".annotation-action")
+        self.assertEqual(action_buttons.count(), 3)
+        self.assertTrue(
+            all(
+                size["width"] <= 38 and size["height"] <= 38
+                for size in action_buttons.evaluate_all(
+                    """
+                    buttons => buttons.map(button => {
+                      const rect = button.getBoundingClientRect();
+                      return {width: rect.width, height: rect.height};
+                    })
+                    """
+                )
+            )
         )
         self.assert_no_horizontal_overflow()
 

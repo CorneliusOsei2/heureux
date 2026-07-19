@@ -18,7 +18,11 @@
     <h1>Groupe {{ group.number|stringformat:"02d" }}</h1>
   </header>
 
-  <section class="qlist ce-group-test-list" aria-label="Tests du groupe {{ group.number }}">
+  {% if group.slots %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+
+  <section class="qlist ce-group-test-list" data-collection-view="adaptive" aria-label="Tests du groupe {{ group.number }}">
     {% for slot in group.slots %}
       {% include "study/partials/comprehension_test_row.html" with slot=slot only %}
     {% endfor %}

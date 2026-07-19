@@ -1,0 +1,34 @@
+<div class="annotation-table-shell" data-collection-view data-collection-view-panel="table">
+  <table class="annotation-table annotation-table--{{ variant }}">
+    <caption class="sr-only">{% if variant == "notes" %}Mes notes{% else %}Mes surlignages{% endif %}</caption>
+    <colgroup>
+      <col class="annotation-table__col-content">
+      <col class="annotation-table__col-context">
+      <col class="annotation-table__col-date">
+      <col class="annotation-table__col-status">
+      <col class="annotation-table__col-actions">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">{% if variant == "notes" %}Note{% else %}Passage{% endif %}</th>
+        <th scope="col">{% if variant == "notes" %}Contexte{% else %}Origine{% endif %}</th>
+        <th scope="col">Date</th>
+        <th scope="col">Statut</th>
+        <th class="annotation-table__actions-heading" scope="col">Actions</th>
+      </tr>
+    </thead>
+    {% for section in sections %}
+      <tbody aria-labelledby="{{ variant }}-{{ section.key }}-heading">
+        <tr class="annotation-table__group">
+          <th colspan="5" scope="rowgroup">
+            <span id="{{ variant }}-{{ section.key }}-heading">{{ section.title }}</span>
+            <span class="notes-date-section__count">{{ section.items|length }}</span>
+          </th>
+        </tr>
+        {% for annotation in section.items %}
+          {% include "study/partials/annotation_table_row.html" with annotation=annotation variant=variant %}
+        {% endfor %}
+      </tbody>
+    {% endfor %}
+  </table>
+</div>

@@ -32,11 +32,15 @@
     </div>
   </header>
 
+  {% if groups %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+
   <div class="ce-section-heading">
     <h2>Groupes</h2>
   </div>
 
-  <section class="grid grid--decks ce-group-grid" aria-label="Groupes de tests de compréhension écrite">
+  <section class="grid grid--decks ce-group-grid" data-collection-view="adaptive" aria-label="Groupes de tests de compréhension écrite">
     {% for group in groups %}
       {% include "study/partials/comprehension_group_card.html" with group=group group_route="study:comprehension_group" accent="var(--ce-blue)" only %}
     {% endfor %}

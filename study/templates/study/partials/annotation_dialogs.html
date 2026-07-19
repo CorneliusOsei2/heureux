@@ -1,0 +1,80 @@
+<dialog class="form-dialog" id="note-create-dialog" aria-labelledby="note-create-title" {% if form.errors %}data-dialog-open-on-load{% endif %}>
+  <header class="form-dialog__header">
+    <div class="form-dialog__heading">
+      <span class="form-dialog__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+      </span>
+      <div>
+        <p>Notes</p>
+        <h2 id="note-create-title">Nouvelle note</h2>
+      </div>
+    </div>
+    <button class="icon-button form-dialog__close" type="button" aria-label="Fermer" title="Fermer" data-dialog-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+    </button>
+  </header>
+  <form class="form-dialog__form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <div class="form-dialog__body">
+      <div class="notes-form-field">
+        <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+        {{ form.title }}
+        {% for error in form.title.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+      </div>
+      <div class="notes-form-field">
+        <label for="{{ form.body.id_for_label }}">{{ form.body.label }}</label>
+        {{ form.body }}
+        {% for error in form.body.errors %}<small class="auth-field__error">{{ error }}</small>{% endfor %}
+      </div>
+    </div>
+    <footer class="form-dialog__actions">
+      <button class="btn" type="button" data-dialog-close>Annuler</button>
+      <button class="btn btn--primary" type="submit">
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h12l2 2v14H5ZM8 4v6h8V4M8 16h8"></path></svg>
+        <span>Enregistrer</span>
+      </button>
+    </footer>
+  </form>
+</dialog>
+
+{% if notes %}
+  <dialog class="form-dialog" id="note-edit-dialog" aria-labelledby="note-edit-title">
+    <header class="form-dialog__header">
+      <div class="form-dialog__heading">
+        <span class="form-dialog__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"></path><path d="m13.5 6.5 4 4"></path></svg>
+        </span>
+        <div>
+          <p>Notes</p>
+          <h2 id="note-edit-title">Modifier la note</h2>
+        </div>
+      </div>
+      <button class="icon-button form-dialog__close" type="button" aria-label="Fermer" title="Fermer" data-dialog-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+      </button>
+    </header>
+    <form class="form-dialog__form" method="post" data-annotation-edit-form>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.get_full_path }}">
+      <div class="form-dialog__body">
+        <p class="form-dialog__error" role="alert" hidden data-annotation-edit-error></p>
+        <div class="notes-form-field">
+          <label for="note-edit-title-input">Titre (facultatif)</label>
+          <input id="note-edit-title-input" type="text" name="title" maxlength="160" placeholder="Ex. Connecteurs pour nuancer" data-annotation-edit-title>
+        </div>
+        <div class="notes-form-field">
+          <label for="note-edit-body">Votre note</label>
+          <textarea id="note-edit-body" name="body" rows="5" placeholder="Écrivez ce que vous voulez retenir…" data-annotation-edit-body></textarea>
+        </div>
+      </div>
+      <footer class="form-dialog__actions">
+        <button class="btn" type="button" data-dialog-close>Annuler</button>
+        <button class="btn btn--primary" type="submit">
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h12l2 2v14H5ZM8 4v6h8V4M8 16h8"></path></svg>
+          <span>Enregistrer</span>
+        </button>
+      </footer>
+    </form>
+  </dialog>
+{% endif %}

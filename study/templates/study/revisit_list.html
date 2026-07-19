@@ -15,6 +15,7 @@
 </div>
 
 {% if items %}
+  {% include "study/partials/collection_view_toggle.html" %}
   <div class="revisit-groups">
     {% for group in revisit_groups %}
       <section class="revisit-group">
@@ -25,9 +26,9 @@
           </div>
           <span class="pill pill--revisit">{{ group.items|length }}</span>
         </div>
-        <div class="qlist revisit-list">
+        <div class="qlist revisit-list" data-collection-view="adaptive">
           {% for item in group.items %}
-            <article class="qrow revisit-row">
+            <article class="qrow revisit-row" data-collection-item>
               <div class="revisit-row__body">
                 <span class="muted">{{ item.meta }}</span>
                 <a class="revisit-row__title" href="{{ item.url }}">{{ item.title }}</a>
@@ -39,7 +40,9 @@
                 {% csrf_token %}
                 <input type="hidden" name="action" value="remove">
                 <input type="hidden" name="card_id" value="{{ item.card.id }}">
-                <button class="btn btn--sm" type="submit">Retirer</button>
+                <button class="icon-button" type="submit" aria-label="Retirer de la liste" title="Retirer">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"></path></svg>
+                </button>
               </form>
             </article>
           {% endfor %}
@@ -50,7 +53,10 @@
   <form method="post" class="center" style="margin-top:1rem;">
     {% csrf_token %}
     <input type="hidden" name="action" value="clear">
-    <button class="linkbtn" type="submit">Vider la liste</button>
+    <button class="linkbtn annotation-text-action" type="submit">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13"></path></svg>
+      <span>Vider la liste</span>
+    </button>
   </form>
 {% else %}
   <div class="done-state card card--pad">

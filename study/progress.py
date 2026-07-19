@@ -32,7 +32,7 @@ def mark_response_started(user, response_ids, *, at=None) -> None:
 
 
 def mark_card_started(user, card: Card, scope: dict | None = None) -> None:
-    """Persist presentation of a card and propagate subject-local activity."""
+    """Persist presentation and propagate genuinely subject-owned activity."""
     at = timezone.now()
     if card.started_at is None:
         Card.objects.filter(
@@ -45,20 +45,17 @@ def mark_card_started(user, card: Card, scope: dict | None = None) -> None:
     response_ids = set()
     if card.response_id:
         response_ids.add(card.response_id)
-
-    scope_response = str((scope or {}).get("response") or "")
-    if scope_response.isdigit():
-        response_ids.add(int(scope_response))
-    elif (
-        card.phrase_id
-        and card.phrase.tier in {PhraseTier.RESPONSE, PhraseTier.SUBJECT}
-    ):
-        response_ids.update(
-            card.phrase.source_prompts.filter(
-                is_active=True,
-                response__is_active=True,
-            ).values_list("response_id", flat=True)
-        )
+    elif card.phrase_id and card.phrase.tier == PhraseTier.SUBJECT:
+        scope_response = str((scope or {}).get("response") or "")
+        if scope_response.isdigit():
+            response_ids.add(int(scope_response))
+        else:
+            response_ids.update(
+                card.phrase.source_prompts.filter(
+                    is_active=True,
+                    response__is_active=True,
+                ).values_list("response_id", flat=True)
+            )
 
     mark_response_started(user, response_ids, at=at)
 

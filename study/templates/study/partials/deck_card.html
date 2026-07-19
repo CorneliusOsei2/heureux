@@ -14,7 +14,7 @@ Params:
   soon_meta     — meta line shown when not available (e.g. a task subtitle).
   extra_classes — optional extra class names on the <a>.
 {% endcomment %}
-<a class="deck card{% if not available %} deck--soon{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}"{% if color %} style="--deck-color: {{ color }};"{% endif %} href="{{ url }}">
+<a class="deck card{% if not available %} deck--soon{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}" data-collection-item{% if color %} style="--deck-color: {{ color }};"{% endif %} href="{{ url }}">
   <div class="deck__body">
     <div class="deck__title">
       <span class="deck__icon">{{ icon }}</span>

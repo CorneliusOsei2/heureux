@@ -6,57 +6,33 @@ Parameters:
                (Réponse / Expression); search results carry ``notes_url``.
   variant    — "notes" | "highlights" | "search". Drives the anchor id and
                which footer actions render.
+  anchor_prefix — "note" | "highlight" | "annotation".
+  anchor_suffix — Optional id suffix when a second representation is rendered.
 {% endcomment %}
-<article class="card annotation-card annotation-card--{{ annotation.kind }}" id="{% if variant == 'notes' %}note{% elif variant == 'highlights' %}highlight{% else %}annotation{% endif %}-{{ annotation.id }}">
+<article
+  class="card annotation-card annotation-card--{{ annotation.kind }} annotation-card--{{ variant }}"
+  data-collection-item
+  id="{{ anchor_prefix }}-{{ annotation.id }}{{ anchor_suffix|default:"" }}"
+  {% if anchor_suffix %}data-annotation-anchor="{{ anchor_prefix }}-{{ annotation.id }}"{% endif %}
+  {% if variant == "notes" %}data-annotation-edit-source="{{ annotation.id }}" data-annotation-edit-title="{{ annotation.title }}" data-annotation-edit-body="{{ annotation.body }}"{% endif %}
+>
   <header class="annotation-card__head">
     <span class="annotation-card__kind">{% if annotation.kind == "highlight" %}Surlignage{% else %}Note{% endif %}</span>
     {% if annotation.origin_label %}<span class="annotation-card__origin">{{ annotation.origin_label }}</span>{% endif %}
     {% if annotation.study_later %}<span class="annotation-card__study">À étudier</span>{% endif %}
     <time datetime="{{ annotation.created_at|date:'c' }}">{{ annotation.created_at|date:"j M Y · H:i" }}</time>
   </header>
-  {% if annotation.title %}<h3>{{ annotation.title }}</h3>{% endif %}
-  {% if annotation.quote %}<blockquote>{% if annotation.kind == "highlight" %}<mark>{{ annotation.quote }}</mark>{% else %}{{ annotation.quote }}{% endif %}</blockquote>{% endif %}
-  {% if annotation.body %}<p class="annotation-card__body">{{ annotation.body }}</p>{% endif %}
+  <div class="annotation-card__content">
+    {% if annotation.title %}<h3>{{ annotation.title }}</h3>{% endif %}
+    {% if annotation.quote %}<blockquote>{% if annotation.kind == "highlight" %}<mark>{{ annotation.quote }}</mark>{% else %}{{ annotation.quote }}{% endif %}</blockquote>{% endif %}
+    {% if annotation.body %}<p class="annotation-card__body">{{ annotation.body }}</p>{% endif %}
+  </div>
   {% if variant == "search" %}
     <p class="annotation-card__scope">{% if annotation.task %}{{ annotation.task.part.short_name }} · {{ annotation.task.name }}{% else %}Notes générales{% endif %}</p>
   {% elif annotation.source_path %}
     <a class="annotation-card__source" href="{{ annotation.source_path }}">↗ {{ annotation.source_title|default:"Voir la source" }}</a>
   {% endif %}
   <footer class="annotation-card__actions">
-    {% if variant == "search" %}
-      <a class="linkbtn" href="{{ annotation.notes_url }}">Ouvrir</a>
-      {% if annotation.source_path %}<a class="linkbtn" href="{{ annotation.source_path }}">Voir la source</a>{% endif %}
-    {% endif %}
-    <form method="post" action="{% url 'study:annotation_study_toggle' annotation.id %}">
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ request.get_full_path }}">
-      <input type="hidden" name="study_later" value="{% if annotation.study_later %}0{% else %}1{% endif %}">
-      <button class="linkbtn" type="submit">{% if annotation.study_later %}Retirer de l'étude{% else %}À étudier{% endif %}</button>
-    </form>
-    {% if variant == "notes" %}
-      <details>
-        <summary>Modifier</summary>
-        <form method="post" action="{% url 'study:annotation_update' annotation.id %}">
-          {% csrf_token %}
-          <input type="hidden" name="next" value="{{ request.get_full_path }}">
-          <label>
-            <span>Titre</span>
-            <input type="text" name="title" maxlength="160" value="{{ annotation.title }}">
-          </label>
-          <label>
-            <span>Note</span>
-            <textarea name="body" rows="4">{{ annotation.body }}</textarea>
-          </label>
-          <button class="btn btn--primary btn--sm" type="submit">Enregistrer</button>
-        </form>
-      </details>
-    {% endif %}
-    {% if variant == "notes" or variant == "highlights" %}
-      <form method="post" action="{% url 'study:annotation_delete' annotation.id %}" data-confirm="{% if annotation.kind == 'highlight' %}Supprimer ce surlignage ?{% else %}Supprimer cette note ?{% endif %}">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.get_full_path }}">
-        <button class="linkbtn linkbtn--muted" type="submit">Supprimer</button>
-      </form>
-    {% endif %}
+    {% include "study/partials/annotation_actions.html" with annotation=annotation variant=variant %}
   </footer>
 </article>

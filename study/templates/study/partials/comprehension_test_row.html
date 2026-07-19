@@ -6,9 +6,9 @@ by the written and oral group pages. Params:
 {% endcomment %}
 {% with test=slot.test %}
   {% if test.is_active and test.is_published or test.user_attempts %}
-    <a class="qrow ce-group-test-row" href="{% url test.detail_route test.slug %}">
+    <a class="qrow ce-group-test-row" data-collection-item href="{% url test.detail_route test.slug %}">
   {% else %}
-    <article class="qrow ce-group-test-row ce-group-test-row--pending" aria-disabled="true">
+    <article class="qrow ce-group-test-row ce-group-test-row--pending" data-collection-item aria-disabled="true">
   {% endif %}
     <span class="qrow__num">{{ slot.number|stringformat:"02d" }}</span>
     <span class="qrow__text">
@@ -48,12 +48,12 @@ by the written and oral group pages. Params:
       </span>
       {% if test.is_active and test.is_published %}
         <span class="ce-group-test-row__action">
-          {% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}
+          <span class="table-action-label">{% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}</span>
           <span aria-hidden="true">→</span>
         </span>
       {% elif test.user_attempts %}
         <span class="ce-group-test-row__action">
-          {% if test.is_active %}Voir l’historique{% else %}Voir le test archivé{% endif %}
+          <span class="table-action-label">{% if test.is_active %}Voir l’historique{% else %}Voir le test archivé{% endif %}</span>
           <span aria-hidden="true">→</span>
         </span>
       {% endif %}

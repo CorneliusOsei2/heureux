@@ -21,12 +21,16 @@
   </div>
 </div>
 
+{% if review_batches or rows %}
+  {% include "study/partials/collection_view_toggle.html" %}
+{% endif %}
+
 {% if review_batches %}
 <section class="review-batches" aria-labelledby="theme-batches-title">
   <div class="review-batches__head">
     <h2 id="theme-batches-title">Lots de 15 cartes</h2>
   </div>
-  <div class="batch-grid">
+  <div class="batch-grid" data-collection-view="adaptive">
     {% for batch in review_batches %}
       {% include "study/partials/batch_card.html" with batch=batch item_noun="Cartes" only %}
     {% endfor %}
@@ -34,9 +38,9 @@
 </section>
 {% endif %}
 
-<div class="qlist">
+<div class="qlist" data-collection-view="adaptive">
   {% for row in rows %}
-    <a class="qrow" href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
+    <a class="qrow" data-collection-item href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
       <span class="qrow__num">{{ row.prompt.number }}</span>
       <span class="qrow__text">
         {{ row.prompt.text }}

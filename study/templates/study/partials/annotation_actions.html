@@ -1,0 +1,57 @@
+{% comment %}
+Shared annotation actions.
+
+Parameters:
+  annotation — Annotation instance.
+  variant    — "notes" | "highlights" | "search".
+{% endcomment %}
+{% if variant == "search" %}
+  <a class="linkbtn annotation-text-action" href="{{ annotation.notes_url }}" aria-label="Ouvrir dans mes notes" title="Ouvrir">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5H5v14h14v-3M11 13l8-8M13 5h6v6"></path></svg>
+    <span>Ouvrir</span>
+  </a>
+  {% if annotation.source_path %}
+    <a class="linkbtn annotation-text-action" href="{{ annotation.source_path }}" aria-label="Voir la source" title="Voir la source">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+      <span>Source</span>
+    </a>
+  {% endif %}
+{% endif %}
+<form method="post" action="{% url 'study:annotation_study_toggle' annotation.id %}">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+  <input type="hidden" name="study_later" value="{% if annotation.study_later %}0{% else %}1{% endif %}">
+  <button class="linkbtn annotation-action" type="submit" aria-label="{% if annotation.study_later %}Retirer de l’étude{% else %}Ajouter à étudier{% endif %}" aria-pressed="{% if annotation.study_later %}true{% else %}false{% endif %}" title="{% if annotation.study_later %}Retirer de l’étude{% else %}Ajouter à étudier{% endif %}">
+    <span class="annotation-action__icon annotation-action__icon--study" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.75L6 21Z"></path></svg>
+    </span>
+    <span class="sr-only">{% if annotation.study_later %}Retirer de l’étude{% else %}Ajouter à étudier{% endif %}</span>
+  </button>
+</form>
+{% if variant == "notes" %}
+  <button
+    class="linkbtn annotation-action"
+    type="button"
+    aria-label="Modifier la note"
+    title="Modifier"
+    data-annotation-edit="{{ annotation.id }}"
+    data-annotation-update-url="{% url 'study:annotation_update' annotation.id %}"
+  >
+    <span class="annotation-action__icon annotation-action__icon--edit" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"></path><path d="m13.5 6.5 4 4"></path></svg>
+    </span>
+    <span class="sr-only">Modifier la note</span>
+  </button>
+{% endif %}
+{% if variant == "notes" or variant == "highlights" %}
+  <form method="post" action="{% url 'study:annotation_delete' annotation.id %}" data-confirm="{% if annotation.kind == 'highlight' %}Supprimer ce surlignage ?{% else %}Supprimer cette note ?{% endif %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <button class="linkbtn linkbtn--muted annotation-action" type="submit" aria-label="{% if annotation.kind == 'highlight' %}Supprimer le surlignage{% else %}Supprimer la note{% endif %}" title="Supprimer">
+      <span class="annotation-action__icon annotation-action__icon--delete" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"></path></svg>
+      </span>
+      <span class="sr-only">{% if annotation.kind == "highlight" %}Supprimer le surlignage{% else %}Supprimer la note{% endif %}</span>
+    </button>
+  </form>
+{% endif %}

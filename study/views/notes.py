@@ -177,7 +177,9 @@ def _annotation_date_sections(annotations):
 
 
 def _notes_scope(request, task=None, *, aggregate=False):
-    annotations = Annotation.objects.filter(user=request.user)
+    annotations = Annotation.objects.filter(user=request.user).select_related(
+        "task__part"
+    )
     if not aggregate:
         annotations = annotations.filter(task=task)
     query = (request.GET.get("q") or "").strip()
@@ -204,7 +206,7 @@ def _notes_scope(request, task=None, *, aggregate=False):
         if form.is_valid():
             note = form.save()
             return redirect(
-                _annotation_tab_url(task, AnnotationKind.NOTE)
+                _annotation_redirect(request, note)
                 + f"#note-{note.id}"
             )
     else:
@@ -756,7 +758,10 @@ def annotation_update(request, pk):
             status=400,
         )
     form.save()
-    return redirect(_annotation_redirect(request, annotation) + f"#note-{pk}")
+    redirect_url = _annotation_redirect(request, annotation) + f"#note-{pk}"
+    if request.headers.get("X-Requested-With") == "fetch":
+        return JsonResponse({"redirect_url": redirect_url})
+    return redirect(redirect_url)
 
 
 @require_POST

@@ -7,7 +7,7 @@ comprehension overview (written or oral). Params:
                 "study:comprehension_group").
   accent      — --deck-color accent (e.g. "var(--ce-blue)").
 {% endcomment %}
-<a class="deck card ce-group-card" style="--deck-color: {{ accent }};" href="{% url group_route group.number %}">
+<a class="deck card ce-group-card" data-collection-item style="--deck-color: {{ accent }};" href="{% url group_route group.number %}">
   <div class="deck__body">
     <div class="deck__title">
       <span class="deck__icon">{{ group.number|stringformat:"02d" }}</span>

@@ -7,7 +7,7 @@ Params:
   item_noun  — label for the range line ("Cartes" or "Entrées"). Optional,
                defaults to "Cartes".
 {% endcomment %}
-<a class="batch-card batch-card--{{ batch.status }}"{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
+<a class="batch-card batch-card--{{ batch.status }}" data-collection-item{% if batch.can_review %} href="{{ batch.review_url }}"{% else %} aria-disabled="true"{% endif %}>
   <span class="batch-card__top">
     <span class="batch-card__number">Lot {{ batch.number|stringformat:"02d" }}</span>
     <span class="batch-card__status">{% if batch.status == "complete" %}<span aria-hidden="true">✓</span> {% elif batch.status == "in-progress" %}<span aria-hidden="true">●</span> {% endif %}{{ batch.status_label }}</span>
