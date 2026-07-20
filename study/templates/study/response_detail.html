@@ -8,7 +8,7 @@
 <div class="detail-head">
   <p class="eyebrow">
     <a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a> ·
-    <a href="{% url 'study:theme_detail' part.slug task.slug selected_prompt.theme.slug %}">{{ selected_prompt.theme.emoji }} {{ selected_prompt.theme.display_name }}</a>
+    <a class="link-with-icon" href="{% url 'study:theme_detail' part.slug task.slug selected_prompt.theme.slug %}">{% include "study/partials/ui_icon.html" with name=selected_prompt.theme.icon only %}<span>{{ selected_prompt.theme.display_name }}</span></a>
     · <a href="{% url 'study:task_family_detail' part.slug task.slug selected_prompt.family.slug %}">{{ selected_prompt.family.name }}</a>
     {% if response_content.is_personal %} · <span class="chip">Version personnelle</span>{% endif %}
   </p>
@@ -118,7 +118,7 @@
           {% for p in prompts %}
             <li>
               <a href="{% url 'study:response_detail' p.theme.task.part.slug p.theme.task.slug p.pk %}">
-                <span class="chip chip--theme" style="--chip: {{ p.theme.color }};">{{ p.theme.emoji }} P{{ p.number }}</span>
+                <span class="chip chip--theme" style="--chip: {{ p.theme.color }};">{% include "study/partials/ui_icon.html" with name=p.theme.icon only %} P{{ p.number }}</span>
                 {{ p.text }}
               </a>
             </li>

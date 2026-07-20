@@ -102,7 +102,7 @@
           <span class="ce-review-item__number">{{ item.question.number }}</span>
           <span class="ce-review-item__prompt">{{ item.question.prompt_fr }}</span>
           <span class="ce-review-item__status">
-            {% if item.answer.is_correct %}Correcte <b>✓</b>{% else %}À revoir <b>×</b>{% endif %}
+            {% if item.answer.is_correct %}Correcte <b>{% include "study/partials/ui_icon.html" with name="check" only %}</b>{% else %}À revoir <b>{% include "study/partials/ui_icon.html" with name="x" only %}</b>{% endif %}
           </span>
         </summary>
         <div class="ce-review-item__body">

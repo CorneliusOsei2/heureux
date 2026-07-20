@@ -1,13 +1,13 @@
 {% if kind == "spine" %}
   <div class="flashcard__head">
     <span class="flashcard__type">{{ kind_label }}</span>
-    <span class="chip chip--theme" style="background: {{ theme.color }};">{{ theme.emoji }} {{ theme.display_name }}</span>
+    <span class="chip chip--theme" style="background: {{ theme.color }};">{% include "study/partials/ui_icon.html" with name=theme.icon only %} {{ theme.display_name }}</span>
     <span class="chip">{{ family.name|truncatechars:34 }}</span>
     <span class="progress-status progress-status--{{ subject_progress.status }}">{{ subject_progress.label }}</span>
   </div>
   <p class="prompt-text">{{ prompt }}</p>
   <div class="instruction">
-    {% if aliases %}<div>↔ {{ aliases|length }} formulation{{ aliases|length|pluralize }} équivalente{{ aliases|length|pluralize }}</div>{% endif %}
+    {% if aliases %}<div>{% include "study/partials/ui_icon.html" with name="arrow-left-right" only %} {{ aliases|length }} formulation{{ aliases|length|pluralize }} équivalente{{ aliases|length|pluralize }}</div>{% endif %}
     <div>À voix haute : <b>reformulation → position → 3 arguments → nuance → conclusion</b>.</div>
   </div>
 {% else %}

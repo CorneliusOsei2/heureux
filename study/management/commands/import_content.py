@@ -196,7 +196,7 @@ class Command(BaseCommand):
                 defaults={
                     "name": part.name,
                     "short_name": part.short_name,
-                    "emoji": part.emoji,
+                    "icon": part.icon,
                     "color": part.color,
                     "order": part.order,
                     "available": part.available,
@@ -211,7 +211,7 @@ class Command(BaseCommand):
                     defaults={
                         "name": task.name,
                         "subtitle": task.subtitle,
-                        "emoji": task.emoji,
+                        "icon": task.icon,
                         "color": task.color,
                         "order": task.order,
                         "available": task.available,
@@ -236,7 +236,7 @@ class Command(BaseCommand):
                     "display_name": theme.display,
                     "order": theme.order,
                     "color": theme.color,
-                    "emoji": theme.emoji,
+                    "icon": theme.icon,
                     "task": task_by_slug.get(theme.task),
                     "is_active": True,
                 },

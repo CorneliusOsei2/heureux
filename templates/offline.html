@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="done-state">
-  <div class="done-state__emoji">📡</div>
+  <div class="done-state__icon done-state__icon--offline">{% include "study/partials/ui_icon.html" with name="wifi-off" only %}</div>
   <h2>Vous êtes hors ligne</h2>
   <p>Les fiches et votre progression restent privées et synchronisées en ligne.
      Reconnectez-vous pour reprendre exactement où vous vous étiez arrêté.</p>

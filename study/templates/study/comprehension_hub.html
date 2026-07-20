@@ -28,7 +28,7 @@
         <p class="eyebrow">Parcours</p>
         <h2 id="comprehension-paths-title">Choisir une compétence</h2>
       </div>
-      <a href="{% url 'study:comprehension_vocabulary' %}">Voir le vocabulaire CE →</a>
+      <a href="{% url 'study:comprehension_vocabulary' %}">Voir le vocabulaire CE {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
     </div>
     {% include "study/_comprehension_paths.html" %}
   </section>

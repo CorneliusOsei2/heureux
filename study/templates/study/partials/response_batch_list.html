@@ -15,7 +15,7 @@
           <strong>{% if batch_kind == "vocabulary" %}{{ batch.label }}{% else %}Expressions liées{% endif %}</strong>
           <small>Lot {{ batch.number }} · {{ batch.phrase_count }} {% if batch_kind == "vocabulary" %}vocabs{% else %}expression{{ batch.phrase_count|pluralize }}{% endif %} · {{ batch.status_label }}</small>
         </span>
-        <span class="response-batch__arrow" aria-hidden="true">{% if batch.progress_status == "done" %}✓{% else %}→{% endif %}</span>
+        <span class="response-batch__arrow" aria-hidden="true">{% if batch.progress_status == "done" %}{% include "study/partials/ui_icon.html" with name="check" only %}{% else %}{% include "study/partials/ui_icon.html" with name="arrow-right" only %}{% endif %}</span>
       </a>
     {% endfor %}
   </nav>

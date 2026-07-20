@@ -924,6 +924,7 @@
   var summaryEl = document.getElementById("session-summary");
   var previousButton = document.getElementById("previous-card");
   var currentButton = document.getElementById("current-card");
+  var currentButtonLabel = document.getElementById("current-card-label");
   var previousLabel = document.getElementById("previous-card-label");
   var counters = {
     new: document.getElementById("c-new"),
@@ -1212,9 +1213,9 @@
         gradesEl.classList.add("hidden");
         previousButton.classList.add("hidden");
         currentButton.classList.remove("hidden");
-        currentButton.textContent = fromDone
-          ? "Retour au résumé →"
-          : "Retour à la carte actuelle →";
+        currentButtonLabel.textContent = fromDone
+          ? "Retour au résumé"
+          : "Retour à la carte actuelle";
         previousLabel.classList.remove("hidden");
         kbdHint.textContent = "Consultation uniquement · votre carte actuelle est conservée.";
         busy = false;
@@ -1232,7 +1233,7 @@
       doneZone.classList.remove("hidden");
       previousButton.classList.remove("hidden");
       currentButton.classList.add("hidden");
-      currentButton.textContent = "Retour à la carte actuelle →";
+      currentButtonLabel.textContent = "Retour à la carte actuelle";
       previousLabel.classList.add("hidden");
       viewingPrevious = false;
       currentView = null;

@@ -7,7 +7,7 @@
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=2"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=76">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=77">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -149,13 +149,13 @@
             <button type="button" data-theme-toggle>
               <span>Apparence</span>
               <span class="nav__theme-glyph" aria-hidden="true">
-                <span class="theme-icon theme-icon--sun">☀</span>
-                <span class="theme-icon theme-icon--moon">☾</span>
+                <span class="theme-icon theme-icon--sun">{% include "study/partials/ui_icon.html" with name="sun" only %}</span>
+                <span class="theme-icon theme-icon--moon">{% include "study/partials/ui_icon.html" with name="moon" only %}</span>
               </span>
             </button>
             <button class="nav__install" type="button" data-install-app hidden>
               <span>Installer l'application</span>
-              <span aria-hidden="true">↓</span>
+              <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="download" only %}</span>
             </button>
             <span class="nav__menu-divider" aria-hidden="true"></span>
             <form method="post" action="{% url 'study:logout' %}">
@@ -174,10 +174,7 @@
 
   <div class="selection-translate hidden" role="toolbar" aria-label="Selected text actions" data-selection-translate>
     <button class="selection-translate__button selection-translate__button--copy" type="button" aria-label="Copy selected text" data-copy-selection>
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="8" y="8" width="11" height="11" rx="2"></rect>
-        <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
-      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{% static 'study/icons/ui-icons.svg' %}?v=1#icon-copy" data-copy-selection-icon></use></svg>
       <span class="selection-translate__label" aria-live="polite" data-copy-selection-label>Copy</span>
     </button>
     <button class="selection-translate__button selection-translate__button--read" type="button" aria-label="Read selected text in French" aria-pressed="false" data-read-selection>
@@ -216,7 +213,7 @@
         <span class="translation-panel__eyebrow">Français → English</span>
         <h2 id="translation-panel-title">English translation</h2>
       </div>
-      <button class="translation-panel__close" type="button" aria-label="Close translation" data-translation-close>×</button>
+      <button class="translation-panel__close" type="button" aria-label="Close translation" data-translation-close>{% include "study/partials/ui_icon.html" with name="x" only %}</button>
     </header>
     <div class="translation-panel__body">
       <div class="translation-panel__source">
@@ -233,8 +230,11 @@
       </div>
     </div>
     <footer class="translation-panel__actions">
-      <button class="btn hidden" type="button" data-translation-copy>Copy</button>
-      <a class="btn" href="https://translate.google.com/" target="_blank" rel="noopener noreferrer" data-translation-fallback>Google Translate ↗</a>
+      <button class="btn hidden" type="button" data-translation-copy>
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{% static 'study/icons/ui-icons.svg' %}?v=1#icon-copy" data-translation-copy-icon></use></svg>
+        <span data-translation-copy-label>Copy</span>
+      </button>
+      <a class="btn" href="https://translate.google.com/" target="_blank" rel="noopener noreferrer" data-translation-fallback><span data-translation-fallback-label>Google Translate</span>{% include "study/partials/ui_icon.html" with name="external-link" only %}</a>
     </footer>
   </section>
 
@@ -244,7 +244,7 @@
         <span class="translation-panel__eyebrow">Notes personnelles</span>
         <h2 id="selection-note-title">Ajouter à mes notes</h2>
       </div>
-      <button class="translation-panel__close" type="button" aria-label="Close note" data-note-close>×</button>
+      <button class="translation-panel__close" type="button" aria-label="Close note" data-note-close>{% include "study/partials/ui_icon.html" with name="x" only %}</button>
     </header>
     <div class="translation-panel__body">
       <div class="translation-panel__source">
@@ -285,9 +285,9 @@
     <button class="btn btn--primary" type="button" data-pwa-update>Mettre à jour</button>
   </div>
 
-  <script src="{% static 'study/js/app.js' %}?v=33"></script>
-  <script src="{% static 'study/js/translate.js' %}?v=11"></script>
-  <script src="{% static 'study/js/annotations.js' %}?v=7"></script>
+  <script src="{% static 'study/js/app.js' %}?v=34"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=12"></script>
+  <script src="{% static 'study/js/annotations.js' %}?v=8"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

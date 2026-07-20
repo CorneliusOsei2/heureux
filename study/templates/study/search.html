@@ -33,7 +33,7 @@
       {% include "study/partials/collection_table_header.html" with variant="subjects" column_1="Repère" column_2="Résultat" column_3="Contexte" only %}
       {% for prompt in prompt_results %}
         <a class="qrow" data-collection-item href="{% url 'study:response_detail' prompt.theme.task.part.slug prompt.theme.task.slug prompt.pk %}">
-          <span class="qrow__num qrow__num--tag"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
+          <span class="qrow__num qrow__num--tag"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{% include "study/partials/ui_icon.html" with name=prompt.theme.icon only %} P{{ prompt.number }}</span></span>
           <span class="qrow__text">{{ prompt.text }}</span>
           <span class="qrow__meta">
             <span class="muted">{{ prompt.family.name }}</span>
@@ -66,7 +66,7 @@
         <a class="qrow" data-collection-item href="{% if question.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' question.test.slug question.number %}{% else %}{% url 'study:comprehension_question_study' question.test.slug question.number %}{% endif %}">
           <span class="qrow__num qrow__num--tag"><span class="chip">{{ question.test.title }} · Q{{ question.number }}</span></span>
           <span class="qrow__text">{{ question.prompt_fr }}</span>
-          <span class="qrow__meta"><span class="muted"><span class="table-action-label">Voir la correction</span> <span aria-hidden="true">→</span></span></span>
+          <span class="qrow__meta"><span class="muted"><span class="table-action-label">Voir la correction</span> <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span></span></span>
         </a>
       {% endfor %}
     </div>

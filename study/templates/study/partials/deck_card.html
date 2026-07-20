@@ -4,7 +4,7 @@ Params:
   url           — link href.
   available     — bool; adds deck--soon + a "À venir" badge when false.
   color         — optional --deck-color accent (omitted on soon decks).
-  icon          — emoji / short code shown in the deck__icon tile.
+  icon          — SVG icon name shown in the deck__icon tile.
   name          — deck title.
   due           — optional count; renders the pill pill--due badge when truthy.
   stats         — subject summary with a normalized progress object.
@@ -17,7 +17,7 @@ Params:
 <a class="deck card{% if not available %} deck--soon{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}" data-collection-item{% if color %} style="--deck-color: {{ color }};"{% endif %} href="{{ url }}">
   <div class="deck__body">
     <div class="deck__title">
-      <span class="deck__icon">{{ icon }}</span>
+      <span class="deck__icon">{% include "study/partials/ui_icon.html" with name=icon only %}</span>
       <span>{{ name }}</span>
     </div>
     {% if available %}
@@ -40,7 +40,7 @@ Params:
       {% else %}
         <span class="badge-soon">À venir</span>
       {% endif %}
-      <span class="deck__row-arrow" aria-hidden="true">→</span>
+      <span class="deck__row-arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
     </div>
   </div>
 </a>

@@ -6,7 +6,10 @@
 
 <header class="task-hero">
   <div>
-    <h1>{{ task.emoji }} {{ task.name }}</h1>
+    <h1 class="title-with-icon" style="--icon-accent: {{ task.color }};">
+      <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=task.icon only %}</span>
+      <span>{{ task.name }}</span>
+    </h1>
   </div>
   <div class="task-hero__numbers" aria-label="Contenu de la tâche">
     <span><b>{{ prompt_count }}</b> sujets</span>
@@ -35,7 +38,7 @@
     <div>
       <h2>Thèmes · {{ themes|length }}</h2>
     </div>
-    <a href="{% url 'study:task_browse' part.slug task.slug %}">Voir tous les sujets →</a>
+    <a href="{% url 'study:task_browse' part.slug task.slug %}">Voir tous les sujets {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
   </div>
   {% if themes %}
     {% include "study/partials/collection_view_toggle.html" %}
@@ -44,7 +47,7 @@
     {% include "study/partials/collection_table_header.html" with variant="decks" column_1="Thème" column_2="Contenu" column_3="Progression" column_4="État" only %}
     {% for item in themes %}
       {% url 'study:theme_detail' part.slug task.slug item.theme.slug as theme_url %}
-      {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_complete=True count_complete=item.stats.completed only %}
+      {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.icon name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_complete=True count_complete=item.stats.completed only %}
     {% endfor %}
   </div>
 </section>

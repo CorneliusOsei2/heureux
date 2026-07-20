@@ -30,7 +30,7 @@ Parameters:
   {% if variant == "search" %}
     <p class="annotation-card__scope">{% if annotation.task %}{{ annotation.task.part.short_name }} · {{ annotation.task.name }}{% else %}Notes générales{% endif %}</p>
   {% elif annotation.source_path %}
-    <a class="annotation-card__source" href="{{ annotation.source_path }}">↗ {{ annotation.source_title|default:"Voir la source" }}</a>
+    <a class="annotation-card__source" href="{{ annotation.source_path }}">{% include "study/partials/ui_icon.html" with name="external-link" only %} {{ annotation.source_title|default:"Voir la source" }}</a>
   {% endif %}
   <footer class="annotation-card__actions">
     {% include "study/partials/annotation_actions.html" with annotation=annotation variant=variant %}

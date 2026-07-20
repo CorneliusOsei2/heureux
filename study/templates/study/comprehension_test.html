@@ -72,10 +72,10 @@
             <span class="qrow__meta qrow__meta--state">
               {% if item.answer %}
                 <span class="ce-study-question-row__state {% if item.answer.is_correct %}is-correct{% else %}is-wrong{% endif %}" title="{% if item.answer.is_correct %}Bonne réponse lors de la dernière pratique{% else %}Réponse à revoir{% endif %}">
-                  {% if item.answer.is_correct %}✓{% else %}×{% endif %}
+                  {% if item.answer.is_correct %}{% include "study/partials/ui_icon.html" with name="check" only %}{% else %}{% include "study/partials/ui_icon.html" with name="x" only %}{% endif %}
                 </span>
               {% endif %}
-              <span class="ce-study-question-row__open">Étudier <span aria-hidden="true">→</span></span>
+              <span class="ce-study-question-row__open">Étudier <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span></span>
             </span>
           </a>
         {% empty %}
@@ -105,7 +105,7 @@
             </span>
             <span class="ce-history__score">{{ attempt.score }}/{{ attempt.total_questions }}</span>
             <span class="ce-history__percentage">{{ attempt.percentage }} %</span>
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
           </a>
         {% endfor %}
       </div>

@@ -1,7 +1,7 @@
 {% for pitem in parts %}
   <section class="exam-part{% if area != 'home' %} exam-part--grouped{% endif %}" style="--deck-color: {{ pitem.part.color }};">
     <div class="exam-part__head">
-      <span class="exam-part__emoji" style="--deck-color: {{ pitem.part.color }};">{{ pitem.part.emoji }}</span>
+      <span class="exam-part__icon" style="--deck-color: {{ pitem.part.color }};">{% include "study/partials/ui_icon.html" with name=pitem.part.icon only %}</span>
       <div class="exam-part__title">
         <h3>
           {% if area == "home" %}
@@ -29,7 +29,7 @@
           {% endif %}
               <div class="deck__body">
                 <div class="deck__title">
-                  <span class="deck__icon">{{ t.task.emoji }}</span>
+                  <span class="deck__icon">{% include "study/partials/ui_icon.html" with name=t.task.icon only %}</span>
                   <span>{{ t.task.name }}</span>
                   {% if area == "review" and t.counts.total_due %}
                     <span class="deck__due pill pill--due">{{ t.counts.total_due }}</span>
@@ -67,7 +67,7 @@
           <a class="deck card deck--soon{% if area != 'home' %} grouped-task-card grouped-task-card--soon{% endif %}" href="{% url 'study:task_detail' pitem.part.slug t.task.slug %}">
             <div class="deck__body">
               <div class="deck__title">
-                <span class="deck__icon">{{ t.task.emoji }}</span>
+                <span class="deck__icon">{% include "study/partials/ui_icon.html" with name=t.task.icon only %}</span>
                 <span>{{ t.task.name }}</span>
                 <span class="badge-soon">À venir</span>
               </div>
@@ -79,7 +79,7 @@
         <a class="deck card deck--soon" href="{% url 'study:part_detail' pitem.part.slug %}">
           <div class="deck__body">
             <div class="deck__title">
-              <span class="deck__icon">{{ pitem.part.emoji }}</span>
+              <span class="deck__icon">{% include "study/partials/ui_icon.html" with name=pitem.part.icon only %}</span>
               <span>{{ pitem.part.short_name }}</span>
               <span class="badge-soon">À venir</span>
             </div>

@@ -21,14 +21,14 @@
     <h2>Par thème</h2>
   </div>
   {% if task %}
-    <a href="{% url 'study:task_phrases' part.slug task.slug %}">{{ phrase_count }} expressions associées →</a>
+    <a href="{% url 'study:task_phrases' part.slug task.slug %}">{{ phrase_count }} expressions associées {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
   {% endif %}
 </div>
 <div class="grid grid--decks collection-table collection-table--decks" data-collection-view="adaptive">
   {% include "study/partials/collection_table_header.html" with variant="decks" column_1="Thème" column_2="Contenu" column_3="Progression" column_4="État" only %}
   {% for item in themes %}
     {% url 'study:theme_detail' part.slug task.slug item.theme.slug as theme_url %}
-    {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total only %}
+    {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.icon name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total only %}
   {% empty %}
     <p class="muted">Aucun contenu pour cette sélection pour l'instant.</p>
   {% endfor %}

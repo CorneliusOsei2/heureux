@@ -23,7 +23,7 @@
         <small>Session interrompue · {{ resume_scope_label }}</small>
         <strong>Reprendre là où je me suis arrêté</strong>
       </span>
-      <span aria-hidden="true">→</span>
+      <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
     </a>
   {% endif %}
 
@@ -45,7 +45,7 @@
           <p>{{ expression_counts.due_reviews }} à revoir · {{ expression_counts.new_available }} nouvelles réponses.</p>
         </div>
         <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine">Pratiquer</a>
-        <a class="daily-card__secondary" href="{% url 'study:expression' %}">Voir les sujets →</a>
+        <a class="daily-card__secondary" href="{% url 'study:expression' %}">Voir les sujets {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
       </article>
 
       <article class="daily-card card daily-card--vocabulary">
@@ -56,7 +56,7 @@
           <p>{{ vocabulary_counts.due_reviews }} à revoir · {{ vocabulary_counts.new_available }} nouvelles cartes.</p>
         </div>
         <a class="btn btn--primary" href="{% url 'study:vocabulary' %}">Choisir un deck</a>
-        <a class="daily-card__secondary" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">Renforcer mes points faibles →</a>
+        <a class="daily-card__secondary" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary">Renforcer mes points faibles {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
       </article>
 
       <article class="daily-card card daily-card--comprehension">
@@ -81,7 +81,7 @@
         {% else %}
           <a class="btn" href="{% url 'study:comprehension_hub' %}">Voir le parcours</a>
         {% endif %}
-        <a class="daily-card__secondary" href="{% url 'study:comprehension_hub' %}">Tous les tests →</a>
+        <a class="daily-card__secondary" href="{% url 'study:comprehension_hub' %}">Tous les tests {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
       </article>
 
       <article class="daily-card card daily-card--notes">
@@ -96,7 +96,7 @@
         {% else %}
           <a class="btn" href="{% url 'study:notes_overview' %}">Ouvrir mes notes</a>
         {% endif %}
-        <a class="daily-card__secondary" href="{% url 'study:notes_overview' %}">Gérer mes notes →</a>
+        <a class="daily-card__secondary" href="{% url 'study:notes_overview' %}">Gérer mes notes {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
       </article>
     </div>
   </section>

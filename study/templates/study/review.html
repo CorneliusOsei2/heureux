@@ -26,9 +26,9 @@
   </div>
   <div class="review__bar"><span id="progress"></span></div>
   <div class="review__history">
-    <button class="linkbtn" id="previous-card" type="button" disabled>← Carte précédente</button>
+    <button class="linkbtn" id="previous-card" type="button" disabled>{% include "study/partials/ui_icon.html" with name="arrow-left" only %}<span>Carte précédente</span></button>
     <span class="review__history-label hidden" id="previous-card-label">Carte précédente · consultation uniquement</span>
-    <button class="linkbtn hidden" id="current-card" type="button">Retour à la carte actuelle →</button>
+    <button class="linkbtn hidden" id="current-card" type="button"><span id="current-card-label">Retour à la carte actuelle</span>{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</button>
   </div>
 
   <div id="card-zone">
@@ -71,7 +71,7 @@
   </div>
 
   <div id="done-zone" class="done-state hidden card card--pad">
-    <div class="done-state__emoji">🎉</div>
+    <div class="done-state__icon done-state__icon--celebrate">{% include "study/partials/ui_icon.html" with name="sparkles" only %}</div>
     <h2>Session terminée</h2>
     <div class="session-summary" id="session-summary"></div>
     {% if is_revisit %}
@@ -86,7 +86,7 @@
         <a class="btn" href="{{ request.get_full_path }}">Refaire ce parcours</a>
       {% endif %}
       {% if next_batch %}
-        <a class="btn btn--primary" href="{{ next_batch.review_url }}">Passer au lot {{ next_batch.number }} <span aria-hidden="true">→</span></a>
+        <a class="btn btn--primary" href="{{ next_batch.review_url }}">Passer au lot {{ next_batch.number }} {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
       {% else %}
         <a class="btn btn--primary" href="{% url 'study:dashboard' %}">Retour à l'accueil</a>
       {% endif %}

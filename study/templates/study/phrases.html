@@ -4,7 +4,7 @@
 {% block content %}
 {% if selected or selected_test %}
 <nav class="phrase-category-back" aria-label="Retour au vocabulaire">
-  <a href="{{ vocabulary_root_url }}">← Tout le vocabulaire</a>
+  <a href="{{ vocabulary_root_url }}">{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Tout le vocabulaire</a>
 </nav>
 
 <header class="phrase-category-hero card">
@@ -83,7 +83,7 @@
                 <div class="phrase__foot">
                   <span class="faint">Tiré de&nbsp;:</span>
                   {% for source in prompts|slice:":10" %}
-                    <a class="chip chip--theme" style="--chip: {{ source.theme.color }};" href="{% url 'study:response_detail' source.theme.task.part.slug source.theme.task.slug source.pk %}">{{ source.theme.emoji }} P{{ source.number }}</a>
+                    <a class="chip chip--theme" style="--chip: {{ source.theme.color }};" href="{% url 'study:response_detail' source.theme.task.part.slug source.theme.task.slug source.pk %}">{% include "study/partials/ui_icon.html" with name=source.theme.icon only %} P{{ source.number }}</a>
                   {% endfor %}
                 </div>
               {% endif %}
@@ -238,7 +238,7 @@
             <span class="progress-status progress-status--{{ category.progress.status }}">{{ category.progress.label }}</span>
             <span>{{ category.phrase_count }} expressions · {{ category.completed_batch_count }}/{{ category.progress.total }} lots terminés</span>
           </span>
-          <span class="expression-category-card__action"><span class="table-action-label">Ouvrir</span> <span aria-hidden="true">→</span></span>
+          <span class="expression-category-card__action"><span class="table-action-label">Ouvrir</span> <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span></span>
         </a>
       {% empty %}
         <p class="muted">Aucune expression transversale n’est encore disponible.</p>
@@ -270,7 +270,7 @@
           <details class="subject-theme card" data-collection-item data-subject-theme>
             <summary>
               <span class="subject-theme__identity">
-                <span class="subject-theme__emoji" aria-hidden="true">{{ group.theme.emoji }}</span>
+                <span class="subject-theme__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name=group.theme.icon only %}</span>
                 <strong>{{ group.theme.display_name|default:group.theme.name }}</strong>
               </span>
               <span class="subject-theme__stats">

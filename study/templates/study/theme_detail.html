@@ -9,7 +9,10 @@
     · Thème
   </p>
   <div class="row between">
-    <h1 style="margin-bottom:0;">{{ theme.emoji }} {{ theme.display_name }}</h1>
+    <h1 class="title-with-icon" style="--icon-accent: {{ theme.color }}; margin-bottom: 0;">
+      <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=theme.icon only %}</span>
+      <span>{{ theme.display_name }}</span>
+    </h1>
     <a class="btn btn--primary" href="{{ review_url }}">Réviser ce thème</a>
   </div>
   <p>{{ rows|length }} sujets · {{ stats.total }} réponses uniques · {{ stats.completed }} terminé{{ stats.completed|pluralize }}.</p>

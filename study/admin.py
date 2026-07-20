@@ -96,7 +96,7 @@ class ComprehensionAnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Theme)
 class ThemeAdmin(admin.ModelAdmin):
-    list_display = ("display_name", "name", "order", "emoji", "color")
+    list_display = ("display_name", "name", "order", "icon", "color")
     ordering = ("order",)
 
 

@@ -5,6 +5,7 @@
   var action = document.querySelector("[data-selection-translate]");
   var selectionCopyButton = document.querySelector("[data-copy-selection]");
   var selectionCopyLabel = document.querySelector("[data-copy-selection-label]");
+  var selectionCopyIcon = document.querySelector("[data-copy-selection-icon]");
   var readButton = document.querySelector("[data-read-selection]");
   var readLabel = document.querySelector("[data-read-selection-label]");
   var translateButton = document.querySelector("[data-translate-selection]");
@@ -27,7 +28,10 @@
   var output = panel.querySelector("[data-translation-output]");
   var resultElement = panel.querySelector("[data-translation-result]");
   var copyButton = panel.querySelector("[data-translation-copy]");
+  var copyLabel = panel.querySelector("[data-translation-copy-label]");
+  var copyIcon = panel.querySelector("[data-translation-copy-icon]");
   var fallbackLink = panel.querySelector("[data-translation-fallback]");
+  var fallbackLabel = panel.querySelector("[data-translation-fallback-label]");
   var mobileActionQuery = window.matchMedia(
     "(max-width: 760px), (hover: none), (pointer: coarse)"
   );
@@ -50,6 +54,15 @@
   var readingChunks = [];
   var readingIndex = 0;
   var readResetTimer = null;
+
+  function setSpriteIcon(icon, name) {
+    if (!icon) return;
+    var href = icon.getAttribute("href") || "";
+    icon.setAttribute(
+      "href",
+      href.replace(/#icon-[a-z0-9-]+$/, "#icon-" + name)
+    );
+  }
 
   function normalizeSelection(text) {
     return text
@@ -289,12 +302,13 @@
     requestNumber += 1;
     panel.classList.add("hidden");
     copyButton.classList.add("hidden");
-    copyButton.textContent = "Copy";
+    copyLabel.textContent = "Copy";
+    setSpriteIcon(copyIcon, "copy");
   }
 
   function showFallback(message) {
     setStatus(message, false);
-    fallbackLink.textContent = "Continue with Google Translate ↗";
+    fallbackLabel.textContent = "Continue with Google Translate";
     fallbackLink.classList.add("btn--primary");
     repositionPanel();
   }
@@ -408,15 +422,18 @@
     writeClipboard(selectedText)
       .then(function () {
         selectionCopyButton.classList.add("is-copied");
-        selectionCopyLabel.textContent = "Copied ✓";
+        selectionCopyLabel.textContent = "Copied";
+        setSpriteIcon(selectionCopyIcon, "check");
         selectionCopyTimer = window.setTimeout(function () {
           selectionCopyButton.classList.remove("is-copied");
           selectionCopyLabel.textContent = "Copy";
+          setSpriteIcon(selectionCopyIcon, "copy");
         }, 1600);
       })
       .catch(function () {
         selectionCopyButton.classList.remove("is-copied");
         selectionCopyLabel.textContent = "Copy failed";
+        setSpriteIcon(selectionCopyIcon, "copy");
         selectionCopyTimer = window.setTimeout(function () {
           selectionCopyLabel.textContent = "Copy";
         }, 1600);
@@ -437,9 +454,10 @@
     resultElement.textContent = "";
     output.classList.add("hidden");
     copyButton.classList.add("hidden");
-    copyButton.textContent = "Copy";
+    copyLabel.textContent = "Copy";
+    setSpriteIcon(copyIcon, "copy");
     fallbackLink.href = googleTranslateUrl(text);
-    fallbackLink.textContent = "Google Translate ↗";
+    fallbackLabel.textContent = "Google Translate";
     fallbackLink.classList.remove("btn--primary");
     positionPanel(rect);
     panel.focus({ preventScroll: true });
@@ -474,9 +492,11 @@
 
     writeClipboard(text)
       .then(function () {
-        copyButton.textContent = "Copied ✓";
+        copyLabel.textContent = "Copied";
+        setSpriteIcon(copyIcon, "check");
         window.setTimeout(function () {
-          copyButton.textContent = "Copy";
+          copyLabel.textContent = "Copy";
+          setSpriteIcon(copyIcon, "copy");
         }, 1600);
       })
       .catch(function () {

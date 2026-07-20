@@ -51,10 +51,10 @@ by the written and oral group pages. Params:
     <span class="ce-group-test-row__action">
       {% if test.is_active and test.is_published %}
         <span class="table-action-label">{% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}</span>
-        <span class="table-action-arrow" aria-hidden="true">→</span>
+        <span class="table-action-arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
       {% elif test.user_attempts %}
         <span class="table-action-label">{% if test.is_active %}Voir l’historique{% else %}Voir le test archivé{% endif %}</span>
-        <span class="table-action-arrow" aria-hidden="true">→</span>
+        <span class="table-action-arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
       {% else %}
         <span class="table-cell-empty" aria-label="Aucune action">—</span>
       {% endif %}

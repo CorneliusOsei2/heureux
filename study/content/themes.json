@@ -1,9 +1,9 @@
 {
-  "Culture":       {"slug": "culture",       "display": "Culture",       "order": 1, "color": "#173f90", "emoji": "🎭", "task": "eo/tache-3"},
-  "Famille":       {"slug": "famille",       "display": "Famille",       "order": 2, "color": "#d3263a", "emoji": "👪", "task": "eo/tache-3"},
-  "Education":     {"slug": "education",     "display": "Éducation",     "order": 3, "color": "#2d63b8", "emoji": "🎓", "task": "eo/tache-3"},
-  "Sante":         {"slug": "sante",         "display": "Santé",         "order": 4, "color": "#b5162b", "emoji": "🩺", "task": "eo/tache-3"},
-  "Technologie":   {"slug": "technologie",   "display": "Technologie",   "order": 5, "color": "#244a85", "emoji": "💻", "task": "eo/tache-3"},
-  "Environnement": {"slug": "environnement", "display": "Environnement", "order": 6, "color": "#3976c4", "emoji": "🌍", "task": "eo/tache-3"},
-  "Economie":      {"slug": "economie",      "display": "Économie",      "order": 7, "color": "#e04452", "emoji": "💶", "task": "eo/tache-3"}
+  "Culture":       {"slug": "culture",       "display": "Culture",       "order": 1, "color": "#173f90", "icon": "theater",        "task": "eo/tache-3"},
+  "Famille":       {"slug": "famille",       "display": "Famille",       "order": 2, "color": "#d3263a", "icon": "users",          "task": "eo/tache-3"},
+  "Education":     {"slug": "education",     "display": "Éducation",     "order": 3, "color": "#2d63b8", "icon": "graduation-cap", "task": "eo/tache-3"},
+  "Sante":         {"slug": "sante",         "display": "Santé",         "order": 4, "color": "#b5162b", "icon": "stethoscope",    "task": "eo/tache-3"},
+  "Technologie":   {"slug": "technologie",   "display": "Technologie",   "order": 5, "color": "#244a85", "icon": "laptop",         "task": "eo/tache-3"},
+  "Environnement": {"slug": "environnement", "display": "Environnement", "order": 6, "color": "#3976c4", "icon": "globe",          "task": "eo/tache-3"},
+  "Economie":      {"slug": "economie",      "display": "Économie",      "order": 7, "color": "#e04452", "icon": "euro",           "task": "eo/tache-3"}
 }

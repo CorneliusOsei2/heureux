@@ -310,7 +310,7 @@
     };
   }
 
-  function textSegments(root, start, end) {
+  function textSegments(root, start, end, includeNestedRoots) {
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     var segments = [];
     var offset = 0;
@@ -324,6 +324,7 @@
           parent &&
           !(
             root === main &&
+            !includeNestedRoots &&
             parent.closest("[data-annotation-root]")
           ) &&
           !parent.closest(
@@ -358,7 +359,14 @@
   }
 
   function highlightRoot(item) {
-    if (!item.source_key) return main;
+    if (!item.source_key) {
+      var legacyMark = main.querySelector(
+        '[data-highlight-id="' + String(item.id).replace(/"/g, "") + '"]'
+      );
+      return legacyMark
+        ? legacyMark.closest("[data-annotation-root]") || main
+        : main;
+    }
     var roots = main.querySelectorAll(
       "[data-annotation-root][data-annotation-source-key]"
     );
@@ -382,7 +390,12 @@
     }
     var offsets = bestOffsets(item, root);
     if (!offsets) return false;
-    var segments = textSegments(root, offsets.start, offsets.end);
+    var segments = textSegments(
+      root,
+      offsets.start,
+      offsets.end,
+      !item.source_key
+    );
     if (!segments.length) return false;
     segments.reverse().forEach(function (segment) {
       wrapSegment(segment, item.id);

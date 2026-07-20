@@ -24,7 +24,7 @@
   {% for row in rows %}
     <a class="qrow" data-collection-item href="{% url 'study:response_detail' part.slug task.slug row.prompt.pk %}">
       <span class="qrow__num qrow__num--tag">
-        <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{{ row.prompt.theme.emoji }} P{{ row.prompt.number }}</span>
+        <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{% include "study/partials/ui_icon.html" with name=row.prompt.theme.icon only %} P{{ row.prompt.number }}</span>
       </span>
       <span class="qrow__text">
         {{ row.prompt.text }}

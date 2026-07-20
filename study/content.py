@@ -119,7 +119,7 @@ class ThemeData:
     display: str
     order: int
     color: str
-    emoji: str
+    icon: str
     task: str = ""
 
 
@@ -128,7 +128,7 @@ class TaskData:
     slug: str
     name: str
     subtitle: str
-    emoji: str
+    icon: str
     color: str
     order: int
     available: bool
@@ -139,7 +139,7 @@ class SectionData:
     slug: str
     name: str
     short_name: str
-    emoji: str
+    icon: str
     color: str
     order: int
     available: bool
@@ -283,7 +283,7 @@ def load_themes() -> List[ThemeData]:
             display=meta["display"],
             order=meta["order"],
             color=meta["color"],
-            emoji=meta["emoji"],
+            icon=meta["icon"],
             task=meta.get("task", ""),
         )
         for name, meta in raw.items()
@@ -301,7 +301,7 @@ def load_sections() -> List[SectionData]:
                 slug=t["slug"],
                 name=t["name"],
                 subtitle=t.get("subtitle", ""),
-                emoji=t.get("emoji", "🎯"),
+                icon=t.get("icon", "target"),
                 color=t.get("color", part.get("color", "#6366f1")),
                 order=t.get("order", 0),
                 available=bool(t.get("available", True)),
@@ -314,7 +314,7 @@ def load_sections() -> List[SectionData]:
                 slug=part["slug"],
                 name=part["name"],
                 short_name=part.get("short_name", part["name"]),
-                emoji=part.get("emoji", "📝"),
+                icon=part.get("icon", "file-text"),
                 color=part.get("color", "#6366f1"),
                 order=part.get("order", 0),
                 available=bool(part.get("available", True)),

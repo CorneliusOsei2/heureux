@@ -5,7 +5,10 @@
 <header class="area-hero">
   <div class="area-hero__copy">
     <p class="eyebrow"><a href="{% url 'study:expression' %}">Expression</a> · {{ part.short_name }}</p>
-    <h1>{{ part.emoji }} {{ part.name }}</h1>
+    <h1 class="title-with-icon" style="--icon-accent: {{ part.color }};">
+      <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=part.icon only %}</span>
+      <span>{{ part.name }}</span>
+    </h1>
     <p>Choisis une tâche pour parcourir ses sujets, étudier les réponses et t’entraîner à les restituer.</p>
   </div>
   <dl class="area-hero__metrics" aria-label="Contenu du parcours">
@@ -24,9 +27,9 @@
   {% for t in tasks %}
     {% url 'study:task_detail' part.slug t.task.slug as task_url %}
     {% if t.task.available %}
-      {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.emoji name=t.task.name due=t.stats.due stats=t.stats count_prompts=t.prompt_count count_responses=t.response_stats.total show_phrases=True count_phrases=t.phrase_count only %}
+      {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name due=t.stats.due stats=t.stats count_prompts=t.prompt_count count_responses=t.response_stats.total show_phrases=True count_phrases=t.phrase_count only %}
     {% else %}
-      {% include "study/partials/deck_card.html" with url=task_url available=False icon=t.task.emoji name=t.task.name soon_meta=t.task.subtitle only %}
+      {% include "study/partials/deck_card.html" with url=task_url available=False icon=t.task.icon name=t.task.name soon_meta=t.task.subtitle only %}
     {% endif %}
   {% endfor %}
 </div>

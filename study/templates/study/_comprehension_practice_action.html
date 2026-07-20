@@ -10,7 +10,7 @@
     <input type="hidden" name="action" value="continue">
     <button class="btn btn--primary btn--block" type="submit">
       {% if test.active_attempt %}Continuer la pratique{% elif test.latest_attempt %}Pratiquer à nouveau{% else %}Pratiquer ce test{% endif %}
-      <span aria-hidden="true">→</span>
+      <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
     </button>
   </form>
 {% endif %}

@@ -80,9 +80,9 @@
               <span class="ce-choice__letter">{{ choice.letter }}</span>
               <span class="ce-choice__text">{{ choice.text_fr }}</span>
               {% if choice.is_correct %}
-                <span class="ce-choice__result" aria-label="Bonne réponse">✓</span>
+                <span class="ce-choice__result" aria-label="Bonne réponse">{% include "study/partials/ui_icon.html" with name="check" only %}</span>
               {% elif choice.letter == selected_letter %}
-                <span class="ce-choice__result" aria-label="Votre réponse, incorrecte">×</span>
+                <span class="ce-choice__result" aria-label="Votre réponse, incorrecte">{% include "study/partials/ui_icon.html" with name="x" only %}</span>
               {% endif %}
             </div>
           {% endfor %}
@@ -111,7 +111,7 @@
   {% if answer %}
     <section class="ce-correction{% if answer.is_correct %} ce-correction--correct{% else %} ce-correction--wrong{% endif %}" aria-labelledby="ce-correction-title">
       <header class="ce-correction__head">
-        <span class="ce-correction__mark" aria-hidden="true">{% if answer.is_correct %}✓{% else %}×{% endif %}</span>
+        <span class="ce-correction__mark" aria-hidden="true">{% if answer.is_correct %}{% include "study/partials/ui_icon.html" with name="check" only %}{% else %}{% include "study/partials/ui_icon.html" with name="x" only %}{% endif %}</span>
         <div>
           <p class="eyebrow">{% if answer.is_correct %}Bonne réponse{% else %}Réponse à revoir{% endif %}</p>
           <h2 id="ce-correction-title">{{ correct_choice.letter }} · {{ correct_choice.text_fr }}</h2>
@@ -180,14 +180,14 @@
 
   <footer class="ce-quiz__footer">
     {% if previous_number %}
-      <a class="btn" href="{% url test.question_route test.slug attempt.pk previous_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}"><span aria-hidden="true">←</span> Question précédente</a>
+      <a class="btn" href="{% url test.question_route test.slug attempt.pk previous_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Question précédente</a>
     {% else %}
       <span></span>
     {% endif %}
     {% if next_number %}
-      <a class="btn btn--primary" href="{% url test.question_route test.slug attempt.pk next_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">Question suivante <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.question_route test.slug attempt.pk next_number %}{% if attempt.status == 'completed' %}?correction=1{% endif %}">Question suivante {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
     {% elif attempt.status == "completed" %}
-      <a class="btn btn--primary" href="{% url test.results_route test.slug attempt.pk %}">Voir mes résultats <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.results_route test.slug attempt.pk %}">Voir mes résultats {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
     {% endif %}
   </footer>
 </div>

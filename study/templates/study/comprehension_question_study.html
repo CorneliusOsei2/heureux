@@ -63,7 +63,7 @@
                 <div>
                   <strong>{{ choice.text_fr }}</strong>
                 </div>
-                {% if choice.is_correct %}<b aria-label="Bonne réponse">✓</b>{% endif %}
+                {% if choice.is_correct %}<b aria-label="Bonne réponse">{% include "study/partials/ui_icon.html" with name="check" only %}</b>{% endif %}
               </div>
             </article>
           {% endfor %}
@@ -124,14 +124,14 @@
 
   <nav class="ce-study-detail__nav" aria-label="Navigation entre les questions">
     {% if previous_question %}
-      <a class="btn" href="{% url test.study_route test.slug previous_question.number %}"><span aria-hidden="true">←</span> Question précédente</a>
+      <a class="btn" href="{% url test.study_route test.slug previous_question.number %}">{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Question précédente</a>
     {% else %}
       <span></span>
     {% endif %}
     {% if next_question %}
-      <a class="btn btn--primary" href="{% url test.study_route test.slug next_question.number %}">Question suivante <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.study_route test.slug next_question.number %}">Question suivante {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
     {% else %}
-      <a class="btn btn--primary" href="{% url test.detail_route test.slug %}">Retour au test <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="{% url test.detail_route test.slug %}">Retour au test {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>
     {% endif %}
   </nav>
 </div>

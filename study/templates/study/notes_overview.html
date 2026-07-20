@@ -19,12 +19,12 @@
   </div>
 
   <a class="notes-general card" href="{% url 'study:general_notes' %}">
-    <span class="notes-general__icon" aria-hidden="true">✎</span>
+    <span class="notes-general__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="pencil" only %}</span>
     <span>
       <strong>Notes générales</strong>
       <span>{{ general_counts.notes }} note{{ general_counts.notes|pluralize }} · {{ general_counts.highlights }} surlignage{{ general_counts.highlights|pluralize }}</span>
     </span>
-    <span aria-hidden="true">→</span>
+    <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
   </a>
 
   <div class="grouped-overview__section-head">
@@ -34,7 +34,7 @@
   {% for pitem in parts %}
     <section class="exam-part exam-part--grouped" style="--deck-color: {{ pitem.part.color }};">
       <div class="exam-part__head">
-        <span class="exam-part__emoji" style="--deck-color: {{ pitem.part.color }};">{{ pitem.part.emoji }}</span>
+        <span class="exam-part__icon" style="--deck-color: {{ pitem.part.color }};">{% include "study/partials/ui_icon.html" with name=pitem.part.icon only %}</span>
         <div class="exam-part__title">
           <h3>{{ pitem.part.name }}</h3>
           <span class="exam-part__tag">{{ pitem.part.short_name }}</span>
@@ -45,7 +45,7 @@
           <a class="deck card grouped-task-card notes-task-card" style="--deck-color: {{ item.task.color }};" href="{% url 'study:task_notes' pitem.part.slug item.task.slug %}">
             <div class="deck__body">
               <div class="deck__title">
-                <span class="deck__icon">{{ item.task.emoji }}</span>
+                <span class="deck__icon">{% include "study/partials/ui_icon.html" with name=item.task.icon only %}</span>
                 <span>{{ item.task.name }}</span>
                 {% if item.counts.total %}<span class="deck__due pill">{{ item.counts.total }}</span>{% endif %}
               </div>

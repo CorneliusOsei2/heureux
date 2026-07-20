@@ -74,12 +74,13 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v81"', body)
-        self.assertIn("study/css/app.css?v=75", body)
+        self.assertIn('var CACHE = "heureux-v83"', body)
+        self.assertIn("study/css/app.css?v=77", body)
         self.assertIn("study/js/theme-init.js?v=2", body)
-        self.assertIn("study/js/app.js?v=33", body)
-        self.assertIn("study/js/translate.js?v=11", body)
-        self.assertIn("study/js/annotations.js", body)
+        self.assertIn("study/js/app.js?v=34", body)
+        self.assertIn("study/js/translate.js?v=12", body)
+        self.assertIn("study/js/annotations.js?v=8", body)
+        self.assertIn("study/icons/ui-icons.svg?v=1", body)
         self.assertIn("SKIP_WAITING", body)
         self.assertIn("no-store", r["Cache-Control"])
         self.assertEqual(r["Service-Worker-Allowed"], "/")
@@ -121,6 +122,25 @@ class SmokeTests(TestCase):
         for name in names:
             with self.subTest(name=name):
                 self.assertEqual(self.client.get(reverse(name)).status_code, 200)
+
+    def test_content_icons_render_from_the_svg_sprite(self):
+        prompt = Prompt.objects.select_related("theme__task__part").first()
+        part = prompt.theme.task.part
+        task = prompt.theme.task
+
+        response = self.client.get(
+            reverse("study:part_detail", args=[part.slug])
+        )
+
+        self.assertContains(
+            response,
+            f"ui-icons.svg?v=1#icon-{part.icon}",
+        )
+        self.assertContains(
+            response,
+            f"ui-icons.svg?v=1#icon-{task.icon}",
+        )
+        self.assertNotContains(response, "emoji")
 
     def test_vocabulary_hub_groups_four_paths_in_two_domains(self):
         subject_phrase = factories.make_phrase(tier="subject")

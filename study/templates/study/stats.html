@@ -95,7 +95,7 @@
           <strong>Réponses à renforcer</strong>
           <span>{{ expression_weak_count|floatformat:"0g" }} carte{{ expression_weak_count|pluralize }} fragile{{ expression_weak_count|pluralize }}</span>
         </span>
-        <span class="stats-action__arrow" aria-hidden="true">→</span>
+        <span class="stats-action__arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
       </a>
       <a class="stats-action card" href="{{ vocabulary_weak_url }}">
         <span class="stats-action__icon stats-action__icon--vocabulary" aria-hidden="true">
@@ -106,7 +106,7 @@
           <strong>Mots et tournures à renforcer</strong>
           <span>{{ vocabulary_weak_count|floatformat:"0g" }} carte{{ vocabulary_weak_count|pluralize }} fragile{{ vocabulary_weak_count|pluralize }}</span>
         </span>
-        <span class="stats-action__arrow" aria-hidden="true">→</span>
+        <span class="stats-action__arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
       </a>
     </div>
   </section>
@@ -217,7 +217,7 @@
           class="stats-theme"
           style="--theme-accent: {{ item.theme.color }};"
           href="{{ item.review_url }}">
-          <span class="stats-theme__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
+          <span class="stats-theme__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name=item.theme.icon only %}</span>
           <span class="stats-theme__copy">
             <small>{{ item.theme.task.part.short_name }} · {{ item.theme.task.name }}</small>
             <strong>{{ item.theme.display_name }}</strong>
@@ -226,7 +226,7 @@
             <strong>{{ item.stats.mature|floatformat:"0g" }} / {{ item.stats.total|floatformat:"0g" }}</strong>
             <small>maîtrisées</small>
           </span>
-          <span class="stats-theme__arrow" aria-hidden="true">→</span>
+          <span class="stats-theme__arrow" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
           <span
             class="stats-theme__progress"
             role="progressbar"

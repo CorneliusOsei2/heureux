@@ -24,7 +24,7 @@ class ExamPart(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=64, unique=True)
     short_name = models.CharField(max_length=32)
-    emoji = models.CharField(max_length=8, default="📝")
+    icon = models.CharField(max_length=32, default="file-text")
     color = models.CharField(max_length=7, default="#6366f1")
     order = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
@@ -46,7 +46,7 @@ class Task(models.Model):
     )
     name = models.CharField(max_length=64)
     subtitle = models.CharField(max_length=160, blank=True)
-    emoji = models.CharField(max_length=8, default="🎯")
+    icon = models.CharField(max_length=32, default="target")
     color = models.CharField(max_length=7, default="#6366f1")
     order = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
@@ -68,7 +68,7 @@ class Theme(models.Model):
     display_name = models.CharField(max_length=64)
     order = models.PositiveIntegerField(default=0)
     color = models.CharField(max_length=7, default="#6366f1")
-    emoji = models.CharField(max_length=8, default="📘")
+    icon = models.CharField(max_length=32, default="book-open")
     is_active = models.BooleanField(default=True, db_index=True)
     task = models.ForeignKey(
         Task,

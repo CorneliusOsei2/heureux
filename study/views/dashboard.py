@@ -95,13 +95,13 @@ def _vocabulary_expression_paths(now, user):
             "title": "Écrite",
             "short_name": "EE",
             "slugs": {"ee"},
-            "fallback_emoji": "✍️",
+            "fallback_icon": "pen-line",
         },
         {
             "title": "Orale",
             "short_name": "EO",
             "slugs": {"eo"},
-            "fallback_emoji": "🎙️",
+            "fallback_icon": "microphone",
         },
     )
     paths = []
@@ -177,10 +177,10 @@ def _vocabulary_expression_paths(now, user):
             {
                 "title": spec["title"],
                 "short_name": spec["short_name"],
-                "emoji": (
-                    item["part"].emoji
+                "icon": (
+                    item["part"].icon
                     if item
-                    else spec["fallback_emoji"]
+                    else spec["fallback_icon"]
                 ),
                 "available": available,
                 "url": url,

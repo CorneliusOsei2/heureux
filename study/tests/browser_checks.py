@@ -146,6 +146,34 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 self.assertFalse(toggle.is_visible())
                 self.assert_no_horizontal_overflow()
 
+    def test_dynamic_content_icons_load_from_the_svg_sprite(self):
+        self.page.goto(
+            self.live_server_url
+            + reverse(
+                "study:task_detail",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+
+        icon = self.page.locator(".title-with-icon__glyph .ui-icon")
+        icon.wait_for()
+        use = icon.locator("use")
+        self.assertTrue(
+            use.get_attribute("href").endswith(
+                f"#icon-{self.task.icon}"
+            )
+        )
+        self.assertTrue(
+            use.evaluate(
+                """
+                element => {
+                  const box = element.getBBox();
+                  return box.width > 0 && box.height > 0;
+                }
+                """
+            )
+        )
+
     def test_subject_vocabulary_directory_searches_rich_decks(self):
         first_prompt = self.first.response.prompts.get(is_canonical=True)
         second_prompt = self.second.response.prompts.get(is_canonical=True)
@@ -646,6 +674,31 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 kind=AnnotationKind.HIGHLIGHT,
             ).exists()
         )
+
+    def test_legacy_response_highlight_renders_inside_new_annotation_root(self):
+        response = self.first.response
+        detail_url = response_detail_url(response)
+        quote = response.arguments.get().exemple
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote=quote,
+            source_path=detail_url,
+            source_key="",
+            start_offset=0,
+            end_offset=len(quote),
+        )
+
+        self.page.goto(self.live_server_url + detail_url)
+        self.page.wait_for_load_state("networkidle")
+        restored = self.page.locator(
+            ".answer-columns mark.user-highlight",
+            has_text=quote,
+        )
+
+        restored.wait_for(timeout=5000)
+        self.assertEqual(restored.text_content(), quote)
 
     def test_personalized_response_keeps_unchanged_text_highlighted(self):
         response = self.first.response

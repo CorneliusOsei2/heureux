@@ -18,7 +18,7 @@
       </span>
     </div>
     {% if annotation.source_path %}
-      <a class="annotation-table__source" href="{{ annotation.source_path }}">↗ {{ annotation.source_title|default:"Voir la source" }}</a>
+      <a class="annotation-table__source" href="{{ annotation.source_path }}">{% include "study/partials/ui_icon.html" with name="external-link" only %} {{ annotation.source_title|default:"Voir la source" }}</a>
     {% endif %}
   </td>
   <td class="annotation-table__date" data-label="Date">

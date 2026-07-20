@@ -24,7 +24,7 @@
       <small>Session interrompue</small>
       <strong>Reprendre l’entraînement en cours</strong>
     </span>
-    <span aria-hidden="true">→</span>
+    <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
   </a>
 {% endif %}
 
@@ -47,13 +47,13 @@
   </div>
   <div class="practice-theme-grid">
     {% for item in themes %}
-      <a class="practice-theme-card card" href="{{ item.review_url }}">
-        <span class="practice-theme-card__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
+      <a class="practice-theme-card card" style="--theme-accent: {{ item.theme.color }};" href="{{ item.review_url }}">
+        <span class="practice-theme-card__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name=item.theme.icon only %}</span>
         <span>
           <strong>{{ item.theme.display_name }}</strong>
           <small>{{ item.stats.mature }}/{{ item.stats.total }} maîtrisées · {{ item.counts.total_due }} disponibles</small>
         </span>
-        <span aria-hidden="true">→</span>
+        <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
       </a>
     {% endfor %}
   </div>

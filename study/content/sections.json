@@ -4,7 +4,7 @@
       "slug": "eo",
       "name": "Expression orale",
       "short_name": "EO",
-      "emoji": "🎙️",
+      "icon": "microphone",
       "color": "#173f90",
       "order": 1,
       "available": true,
@@ -13,7 +13,7 @@
           "slug": "tache-1",
           "name": "Tâche 1",
           "subtitle": "Entretien dirigé",
-          "emoji": "👋",
+          "icon": "hand-wave",
           "color": "#8a94a6",
           "order": 1,
           "available": false
@@ -22,7 +22,7 @@
           "slug": "tache-2",
           "name": "Tâche 2",
           "subtitle": "Exercice en interaction",
-          "emoji": "🗨️",
+          "icon": "messages",
           "color": "#8a94a6",
           "order": 2,
           "available": false
@@ -31,7 +31,7 @@
           "slug": "tache-3",
           "name": "Tâche 3",
           "subtitle": "Exprimer un point de vue argumenté",
-          "emoji": "🎯",
+          "icon": "target",
           "color": "#173f90",
           "order": 3,
           "available": true
@@ -42,7 +42,7 @@
       "slug": "ee",
       "name": "Expression écrite",
       "short_name": "EE",
-      "emoji": "✍️",
+      "icon": "pen-line",
       "color": "#d3263a",
       "order": 2,
       "available": true,
@@ -51,7 +51,7 @@
           "slug": "tache-1",
           "name": "Tâche 1",
           "subtitle": "Rédiger un message clair",
-          "emoji": "✉️",
+          "icon": "mail",
           "color": "#d3263a",
           "order": 1,
           "available": false
@@ -60,7 +60,7 @@
           "slug": "tache-2",
           "name": "Tâche 2",
           "subtitle": "Raconter et expliquer une expérience",
-          "emoji": "📝",
+          "icon": "file-text",
           "color": "#d3263a",
           "order": 2,
           "available": false
@@ -69,7 +69,7 @@
           "slug": "tache-3",
           "name": "Tâche 3",
           "subtitle": "Comparer des points de vue et argumenter",
-          "emoji": "⚖️",
+          "icon": "scale",
           "color": "#d3263a",
           "order": 3,
           "available": false

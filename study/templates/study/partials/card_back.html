@@ -34,7 +34,7 @@
 
     {% if canonical_prompt %}
       <p style="margin-top:1rem;">
-        <a class="chip" href="{% url 'study:response_detail' canonical_prompt.theme.task.part.slug canonical_prompt.theme.task.slug canonical_prompt.pk %}">Ouvrir la fiche ↗</a>
+        <a class="chip" href="{% url 'study:response_detail' canonical_prompt.theme.task.part.slug canonical_prompt.theme.task.slug canonical_prompt.pk %}">Ouvrir la fiche {% include "study/partials/ui_icon.html" with name="external-link" only %}</a>
       </p>
     {% endif %}
   </div>

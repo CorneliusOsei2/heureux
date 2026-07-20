@@ -32,19 +32,19 @@
         <div class="annotation-study__back hidden" data-study-back>
           {% if item.quote %}<blockquote{% if item.kind == "highlight" %} class="annotation-study__highlight"{% endif %}>{{ item.quote }}</blockquote>{% endif %}
           {% if item.body %}<p>{{ item.body }}</p>{% endif %}
-          {% if item.source_path %}<a href="{{ item.source_path }}">Voir la source →</a>{% endif %}
+          {% if item.source_path %}<a href="{{ item.source_path }}">Voir la source {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>{% endif %}
         </div>
       </article>
     {% endfor %}
   </div>
   <div class="annotation-study__controls">
-    <button class="btn" type="button" data-study-previous disabled>← Précédente</button>
+    <button class="btn" type="button" data-study-previous disabled>{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Précédente</button>
     <button class="btn btn--primary" type="button" data-study-reveal>Afficher</button>
     <button class="btn hidden" type="button" data-study-keep>À revoir encore</button>
     <button class="btn btn--primary hidden" type="button" data-study-learned>Je le connais</button>
   </div>
   <div class="card done-state annotation-study__done hidden" data-study-done>
-    <div class="done-state__emoji">✓</div>
+    <div class="done-state__icon done-state__icon--success">{% include "study/partials/ui_icon.html" with name="check" only %}</div>
     <h2>Parcours terminé</h2>
     <p>Vous avez pris une décision pour {{ items|length }} élément{{ items|length|pluralize }} de votre sélection personnelle.</p>
     <div class="row center">

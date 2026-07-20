@@ -31,7 +31,7 @@
           {% for item in group.items %}
             <article class="qrow revisit-row" data-collection-item>
               <div class="revisit-row__body">
-                <span class="muted">{{ item.meta }}</span>
+                <span class="muted revisit-row__meta">{% if item.icon %}{% include "study/partials/ui_icon.html" with name=item.icon only %}{% endif %}<span>{{ item.meta }}</span></span>
                 <a class="revisit-row__title" href="{{ item.url }}">{{ item.title }}</a>
                 {% if item.card.revisit_added_at %}
                   <span class="faint">Ajoutée {{ item.card.revisit_added_at|timesince }} plus tôt</span>
@@ -61,7 +61,7 @@
   </form>
 {% else %}
   <div class="done-state card card--pad">
-    <div class="done-state__emoji">✓</div>
+    <div class="done-state__icon done-state__icon--success">{% include "study/partials/ui_icon.html" with name="check" only %}</div>
     <h2>Aucune carte à revoir</h2>
     <p>Lorsque vous hésitez sur une carte, choisissez « Revoir » : elle apparaîtra ici.</p>
     {% if content == "spine" %}

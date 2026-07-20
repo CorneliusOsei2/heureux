@@ -10,7 +10,7 @@
 </div>
 
 <section class="empty empty--soon">
-  <div class="empty__icon">{% if task %}{{ task.emoji }}{% else %}{{ part.emoji }}{% endif %}</div>
+  <div class="empty__icon">{% if task %}{% include "study/partials/ui_icon.html" with name=task.icon only %}{% else %}{% include "study/partials/ui_icon.html" with name=part.icon only %}{% endif %}</div>
   <h1>{% if task %}{{ task.name }}{% else %}{{ part.name }}{% endif %}</h1>
   <p class="badge-soon badge-soon--lg">À venir</p>
   <p class="muted">
