@@ -24,9 +24,10 @@
     <a href="{% url 'study:task_phrases' part.slug task.slug %}">{{ phrase_count }} expressions associées →</a>
   {% endif %}
 </div>
-<div class="grid grid--decks" data-collection-view="adaptive">
+<div class="grid grid--decks collection-table collection-table--decks" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="decks" column_1="Thème" column_2="Contenu" column_3="Progression" column_4="État" only %}
   {% for item in themes %}
-    {% url 'study:theme_detail' item.theme.slug as theme_url %}
+    {% url 'study:theme_detail' part.slug task.slug item.theme.slug as theme_url %}
     {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total only %}
   {% empty %}
     <p class="muted">Aucun contenu pour cette sélection pour l'instant.</p>
@@ -35,12 +36,16 @@
 
 <h2 style="margin-top:2rem;">Par famille de sujets</h2>
 <p class="muted mt-0">Regroupez les formulations proches pour réutiliser les mêmes structures et arguments.</p>
-<div class="qlist" data-collection-view="adaptive">
+<div class="qlist collection-table collection-table--qrows" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="qrows" column_1="N°" column_2="Famille" column_3="Sujets" only %}
   {% for family in families %}
-    <a class="qrow" data-collection-item href="{% if task %}{% url 'study:task_family_detail' part.slug task.slug family.slug %}{% else %}{% url 'study:family_detail' family.slug %}{% endif %}">
+    <a class="qrow" data-collection-item href="{% url 'study:task_family_detail' part.slug task.slug family.slug %}">
       <span class="qrow__num">{{ family.order }}</span>
       <span class="qrow__text">{{ family.name }}</span>
-      <span class="qrow__meta"><span class="chip">{{ family.n }} sujet{{ family.n|pluralize }}</span></span>
+      <span class="qrow__meta qrow__meta--state">
+        <span class="progress-status progress-status--{{ family.progress.status }}">{{ family.progress.label }}</span>
+        <span class="chip">{{ family.n }} sujet{{ family.n|pluralize }}</span>
+      </span>
     </a>
   {% endfor %}
 </div>

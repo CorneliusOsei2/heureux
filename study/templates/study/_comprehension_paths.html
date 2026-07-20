@@ -1,10 +1,10 @@
 <div class="expression-paths">
   {% url 'study:comprehension_overview' as ecrite_url %}
-  {% include "study/partials/path_card.html" with card_kind="comprehension" code="ce" title="Écrite" available=True url=ecrite_url facts=comprehension.ecrite action_label=comprehension.ecrite.active_attempt|yesno:"Continuer,Ouvrir" only %}
+  {% include "study/partials/path_card.html" with card_kind="comprehension" code="ce" title="Écrite" available=True url=ecrite_url facts=comprehension.ecrite progress=comprehension.ecrite.progress action_label=comprehension.ecrite.active_attempt|yesno:"Continuer,Ouvrir" only %}
 
   {% if comprehension.orale.path_available %}
     {% url 'study:comprehension_oral_overview' as orale_url %}
-    {% include "study/partials/path_card.html" with card_kind="comprehension" code="co" title="Orale" available=True url=orale_url facts=comprehension.orale action_label=comprehension.orale.active_attempt|yesno:"Continuer,Ouvrir" only %}
+    {% include "study/partials/path_card.html" with card_kind="comprehension" code="co" title="Orale" available=True url=orale_url facts=comprehension.orale progress=comprehension.orale.progress action_label=comprehension.orale.active_attempt|yesno:"Continuer,Ouvrir" only %}
   {% else %}
     {% include "study/partials/path_card.html" with card_kind="comprehension" code="co" title="Orale" available=False only %}
   {% endif %}

@@ -18,7 +18,7 @@
 </header>
 
 {% if can_resume %}
-  <a class="resume-review" href="{% url 'study:review' %}">
+  <a class="resume-review" href="{{ resume_url }}">
     <span class="resume-review__icon" aria-hidden="true">▶</span>
     <span>
       <small>Session interrompue</small>
@@ -34,7 +34,7 @@
     <h2 id="all-responses-title">Entraînement mélangé</h2>
     <p>{{ counts.due_reviews }} à revoir · {{ counts.new_available }} nouvelles · aucun vocabulaire mélangé dans cette session.</p>
   </div>
-  <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Commencer</a>
+  <a class="btn btn--primary" href="{{ start_review_url }}">Commencer</a>
 </section>
 
 <section class="area-section" aria-labelledby="practice-theme-title">
@@ -47,7 +47,7 @@
   </div>
   <div class="practice-theme-grid">
     {% for item in themes %}
-      <a class="practice-theme-card card" href="{% url 'study:review' %}?kind=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}&amp;theme={{ item.theme.slug }}">
+      <a class="practice-theme-card card" href="{{ item.review_url }}">
         <span class="practice-theme-card__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
         <span>
           <strong>{{ item.theme.display_name }}</strong>
@@ -70,7 +70,7 @@
     <p class="eyebrow">À renforcer</p>
     <h2>Réponses fragiles</h2>
     <p>{{ weak_count }} réponse{{ weak_count|pluralize }} repérée{{ weak_count|pluralize }} par tes révisions.</p>
-    <a class="btn{% if weak_count %} btn--primary{% endif %}" href="{% url 'study:review' %}?kind=weak&amp;content=spine&amp;part={{ part.slug }}&amp;task={{ task.slug }}">Entraîner</a>
+    <a class="btn{% if weak_count %} btn--primary{% endif %}" href="{{ weak_review_url }}">Entraîner</a>
   </article>
 </section>
 {% endblock %}

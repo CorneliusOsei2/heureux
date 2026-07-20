@@ -7,7 +7,7 @@ import secrets
 from urllib.parse import urlencode
 
 from django.db import transaction
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import Http404, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -18,12 +18,22 @@ from .. import queue as queue_module
 from ..cards import card_payload, scope_from_request, scope_label
 from ..models import (
     Card,
+    ComprehensionTest,
+    ExamPart,
     PhraseTier,
     Rating,
+    Response,
     ReviewSession,
     Theme,
 )
-from ..progress import mark_card_started
+from ..progress import mark_card_started, subject_progress_by_response
+from ..routing import (
+    comprehension_vocabulary_url,
+    prompt_detail_url,
+    response_detail_url,
+    review_url,
+    theme_detail_url,
+)
 from ..srs import review as apply_review, undo_last
 
 from .common import (
@@ -50,25 +60,42 @@ REVIEW_SCOPE_KEYS = (
 FOCUSED_REVIEW_KINDS = {"revisit", "weak"}
 
 
+def _review_card_payload(card, user):
+    payload = card_payload(card)
+    if card.response_id:
+        payload["subject_progress"] = subject_progress_by_response(
+            user,
+            {card.response_id},
+        )[card.response_id]
+    return payload
+
+
 def _batch_index_url(scope: dict) -> str | None:
     """Return the category/theme page that owns a batch scope."""
     if scope.get("response"):
-        return reverse("study:response_detail", args=[scope["response"]])
+        response = get_object_or_404(Response, pk=scope["response"])
+        return response_detail_url(response)
     if scope.get("category"):
-        query = {"category": scope["category"]}
         if scope.get("part") and scope.get("task"):
-            query.update(
-                {"part": scope["part"], "task": scope["task"]}
+            return reverse(
+                "study:task_vocabulary_category",
+                args=[scope["part"], scope["task"], scope["category"]],
             )
-        return reverse("study:vocabulary") + "?" + urlencode(query)
+        return reverse("study:vocabulary_category", args=[scope["category"]])
     if scope.get("test"):
-        return (
-            reverse("study:vocabulary")
-            + "?"
-            + urlencode({"test": scope["test"]})
+        test = get_object_or_404(
+            ComprehensionTest,
+            slug=scope["test"],
+            is_active=True,
         )
+        return comprehension_vocabulary_url(test=test)
     if scope.get("theme"):
-        return reverse("study:theme_detail", args=[scope["theme"]])
+        theme = get_object_or_404(
+            Theme.objects.select_related("task__part"),
+            slug=scope["theme"],
+            task__isnull=False,
+        )
+        return theme_detail_url(theme)
     return None
 
 
@@ -82,13 +109,17 @@ def _locked_review_session(user) -> ReviewSession:
 def _resolved_review_scope(
     request,
     session: ReviewSession,
+    route_scope: dict | None = None,
 ) -> tuple[dict, bool]:
     """Use an explicit request scope, otherwise resume the saved one."""
     data = request.POST if request.method == "POST" else request.GET
     if request.method == "GET" and data.get("reset") == "1":
-        return {"kind": "spine"}, True
+        return {"kind": "spine", **(route_scope or {})}, True
     scope = scope_from_request(request)
+    if route_scope:
+        scope.update(route_scope)
     explicit = any(key in data for key in REVIEW_SCOPE_KEYS)
+    explicit = explicit or bool(route_scope)
     if explicit:
         return scope, True
     saved = session.scope
@@ -141,10 +172,41 @@ def _save_review_session(
     return session.presentation_token
 
 
-def review(request):
+def review(
+    request,
+    part_slug=None,
+    task_slug=None,
+    comprehension_mode=None,
+    test_slug=None,
+):
+    route_scope = {}
+    if task_slug is not None:
+        task = _route_task(part_slug, task_slug)
+        route_scope = {"part": task.part.slug, "task": task.slug}
+    elif part_slug is not None:
+        part = get_object_or_404(ExamPart, slug=part_slug, is_active=True)
+        route_scope = {"part": part.slug}
+    if test_slug is not None:
+        test = get_object_or_404(
+            ComprehensionTest,
+            slug=test_slug,
+            mode=comprehension_mode,
+            is_active=True,
+            is_published=True,
+        )
+        route_scope = {"kind": "vocab", "test": test.slug}
+
+    path_scope_keys = {"part", "task", "test"}
+    if path_scope_keys.intersection(request.GET):
+        raise Http404
+
     with transaction.atomic():
         session = _locked_review_session(request.user)
-        scope, explicit = _resolved_review_scope(request, session)
+        scope, explicit = _resolved_review_scope(
+            request,
+            session,
+            route_scope=route_scope,
+        )
         if explicit and (
             session.scope != scope or request.GET.get("reset") == "1"
             or (
@@ -192,7 +254,7 @@ def _active_card_payload(
     request,
 ) -> dict:
     """Serialize an active review card into the client review payload."""
-    payload = card_payload(card)
+    payload = _review_card_payload(card, request.user)
     return {
         "done": False,
         "card_id": card.id,
@@ -257,7 +319,7 @@ def _queue_state_locked(
             "can_previous": bool(session.previous_card_id),
         }
 
-    mark_card_started(request.user, card, scope)
+    mark_card_started(request.user, card)
     presentation_token = _save_review_session(session, scope, card)
     return _active_card_payload(
         card, counts, presentation_token, session, request
@@ -272,7 +334,7 @@ def _card_state_locked(
 ) -> dict:
     """Build the review payload for a specific card (used after an undo)."""
     now = timezone.now()
-    mark_card_started(request.user, card, scope)
+    mark_card_started(request.user, card)
     counts = queue_module.queue_counts(scope, now, user=request.user)
     presentation_token = _save_review_session(
         session,
@@ -342,6 +404,7 @@ def review_hub(request, part_slug, task_slug):
                     now,
                     user=request.user,
                 ),
+                "review_url": review_url(theme_scope),
             }
         )
     return render(
@@ -359,6 +422,14 @@ def review_hub(request, part_slug, task_slug):
             ).count(),
             "weak_count": weak_counts["weak_total"],
             "can_resume": can_resume,
+            "resume_url": reverse(
+                "study:task_review",
+                args=[part.slug, task.slug],
+            ),
+            "start_review_url": review_url(response_scope),
+            "weak_review_url": review_url(
+                {**scope, "kind": "weak", "content": "spine"}
+            ),
             "themes": themes,
         },
     )
@@ -391,7 +462,7 @@ def review_previous(request):
             pk=session.previous_card_id,
             user=request.user,
         )
-        payload = card_payload(card)
+        payload = _review_card_payload(card, request.user)
         front = render_to_string(
             "study/partials/card_front.html",
             payload,
@@ -543,12 +614,19 @@ def review_undo(request):
 
 def revisit_list(request, part_slug=None, task_slug=None):
     """Persistent list of cards marked with the Revisit review action."""
-    task = (
-        _route_task(part_slug, task_slug)
-        if part_slug and task_slug
-        else None
+    if bool(task_slug) and not part_slug:
+        raise Http404
+    task = _route_task(part_slug, task_slug) if task_slug else None
+    part = (
+        task.part
+        if task
+        else (
+            get_object_or_404(ExamPart, slug=part_slug, is_active=True)
+            if part_slug
+            else None
+        )
     )
-    scope = _task_scope(task) if task else {}
+    scope = _task_scope(task) if task else ({"part": part.slug} if part else {})
     content = (request.GET.get("content") or "").strip()
     if content in {"spine", "vocabulary"}:
         scope["content"] = content
@@ -563,7 +641,11 @@ def revisit_list(request, part_slug=None, task_slug=None):
             args=[task.part.slug, task.slug],
         )
         if task
-        else reverse("study:revisit_list")
+        else (
+            reverse("study:part_revisit_list", args=[part.slug])
+            if part
+            else reverse("study:revisit_list")
+        )
     )
     if content:
         redirect_url += "?" + urlencode({"content": content})
@@ -615,7 +697,7 @@ def revisit_list(request, part_slug=None, task_slug=None):
                         f"{card.response.theme.display_name} · "
                         f"{card.response.family.name}"
                     ),
-                    "url": reverse("study:response_detail", args=[card.response_id]),
+                    "url": response_detail_url(card.response),
                 }
             )
         else:
@@ -626,11 +708,7 @@ def revisit_list(request, part_slug=None, task_slug=None):
                     None,
                 )
                 item_url = (
-                    reverse("study:vocabulary")
-                    + "?"
-                    + urlencode(
-                        {"test": source_question.test.slug}
-                    )
+                    comprehension_vocabulary_url(test=source_question.test)
                     + f"#phrase-{phrase.phrase_id}"
                     if source_question
                     else reverse("study:vocabulary")
@@ -641,21 +719,17 @@ def revisit_list(request, part_slug=None, task_slug=None):
                     None,
                 )
                 item_url = (
-                    reverse(
-                        "study:response_detail",
-                        args=[source_prompt.response_id],
-                    )
-                    + "?"
-                    + urlencode({"prompt": source_prompt.pk})
+                    prompt_detail_url(source_prompt)
                     + "#subject-vocabulary"
                     if source_prompt
                     else reverse("study:vocabulary")
                 )
             else:
                 item_url = (
-                    reverse("study:vocabulary")
-                    + "?"
-                    + urlencode({"category": phrase.category.slug})
+                    reverse(
+                        "study:vocabulary_category",
+                        args=[phrase.category.slug],
+                    )
                     + f"#phrase-{phrase.phrase_id}"
                 )
             items.append(
@@ -685,14 +759,14 @@ def revisit_list(request, part_slug=None, task_slug=None):
         request,
         "study/revisit_list.html",
         {
-            "part": task.part if task else None,
+            "part": part,
             "task": task,
             "items": items,
             "revisit_groups": [
                 group for group in revisit_groups if group["items"]
             ],
             "revisit_count": len(items),
-            "review_scope_qs": urlencode(revisit_scope),
+            "review_url": review_url(revisit_scope),
             "content": content,
         },
     )

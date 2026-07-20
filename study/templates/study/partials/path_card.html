@@ -30,19 +30,22 @@ Params:
     <span class="expression-path__copy">
       <span class="eyebrow">{{ code|upper }}</span>
       <strong>{{ title }}</strong>
+      {% if progress %}
+        <span class="expression-path__progress progress-status progress-status--{{ progress.status }}">{{ progress.label }}</span>
+      {% endif %}
       {% if available %}
         <small>
           {% if card_kind == "vocabulary" %}
             {% if test_count %}
-              {{ test_count }} test{{ test_count|pluralize }} · {{ entry_count }} entrées
+              {{ test_count }} test{{ test_count|pluralize }} · {{ entry_count }} entrées{% if progress %} · {{ progress.completed }}/{{ progress.total }} terminées{% endif %}
             {% else %}
-              {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ entry_count }} entrées
+              {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ entry_count }} entrées{% if progress %} · {{ progress.completed }}/{{ progress.total }} terminées{% endif %}
             {% endif %}
           {% elif card_kind == "comprehension" %}
             {{ facts.group_count }} groupes · {% if facts.active_attempt %}{{ facts.active_answered_count }}/{{ facts.active_question_count }} répondues{% elif facts.best_percentage is not None %}{{ facts.best_percentage }} % meilleur score{% else %}{{ facts.available_test_count }} test{{ facts.available_test_count|pluralize }} disponible{{ facts.available_test_count|pluralize }}{% endif %} · {{ facts.completed_test_count }} terminé{{ facts.completed_test_count|pluralize }}
           {% else %}
             {% if has_content %}
-              {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ seen }}/{{ total }} cartes vues
+              {{ task_count }} tâche{{ task_count|pluralize }} · {{ prompt_count }} sujets · {{ seen }}/{{ total }} sujets commencés
             {% else %}
               {{ task_count }} tâches · contenus en préparation
             {% endif %}

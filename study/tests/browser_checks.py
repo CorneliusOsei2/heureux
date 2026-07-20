@@ -17,12 +17,14 @@ from study.models import (
     AnnotationKind,
     CardState,
     CardType,
+    ComprehensionMode,
     PhraseCategory,
     PersonalResponse,
     Rating,
     ReviewLog,
     ReviewSession,
 )
+from study.routing import response_detail_url, theme_detail_url
 
 from . import factories
 
@@ -158,8 +160,10 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         self.page.goto(
             self.live_server_url
-            + reverse("study:vocabulary")
-            + f"?part={self.part.slug}&task={self.task.slug}"
+            + reverse(
+                "study:task_phrases",
+                args=[self.part.slug, self.task.slug],
+            )
         )
 
         self.page.get_by_role(
@@ -295,7 +299,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             state="visible"
         )
         with self.page.expect_response(
-            lambda response: "/annotations/create/" in response.url
+            lambda response: reverse("study:annotation_create") in response.url
         ) as response_info:
             self.page.locator("[data-highlight-selection]").click()
         self.assertIn(response_info.value.status, (200, 201))
@@ -341,11 +345,15 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
 
     def test_mobile_review_highlights_and_final_previous(self):
+        first_prompt = self.first.response.prompts.get(is_canonical=True)
         for path in (
             reverse("study:dashboard"),
             reverse("study:settings"),
-            reverse("study:response_detail", args=[self.first.response_id]),
-            reverse("study:edit_response", args=[self.first.response_id]),
+            response_detail_url(self.first.response),
+            reverse(
+                "study:edit_response",
+                args=[self.part.slug, self.task.slug, first_prompt.pk],
+            ),
         ):
             self.page.goto(self.live_server_url + path)
             self.assert_no_horizontal_overflow()
@@ -406,7 +414,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         self.select_prompt(start=0, end=12)
         with self.page.expect_response(
-            lambda response: "/annotations/create/" in response.url
+            lambda response: reverse("study:annotation_create") in response.url
         ):
             highlight_button.click()
         prompt.locator("mark.user-highlight").wait_for()
@@ -417,7 +425,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "Highlight selected text",
         )
         with self.page.expect_response(
-            lambda response: "/annotations/create/" in response.url
+            lambda response: reverse("study:annotation_create") in response.url
         ):
             highlight_button.click()
         self.page.wait_for_function(
@@ -444,8 +452,8 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         with self.page.expect_response(
             lambda response: (
-                "/annotations/" in response.url
-                and "/delete/" in response.url
+                "/notes/" in response.url
+                and "/supprimer/" in response.url
             )
         ):
             highlight_button.click()
@@ -476,7 +484,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         toolbar = self.page.locator("[data-selection-translate]")
 
         with self.page.expect_response(
-            lambda response: "/annotations/create/" in response.url
+            lambda response: reverse("study:annotation_create") in response.url
         ):
             self.page.locator("[data-highlight-selection]").click()
         prompt.locator("mark.user-highlight").wait_for()
@@ -499,6 +507,101 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         self.page.locator(".review__top").click(position={"x": 4, "y": 4})
         toolbar.wait_for(state="hidden")
+
+    def test_selection_toolbar_reads_with_premium_french_voice(self):
+        self.context.add_init_script(
+            """
+            (() => {
+              window.__speechClickTask = false;
+              document.addEventListener("click", () => {
+                window.__speechClickTask = true;
+                setTimeout(() => {
+                  window.__speechClickTask = false;
+                }, 0);
+              }, true);
+              const voices = [
+                {
+                  name: "Audrey Premium",
+                  voiceURI: "com.apple.voice.premium.fr-FR.Audrey",
+                  lang: "fr-FR",
+                  localService: true,
+                  default: false,
+                },
+                {
+                  name: "English",
+                  voiceURI: "english",
+                  lang: "en-US",
+                  localService: true,
+                  default: true,
+                },
+              ];
+              const synthesis = {
+                getVoices: () => voices,
+                addEventListener: () => {},
+                cancel: () => {
+                  window.__speechCancelCount =
+                    (window.__speechCancelCount || 0) + 1;
+                },
+                resume: () => {},
+                speak: utterance => {
+                  if (!window.__speechClickTask) return;
+                  window.__spokenFrench = {
+                    text: utterance.text,
+                    lang: utterance.lang,
+                    rate: utterance.rate,
+                    voice: utterance.voice && utterance.voice.name,
+                    startedInClick: window.__speechClickTask,
+                  };
+                },
+              };
+              class FakeUtterance {
+                constructor(text) {
+                  this.text = text;
+                  this.lang = "";
+                  this.rate = 1;
+                  this.pitch = 1;
+                  this.voice = null;
+                }
+              }
+              Object.defineProperty(window, "speechSynthesis", {
+                configurable: true,
+                value: synthesis,
+              });
+              Object.defineProperty(window, "SpeechSynthesisUtterance", {
+                configurable: true,
+                value: FakeUtterance,
+              });
+            })();
+            """
+        )
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:review")
+            + "?kind=spine&reset=1"
+        )
+        prompt = self.page.locator("#card-front .prompt-text")
+        prompt.wait_for()
+        self.page.wait_for_load_state("networkidle")
+        self.select_prompt(start=0, end=12)
+        selected = self.page.evaluate("window.getSelection().toString().trim()")
+        read_button = self.page.locator("[data-read-selection]")
+
+        read_button.click()
+        self.page.wait_for_function("() => Boolean(window.__spokenFrench)")
+        self.assertEqual(read_button.get_attribute("aria-pressed"), "true")
+        self.assertEqual(
+            self.page.evaluate("window.__spokenFrench"),
+            {
+                "text": selected,
+                "lang": "fr-FR",
+                "rate": 0.92,
+                "voice": "Audrey Premium",
+                "startedInClick": True,
+            },
+        )
+
+        read_button.click()
+        self.assertEqual(read_button.get_attribute("aria-pressed"), "false")
 
     def test_expired_session_does_not_fake_unhighlight_success(self):
         self.page.goto(
@@ -527,8 +630,8 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         with self.page.expect_response(
             lambda response: (
-                "/annotations/" in response.url
-                and "/delete/" in response.url
+                "/notes/" in response.url
+                and "/supprimer/" in response.url
             )
         ):
             highlight_button.click()
@@ -546,7 +649,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
     def test_personalized_response_keeps_unchanged_text_highlighted(self):
         response = self.first.response
-        detail_url = reverse("study:response_detail", args=[response.id])
+        detail_url = response_detail_url(response)
         self.page.goto(self.live_server_url + detail_url)
         target = self.page.locator(".arg__part p").first
         target.wait_for()
@@ -567,7 +670,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         highlight_button.wait_for(state="visible")
         with self.page.expect_response(
             lambda browser_response: (
-                "/annotations/create/" in browser_response.url
+                reverse("study:annotation_create") in browser_response.url
             )
         ):
             highlight_button.click()
@@ -656,10 +759,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             task=self.task,
             kind=AnnotationKind.HIGHLIGHT,
             quote="Passage retenu dans une réponse.",
-            source_path=reverse(
-                "study:response_detail",
-                args=[self.first.response_id],
-            ),
+            source_path=response_detail_url(self.first.response),
             source_key="response:culture:p1:back",
             start_offset=1,
             end_offset=33,
@@ -677,8 +777,10 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         notes_url = (
             self.live_server_url
-            + reverse("study:notes_overview")
-            + f"?part={self.part.slug}&task={self.task.slug}"
+            + reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
         )
         self.page.goto(notes_url)
         self.page.locator(
@@ -846,6 +948,12 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
 
         self.page.get_by_role("button", name="Tableau").click()
+        header = collection.locator("[data-collection-table-header]")
+        self.assertTrue(header.is_visible())
+        self.assertEqual(
+            header.locator("span").all_text_contents(),
+            ["Thème", "Contenu", "Progression", "État"],
+        )
         self.assertEqual(
             collection.evaluate(
                 "element => getComputedStyle(element).display"
@@ -857,6 +965,12 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 "item => getComputedStyle(item).borderRadius"
             ),
             "0px",
+        )
+        self.assertEqual(
+            header.evaluate("element => getComputedStyle(element).gridTemplateColumns"),
+            collection.locator(".deck__body").first.evaluate(
+                "element => getComputedStyle(element).gridTemplateColumns"
+            ),
         )
         self.assertLess(
             collection.locator("[data-collection-item]")
@@ -870,12 +984,13 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "table",
         )
         self.page.set_viewport_size({"width": 390, "height": 844})
+        self.assertFalse(header.is_visible())
         self.assert_no_horizontal_overflow()
 
         self.page.set_viewport_size({"width": 1200, "height": 800})
         self.page.goto(
             self.live_server_url
-            + reverse("study:theme_detail", args=[self.theme.slug])
+            + theme_detail_url(self.theme)
         )
         response_list = self.page.locator(
             ".qlist[data-collection-view='adaptive']"
@@ -893,11 +1008,24 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             ),
             "0px",
         )
+        response_header = response_list.locator(
+            "[data-collection-table-header]"
+        )
+        self.assertEqual(
+            response_header.evaluate(
+                "element => getComputedStyle(element).gridTemplateColumns"
+            ),
+            response_list.locator("[data-collection-item]").first.evaluate(
+                "element => getComputedStyle(element).gridTemplateColumns"
+            ),
+        )
 
         self.page.goto(
             self.live_server_url
-            + reverse("study:notes_overview")
-            + f"?part={self.part.slug}&task={self.task.slug}"
+            + reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
         )
         note_table = self.page.locator(".annotation-table--notes")
         note_table.locator(
@@ -943,11 +1071,168 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         self.assert_no_horizontal_overflow()
 
+    def test_comprehension_table_uses_real_compact_columns(self):
+        first = factories.make_comprehension_test(
+            number=1,
+            question_count=31,
+            mode=ComprehensionMode.ORALE,
+        )
+        factories.make_comprehension_test(
+            number=4,
+            question_count=24,
+            mode=ComprehensionMode.ORALE,
+        )
+        factories.make_comprehension_test(
+            number=5,
+            question_count=28,
+            mode=ComprehensionMode.ORALE,
+        )
+        factories.make_comprehension_attempt(
+            user=self.user,
+            test=first,
+            answered_questions=3,
+        )
+
+        self.page.set_viewport_size({"width": 1440, "height": 900})
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:comprehension_oral_group", args=[1])
+        )
+        self.page.get_by_role("button", name="Tableau").click()
+        table = self.page.locator(".collection-table--tests")
+        header = table.locator("[data-collection-table-header]")
+        first_row = table.locator("[data-collection-item]").first
+
+        self.assertEqual(
+            header.locator("span").all_text_contents(),
+            ["Test", "Détails", "Questions", "Progression", "Action"],
+        )
+        self.assertEqual(
+            header.evaluate(
+                "element => getComputedStyle(element).gridTemplateColumns"
+            ),
+            first_row.evaluate(
+                "element => getComputedStyle(element).gridTemplateColumns"
+            ),
+        )
+        self.assertLessEqual(first_row.bounding_box()["height"], 84)
+        aligned_edges = self.page.evaluate(
+            """
+            () => {
+              const headerCells = [
+                ...document.querySelectorAll(
+                  '.collection-table--tests [data-collection-table-header] > span'
+                )
+              ];
+              const rowCells = [
+                ...document.querySelector(
+                  '.collection-table--tests [data-collection-item]'
+                ).children
+              ];
+              return headerCells.map((cell, index) => {
+                const headerRect = cell.getBoundingClientRect();
+                const rowRect = rowCells[index].getBoundingClientRect();
+                return Math.abs(headerRect.left - rowRect.left);
+              });
+            }
+            """
+        )
+        self.assertTrue(all(offset <= 1 for offset in aligned_edges))
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 390, "height": 844})
+        self.assertFalse(header.is_visible())
+        mobile_rows = table.locator("[data-collection-item]")
+        mobile_heights = mobile_rows.evaluate_all(
+            "rows => rows.map(row => row.getBoundingClientRect().height)"
+        )
+        self.assertLessEqual(max(mobile_heights), 210)
+        self.assertLessEqual(mobile_heights[1], 120)
+        self.assertNotEqual(
+            mobile_rows.first.evaluate(
+                "row => getComputedStyle(row).borderRadius"
+            ),
+            "0px",
+        )
+        self.assert_no_horizontal_overflow()
+
+    def test_annotation_search_rows_keep_identical_columns(self):
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            title="Alignement principal",
+            body="Contenu pour vérifier les colonnes.",
+            source_path=response_detail_url(self.first.response),
+        )
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            title="Alignement secondaire",
+            body="Une ligne sans lien de source.",
+        )
+        self.page.set_viewport_size({"width": 1200, "height": 800})
+        self.page.goto(
+            self.live_server_url
+            + reverse("study:annotation_search")
+            + "?q=alignement"
+        )
+        self.page.get_by_role("button", name="Tableau").click()
+
+        table = self.page.locator(".collection-table--annotation-search")
+        header = table.locator("[data-collection-table-header]")
+        rows = table.locator("[data-collection-item]")
+        self.assertEqual(rows.count(), 2)
+        header_tracks = header.evaluate(
+            "element => getComputedStyle(element).gridTemplateColumns"
+        )
+        self.assertEqual(
+            rows.evaluate_all(
+                "elements => elements.map("
+                "element => getComputedStyle(element).gridTemplateColumns)"
+            ),
+            [header_tracks, header_tracks],
+        )
+        row_edge_offsets = self.page.evaluate(
+            """
+            () => {
+              const headerCells = [
+                ...document.querySelectorAll(
+                  '.collection-table--annotation-search '
+                  + '[data-collection-table-header] > span'
+                )
+              ];
+              return [
+                ...document.querySelectorAll(
+                  '.collection-table--annotation-search '
+                  + '[data-collection-item]'
+                )
+              ].map(row => [...row.children].map((cell, index) => {
+                return Math.abs(
+                  cell.getBoundingClientRect().left
+                  - headerCells[index].getBoundingClientRect().left
+                );
+              }));
+            }
+            """
+        )
+        self.assertTrue(
+            all(
+                offset <= 1
+                for row_offsets in row_edge_offsets
+                for offset in row_offsets
+            )
+        )
+        self.assert_no_horizontal_overflow()
+
     def test_mobile_note_dialogs_create_and_edit_cleanly(self):
         notes_url = (
             self.live_server_url
-            + reverse("study:notes_overview")
-            + f"?part={self.part.slug}&task={self.task.slug}"
+            + reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
         )
         self.page.goto(notes_url)
         self.page.get_by_role("button", name="Nouvelle note").click()
@@ -1048,10 +1333,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             task=self.task,
             kind=AnnotationKind.HIGHLIGHT,
             quote="Cependant, il faut reconnaître cette limite.",
-            source_path=reverse(
-                "study:response_detail",
-                args=[self.first.response_id],
-            ),
+            source_path=response_detail_url(self.first.response),
             start_offset=0,
             end_offset=45,
             study_later=True,
@@ -1148,10 +1430,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             )
 
         self.page.set_viewport_size({"width": 320, "height": 568})
-        response_url = reverse(
-            "study:response_detail",
-            args=[self.first.response_id],
-        )
+        response_url = response_detail_url(self.first.response)
         self.page.goto(self.live_server_url + response_url)
         self.page.get_by_role(
             "link",
@@ -1199,8 +1478,9 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         self.assert_no_horizontal_overflow()
 
-        category_url = (
-            reverse("study:vocabulary") + f"?category={category.slug}"
+        category_url = reverse(
+            "study:vocabulary_category",
+            args=[category.slug],
         )
         self.page.goto(self.live_server_url + category_url)
         self.page.get_by_role(
@@ -1235,6 +1515,19 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
         self.page.set_viewport_size({"width": 1110, "height": 700})
         self.page.goto(dashboard_url)
+        views_metric = self.page.locator(".home-hero__metrics dd").nth(1)
+        views_metric.evaluate(
+            """
+            element => {
+              element.firstChild.textContent = "188";
+              element.querySelector(".hero-metric__total").textContent = "/ 9900";
+            }
+            """
+        )
+        self.assertLessEqual(
+            views_metric.evaluate("element => element.scrollWidth"),
+            views_metric.evaluate("element => element.clientWidth"),
+        )
         desktop_heights = self.page.locator(".daily-card").evaluate_all(
             "cards => cards.map(card => card.getBoundingClientRect().height)"
         )
@@ -1252,8 +1545,16 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertEqual(len(set(label_colors)), 4)
         self.assert_no_horizontal_overflow()
 
+        for width in (1024, 900, 861):
+            with self.subTest(width=width):
+                self.page.set_viewport_size({"width": width, "height": 700})
+                self.assertLessEqual(
+                    views_metric.evaluate("element => element.scrollWidth"),
+                    views_metric.evaluate("element => element.clientWidth"),
+                )
+                self.assert_no_horizontal_overflow()
+
         self.page.set_viewport_size({"width": 320, "height": 568})
-        views_metric = self.page.locator(".home-hero__metrics dd").nth(1)
         views_metric.evaluate(
             """
             element => {

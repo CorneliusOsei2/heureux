@@ -195,7 +195,7 @@ def make_comprehension_attempt(
 
 
 def make_response(theme=None, family=None) -> Response:
-    theme = theme or make_theme()
+    theme = theme or make_theme(task=make_task())
     family = family or make_family()
     n = _uid()
     response = Response.objects.create(

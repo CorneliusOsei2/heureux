@@ -30,6 +30,11 @@ from study.models import (
     ReviewSession,
     Settings,
 )
+from study.routing import (
+    prompt_detail_url,
+    response_detail_url,
+    theme_detail_url,
+)
 
 from . import factories
 
@@ -69,18 +74,18 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v74"', body)
-        self.assertIn("study/css/app.css?v=67", body)
+        self.assertIn('var CACHE = "heureux-v81"', body)
+        self.assertIn("study/css/app.css?v=75", body)
         self.assertIn("study/js/theme-init.js?v=2", body)
-        self.assertIn("study/js/app.js?v=31", body)
-        self.assertIn("study/js/translate.js", body)
+        self.assertIn("study/js/app.js?v=33", body)
+        self.assertIn("study/js/translate.js?v=11", body)
         self.assertIn("study/js/annotations.js", body)
         self.assertIn("SKIP_WAITING", body)
         self.assertIn("no-store", r["Cache-Control"])
         self.assertEqual(r["Service-Worker-Allowed"], "/")
 
     def test_security_headers_block_inline_scripts_and_sensitive_capabilities(self):
-        response = self.client.get("/login/")
+        response = self.client.get(reverse("study:login"))
 
         policy = response["Content-Security-Policy"]
         self.assertIn("script-src 'self'", policy)
@@ -133,8 +138,7 @@ class SmokeTests(TestCase):
         self.assertNotContains(response, 'id="comprehension-vocabulary"')
         self.assertContains(
             response,
-            reverse("study:vocabulary")
-            + "?part=eo&amp;task=tache-3",
+            reverse("study:task_phrases", args=["eo", "tache-3"]),
         )
 
     def test_written_comprehension_card_opens_only_test_decks(self):
@@ -149,13 +153,11 @@ class SmokeTests(TestCase):
         landing = self.client.get(reverse("study:vocabulary"))
         self.assertContains(
             landing,
-            reverse("study:vocabulary")
-            + "?domain=comprehension&amp;mode=ce",
+            reverse("study:comprehension_vocabulary"),
         )
 
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {"domain": "comprehension", "mode": "ce"},
+            reverse("study:comprehension_vocabulary"),
         )
         self.assertTrue(response.context["comprehension_directory"])
         self.assertFalse(response.context["vocabulary_landing"])
@@ -163,33 +165,51 @@ class SmokeTests(TestCase):
         self.assertContains(response, test.title)
         self.assertNotContains(response, 'id="expression-vocabulary"')
 
-    def test_legacy_gateways_redirect_to_canonical_areas(self):
-        destinations = (
-            ("study:review_overview", reverse("study:dashboard")),
-            ("study:expressions_overview", reverse("study:vocabulary")),
-            (
-                "study:general_notes",
-                reverse("study:notes_overview") + "?scope=general",
-            ),
-            ("study:browse", reverse("study:expression")),
-            ("study:phrases", reverse("study:vocabulary")),
+    def test_removed_legacy_paths_return_404(self):
+        legacy_paths = (
+            "/browse/",
+            "/phrases/",
+            "/search/",
+            "/stats/",
+            "/review/",
+            "/revisit/",
+            "/response/1/",
+            "/theme/culture/",
+            "/family/opinion/",
+            "/expression/eo/",
+            "/comprehension/ce/",
+            "/login/",
         )
-        for legacy_name, canonical_url in destinations:
-            with self.subTest(legacy_name=legacy_name):
-                response = self.client.get(reverse(legacy_name))
-                self.assertRedirects(
-                    response,
-                    canonical_url,
-                    fetch_redirect_response=False,
-                )
+        for path in legacy_paths:
+            with self.subTest(path=path):
+                self.assertEqual(self.client.get(path).status_code, 404)
+
+    def test_legacy_query_scopes_are_rejected(self):
+        legacy_urls = (
+            reverse("study:vocabulary") + "?part=eo&task=tache-3",
+            reverse("study:notes_overview") + "?part=eo&task=tache-3",
+            reverse("study:search") + "?part=eo&task=tache-3",
+            reverse("study:stats") + "?part=eo&task=tache-3",
+            reverse("study:review") + "?part=eo&task=tache-3",
+            (
+                reverse("study:vocabulary")
+                + "?domain=comprehension&mode=ce"
+            ),
+        )
+        for url in legacy_urls:
+            with self.subTest(url=url):
+                self.assertEqual(self.client.get(url).status_code, 404)
 
     def test_authenticated_pages_include_selection_translation_controls(self):
         response = self.client.get(reverse("study:dashboard"))
 
         self.assertContains(response, "Translate to English")
         self.assertContains(response, "data-copy-selection")
+        self.assertContains(response, "data-read-selection")
         self.assertContains(response, "data-note-selection")
         self.assertContains(response, "data-highlight-selection")
+        self.assertContains(response, "btn__icon-badge--notes")
+        self.assertContains(response, "btn__icon-badge--save")
         self.assertContains(response, 'id="translation-panel"')
         self.assertContains(response, 'id="selection-note-panel"')
         self.assertContains(response, "study/js/translate.js")
@@ -245,29 +265,22 @@ class SmokeTests(TestCase):
                 )
                 self.assertEqual(response.status_code, 200)
 
-        redirects = {
-            "study:task_phrases": (
-                reverse("study:vocabulary") + "?part=eo&task=tache-3"
-            ),
-            "study:task_stats": (
-                reverse("study:stats") + "?part=eo&task=tache-3"
-            ),
-            "study:task_search": (
-                reverse("study:search") + "?part=eo&task=tache-3"
-            ),
-        }
-        for name, expected in redirects.items():
+        scoped_pages = (
+            "study:task_phrases",
+            "study:task_stats",
+            "study:task_search",
+            "study:task_notes",
+        )
+        for name in scoped_pages:
             with self.subTest(name=name):
                 response = self.client.get(
                     reverse(name, args=["eo", "tache-3"])
                 )
-                self.assertRedirects(
-                    response,
-                    expected,
-                    fetch_redirect_response=False,
-                )
+                self.assertEqual(response.status_code, 200)
 
-        family = factories.make_family()
+        family = self.user.study_cards.filter(
+            response__isnull=False
+        ).first().response.family
         response = self.client.get(
             reverse(
                 "study:task_family_detail",
@@ -449,39 +462,78 @@ class SmokeTests(TestCase):
 
     def test_hierarchy_uses_expression_paths(self):
         url = reverse("study:task_detail", args=["eo", "tache-3"])
-        self.assertEqual(url, "/expression/eo/tache-3/")
+        self.assertEqual(url, "/eo/tache-3/")
 
     def test_all_skill_routes_use_canonical_codes(self):
         self.assertEqual(
             reverse("study:comprehension_overview"),
-            "/comprehension/ce/",
+            "/ce/",
         )
         self.assertEqual(
             reverse(
                 "study:comprehension_question_study",
                 args=["test-1", 2],
             ),
-            "/comprehension/ce/test-1/question/2/",
+            "/ce/tests/test-1/questions/2/",
         )
         self.assertEqual(
             reverse("study:comprehension_oral_overview"),
-            "/comprehension/co/",
+            "/co/",
         )
         self.assertEqual(
             reverse(
                 "study:comprehension_oral_question_study",
                 args=["oral-test-1", 2],
             ),
-            "/comprehension/co/oral-test-1/question/2/",
+            "/co/tests/oral-test-1/questions/2/",
         )
         self.assertEqual(
             reverse("study:part_detail", args=["ee"]),
-            "/expression/ee/",
+            "/ee/",
         )
         self.assertEqual(
             reverse("study:task_detail", args=["eo", "tache-3"]),
-            "/expression/eo/tache-3/",
+            "/eo/tache-3/",
         )
+
+    def test_public_tools_use_the_exact_canonical_hierarchy(self):
+        routes = {
+            reverse("study:vocabulary"): "/vocabulaire/",
+            reverse("study:notes_overview"): "/notes/",
+            reverse("study:general_notes"): "/notes/generales/",
+            reverse("study:search"): "/recherche/",
+            reverse("study:stats"): "/progression/",
+            reverse("study:review"): "/revision/",
+            reverse(
+                "study:task_browse",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/sujets/",
+            reverse(
+                "study:task_phrases",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/vocabulaire/",
+            reverse(
+                "study:task_notes",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/notes/",
+            reverse(
+                "study:task_search",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/recherche/",
+            reverse(
+                "study:task_stats",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/progression/",
+            reverse(
+                "study:task_review",
+                args=["eo", "tache-3"],
+            ): "/eo/tache-3/revision/cartes/",
+            reverse("study:login"): "/compte/connexion/",
+            reverse("study:settings"): "/compte/parametres/",
+        }
+        for actual, expected in routes.items():
+            with self.subTest(route=expected):
+                self.assertEqual(actual, expected)
 
     def test_noncanonical_skill_paths_are_not_available(self):
         for path in (
@@ -489,6 +541,8 @@ class SmokeTests(TestCase):
             "/comprehension-orale/",
             "/expression/orale/",
             "/expression/ecrit/",
+            "/expression/eo/",
+            "/comprehension/ce/",
             "/notes/orale/tache-3/",
             "/epreuve/orale/tache-3/",
         ):
@@ -530,12 +584,14 @@ class TaskOrganizationTests(TestCase):
 
     def test_expression_page_is_limited_to_its_task(self):
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {
-                "part": self.part.slug,
-                "task": self.task.slug,
-                "category": self.phrase.category.slug,
-            },
+            reverse(
+                "study:task_vocabulary_category",
+                args=[
+                    self.part.slug,
+                    self.task.slug,
+                    self.phrase.category.slug,
+                ],
+            ),
         )
         self.assertContains(response, "oral-task-only")
         self.assertNotContains(response, "other-task-only")
@@ -560,8 +616,7 @@ class TaskOrganizationTests(TestCase):
         legacy_phrase.source_prompts.add(prompt)
 
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {"part": self.part.slug, "task": self.task.slug},
+            self._task_url("study:task_phrases"),
         )
 
         self.assertEqual(response.context["subject_prompt_count"], 1)
@@ -574,35 +629,27 @@ class TaskOrganizationTests(TestCase):
         self.assertContains(response, prompt.text)
         self.assertContains(
             response,
-            reverse(
-                "study:response_detail",
-                args=[prompt.response_id],
-            )
-            + f"?prompt={prompt.pk}#subject-vocabulary",
+            prompt_detail_url(prompt) + "#subject-vocabulary",
         )
         self.assertContains(
             response,
-            f"kind=vocab&amp;response={prompt.response_id}&amp;batch=1",
+            reverse(
+                "study:task_review",
+                args=[self.part.slug, self.task.slug],
+            )
+            + f"?kind=vocab&amp;response={prompt.response_id}&amp;batch=1",
         )
         self.assertNotContains(response, "Vocabulaire par thème")
         self.assertNotContains(response, topic_category.name)
 
     def test_task_search_is_limited_to_its_task(self):
         own = self.client.get(
-            reverse("study:search"),
-            {
-                "part": self.part.slug,
-                "task": self.task.slug,
-                "q": "oral-task-only",
-            },
+            self._task_url("study:task_search"),
+            {"q": "oral-task-only"},
         )
         other = self.client.get(
-            reverse("study:search"),
-            {
-                "part": self.part.slug,
-                "task": self.task.slug,
-                "q": "other-task-only",
-            },
+            self._task_url("study:task_search"),
+            {"q": "other-task-only"},
         )
         self.assertEqual(own.context["result_count"], 1)
         self.assertEqual(other.context["result_count"], 0)
@@ -616,12 +663,8 @@ class TaskOrganizationTests(TestCase):
             phrase.source_prompts.add(prompt)
 
         response = self.client.get(
-            reverse("study:search"),
-            {
-                "part": self.part.slug,
-                "task": self.task.slug,
-                "q": "broad-search-match",
-            },
+            self._task_url("study:task_search"),
+            {"q": "broad-search-match"},
         )
 
         self.assertEqual(response.context["result_count"], 15)
@@ -657,8 +700,7 @@ class TaskOrganizationTests(TestCase):
         )
 
         stats_response = self.client.get(
-            reverse("study:stats"),
-            {"part": self.part.slug, "task": self.task.slug},
+            self._task_url("study:task_stats"),
         )
         revisit_response = self.client.get(
             self._task_url("study:task_revisit_list")
@@ -677,6 +719,129 @@ class TaskOrganizationTests(TestCase):
             self.other_phrase.expression,
         )
 
+    def test_task_progress_includes_response_practice_not_linked_expressions(self):
+        now = timezone.now()
+        self.phrase_card.state = CardState.REVIEW
+        self.phrase_card.interval_days = 30
+        self.phrase_card.started_at = now
+        self.phrase_card.save(
+            update_fields=["state", "interval_days", "started_at"]
+        )
+
+        linked_expression_only = self.client.get(
+            self._task_url("study:task_detail"),
+        )
+        self.assertEqual(
+            linked_expression_only.context["response_stats"]["seen"],
+            0,
+        )
+        self.assertEqual(
+            linked_expression_only.context["themes"][0]["stats"]["seen"],
+            0,
+        )
+        self.assertContains(linked_expression_only, "À commencer")
+
+        self.response_card.state = CardState.REVIEW
+        self.response_card.interval_days = 30
+        self.response_card.started_at = now
+        self.response_card.due = now - timedelta(minutes=1)
+        self.response_card.save(
+            update_fields=["state", "interval_days", "started_at", "due"]
+        )
+        direct_practice = self.client.get(
+            self._task_url("study:task_detail"),
+        )
+        self.assertEqual(direct_practice.context["response_stats"]["seen"], 1)
+        self.assertEqual(
+            direct_practice.context["themes"][0]["stats"]["seen"],
+            1,
+        )
+        self.assertEqual(direct_practice.context["response_stats"]["due"], 1)
+        self.assertEqual(
+            direct_practice.context["themes"][0]["stats"]["due"],
+            1,
+        )
+        self.assertContains(direct_practice, "En cours")
+        expression_hub = self.client.get(reverse("study:expression"))
+        self.assertEqual(expression_hub.context["response_due"], 1)
+        self.assertContains(expression_hub, "Réponses à revoir")
+
+    def test_subject_vocabulary_progress_stays_material_specific_and_bubbles_up(self):
+        prompt = self.response_card.response.prompts.get(is_canonical=True)
+        subject_phrase = factories.make_phrase(tier="subject")
+        subject_phrase.source_prompts.add(prompt)
+        subject_card = factories.make_phrase_card(
+            phrase=subject_phrase,
+            user=self.user,
+        )
+        now = timezone.now()
+        self.response_card.state = CardState.REVIEW
+        self.response_card.started_at = now
+        self.response_card.save(update_fields=["state", "started_at"])
+
+        task_vocabulary = self.client.get(
+            self._task_url("study:task_phrases"),
+        )
+        vocabulary_prompt = task_vocabulary.context["subject_theme_groups"][0][
+            "prompts"
+        ][0]
+        self.assertEqual(vocabulary_prompt.subject_progress.status, "active")
+        self.assertEqual(vocabulary_prompt.vocabulary_progress.status, "new")
+        self.assertEqual(
+            task_vocabulary.context["subject_theme_groups"][0]["progress"].status,
+            "new",
+        )
+        browse = self.client.get(self._task_url("study:task_browse"))
+        family = next(
+            item
+            for item in browse.context["families"]
+            if item.pk == prompt.family_id
+        )
+        self.assertEqual(family.progress.status, "active")
+        landing = self.client.get(reverse("study:vocabulary"))
+        oral_path = next(
+            path
+            for path in landing.context["expression_vocabulary_paths"]
+            if path["short_name"] == "EO"
+        )
+        self.assertEqual(oral_path["progress"].status, "new")
+
+        subject_card.state = CardState.REVIEW
+        subject_card.started_at = now
+        subject_card.save(update_fields=["state", "started_at"])
+
+        completed_task_vocabulary = self.client.get(
+            self._task_url("study:task_phrases"),
+        )
+        completed_prompt = completed_task_vocabulary.context[
+            "subject_theme_groups"
+        ][0]["prompts"][0]
+        self.assertEqual(completed_prompt.vocabulary_progress.status, "done")
+        self.assertEqual(
+            completed_task_vocabulary.context["subject_theme_groups"][0][
+                "progress"
+            ].status,
+            "done",
+        )
+        completed_browse = self.client.get(
+            self._task_url("study:task_browse"),
+        )
+        completed_family = next(
+            item
+            for item in completed_browse.context["families"]
+            if item.pk == prompt.family_id
+        )
+        self.assertEqual(completed_family.progress.status, "done")
+        completed_landing = self.client.get(reverse("study:vocabulary"))
+        completed_oral_path = next(
+            path
+            for path in completed_landing.context[
+                "expression_vocabulary_paths"
+            ]
+            if path["short_name"] == "EO"
+        )
+        self.assertEqual(completed_oral_path["progress"].status, "done")
+
     def test_stats_mastery_includes_every_vocabulary_tier(self):
         local_phrase = factories.make_phrase(tier="subject")
         local_phrase.source_prompts.add(
@@ -686,8 +851,7 @@ class TaskOrganizationTests(TestCase):
 
         global_response = self.client.get(reverse("study:stats"))
         task_response = self.client.get(
-            reverse("study:stats"),
-            {"part": self.part.slug, "task": self.task.slug},
+            self._task_url("study:task_stats"),
         )
 
         self.assertEqual(
@@ -698,7 +862,7 @@ class TaskOrganizationTests(TestCase):
 
     def test_same_task_slug_in_another_part_does_not_leak(self):
         written_task = factories.make_task(
-            factories.make_part("autre"),
+            factories.make_part("ee"),
             "tache-3",
         )
         written_theme = factories.make_theme(
@@ -711,8 +875,7 @@ class TaskOrganizationTests(TestCase):
             self._task_url("study:task_browse")
         )
         stats_response = self.client.get(
-            reverse("study:stats"),
-            {"part": self.part.slug, "task": self.task.slug},
+            self._task_url("study:task_stats"),
         )
         self.assertEqual(
             [
@@ -739,7 +902,7 @@ class TaskOrganizationTests(TestCase):
             theme=factories.make_theme(
                 "technologie",
                 task=factories.make_task(
-                    factories.make_part("autre"),
+                    factories.make_part("ee"),
                     "tache-3",
                 ),
             ),
@@ -768,8 +931,7 @@ class TaskOrganizationTests(TestCase):
         srs.review(self.other_phrase_card, Rating.GOOD)
 
         response = self.client.get(
-            reverse("study:stats"),
-            {"part": self.part.slug, "task": self.task.slug},
+            self._task_url("study:task_stats"),
         )
         self.assertEqual(response.context["streak"], 1)
 
@@ -795,15 +957,15 @@ class TaskOrganizationTests(TestCase):
         )
         self.assertContains(
             response,
-            "?kind=spine&amp;part=eo&amp;task=tache-3",
+            self._task_url("study:task_review") + "?kind=spine",
         )
         self.assertContains(response, "Choisir un thème")
         self.assertContains(response, "Réponses fragiles")
 
     def test_primary_navigation_resolves_same_slug_task_by_part(self):
         written_task = factories.make_task(
-            factories.make_part("autre"),
-            self.task.slug,
+            factories.make_part("ee"),
+            "tache-3",
         )
         self.task.name = "Parcours oral"
         self.task.save(update_fields=["name"])
@@ -850,8 +1012,10 @@ class CategoryBatchViewsTests(TestCase):
 
     def test_expression_category_displays_ten_expression_lots(self):
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": self.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[self.category.slug],
+            ),
         )
 
         self.assertEqual(len(response.context["review_batches"]), 2)
@@ -884,8 +1048,10 @@ class CategoryBatchViewsTests(TestCase):
         )
 
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": self.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[self.category.slug],
+            ),
         )
 
         self.assertEqual(response.context["phrase_count"], 16)
@@ -921,8 +1087,10 @@ class CategoryBatchViewsTests(TestCase):
         first_batch[0].save(update_fields=["state", "due"])
 
         in_progress = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": self.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[self.category.slug],
+            ),
         )
 
         self.assertEqual(
@@ -935,8 +1103,10 @@ class CategoryBatchViewsTests(TestCase):
             pk__in=[card.pk for card in first_batch]
         ).update(state=CardState.REVIEW, due=future)
         complete = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": self.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[self.category.slug],
+            ),
         )
 
         completed_batch = complete.context["review_batches"][0]
@@ -944,6 +1114,52 @@ class CategoryBatchViewsTests(TestCase):
         self.assertEqual(completed_batch["seen_count"], 10)
         self.assertFalse(completed_batch["can_review"])
         self.assertContains(complete, "Terminé")
+
+    def test_expression_lot_completion_bubbles_to_its_category_card(self):
+        self.category.name = "Nuancer et comparer"
+        self.category.save(update_fields=["name"])
+        response = factories.make_response()
+        prompt = response.prompts.get(is_canonical=True)
+        for production, _recognition in self.phrase_pairs:
+            production.phrase.source_prompts.add(prompt)
+        future = timezone.now() + timedelta(days=5)
+        first_batch_ids = [
+            card.pk
+            for pair in self.phrase_pairs[:10]
+            for card in pair
+        ]
+        Card.objects.filter(pk__in=first_batch_ids).update(
+            state=CardState.REVIEW,
+            due=future,
+        )
+        task = prompt.theme.task
+        directory_url = reverse(
+            "study:task_phrases",
+            args=[task.part.slug, task.slug],
+        )
+
+        in_progress = self.client.get(directory_url)
+        category = next(
+            item
+            for item in in_progress.context["functional_categories"]
+            if item.pk == self.category.pk
+        )
+        self.assertEqual(category.progress.status, "active")
+        self.assertEqual(category.completed_batch_count, 1)
+        self.assertEqual(category.progress.total, 2)
+
+        Card.objects.filter(pk__in=[card.pk for card in self.phrase_cards]).update(
+            state=CardState.REVIEW,
+            due=future,
+        )
+        completed = self.client.get(directory_url)
+        completed_category = next(
+            item
+            for item in completed.context["functional_categories"]
+            if item.pk == self.category.pk
+        )
+        self.assertEqual(completed_category.progress.status, "done")
+        self.assertEqual(completed_category.completed_batch_count, 2)
 
     def test_suspended_lot_is_visible_but_not_clickable(self):
         Card.objects.filter(
@@ -953,8 +1169,10 @@ class CategoryBatchViewsTests(TestCase):
         ).update(suspended=True)
 
         response = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": self.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[self.category.slug],
+            ),
         )
 
         first_batch = response.context["review_batches"][0]
@@ -979,12 +1197,15 @@ class CategoryBatchViewsTests(TestCase):
         self.assertContains(response, "batch=2")
 
     def test_response_theme_displays_fifteen_card_lots(self):
-        theme = factories.make_theme("education")
+        theme = factories.make_theme(
+            "education",
+            task=factories.make_task(),
+        )
         for _ in range(16):
             factories.make_spine_card(theme=theme, user=self.user)
 
         response = self.client.get(
-            reverse("study:theme_detail", args=[theme.slug])
+            theme_detail_url(theme)
         )
 
         self.assertEqual(len(response.context["review_batches"]), 2)
@@ -1006,7 +1227,7 @@ class CategoryBatchViewsTests(TestCase):
             )
 
         page = self.client.get(
-            reverse("study:response_detail", args=[response.pk])
+            response_detail_url(response)
         )
 
         self.assertEqual(
@@ -1057,6 +1278,8 @@ class CategoryBatchViewsTests(TestCase):
         self.assertIsNotNone(phrase_card.started_at)
         self.assertIsNone(response_card.started_at)
         self.assertIsNone(other_response_card.started_at)
+        detail = self.client.get(response_detail_url(response))
+        self.assertEqual(detail.context["subject_progress"].status, "new")
 
     def test_response_sheet_offers_five_ten_card_subject_vocabulary_lots(self):
         response = factories.make_response()
@@ -1078,7 +1301,7 @@ class CategoryBatchViewsTests(TestCase):
             )
 
         page = self.client.get(
-            reverse("study:response_detail", args=[response.pk])
+            response_detail_url(response)
         )
 
         self.assertEqual(page.context["vocabulary_count"], 50)
@@ -1118,11 +1341,15 @@ class CategoryBatchViewsTests(TestCase):
         self.assertIn("Réponse française", state["back_html"])
         spine_card.refresh_from_db()
         vocabulary_cards[0].refresh_from_db()
-        self.assertIsNotNone(spine_card.started_at)
+        self.assertIsNone(spine_card.started_at)
         self.assertIsNotNone(vocabulary_cards[0].started_at)
 
         in_progress = self.client.get(
-            reverse("study:response_detail", args=[response.pk])
+            response_detail_url(response)
+        )
+        self.assertEqual(
+            in_progress.context["subject_progress"].status,
+            "active",
         )
         self.assertEqual(
             in_progress.context["vocabulary_batches"][0]["status"],
@@ -1137,10 +1364,38 @@ class CategoryBatchViewsTests(TestCase):
             for item in group["prompts"]
             if item.response_id == response.pk
         )
-        self.assertEqual(directory_prompt.progress_card.pk, spine_card.pk)
         self.assertEqual(
-            directory_prompt.progress_card.progress_status,
+            directory_prompt.subject_progress.status,
             "active",
+        )
+
+        now = timezone.now()
+        future = now + timedelta(days=5)
+        for vocabulary_card in vocabulary_cards:
+            vocabulary_card.state = CardState.REVIEW
+            vocabulary_card.interval_days = 21
+            vocabulary_card.started_at = now
+            vocabulary_card.due = future
+        Card.objects.bulk_update(
+            vocabulary_cards,
+            ["state", "interval_days", "started_at", "due"],
+        )
+
+        completed = self.client.get(response_detail_url(response))
+        self.assertEqual(completed.context["subject_progress"].status, "done")
+        self.assertEqual(completed.context["subject_progress"].label, "Terminé")
+        self.assertEqual(
+            [batch["status"] for batch in completed.context["vocabulary_batches"]],
+            ["complete"] * 5,
+        )
+        self.assertEqual(
+            completed.context["vocabulary_batch_progress"].status,
+            "done",
+        )
+        self.assertContains(
+            completed,
+            "response-batch--done response-batch--disabled",
+            count=5,
         )
 
 
@@ -1199,10 +1454,7 @@ class ResponsePromptNavigationTests(TestCase):
 
     @staticmethod
     def _detail_url(prompt):
-        return (
-            reverse("study:response_detail", args=[prompt.response_id])
-            + f"?prompt={prompt.pk}"
-        )
+        return prompt_detail_url(prompt)
 
     def test_previous_and_next_follow_prompt_order_within_theme(self):
         page = self.client.get(self._detail_url(self.middle_prompt))
@@ -1251,6 +1503,14 @@ class ResponsePromptNavigationTests(TestCase):
         page = self.client.get(self._detail_url(alias))
 
         self.assertEqual(page.status_code, 200)
+        self.assertNotEqual(
+            self._detail_url(alias),
+            self._detail_url(self.first_prompt),
+        )
+        self.assertEqual(
+            self._detail_url(alias),
+            f"/eo/tache-3/sujets/{alias.pk}/",
+        )
         self.assertEqual(page.context["selected_prompt"], alias)
         self.assertEqual(page.context["task"], self.task)
         self.assertEqual(page.context["part"], self.part)
@@ -1267,7 +1527,7 @@ class ResponsePromptNavigationTests(TestCase):
         self.assertContains(page, alias_family.name)
 
         theme_page = self.client.get(
-            reverse("study:theme_detail", args=[self.second_theme.slug])
+            theme_detail_url(self.second_theme)
         )
         family_page = self.client.get(
             reverse(
@@ -1280,8 +1540,10 @@ class ResponsePromptNavigationTests(TestCase):
             {"q": "équivalent"},
         )
         phrases_page = self.client.get(
-            reverse("study:vocabulary"),
-            {"category": phrase.category.slug},
+            reverse(
+                "study:vocabulary_category",
+                args=[phrase.category.slug],
+            ),
         )
         for origin_page in (
             theme_page,
@@ -1291,24 +1553,19 @@ class ResponsePromptNavigationTests(TestCase):
         ):
             self.assertContains(origin_page, self._detail_url(alias))
 
-    def test_invalid_or_mismatched_prompt_is_rejected(self):
+    def test_unknown_or_mismatched_prompt_path_is_rejected(self):
         invalid = self.client.get(
-            reverse(
-                "study:response_detail",
-                args=[self.first_response.pk],
-            ),
-            {"prompt": "not-an-id"},
+            f"/{self.part.slug}/{self.task.slug}/sujets/not-an-id/"
         )
         mismatched = self.client.get(
             reverse(
                 "study:response_detail",
-                args=[self.middle_response.pk],
+                args=["ee", self.task.slug, self.first_prompt.pk],
             ),
-            {"prompt": self.first_prompt.pk},
         )
 
-        self.assertEqual(invalid.status_code, 400)
-        self.assertEqual(mismatched.status_code, 400)
+        self.assertEqual(invalid.status_code, 404)
+        self.assertEqual(mismatched.status_code, 404)
 
 
 class ReviewFlowTests(TestCase):
@@ -1327,7 +1584,7 @@ class ReviewFlowTests(TestCase):
         self.assertFalse(r.json()["done"])
         return r.json()
 
-    def test_presenting_a_response_marks_it_in_progress_before_rating(self):
+    def test_presenting_a_response_starts_its_subject_material(self):
         state = self._present(
             f"?kind=spine&response={self.card.response_id}"
         )
@@ -1335,14 +1592,12 @@ class ReviewFlowTests(TestCase):
         self.card.refresh_from_db()
         self.assertEqual(state["card_id"], self.card.pk)
         self.assertIsNotNone(self.card.started_at)
+        self.assertIsNotNone(self.card.response_practice_started_at)
         self.assertEqual(self.card.state, CardState.NEW)
         self.assertIn("En cours", state["front_html"])
 
         response_page = self.client.get(
-            reverse(
-                "study:response_detail",
-                args=[self.card.response_id],
-            )
+            response_detail_url(self.card.response)
         )
         self.assertContains(
             response_page,
@@ -1350,8 +1605,35 @@ class ReviewFlowTests(TestCase):
             "En cours</span>",
             html=True,
         )
+        theme_page = self.client.get(
+            theme_detail_url(self.card.response.theme),
+        )
+        self.assertEqual(
+            theme_page.context["review_batches"][0]["status"],
+            "in-progress",
+        )
 
-    def test_mature_response_uses_completed_progress_status(self):
+    def test_legacy_inferred_start_does_not_count_as_response_practice(self):
+        self.card.started_at = timezone.now()
+        self.card.save(update_fields=["started_at"])
+
+        response_page = self.client.get(
+            response_detail_url(self.card.response),
+        )
+
+        progress = response_page.context["subject_progress"]
+        self.assertFalse(progress.response_practice_started)
+        self.assertEqual(progress.status, "new")
+        self.assertNotContains(response_page, "Commencée")
+        theme_page = self.client.get(
+            theme_detail_url(self.card.response.theme),
+        )
+        self.assertEqual(
+            theme_page.context["review_batches"][0]["status"],
+            "not-started",
+        )
+
+    def test_mature_response_practice_does_not_complete_subject_material(self):
         self.card.state = CardState.REVIEW
         self.card.interval_days = 21
         self.card.started_at = timezone.now()
@@ -1360,18 +1642,42 @@ class ReviewFlowTests(TestCase):
         )
 
         response_page = self.client.get(
-            reverse(
-                "study:response_detail",
-                args=[self.card.response_id],
-            )
+            response_detail_url(self.card.response)
         )
 
         self.assertContains(
             response_page,
-            '<span class="progress-status progress-status--done">'
-            "Maîtrisée</span>",
+            '<span class="progress-status progress-status--active">'
+            "En cours</span>",
             html=True,
         )
+
+    def test_suspended_subject_vocabulary_does_not_block_completion(self):
+        prompt = self.card.response.prompts.get(is_canonical=True)
+        active_phrase = factories.make_phrase(tier="subject")
+        active_phrase.source_prompts.add(prompt)
+        active_card = factories.make_phrase_card(
+            phrase=active_phrase,
+            user=self.user,
+            state=CardState.REVIEW,
+        )
+        suspended_phrase = factories.make_phrase(tier="subject")
+        suspended_phrase.source_prompts.add(prompt)
+        factories.make_phrase_card(
+            phrase=suspended_phrase,
+            user=self.user,
+            suspended=True,
+        )
+
+        response_page = self.client.get(
+            response_detail_url(self.card.response),
+        )
+
+        progress = response_page.context["subject_progress"]
+        self.assertEqual(progress.vocabulary_total, 1)
+        self.assertEqual(progress.vocabulary_completed, 1)
+        self.assertEqual(progress.status, "done")
+        self.assertEqual(active_card.state, CardState.REVIEW)
 
     def test_answer_advances_and_logs(self):
         presented = self._present()
@@ -1520,7 +1826,7 @@ class ReviewFlowTests(TestCase):
         )
 
         detail = self.client.get(
-            reverse("study:response_detail", args=[self.card.response_id])
+            response_detail_url(self.card.response)
         )
         self.assertContains(detail, argument.idea)
         self.assertContains(detail, argument.developpement)

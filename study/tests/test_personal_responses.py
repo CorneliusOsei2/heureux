@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from study.models import Card, CardType, PersonalResponse
+from study.routing import response_detail_url
 
 from . import factories
 
@@ -16,6 +17,7 @@ class PersonalResponseTests(TestCase):
         self.task = factories.make_task(self.part, "tache-3")
         self.theme = factories.make_theme("culture", task=self.task)
         self.response = factories.make_response(theme=self.theme)
+        self.prompt = self.response.prompts.get()
         self.owner_card = Card.objects.create(
             user=self.owner,
             card_type=CardType.SPINE,
@@ -28,7 +30,7 @@ class PersonalResponseTests(TestCase):
         )
         self.edit_url = reverse(
             "study:edit_response",
-            args=[self.response.pk],
+            args=[self.part.slug, self.task.slug, self.prompt.pk],
         )
         argument = self.response.arguments.get()
         self.payload = {
@@ -69,7 +71,7 @@ class PersonalResponseTests(TestCase):
 
         self.client.post(self.edit_url, self.payload)
         detail = self.client.get(
-            reverse("study:response_detail", args=[self.response.pk])
+            response_detail_url(self.response)
         )
 
         self.assertContains(
@@ -101,8 +103,7 @@ class PersonalResponseTests(TestCase):
 
         self.assertRedirects(
             result,
-            reverse("study:response_detail", args=[self.response.pk])
-            + "?saved=1",
+            response_detail_url(self.response) + "?saved=1",
             fetch_redirect_response=False,
         )
         personal = PersonalResponse.objects.get(
@@ -119,14 +120,14 @@ class PersonalResponseTests(TestCase):
         )
         self.assertEqual(self.response.prompt, original_prompt)
         self.assertEqual(self.response.position, original_position)
-        self.assertIsNotNone(self.owner_card.started_at)
+        self.assertIsNone(self.owner_card.started_at)
         self.assertIsNone(other_card.started_at)
 
     def test_personal_version_is_private_and_used_in_learning_and_review(self):
         self.client.post(self.edit_url, self.payload)
 
         detail = self.client.get(
-            reverse("study:response_detail", args=[self.response.pk])
+            response_detail_url(self.response)
         )
         review = self.client.get(
             reverse("study:review_next") + "?kind=spine"
@@ -140,7 +141,7 @@ class PersonalResponseTests(TestCase):
 
         self.client.force_login(self.other)
         other_detail = self.client.get(
-            reverse("study:response_detail", args=[self.response.pk])
+            response_detail_url(self.response)
         )
         other_review = self.client.get(
             reverse("study:review_next") + "?kind=spine"
@@ -157,8 +158,7 @@ class PersonalResponseTests(TestCase):
 
         self.assertRedirects(
             result,
-            reverse("study:response_detail", args=[self.response.pk])
-            + "?reset=1",
+            response_detail_url(self.response) + "?reset=1",
             fetch_redirect_response=False,
         )
         self.assertFalse(
@@ -169,7 +169,7 @@ class PersonalResponseTests(TestCase):
         )
         self.owner_card.refresh_from_db()
         self.assertEqual(self.owner_card.reps, 6)
-        self.assertIsNotNone(self.owner_card.started_at)
+        self.assertIsNone(self.owner_card.started_at)
 
     def test_editor_is_limited_to_expression_orale_tache_3(self):
         written_part = factories.make_part("ee")
@@ -179,9 +179,17 @@ class PersonalResponseTests(TestCase):
             task=written_task,
         )
         written_response = factories.make_response(theme=written_theme)
+        written_prompt = written_response.prompts.get()
 
         response = self.client.get(
-            reverse("study:edit_response", args=[written_response.pk])
+            reverse(
+                "study:edit_response",
+                args=[
+                    written_part.slug,
+                    written_task.slug,
+                    written_prompt.pk,
+                ],
+            )
         )
 
         self.assertEqual(response.status_code, 404)

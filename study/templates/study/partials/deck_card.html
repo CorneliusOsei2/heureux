@@ -7,10 +7,10 @@ Params:
   icon          — emoji / short code shown in the deck__icon tile.
   name          — deck title.
   due           — optional count; renders the pill pill--due badge when truthy.
-  stats         — progress object (mature / review_young / learning / total).
+  stats         — subject summary with a normalized progress object.
   count_prompts, count_responses — meta counts (available decks).
   show_phrases + count_phrases   — append "· N expressions".
-  show_mature + count_mature     — append "· N maîtrisée(s)".
+  show_complete + count_complete — append "· N terminé(s)".
   soon_meta     — meta line shown when not available (e.g. a task subtitle).
   extra_classes — optional extra class names on the <a>.
 {% endcomment %}
@@ -19,29 +19,28 @@ Params:
     <div class="deck__title">
       <span class="deck__icon">{{ icon }}</span>
       <span>{{ name }}</span>
-      {% if available %}
-        {% if stats.total and stats.mature == stats.total %}
-          <span class="progress-status progress-status--done">Maîtrisé</span>
-        {% elif stats.seen %}
-          <span class="progress-status progress-status--active">En cours</span>
-        {% else %}
-          <span class="progress-status progress-status--new">À commencer</span>
-        {% endif %}
-        {% if due %}<span class="deck__due pill pill--due">{{ due }}</span>{% endif %}
-      {% else %}
-        <span class="badge-soon">À venir</span>
-      {% endif %}
     </div>
     {% if available %}
-      <div class="deck__meta">{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_mature %} · {{ count_mature }} maîtrisée{{ count_mature|pluralize }}{% endif %}</div>
-      <div class="progress">
-        <span class="bg-mature" style="width: {% widthratio stats.mature stats.total 100 %}%;"></span>
-        <span class="bg-review" style="width: {% widthratio stats.review_young stats.total 100 %}%;"></span>
-        <span class="bg-learning" style="width: {% widthratio stats.learning stats.total 100 %}%;"></span>
-        <span class="bg-started" style="width: {% widthratio stats.started_new stats.total 100 %}%;"></span>
+      <div class="deck__meta">{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_complete %} · {{ count_complete }} terminé{{ count_complete|pluralize }}{% endif %}</div>
+      <div class="deck__progress-cell">
+        <span class="deck__progress-copy">{{ stats.completed }}/{{ stats.total }} terminés</span>
+        <div class="progress">
+          <span class="bg-mature" style="width: {% widthratio stats.completed stats.total 100 %}%;"></span>
+          <span class="bg-started" style="width: {% widthratio stats.started_new stats.total 100 %}%;"></span>
+        </div>
       </div>
     {% else %}
       <div class="deck__meta">{{ soon_meta }}</div>
+      <div class="deck__progress-cell deck__progress-cell--empty" aria-hidden="true">—</div>
     {% endif %}
+    <div class="deck__status-cell">
+      {% if available %}
+        <span class="progress-status progress-status--{{ stats.progress.status }}">{{ stats.progress.label }}</span>
+        {% if due %}<span class="deck__due pill pill--due" title="{{ due }} carte{{ due|pluralize }} disponible{{ due|pluralize }}">{{ due }}</span>{% endif %}
+      {% else %}
+        <span class="badge-soon">À venir</span>
+      {% endif %}
+      <span class="deck__row-arrow" aria-hidden="true">→</span>
+    </div>
   </div>
 </a>

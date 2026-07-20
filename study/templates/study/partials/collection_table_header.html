@@ -1,0 +1,11 @@
+{% comment %}
+Visual column labels for adaptive collections. Hidden in card mode and on small
+screens, where the same items return to their stacked layout.
+{% endcomment %}
+<div class="collection-table-header collection-table-header--{{ variant }}" data-collection-table-header aria-hidden="true">
+  <span>{{ column_1 }}</span>
+  {% if column_2 %}<span>{{ column_2 }}</span>{% endif %}
+  {% if column_3 %}<span>{{ column_3 }}</span>{% endif %}
+  {% if column_4 %}<span>{{ column_4 }}</span>{% endif %}
+  {% if column_5 %}<span>{{ column_5 }}</span>{% endif %}
+</div>

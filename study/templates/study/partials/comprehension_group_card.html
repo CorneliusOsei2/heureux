@@ -12,17 +12,28 @@ comprehension overview (written or oral). Params:
     <div class="deck__title">
       <span class="deck__icon">{{ group.number|stringformat:"02d" }}</span>
       <span>Groupe {{ group.number }}</span>
-      {% if group.available_count and group.completed_count >= group.available_count %}
-        <span class="progress-status progress-status--done">Terminé</span>
-      {% elif group.active_attempt or group.completed_count %}
+    </div>
+    <div class="deck__meta">Tests {{ group.start|stringformat:"02d" }}–{{ group.end|stringformat:"02d" }}</div>
+    <div class="deck__progress-cell">
+      {% if group.available_count %}
+        <span class="deck__progress-copy">{{ group.progress.completed }}/{{ group.progress.total }} disponibles terminés</span>
+        <div class="progress" aria-label="{{ group.progress.completed }} tests disponibles terminés sur {{ group.progress.total }}">
+          <span class="bg-mature" style="width: {{ group.progress.percent }}%;"></span>
+        </div>
+      {% elif group.completed_count %}
+        <span class="deck__progress-copy">{{ group.completed_count }} dans l’historique</span>
+      {% else %}
+        <span class="deck__progress-copy">Aucun test disponible</span>
+      {% endif %}
+    </div>
+    <div class="deck__status-cell">
+      {% if group.available_count %}
+        <span class="progress-status progress-status--{{ group.progress.status }}">{{ group.progress.label }}</span>
+      {% elif group.completed_count %}
         <span class="progress-status progress-status--active">En cours</span>
       {% else %}
         <span class="progress-status progress-status--new">À commencer</span>
       {% endif %}
-    </div>
-    <div class="deck__meta">Tests {{ group.start|stringformat:"02d" }}–{{ group.end|stringformat:"02d" }}</div>
-    <div class="progress" aria-label="{{ group.completed_count }} tests terminés sur 5">
-      <span class="bg-mature" style="width: {% widthratio group.completed_count 5 100 %}%;"></span>
     </div>
     <div class="ce-group-card__foot">
       {% if group.available_count %}
@@ -32,7 +43,7 @@ comprehension overview (written or oral). Params:
       {% else %}
         Contenu en préparation
       {% endif %}
-      <span aria-hidden="true">→</span>
+      <span class="deck__row-arrow" aria-hidden="true">→</span>
     </div>
   </div>
 </a>

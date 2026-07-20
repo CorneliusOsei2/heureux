@@ -5,19 +5,18 @@
   </div>
   <nav class="response-batches__list" aria-label="{% if batch_kind == "vocabulary" %}Lots de vocabulaire{% else %}Lots d’expressions{% endif %}">
     {% for batch in batches %}
-      {% if batch.can_review %}
-        <a
-          class="response-batch{% if forloop.first %} response-batch--featured{% endif %}"
-          href="{{ batch.review_url }}"
-          aria-label="Lot {{ batch.number }} · {% if batch_kind == "vocabulary" %}{{ batch.label }} · {{ batch.phrase_count }} vocabs{% else %}{{ batch.phrase_count }} expression{{ batch.phrase_count|pluralize }}{% endif %}">
-          <span class="response-batch__number" aria-hidden="true">{{ batch.number|stringformat:"02d" }}</span>
-          <span class="response-batch__copy">
-            <strong>{% if batch_kind == "vocabulary" %}{{ batch.label }}{% else %}Expressions liées{% endif %}</strong>
-            <small>Lot {{ batch.number }} · {{ batch.phrase_count }} {% if batch_kind == "vocabulary" %}vocabs{% else %}expression{{ batch.phrase_count|pluralize }}{% endif %}</small>
-          </span>
-          <span class="response-batch__arrow" aria-hidden="true">→</span>
-        </a>
-      {% endif %}
+      <a
+        class="response-batch{% if batch.is_next %} response-batch--featured{% else %} response-batch--{{ batch.progress_status }}{% if not batch.can_review %} response-batch--disabled{% endif %}{% endif %}"
+        data-progress-status="{{ batch.progress_status }}"
+        {% if batch.can_review %}href="{{ batch.review_url }}"{% else %}aria-disabled="true"{% endif %}
+        aria-label="Lot {{ batch.number }} · {% if batch_kind == "vocabulary" %}{{ batch.label }} · {{ batch.phrase_count }} vocabs{% else %}{{ batch.phrase_count }} expression{{ batch.phrase_count|pluralize }}{% endif %} · {{ batch.status_label }}">
+        <span class="response-batch__number" aria-hidden="true">{{ batch.number|stringformat:"02d" }}</span>
+        <span class="response-batch__copy">
+          <strong>{% if batch_kind == "vocabulary" %}{{ batch.label }}{% else %}Expressions liées{% endif %}</strong>
+          <small>Lot {{ batch.number }} · {{ batch.phrase_count }} {% if batch_kind == "vocabulary" %}vocabs{% else %}expression{{ batch.phrase_count|pluralize }}{% endif %} · {{ batch.status_label }}</small>
+        </span>
+        <span class="response-batch__arrow" aria-hidden="true">{% if batch.progress_status == "done" %}✓{% else %}→{% endif %}</span>
+      </a>
     {% endfor %}
   </nav>
 </div>

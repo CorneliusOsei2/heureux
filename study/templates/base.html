@@ -7,7 +7,7 @@
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=2"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=67">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=76">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -80,21 +80,21 @@
       <nav class="nav__links" id="primary-navigation" aria-label="Navigation principale" data-nav-links>
         <div class="nav__group nav__group--learn" role="group" aria-label="Apprendre">
           <span class="nav__section-label" aria-hidden="true">Apprendre</span>
-          <a href="{% url 'study:dashboard' %}" class="nav__primary-link{% if active_nav_area == 'home' %} is-active{% endif %}"{% if active_nav_area == 'home' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:dashboard' %}" class="nav__primary-link{% if active_nav_area == 'home' %} is-active{% endif %}"{% if active_nav_area == 'home' %} aria-current="page"{% endif %} data-nav-tone="home">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-home"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Accueil</span>
               <small aria-hidden="true">Vue d'ensemble</small>
             </span>
           </a>
-          <a href="{% url 'study:comprehension_hub' %}" class="nav__primary-link{% if active_nav_area == 'comprehension' %} is-active{% endif %}"{% if active_nav_area == 'comprehension' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:comprehension_hub' %}" class="nav__primary-link{% if active_nav_area == 'comprehension' %} is-active{% endif %}"{% if active_nav_area == 'comprehension' %} aria-current="page"{% endif %} data-nav-tone="comprehension">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-book"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Compréhension</span>
               <small aria-hidden="true">Lire et s'entraîner</small>
             </span>
           </a>
-          <a href="{% url 'study:expression' %}" class="nav__primary-link{% if active_nav_area == 'expression' %} is-active{% endif %}"{% if active_nav_area == 'expression' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:expression' %}" class="nav__primary-link{% if active_nav_area == 'expression' %} is-active{% endif %}"{% if active_nav_area == 'expression' %} aria-current="page"{% endif %} data-nav-tone="expression">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-review"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Expression</span>
@@ -105,21 +105,21 @@
 
         <div class="nav__group nav__group--tools" role="group" aria-label="Outils personnels">
           <span class="nav__section-label" aria-hidden="true">Mes outils</span>
-          <a href="{% url 'study:vocabulary' %}" class="nav__primary-link{% if active_nav_area == 'vocabulary' %} is-active{% endif %}"{% if active_nav_area == 'vocabulary' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:vocabulary' %}" class="nav__primary-link{% if active_nav_area == 'vocabulary' %} is-active{% endif %}"{% if active_nav_area == 'vocabulary' %} aria-current="page"{% endif %} data-nav-tone="vocabulary">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-expressions"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Vocabulaire</span>
               <small aria-hidden="true">Tous les mots et tournures</small>
             </span>
           </a>
-          <a href="{% url 'study:notes_overview' %}" class="nav__primary-link{% if active_nav_area == 'notes' %} is-active{% endif %}"{% if active_nav_area == 'notes' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:notes_overview' %}" class="nav__primary-link{% if active_nav_area == 'notes' %} is-active{% endif %}"{% if active_nav_area == 'notes' %} aria-current="page"{% endif %} data-nav-tone="notes">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-notes"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Notes</span>
               <small aria-hidden="true">Notes et surlignages</small>
             </span>
           </a>
-          <a href="{% url 'study:stats' %}" class="nav__primary-link{% if active_nav_area == 'stats' %} is-active{% endif %}"{% if active_nav_area == 'stats' %} aria-current="page"{% endif %}>
+          <a href="{% url 'study:stats' %}" class="nav__primary-link{% if active_nav_area == 'stats' %} is-active{% endif %}"{% if active_nav_area == 'stats' %} aria-current="page"{% endif %} data-nav-tone="stats">
             <span class="nav__item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#nav-icon-stats"></use></svg></span>
             <span class="nav__item-copy">
               <span class="nav__item-label">Stats</span>
@@ -179,6 +179,13 @@
         <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
       </svg>
       <span class="selection-translate__label" aria-live="polite" data-copy-selection-label>Copy</span>
+    </button>
+    <button class="selection-translate__button selection-translate__button--read" type="button" aria-label="Read selected text in French" aria-pressed="false" data-read-selection>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 10v4h4l5 4V6l-5 4z"></path>
+        <path d="M16 9.2a4 4 0 0 1 0 5.6M18.5 6.8a7.4 7.4 0 0 1 0 10.4"></path>
+      </svg>
+      <span class="selection-translate__label" aria-live="polite" data-read-selection-label>Read</span>
     </button>
     <button class="selection-translate__button selection-translate__button--translate" type="button" aria-label="Translate selected text to English" aria-controls="translation-panel" aria-haspopup="dialog" data-translate-selection>
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -251,9 +258,24 @@
       <p class="selection-note-panel__status" role="status" aria-live="polite" data-note-status></p>
     </div>
     <footer class="translation-panel__actions">
-      <a class="btn hidden" href="{% url 'study:notes_overview' %}" data-note-view>Voir mes notes</a>
-      <button class="btn" type="button" data-note-cancel>Annuler</button>
-      <button class="btn btn--primary" type="button" data-note-save>Enregistrer</button>
+      <a class="btn hidden" href="{% url 'study:notes_overview' %}" data-note-view>
+        <span class="btn__icon-badge btn__icon-badge--notes" aria-hidden="true">
+          <svg class="btn__icon" viewBox="0 0 24 24"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4"></path></svg>
+        </span>
+        Voir mes notes
+      </a>
+      <button class="btn" type="button" data-note-cancel>
+        <span class="btn__icon-badge btn__icon-badge--cancel" aria-hidden="true">
+          <svg class="btn__icon" viewBox="0 0 24 24"><path d="m8 8 8 8M16 8l-8 8"></path></svg>
+        </span>
+        Annuler
+      </button>
+      <button class="btn btn--primary" type="button" data-note-save>
+        <span class="btn__icon-badge btn__icon-badge--save" aria-hidden="true">
+          <svg class="btn__icon" viewBox="0 0 24 24"><path d="m7 12 3.2 3.2L17.5 8"></path></svg>
+        </span>
+        Enregistrer
+      </button>
     </footer>
   </section>
 
@@ -263,8 +285,8 @@
     <button class="btn btn--primary" type="button" data-pwa-update>Mettre à jour</button>
   </div>
 
-  <script src="{% static 'study/js/app.js' %}?v=31"></script>
-  <script src="{% static 'study/js/translate.js' %}?v=9"></script>
+  <script src="{% static 'study/js/app.js' %}?v=33"></script>
+  <script src="{% static 'study/js/translate.js' %}?v=11"></script>
   <script src="{% static 'study/js/annotations.js' %}?v=7"></script>
   {% block scripts %}{% endblock %}
 </body>

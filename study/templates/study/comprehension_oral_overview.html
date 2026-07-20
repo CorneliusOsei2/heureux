@@ -40,7 +40,8 @@
     <h2>Groupes</h2>
   </div>
 
-  <section class="grid grid--decks ce-group-grid" data-collection-view="adaptive" aria-label="Groupes de tests de compréhension orale">
+  <section class="grid grid--decks ce-group-grid collection-table collection-table--groups" data-collection-view="adaptive" aria-label="Groupes de tests de compréhension orale">
+    {% include "study/partials/collection_table_header.html" with variant="groups" column_1="Groupe" column_2="Tests" column_3="Progression" column_4="État" column_5="Accès" only %}
     {% for group in groups %}
       {% include "study/partials/comprehension_group_card.html" with group=group group_route="study:comprehension_oral_group" accent="var(--co-teal)" only %}
     {% endfor %}

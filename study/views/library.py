@@ -4,7 +4,7 @@ from __future__ import annotations
 
 
 from django.db.models import Count, Prefetch, Q
-from django.http import HttpResponseBadRequest
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -35,7 +35,20 @@ from ..models import (
     Theme,
 )
 from ..personalization import effective_response
-from ..progress import mark_response_started
+from ..progress import (
+    card_unit_progress,
+    combine_progress,
+    progress_summary,
+    subject_progress_by_response,
+    summarize_subject_progress,
+)
+from ..routing import (
+    comprehension_skill,
+    comprehension_vocabulary_url,
+    prompt_detail_url,
+    review_url,
+    vocabulary_url,
+)
 
 from .common import (
     FUNCTIONAL_PHRASE_CATEGORY_NAMES,
@@ -49,17 +62,48 @@ from .common import (
     current_streak,
     deck_stats,
     recent_review_sessions,
+    summarize_review_batches,
 )
 from .dashboard import _vocabulary_expression_paths
 
-def _spine_theme_stats(theme, now, user):
-    return deck_stats(
-        Card.objects.active().filter(
+def _subject_stats_for_themes(themes, user, now=None):
+    now = now or timezone.now()
+    response_ids_by_theme = {theme.pk: set() for theme in themes}
+    for theme_id, response_id in Prompt.objects.filter(
+        theme_id__in=response_ids_by_theme,
+        is_active=True,
+        response__is_active=True,
+    ).values_list("theme_id", "response_id"):
+        response_ids_by_theme[theme_id].add(response_id)
+    response_ids = {
+        response_id
+        for theme_response_ids in response_ids_by_theme.values()
+        for response_id in theme_response_ids
+    }
+    progress = subject_progress_by_response(user, response_ids)
+    due_response_ids = set(
+        Card.objects.active()
+        .filter(
             user=user,
-            card_type=CardType.SPINE, response__theme=theme
-        ),
-        now,
+            card_type=CardType.SPINE,
+            response_id__in=response_ids,
+            state__in={
+                CardState.LEARNING,
+                CardState.RELEARNING,
+                CardState.REVIEW,
+            },
+            due__lte=now,
+        )
+        .values_list("response_id", flat=True)
     )
+    stats = {}
+    for theme_id, theme_response_ids in response_ids_by_theme.items():
+        summary = summarize_subject_progress(
+            progress[response_id] for response_id in theme_response_ids
+        )
+        summary["due"] = len(theme_response_ids & due_response_ids)
+        stats[theme_id] = summary
+    return stats, progress, due_response_ids
 
 
 def _phrase_deck_stats(now, user=None, task=None):
@@ -118,12 +162,18 @@ def task_detail(request, part_slug, task_slug):
             {"part": task.part, "task": task},
         )
 
+    active_themes = list(Theme.objects.filter(task=task, is_active=True))
+    theme_stats, response_progress, due_response_ids = _subject_stats_for_themes(
+        active_themes,
+        request.user,
+        now,
+    )
     themes = []
-    for theme in Theme.objects.filter(task=task, is_active=True):
+    for theme in active_themes:
         themes.append(
             {
                 "theme": theme,
-                "stats": _spine_theme_stats(theme, now, request.user),
+                "stats": theme_stats[theme.pk],
                 "prompt_count": Prompt.objects.filter(
                     theme=theme,
                     is_active=True,
@@ -131,17 +181,14 @@ def task_detail(request, part_slug, task_slug):
             }
         )
     scope = _task_scope(task)
-    task_stats = deck_stats(_task_cards(task, request.user), now)
-    response_stats = deck_stats(
-        _task_cards(task, request.user, "spine"),
-        now,
-    )
+    response_stats = summarize_subject_progress(response_progress.values())
+    response_stats["due"] = len(due_response_ids)
     phrase_stats = _phrase_deck_stats(now, request.user, task)
     context = {
         "part": task.part,
         "task": task,
         "themes": themes,
-        "stats": task_stats,
+        "stats": response_stats,
         "response_stats": response_stats,
         "phrase_stats": phrase_stats,
         "counts": queue_module.queue_counts(
@@ -162,33 +209,26 @@ def task_detail(request, part_slug, task_slug):
     return render(request, "study/task_detail.html", context)
 
 
-def _scope_filters(request, forced_task=None):
-    """Shared part/task filter context for Browse and Stats.
+def _scope_filters(request, forced_task=None, forced_part_slug=None):
+    """Build canonical path-based part/task filters for progression pages."""
+    if "part" in request.GET or "task" in request.GET:
+        raise Http404
 
-    Parses ``?part=`` / ``?task=`` (a task implies its part), builds the chip
-    data with per-part/task card counts, and returns the effective scope so the
-    page can offer a scoped review.
-    """
-    part_slug = (request.GET.get("part") or "").strip()
-    task_slug = (request.GET.get("task") or "").strip()
     selected_task = forced_task
-    if forced_task:
+    selected_part = None
+    part_slug = ""
+    task_slug = ""
+    if selected_task:
         part_slug = forced_task.part.slug
         task_slug = forced_task.slug
-
-    if task_slug and not forced_task:
-        task_qs = Task.objects.select_related("part").filter(
-            slug=task_slug,
+        selected_part = forced_task.part
+    elif forced_part_slug:
+        selected_part = get_object_or_404(
+            ExamPart,
+            slug=forced_part_slug,
             is_active=True,
-            part__is_active=True,
         )
-        if part_slug:
-            task_qs = task_qs.filter(part__slug=part_slug)
-        selected_task = task_qs.first()
-        if selected_task:
-            part_slug = selected_task.part.slug
-        else:
-            task_slug = ""
+        part_slug = selected_part.slug
 
     active = Card.objects.active().filter(
         user=request.user,
@@ -196,7 +236,10 @@ def _scope_filters(request, forced_task=None):
     )
     filter_parts = []
     active_part_tasks = []
-    for part in ExamPart.objects.filter(is_active=True).prefetch_related(
+    for part in ExamPart.objects.filter(
+        is_active=True,
+        slug__in={"eo", "ee"},
+    ).prefetch_related(
         Prefetch("tasks", queryset=Task.objects.filter(is_active=True))
     ):
         filter_parts.append(
@@ -205,6 +248,7 @@ def _scope_filters(request, forced_task=None):
                 "short_name": part.short_name,
                 "count": active.filter(response__theme__task__part=part).count(),
                 "active": part_slug == part.slug,
+                "url": reverse("study:part_stats", args=[part.slug]),
             }
         )
         if part_slug == part.slug:
@@ -215,41 +259,44 @@ def _scope_filters(request, forced_task=None):
                         "name": task.name,
                         "count": active.filter(response__theme__task=task).count(),
                         "active": task_slug == task.slug,
+                        "url": reverse(
+                            "study:task_stats",
+                            args=[part.slug, task.slug],
+                        ),
                     }
                 )
 
     if task_slug:
         scope = {"part": part_slug, "task": task_slug}
-        review_qs = f"part={part_slug}&task={task_slug}"
     elif part_slug:
         scope = {"part": part_slug}
-        review_qs = f"part={part_slug}"
     else:
         scope = {}
-        review_qs = ""
 
     return {
-        "filter_base": request.path,
+        "filter_base": reverse("study:stats"),
         "filter_parts": filter_parts,
         "active_part": part_slug,
         "active_task": task_slug,
         "active_part_tasks": active_part_tasks,
-        "review_scope_qs": review_qs,
+        "active_part_url": (
+            reverse("study:part_stats", args=[part_slug])
+            if part_slug
+            else ""
+        ),
+        "scope_review_url": (
+            review_url({**scope, "kind": "spine"}) if scope else ""
+        ),
         "scope_label": scope_label(scope),
         "scope": scope,
         "task": selected_task,
-        "part": selected_task.part if selected_task else None,
+        "part": selected_part,
         "task_locked": forced_task is not None,
     }
 
 
 def browse(request, part_slug=None, task_slug=None):
-    now = timezone.now()
-    forced_task = (
-        _route_task(part_slug, task_slug)
-        if part_slug is not None and task_slug is not None
-        else None
-    )
+    forced_task = _route_task(part_slug, task_slug)
     if forced_task and not forced_task.available:
         return render(
             request,
@@ -268,19 +315,17 @@ def browse(request, part_slug=None, task_slug=None):
     elif scope.get("part"):
         theme_qs = theme_qs.filter(task__part__slug=scope["part"])
 
+    theme_rows = list(theme_qs)
+    theme_stats, response_progress, _due_response_ids = _subject_stats_for_themes(
+        theme_rows,
+        request.user,
+    )
     themes = []
-    for theme in theme_qs:
-        stats = deck_stats(
-            Card.objects.active().filter(
-                user=request.user,
-                card_type=CardType.SPINE, response__theme=theme
-            ),
-            now,
-        )
+    for theme in theme_rows:
         themes.append(
             {
                 "theme": theme,
-                "stats": stats,
+                "stats": theme_stats[theme.pk],
                 "prompt_count": Prompt.objects.filter(
                     theme=theme,
                     is_active=True,
@@ -299,13 +344,41 @@ def browse(request, part_slug=None, task_slug=None):
             prompts__is_active=True,
             prompts__theme__task__part__slug=scope["part"]
         )
-    families = family_qs.annotate(
-        n=Count(
-            "prompts",
-            filter=Q(prompts__is_active=True),
-            distinct=True,
+    families = list(
+        family_qs.annotate(
+            n=Count(
+                "prompts",
+                filter=Q(prompts__is_active=True),
+                distinct=True,
+            )
+        ).order_by("order")
+    )
+    response_ids_by_family = {family.pk: set() for family in families}
+    family_prompts = Prompt.objects.filter(
+        family_id__in=response_ids_by_family,
+        is_active=True,
+        response__is_active=True,
+        theme__is_active=True,
+    )
+    if scope.get("task"):
+        family_prompts = family_prompts.filter(
+            theme__task__slug=scope["task"],
+            theme__task__part__slug=scope["part"],
         )
-    ).order_by("order")
+    elif scope.get("part"):
+        family_prompts = family_prompts.filter(
+            theme__task__part__slug=scope["part"],
+        )
+    for family_id, response_id in family_prompts.values_list(
+        "family_id",
+        "response_id",
+    ):
+        response_ids_by_family[family_id].add(response_id)
+    for family in families:
+        family.progress = summarize_subject_progress(
+            response_progress[response_id]
+            for response_id in response_ids_by_family[family.pk]
+        )["progress"]
     prompt_qs = Prompt.objects.filter(is_active=True)
     response_qs = Response.objects.filter(is_active=True)
     phrase_qs = Phrase.objects.filter(is_active=True)
@@ -359,13 +432,14 @@ def _canonical_numbers_by_response(response_ids) -> dict:
     )
 
 
-def theme_detail(request, slug):
+def theme_detail(request, part_slug, task_slug, slug):
+    task = _route_task(part_slug, task_slug)
     theme = get_object_or_404(
         Theme.objects.select_related("task__part"),
         slug=slug,
+        task=task,
         is_active=True,
     )
-    now = timezone.now()
     prompts = list(
         Prompt.objects.filter(theme=theme, is_active=True)
         .select_related("response", "response__theme", "family")
@@ -374,94 +448,70 @@ def theme_detail(request, slug):
     canonical_numbers = _canonical_numbers_by_response(
         prompt.response_id for prompt in prompts
     )
-    spine_cards = {
-        card.response_id: card
-        for card in Card.objects.filter(
-            user=request.user,
-            card_type=CardType.SPINE, response__theme=theme
-        )
-    }
+    subject_progress = subject_progress_by_response(
+        request.user,
+        {prompt.response_id for prompt in prompts},
+    )
     rows = [
         {
             "prompt": prompt,
-            "card": spine_cards.get(prompt.response_id),
+            "progress": subject_progress[prompt.response_id],
             "is_alias": not prompt.is_canonical,
             "canonical_number": canonical_numbers.get(prompt.response_id),
         }
         for prompt in prompts
     ]
-    stats = deck_stats(
-        Card.objects.active().filter(
-            user=request.user,
-            card_type=CardType.SPINE, response__theme=theme
-        ),
-        now,
-    )
-    review_scope = {"kind": "spine", "theme": theme.slug}
-    if theme.task:
-        review_scope.update(
-            {
-                "part": theme.task.part.slug,
-                "task": theme.task.slug,
-            }
-        )
+    stats = summarize_subject_progress(subject_progress.values())
+    review_scope = {
+        "kind": "spine",
+        "part": task.part.slug,
+        "task": task.slug,
+        "theme": theme.slug,
+    }
     return render(
         request,
         "study/theme_detail.html",
         {
             "theme": theme,
-            "task": theme.task,
-            "part": theme.task.part if theme.task else None,
+            "task": task,
+            "part": task.part,
             "rows": rows,
             "stats": stats,
             "review_batches": _review_batches(review_scope, request.user),
+            "review_url": review_url(review_scope),
         },
     )
 
 
-def family_detail(
-    request,
-    slug,
-    part_slug=None,
-    task_slug=None,
-):
-    family = get_object_or_404(Family, slug=slug, is_active=True)
-    task = (
-        _route_task(part_slug, task_slug)
-        if part_slug is not None and task_slug is not None
-        else Task.objects.select_related("part")
-        .filter(
-            is_active=True,
-            themes__is_active=True,
-            themes__prompts__is_active=True,
-            themes__prompts__family=family,
-        )
-        .distinct()
-        .order_by("part__order", "order")
-        .first()
+def family_detail(request, part_slug, task_slug, slug):
+    task = _route_task(part_slug, task_slug)
+    family = get_object_or_404(
+        Family.objects.filter(
+            prompts__is_active=True,
+            prompts__theme__task=task,
+        ).distinct(),
+        slug=slug,
+        is_active=True,
     )
-    prompt_qs = Prompt.objects.filter(family=family, is_active=True)
-    if part_slug is not None and task_slug is not None:
-        prompt_qs = prompt_qs.filter(theme__task=task)
     prompts = list(
-        prompt_qs
+        Prompt.objects.filter(
+            family=family,
+            theme__task=task,
+            is_active=True,
+        )
         .select_related("response", "theme", "family")
         .order_by("theme__order", "number")
     )
     response_ids = [prompt.response_id for prompt in prompts]
     canonical_numbers = _canonical_numbers_by_response(response_ids)
-    spine_cards = {
-        card.response_id: card
-        for card in Card.objects.filter(
-            user=request.user,
-            card_type=CardType.SPINE,
-            response_id__in=response_ids,
-        )
-    }
+    subject_progress = subject_progress_by_response(
+        request.user,
+        response_ids,
+    )
     rows = [
         {
             "prompt": prompt,
-            "card": spine_cards.get(prompt.response_id),
+            "progress": subject_progress[prompt.response_id],
             "is_alias": not prompt.is_canonical,
             "canonical_number": canonical_numbers.get(prompt.response_id),
         }
@@ -473,21 +523,44 @@ def family_detail(
         {
             "family": family,
             "task": task,
-            "part": task.part if task else None,
+            "part": task.part,
             "rows": rows,
+            "family_progress": summarize_subject_progress(
+                subject_progress.values()
+            )["progress"],
+            "review_url": review_url(
+                {
+                    "kind": "spine",
+                    "part": task.part.slug,
+                    "task": task.slug,
+                    "family": family.slug,
+                }
+            ),
         },
     )
 
 
-def response_detail(request, pk):
-    response = get_object_or_404(
-        Response.objects.select_related(
+def response_detail(request, part_slug, task_slug, prompt_id):
+    task = _route_task(part_slug, task_slug)
+    selected_prompt = get_object_or_404(
+        Prompt.objects.select_related(
+            "response__theme__task__part",
+            "response__family",
             "theme__task__part",
             "family",
         ),
-        pk=pk,
+        pk=prompt_id,
+        is_active=True,
+        response__is_active=True,
+        theme__is_active=True,
+        theme__task=task,
     )
+    response = selected_prompt.response
     response_content = effective_response(response, request.user)
+    subject_progress = subject_progress_by_response(
+        request.user,
+        {response.pk},
+    )[response.pk]
     prompts = list(
         response.prompts.filter(
             is_active=True,
@@ -497,25 +570,6 @@ def response_detail(request, pk):
             "family",
         )
     )
-    prompt_id = (request.GET.get("prompt") or "").strip()
-    if prompt_id:
-        if not prompt_id.isdigit():
-            return HttpResponseBadRequest("Invalid prompt.")
-        selected_prompt = next(
-            (prompt for prompt in prompts if prompt.pk == int(prompt_id)),
-            None,
-        )
-        if selected_prompt is None:
-            return HttpResponseBadRequest(
-                "Prompt does not belong to this response."
-            )
-    else:
-        selected_prompt = next(
-            (prompt for prompt in prompts if prompt.is_canonical),
-            prompts[0] if prompts else None,
-        )
-    if selected_prompt is None:
-        return HttpResponseBadRequest("Response has no active prompt.")
 
     navigation_prompts = Prompt.objects.filter(
         is_active=True,
@@ -553,10 +607,16 @@ def response_detail(request, pk):
         .distinct()
         .select_related("category")
     )
+    task_scope = {"part": task.part.slug, "task": task.slug}
     phrase_batches = _review_batches(
-        {"kind": "phrase", "response": str(response.pk)},
+        {
+            **task_scope,
+            "kind": "phrase",
+            "response": str(response.pk),
+        },
         request.user,
     )
+    phrase_batch_progress = summarize_review_batches(phrase_batches)
     subject_vocabulary = (
         Phrase.objects.filter(
             source_prompts__response=response,
@@ -569,9 +629,14 @@ def response_detail(request, pk):
     )
     vocabulary_count = subject_vocabulary.count()
     vocabulary_batches = _review_batches(
-        {"kind": "vocab", "response": str(response.pk)},
+        {
+            **task_scope,
+            "kind": "vocab",
+            "response": str(response.pk),
+        },
         request.user,
     )
+    vocabulary_batch_progress = summarize_review_batches(vocabulary_batches)
     vocabulary_lot_labels = (
         "Mots clés",
         "Collocations",
@@ -595,21 +660,20 @@ def response_detail(request, pk):
             "next_prompt": next_prompt,
             "prompt_position": prompt_index + 1,
             "prompt_total": len(navigation_prompts),
-            "task": selected_prompt.theme.task,
-            "part": (
-                selected_prompt.theme.task.part
-                if selected_prompt.theme.task
-                else None
-            ),
+            "task": task,
+            "part": task.part,
             "response_content": response_content,
             "arguments": response_content.arguments,
             "prompts": prompts,
             "card": card,
+            "subject_progress": subject_progress,
             "related_phrases": related_phrases,
             "phrase_batches": phrase_batches,
+            "phrase_batch_progress": phrase_batch_progress,
             "subject_vocabulary": list(subject_vocabulary[:10]),
             "vocabulary_count": vocabulary_count,
             "vocabulary_batches": vocabulary_batches,
+            "vocabulary_batch_progress": vocabulary_batch_progress,
             "vocabulary_review_url": (
                 first_vocabulary_batch["review_url"]
                 if first_vocabulary_batch
@@ -620,25 +684,46 @@ def response_detail(request, pk):
                 theme__task__slug="tache-3",
                 theme__task__part__slug="eo",
             ).exists(),
+            "response_review_url": review_url(
+                {
+                    **task_scope,
+                    "kind": "spine",
+                    "response": str(response.pk),
+                }
+            ),
+            "theme_review_url": review_url(
+                {
+                    **task_scope,
+                    "kind": "spine",
+                    "theme": selected_prompt.theme.slug,
+                }
+            ),
             "personal_saved": request.GET.get("saved") == "1",
             "personal_reset": request.GET.get("reset") == "1",
         },
     )
 
 
-def edit_response(request, pk):
-    response = get_object_or_404(
-        Response.objects.filter(
+def edit_response(request, part_slug, task_slug, prompt_id):
+    task = _route_task(part_slug, task_slug)
+    selected_prompt = get_object_or_404(
+        Prompt.objects.filter(
+            pk=prompt_id,
             is_active=True,
-            prompts__is_active=True,
-            prompts__theme__task__slug="tache-3",
-            prompts__theme__task__part__slug="eo",
+            response__is_active=True,
+            theme__is_active=True,
+            theme__task=task,
+            theme__task__slug="tache-3",
+            theme__task__part__slug="eo",
         )
-        .select_related("theme__task__part", "family")
-        .prefetch_related("arguments")
-        .distinct(),
-        pk=pk,
+        .select_related(
+            "response__theme__task__part",
+            "response__family",
+            "theme__task__part",
+            "family",
+        )
     )
+    response = selected_prompt.response
     personal = PersonalResponse.objects.filter(
         user=request.user,
         response=response,
@@ -646,9 +731,7 @@ def edit_response(request, pk):
     if request.method == "POST" and request.POST.get("action") == "reset":
         if personal is not None:
             personal.delete()
-        return redirect(
-            reverse("study:response_detail", args=[response.pk]) + "?reset=1"
-        )
+        return redirect(f"{prompt_detail_url(selected_prompt)}?reset=1")
 
     form = PersonalResponseForm(
         response,
@@ -661,10 +744,7 @@ def edit_response(request, pk):
             response=response,
             defaults=form.personal_defaults(),
         )
-        mark_response_started(request.user, {response.pk})
-        return redirect(
-            reverse("study:response_detail", args=[response.pk]) + "?saved=1"
-        )
+        return redirect(f"{prompt_detail_url(selected_prompt)}?saved=1")
 
     argument_fields = []
     for order in form.argument_orders:
@@ -682,8 +762,9 @@ def edit_response(request, pk):
         "study/response_edit.html",
         {
             "response": response,
-            "task": response.theme.task,
-            "part": response.theme.task.part,
+            "selected_prompt": selected_prompt,
+            "task": task,
+            "part": task.part,
             "form": form,
             "argument_fields": argument_fields,
             "has_personal_response": personal is not None,
@@ -691,21 +772,29 @@ def edit_response(request, pk):
     )
 
 
-def phrases(request, part_slug=None, task_slug=None):
-    part_slug = part_slug or (request.GET.get("part") or "").strip()
-    task_slug = task_slug or (request.GET.get("task") or "").strip()
-    vocabulary_domain = (request.GET.get("domain") or "").strip()
-    vocabulary_mode = (request.GET.get("mode") or "").strip()
+def phrases(
+    request,
+    part_slug=None,
+    task_slug=None,
+    category_slug=None,
+    comprehension_mode=None,
+    test_slug=None,
+):
+    legacy_scope_keys = {"part", "task", "domain", "mode", "category", "test"}
+    if legacy_scope_keys.intersection(request.GET):
+        raise Http404
     if bool(part_slug) != bool(task_slug):
-        return HttpResponseBadRequest("Choose both a part and a task.")
-    if vocabulary_domain not in {"", "comprehension"}:
-        return HttpResponseBadRequest("Unknown vocabulary domain.")
-    if vocabulary_mode not in {"", "ce"}:
-        return HttpResponseBadRequest("Unknown vocabulary mode.")
-    if vocabulary_mode and vocabulary_domain != "comprehension":
-        return HttpResponseBadRequest(
-            "A vocabulary mode requires a domain."
-        )
+        raise Http404
+    if comprehension_mode not in {
+        None,
+        ComprehensionMode.ECRITE,
+        ComprehensionMode.ORALE,
+    }:
+        raise Http404
+    if comprehension_mode and (task_slug or category_slug):
+        raise Http404
+    if test_slug and not comprehension_mode:
+        raise Http404
     task = (
         _route_task(part_slug, task_slug)
         if part_slug and task_slug
@@ -736,18 +825,8 @@ def phrases(request, part_slug=None, task_slug=None):
             "réutilisables."
         ),
     }
-    category_slug = request.GET.get("category", "").strip()
-    test_slug = request.GET.get("test", "").strip()
-    if vocabulary_domain and (
-        task or category_slug or test_slug
-    ):
-        return HttpResponseBadRequest(
-            "Choose either a vocabulary domain or a deck."
-        )
     if category_slug and test_slug:
-        return HttpResponseBadRequest(
-            "Choose either a category or a comprehension test."
-        )
+        raise Http404
     selected = None
     selected_test = None
     all_phrases = (
@@ -756,7 +835,7 @@ def phrases(request, part_slug=None, task_slug=None):
             tier=PhraseTier.SHARED,
         )
         .select_related("category")
-        .prefetch_related("source_prompts__theme")
+        .prefetch_related("source_prompts__theme__task__part")
     )
     if task:
         all_phrases = all_phrases.filter(
@@ -795,6 +874,16 @@ def phrases(request, part_slug=None, task_slug=None):
             category.name,
             "Expressions réutilisables dans plusieurs réponses.",
         )
+        category.url = vocabulary_url(task=task, category=category)
+        if category.is_functional:
+            category.review_batches = _review_batches(
+                {**phrase_scope, "category": category.slug},
+                request.user,
+            )
+            category.progress = summarize_review_batches(
+                category.review_batches
+            )
+            category.completed_batch_count = category.progress.completed
 
     phrase_qs = all_phrases.none()
     if category_slug:
@@ -807,13 +896,13 @@ def phrases(request, part_slug=None, task_slug=None):
             None,
         )
         if selected is None:
-            return HttpResponseBadRequest("Unknown phrase category.")
+            raise Http404
         phrase_qs = all_phrases.filter(category=selected)
     elif test_slug:
         selected_test = get_object_or_404(
             ComprehensionTest,
             slug=test_slug,
-            mode=ComprehensionMode.ECRITE,
+            mode=comprehension_mode,
             is_active=True,
             is_published=True,
         )
@@ -840,10 +929,12 @@ def phrases(request, part_slug=None, task_slug=None):
                 "phrases": list(phrase_qs),
             }
         )
-        review_batches = _review_batches(
-            {**phrase_scope, "category": selected.slug},
-            request.user,
-        )
+        review_batches = getattr(selected, "review_batches", None)
+        if review_batches is None:
+            review_batches = _review_batches(
+                {**phrase_scope, "category": selected.slug},
+                request.user,
+            )
         first_review_batch = next(
             (batch for batch in review_batches if batch["can_review"]),
             None,
@@ -873,7 +964,12 @@ def phrases(request, part_slug=None, task_slug=None):
         for category in categories
         if category.is_functional
     ]
-    comprehension_directory = vocabulary_domain == "comprehension"
+    collection_progress = (
+        summarize_review_batches(review_batches)
+        if review_batches
+        else None
+    )
+    comprehension_directory = comprehension_mode is not None
     vocabulary_landing = not (
         selected
         or selected_test
@@ -885,15 +981,16 @@ def phrases(request, part_slug=None, task_slug=None):
     subject_response_count = 0
     subject_vocabulary_count = 0
     comprehension_decks = []
+    comprehension_vocabulary_paths = []
     comprehension_vocabulary_count = 0
-    if not selected and not selected_test:
+    if not selected and not selected_test and not comprehension_directory:
         subject_prompts = (
             Prompt.objects.filter(
                 is_active=True,
                 response__is_active=True,
                 theme__is_active=True,
             )
-            .select_related("theme", "family", "response")
+            .select_related("theme__task__part", "family", "response")
             .annotate(
                 vocabulary_count=Count(
                     "phrases",
@@ -924,23 +1021,30 @@ def phrases(request, part_slug=None, task_slug=None):
         subject_response_ids = {
             prompt.response_id for prompt in subject_prompts
         }
-        subject_progress_cards = {
-            card.response_id: card
-            for card in Card.objects.filter(
-                user=request.user,
-                card_type=CardType.SPINE,
-                response_id__in=subject_response_ids,
-            )
-        }
+        subject_progress = subject_progress_by_response(
+            request.user,
+            subject_response_ids,
+        )
         current_group = None
         for prompt in subject_prompts:
+            prompt.detail_url = prompt_detail_url(prompt)
+            prompt.review_url = review_url(
+                {
+                    "part": prompt.theme.task.part.slug,
+                    "task": prompt.theme.task.slug,
+                    "kind": "vocab",
+                    "response": str(prompt.response_id),
+                    "batch": "1",
+                }
+            )
             prompt.vocabulary_batch_count = (
                 prompt.vocabulary_count
                 + queue_module.PHRASE_BATCH_SIZE
                 - 1
             ) // queue_module.PHRASE_BATCH_SIZE
-            prompt.progress_card = subject_progress_cards.get(
-                prompt.response_id
+            prompt.subject_progress = subject_progress[prompt.response_id]
+            prompt.vocabulary_progress = (
+                prompt.subject_progress.vocabulary_progress
             )
             if (
                 current_group is None
@@ -950,18 +1054,32 @@ def phrases(request, part_slug=None, task_slug=None):
                     "theme": prompt.theme,
                     "prompts": [],
                     "response_ids": set(),
+                    "response_progress": {},
                 }
                 subject_theme_groups.append(current_group)
             current_group["prompts"].append(prompt)
             current_group["response_ids"].add(prompt.response_id)
+            current_group["response_progress"][prompt.response_id] = (
+                prompt.vocabulary_progress
+            )
         for group in subject_theme_groups:
             group["deck_count"] = len(group.pop("response_ids"))
+            response_progress = list(group.pop("response_progress").values())
+            group["progress"] = progress_summary(
+                total=len(response_progress),
+                started=sum(
+                    item.status != "new" for item in response_progress
+                ),
+                completed=sum(
+                    item.status == "done" for item in response_progress
+                ),
+            )
         subject_response_count = len(subject_response_ids)
         subject_vocabulary_count = subject_vocabulary.distinct().count()
 
+    if vocabulary_landing or comprehension_directory:
         tests = (
             ComprehensionTest.objects.filter(
-                mode=ComprehensionMode.ECRITE,
                 is_active=True,
                 is_published=True,
             )
@@ -976,32 +1094,67 @@ def phrases(request, part_slug=None, task_slug=None):
                 )
             )
             .filter(vocabulary_count__gt=0)
-            .order_by("number")
+            .order_by("mode", "number")
         )
+        if comprehension_mode:
+            tests = tests.filter(mode=comprehension_mode)
         for test in tests:
             deck_scope = {"kind": "vocab", "test": test.slug}
             cards = queue_module.scoped_cards(
                 deck_scope,
                 user=request.user,
             )
+            batches = _review_batches(deck_scope, request.user)
+            deck_progress = card_unit_progress(cards)
             comprehension_decks.append(
                 {
                     "test": test,
                     "vocabulary_count": test.vocabulary_count,
-                    "batch_count": (
-                        test.vocabulary_count
-                        + queue_module.PHRASE_BATCH_SIZE
-                        - 1
-                    )
-                    // queue_module.PHRASE_BATCH_SIZE,
+                    "batch_count": len(batches),
+                    "completed_batch_count": sum(
+                        batch["status"] == "complete"
+                        for batch in batches
+                    ),
+                    "progress": deck_progress,
                     "stats": deck_stats(cards, timezone.now()),
                     "counts": queue_module.queue_counts(
                         deck_scope,
                         user=request.user,
                     ),
+                    "skill_code": comprehension_skill(test.mode),
+                    "detail_url": comprehension_vocabulary_url(test=test),
+                    "review_url": review_url(
+                        {**deck_scope, "batch": "1"}
+                    ),
                 }
             )
             comprehension_vocabulary_count += test.vocabulary_count
+        if vocabulary_landing:
+            for mode, code, title in (
+                (ComprehensionMode.ECRITE, "ce", "Écrite"),
+                (ComprehensionMode.ORALE, "co", "Orale"),
+            ):
+                mode_decks = [
+                    deck
+                    for deck in comprehension_decks
+                    if deck["test"].mode == mode
+                ]
+                mode_progress = combine_progress(
+                    deck["progress"] for deck in mode_decks
+                )
+                comprehension_vocabulary_paths.append(
+                    {
+                        "code": code,
+                        "title": title,
+                        "available": bool(mode_decks),
+                        "url": comprehension_vocabulary_url(mode=mode),
+                        "test_count": len(mode_decks),
+                        "entry_count": sum(
+                            deck["vocabulary_count"] for deck in mode_decks
+                        ),
+                        "progress": mode_progress,
+                    }
+                )
 
     expression_vocabulary_paths = (
         _vocabulary_expression_paths(timezone.now(), request.user)
@@ -1026,6 +1179,20 @@ def phrases(request, part_slug=None, task_slug=None):
         {"kind": "weak", "content": "vocabulary"},
         user=request.user,
     )["weak_total"]
+    selected_review_url = ""
+    if selected_test:
+        selected_review_url = review_url(
+            {"kind": "vocab", "test": selected_test.slug}
+        )
+    elif selected:
+        selected_review_url = review_url(
+            {**phrase_scope, "category": selected.slug}
+        )
+    vocabulary_root_url = (
+        comprehension_vocabulary_url(mode=selected_test.mode)
+        if selected_test
+        else vocabulary_url(task=task)
+    )
 
     return render(
         request,
@@ -1037,7 +1204,14 @@ def phrases(request, part_slug=None, task_slug=None):
             "functional_categories": functional_categories,
             "vocabulary_landing": vocabulary_landing,
             "comprehension_directory": comprehension_directory,
+            "comprehension_mode": comprehension_mode,
+            "comprehension_skill_code": (
+                comprehension_skill(comprehension_mode)
+                if comprehension_mode
+                else ""
+            ),
             "expression_vocabulary_paths": expression_vocabulary_paths,
+            "comprehension_vocabulary_paths": comprehension_vocabulary_paths,
             "functional_phrase_count": sum(
                 category.phrase_count
                 for category in functional_categories
@@ -1064,10 +1238,13 @@ def phrases(request, part_slug=None, task_slug=None):
             "vocabulary_weak_count": vocabulary_weak_count,
             "grouped": grouped,
             "review_batches": review_batches,
+            "collection_progress": collection_progress,
             "first_review_batch": first_review_batch,
             "batch_size": queue_module.PHRASE_BATCH_SIZE,
             "selected": selected,
             "selected_test": selected_test,
+            "selected_review_url": selected_review_url,
+            "vocabulary_root_url": vocabulary_root_url,
             "phrase_count": (
                 selected.phrase_count
                 if selected
@@ -1085,8 +1262,10 @@ def phrases(request, part_slug=None, task_slug=None):
 
 
 def search(request, part_slug=None, task_slug=None):
-    part_slug = part_slug or (request.GET.get("part") or "").strip()
-    task_slug = task_slug or (request.GET.get("task") or "").strip()
+    if "part" in request.GET or "task" in request.GET:
+        raise Http404
+    if bool(part_slug) != bool(task_slug):
+        raise Http404
     task = (
         _route_task(part_slug, task_slug)
         if part_slug and task_slug
@@ -1120,23 +1299,15 @@ def search(request, part_slug=None, task_slug=None):
         phrase_result_count = phrase_qs.count()
         prompt_results = list(
             prompt_qs
-            .select_related("response", "theme", "family")
+            .select_related("response", "theme__task__part", "family")
             .order_by("theme__order", "number")[:result_limit]
         )
-        prompt_progress_cards = {
-            card.response_id: card
-            for card in Card.objects.filter(
-                user=request.user,
-                card_type=CardType.SPINE,
-                response_id__in={
-                    prompt.response_id for prompt in prompt_results
-                },
-            )
-        }
+        prompt_progress = subject_progress_by_response(
+            request.user,
+            {prompt.response_id for prompt in prompt_results},
+        )
         for prompt in prompt_results:
-            prompt.progress_card = prompt_progress_cards.get(
-                prompt.response_id
-            )
+            prompt.subject_progress = prompt_progress[prompt.response_id]
         phrase_results = list(
             phrase_qs
             .select_related("category")
@@ -1181,6 +1352,7 @@ def search(request, part_slug=None, task_slug=None):
         {
             "part": task.part if task else None,
             "task": task,
+            "search_url": request.path,
             "query": query,
             "prompt_results": prompt_results,
             "phrase_results": phrase_results,
@@ -1231,12 +1403,18 @@ def _stats_scope_cards(scope, user):
 def stats(request, part_slug=None, task_slug=None):
     now = timezone.now()
     today = timezone.localtime(now).date()
+    if bool(task_slug) and not part_slug:
+        raise Http404
     forced_task = (
         _route_task(part_slug, task_slug)
         if part_slug is not None and task_slug is not None
         else None
     )
-    filters = _scope_filters(request, forced_task)
+    filters = _scope_filters(
+        request,
+        forced_task,
+        forced_part_slug=part_slug if forced_task is None else None,
+    )
     scope = filters["scope"]
 
     scoped_history_cards = _stats_scope_cards(scope, request.user)
@@ -1300,7 +1478,10 @@ def stats(request, part_slug=None, task_slug=None):
         else 0
     )
 
-    theme_qs = Theme.objects.select_related("task__part").filter(is_active=True)
+    theme_qs = Theme.objects.select_related("task__part").filter(
+        is_active=True,
+        task__isnull=False,
+    )
     if scope.get("task"):
         theme_qs = theme_qs.filter(
             task__slug=scope["task"],
@@ -1317,6 +1498,14 @@ def stats(request, part_slug=None, task_slug=None):
                     card_type=CardType.SPINE, response__theme=theme
                 ),
                 now,
+            ),
+            "review_url": review_url(
+                {
+                    "kind": "spine",
+                    "part": theme.task.part.slug,
+                    "task": theme.task.slug,
+                    "theme": theme.slug,
+                }
             ),
         }
         for theme in theme_qs
@@ -1354,6 +1543,12 @@ def stats(request, part_slug=None, task_slug=None):
             now,
             user=request.user,
         )["weak_total"],
+        "expression_weak_url": review_url(
+            {**scope, "kind": "weak", "content": "spine"}
+        ),
+        "vocabulary_weak_url": review_url(
+            {**scope, "kind": "weak", "content": "vocabulary"}
+        ),
         **filters,
     }
     return render(request, "study/stats.html", context)

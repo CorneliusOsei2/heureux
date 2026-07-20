@@ -11,20 +11,20 @@
   <div class="task-hero__numbers" aria-label="Contenu de la tâche">
     <span><b>{{ prompt_count }}</b> sujets</span>
     <span><b>{{ response_stats.total }}</b> réponses</span>
-    <span><b>{{ response_stats.mature }}</b> maîtrisées</span>
+    <span><b>{{ response_stats.completed }}</b> terminés</span>
   </div>
 </header>
 
 <nav class="task-deep-links card" aria-label="Outils associés à {{ task.name }}">
-  <a href="{% url 'study:vocabulary' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+  <a href="{% url 'study:task_phrases' part.slug task.slug %}">
     <span>Vocabulaire</span>
     <small>Expressions et 50 vocabs par sujet</small>
   </a>
-  <a href="{% url 'study:notes_overview' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+  <a href="{% url 'study:task_notes' part.slug task.slug %}">
     <span>Notes</span>
     <small>Notes et surlignages de cette tâche</small>
   </a>
-  <a href="{% url 'study:stats' %}?part={{ part.slug }}&amp;task={{ task.slug }}">
+  <a href="{% url 'study:task_stats' part.slug task.slug %}">
     <span>Progression</span>
     <small>Maîtrise et historique filtrés</small>
   </a>
@@ -40,10 +40,11 @@
   {% if themes %}
     {% include "study/partials/collection_view_toggle.html" %}
   {% endif %}
-  <div class="grid grid--decks" data-collection-view="adaptive">
+  <div class="grid grid--decks collection-table collection-table--decks" data-collection-view="adaptive">
+    {% include "study/partials/collection_table_header.html" with variant="decks" column_1="Thème" column_2="Contenu" column_3="Progression" column_4="État" only %}
     {% for item in themes %}
-      {% url 'study:theme_detail' item.theme.slug as theme_url %}
-      {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_mature=True count_mature=item.stats.mature only %}
+      {% url 'study:theme_detail' part.slug task.slug item.theme.slug as theme_url %}
+      {% include "study/partials/deck_card.html" with url=theme_url available=True color=item.theme.color icon=item.theme.emoji name=item.theme.display_name due=item.stats.due stats=item.stats count_prompts=item.prompt_count count_responses=item.stats.total show_complete=True count_complete=item.stats.completed only %}
     {% endfor %}
   </div>
 </section>

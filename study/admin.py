@@ -146,6 +146,7 @@ class CardAdmin(admin.ModelAdmin):
         "card_type",
         "state",
         "started_at",
+        "response_practice_started_at",
         "due",
         "interval_days",
         "ease",

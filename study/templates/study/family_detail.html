@@ -4,21 +4,25 @@
 {% block content %}
 {% include "study/_task_nav.html" %}
 <div class="page-head">
-  <p class="eyebrow">{% if task %}<a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>{% else %}<a href="{% url 'study:browse' %}">Parcourir</a>{% endif %} · Famille de sujets</p>
+  <p class="eyebrow"><a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a> · Famille de sujets</p>
   <div class="row between">
     <h1 style="margin-bottom:0;">{{ family.name }}</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;family={{ family.slug }}">Réviser cette famille</a>
+    <div class="row">
+      <span class="progress-status progress-status--{{ family_progress.status }}">{{ family_progress.label }}</span>
+      <a class="btn btn--primary" href="{{ review_url }}">Réviser cette famille</a>
+    </div>
   </div>
-  <p>{{ rows|length }} sujet{{ rows|length|pluralize }} à travers les thèmes.</p>
+  <p>{{ rows|length }} sujet{{ rows|length|pluralize }} à travers les thèmes · {{ family_progress.completed }}/{{ family_progress.total }} terminés.</p>
 </div>
 
 {% if rows %}
   {% include "study/partials/collection_view_toggle.html" %}
 {% endif %}
 
-<div class="qlist" data-collection-view="adaptive">
+<div class="qlist collection-table collection-table--subjects" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="subjects" column_1="Repère" column_2="Sujet" column_3="Progression" only %}
   {% for row in rows %}
-    <a class="qrow" data-collection-item href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
+    <a class="qrow" data-collection-item href="{% url 'study:response_detail' part.slug task.slug row.prompt.pk %}">
       <span class="qrow__num qrow__num--tag">
         <span class="chip chip--theme" style="--chip: {{ row.prompt.theme.color }};">{{ row.prompt.theme.emoji }} P{{ row.prompt.number }}</span>
       </span>
@@ -27,7 +31,7 @@
         {% if row.is_alias %}<span class="alias-tag" title="Réponse partagée">= {{ row.prompt.response.theme.display_name }} P{{ row.canonical_number }}</span>{% endif %}
       </span>
       <span class="qrow__meta qrow__meta--state">
-        {% if row.card %}<span class="progress-status progress-status--{{ row.card.progress_status }}">{{ row.card.progress_label }}</span>{% endif %}
+        <span class="progress-status progress-status--{{ row.progress.status }}">{{ row.progress.label }}</span>
       </span>
     </a>
   {% endfor %}

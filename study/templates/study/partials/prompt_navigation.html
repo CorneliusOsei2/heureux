@@ -1,7 +1,7 @@
 <nav class="prompt-nav{% if bottom %} prompt-nav--bottom{% endif %}" aria-label="Navigation entre les sujets">
   <div class="prompt-nav__item">
     {% if previous_prompt %}
-      <a class="prompt-nav__link" href="{% url 'study:response_detail' previous_prompt.response_id %}?prompt={{ previous_prompt.pk }}" rel="prev">
+      <a class="prompt-nav__link" href="{% url 'study:response_detail' previous_prompt.theme.task.part.slug previous_prompt.theme.task.slug previous_prompt.pk %}" rel="prev">
         <span class="prompt-nav__direction">← Sujet précédent</span>
         <span class="prompt-nav__label">{{ previous_prompt.theme.display_name }} · P{{ previous_prompt.number }}</span>
       </a>
@@ -12,7 +12,7 @@
 
   <div class="prompt-nav__item prompt-nav__item--next">
     {% if next_prompt %}
-      <a class="prompt-nav__link prompt-nav__link--next" href="{% url 'study:response_detail' next_prompt.response_id %}?prompt={{ next_prompt.pk }}" rel="next">
+      <a class="prompt-nav__link prompt-nav__link--next" href="{% url 'study:response_detail' next_prompt.theme.task.part.slug next_prompt.theme.task.slug next_prompt.pk %}" rel="next">
         <span class="prompt-nav__direction">Sujet suivant →</span>
         <span class="prompt-nav__label">{{ next_prompt.theme.display_name }} · P{{ next_prompt.number }}</span>
       </a>

@@ -5,13 +5,13 @@ from __future__ import annotations
 import json
 import re
 from datetime import timedelta
-from urllib.parse import parse_qs, urlencode, urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.utils import IntegrityError
 from django.db.models import Count, Q
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import Http404, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -24,9 +24,10 @@ from ..forms import (
 from ..models import (
     Annotation,
     AnnotationKind,
+    Prompt,
     Task,
 )
-from ..progress import mark_annotation_subject_started
+from ..routing import prompt_detail_url
 
 from .common import _route_task
 
@@ -37,6 +38,10 @@ MAX_ANNOTATION_BODY_LENGTH = 20000
 
 
 ANNOTATION_SOURCE_KEY_RE = re.compile(r"^[A-Za-z0-9:._-]{0,200}$")
+SUBJECT_SOURCE_PATH_RE = re.compile(
+    r"^/(?P<part>eo|ee)/(?P<task>[-a-zA-Z0-9_]+)/"
+    r"sujets/(?P<prompt_id>\d+)/$"
+)
 
 
 def _annotation_counts(user):
@@ -65,38 +70,18 @@ def _annotation_counts(user):
 
 @require_http_methods(["GET", "POST"])
 def notes_overview(request):
-    part_slug = (request.GET.get("part") or "").strip()
-    task_slug = (request.GET.get("task") or "").strip()
-    if bool(part_slug) != bool(task_slug):
-        return HttpResponseBadRequest(
-            "A notes task filter requires both part and task."
-        )
-    task = (
-        _route_task(part_slug, task_slug)
-        if part_slug and task_slug
-        else None
-    )
-    general_only = request.GET.get("scope") == "general"
-    return _notes_scope(
-        request,
-        task,
-        aggregate=task is None and not general_only,
-    )
+    if {"part", "task", "scope"}.intersection(request.GET):
+        raise Http404
+    return _notes_scope(request, aggregate=True)
 
 
 def _annotation_scope_url(task=None):
     if task:
-        return (
-            reverse("study:notes_overview")
-            + "?"
-            + urlencode(
-                {
-                    "part": task.part.slug,
-                    "task": task.slug,
-                }
-            )
+        return reverse(
+            "study:task_notes",
+            args=[task.part.slug, task.slug],
         )
-    return reverse("study:notes_overview") + "?scope=general"
+    return reverse("study:general_notes")
 
 
 def _annotation_tab_url(task, kind):
@@ -105,7 +90,7 @@ def _annotation_tab_url(task, kind):
         if kind == AnnotationKind.HIGHLIGHT
         else "notes"
     )
-    return f"{_annotation_scope_url(task)}&tab={tab}"
+    return f"{_annotation_scope_url(task)}?tab={tab}"
 
 
 _HIGHLIGHT_ORIGIN_LABELS = {
@@ -124,7 +109,7 @@ def _highlight_origin(highlight):
     source = urlsplit(highlight.source_path or "")
     source_query = parse_qs(source.query)
     is_expression = (
-        source.path.endswith("/expressions/")
+        "/vocabulaire/" in source.path
         or source.path == reverse("study:vocabulary")
         or source_query.get("kind") == ["phrase"]
     )
@@ -236,14 +221,6 @@ def _notes_scope(request, task=None, *, aggregate=False):
                 "count": counts.get(filter_task.pk, {}).get("total", 0),
             }
         )
-    if task:
-        scope_query = urlencode(
-            {"part": task.part.slug, "task": task.slug}
-        )
-    elif not aggregate:
-        scope_query = "scope=general"
-    else:
-        scope_query = ""
     return render(
         request,
         "study/notes_list.html",
@@ -270,10 +247,7 @@ def _notes_scope(request, task=None, *, aggregate=False):
             "query": query,
             "task_filters": task_filters,
             "general_count": counts.get(None, {}).get("total", 0),
-            "scope_query": scope_query,
-            "tab_url_prefix": (
-                f"?{scope_query}&" if scope_query else "?"
-            ),
+            "tab_url_prefix": "?",
         },
     )
 
@@ -355,13 +329,19 @@ def annotation_search(request):
 
 
 @require_GET
-def annotation_study(request, part_slug=None, task_slug=None):
+def annotation_study(
+    request,
+    part_slug=None,
+    task_slug=None,
+    general_only=False,
+):
+    if "scope" in request.GET:
+        raise Http404
     task = (
         _route_task(part_slug, task_slug)
         if part_slug is not None and task_slug is not None
         else None
     )
-    general_only = request.GET.get("scope") == "general"
     annotations = Annotation.objects.filter(
         user=request.user,
         study_later=True,
@@ -391,7 +371,7 @@ def annotation_study(request, part_slug=None, task_slug=None):
                 _annotation_scope_url(task)
                 if task
                 else (
-                    reverse("study:notes_overview") + "?scope=general"
+                    reverse("study:general_notes")
                     if general_only
                     else reverse("study:notes_overview")
                 )
@@ -468,12 +448,36 @@ def _annotation_overlap_revisions(value):
 
 def _annotation_source_scope(source_path):
     base_path = source_path.split("?", 1)[0]
-    if re.fullmatch(r"/response/\d+/", base_path):
-        return (
-            base_path,
-            Q(source_path=base_path)
-            | Q(source_path__startswith=f"{base_path}?"),
+    match = SUBJECT_SOURCE_PATH_RE.fullmatch(base_path)
+    if match:
+        prompt = (
+            Prompt.objects.filter(
+                pk=match.group("prompt_id"),
+                is_active=True,
+                response__is_active=True,
+                theme__task__part__slug=match.group("part"),
+                theme__task__slug=match.group("task"),
+            )
+            .select_related("response")
+            .first()
         )
+        if prompt is not None:
+            canonical = prompt.response.canonical_prompt or prompt
+            canonical_path = prompt_detail_url(canonical)
+            sibling_paths = [
+                prompt_detail_url(sibling)
+                for sibling in prompt.response.prompts.filter(
+                    is_active=True,
+                    theme__task__isnull=False,
+                ).select_related("theme__task__part")
+            ]
+            source_filter = Q()
+            for sibling_path in sibling_paths:
+                source_filter |= Q(source_path=sibling_path)
+                source_filter |= Q(
+                    source_path__startswith=f"{sibling_path}?"
+                )
+            return canonical_path, source_filter
     return source_path, Q(source_path=source_path)
 
 
@@ -707,11 +711,6 @@ def annotation_create(request):
             {"error": " ".join(error.messages)},
             status=400,
         )
-    mark_annotation_subject_started(
-        request.user,
-        annotation.source_path,
-        annotation.source_key,
-    )
     return JsonResponse(
         {
             "id": annotation.id,

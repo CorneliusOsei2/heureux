@@ -26,6 +26,7 @@ from ..models import (
     Phrase,
     PhraseTier,
 )
+from ..progress import progress_summary
 
 COMPREHENSION_GROUP_SIZE = 5
 
@@ -169,6 +170,14 @@ def _comprehension_mode_summary(tests, *, group_count=0):
         ),
         available_tests[0] if available_tests else None,
     )
+    available_completed_count = sum(
+        bool(test.completed_attempts) for test in available_tests
+    )
+    mode_progress = progress_summary(
+        total=len(available_tests),
+        started=available_completed_count + bool(active_test),
+        completed=available_completed_count,
+    )
     return {
         "group_count": group_count,
         "test_count": len(tests),
@@ -177,6 +186,7 @@ def _comprehension_mode_summary(tests, *, group_count=0):
         "completed_test_count": sum(
             bool(test.completed_attempts) for test in tests
         ),
+        "progress": mode_progress,
         "active_attempt": (
             active_test.active_attempt if active_test else None
         ),
@@ -269,6 +279,17 @@ def _comprehension_groups(tests, group_count):
             for test in group_tests
             if test.is_active and test.is_published
         ]
+        published_completed_count = sum(
+            bool(test.completed_attempts) for test in published
+        )
+        active_attempt = next(
+            (
+                test.active_attempt
+                for test in published
+                if test.active_attempt
+            ),
+            None,
+        )
         groups.append(
             {
                 "number": number,
@@ -279,13 +300,11 @@ def _comprehension_groups(tests, group_count):
                 "completed_count": sum(
                     bool(test.completed_attempts) for test in group_tests
                 ),
-                "active_attempt": next(
-                    (
-                        test.active_attempt
-                        for test in published
-                        if test.active_attempt
-                    ),
-                    None,
+                "active_attempt": active_attempt,
+                "progress": progress_summary(
+                    total=len(published),
+                    started=published_completed_count + bool(active_attempt),
+                    completed=published_completed_count,
                 ),
             }
         )

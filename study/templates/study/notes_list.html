@@ -17,20 +17,14 @@
 
 <nav class="notes-scope-nav" aria-label="Filtrer les notes">
   <a class="{% if aggregate %}is-active{% endif %}" href="{% url 'study:notes_overview' %}">Toutes</a>
-  <a class="{% if not aggregate and not task %}is-active{% endif %}" href="{% url 'study:notes_overview' %}?scope=general">Générales <span>{{ general_count }}</span></a>
+  <a class="{% if not aggregate and not task %}is-active{% endif %}" href="{% url 'study:general_notes' %}">Générales <span>{{ general_count }}</span></a>
   {% for item in task_filters %}
-    <a class="{% if task.pk == item.task.pk %}is-active{% endif %}" href="{% url 'study:notes_overview' %}?part={{ item.task.part.slug }}&amp;task={{ item.task.slug }}">{{ item.task.part.short_name }} · {{ item.task.name }} <span>{{ item.count }}</span></a>
+    <a class="{% if task.pk == item.task.pk %}is-active{% endif %}" href="{% url 'study:task_notes' item.task.part.slug item.task.slug %}">{{ item.task.part.short_name }} · {{ item.task.name }} <span>{{ item.count }}</span></a>
   {% endfor %}
 </nav>
 
 <div class="notes-toolbar">
-  <form class="search-form" method="get" action="{% url 'study:notes_overview' %}">
-    {% if task %}
-      <input type="hidden" name="part" value="{{ part.slug }}">
-      <input type="hidden" name="task" value="{{ task.slug }}">
-    {% elif not aggregate %}
-      <input type="hidden" name="scope" value="general">
-    {% endif %}
+  <form class="search-form" method="get" action="{{ request.path }}">
     <label class="sr-only" for="notes-search">Rechercher dans les notes et surlignages</label>
     <input id="notes-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Rechercher dans mes notes…">
     <button class="btn btn--icon" type="submit" aria-label="Rechercher" title="Rechercher">
@@ -49,7 +43,7 @@
     {% elif aggregate %}
       <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}">
     {% else %}
-      <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:annotation_study' %}?scope=general">
+      <a class="btn {% if study_count %}btn--primary{% endif %}" href="{% url 'study:general_annotation_study' %}">
     {% endif %}
         <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.75L6 21Z"></path></svg>
         <span>Étudier{% if study_count %} · {{ study_count }}{% endif %}</span>

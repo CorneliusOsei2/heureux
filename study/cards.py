@@ -153,6 +153,7 @@ def _spine_payload(card: Card) -> dict:
         "theme": response.theme,
         "family": response.family,
         "prompt": canonical.text if canonical else response.prompt,
+        "canonical_prompt": canonical,
         "aliases": aliases,
         "response": response,
         "response_content": content,

@@ -72,6 +72,19 @@ class AuthenticationTests(TestCase):
             200,
         )
 
+    def test_removed_routes_are_404_for_anonymous_visitors(self):
+        for path in (
+            "/login/",
+            "/review/",
+            "/response/1/",
+            "/expression/eo/",
+            "/comprehension/ce/",
+        ):
+            with self.subTest(path=path):
+                response = self.client.get(path)
+                self.assertEqual(response.status_code, 404)
+                self.assertNotIn("Location", response)
+
     def test_registration_normalizes_username_and_hashes_six_digit_pin(self):
         legacy_card = factories.make_spine_card(
             state=CardState.REVIEW,
@@ -146,16 +159,16 @@ class AuthenticationTests(TestCase):
     def test_login_logout_and_safe_next_redirect(self):
         user = factories.make_user("alice", pin="482731")
         response = self.client.post(
-            reverse("study:login") + "?next=/stats/",
+            reverse("study:login") + "?next=/progression/",
             {
                 "username": "ALICE",
                 "pin": "482731",
-                "next": "/stats/",
+                "next": "/progression/",
             },
         )
         self.assertRedirects(
             response,
-            "/stats/",
+            "/progression/",
             fetch_redirect_response=False,
         )
         self.assertEqual(int(self.client.session["_auth_user_id"]), user.pk)
@@ -266,7 +279,7 @@ class AuthenticationTests(TestCase):
             self.client.post(reverse("study:logout"))
 
         request = RequestFactory().get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="198.51.100.40",
         )
         throttle = LoginThrottle.objects.get(
@@ -282,7 +295,7 @@ class AuthenticationTests(TestCase):
                 "username": "next-user",
                 "pin": "482731",
                 "pin_confirm": "482731",
-                "next": "/stats/",
+                "next": "/progression/",
             },
         )
         self.assertRedirects(
@@ -293,7 +306,7 @@ class AuthenticationTests(TestCase):
 
         codes_page = self.client.get(reverse("study:recovery_codes"))
 
-        self.assertContains(codes_page, 'href="/stats/"')
+        self.assertContains(codes_page, 'href="/progression/"')
 
     def test_recovery_codes_are_displayed_once(self):
         self.client.post(
@@ -451,17 +464,17 @@ class AuthenticationTests(TestCase):
     def test_throttle_uses_rightmost_address_from_trusted_proxy(self):
         factory = RequestFactory()
         first = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="10.0.0.8",
             HTTP_X_FORWARDED_FOR="198.51.100.2, 203.0.113.7",
         )
         spoofed_left = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="10.0.0.8",
             HTTP_X_FORWARDED_FOR="192.0.2.99, 203.0.113.7",
         )
         other_client = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="10.0.0.8",
             HTTP_X_FORWARDED_FOR="198.51.100.2, 203.0.113.8",
         )
@@ -485,25 +498,25 @@ class AuthenticationTests(TestCase):
     def test_throttle_skips_only_configured_proxy_hops(self):
         factory = RequestFactory()
         cloudflare_request = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="10.0.0.8",
             HTTP_X_FORWARDED_FOR=(
                 "192.0.2.99, 198.51.100.2, 173.245.48.4, 10.0.0.9"
             ),
         )
         direct_request = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="10.0.0.8",
             HTTP_X_FORWARDED_FOR=(
                 "192.0.2.99, 203.0.113.7, 10.0.0.9"
             ),
         )
         cloudflare_client = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="198.51.100.2",
         )
         direct_client = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="203.0.113.7",
         )
 
@@ -520,12 +533,12 @@ class AuthenticationTests(TestCase):
     def test_untrusted_forwarded_address_is_ignored(self):
         factory = RequestFactory()
         first = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="203.0.113.7",
             HTTP_X_FORWARDED_FOR="192.0.2.1",
         )
         second = factory.get(
-            "/login/",
+            reverse("study:login"),
             REMOTE_ADDR="203.0.113.7",
             HTTP_X_FORWARDED_FOR="192.0.2.2",
         )
@@ -635,7 +648,7 @@ class AuthenticationTests(TestCase):
                 self.assertIn("no-store", response["Cache-Control"])
                 self.assertEqual(
                     response.json()["login_url"],
-                    "/login/?next=/review/",
+                    "/compte/connexion/?next=/revision/",
                 )
 
     def test_offline_page_never_exposes_account_details(self):
@@ -754,7 +767,8 @@ class UserProgressIsolationTests(TestCase):
         srs.review(second_card, Rating.GOOD)
         started_at = timezone.now()
         Card.objects.filter(pk__in=[first_card.pk, second_card.pk]).update(
-            started_at=started_at
+            started_at=started_at,
+            response_practice_started_at=started_at,
         )
         self.client.force_login(self.first)
 
@@ -771,7 +785,12 @@ class UserProgressIsolationTests(TestCase):
         self.assertEqual(first_card.state, CardState.NEW)
         self.assertNotEqual(second_card.state, CardState.NEW)
         self.assertIsNone(first_card.started_at)
+        self.assertIsNone(first_card.response_practice_started_at)
         self.assertEqual(second_card.started_at, started_at)
+        self.assertEqual(
+            second_card.response_practice_started_at,
+            started_at,
+        )
         self.assertFalse(ReviewLog.objects.filter(user=self.first).exists())
         self.assertTrue(ReviewLog.objects.filter(user=self.second).exists())
 

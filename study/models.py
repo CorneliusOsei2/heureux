@@ -703,6 +703,11 @@ class Card(models.Model):
     revisit_added_at = models.DateTimeField(null=True, blank=True)
     suspended = models.BooleanField(default=False)
     started_at = models.DateTimeField(null=True, blank=True, db_index=True)
+    response_practice_started_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        db_index=True,
+    )
     created_at = models.DateTimeField(default=timezone.now)
 
     objects = CardQuerySet.as_manager()

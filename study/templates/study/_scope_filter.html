@@ -8,7 +8,7 @@ active_part_tasks, review_scope_qs, scope_label.
     <a class="chip {% if not active_part %}chip--active{% endif %}" href="{{ filter_base }}">Tout</a>
     {% for p in filter_parts %}
       <a class="chip {% if p.active %}chip--active{% endif %}{% if not p.count %} chip--muted{% endif %}"
-         href="{{ filter_base }}?part={{ p.slug }}">
+         href="{{ p.url }}">
         {{ p.short_name }}{% if p.count %} <span class="chip__n">{{ p.count }}</span>{% endif %}
       </a>
     {% endfor %}
@@ -16,18 +16,18 @@ active_part_tasks, review_scope_qs, scope_label.
   {% if active_part_tasks %}
     <div class="scope-filter__row scope-filter__row--sub">
       <a class="chip chip--sm {% if not active_task %}chip--active{% endif %}"
-         href="{{ filter_base }}?part={{ active_part }}">Toutes les tâches</a>
+         href="{{ active_part_url }}">Toutes les tâches</a>
       {% for t in active_part_tasks %}
         <a class="chip chip--sm {% if t.active %}chip--active{% endif %}{% if not t.count %} chip--muted{% endif %}"
-           href="{{ filter_base }}?task={{ t.slug }}">
+           href="{{ t.url }}">
           {{ t.name }}{% if t.count %} <span class="chip__n">{{ t.count }}</span>{% endif %}
         </a>
       {% endfor %}
     </div>
   {% endif %}
-  {% if review_scope_qs %}
+  {% if scope_review_url %}
     <div class="scope-filter__action">
-      <a class="btn btn--primary btn--sm" href="{% url 'study:review' %}?kind=spine&amp;{{ review_scope_qs }}">Pratiquer les réponses</a>
+      <a class="btn btn--primary btn--sm" href="{{ scope_review_url }}">Pratiquer les réponses</a>
       <span class="scope-filter__label muted">{{ scope_label }}</span>
     </div>
   {% endif %}

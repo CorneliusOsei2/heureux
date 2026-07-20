@@ -2,10 +2,7 @@
 
 from __future__ import annotations
 
-from urllib.parse import urlencode
-
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
 from django.utils import timezone
 
 from .. import queue as queue_module
@@ -19,6 +16,13 @@ from ..models import (
     Task,
     Theme,
 )
+from ..progress import (
+    ProgressSummary,
+    progress_summary,
+    subject_progress_by_response,
+    summarize_subject_progress,
+)
+from ..routing import review_url
 
 MATURE_DAYS = 21
 
@@ -89,6 +93,7 @@ def _review_batches(scope: dict, user) -> list[dict]:
             "due",
             "suspended",
             "started_at",
+            "response_practice_started_at",
         )
     )
     phrase_batches = queue_module._uses_phrase_batches(base_scope)
@@ -116,7 +121,12 @@ def _review_batches(scope: dict, user) -> list[dict]:
         started_count = sum(
             any(
                 row["state"] != CardState.NEW
-                or row["started_at"] is not None
+                or (
+                    row["started_at"]
+                    if phrase_batches
+                    else row["response_practice_started_at"]
+                )
+                is not None
                 for row in unit
             )
             for unit in active_units
@@ -164,19 +174,41 @@ def _review_batches(scope: dict, user) -> list[dict]:
                     len(units_in_batch) if phrase_batches else None
                 ),
                 "active_count": len(active_units),
+                "completed_count": completed_count,
                 "seen_count": completed_count,
                 "started_count": started_count,
                 "available_now": available_now,
                 "phrase_batch": phrase_batches,
                 "status": status,
                 "status_label": status_label,
+                "progress_status": {
+                    "complete": "done",
+                    "in-progress": "active",
+                    "not-started": "new",
+                    "unavailable": "new",
+                }[status],
                 "can_review": available_now > 0,
-                "review_url": (
-                    reverse("study:review") + "?" + urlencode(batch_scope)
-                ),
+                "review_url": review_url(batch_scope),
             }
         )
+    next_batch_found = False
+    for batch in batches:
+        batch["is_next"] = batch["can_review"] and not next_batch_found
+        next_batch_found = next_batch_found or batch["can_review"]
     return batches
+
+
+def summarize_review_batches(batches) -> ProgressSummary:
+    """Bubble active lot completion into one parent progress summary."""
+    available = [batch for batch in batches if batch["status"] != "unavailable"]
+    return progress_summary(
+        total=len(available),
+        started=sum(
+            batch["status"] in {"in-progress", "complete"}
+            for batch in available
+        ),
+        completed=sum(batch["status"] == "complete" for batch in available),
+    )
 
 
 def current_streak(now=None, logs=None, user=None) -> int:
@@ -295,7 +327,20 @@ def _route_task(part_slug, task_slug):
 def _task_card(task, now, user):
     """Build a dashboard/part card for a single task."""
     if task.available:
-        response_stats = deck_stats(_task_cards(task, user, "spine"), now)
+        response_ids = set(
+            Prompt.objects.filter(
+                theme__task=task,
+                theme__is_active=True,
+                is_active=True,
+                response__is_active=True,
+            ).values_list("response_id", flat=True)
+        )
+        response_progress = subject_progress_by_response(user, response_ids)
+        response_stats = summarize_subject_progress(response_progress.values())
+        response_stats["due"] = deck_stats(
+            _task_cards(task, user, "spine"),
+            now,
+        )["due"]
         phrase_stats = deck_stats(_task_cards(task, user, "phrase"), now)
         functional_phrase_stats = deck_stats(
             _task_cards(task, user, "phrase").filter(
@@ -304,7 +349,7 @@ def _task_card(task, now, user):
             ),
             now,
         )
-        stats = deck_stats(_task_cards(task, user), now)
+        stats = response_stats
         counts = queue_module.queue_counts(
             _task_scope(task),
             now,

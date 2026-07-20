@@ -11,8 +11,8 @@
     </div>
     <dl class="area-hero__metrics" aria-label="Progression en expression">
       <div><dt>Sujets</dt><dd>{{ prompt_count }}</dd></div>
-      <div><dt>Cartes vues</dt><dd>{{ card_seen }}<span class="hero-metric__total">/ {{ card_total }}</span></dd></div>
-      <div><dt>À pratiquer</dt><dd>{{ card_due }}</dd></div>
+      <div><dt>Sujets commencés</dt><dd>{{ card_seen }}<span class="hero-metric__total">/ {{ card_total }}</span></dd></div>
+      <div><dt>Réponses à revoir</dt><dd>{{ response_due }}</dd></div>
     </dl>
   </header>
 
@@ -28,7 +28,7 @@
     <div class="expression-paths">
       {% for path in paths %}
         {% url 'study:part_detail' path.part.slug as path_url %}
-        {% include "study/partials/path_card.html" with code=path.part.short_name|lower title=path.part.name available=path.available url=path_url task_count=path.task_count prompt_count=path.prompt_count seen=path.seen total=path.total has_content=path.has_content action_label="Voir les tâches" only %}
+        {% include "study/partials/path_card.html" with code=path.part.short_name|lower title=path.part.name available=path.available url=path_url task_count=path.task_count prompt_count=path.prompt_count seen=path.seen total=path.total progress=path.progress has_content=path.has_content action_label="Voir les tâches" only %}
       {% endfor %}
     </div>
   </section>

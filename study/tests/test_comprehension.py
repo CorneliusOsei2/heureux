@@ -486,6 +486,53 @@ class ComprehensionFlowTests(TestCase):
         )
         self.assertEqual(attempt.answers.count(), 1)
 
+    def test_test_progress_bubbles_to_group_and_skill_path(self):
+        untouched_overview = self.client.get(
+            reverse("study:comprehension_overview"),
+        )
+        untouched_hub = self.client.get(reverse("study:comprehension_hub"))
+        self.assertEqual(
+            untouched_overview.context["groups"][0]["progress"].status,
+            "new",
+        )
+        self.assertEqual(
+            untouched_hub.context["comprehension"]["ecrite"][
+                "progress"
+            ].status,
+            "new",
+        )
+
+        attempt = self.start()
+        active_overview = self.client.get(
+            reverse("study:comprehension_overview"),
+        )
+        active_hub = self.client.get(reverse("study:comprehension_hub"))
+        self.assertEqual(
+            active_overview.context["groups"][0]["progress"].status,
+            "active",
+        )
+        self.assertEqual(
+            active_hub.context["comprehension"]["ecrite"]["progress"].status,
+            "active",
+        )
+
+        for question_number in range(1, 4):
+            self.submit(attempt, question_number, "A")
+        completed_overview = self.client.get(
+            reverse("study:comprehension_overview"),
+        )
+        completed_hub = self.client.get(reverse("study:comprehension_hub"))
+        self.assertEqual(
+            completed_overview.context["groups"][0]["progress"].status,
+            "done",
+        )
+        self.assertEqual(
+            completed_hub.context["comprehension"]["ecrite"][
+                "progress"
+            ].status,
+            "done",
+        )
+
     def test_group_outside_the_eight_group_curriculum_is_not_found(self):
         self.assertEqual(
             self.client.get(

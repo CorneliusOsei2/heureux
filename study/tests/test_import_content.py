@@ -170,6 +170,25 @@ class CardStartedAtMigrationTests(TestCase):
         self.assertEqual(vocabulary_spine.started_at, vocabulary_at)
         self.assertEqual(session_card.started_at, session.updated_at)
 
+        practice_migration = importlib.import_module(
+            "study.migrations.0029_backfill_response_practice_started_at"
+        )
+        practice_migration.backfill_response_practice_started_at(apps, None)
+        reviewed.refresh_from_db()
+        annotated.refresh_from_db()
+        vocabulary_spine.refresh_from_db()
+        session_card.refresh_from_db()
+        self.assertEqual(
+            reviewed.response_practice_started_at,
+            reviewed_at,
+        )
+        self.assertIsNone(annotated.response_practice_started_at)
+        self.assertIsNone(vocabulary_spine.response_practice_started_at)
+        self.assertEqual(
+            session_card.response_practice_started_at,
+            session.updated_at,
+        )
+
 
 class NonDestructiveImportTests(TestCase):
     def _response_data(self, response, *, body_hash="b" * 64, body="Updated"):

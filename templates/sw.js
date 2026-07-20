@@ -1,11 +1,12 @@
 {% load static %}/* Heureux service worker — offline app shell. */
-var CACHE = "heureux-v74";
+var CACHE = "heureux-v81";
 var SHELL = [
   "{% url 'offline' %}",
-  "{% static 'study/css/app.css' %}?v=67",
+  "{% static 'study/css/app.css' %}?v=75",
+  "{% static 'study/fonts/inter-latin-wght-normal.woff2' %}",
   "{% static 'study/js/theme-init.js' %}?v=2",
-  "{% static 'study/js/app.js' %}?v=31",
-  "{% static 'study/js/translate.js' %}?v=9",
+  "{% static 'study/js/app.js' %}?v=33",
+  "{% static 'study/js/translate.js' %}?v=11",
   "{% static 'study/js/annotations.js' %}?v=7",
   "/manifest.webmanifest",
   "{% static 'study/icons/icon-192.png' %}?v=2",
@@ -44,7 +45,7 @@ self.addEventListener("fetch", function (event) {
   if (url.origin !== self.location.origin) { return; }
 
   // Never intercept the dynamic review API (keep study state fresh).
-  if (url.pathname.indexOf("/review/") === 0 && url.pathname !== "/review/") {
+  if (url.pathname.indexOf("/revision/") === 0 && url.pathname !== "/revision/") {
     return;
   }
 

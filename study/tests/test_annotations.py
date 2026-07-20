@@ -5,7 +5,8 @@ import json
 from django.test import TestCase
 from django.urls import reverse
 
-from study.models import Annotation, AnnotationKind, Card, CardType
+from study.models import Annotation, AnnotationKind, Card, CardType, Prompt
+from study.routing import prompt_detail_url, response_detail_url, theme_detail_url
 
 from . import factories
 
@@ -21,13 +22,11 @@ class AnnotationTests(TestCase):
             "study:task_detail",
             args=[self.part.slug, self.task.slug],
         )
-        self.task_notes_url = (
-            reverse("study:notes_overview")
-            + f"?part={self.part.slug}&task={self.task.slug}"
+        self.task_notes_url = reverse(
+            "study:task_notes",
+            args=[self.part.slug, self.task.slug],
         )
-        self.general_notes_url = (
-            reverse("study:notes_overview") + "?scope=general"
-        )
+        self.general_notes_url = reverse("study:general_notes")
         self.selection = {
             "quote": "Il faut nuancer cette affirmation.",
             "start_offset": "24",
@@ -101,7 +100,7 @@ class AnnotationTests(TestCase):
         )
 
         highlights_tab = self.client.get(
-            self.task_notes_url + "&tab=highlights"
+            self.task_notes_url + "?tab=highlights"
         )
         self.assertEqual(highlights_tab.context["active_tab"], "highlights")
         self.assertContains(
@@ -127,7 +126,7 @@ class AnnotationTests(TestCase):
         self.assertNotContains(notes_tab, "data-collection-view-toggle")
 
         highlights_tab = self.client.get(
-            self.task_notes_url + "&tab=highlights"
+            self.task_notes_url + "?tab=highlights"
         )
         self.assertNotContains(highlights_tab, "data-collection-view-toggle")
 
@@ -175,7 +174,7 @@ class AnnotationTests(TestCase):
         )
 
         response = self.client.get(
-            self.task_notes_url + "&tab=highlights"
+            self.task_notes_url + "?tab=highlights"
         )
 
         origins = {
@@ -205,7 +204,7 @@ class AnnotationTests(TestCase):
         task_note = Annotation.objects.get(title="Connecteurs")
         self.assertRedirects(
             response,
-            task_url + f"&tab=notes#note-{task_note.id}",
+            task_url + f"?tab=notes#note-{task_note.id}",
         )
         self.assertEqual(task_note.user, self.user)
         self.assertEqual(task_note.task, self.task)
@@ -219,12 +218,12 @@ class AnnotationTests(TestCase):
         general_note = Annotation.objects.get(body="Objectif de la semaine.")
         self.assertRedirects(
             response,
-            general_url + f"&tab=notes#note-{general_note.id}",
+            general_url + f"?tab=notes#note-{general_note.id}",
         )
         self.assertIsNone(general_note.task)
 
     def test_note_dialog_preserves_a_safe_filtered_return_url(self):
-        return_url = self.task_notes_url + "&q=transition"
+        return_url = self.task_notes_url + "?q=transition"
         response = self.client.post(
             self.task_notes_url,
             {
@@ -253,7 +252,7 @@ class AnnotationTests(TestCase):
         self.assertEqual(note.source_path, self.source_path)
         self.assertEqual(
             response.json()["notes_url"],
-            self.task_notes_url + f"&tab=notes#note-{note.id}",
+            self.task_notes_url + f"?tab=notes#note-{note.id}",
         )
 
         self.client.force_login(self.other)
@@ -282,7 +281,7 @@ class AnnotationTests(TestCase):
         self.assertEqual(
             first.json()["notes_url"],
             self.task_notes_url
-            + f"&tab=highlights#highlight-{first.json()['id']}",
+            + f"?tab=highlights#highlight-{first.json()['id']}",
         )
 
         response = self.client.get(
@@ -319,10 +318,7 @@ class AnnotationTests(TestCase):
             card_type=CardType.SPINE,
             response=response,
         )
-        source_path = reverse(
-            "study:response_detail",
-            args=[response.pk],
-        )
+        source_path = response_detail_url(response)
 
         created = self.client.post(
             reverse("study:annotation_create"),
@@ -338,17 +334,107 @@ class AnnotationTests(TestCase):
         self.assertEqual(created.status_code, 201)
         card.refresh_from_db()
         other_card.refresh_from_db()
-        self.assertIsNotNone(card.started_at)
+        self.assertIsNone(card.started_at)
         self.assertIsNone(other_card.started_at)
 
         theme_page = self.client.get(
-            reverse("study:theme_detail", args=[theme.slug])
+            theme_detail_url(theme)
         )
         self.assertContains(
             theme_page,
             '<span class="progress-status progress-status--active">'
             "En cours</span>",
             html=True,
+        )
+
+        deleted = self.client.post(
+            reverse("study:annotation_delete", args=[created.json()["id"]]),
+            {"next": source_path},
+        )
+        self.assertRedirects(deleted, source_path)
+        subject_page = self.client.get(source_path)
+        self.assertEqual(subject_page.context["subject_progress"].status, "new")
+
+    def test_notes_and_linked_expression_highlights_do_not_start_subject(self):
+        theme = factories.make_theme("annotation-progress-exclusions", task=self.task)
+        response = factories.make_response(theme=theme)
+        prompt = response.prompts.get(is_canonical=True)
+        linked_phrase = factories.make_phrase(tier="response")
+        linked_phrase.source_prompts.add(prompt)
+        source_path = response_detail_url(response)
+        Card.objects.create(
+            user=self.user,
+            card_type=CardType.SPINE,
+            response=response,
+        )
+
+        note = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.NOTE,
+                "body": "Une note sur cette réponse.",
+                "source_path": source_path,
+                "source_key": "",
+            },
+        )
+        linked_expression_highlight = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "source_path": source_path,
+                "source_key": f"phrase:{linked_phrase.phrase_id}:catalog",
+                "overlap_ids": "",
+            },
+        )
+        sidebar_highlight = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "source_path": source_path,
+                "source_key": (
+                    f"subject-sidebar:{response.content_key}"
+                ),
+                "overlap_ids": "",
+            },
+        )
+
+        self.assertEqual(note.status_code, 201)
+        self.assertEqual(linked_expression_highlight.status_code, 201)
+        self.assertEqual(sidebar_highlight.status_code, 201)
+        subject_page = self.client.get(source_path)
+        self.assertEqual(subject_page.context["subject_progress"].status, "new")
+
+    def test_subject_vocabulary_highlight_starts_its_subject(self):
+        theme = factories.make_theme("subject-vocabulary-highlight", task=self.task)
+        response = factories.make_response(theme=theme)
+        prompt = response.prompts.get(is_canonical=True)
+        subject_phrase = factories.make_phrase(tier="subject")
+        subject_phrase.source_prompts.add(prompt)
+        Card.objects.create(
+            user=self.user,
+            card_type=CardType.SPINE,
+            response=response,
+        )
+
+        created = self.client.post(
+            reverse("study:annotation_create"),
+            {
+                **self.selection,
+                "kind": AnnotationKind.HIGHLIGHT,
+                "source_path": response_detail_url(response),
+                "source_key": f"phrase:{subject_phrase.phrase_id}:catalog",
+                "overlap_ids": "",
+            },
+        )
+
+        self.assertEqual(created.status_code, 201)
+        subject_page = self.client.get(response_detail_url(response))
+        self.assertEqual(
+            subject_page.context["subject_progress"].status,
+            "active",
         )
 
     def test_dynamic_card_source_keys_prevent_offset_collisions(self):
@@ -633,26 +719,37 @@ class AnnotationTests(TestCase):
         self.assertEqual(highlight.start_offset, 24)
         self.assertEqual(highlight.end_offset, 45)
 
-    def test_response_query_variants_share_saved_highlights(self):
-        detail_path = reverse(
-            "study:response_detail",
-            args=[self.task.pk],
+    def test_prompt_aliases_share_saved_highlights(self):
+        response = factories.make_response(
+            theme=factories.make_theme("shared-response", task=self.task)
         )
+        canonical = response.prompts.get()
+        alias = Prompt.objects.create(
+            response=response,
+            content_key="test-prompt:shared-response-alias",
+            theme=canonical.theme,
+            family=canonical.family,
+            number=canonical.number + 1,
+            text="Sujet équivalent ?",
+        )
+        canonical_path = prompt_detail_url(canonical)
+        alias_path = prompt_detail_url(alias)
         highlight = Annotation.objects.create(
             user=self.user,
             task=self.task,
             kind=AnnotationKind.HIGHLIGHT,
             quote="Texte inchangé",
-            source_path=detail_path + "?prompt=7",
+            source_path=alias_path + "?saved=1",
             start_offset=100,
             end_offset=115,
         )
 
         restored = self.client.get(
             reverse("study:annotations_for_source"),
-            {"source_path": detail_path + "?saved=1"},
+            {"source_path": canonical_path},
         ).json()["highlights"]
 
+        self.assertNotEqual(canonical_path, alias_path)
         self.assertEqual([item["id"] for item in restored], [highlight.id])
 
     def test_annotation_validation_rejects_empty_or_external_selection(self):

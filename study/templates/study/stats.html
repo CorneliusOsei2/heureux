@@ -86,7 +86,7 @@
       <p>Reprends les éléments fragiles pendant qu’ils sont faciles à consolider.</p>
     </header>
     <div class="stats-action-grid">
-      <a class="stats-action card" href="{% url 'study:review' %}?kind=weak&amp;content=spine{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+      <a class="stats-action card" href="{{ expression_weak_url }}">
         <span class="stats-action__icon stats-action__icon--expression" aria-hidden="true">
           <svg><use href="#nav-icon-expressions"></use></svg>
         </span>
@@ -97,7 +97,7 @@
         </span>
         <span class="stats-action__arrow" aria-hidden="true">→</span>
       </a>
-      <a class="stats-action card" href="{% url 'study:review' %}?kind=weak&amp;content=vocabulary{% if active_part %}&amp;part={{ active_part }}{% endif %}{% if active_task %}&amp;task={{ active_task }}{% endif %}">
+      <a class="stats-action card" href="{{ vocabulary_weak_url }}">
         <span class="stats-action__icon stats-action__icon--vocabulary" aria-hidden="true">
           <svg><use href="#nav-icon-book"></use></svg>
         </span>
@@ -216,7 +216,7 @@
         <a
           class="stats-theme"
           style="--theme-accent: {{ item.theme.color }};"
-          href="{% url 'study:review' %}?kind=spine&amp;theme={{ item.theme.slug }}">
+          href="{{ item.review_url }}">
           <span class="stats-theme__icon" aria-hidden="true">{{ item.theme.emoji }}</span>
           <span class="stats-theme__copy">
             <small>{{ item.theme.task.part.short_name }} · {{ item.theme.task.name }}</small>

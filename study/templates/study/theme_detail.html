@@ -5,18 +5,16 @@
 {% include "study/_task_nav.html" %}
 <div class="page-head">
   <p class="eyebrow">
-    {% if task %}<a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>{% else %}<a href="{% url 'study:browse' %}">Parcourir</a>{% endif %}
+    <a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a>
     · Thème
   </p>
   <div class="row between">
     <h1 style="margin-bottom:0;">{{ theme.emoji }} {{ theme.display_name }}</h1>
-    <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ theme.slug }}">Réviser ce thème</a>
+    <a class="btn btn--primary" href="{{ review_url }}">Réviser ce thème</a>
   </div>
-  <p>{{ rows|length }} sujets · {{ stats.total }} réponses uniques · {{ stats.mature }} maîtrisée{{ stats.mature|pluralize }}.</p>
+  <p>{{ rows|length }} sujets · {{ stats.total }} réponses uniques · {{ stats.completed }} terminé{{ stats.completed|pluralize }}.</p>
   <div class="progress" style="height:12px; max-width:520px;">
-    <span class="bg-mature" style="width: {% widthratio stats.mature stats.total 100 %}%;"></span>
-    <span class="bg-review" style="width: {% widthratio stats.review_young stats.total 100 %}%;"></span>
-    <span class="bg-learning" style="width: {% widthratio stats.learning stats.total 100 %}%;"></span>
+    <span class="bg-mature" style="width: {% widthratio stats.completed stats.total 100 %}%;"></span>
     <span class="bg-started" style="width: {% widthratio stats.started_new stats.total 100 %}%;"></span>
   </div>
 </div>
@@ -30,7 +28,8 @@
   <div class="review-batches__head">
     <h2 id="theme-batches-title">Lots de 15 cartes</h2>
   </div>
-  <div class="batch-grid" data-collection-view="adaptive">
+  <div class="batch-grid collection-table collection-table--batches" data-collection-view="adaptive">
+    {% include "study/partials/collection_table_header.html" with variant="batches" column_1="Lot et statut" column_2="Cartes" column_3="Activité" only %}
     {% for batch in review_batches %}
       {% include "study/partials/batch_card.html" with batch=batch item_noun="Cartes" only %}
     {% endfor %}
@@ -38,16 +37,17 @@
 </section>
 {% endif %}
 
-<div class="qlist" data-collection-view="adaptive">
+<div class="qlist collection-table collection-table--subjects" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="subjects" column_1="Repère" column_2="Sujet" column_3="Progression" only %}
   {% for row in rows %}
-    <a class="qrow" data-collection-item href="{% url 'study:response_detail' row.prompt.response_id %}?prompt={{ row.prompt.pk }}">
+    <a class="qrow" data-collection-item href="{% url 'study:response_detail' part.slug task.slug row.prompt.pk %}">
       <span class="qrow__num">{{ row.prompt.number }}</span>
       <span class="qrow__text">
         {{ row.prompt.text }}
         {% if row.is_alias %}<span class="alias-tag" title="Réponse identique à un autre sujet">= {{ row.prompt.response.theme.display_name }} P{{ row.canonical_number }}</span>{% endif %}
       </span>
       <span class="qrow__meta qrow__meta--state">
-        {% if row.card %}<span class="progress-status progress-status--{{ row.card.progress_status }}">{{ row.card.progress_label }}</span>{% endif %}
+        <span class="progress-status progress-status--{{ row.progress.status }}">{{ row.progress.label }}</span>
       </span>
     </a>
   {% endfor %}

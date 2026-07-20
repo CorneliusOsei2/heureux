@@ -5,6 +5,8 @@
   var action = document.querySelector("[data-selection-translate]");
   var selectionCopyButton = document.querySelector("[data-copy-selection]");
   var selectionCopyLabel = document.querySelector("[data-copy-selection-label]");
+  var readButton = document.querySelector("[data-read-selection]");
+  var readLabel = document.querySelector("[data-read-selection-label]");
   var translateButton = document.querySelector("[data-translate-selection]");
   var panel = document.querySelector("[data-translation-panel]");
   var notePanel = document.querySelector("[data-note-panel]");
@@ -42,6 +44,12 @@
   var requestNumber = 0;
   var translatorPromise = null;
   var translatorInstance = null;
+  var frenchSpeech = window.HeureuxFrenchSpeech;
+  var reading = false;
+  var readingNumber = 0;
+  var readingChunks = [];
+  var readingIndex = 0;
+  var readResetTimer = null;
 
   function normalizeSelection(text) {
     return text
@@ -84,6 +92,7 @@
   }
 
   function hideAction() {
+    stopReading();
     action.classList.add("hidden");
   }
 
@@ -115,16 +124,123 @@
     }
     var details = selectionDetails();
     if (!details) return;
+    var selectionChanged = details.text !== selectedText;
+    if (selectionChanged && reading) stopReading();
     selectedText = details.text;
     selectedRect = details.rect;
     selectionCopyButton.classList.remove("is-copied");
     selectionCopyLabel.textContent = "Copy";
+    if (selectionChanged) resetReadButton();
     positionAction(details.rect);
   }
 
   function scheduleSelectionAction(delay) {
     window.clearTimeout(selectionTimer);
     selectionTimer = window.setTimeout(updateSelectionAction, delay);
+  }
+
+  function setReadButton(label, isReading) {
+    if (!readButton || !readLabel) return;
+    window.clearTimeout(readResetTimer);
+    readLabel.textContent = label;
+    readButton.classList.toggle("is-reading", isReading);
+    readButton.setAttribute("aria-pressed", isReading ? "true" : "false");
+    readButton.setAttribute(
+      "aria-label",
+      isReading
+        ? "Stop reading selected text"
+        : "Read selected text in French"
+    );
+  }
+
+  function resetReadButton() {
+    setReadButton("Read", false);
+  }
+
+  function stopReading(cancelSpeech) {
+    if (!readButton) return;
+    var wasReading = reading;
+    reading = false;
+    readingNumber += 1;
+    readingChunks = [];
+    readingIndex = 0;
+    if (
+      wasReading &&
+      cancelSpeech !== false &&
+      frenchSpeech &&
+      frenchSpeech.supported
+    ) {
+      frenchSpeech.synthesis.cancel();
+      frenchSpeech.synthesis.resume();
+    }
+    resetReadButton();
+  }
+
+  function finishReading() {
+    reading = false;
+    readingChunks = [];
+    readingIndex = 0;
+    setReadButton("Read again", false);
+  }
+
+  function showReadError() {
+    reading = false;
+    readingChunks = [];
+    readingIndex = 0;
+    setReadButton("Unavailable", false);
+    readResetTimer = window.setTimeout(resetReadButton, 1800);
+  }
+
+  function speakNextChunk(number) {
+    if (!reading || number !== readingNumber) return;
+    if (readingIndex >= readingChunks.length) {
+      finishReading();
+      return;
+    }
+
+    var utterance = new frenchSpeech.Utterance(readingChunks[readingIndex]);
+    var voice = frenchSpeech.preferredVoice();
+    utterance.lang = "fr-FR";
+    utterance.rate = 0.92;
+    utterance.pitch = 1;
+    if (voice) utterance.voice = voice;
+    utterance.onend = function () {
+      if (!reading || number !== readingNumber) return;
+      readingIndex += 1;
+      speakNextChunk(number);
+    };
+    utterance.onerror = function () {
+      if (!reading || number !== readingNumber) return;
+      showReadError();
+    };
+    frenchSpeech.synthesis.speak(utterance);
+  }
+
+  function startReading() {
+    if (!selectedText || !frenchSpeech || !frenchSpeech.supported) return;
+    frenchSpeech.refreshVoices();
+    var chunks = frenchSpeech.chunks(selectedText);
+    if (!chunks.length) return;
+
+    document.dispatchEvent(new CustomEvent("heureux:speech-start", {
+      detail: { source: "selection-toolbar" }
+    }));
+    frenchSpeech.synthesis.resume();
+    readingNumber += 1;
+    reading = true;
+    readingChunks = chunks;
+    readingIndex = 0;
+    setReadButton("Stop", true);
+    var currentReading = readingNumber;
+    speakNextChunk(currentReading);
+  }
+
+  function updateReadVoiceTitle() {
+    if (!readButton || !frenchSpeech || !frenchSpeech.supported) return;
+    var voice = frenchSpeech.preferredVoice();
+    readButton.title = voice
+      ? "French voice: " + voice.name
+      : "Read with the best French voice available";
   }
 
   function googleTranslateUrl(text) {
@@ -253,6 +369,33 @@
       : Promise.reject(new Error("Copy failed"));
   }
 
+  if (readButton) {
+    if (!readLabel || !frenchSpeech || !frenchSpeech.supported) {
+      readButton.hidden = true;
+    } else {
+      resetReadButton();
+      updateReadVoiceTitle();
+      if (frenchSpeech.synthesis.addEventListener) {
+        frenchSpeech.synthesis.addEventListener(
+          "voiceschanged",
+          updateReadVoiceTitle
+        );
+      }
+      readButton.addEventListener("click", function () {
+        if (reading) stopReading();
+        else startReading();
+      });
+    }
+  }
+  document.addEventListener("heureux:speech-start", function (event) {
+    if (
+      reading &&
+      (!event.detail || event.detail.source !== "selection-toolbar")
+    ) {
+      stopReading(false);
+    }
+  });
+
   action.querySelectorAll("button").forEach(function (button) {
     button.addEventListener("pointerdown", function (event) {
       event.preventDefault();
@@ -282,6 +425,7 @@
 
   translateButton.addEventListener("click", function () {
     if (!selectedText || !selectedRect) return;
+    if (reading) stopReading();
     var text = selectedText;
     var rect = selectedRect;
     var currentRequest = ++requestNumber;
@@ -372,11 +516,13 @@
   });
   window.addEventListener("resize", repositionPanel);
   document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && reading) stopReading();
     if (event.key === "Escape" && !panel.classList.contains("hidden")) {
       closePanel();
     }
   });
   window.addEventListener("pagehide", function () {
+    stopReading();
     if (translatorInstance && typeof translatorInstance.destroy === "function") {
       translatorInstance.destroy();
     }

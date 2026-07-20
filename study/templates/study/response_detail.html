@@ -7,9 +7,9 @@
 {% if personal_reset %}<div class="notice">La réponse d'origine est de nouveau utilisée.</div>{% endif %}
 <div class="detail-head">
   <p class="eyebrow">
-    {% if task %}<a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a> · {% endif %}
-    <a href="{% url 'study:theme_detail' selected_prompt.theme.slug %}">{{ selected_prompt.theme.emoji }} {{ selected_prompt.theme.display_name }}</a>
-    · <a href="{% if task %}{% url 'study:task_family_detail' part.slug task.slug selected_prompt.family.slug %}{% else %}{% url 'study:family_detail' selected_prompt.family.slug %}{% endif %}">{{ selected_prompt.family.name }}</a>
+    <a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a> ·
+    <a href="{% url 'study:theme_detail' part.slug task.slug selected_prompt.theme.slug %}">{{ selected_prompt.theme.emoji }} {{ selected_prompt.theme.display_name }}</a>
+    · <a href="{% url 'study:task_family_detail' part.slug task.slug selected_prompt.family.slug %}">{{ selected_prompt.family.name }}</a>
     {% if response_content.is_personal %} · <span class="chip">Version personnelle</span>{% endif %}
   </p>
   <h1 class="detail-prompt">{{ selected_prompt.text }}</h1>
@@ -19,7 +19,7 @@
 {% include "study/partials/prompt_navigation.html" %}
 
 <div class="detail-grid">
-  <div class="answer-columns">
+  <div class="answer-columns" data-annotation-root data-annotation-source-key="response:{{ response.content_key }}">
     {% if response_content.position %}
       <section class="card section-card">
         <div class="spine-label">Position</div>
@@ -82,13 +82,14 @@
 
   </div>
 
-  <aside class="detail-side">
+  <aside class="detail-side" data-annotation-root data-annotation-source-key="subject-sidebar:{{ response.content_key }}">
     <div class="card section-card response-sidebar-card response-sidebar-card--status">
-      <div class="spine-label">Cette carte</div>
+      <div class="spine-label">Progression du sujet</div>
+      <p class="state-line"><span class="progress-status progress-status--{{ subject_progress.status }}">{{ subject_progress.label }}</span></p>
       {% if card %}
-        <p class="state-line"><span class="progress-status progress-status--{{ card.progress_status }}">{{ card.progress_label }}</span></p>
+        <div class="spine-label">Pratique de la réponse</div>
         <dl class="kv">
-          {% if card.started_at %}<div><dt>Commencée</dt><dd>{{ card.started_at|date:"j M Y" }}</dd></div>{% endif %}
+          {% if card.response_practice_started_at %}<div><dt>Commencée</dt><dd>{{ card.response_practice_started_at|date:"j M Y" }}</dd></div>{% endif %}
           <div><dt>Répétitions</dt><dd>{{ card.reps }}</dd></div>
           <div><dt>Oublis</dt><dd>{{ card.lapses }}</dd></div>
           <div><dt>Intervalle</dt><dd>{{ card.interval_days|floatformat:0 }} j</dd></div>
@@ -96,14 +97,14 @@
           {% if card.due %}<div><dt>Prochaine</dt><dd>{{ card.due|date:"j M Y" }}</dd></div>{% endif %}
         </dl>
       {% else %}
-        <p class="muted">Aucune carte associée.</p>
+        <p class="muted">Aucune pratique de la réponse.</p>
       {% endif %}
       <div class="response-sidebar-actions">
         {% if can_edit_response %}
-          <a class="btn btn--block" href="{% url 'study:edit_response' response.id %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
+          <a class="btn btn--block" href="{% url 'study:edit_response' part.slug task.slug selected_prompt.pk %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
         {% endif %}
-        <a class="btn btn--primary btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;response={{ response.pk }}">Pratiquer cette réponse</a>
-        <a class="btn btn--block" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;theme={{ selected_prompt.theme.slug }}">Pratiquer ce thème</a>
+        <a class="btn btn--primary btn--block" href="{{ response_review_url }}">Pratiquer cette réponse</a>
+        <a class="btn btn--block" href="{{ theme_review_url }}">Pratiquer ce thème</a>
         {% if vocabulary_review_url %}
           <a class="btn btn--block" href="{{ vocabulary_review_url }}">Pratiquer les vocabs</a>
         {% endif %}
@@ -116,7 +117,7 @@
         <ul class="mini-list">
           {% for p in prompts %}
             <li>
-              <a href="{% url 'study:response_detail' p.response_id %}?prompt={{ p.pk }}">
+              <a href="{% url 'study:response_detail' p.theme.task.part.slug p.theme.task.slug p.pk %}">
                 <span class="chip chip--theme" style="--chip: {{ p.theme.color }};">{{ p.theme.emoji }} P{{ p.number }}</span>
                 {{ p.text }}
               </a>
@@ -128,10 +129,14 @@
 
     {% if subject_vocabulary %}
       <div class="card section-card response-sidebar-card">
-        <div class="spine-label">Vocabulaire de ce sujet</div>
+        <div class="response-batches__head">
+          <div class="spine-label">Vocabulaire de ce sujet</div>
+          <span class="progress-status progress-status--{{ vocabulary_batch_progress.status }}">{{ vocabulary_batch_progress.label }}</span>
+        </div>
+        <p class="muted">{{ vocabulary_batch_progress.completed }}/{{ vocabulary_batch_progress.total }} lots terminés</p>
         <ul class="mini-list response-sidebar-list">
           {% for phrase in subject_vocabulary %}
-            <li><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
+            <li data-annotation-root data-annotation-source-key="phrase:{{ phrase.phrase_id }}:catalog"><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
           {% endfor %}
         </ul>
         {% include "study/partials/response_batch_list.html" with batches=vocabulary_batches batch_kind="vocabulary" only %}
@@ -140,10 +145,14 @@
 
     {% if related_phrases %}
       <div class="card section-card response-sidebar-card">
-        <div class="spine-label">Expressions liées</div>
+        <div class="response-batches__head">
+          <div class="spine-label">Expressions liées</div>
+          <span class="progress-status progress-status--{{ phrase_batch_progress.status }}">{{ phrase_batch_progress.label }}</span>
+        </div>
+        <p class="muted">{{ phrase_batch_progress.completed }}/{{ phrase_batch_progress.total }} lots terminés</p>
         <ul class="mini-list response-sidebar-list">
           {% for phrase in related_phrases %}
-            <li><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
+            <li data-annotation-root data-annotation-source-key="phrase:{{ phrase.phrase_id }}:catalog"><b>{{ phrase.expression }}</b> <span class="muted">— {{ phrase.english_cue }}</span></li>
           {% endfor %}
         </ul>
         {% include "study/partials/response_batch_list.html" with batches=phrase_batches batch_kind="expressions" only %}

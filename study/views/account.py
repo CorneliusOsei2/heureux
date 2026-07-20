@@ -328,6 +328,7 @@ def reset_progress(request):
             revisit_added_at=None,
             suspended=False,
             started_at=None,
+            response_practice_started_at=None,
         )
         ReviewLog.objects.filter(user=request.user).delete()
         ComprehensionAttempt.objects.filter(user=request.user).delete()
@@ -366,6 +367,9 @@ def export_account(request):
                 "revisit_added_at": card.revisit_added_at,
                 "suspended": card.suspended,
                 "started_at": card.started_at,
+                "response_practice_started_at": (
+                    card.response_practice_started_at
+                ),
                 "created_at": card.created_at,
             }
         )

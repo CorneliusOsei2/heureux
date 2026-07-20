@@ -63,7 +63,7 @@
         <span class="ce-results-archived">Ce test n’est plus disponible et ne peut pas être recommencé.</span>
       {% endif %}
       {% if has_vocabulary %}
-        <a class="btn" href="{% url 'study:vocabulary' %}?test={{ test.slug }}">Pratiquer le vocabulaire</a>
+        <a class="btn" href="{% if test.mode == 'orale' %}{% url 'study:comprehension_oral_test_vocabulary' test.slug %}{% else %}{% url 'study:comprehension_test_vocabulary' test.slug %}{% endif %}">Pratiquer le vocabulaire</a>
       {% endif %}
       {% if group_number %}
         <a class="btn" href="{% url test.group_route group_number %}">Retour au groupe</a>

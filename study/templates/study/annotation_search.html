@@ -52,7 +52,8 @@
   {% include "study/partials/collection_view_toggle.html" %}
 {% endif %}
 
-<div class="annotations-grid" data-collection-view="adaptive">
+<div class="annotations-grid collection-table collection-table--annotation-search" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="annotation-search" column_1="Type et date" column_2="Contenu" column_3="Contexte" column_4="Actions" only %}
   {% for annotation in results %}
     {% include "study/partials/annotation_card.html" with annotation=annotation variant="search" anchor_prefix="annotation" %}
   {% empty %}

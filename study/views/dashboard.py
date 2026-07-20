@@ -1,31 +1,27 @@
-"""Home dashboard, section overviews, and redirect shims."""
+"""Home dashboard and expression overview."""
 
 from __future__ import annotations
 
-from urllib.parse import urlencode
-
-from django.db.models import Prefetch
-from django.http import HttpResponseBadRequest
-from django.shortcuts import redirect, render
+from django.db.models import Prefetch, Q
+from django.shortcuts import render
 from django.urls import reverse
 from django.utils import timezone
-from django.views.decorators.http import require_GET
 
 from .. import queue as queue_module
 from ..cards import scope_label
 from ..models import (
     Annotation,
     Card,
+    CardType,
     ExamPart,
-    Phrase,
     PhraseTier,
     ReviewSession,
     Task,
 )
+from ..progress import card_unit_progress, combine_progress
 
 from .common import (
     FUNCTIONAL_PHRASE_CATEGORY_NAMES,
-    _route_task,
     _task_card,
     current_streak,
     deck_stats,
@@ -56,6 +52,9 @@ def _home_expression_paths(parts):
             for task in all_tasks
             if task["task"].available
         ]
+        path_progress = combine_progress(
+            task["stats"]["progress"] for task in available_tasks
+        )
         paths.append(
             {
                 **item,
@@ -74,6 +73,7 @@ def _home_expression_paths(parts):
                 "due": sum(
                     task["stats"]["due"] for task in available_tasks
                 ),
+                "progress": path_progress,
             }
         )
     paths.sort(
@@ -129,11 +129,44 @@ def _vocabulary_expression_paths(now, user):
             item and item["part"].available and vocabulary_tasks
         )
         url = ""
+        vocabulary_progress = None
         if available:
+            task_ids = [
+                task_item["task"].pk for task_item in vocabulary_tasks
+            ]
+            vocabulary_cards = (
+                Card.objects.current_content()
+                .filter(
+                    user=user,
+                    phrase__source_prompts__is_active=True,
+                    phrase__source_prompts__theme__is_active=True,
+                    phrase__source_prompts__theme__task_id__in=task_ids,
+                    phrase__category__is_active=True,
+                )
+                .filter(
+                    Q(
+                        phrase__tier=PhraseTier.SUBJECT,
+                        card_type=CardType.PHRASE_PRODUCTION,
+                    )
+                    | Q(
+                        phrase__tier=PhraseTier.SHARED,
+                        phrase__category__name__in=(
+                            FUNCTIONAL_PHRASE_CATEGORY_NAMES
+                        ),
+                        card_type__in=[
+                            CardType.PHRASE_PRODUCTION,
+                            CardType.PHRASE_RECOGNITION,
+                        ],
+                    )
+                )
+                .distinct()
+            )
+            vocabulary_progress = card_unit_progress(vocabulary_cards)
             if len(vocabulary_tasks) == 1:
                 task = vocabulary_tasks[0]["task"]
-                url = reverse("study:vocabulary") + "?" + urlencode(
-                    {"part": task.part.slug, "task": task.slug}
+                url = reverse(
+                    "study:task_phrases",
+                    args=[task.part.slug, task.slug],
                 )
             else:
                 url = reverse(
@@ -156,11 +189,10 @@ def _vocabulary_expression_paths(now, user):
                     task_item["prompt_count"]
                     for task_item in vocabulary_tasks
                 ),
-                "vocabulary_count": sum(
-                    task_item["functional_phrase_count"]
-                    + task_item["subject_vocabulary_count"]
-                    for task_item in vocabulary_tasks
+                "vocabulary_count": (
+                    vocabulary_progress.total if vocabulary_progress else 0
                 ),
+                "progress": vocabulary_progress,
             }
         )
     return paths
@@ -208,83 +240,6 @@ def dashboard(request):
     return render(request, "study/dashboard.html", context)
 
 
-def _redirect_to(request, route_name, **scope):
-    query = request.GET.copy()
-    for key, value in scope.items():
-        if value:
-            query[key] = value
-    target = reverse(route_name)
-    if query:
-        target = f"{target}?{query.urlencode()}"
-    return redirect(target)
-
-
-@require_GET
-def redirect_home(request):
-    return _redirect_to(request, "study:dashboard")
-
-
-@require_GET
-def redirect_expression(request):
-    return _redirect_to(request, "study:expression")
-
-
-@require_GET
-def redirect_vocabulary(request, part_slug=None, task_slug=None):
-    if part_slug is not None or task_slug is not None:
-        task = _route_task(part_slug, task_slug)
-        part_slug = task.part.slug
-        task_slug = task.slug
-    return _redirect_to(
-        request,
-        "study:vocabulary",
-        part=part_slug,
-        task=task_slug,
-    )
-
-
-@require_GET
-def redirect_search(request, part_slug=None, task_slug=None):
-    if part_slug is not None or task_slug is not None:
-        task = _route_task(part_slug, task_slug)
-        part_slug = task.part.slug
-        task_slug = task.slug
-    return _redirect_to(
-        request,
-        "study:search",
-        part=part_slug,
-        task=task_slug,
-    )
-
-
-@require_GET
-def redirect_notes(request, part_slug=None, task_slug=None):
-    scope = {}
-    if part_slug and task_slug:
-        task = _route_task(part_slug, task_slug)
-        scope = {"part": task.part.slug, "task": task.slug}
-    elif part_slug or task_slug:
-        return HttpResponseBadRequest("Incomplete notes scope.")
-    else:
-        scope = {"scope": "general"}
-    return _redirect_to(request, "study:notes_overview", **scope)
-
-
-@require_GET
-def redirect_stats(request, part_slug=None, task_slug=None):
-    if part_slug is not None or task_slug is not None:
-        task = _route_task(part_slug, task_slug)
-        part_slug = task.part.slug
-        task_slug = task.slug
-    return _redirect_to(
-        request,
-        "study:stats",
-        part=part_slug,
-        task=task_slug,
-    )
-
-
-@require_GET
 def expression_hub(request):
     now = timezone.now()
     parts = _parts_with_task_cards(now, request.user)
@@ -300,103 +255,6 @@ def expression_hub(request):
             ),
             "card_total": sum(path["total"] for path in available_paths),
             "card_seen": sum(path["seen"] for path in available_paths),
-            "card_due": sum(path["due"] for path in available_paths),
+            "response_due": sum(path["due"] for path in available_paths),
         },
     )
-
-
-def _grouped_overview(request, area):
-    now = timezone.now()
-    user_cards = queue_module.scoped_cards(user=request.user)
-    context = {
-        "area": area,
-        "parts": _parts_with_task_cards(now, request.user),
-        "overall": deck_stats(user_cards, now),
-        "streak": current_streak(now, user=request.user),
-    }
-    if area == "review":
-        session = ReviewSession.load(request.user)
-        context.update(
-            {
-                "title": "Réviser",
-                "eyebrow": "Mémoire active",
-                "description": (
-                    "Choisissez d'abord votre épreuve et votre tâche, "
-                    "puis le type de cartes à travailler."
-                ),
-                "counts": queue_module.queue_counts(
-                    now=now,
-                    user=request.user,
-                ),
-                "revisit_count": queue_module.scoped_cards(
-                    {"kind": "revisit"},
-                    user=request.user,
-                ).count(),
-                "weak_count": queue_module.queue_counts(
-                    {"kind": "weak"},
-                    now,
-                    user=request.user,
-                )["weak_total"],
-                "can_resume": bool(session.current_card_id),
-            }
-        )
-    elif area == "expressions":
-        functional_cards = queue_module.scoped_cards(
-            {"kind": "phrase"},
-            user=request.user,
-        ).filter(
-            phrase__tier=PhraseTier.SHARED,
-            phrase__category__name__in=FUNCTIONAL_PHRASE_CATEGORY_NAMES,
-        )
-        context.update(
-            {
-                "title": "Expressions",
-                "eyebrow": "Précision lexicale",
-                "description": (
-                    "Choisissez une tâche pour retrouver ses expressions "
-                    "transversales et les 50 vocabs de chaque sujet."
-                ),
-                "phrase_count": Phrase.objects.filter(
-                    is_active=True,
-                    tier=PhraseTier.SHARED,
-                    category__name__in=FUNCTIONAL_PHRASE_CATEGORY_NAMES,
-                ).count(),
-                "subject_phrase_count": Phrase.objects.filter(
-                    is_active=True,
-                    tier=PhraseTier.SUBJECT,
-                ).count(),
-                "phrase_stats": deck_stats(functional_cards, now),
-                "phrase_counts": queue_module.queue_counts(
-                    {"kind": "phrase"},
-                    now,
-                    user=request.user,
-                ),
-            }
-        )
-    else:
-        context.update(
-            {
-                "title": "Stats",
-                "eyebrow": "Progression",
-                "description": (
-                    "Choisissez une tâche pour consulter sa maîtrise, "
-                    "son activité et ses prochaines révisions."
-                ),
-            }
-        )
-    return render(request, "study/grouped_overview.html", context)
-
-
-@require_GET
-def review_overview(request):
-    return _grouped_overview(request, "review")
-
-
-@require_GET
-def expressions_overview(request):
-    return _grouped_overview(request, "expressions")
-
-
-@require_GET
-def stats_overview(request):
-    return _grouped_overview(request, "stats")

@@ -4,12 +4,12 @@
 {% block content %}
 {% if selected or selected_test %}
 <nav class="phrase-category-back" aria-label="Retour au vocabulaire">
-  <a href="{% url 'study:vocabulary' %}{% if selected_test %}?domain=comprehension&amp;mode=ce{% elif task %}?part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">← Tout le vocabulaire</a>
+  <a href="{{ vocabulary_root_url }}">← Tout le vocabulaire</a>
 </nav>
 
 <header class="phrase-category-hero card">
   <div>
-    <p class="eyebrow">{% if selected_test %}Compréhension écrite · vocabulaire du test{% else %}Expression · tournures transversales{% endif %}</p>
+    <p class="eyebrow">{% if selected_test %}{{ comprehension_skill_code|upper }} · vocabulaire du test{% else %}Expression · tournures transversales{% endif %}</p>
     <h1>{% if selected_test %}{{ selected_test.title }}{% else %}{{ selected.name }}{% endif %}</h1>
     <p>
       {% if selected_test %}
@@ -19,19 +19,21 @@
       {% endif %}
     </p>
     <div class="phrase-category-hero__meta">
+      {% if collection_progress %}
+        <span class="progress-status progress-status--{{ collection_progress.status }}">{{ collection_progress.label }}</span>
+      {% endif %}
       <span><b>{{ phrase_count }}</b> entrée{{ phrase_count|pluralize }}</span>
       <span><b>{{ review_batches|length }}</b> lot{{ review_batches|length|pluralize }} de {{ batch_size }}</span>
+      {% if collection_progress %}
+        <span><b>{{ collection_progress.completed }}/{{ collection_progress.total }}</b> lots terminés</span>
+      {% endif %}
     </div>
   </div>
   <div class="phrase-category-hero__actions">
     {% if first_review_batch %}
       <a class="btn btn--primary" href="{{ first_review_batch.review_url }}">Pratiquer le lot {{ first_review_batch.number }}</a>
     {% endif %}
-    {% if selected_test %}
-      <a class="btn" href="{% url 'study:review' %}?kind=vocab&amp;test={{ selected_test.slug }}">Mélanger les 50 cartes</a>
-    {% else %}
-      <a class="btn" href="{% url 'study:review' %}?kind=phrase{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}&amp;category={{ selected.slug }}">Révision mélangée</a>
-    {% endif %}
+    <a class="btn" href="{{ selected_review_url }}">{% if selected_test %}Mélanger les 50 cartes{% else %}Révision mélangée{% endif %}</a>
   </div>
 </header>
 
@@ -48,7 +50,8 @@
     </div>
     <p>Travaille un petit ensemble stable, puis passe au suivant quand les cartes deviennent familières.</p>
   </div>
-  <div class="batch-grid" data-collection-view="adaptive">
+  <div class="batch-grid collection-table collection-table--batches" data-collection-view="adaptive">
+    {% include "study/partials/collection_table_header.html" with variant="batches" column_1="Lot et statut" column_2="Entrées" column_3="Activité" only %}
     {% for batch in review_batches %}
       {% include "study/partials/batch_card.html" with batch=batch item_noun="Entrées" only %}
     {% endfor %}
@@ -67,7 +70,8 @@
   {% for group in grouped %}
     <div class="phrase-group">
       {% if selected_test %}<h3>{{ group.category.name|cut:"Compréhension · " }}</h3>{% endif %}
-      <div class="grid grid--phrases" data-collection-view="adaptive">
+      <div class="grid grid--phrases collection-table collection-table--phrases" data-collection-view="adaptive">
+        {% include "study/partials/collection_table_header.html" with variant="phrases" column_1="Expression" column_2="Sens" column_3="Exemple en contexte" only %}
         {% for phrase in group.phrases %}
           <article class="phrase card" data-collection-item id="phrase-{{ phrase.phrase_id }}">
             <div class="phrase__expr">{{ phrase.expression }}</div>
@@ -79,7 +83,7 @@
                 <div class="phrase__foot">
                   <span class="faint">Tiré de&nbsp;:</span>
                   {% for source in prompts|slice:":10" %}
-                    <a class="chip chip--theme" style="--chip: {{ source.theme.color }};" href="{% url 'study:response_detail' source.response_id %}?prompt={{ source.pk }}">{{ source.theme.emoji }} P{{ source.number }}</a>
+                    <a class="chip chip--theme" style="--chip: {{ source.theme.color }};" href="{% url 'study:response_detail' source.theme.task.part.slug source.theme.task.slug source.pk %}">{{ source.theme.emoji }} P{{ source.number }}</a>
                   {% endfor %}
                 </div>
               {% endif %}
@@ -117,7 +121,7 @@
         </div>
       {% elif comprehension_directory %}
         <div class="active-filter">
-          <span>Filtre actif · Compréhension · Écrite</span>
+          <span>Filtre actif · Compréhension · {{ comprehension_skill_code|upper }}</span>
           <a href="{% url 'study:vocabulary' %}">Effacer</a>
         </div>
       {% endif %}
@@ -180,7 +184,6 @@
   </section>
 
   {% if vocabulary_landing %}
-  {% url 'study:vocabulary' as vocabulary_base_url %}
   <section class="vocabulary-domain vocabulary-domain--comprehension area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">
     <div class="section-heading vocabulary-domain__heading">
       <div>
@@ -190,8 +193,9 @@
       <p>Travaille les mots et reformulations directement reliés aux tests de compréhension.</p>
     </div>
     <div class="expression-paths">
-      {% include "study/partials/vocabulary_skill_card.html" with skill_code="ce" skill_title="Écrite" skill_available=comprehension_decks skill_url=vocabulary_base_url skill_query="domain=comprehension&amp;mode=ce" skill_test_count=comprehension_decks|length skill_entry_count=comprehension_vocabulary_count only %}
-      {% include "study/partials/vocabulary_skill_card.html" with skill_code="co" skill_title="Orale" only %}
+      {% for path in comprehension_vocabulary_paths %}
+        {% include "study/partials/vocabulary_skill_card.html" with skill_code=path.code skill_title=path.title skill_available=path.available skill_url=path.url skill_test_count=path.test_count skill_entry_count=path.entry_count skill_progress=path.progress only %}
+      {% endfor %}
     </div>
   </section>
 
@@ -205,7 +209,7 @@
     </div>
     <div class="expression-paths">
       {% for path in expression_vocabulary_paths %}
-        {% include "study/partials/vocabulary_skill_card.html" with skill_code=path.short_name|lower skill_title=path.title skill_available=path.available skill_url=path.url skill_task_count=path.task_count skill_prompt_count=path.prompt_count skill_entry_count=path.vocabulary_count only %}
+        {% include "study/partials/vocabulary_skill_card.html" with skill_code=path.short_name|lower skill_title=path.title skill_available=path.available skill_url=path.url skill_task_count=path.task_count skill_prompt_count=path.prompt_count skill_entry_count=path.vocabulary_count skill_progress=path.progress only %}
       {% endfor %}
     </div>
   </section>
@@ -221,15 +225,19 @@
       <p>Commence par les tournures réutilisables, puis ouvre le deck riche de 50 vocabs du sujet que tu prépares.</p>
     </div>
 
-    <div class="expression-category-grid" data-collection-view="adaptive">
+    <div class="expression-category-grid collection-table collection-table--categories" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="categories" column_1="Catégorie" column_2="Contenu" column_3="Accès" only %}
       {% for category in functional_categories %}
-        <a class="expression-category-card card" data-collection-item href="{% url 'study:vocabulary' %}?{% if task %}part={{ part.slug }}&amp;task={{ task.slug }}&amp;{% endif %}category={{ category.slug }}">
+        <a class="expression-category-card card" data-collection-item href="{{ category.url }}">
           <span class="expression-category-card__icon" aria-hidden="true">“</span>
           <span class="expression-category-card__copy">
             <strong>{{ category.name }}</strong>
             <small>{{ category.learning_description }}</small>
           </span>
-          <span class="expression-category-card__meta">{{ category.phrase_count }} expressions · {{ category.batch_count }} lots</span>
+          <span class="expression-category-card__meta">
+            <span class="progress-status progress-status--{{ category.progress.status }}">{{ category.progress.label }}</span>
+            <span>{{ category.phrase_count }} expressions · {{ category.completed_batch_count }}/{{ category.progress.total }} lots terminés</span>
+          </span>
           <span class="expression-category-card__action"><span class="table-action-label">Ouvrir</span> <span aria-hidden="true">→</span></span>
         </a>
       {% empty %}
@@ -256,19 +264,20 @@
         <p role="status" aria-live="polite" data-subject-vocabulary-status>{{ subject_prompt_count }} sujets · {{ subject_response_count }} decks uniques</p>
       </div>
 
-      <div class="subject-theme-list" data-collection-view="adaptive" data-subject-vocabulary-directory>
+      <div class="subject-theme-list collection-table collection-table--subject-themes" data-collection-view="adaptive" data-subject-vocabulary-directory>
+        {% include "study/partials/collection_table_header.html" with variant="subject-themes" column_1="Thème" column_2="Contenu" column_3="Accès" only %}
         {% for group in subject_theme_groups %}
           <details class="subject-theme card" data-collection-item data-subject-theme>
             <summary>
               <span class="subject-theme__identity">
                 <span class="subject-theme__emoji" aria-hidden="true">{{ group.theme.emoji }}</span>
-                <span>
-                  <strong>{{ group.theme.display_name|default:group.theme.name }}</strong>
-                  <small>{{ group.prompts|length }} sujets · {{ group.deck_count }} decks uniques</small>
-                </span>
+                <strong>{{ group.theme.display_name|default:group.theme.name }}</strong>
               </span>
-              <span class="subject-theme__action">Voir les sujets</span>
-              <span class="subject-theme__chevron" aria-hidden="true">⌄</span>
+              <span class="subject-theme__stats">
+                <span class="progress-status progress-status--{{ group.progress.status }}">{{ group.progress.label }}</span>
+                <span>{{ group.prompts|length }} sujets · {{ group.progress.completed }}/{{ group.progress.total }} decks terminés</span>
+              </span>
+              <span class="subject-theme__action">Voir les sujets <span class="subject-theme__chevron" aria-hidden="true">⌄</span></span>
             </summary>
             <div class="subject-vocabulary-list">
               {% for prompt in group.prompts %}
@@ -277,14 +286,14 @@
                   <div class="subject-vocabulary-row__copy">
                     <h3>{{ prompt.text }}</h3>
                     <p>
-                      {% if prompt.progress_card %}<span class="progress-status progress-status--{{ prompt.progress_card.progress_status }}">{{ prompt.progress_card.progress_label }}</span>{% endif %}
-                      <span>{{ prompt.vocabulary_count }} vocabs · {{ prompt.vocabulary_batch_count }} lots</span>
+                      <span class="progress-status progress-status--{{ prompt.vocabulary_progress.status }}">{{ prompt.vocabulary_progress.label }}</span>
+                      <span>{{ prompt.vocabulary_progress.completed }}/{{ prompt.vocabulary_progress.total }} vocabs terminés · {{ prompt.vocabulary_batch_count }} lots</span>
                       {% if not prompt.is_canonical %}<span class="alias-tag">deck partagé</span>{% endif %}
                     </p>
                   </div>
                   <div class="subject-vocabulary-row__actions">
-                    <a class="btn btn--sm btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;response={{ prompt.response_id }}&amp;batch=1">Pratiquer</a>
-                    <a class="btn btn--sm" href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}#subject-vocabulary">Voir les lots</a>
+                    <a class="btn btn--sm btn--primary" href="{{ prompt.review_url }}">Pratiquer</a>
+                    <a class="btn btn--sm" href="{{ prompt.detail_url }}#subject-vocabulary">Voir les lots</a>
                   </div>
                 </article>
               {% endfor %}
@@ -310,27 +319,22 @@
       </div>
       <p>Chaque test écrit possède 50 entrées reliées aux questions où elles apparaissent.</p>
     </div>
-    <div class="comprehension-vocabulary-grid" data-collection-view="adaptive">
+    <div class="comprehension-vocabulary-grid collection-table collection-table--vocabulary-tests" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="vocabulary-tests" column_1="Test" column_2="Deck" column_3="Progression" column_4="Actions" only %}
       {% for deck in comprehension_decks %}
         <article class="comprehension-vocabulary-card card" data-collection-item>
           <div class="comprehension-vocabulary-card__head">
-            <span class="comprehension-vocabulary-card__number">CE {{ deck.test.number|stringformat:"02d" }}</span>
+            <span class="comprehension-vocabulary-card__number">{{ deck.skill_code|upper }} {{ deck.test.number|stringformat:"02d" }}</span>
             {% if deck.counts.total_due %}<span class="pill pill--due">{{ deck.counts.total_due }} disponibles</span>{% endif %}
           </div>
           <div class="comprehension-vocabulary-card__copy">
             <h3>{{ deck.test.title }}</h3>
-            <p>{{ deck.vocabulary_count }} entrées · {{ deck.batch_count }} lots · {{ deck.stats.mature }} maîtrisées</p>
+            <p>{{ deck.vocabulary_count }} entrées · {{ deck.completed_batch_count }}/{{ deck.batch_count }} lots terminés · {{ deck.stats.mature }} maîtrisées</p>
           </div>
           <div class="learning-progress">
             <div class="learning-progress__summary">
-              {% if deck.stats.total and deck.stats.mature == deck.stats.total %}
-                <span class="progress-status progress-status--done">Maîtrisé</span>
-              {% elif deck.stats.seen %}
-                <span class="progress-status progress-status--active">En cours</span>
-              {% else %}
-                <span class="progress-status progress-status--new">À commencer</span>
-              {% endif %}
-              <span class="learning-progress__count">{{ deck.stats.mature }}/{{ deck.stats.total }} maîtrisées</span>
+              <span class="progress-status progress-status--{{ deck.progress.status }}">{{ deck.progress.label }}</span>
+              <span class="learning-progress__count">{{ deck.progress.completed }}/{{ deck.progress.total }} terminées</span>
             </div>
             <div class="progress progress--learning" role="progressbar" aria-valuemin="0" aria-valuemax="{{ deck.stats.total }}" aria-valuenow="{{ deck.stats.seen }}" aria-label="{{ deck.stats.seen }} entrées vues sur {{ deck.stats.total }}, dont {{ deck.stats.mature }} maîtrisées">
               <span class="bg-mature" style="width: {% widthratio deck.stats.mature deck.stats.total 100 %}%;"></span>
@@ -340,11 +344,11 @@
             </div>
           </div>
           <div class="comprehension-vocabulary-card__actions">
-            <a class="btn btn--primary" href="{% url 'study:review' %}?kind=vocab&amp;test={{ deck.test.slug }}&amp;batch=1" aria-label="Pratiquer le vocabulaire de {{ deck.test.title }}" title="Pratiquer">
+            <a class="btn btn--primary" href="{{ deck.review_url }}" aria-label="Pratiquer le vocabulaire de {{ deck.test.title }}" title="Pratiquer">
               <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 9 6-9 6Z"></path></svg>
               <span class="table-action-label">Pratiquer</span>
             </a>
-            <a class="btn" href="{% url 'study:vocabulary' %}?test={{ deck.test.slug }}" aria-label="Voir les 50 entrées de {{ deck.test.title }}" title="Voir les entrées">
+            <a class="btn" href="{{ deck.detail_url }}" aria-label="Voir les 50 entrées de {{ deck.test.title }}" title="Voir les entrées">
               <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3ZM5 17a3 3 0 0 1 3-3h11"></path></svg>
               <span class="table-action-label">Voir les 50 entrées</span>
             </a>

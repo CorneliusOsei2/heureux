@@ -6,6 +6,7 @@ from django.db import connection
 from django.http import JsonResponse
 from django.contrib.auth.views import redirect_to_login
 from django.conf import settings
+from django.urls import Resolver404, resolve
 from django.utils.cache import patch_cache_control
 
 HEALTH_CHECK_PATH = "/healthz"
@@ -63,9 +64,9 @@ class AuthenticationRequiredMiddleware:
     """Require an authenticated account for every private study surface."""
 
     public_paths = {
-        "/login/",
-        "/register/",
-        "/recover/",
+        "/compte/connexion/",
+        "/compte/inscription/",
+        "/compte/recuperation/",
         "/healthz",
         "/manifest.webmanifest",
         "/sw.js",
@@ -86,14 +87,20 @@ class AuthenticationRequiredMiddleware:
             return response
         if is_public:
             return self.get_response(request)
+        try:
+            resolve(request.path_info)
+        except Resolver404:
+            response = self.get_response(request)
+            patch_cache_control(response, private=True, no_store=True)
+            return response
         login_target = (
-            "/review/"
-            if request.path.startswith("/review/")
+            "/revision/"
+            if request.path.startswith("/revision/")
             else request.get_full_path()
         )
         login_redirect = redirect_to_login(login_target)
         patch_cache_control(login_redirect, private=True, no_store=True)
-        if request.path.startswith("/review/") and request.headers.get(
+        if request.path.startswith("/revision/") and request.headers.get(
             "X-Requested-With"
         ):
             response = JsonResponse(

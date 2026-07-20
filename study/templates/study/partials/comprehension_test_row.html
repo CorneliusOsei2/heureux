@@ -14,11 +14,18 @@ by the written and oral group pages. Params:
     <span class="qrow__text">
       <strong>{% if test %}{{ test.title }}{% else %}Test {{ slot.number }}{% endif %}</strong>
       {% if test.is_active and test.is_published and test.description %}<small>{{ test.description }}</small>{% endif %}
-      {% if test.active_attempt %}
-        <progress class="ce-group-test-row__progress" value="{{ test.active_answered_count }}" max="{{ test.attempt_question_count }}" aria-label="{{ test.active_answered_count }} questions répondues sur {{ test.attempt_question_count }}"></progress>
+    </span>
+    <span class="ce-group-test-row__facts">
+      {% if test.is_active and test.is_published %}
+        <strong>{{ test.active_question_count }} questions</strong>
+      {% elif test.user_attempts %}
+        <strong>{{ test.completed_attempts|length }}</strong>
+        <span>tentative{{ test.completed_attempts|length|pluralize }}</span>
+      {% else %}
+        <span class="table-cell-empty" aria-label="Aucune donnée">—</span>
       {% endif %}
     </span>
-    <span class="qrow__meta ce-group-test-row__meta">
+    <span class="ce-group-test-row__progress-cell">
       {% if not test %}
         <span class="ce-status ce-status--soon">À venir</span>
       {% elif not test.is_active %}
@@ -32,30 +39,24 @@ by the written and oral group pages. Params:
       {% elif test.latest_attempt %}
         <span class="ce-status ce-status--done">Terminé</span>
       {% else %}
-        <span class="ce-status">Nouveau</span>
+        <span class="ce-status">À commencer</span>
       {% endif %}
-      <span class="ce-group-test-row__facts">
-        {% if test.is_active and test.is_published %}
-          {{ test.active_question_count }} questions
-          {% if test.active_attempt %}
-            · {{ test.active_answered_count }}/{{ test.attempt_question_count }} répondues
-          {% elif test.best_attempt %}
-            · {{ test.best_attempt.percentage }} %
-          {% endif %}
-        {% elif test.user_attempts %}
-          {{ test.completed_attempts|length }} tentative{{ test.completed_attempts|length|pluralize }}
-        {% endif %}
-      </span>
+      {% if test.active_attempt %}
+        <span class="ce-group-test-row__progress-copy">{{ test.active_answered_count }}/{{ test.attempt_question_count }} répondues</span>
+        <progress class="ce-group-test-row__progress" value="{{ test.active_answered_count }}" max="{{ test.attempt_question_count }}" aria-label="{{ test.active_answered_count }} questions répondues sur {{ test.attempt_question_count }}"></progress>
+      {% elif test.best_attempt %}
+        <span class="ce-group-test-row__progress-copy">Meilleur score · {{ test.best_attempt.percentage }} %</span>
+      {% endif %}
+    </span>
+    <span class="ce-group-test-row__action">
       {% if test.is_active and test.is_published %}
-        <span class="ce-group-test-row__action">
-          <span class="table-action-label">{% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}</span>
-          <span aria-hidden="true">→</span>
-        </span>
+        <span class="table-action-label">{% if test.active_attempt %}Continuer{% elif test.latest_attempt %}Voir ou refaire{% else %}Découvrir le test{% endif %}</span>
+        <span class="table-action-arrow" aria-hidden="true">→</span>
       {% elif test.user_attempts %}
-        <span class="ce-group-test-row__action">
-          <span class="table-action-label">{% if test.is_active %}Voir l’historique{% else %}Voir le test archivé{% endif %}</span>
-          <span aria-hidden="true">→</span>
-        </span>
+        <span class="table-action-label">{% if test.is_active %}Voir l’historique{% else %}Voir le test archivé{% endif %}</span>
+        <span class="table-action-arrow" aria-hidden="true">→</span>
+      {% else %}
+        <span class="table-cell-empty" aria-label="Aucune action">—</span>
       {% endif %}
     </span>
   {% if test.is_active and test.is_published or test.user_attempts %}

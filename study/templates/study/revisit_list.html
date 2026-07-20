@@ -10,7 +10,7 @@
     <p class="muted mt-0">Les cartes marquées « Revoir » restent ici jusqu'à ce que vous répondiez correctement.</p>
   </div>
   {% if items %}
-    <a class="btn btn--primary" href="{% url 'study:review' %}?{{ review_scope_qs }}">Réviser cette liste</a>
+    <a class="btn btn--primary" href="{{ review_url }}">Réviser cette liste</a>
   {% endif %}
 </div>
 
@@ -26,7 +26,8 @@
           </div>
           <span class="pill pill--revisit">{{ group.items|length }}</span>
         </div>
-        <div class="qlist revisit-list" data-collection-view="adaptive">
+        <div class="qlist revisit-list collection-table collection-table--revisit" data-collection-view="adaptive">
+          {% include "study/partials/collection_table_header.html" with variant="revisit" column_1="Carte à revoir" column_2="Action" only %}
           {% for item in group.items %}
             <article class="qrow revisit-row" data-collection-item>
               <div class="revisit-row__body">
@@ -64,7 +65,7 @@
     <h2>Aucune carte à revoir</h2>
     <p>Lorsque vous hésitez sur une carte, choisissez « Revoir » : elle apparaîtra ici.</p>
     {% if content == "spine" %}
-      <a class="btn btn--primary" href="{% url 'study:review' %}?kind=spine{% if task %}&amp;part={{ part.slug }}&amp;task={{ task.slug }}{% endif %}">Pratiquer les réponses</a>
+      <a class="btn btn--primary" href="{% if task %}{% url 'study:task_review' part.slug task.slug %}?kind=spine{% elif part %}{% url 'study:part_review' part.slug %}?kind=spine{% else %}{% url 'study:review' %}?kind=spine{% endif %}">Pratiquer les réponses</a>
     {% else %}
       <a class="btn btn--primary" href="{% url 'study:vocabulary' %}">Choisir un deck de vocabulaire</a>
     {% endif %}

@@ -22,7 +22,8 @@
     {% include "study/partials/collection_view_toggle.html" %}
   {% endif %}
 
-  <section class="qlist ce-group-test-list" data-collection-view="adaptive" aria-label="Tests du groupe {{ group.number }}">
+  <section class="qlist ce-group-test-list collection-table collection-table--tests" data-collection-view="adaptive" aria-label="Tests du groupe {{ group.number }}">
+    {% include "study/partials/collection_table_header.html" with variant="tests" column_1="Test" column_2="Détails" column_3="Questions" column_4="Progression" column_5="Action" only %}
     {% for slot in group.slots %}
       {% include "study/partials/comprehension_test_row.html" with slot=slot only %}
     {% endfor %}

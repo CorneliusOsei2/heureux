@@ -6,8 +6,7 @@
   <p class="eyebrow">{% if task %}Recherche filtrée · {{ task.name }}{% else %}Tout le contenu{% endif %}</p>
   <h1>Recherche</h1>
   <p>Retrouve un sujet, une expression, un mot ou une question de compréhension.</p>
-  <form class="search-form" method="get" action="{% url 'study:search' %}">
-    {% if task %}<input type="hidden" name="part" value="{{ part.slug }}"><input type="hidden" name="task" value="{{ task.slug }}">{% endif %}
+  <form class="search-form" method="get" action="{{ search_url }}">
     <label class="sr-only" for="global-search">Rechercher dans le contenu</label>
     <input id="global-search" class="search-form__input" type="search" name="q" value="{{ query }}" placeholder="Chercher un sujet, une idée, une expression…" autofocus>
     <button class="btn btn--primary btn--icon" type="submit" aria-label="Chercher" title="Chercher">
@@ -30,14 +29,15 @@
 
   {% if prompt_results %}
     <h2 class="search-section-heading">Sujets &amp; réponses <span>{{ prompt_result_count }}</span></h2>
-    <div class="qlist" data-collection-view="adaptive">
+    <div class="qlist collection-table collection-table--subjects" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="subjects" column_1="Repère" column_2="Résultat" column_3="Contexte" only %}
       {% for prompt in prompt_results %}
-        <a class="qrow" data-collection-item href="{% url 'study:response_detail' prompt.response_id %}?prompt={{ prompt.pk }}">
+        <a class="qrow" data-collection-item href="{% url 'study:response_detail' prompt.theme.task.part.slug prompt.theme.task.slug prompt.pk %}">
           <span class="qrow__num qrow__num--tag"><span class="chip chip--theme" style="--chip: {{ prompt.theme.color }};">{{ prompt.theme.emoji }} P{{ prompt.number }}</span></span>
           <span class="qrow__text">{{ prompt.text }}</span>
           <span class="qrow__meta">
             <span class="muted">{{ prompt.family.name }}</span>
-            {% if prompt.progress_card %}<span class="progress-status progress-status--{{ prompt.progress_card.progress_status }}">{{ prompt.progress_card.progress_label }}</span>{% endif %}
+            <span class="progress-status progress-status--{{ prompt.subject_progress.status }}">{{ prompt.subject_progress.label }}</span>
           </span>
         </a>
       {% endfor %}
@@ -46,7 +46,8 @@
 
   {% if phrase_results %}
     <h2 class="search-section-heading">Expressions <span>{{ phrase_result_count }}</span></h2>
-    <div class="grid grid--phrases" data-collection-view="adaptive">
+    <div class="grid grid--phrases collection-table collection-table--phrases" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="phrases" column_1="Expression" column_2="Sens" column_3="Exemple" only %}
       {% for phrase in phrase_results %}
         <div class="phrase card" data-collection-item>
           <div class="phrase__expr">{{ phrase.expression }}</div>
@@ -59,7 +60,8 @@
 
   {% if comprehension_results %}
     <h2 class="search-section-heading">Compréhension <span>{{ comprehension_result_count }}</span></h2>
-    <div class="qlist" data-collection-view="adaptive">
+    <div class="qlist collection-table collection-table--subjects" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="subjects" column_1="Question" column_2="Contenu" column_3="Accès" only %}
       {% for question in comprehension_results %}
         <a class="qrow" data-collection-item href="{% if question.test.mode == 'orale' %}{% url 'study:comprehension_oral_question_study' question.test.slug question.number %}{% else %}{% url 'study:comprehension_question_study' question.test.slug question.number %}{% endif %}">
           <span class="qrow__num qrow__num--tag"><span class="chip">{{ question.test.title }} · Q{{ question.number }}</span></span>

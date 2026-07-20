@@ -1,6 +1,6 @@
 """Template context shared across the authenticated application shell."""
 
-from .models import Response, ReviewSession, Task, Theme
+from .models import ReviewSession, Task
 from .queue import queue_counts, scoped_cards
 
 
@@ -26,7 +26,6 @@ EXPRESSION_ROUTES = {
     "task_detail",
     "task_browse",
     "theme_detail",
-    "family_detail",
     "task_family_detail",
     "response_detail",
     "edit_response",
@@ -34,8 +33,13 @@ EXPRESSION_ROUTES = {
 }
 VOCABULARY_ROUTES = {
     "vocabulary",
-    "phrases",
+    "vocabulary_category",
     "task_phrases",
+    "task_vocabulary_category",
+    "comprehension_vocabulary",
+    "comprehension_test_vocabulary",
+    "comprehension_oral_vocabulary",
+    "comprehension_oral_test_vocabulary",
 }
 NOTES_ROUTES = {
     "notes_overview",
@@ -43,9 +47,10 @@ NOTES_ROUTES = {
     "task_notes",
     "annotation_search",
     "annotation_study",
+    "general_annotation_study",
     "task_annotation_study",
 }
-STATS_ROUTES = {"stats", "task_stats", "stats_overview"}
+STATS_ROUTES = {"stats", "part_stats", "task_stats"}
 
 
 def _empty_globals():
@@ -88,19 +93,6 @@ def _explicit_task(request):
             tasks = tasks.filter(part__slug=part_slug)
         return tasks.first()
 
-    if match and match.url_name == "theme_detail":
-        return (
-            Theme.objects.select_related("task__part")
-            .filter(slug=kwargs.get("slug"), is_active=True)
-            .values_list("task_id", flat=True)
-            .first()
-        )
-    if match and match.url_name in {"response_detail", "edit_response"}:
-        return (
-            Response.objects.filter(pk=kwargs.get("pk"), is_active=True)
-            .values_list("theme__task_id", flat=True)
-            .first()
-        )
     return None
 
 
@@ -119,13 +111,26 @@ def _active_nav_area(request):
         return "notes"
     if route_name in STATS_ROUTES:
         return "stats"
-    if route_name in {"review", "revisit_list", "task_revisit_list"}:
+    if route_name in {
+        "review",
+        "part_review",
+        "task_review",
+        "comprehension_vocabulary_review",
+        "comprehension_oral_vocabulary_review",
+        "revisit_list",
+        "part_revisit_list",
+        "task_revisit_list",
+    }:
         data = request.POST if request.method == "POST" else request.GET
         scope = {
             key: (data.get(key) or "").strip()
             for key in ("kind", "content")
         }
-        if not any(scope.values()) and route_name == "review":
+        if not any(scope.values()) and route_name in {
+            "review",
+            "part_review",
+            "task_review",
+        }:
             saved_scope = ReviewSession.load(request.user).scope
             if isinstance(saved_scope, dict):
                 scope.update(
@@ -136,6 +141,11 @@ def _active_nav_area(request):
                 )
             if not any(scope.values()):
                 return "expression"
+        if route_name in {
+            "comprehension_vocabulary_review",
+            "comprehension_oral_vocabulary_review",
+        }:
+            return "vocabulary"
         if scope["kind"] == "spine" or scope["content"] == "spine":
             return "expression"
         return "vocabulary"

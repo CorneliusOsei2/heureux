@@ -32,9 +32,11 @@
       </div>
     {% endif %}
 
-    <p style="margin-top:1rem;">
-      <a class="chip" href="{% url 'study:response_detail' response.id %}">Ouvrir la fiche ↗</a>
-    </p>
+    {% if canonical_prompt %}
+      <p style="margin-top:1rem;">
+        <a class="chip" href="{% url 'study:response_detail' canonical_prompt.theme.task.part.slug canonical_prompt.theme.task.slug canonical_prompt.pk %}">Ouvrir la fiche ↗</a>
+      </p>
+    {% endif %}
   </div>
 {% else %}
   <div class="answer">
@@ -55,7 +57,7 @@
       <div class="phrase__foot">
         <span class="faint">Tiré de :</span>
         {% for s in sources|slice:":6" %}
-          <a class="chip" href="{% url 'study:response_detail' s.response_id %}?prompt={{ s.pk }}">{{ s.theme.display_name }} P{{ s.number }}</a>
+          <a class="chip" href="{% url 'study:response_detail' s.theme.task.part.slug s.theme.task.slug s.pk %}">{{ s.theme.display_name }} P{{ s.number }}</a>
         {% endfor %}
         {% with more=sources|slice:"6:"|length %}{% if more %}<span class="chip chip--more">+{{ more }}</span>{% endif %}{% endwith %}
       </div>
