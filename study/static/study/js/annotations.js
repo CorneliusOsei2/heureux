@@ -284,33 +284,130 @@
       });
   }
 
+  function normalizedContext(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function commonPrefixLength(left, right) {
+    var limit = Math.min(left.length, right.length);
+    var index = 0;
+    while (index < limit && left[index] === right[index]) index += 1;
+    return index;
+  }
+
+  function commonSuffixLength(left, right) {
+    var limit = Math.min(left.length, right.length);
+    var count = 0;
+    while (
+      count < limit &&
+      left[left.length - count - 1] === right[right.length - count - 1]
+    ) {
+      count += 1;
+    }
+    return count;
+  }
+
+  function normalizedTextMap(value) {
+    var normalized = "";
+    var starts = [];
+    var ends = [];
+    var whitespaceStart = -1;
+    for (var index = 0; index < value.length; index += 1) {
+      if (/\s/.test(value[index])) {
+        if (normalized && whitespaceStart === -1) {
+          whitespaceStart = index;
+        }
+        continue;
+      }
+      if (whitespaceStart !== -1) {
+        normalized += " ";
+        starts.push(whitespaceStart);
+        ends.push(index);
+        whitespaceStart = -1;
+      }
+      normalized += value[index];
+      starts.push(index);
+      ends.push(index + 1);
+    }
+    return {
+      text: normalized,
+      starts: starts,
+      ends: ends
+    };
+  }
+
   function bestOffsets(item, root) {
     var text = root.textContent || "";
-    if (
-      item.start_offset >= 0 &&
-      item.end_offset > item.start_offset &&
-      text.slice(item.start_offset, item.end_offset) === item.quote
-    ) {
-      return { start: item.start_offset, end: item.end_offset };
+    var savedPrefix = normalizedContext(item.prefix);
+    var savedSuffix = normalizedContext(item.suffix);
+    var candidates = [];
+    var candidateKeys = {};
+    function addCandidate(start, end) {
+      var key = start + ":" + end;
+      if (candidateKeys[key]) return;
+      candidateKeys[key] = true;
+      candidates.push({ start: start, end: end });
+    }
+
+    var exactIndex = text.indexOf(item.quote);
+    while (exactIndex !== -1) {
+      addCandidate(exactIndex, exactIndex + item.quote.length);
+      exactIndex = text.indexOf(item.quote, exactIndex + 1);
+    }
+
+    var normalizedQuote = normalizedContext(item.quote);
+    if (normalizedQuote) {
+      var mappedText = normalizedTextMap(text);
+      var normalizedIndex = mappedText.text.indexOf(normalizedQuote);
+      while (normalizedIndex !== -1) {
+        var normalizedEnd = normalizedIndex + normalizedQuote.length;
+        addCandidate(
+          mappedText.starts[normalizedIndex],
+          mappedText.ends[normalizedEnd - 1]
+        );
+        normalizedIndex = mappedText.text.indexOf(
+          normalizedQuote,
+          normalizedIndex + 1
+        );
+      }
     }
 
     var best = null;
-    var index = text.indexOf(item.quote);
-    while (index !== -1) {
-      var score = 0;
-      if (item.prefix && text.slice(Math.max(0, index - item.prefix.length), index) === item.prefix) {
-        score += 2;
+    candidates.forEach(function (candidate) {
+      var index = candidate.start;
+      var end = candidate.end;
+      var score = -Math.min(
+        Math.abs(index - item.start_offset) / 10000,
+        1
+      );
+      var currentPrefix = normalizedContext(
+        text.slice(Math.max(0, index - 400), index)
+      );
+      var prefixMatch = commonSuffixLength(
+        currentPrefix,
+        savedPrefix
+      );
+      if (savedPrefix && currentPrefix.endsWith(savedPrefix)) {
+        score += 200 + savedPrefix.length;
+      } else if (prefixMatch >= 4) {
+        score += prefixMatch;
       }
-      var end = index + item.quote.length;
-      if (item.suffix && text.slice(end, end + item.suffix.length) === item.suffix) {
-        score += 2;
+      var currentSuffix = normalizedContext(
+        text.slice(end, end + 400)
+      );
+      var suffixMatch = commonPrefixLength(
+        currentSuffix,
+        savedSuffix
+      );
+      if (savedSuffix && currentSuffix.startsWith(savedSuffix)) {
+        score += 200 + savedSuffix.length;
+      } else if (suffixMatch >= 4) {
+        score += suffixMatch;
       }
-      score -= Math.min(Math.abs(index - item.start_offset) / 10000, 1);
       if (!best || score > best.score) {
         best = { start: index, end: end, score: score };
       }
-      index = text.indexOf(item.quote, index + 1);
-    }
+    });
     return best;
   }
 

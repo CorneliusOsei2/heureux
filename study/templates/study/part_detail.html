@@ -28,7 +28,7 @@
     {% url 'study:task_detail' part.slug t.task.slug as task_url %}
     {% if t.task.available %}
       {% if t.question_bank %}
-        {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=True guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count only %}
+        {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=t.question_bank guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count only %}
       {% else %}
         {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name due=t.stats.due stats=t.stats count_prompts=t.prompt_count count_responses=t.response_stats.total show_phrases=True count_phrases=t.phrase_count only %}
       {% endif %}

@@ -1166,7 +1166,7 @@ class ComprehensionFlowTests(TestCase):
         response = self.client.get(reverse("study:export_account"))
         payload = json.loads(response.content)
 
-        self.assertEqual(payload["version"], 2)
+        self.assertEqual(payload["version"], 3)
         self.assertEqual(len(payload["comprehension_attempts"]), 1)
         exported = payload["comprehension_attempts"][0]
         self.assertEqual(exported["test"], self.test.slug)

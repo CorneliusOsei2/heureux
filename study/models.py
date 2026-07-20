@@ -331,6 +331,34 @@ class ContentImportState(models.Model):
     imported_at = models.DateTimeField(auto_now=True)
 
 
+class MemoryQuestionProgress(models.Model):
+    """A reusable Tâche 2 question marked as learned by one learner."""
+
+    user = models.ForeignKey(
+        django_settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="memory_question_progress",
+    )
+    memory_number = models.PositiveSmallIntegerField()
+    question_key = models.CharField(max_length=96)
+    completed_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ["memory_number", "completed_at", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "memory_number", "question_key"],
+                name="unique_memory_question_progress",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return (
+            f"{self.user} · Mémoire {self.memory_number} · "
+            f"{self.question_key}"
+        )
+
+
 class ComprehensionMode(models.TextChoices):
     ECRITE = "ecrite", "Écrite"
     ORALE = "orale", "Orale"

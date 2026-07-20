@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}{{ question_bank.title }} · {{ task.name }}{% endblock %}
 
 {% block content %}
@@ -17,27 +18,25 @@
   <dl class="question-bank-hero__metrics" aria-label="Contenu de la mémoire">
     <div><dt>Catégories</dt><dd>{{ question_bank.category_count }}</dd></div>
     <div><dt>Questions</dt><dd>{{ question_bank.question_count }}</dd></div>
-    <div><dt>Objectif</dt><dd>1 choix</dd></div>
+    <div><dt>Apprises</dt><dd data-memory-completed>{{ memory_progress.completed }}</dd></div>
   </dl>
 </header>
 
-<section class="question-bank-rules card" aria-labelledby="question-bank-rules-title">
-  <div class="question-bank-rules__intro">
-    <span class="question-bank-rules__icon">{% include "study/partials/ui_icon.html" with name="sparkles" only %}</span>
-    <div>
-      <p class="eyebrow">La règle d'or</p>
-      <h2 id="question-bank-rules-title">Une catégorie, une formulation</h2>
-      <p>Construis chaque dialogue avec des questions variées, faciles à rappeler et adaptées au contexte.</p>
+<section class="memory-learning-summary memory-learning-summary--{{ memory_progress.status }} card" data-memory-progress-summary aria-labelledby="memory-learning-title">
+  <span class="memory-learning-summary__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="circle-dot" only %}</span>
+  <div class="memory-learning-summary__body">
+    <div class="memory-learning-summary__copy">
+      <div>
+        <p class="eyebrow">Progression de la mémoire</p>
+        <h2 id="memory-learning-title"><span data-memory-completed>{{ memory_progress.completed }}</span> sur {{ memory_progress.total }} questions apprises</h2>
+      </div>
+      <span class="progress-status progress-status--{{ memory_progress.status }}" data-memory-status>{{ memory_progress.label }}</span>
     </div>
+    <div class="progress memory-learning-summary__bar" aria-label="{{ memory_progress.percent }} % terminé" data-memory-progress-bar>
+      <span class="memory-progress-fill memory-progress-fill--{{ memory_progress.status }}" style="width: {{ memory_progress.percent }}%;"></span>
+    </div>
+    <p class="memory-progress-error hidden" role="alert" data-memory-progress-error></p>
   </div>
-  <ol class="question-bank-rules__list">
-    {% for rule in question_bank.rules %}
-      <li>
-        <span aria-hidden="true">{% include "study/partials/ui_icon.html" with name="check" only %}</span>
-        <strong>{{ rule }}</strong>
-      </li>
-    {% endfor %}
-  </ol>
 </section>
 
 <div class="question-bank-layout" data-question-bank>
@@ -50,33 +49,44 @@
       <span>{{ question_bank.category_count }}</span>
     </div>
     <nav aria-label="Catégories de la mémoire">
-      {% for section in question_bank.sections %}
-        <a href="#{{ section.anchor }}">
+      {% for section in memory_sections %}
+        <a href="#{{ section.anchor }}" data-index-section="{{ section.number }}">
           <span>{{ section.number_label }}</span>
           <strong>{{ section.title }}</strong>
+          <small><b data-index-completed>{{ section.progress.completed }}</b>/{{ section.progress.total }}</small>
         </a>
       {% endfor %}
     </nav>
   </aside>
 
   <div class="question-bank-sections" aria-label="Questions à mémoriser">
-    {% for section in question_bank.sections %}
+    {% for section in memory_sections %}
       <article
         class="question-bank-section card"
         id="{{ section.anchor }}"
         data-question-bank-section
-        data-annotation-root
-        data-annotation-source-key="{{ question_bank.annotation_key_prefix }}:part-{{ section.number_label }}">
+        data-memory-section="{{ section.number }}">
         <header class="question-bank-section__head">
           <span class="question-bank-section__number">{{ section.number_label }}</span>
           <div>
             <p>Partie {{ section.number }}</p>
             <h2>{{ section.title }}</h2>
           </div>
-          <span class="question-bank-section__count">{{ section.question_count }} question{{ section.question_count|pluralize }}</span>
+          <div class="question-bank-section__progress">
+            <div>
+              <span class="progress-status progress-status--{{ section.progress.status }}" data-section-status>{{ section.progress.label }}</span>
+              <span class="question-bank-section__count"><b data-section-completed>{{ section.progress.completed }}</b>/{{ section.progress.total }}</span>
+            </div>
+            <div class="progress" aria-label="{{ section.progress.percent }} % terminé" data-section-progress-bar>
+              <span class="memory-progress-fill memory-progress-fill--{{ section.progress.status }}" style="width: {{ section.progress.percent }}%;"></span>
+            </div>
+          </div>
         </header>
 
-        <div class="question-bank-section__body">
+        <div
+          class="question-bank-section__body"
+          data-annotation-root
+          data-annotation-source-key="{{ question_bank.annotation_key_prefix }}:part-{{ section.number_label }}">
           {% for group in section.groups %}
             <section class="question-bank-group">
               {% if group.title or group.guidance %}
@@ -87,7 +97,25 @@
               {% endif %}
               <ol class="question-bank-questions">
                 {% for question in group.questions %}
-                  <li data-question-bank-question>
+                  <li class="{% if question.completed %}is-complete{% endif %}" data-question-bank-question data-question-key="{{ question.content_key }}">
+                    <form
+                      class="memory-question-check"
+                      method="post"
+                      action="{% url 'study:task_memory_progress' part.slug task.slug question_bank.number %}"
+                      data-memory-progress-form>
+                      {% csrf_token %}
+                      <input type="hidden" name="question_key" value="{{ question.content_key }}">
+                      <input type="hidden" name="completed" value="{% if question.completed %}0{% else %}1{% endif %}" data-memory-completed-input>
+                      <button
+                        type="submit"
+                        role="checkbox"
+                        data-question-text="{{ question.text }}"
+                        aria-checked="{{ question.completed|yesno:'true,false' }}"
+                        aria-label="{% if question.completed %}Marquer comme non apprise : {% else %}Marquer comme apprise : {% endif %}{{ question.text }}"
+                        title="{% if question.completed %}Question apprise{% else %}Marquer comme apprise{% endif %}">
+                        {% include "study/partials/ui_icon.html" with name="check" only %}
+                      </button>
+                    </form>
                     <span class="question-bank-question__number" aria-hidden="true">{{ forloop.counter|stringformat:"02d" }}</span>
                     <div>
                       <p>{{ question.text }}</p>
@@ -106,4 +134,9 @@
   </div>
 </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'study/js/memory-progress.js' %}?v=2"></script>
 {% endblock %}

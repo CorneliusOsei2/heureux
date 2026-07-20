@@ -32,9 +32,10 @@
     </header>
 
     <div class="memory-library__grid">
-      {% for memory in memories %}
+      {% for item in memories %}
+        {% with memory=item.memory progress=item.progress %}
         <a
-          class="memory-entry card"
+          class="memory-entry card memory-entry--{{ progress.status }}"
           href="{% url 'study:task_memory_detail' part.slug task.slug memory.number %}"
           aria-label="Ouvrir {{ memory.title }}">
           <span class="memory-entry__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name=memory.icon only %}</span>
@@ -47,11 +48,21 @@
               <span><b>{{ memory.question_count }}</b> questions</span>
             </div>
           </div>
+          <div class="memory-entry__progress">
+            <div class="memory-entry__progress-copy">
+              <span class="progress-status progress-status--{{ progress.status }}">{{ progress.label }}</span>
+              <span>{{ progress.completed }}/{{ progress.total }} apprises</span>
+            </div>
+            <div class="progress" aria-label="{{ progress.percent }} % terminé">
+              <span class="memory-progress-fill memory-progress-fill--{{ progress.status }}" style="width: {{ progress.percent }}%;"></span>
+            </div>
+          </div>
           <span class="memory-entry__action">
             Ouvrir
             {% include "study/partials/ui_icon.html" with name="arrow-right" only %}
           </span>
         </a>
+        {% endwith %}
       {% endfor %}
     </div>
   </section>

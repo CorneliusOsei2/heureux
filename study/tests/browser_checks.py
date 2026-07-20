@@ -23,6 +23,7 @@ from study.models import (
     Rating,
     ReviewLog,
     ReviewSession,
+    Task,
 )
 from study.routing import response_detail_url, theme_detail_url
 
@@ -183,6 +184,40 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
 
     def test_tache_two_memories_are_structured_on_desktop_and_mobile(self):
         Command()._import_sections(load_sections())
+        memory_path = reverse(
+            "study:task_memory_detail",
+            args=["eo", "tache-2", 1],
+        )
+        highlight = Annotation.objects.create(
+            user=self.user,
+            task=Task.objects.get(part__slug="eo", slug="tache-2"),
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="il",
+            source_path=memory_path,
+            source_key="question-bank:part-01",
+            start_offset=0,
+            end_offset=2,
+            prefix="Ancienne interface · Y a-t-",
+            suffix=(
+                "des tarifs réduits pour les étudiants "
+                "ancienne interface"
+            ),
+        )
+        spanning_highlight = Annotation.objects.create(
+            user=self.user,
+            task=highlight.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote=(
+                "familles ?   03   "
+                "Est-ce qu'on peut essayer"
+            ),
+            source_path=memory_path,
+            source_key="question-bank:part-01",
+            start_offset=0,
+            end_offset=42,
+            prefix="Ancienne interface · les seniors ou les ",
+            suffix=" avant de s'engager ancienne interface",
+        )
         part_url = (
             self.live_server_url
             + reverse("study:part_detail", args=["eo"])
@@ -193,10 +228,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         memory_url = (
             self.live_server_url
-            + reverse(
-                "study:task_memory_detail",
-                args=["eo", "tache-2", 1],
-            )
+            + memory_path
         )
         self.page.set_viewport_size({"width": 1280, "height": 850})
         self.page.goto(part_url)
@@ -208,15 +240,19 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             element => ({
               background: getComputedStyle(element).backgroundColor,
               radius: getComputedStyle(element).borderRadius,
-              iconWidth: element.querySelector(
-                '.deck__guide-icon'
-              ).getBoundingClientRect().width,
+              barHeight: element.querySelector(
+                '.progress'
+              ).getBoundingClientRect().height,
             })
             """
         )
         self.assertEqual(guide_style["background"], "rgba(0, 0, 0, 0)")
         self.assertEqual(guide_style["radius"], "0px")
-        self.assertLessEqual(guide_style["iconWidth"], 28)
+        self.assertLessEqual(guide_style["barHeight"], 10)
+        self.assertEqual(
+            guide_progress.locator(".deck__progress-copy").inner_text(),
+            "0/65 apprises",
+        )
 
         self.page.goto(overview_url)
         self.page.get_by_role(
@@ -226,6 +262,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         ).wait_for()
         memory_entry = self.page.locator(".memory-entry")
         self.assertEqual(memory_entry.count(), 1)
+        self.assertLessEqual(memory_entry.bounding_box()["height"], 155)
         self.assertEqual(
             memory_entry.get_attribute("href"),
             memory_url.removeprefix(self.live_server_url),
@@ -290,6 +327,27 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         questions = self.page.locator("[data-question-bank-question]")
         self.assertEqual(sections.count(), 21)
         self.assertEqual(questions.count(), 65)
+        saved_mark = self.page.locator(
+            f'[data-highlight-id="{highlight.pk}"]'
+        )
+        saved_mark.wait_for()
+        self.assertEqual(saved_mark.inner_text(), "il")
+        self.assertIn(
+            "Y a-t-il des tarifs réduits",
+            saved_mark.locator(
+                "xpath=ancestor::*[@data-question-bank-question]"
+            ).inner_text(),
+        )
+        spanning_marks = self.page.locator(
+            f'[data-highlight-id="{spanning_highlight.pk}"]'
+        )
+        spanning_marks.first.wait_for()
+        self.assertGreater(spanning_marks.count(), 1)
+        spanning_text = " ".join(spanning_marks.all_inner_texts())
+        self.assertIn(
+            "familles ? 03 Est-ce qu'on peut essayer",
+            " ".join(spanning_text.split()),
+        )
         desktop = self.page.locator("[data-question-bank]").evaluate(
             """
             root => {
@@ -317,6 +375,50 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertEqual(len(set(desktop["borderColors"])), 1)
         self.assert_no_horizontal_overflow()
 
+        first_question = questions.first
+        first_checkbox = first_question.get_by_role("checkbox")
+        self.assertEqual(first_checkbox.get_attribute("aria-checked"), "false")
+        self.assertIn(
+            "Comment fonctionnent les tarifs",
+            first_checkbox.get_attribute("aria-label"),
+        )
+        self.assertEqual(
+            first_checkbox.locator(".ui-icon").evaluate(
+                "element => getComputedStyle(element).color"
+            ),
+            "rgba(0, 0, 0, 0)",
+        )
+        first_checkbox.click()
+        self.page.get_by_role(
+            "heading",
+            name="1 sur 65 questions apprises",
+            exact=True,
+        ).wait_for()
+        self.assertTrue(
+            first_checkbox.evaluate(
+                "element => document.activeElement === element"
+            )
+        )
+        self.assertEqual(first_checkbox.get_attribute("aria-checked"), "true")
+        self.assertEqual(
+            first_checkbox.locator(".ui-icon").evaluate(
+                "element => getComputedStyle(element).color"
+            ),
+            "rgb(255, 255, 255)",
+        )
+        self.assertTrue(
+            "is-complete"
+            in (first_question.get_attribute("class") or "")
+        )
+        self.page.reload()
+        first_checkbox = self.page.get_by_role("checkbox").first
+        self.assertEqual(first_checkbox.get_attribute("aria-checked"), "true")
+        self.page.get_by_role(
+            "heading",
+            name="1 sur 65 questions apprises",
+            exact=True,
+        ).wait_for()
+
         self.page.set_viewport_size({"width": 320, "height": 700})
         mobile = self.page.locator("[data-question-bank]").evaluate(
             """
@@ -334,6 +436,28 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertEqual(len(mobile["columns"].split()), 1)
         self.assertTrue(mobile["navScrolls"])
         self.assertEqual(len(mobile["taskNavColumns"].split()), 2)
+        self.assert_no_horizontal_overflow()
+
+        self.page.get_by_role(
+            "link",
+            name="Vue d'ensemble",
+            exact=True,
+        ).click()
+        self.page.wait_for_url(overview_url)
+        memory_entry = self.page.locator(".memory-entry")
+        self.assertEqual(
+            memory_entry.locator(
+                ".memory-entry__progress-copy > span:last-child"
+            ).inner_text(),
+            "1/65 apprises",
+        )
+        self.assertTrue(
+            "progress-status--active"
+            in (
+                memory_entry.locator(".progress-status").get_attribute("class")
+                or ""
+            )
+        )
         self.assert_no_horizontal_overflow()
 
     def test_subject_vocabulary_directory_searches_rich_decks(self):

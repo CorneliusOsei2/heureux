@@ -21,9 +21,9 @@
           {% if t.question_bank %}
             {% url 'study:task_detail' pitem.part.slug t.task.slug as task_url %}
             {% if area == "home" %}
-              {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=True guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count only %}
+              {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=t.question_bank guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count only %}
             {% else %}
-              {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=True guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count extra_classes="grouped-task-card grouped-task-card--available" only %}
+              {% include "study/partials/deck_card.html" with url=task_url available=True color=t.task.color icon=t.task.icon name=t.task.name guide=t.question_bank guide_title=t.question_bank.title count_categories=t.question_bank.category_count count_questions=t.question_bank.question_count extra_classes="grouped-task-card grouped-task-card--available" only %}
             {% endif %}
           {% else %}
           {% if area == "review" %}

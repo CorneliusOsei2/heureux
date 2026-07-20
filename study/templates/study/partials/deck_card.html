@@ -26,8 +26,10 @@ Params:
       {% if guide %}
         <div class="deck__meta">{{ guide_title }} · {{ count_categories }} catégories · {{ count_questions }} questions</div>
         <div class="deck__progress-cell deck__progress-cell--guide">
-          <span class="deck__guide-icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="sparkles" only %}</span>
-          <span class="deck__progress-copy">Questions réutilisables</span>
+          <span class="deck__progress-copy">{{ guide.progress.completed }}/{{ guide.progress.total }} apprises</span>
+          <div class="progress">
+            <span class="memory-progress-fill memory-progress-fill--{{ guide.progress.status }}" style="width: {{ guide.progress.percent }}%;"></span>
+          </div>
         </div>
       {% else %}
         <div class="deck__meta">{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_complete %} · {{ count_complete }} terminé{{ count_complete|pluralize }}{% endif %}</div>
@@ -46,7 +48,7 @@ Params:
     <div class="deck__status-cell">
       {% if available %}
         {% if guide %}
-          <span class="progress-status progress-status--new">À étudier</span>
+          <span class="progress-status progress-status--{{ guide.progress.status }}">{{ guide.progress.label }}</span>
         {% else %}
           <span class="progress-status progress-status--{{ stats.progress.status }}">{{ stats.progress.label }}</span>
         {% endif %}

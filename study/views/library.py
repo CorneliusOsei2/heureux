@@ -4,10 +4,11 @@ from __future__ import annotations
 
 
 from django.db.models import Count, Prefetch, Q
-from django.http import Http404
+from django.http import Http404, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
+from django.views.decorators.http import require_POST
 
 from .. import content as content_module
 from .. import queue as queue_module
@@ -24,6 +25,7 @@ from ..models import (
     ComprehensionTest,
     ExamPart,
     Family,
+    MemoryQuestionProgress,
     Phrase,
     PhraseCategory,
     PhraseTier,
@@ -54,6 +56,7 @@ from ..routing import (
 from .common import (
     FUNCTIONAL_PHRASE_CATEGORY_NAMES,
     MATURE_DAYS,
+    _memory_progress,
     _review_batches,
     _route_task,
     _task_card,
@@ -164,6 +167,14 @@ def task_detail(request, part_slug, task_slug):
         )
     if (task.part.slug, task.slug) == content_module.QUESTION_BANK_TASK:
         memories = content_module.load_question_banks()
+        memory_states = _memory_progress(request.user, memories)
+        memory_items = [
+            {
+                "memory": memory,
+                **memory_states[memory.number],
+            }
+            for memory in memories
+        ]
         return render(
             request,
             "study/tache_two_overview.html",
@@ -171,13 +182,17 @@ def task_detail(request, part_slug, task_slug):
                 "part": task.part,
                 "task": task,
                 "memory_task": True,
-                "memories": memories,
+                "memories": memory_items,
                 "memory_count": len(memories),
                 "category_count": sum(
                     memory.category_count for memory in memories
                 ),
                 "question_count": sum(
                     memory.question_count for memory in memories
+                ),
+                "completed_count": sum(
+                    item["progress"].completed
+                    for item in memory_items
                 ),
             },
         )
@@ -503,7 +518,7 @@ def theme_detail(request, part_slug, task_slug, slug):
     )
 
 
-def task_memory_detail(request, part_slug, task_slug, memory_number):
+def _memory_task(part_slug, task_slug):
     task = get_object_or_404(
         Task.objects.select_related("part"),
         slug=task_slug,
@@ -514,7 +529,11 @@ def task_memory_detail(request, part_slug, task_slug, memory_number):
     )
     if (task.part.slug, task.slug) != content_module.QUESTION_BANK_TASK:
         raise Http404
-    question_bank = next(
+    return task
+
+
+def _memory_by_number(memory_number):
+    memory = next(
         (
             memory
             for memory in content_module.load_question_banks()
@@ -522,8 +541,63 @@ def task_memory_detail(request, part_slug, task_slug, memory_number):
         ),
         None,
     )
-    if question_bank is None:
+    if memory is None:
         raise Http404
+    return memory
+
+
+def _memory_sections(memory, completed_keys):
+    sections = []
+    for section in memory.sections:
+        completed_count = len(set(section.question_keys) & completed_keys)
+        sections.append(
+            {
+                "number": section.number,
+                "number_label": section.number_label,
+                "title": section.title,
+                "anchor": section.anchor,
+                "question_count": section.question_count,
+                "progress": progress_summary(
+                    total=section.question_count,
+                    started=completed_count,
+                    completed=completed_count,
+                ),
+                "groups": [
+                    {
+                        "title": group.title,
+                        "guidance": group.guidance,
+                        "questions": [
+                            {
+                                "content_key": question.content_key,
+                                "text": question.text,
+                                "note": question.note,
+                                "completed": (
+                                    question.content_key in completed_keys
+                                ),
+                            }
+                            for question in group.questions
+                        ],
+                    }
+                    for group in section.groups
+                ],
+            }
+        )
+    return sections
+
+
+def _memory_progress_error(request, message):
+    if request.headers.get("X-Requested-With") == "fetch":
+        return JsonResponse({"error": message}, status=400)
+    return HttpResponseBadRequest(message)
+
+
+def task_memory_detail(request, part_slug, task_slug, memory_number):
+    task = _memory_task(part_slug, task_slug)
+    question_bank = _memory_by_number(memory_number)
+    memory_state = _memory_progress(
+        request.user,
+        (question_bank,),
+    )[question_bank.number]
     return render(
         request,
         "study/question_bank.html",
@@ -532,7 +606,95 @@ def task_memory_detail(request, part_slug, task_slug, memory_number):
             "task": task,
             "memory_task": True,
             "question_bank": question_bank,
+            "memory_progress": memory_state["progress"],
+            "memory_sections": _memory_sections(
+                question_bank,
+                memory_state["completed_keys"],
+            ),
         },
+    )
+
+
+@require_POST
+def task_memory_progress(request, part_slug, task_slug, memory_number):
+    task = _memory_task(part_slug, task_slug)
+    memory = _memory_by_number(memory_number)
+    question_key = request.POST.get("question_key", "").strip()
+    completed = request.POST.get("completed")
+    if completed not in {"0", "1"}:
+        return _memory_progress_error(
+            request,
+            "État de progression invalide.",
+        )
+
+    section = next(
+        (
+            section
+            for section in memory.sections
+            if question_key in section.question_keys
+        ),
+        None,
+    )
+    if section is None:
+        return _memory_progress_error(
+            request,
+            "Cette question ne fait pas partie de la mémoire.",
+        )
+
+    if completed == "1":
+        MemoryQuestionProgress.objects.get_or_create(
+            user=request.user,
+            memory_number=memory.number,
+            question_key=question_key,
+        )
+    else:
+        MemoryQuestionProgress.objects.filter(
+            user=request.user,
+            memory_number=memory.number,
+            question_key=question_key,
+        ).delete()
+
+    memory_state = _memory_progress(
+        request.user,
+        (memory,),
+    )[memory.number]
+    memory_summary = memory_state["progress"]
+    section_completed = len(
+        set(section.question_keys) & memory_state["completed_keys"]
+    )
+    section_summary = progress_summary(
+        total=section.question_count,
+        started=section_completed,
+        completed=section_completed,
+    )
+    if request.headers.get("X-Requested-With") == "fetch":
+        return JsonResponse(
+            {
+                "completed": completed == "1",
+                "question_key": question_key,
+                "memory": {
+                    "completed": memory_summary.completed,
+                    "total": memory_summary.total,
+                    "percent": memory_summary.percent,
+                    "status": memory_summary.status,
+                    "label": memory_summary.label,
+                },
+                "section": {
+                    "number": section.number,
+                    "completed": section_summary.completed,
+                    "total": section_summary.total,
+                    "percent": section_summary.percent,
+                    "status": section_summary.status,
+                    "label": section_summary.label,
+                },
+            }
+        )
+    return redirect(
+        reverse(
+            "study:task_memory_detail",
+            args=[task.part.slug, task.slug, memory.number],
+        )
+        + f"#{section.anchor}"
     )
 
 

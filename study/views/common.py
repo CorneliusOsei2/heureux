@@ -9,6 +9,7 @@ from .. import content as content_module
 from .. import queue as queue_module
 from ..models import (
     CardState,
+    MemoryQuestionProgress,
     Phrase,
     PhraseTier,
     Prompt,
@@ -39,6 +40,37 @@ FUNCTIONAL_PHRASE_CATEGORY_NAMES = frozenset(
         "Schémas d'argumentation",
     }
 )
+
+
+def _memory_progress(user, memories):
+    memories = tuple(memories)
+    completed_by_memory = {
+        memory.number: set()
+        for memory in memories
+    }
+    for memory_number, question_key in (
+        MemoryQuestionProgress.objects.filter(
+            user=user,
+            memory_number__in=completed_by_memory,
+        ).values_list("memory_number", "question_key")
+    ):
+        completed_by_memory[memory_number].add(question_key)
+
+    states = {}
+    for memory in memories:
+        valid_keys = set(memory.question_keys)
+        completed_keys = frozenset(
+            completed_by_memory[memory.number] & valid_keys
+        )
+        states[memory.number] = {
+            "completed_keys": completed_keys,
+            "progress": progress_summary(
+                total=memory.question_count,
+                started=len(completed_keys),
+                completed=len(completed_keys),
+            ),
+        }
+    return states
 
 
 def deck_stats(qs, now=None) -> dict:
@@ -333,11 +365,27 @@ def _task_card(task, now, user):
         and (task.part.slug, task.slug) == content_module.QUESTION_BANK_TASK
     ):
         banks = content_module.load_question_banks()
+        memory_states = _memory_progress(user, banks)
+        memory_progress = progress_summary(
+            total=sum(
+                state["progress"].total
+                for state in memory_states.values()
+            ),
+            started=sum(
+                state["progress"].started
+                for state in memory_states.values()
+            ),
+            completed=sum(
+                state["progress"].completed
+                for state in memory_states.values()
+            ),
+        )
         question_bank = {
             "title": f"{len(banks)} mémoire{'s' if len(banks) > 1 else ''}",
             "memory_count": len(banks),
             "category_count": sum(bank.category_count for bank in banks),
             "question_count": sum(bank.question_count for bank in banks),
+            "progress": memory_progress,
         }
     if task.available:
         response_ids = set(

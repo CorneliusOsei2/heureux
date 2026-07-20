@@ -45,6 +45,7 @@ from ..models import (
     ComprehensionAnswer,
     ComprehensionAttempt,
     ComprehensionAttemptStatus,
+    MemoryQuestionProgress,
     PersonalResponse,
     ReviewLog,
     ReviewSession,
@@ -332,6 +333,7 @@ def reset_progress(request):
         )
         ReviewLog.objects.filter(user=request.user).delete()
         ComprehensionAttempt.objects.filter(user=request.user).delete()
+        MemoryQuestionProgress.objects.filter(user=request.user).delete()
         _save_review_session(session, {}, clear_pass=True)
     return redirect(reverse("study:settings") + "?reset=1")
 
@@ -473,7 +475,7 @@ def export_account(request):
     settings = Settings.load(request.user)
     payload = {
         "format": "heureux-account-export",
-        "version": 2,
+        "version": 3,
         "exported_at": timezone.now(),
         "account": {
             "username": request.user.get_username(),
@@ -496,6 +498,16 @@ def export_account(request):
         "annotations": annotations,
         "personal_responses": personal_responses,
         "comprehension_attempts": comprehension_attempts,
+        "memory_question_progress": [
+            {
+                "memory_number": item.memory_number,
+                "question_key": item.question_key,
+                "completed_at": item.completed_at,
+            }
+            for item in MemoryQuestionProgress.objects.filter(
+                user=request.user
+            ).order_by("memory_number", "completed_at", "pk")
+        ],
     }
     response = JsonResponse(
         payload,

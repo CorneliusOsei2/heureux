@@ -4,10 +4,6 @@
   "label": "Questions réutilisables",
   "icon": "book-open",
   "subtitle": "Une banque de formulations stables à mémoriser et à adapter naturellement à chaque situation de la Tâche 2.",
-  "rules": [
-    "Choisis une seule formulation par catégorie pour chaque sujet.",
-    "N'utilise jamais deux formulations de la même catégorie dans le même dialogue."
-  ],
   "sections": [
     {
       "number": 1,

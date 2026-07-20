@@ -151,6 +151,7 @@ class SectionData:
 
 @dataclass(frozen=True)
 class QuestionBankQuestionData:
+    content_key: str
     text: str
     note: str = ""
 
@@ -181,6 +182,14 @@ class QuestionBankSectionData:
     def question_count(self) -> int:
         return sum(len(group.questions) for group in self.groups)
 
+    @property
+    def question_keys(self) -> Tuple[str, ...]:
+        return tuple(
+            question.content_key
+            for group in self.groups
+            for question in group.questions
+        )
+
 
 @dataclass(frozen=True)
 class QuestionBankData:
@@ -189,7 +198,6 @@ class QuestionBankData:
     label: str
     icon: str
     subtitle: str
-    rules: Tuple[str, ...]
     sections: Tuple[QuestionBankSectionData, ...]
 
     @property
@@ -199,6 +207,14 @@ class QuestionBankData:
     @property
     def question_count(self) -> int:
         return sum(section.question_count for section in self.sections)
+
+    @property
+    def question_keys(self) -> Tuple[str, ...]:
+        return tuple(
+            question_key
+            for section in self.sections
+            for question_key in section.question_keys
+        )
 
     @property
     def annotation_key_prefix(self) -> str:
@@ -395,20 +411,12 @@ def load_question_bank(
     label = str(raw.get("label", "")).strip()
     icon = str(raw.get("icon", "")).strip()
     subtitle = str(raw.get("subtitle", "")).strip()
-    rules = tuple(
-        str(rule).strip()
-        for rule in raw.get("rules", [])
-        if str(rule).strip()
-    )
     if not isinstance(memory_number, int) or memory_number < 1:
         raise ValueError("The question bank needs a positive memory number")
     if not title or not label or not icon or not subtitle:
         raise ValueError(
             "The question bank needs a title, label, icon, and subtitle"
         )
-    if len(rules) < 2:
-        raise ValueError("The question bank needs at least two usage rules")
-
     sections: List[QuestionBankSectionData] = []
     seen_questions = set()
     for raw_section in raw.get("sections", []):
@@ -435,8 +443,17 @@ def load_question_bank(
                 if normalized in seen_questions:
                     raise ValueError(f"Duplicate question-bank phrase: {text}")
                 seen_questions.add(normalized)
+                digest = hashlib.sha256(
+                    normalized.encode("utf-8")
+                ).hexdigest()
                 questions.append(
-                    QuestionBankQuestionData(text=text, note=note)
+                    QuestionBankQuestionData(
+                        content_key=(
+                            f"memory:{memory_number}:question:{digest}"
+                        ),
+                        text=text,
+                        note=note,
+                    )
                 )
             if not questions:
                 raise ValueError(
@@ -475,7 +492,6 @@ def load_question_bank(
         label=label,
         icon=icon,
         subtitle=subtitle,
-        rules=rules,
         sections=tuple(sections),
     )
 
