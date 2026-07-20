@@ -4,13 +4,24 @@ from . import views
 
 
 class ExpressionPartConverter:
-    regex = "eo|ee"
+    regex = "orale|ecrite"
+    path_to_slug = {
+        "orale": "eo",
+        "ecrite": "ee",
+    }
+    slug_to_path = {
+        "eo": "orale",
+        "ee": "ecrite",
+    }
 
     def to_python(self, value):
-        return value
+        return self.path_to_slug[value]
 
     def to_url(self, value):
-        return value
+        path_value = self.slug_to_path.get(value)
+        if path_value is None:
+            raise ValueError(f"Unsupported expression part: {value}")
+        return path_value
 
 
 register_converter(ExpressionPartConverter, "expression_part")
@@ -67,117 +78,123 @@ urlpatterns = [
     path("comprehension/", views.comprehension_hub, name="comprehension_hub"),
     path("expression/", views.expression_hub, name="expression"),
     # Compréhension écrite (CE)
-    path("ce/", views.comprehension_overview, name="comprehension_overview"),
     path(
-        "ce/groupes/<int:group_number>/",
+        "comprehension/ecrite/",
+        views.comprehension_overview,
+        name="comprehension_overview",
+    ),
+    path(
+        "comprehension/ecrite/groupes/<int:group_number>/",
         views.comprehension_group_detail,
         name="comprehension_group",
     ),
     path(
-        "ce/vocabulaire/",
+        "comprehension/ecrite/vocabulaire/",
         views.phrases,
         {"comprehension_mode": "ecrite"},
         name="comprehension_vocabulary",
     ),
     path(
-        "ce/tests/<slug:test_slug>/vocabulaire/",
+        "comprehension/ecrite/tests/<slug:test_slug>/vocabulaire/",
         views.phrases,
         {"comprehension_mode": "ecrite"},
         name="comprehension_test_vocabulary",
     ),
     path(
-        "ce/tests/<slug:test_slug>/vocabulaire/revision/",
+        "comprehension/ecrite/tests/<slug:test_slug>/vocabulaire/revision/",
         views.review,
         {"comprehension_mode": "ecrite"},
         name="comprehension_vocabulary_review",
     ),
     path(
-        "ce/tests/<slug:test_slug>/questions/<int:number>/",
+        "comprehension/ecrite/tests/<slug:test_slug>/questions/<int:number>/",
         views.comprehension_question_study,
         {"mode": "ecrite"},
         name="comprehension_question_study",
     ),
     path(
-        "ce/tests/<slug:test_slug>/commencer/",
+        "comprehension/ecrite/tests/<slug:test_slug>/commencer/",
         views.comprehension_start,
         {"mode": "ecrite"},
         name="comprehension_start",
     ),
     path(
-        "ce/tests/<slug:test_slug>/tentatives/<int:attempt_id>/"
+        "comprehension/ecrite/tests/<slug:test_slug>/tentatives/<int:attempt_id>/"
         "questions/<int:number>/",
         views.comprehension_question,
         {"mode": "ecrite"},
         name="comprehension_question",
     ),
     path(
-        "ce/tests/<slug:test_slug>/tentatives/<int:attempt_id>/resultats/",
+        "comprehension/ecrite/tests/<slug:test_slug>/tentatives/"
+        "<int:attempt_id>/resultats/",
         views.comprehension_results,
         {"mode": "ecrite"},
         name="comprehension_results",
     ),
     path(
-        "ce/tests/<slug:test_slug>/",
+        "comprehension/ecrite/tests/<slug:test_slug>/",
         views.comprehension_test_detail,
         {"mode": "ecrite"},
         name="comprehension_test",
     ),
     # Compréhension orale (CO)
     path(
-        "co/",
+        "comprehension/orale/",
         views.comprehension_oral_overview,
         name="comprehension_oral_overview",
     ),
     path(
-        "co/groupes/<int:group_number>/",
+        "comprehension/orale/groupes/<int:group_number>/",
         views.comprehension_oral_group_detail,
         name="comprehension_oral_group",
     ),
     path(
-        "co/vocabulaire/",
+        "comprehension/orale/vocabulaire/",
         views.phrases,
         {"comprehension_mode": "orale"},
         name="comprehension_oral_vocabulary",
     ),
     path(
-        "co/tests/<slug:test_slug>/vocabulaire/",
+        "comprehension/orale/tests/<slug:test_slug>/vocabulaire/",
         views.phrases,
         {"comprehension_mode": "orale"},
         name="comprehension_oral_test_vocabulary",
     ),
     path(
-        "co/tests/<slug:test_slug>/vocabulaire/revision/",
+        "comprehension/orale/tests/<slug:test_slug>/vocabulaire/revision/",
         views.review,
         {"comprehension_mode": "orale"},
         name="comprehension_oral_vocabulary_review",
     ),
     path(
-        "co/tests/<slug:test_slug>/questions/<int:number>/",
+        "comprehension/orale/tests/<slug:test_slug>/questions/<int:number>/",
         views.comprehension_question_study,
         {"mode": "orale"},
         name="comprehension_oral_question_study",
     ),
     path(
-        "co/tests/<slug:test_slug>/commencer/",
+        "comprehension/orale/tests/<slug:test_slug>/commencer/",
         views.comprehension_start,
         {"mode": "orale"},
         name="comprehension_oral_start",
     ),
     path(
-        "co/tests/<slug:test_slug>/tentatives/<int:attempt_id>/"
+        "comprehension/orale/tests/<slug:test_slug>/tentatives/<int:attempt_id>/"
         "questions/<int:number>/",
         views.comprehension_question,
         {"mode": "orale"},
         name="comprehension_oral_question",
     ),
     path(
-        "co/tests/<slug:test_slug>/tentatives/<int:attempt_id>/resultats/",
+        "comprehension/orale/tests/<slug:test_slug>/tentatives/"
+        "<int:attempt_id>/resultats/",
         views.comprehension_results,
         {"mode": "orale"},
         name="comprehension_oral_results",
     ),
     path(
-        "co/tests/<slug:test_slug>/",
+        "comprehension/orale/tests/<slug:test_slug>/",
         views.comprehension_test_detail,
         {"mode": "orale"},
         name="comprehension_oral_test",
@@ -232,112 +249,115 @@ urlpatterns = [
     path("revision/a-revoir/", views.revisit_list, name="revisit_list"),
     # Expression écrite (EE) and expression orale (EO)
     path(
-        "<expression_part:part_slug>/",
+        "expression/<expression_part:part_slug>/",
         views.part_detail,
         name="part_detail",
     ),
     path(
-        "<expression_part:part_slug>/progression/",
+        "expression/<expression_part:part_slug>/progression/",
         views.stats,
         name="part_stats",
     ),
     path(
-        "<expression_part:part_slug>/revision/",
+        "expression/<expression_part:part_slug>/revision/",
         views.review,
         name="part_review",
     ),
     path(
-        "<expression_part:part_slug>/revision/a-revoir/",
+        "expression/<expression_part:part_slug>/revision/a-revoir/",
         views.revisit_list,
         name="part_revisit_list",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/",
         views.task_detail,
         name="task_detail",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/"
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
         "memoires/<int:memory_number>/",
         views.task_memory_detail,
         name="task_memory_detail",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/"
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
         "memoires/<int:memory_number>/progression/",
         views.task_memory_progress,
         name="task_memory_progress",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/sujets/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/sujets/",
         views.browse,
         name="task_browse",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/"
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
         "sujets/<int:prompt_id>/",
         views.response_detail,
         name="response_detail",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/"
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
         "sujets/<int:prompt_id>/personnaliser/",
         views.edit_response,
         name="edit_response",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/themes/<slug:slug>/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
+        "themes/<slug:slug>/",
         views.theme_detail,
         name="theme_detail",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/familles/<slug:slug>/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
+        "familles/<slug:slug>/",
         views.family_detail,
         name="task_family_detail",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/vocabulaire/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/vocabulaire/",
         views.phrases,
         name="task_phrases",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/"
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
         "vocabulaire/categories/<slug:category_slug>/",
         views.phrases,
         name="task_vocabulary_category",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/notes/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/notes/",
         views.task_notes,
         name="task_notes",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/notes/etudier/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/notes/etudier/",
         views.annotation_study,
         name="task_annotation_study",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/recherche/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/recherche/",
         views.search,
         name="task_search",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/progression/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/progression/",
         views.stats,
         name="task_stats",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/revision/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/revision/",
         views.review_hub,
         name="task_review_hub",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/revision/cartes/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/revision/cartes/",
         views.review,
         name="task_review",
     ),
     path(
-        "<expression_part:part_slug>/<slug:task_slug>/revision/a-revoir/",
+        "expression/<expression_part:part_slug>/<slug:task_slug>/"
+        "revision/a-revoir/",
         views.revisit_list,
         name="task_revisit_list",
     ),

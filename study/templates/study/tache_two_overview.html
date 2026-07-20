@@ -7,12 +7,10 @@
 <div class="memory-overview" style="--memory-accent: {{ task.color }};">
   <header class="memory-overview-hero">
     <div class="memory-overview-hero__copy">
-      <p class="eyebrow">Expression orale · {{ task.name }}</p>
       <h1 class="title-with-icon" style="--icon-accent: {{ task.color }};">
         <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=task.icon only %}</span>
         <span>{{ task.name }}</span>
       </h1>
-      <p>Retrouve tes banques de questions réutilisables, mémorise-les progressivement et adapte-les naturellement à chaque dialogue.</p>
     </div>
     <dl class="memory-overview-hero__metrics" aria-label="Contenu de la Tâche 2">
       <div><dt>Mémoires</dt><dd>{{ memory_count }}</dd></div>
@@ -24,23 +22,26 @@
   <section class="memory-library" id="memories" aria-labelledby="memory-library-title">
     <header class="memory-library__head">
       <div>
-        <p class="eyebrow">Bibliothèque réutilisable</p>
         <h2 id="memory-library-title">Mémoires</h2>
-        <p>Choisis une mémoire pour parcourir ses catégories et retrouver les formulations à maîtriser.</p>
       </div>
       <span class="memory-library__count">{{ memory_count }} mémoire{{ memory_count|pluralize }}</span>
     </header>
 
-    <div class="memory-library__grid">
+    {% if memories %}
+      {% include "study/partials/collection_view_toggle.html" %}
+    {% endif %}
+    <div class="memory-library__grid collection-table collection-table--memories" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="memories" column_1="Mémoire" column_2="Progression" column_3="Action" only %}
       {% for item in memories %}
         {% with memory=item.memory progress=item.progress %}
         <a
           class="memory-entry card memory-entry--{{ progress.status }}"
           href="{% url 'study:task_memory_detail' part.slug task.slug memory.number %}"
+          data-collection-item
           aria-label="Ouvrir {{ memory.title }}">
           <span class="memory-entry__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name=memory.icon only %}</span>
           <div class="memory-entry__body">
-            <p class="eyebrow">{{ memory.label }}</p>
+            <span class="memory-entry__label">{{ memory.label }}</span>
             <h3>{{ memory.title }}</h3>
             <p>{{ memory.subtitle }}</p>
             <div class="memory-entry__facts">

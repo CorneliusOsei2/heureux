@@ -13,7 +13,6 @@
 <p class="muted settings-note"><strong>Aucun plafond quotidien.</strong> Toutes les cartes arrivées à échéance restent disponibles.</p>
 
 <section class="card card--pad settings-section">
-    <p class="eyebrow">Sécurité</p>
     <h2 class="mt-0">Modifier le code PIN</h2>
     <p class="muted">Le changement conserve cette session et déconnecte les autres appareils.</p>
     <form method="post" action="{% url 'study:change_pin' %}" class="settings-form" novalidate>
@@ -32,7 +31,6 @@
 
 <div class="grid grid--2 settings-grid">
   <section class="card card--pad">
-    <p class="eyebrow">Accès de secours</p>
     <h2 class="mt-0">Codes de récupération</h2>
     <p class="muted">Créez huit nouveaux codes à usage unique. Les anciens seront immédiatement invalidés.</p>
     <form method="post" action="{% url 'study:regenerate_recovery_codes' %}" class="settings-form" novalidate>
@@ -49,7 +47,6 @@
   </section>
 
   <section class="card card--pad">
-    <p class="eyebrow">Vos données</p>
     <h2 class="mt-0">Exporter le profil</h2>
     <p class="muted">Téléchargez vos cartes, révisions, tests, notes et surlignages au format JSON, sans données d'authentification.</p>
     <a class="btn" href="{% url 'study:export_account' %}">Télécharger mes données</a>
@@ -70,7 +67,6 @@
 </section>
 
 <section class="card card--pad danger-zone settings-section">
-  <p class="eyebrow">Zone sensible</p>
   <h2 class="mt-0">Réinitialiser la progression</h2>
   <p class="muted">Remet toutes les cartes à zéro, réactive les cartes suspendues et efface l'historique de révision ainsi que les tentatives, réponses et scores des tests de compréhension. Les fiches de réponses, notes et highlights restent intacts.</p>
   <form method="post" action="{% url 'study:reset_progress' %}" class="settings-form settings-form--compact" novalidate>

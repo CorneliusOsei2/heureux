@@ -5,9 +5,7 @@
 <div class="stats-page">
   <section class="stats-hero" aria-labelledby="stats-title">
     <div class="stats-hero__copy">
-      <p class="eyebrow">Pilotage de l’apprentissage{% if task %} · {{ task.name }}{% endif %}</p>
-      <h1 id="stats-title">Garde le cap</h1>
-      <p>Suis ta régularité, mesure ce qui tient dans le temps et repère rapidement ce qu’il faut renforcer.</p>
+      <h1 id="stats-title">Progression{% if task %} · {{ task.name }}{% endif %}</h1>
       <div class="stats-hero__facts" aria-label="Résumé de la progression">
         <span>
           <svg aria-hidden="true"><use href="#nav-icon-stats"></use></svg>
@@ -46,7 +44,6 @@
       <div class="stats-kpi__copy">
         <span class="stats-kpi__label">Aujourd’hui</span>
         <strong>{{ reviews_today|floatformat:"0g" }} <small>révision{{ reviews_today|pluralize }}</small></strong>
-        <p>{% if reviews_today %}Ton rythme est lancé.{% else %}Une courte session suffit pour commencer.{% endif %}</p>
       </div>
     </article>
     <article class="stats-kpi stats-kpi--streak">
@@ -56,7 +53,6 @@
       <div class="stats-kpi__copy">
         <span class="stats-kpi__label">Série actuelle</span>
         <strong>{{ streak|floatformat:"0g" }} <small>jour{{ streak|pluralize }}</small></strong>
-        <p>{% if streak %}Continue pour entretenir ta régularité.{% else %}Ta prochaine session démarre une série.{% endif %}</p>
       </div>
     </article>
     <article class="stats-kpi stats-kpi--retention">
@@ -66,13 +62,6 @@
       <div class="stats-kpi__copy">
         <span class="stats-kpi__label">Rétention à 30 jours</span>
         <strong>{% if retention is not None %}{{ retention }}<small>%</small>{% else %}—{% endif %}</strong>
-        <p>
-          {% if retention is not None %}
-            Calculée sur {{ mature_total|floatformat:"0g" }} révision{{ mature_total|pluralize }} mature{{ mature_total|pluralize }}.
-          {% else %}
-            Disponible après tes premières révisions matures.
-          {% endif %}
-        </p>
       </div>
     </article>
   </section>
@@ -80,10 +69,8 @@
   <section class="stats-section" aria-labelledby="stats-priority-title">
     <header class="stats-section__head">
       <div>
-        <p class="eyebrow">Priorités</p>
         <h2 id="stats-priority-title">À renforcer maintenant</h2>
       </div>
-      <p>Reprends les éléments fragiles pendant qu’ils sont faciles à consolider.</p>
     </header>
     <div class="stats-action-grid">
       <a class="stats-action card" href="{{ expression_weak_url }}">
@@ -114,10 +101,8 @@
   <section class="stats-section" aria-labelledby="stats-activity-title">
     <header class="stats-section__head">
       <div>
-        <p class="eyebrow">Rythme</p>
         <h2 id="stats-activity-title">Ton activité</h2>
       </div>
-      <p>Une vue claire sur tes révisions passées et celles qui arrivent.</p>
     </header>
     <div class="stats-chart-grid">
       <article class="stats-panel card">
@@ -206,10 +191,8 @@
   <section class="stats-section" aria-labelledby="stats-themes-title">
     <header class="stats-section__head">
       <div>
-        <p class="eyebrow">Maîtrise</p>
         <h2 id="stats-themes-title">Progression par thème</h2>
       </div>
-      <p>Ouvre un thème pour revoir ses réponses et poursuivre ta progression.</p>
     </header>
     <div class="stats-theme-list card">
       {% for item in themes %}
@@ -246,10 +229,8 @@
   <section class="stats-section recent-sessions" aria-labelledby="recent-sessions-title">
     <header class="stats-section__head">
       <div>
-        <p class="eyebrow">Historique récent</p>
         <h2 id="recent-sessions-title">Dernières sessions</h2>
       </div>
-      <p>Les révisions proches sont regroupées pour mieux lire ton rythme réel.</p>
     </header>
     <div class="session-list">
       {% for session in recent_sessions %}
@@ -289,14 +270,8 @@
           {% endif %}
         </article>
       {% empty %}
-        <div class="stats-empty card">
-          <span class="stats-empty__icon" aria-hidden="true">
-            <svg><use href="#nav-icon-stats"></use></svg>
-          </span>
-          <div>
-            <strong>Ton historique apparaîtra ici</strong>
-            <p>Commence une session pour voir ton rythme et ta précision.</p>
-          </div>
+        <div class="stats-empty">
+          <strong>Aucune session enregistrée.</strong>
         </div>
       {% endfor %}
     </div>

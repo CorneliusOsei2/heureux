@@ -6,9 +6,8 @@
 
 <header class="task-hero review-hero">
   <div>
-    <p class="eyebrow">Expression · rappel actif</p>
     <h1>Pratiquer {{ task.name }}</h1>
-    <p>Restitue la position, l’introduction et les trois arguments de chaque réponse sans regarder la fiche.</p>
+    <p>Rappel actif des réponses de cette tâche.</p>
   </div>
   <div class="task-hero__numbers" aria-label="Progression des réponses">
     <span><b>{{ response_stats.seen }}/{{ response_stats.total }}</b> vues</span>
@@ -30,9 +29,8 @@
 
 <section class="practice-launcher card" aria-labelledby="all-responses-title">
   <div>
-    <p class="eyebrow">Toutes les réponses</p>
     <h2 id="all-responses-title">Entraînement mélangé</h2>
-    <p>{{ counts.due_reviews }} à revoir · {{ counts.new_available }} nouvelles · aucun vocabulaire mélangé dans cette session.</p>
+    <p>{{ counts.due_reviews }} à revoir · {{ counts.new_available }} nouvelles.</p>
   </div>
   <a class="btn btn--primary" href="{{ start_review_url }}">Commencer</a>
 </section>
@@ -40,10 +38,8 @@
 <section class="area-section" aria-labelledby="practice-theme-title">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Entraînement ciblé</p>
       <h2 id="practice-theme-title">Choisir un thème</h2>
     </div>
-    <p>Travaille un ensemble cohérent de réponses avant de tout mélanger.</p>
   </div>
   <div class="practice-theme-grid">
     {% for item in themes %}
@@ -61,13 +57,11 @@
 
 <section class="review-focus-grid" aria-label="Sélections personnelles">
   <article class="card">
-    <p class="eyebrow">Marquées</p>
     <h2>Ma liste à revoir</h2>
     <p>{{ revisit_count }} réponse{{ revisit_count|pluralize }} enregistrée{{ revisit_count|pluralize }}.</p>
     <a class="btn" href="{% url 'study:task_revisit_list' part.slug task.slug %}?content=spine">Ouvrir la liste</a>
   </article>
   <article class="card">
-    <p class="eyebrow">À renforcer</p>
     <h2>Réponses fragiles</h2>
     <p>{{ weak_count }} réponse{{ weak_count|pluralize }} repérée{{ weak_count|pluralize }} par tes révisions.</p>
     <a class="btn{% if weak_count %} btn--primary{% endif %}" href="{{ weak_review_url }}">Entraîner</a>

@@ -3,17 +3,10 @@
 
 {% block content %}
 <div class="learning-hub">
-  <nav class="ce-breadcrumb" aria-label="Fil d’Ariane">
-    <a href="{% url 'study:dashboard' %}">Accueil</a>
-    <span aria-hidden="true">›</span>
-    <span>Compréhension</span>
-  </nav>
-
   <header class="area-hero comprehension-hero">
     <div class="area-hero__copy">
-      <p class="eyebrow">Lire et écouter avec précision</p>
-    <h1>Compréhension</h1>
-      <p>Entraîne-toi dans les conditions du test, analyse chaque correction et transforme le vocabulaire rencontré en cartes.</p>
+      <h1>Compréhension</h1>
+      <p>Tests écrits et oraux, avec corrections et vocabulaire associé.</p>
     </div>
     <dl class="area-hero__metrics" aria-label="Progression en compréhension">
       <div><dt>Tests terminés</dt><dd>{{ comprehension.completed_test_count }}<span class="hero-metric__total">/ {{ comprehension.test_count }}</span></dd></div>
@@ -25,7 +18,6 @@
   <section class="learning-hub__paths" aria-labelledby="comprehension-paths-title">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Parcours</p>
         <h2 id="comprehension-paths-title">Choisir une compétence</h2>
       </div>
       <a href="{% url 'study:comprehension_vocabulary' %}">Voir le vocabulaire CE {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</a>

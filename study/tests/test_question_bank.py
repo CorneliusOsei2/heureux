@@ -87,6 +87,10 @@ class QuestionBankViewTests(TestCase):
         self.assertContains(response, 'id="memory-library-title">Mémoires</h2>')
         self.assertContains(response, "Mémoire 1")
         self.assertContains(response, "Questions réutilisables")
+        self.assertContains(response, 'data-collection-view-toggle')
+        self.assertContains(response, 'data-collection-view="adaptive"')
+        self.assertContains(response, 'collection-table-header--memories')
+        self.assertContains(response, 'data-collection-item')
         self.assertContains(
             response,
             reverse(

@@ -16,6 +16,9 @@ skill_code_migration = import_module(
 canonical_url_migration = import_module(
     "study.migrations.0027_canonical_public_urls"
 )
+readable_url_migration = import_module(
+    "study.migrations.0033_readable_skill_urls"
+)
 
 
 class SkillCodeMigrationTests(TestCase):
@@ -217,3 +220,84 @@ class CanonicalPublicUrlMigrationTests(TestCase):
         self.assertEqual(canonical.source_path, canonical_path)
         self.assertEqual(canonical.quote, "Passage personnalisé")
         self.assertTrue(canonical.study_later)
+
+
+class ReadableSkillUrlMigrationTests(TestCase):
+    def setUp(self):
+        self.user = factories.make_user("readable-url-migration")
+        self.part = factories.make_part("eo")
+        self.task = factories.make_task(self.part, "tache-3")
+
+    def test_migration_rewrites_skill_roots_and_nested_next_urls(self):
+        cases = {
+            "/eo/tache-3/sujets/42/#argument": (
+                "/expression/orale/tache-3/sujets/42/#argument"
+            ),
+            "/ee/tache-2/notes/?tab=highlights": (
+                "/expression/ecrite/tache-2/notes/?tab=highlights"
+            ),
+            "/ce/tests/test-1/questions/2/": (
+                "/comprehension/ecrite/tests/test-1/questions/2/"
+            ),
+            "/co/vocabulaire/": "/comprehension/orale/vocabulaire/",
+            "/compte/connexion/?next=%2Feo%2Ftache-3%2Fsujets%2F": (
+                "/compte/connexion/"
+                "?next=%2Fexpression%2Forale%2Ftache-3%2Fsujets%2F"
+            ),
+        }
+        annotations = {
+            source: Annotation.objects.create(
+                user=self.user,
+                task=self.task,
+                kind=AnnotationKind.NOTE,
+                body=f"Stored path {index}",
+                source_path=source,
+            )
+            for index, source in enumerate(cases)
+        }
+
+        readable_url_migration.use_readable_skill_urls(apps, None)
+
+        for source, expected in cases.items():
+            with self.subTest(source=source):
+                annotations[source].refresh_from_db()
+                self.assertEqual(
+                    annotations[source].source_path,
+                    expected,
+                )
+
+    def test_migration_merges_highlights_at_the_new_readable_path(self):
+        old_path = "/eo/tache-3/sujets/42/"
+        readable_path = "/expression/orale/tache-3/sujets/42/"
+        existing = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Ancien passage",
+            source_path=readable_path,
+            source_key="response:readable:p1",
+            start_offset=4,
+            end_offset=19,
+        )
+        old = Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.HIGHLIGHT,
+            quote="Passage personnalisé",
+            source_path=old_path,
+            source_key=existing.source_key,
+            start_offset=4,
+            end_offset=19,
+            study_later=True,
+        )
+        Annotation.objects.filter(pk=existing.pk).update(
+            updated_at=timezone.now() - timedelta(minutes=1)
+        )
+
+        readable_url_migration.use_readable_skill_urls(apps, None)
+
+        existing.refresh_from_db()
+        self.assertFalse(Annotation.objects.filter(pk=old.pk).exists())
+        self.assertEqual(existing.source_path, readable_path)
+        self.assertEqual(existing.quote, "Passage personnalisé")
+        self.assertTrue(existing.study_later)

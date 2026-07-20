@@ -9,7 +9,6 @@
 
 <header class="phrase-category-hero card">
   <div>
-    <p class="eyebrow">{% if selected_test %}{{ comprehension_skill_code|upper }} · vocabulaire du test{% else %}Expression · tournures transversales{% endif %}</p>
     <h1>{% if selected_test %}{{ selected_test.title }}{% else %}{{ selected.name }}{% endif %}</h1>
     <p>
       {% if selected_test %}
@@ -45,10 +44,8 @@
 <section class="review-batches" aria-labelledby="vocabulary-batches-title">
   <div class="review-batches__head">
     <div>
-      <p class="eyebrow">Pratiquer</p>
       <h2 id="vocabulary-batches-title">Choisir un lot de {{ batch_size }}</h2>
     </div>
-    <p>Travaille un petit ensemble stable, puis passe au suivant quand les cartes deviennent familières.</p>
   </div>
   <div class="batch-grid collection-table collection-table--batches" data-collection-view="adaptive">
     {% include "study/partials/collection_table_header.html" with variant="batches" column_1="Lot et statut" column_2="Entrées" column_3="Activité" only %}
@@ -62,10 +59,8 @@
 <section class="phrase-catalog" aria-labelledby="phrase-catalog-title">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Étudier</p>
       <h2 id="phrase-catalog-title">Voir les entrées en contexte</h2>
     </div>
-    <p>Le sens anglais, un exemple et la source te permettent de comprendre chaque emploi avant le rappel actif.</p>
   </div>
   {% for group in grouped %}
     <div class="phrase-group">
@@ -111,9 +106,8 @@
 <div class="vocabulary-hub">
   <header class="area-hero vocabulary-hero">
     <div class="area-hero__copy">
-      <p class="eyebrow">Bibliothèque lexicale</p>
       <h1>Vocabulaire</h1>
-      <p>Tous tes mots, expressions et phrases modèles sont réunis ici, sans mélanger les réponses d’expression avec les cartes lexicales.</p>
+      <p>Mots, expressions et phrases modèles.</p>
       {% if task %}
         <div class="active-filter">
           <span>Filtre actif · {{ part.short_name }} · {{ task.name }}</span>
@@ -162,7 +156,6 @@
       <span class="vocabulary-status__copy">
         <span class="vocabulary-status__value">{{ vocabulary_revisit_count|floatformat:"0g" }}</span>
         <strong>Marquées à revoir</strong>
-        <small>Ta sélection personnelle de mots et tournures</small>
       </span>
       <span class="vocabulary-status__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
@@ -175,7 +168,6 @@
       <span class="vocabulary-status__copy">
         <span class="vocabulary-status__value">{{ vocabulary_weak_count|floatformat:"0g" }}</span>
         <strong>Points à renforcer</strong>
-        <small>Cartes oubliées ou encore fragiles</small>
       </span>
       <span class="vocabulary-status__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
@@ -187,10 +179,8 @@
   <section class="vocabulary-domain vocabulary-domain--comprehension area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">
     <div class="section-heading vocabulary-domain__heading">
       <div>
-        <p class="eyebrow">Vocabulaire</p>
         <h2 id="comprehension-paths-title">Compréhension</h2>
       </div>
-      <p>Travaille les mots et reformulations directement reliés aux tests de compréhension.</p>
     </div>
     <div class="expression-paths">
       {% for path in comprehension_vocabulary_paths %}
@@ -202,10 +192,8 @@
   <section class="vocabulary-domain vocabulary-domain--expression area-section" data-vocabulary-domain aria-labelledby="expression-paths-title">
     <div class="section-heading vocabulary-domain__heading">
       <div>
-        <p class="eyebrow">Vocabulaire</p>
         <h2 id="expression-paths-title">Expression</h2>
       </div>
-      <p>Entre dans une compétence, puis dans sa tâche, pour retrouver uniquement les tournures et vocabs associés.</p>
     </div>
     <div class="expression-paths">
       {% for path in expression_vocabulary_paths %}
@@ -219,7 +207,6 @@
   <section class="expression-directory area-section" id="expression-vocabulary" aria-labelledby="expression-vocabulary-title">
     <div class="section-heading expression-directory__heading">
       <div>
-        <p class="eyebrow">Expression</p>
         <h2 id="expression-vocabulary-title">Construire et enrichir ses réponses</h2>
       </div>
       <p>Commence par les tournures réutilisables, puis ouvre le deck riche de 50 vocabs du sujet que tu prépares.</p>
@@ -249,10 +236,8 @@
   <section class="subject-vocabulary-directory area-section" id="vocabulaire-par-sujet" aria-labelledby="subject-vocabulary-title">
     <div class="section-heading subject-vocabulary-directory__heading">
       <div>
-        <p class="eyebrow">Expression · 50 vocabs par sujet</p>
         <h2 id="subject-vocabulary-title">Vocabulaire par sujet</h2>
       </div>
-      <p>Retrouve un sujet exact et travaille ses cinq lots de dix entrées extraites de la réponse.</p>
     </div>
 
     {% if subject_theme_groups %}
@@ -314,7 +299,6 @@
   <section class="area-section comprehension-vocabulary" id="comprehension-vocabulary" aria-labelledby="comprehension-vocabulary-title">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Compréhension</p>
         <h2 id="comprehension-vocabulary-title">Vocabulaire des tests</h2>
       </div>
       <p>Chaque test écrit possède 50 entrées reliées aux questions où elles apparaissent.</p>

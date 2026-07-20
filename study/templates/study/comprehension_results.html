@@ -25,19 +25,8 @@
       <span>sur {{ attempt.total_questions }}</span>
     </div>
     <div class="ce-results-hero__copy">
-      <p class="eyebrow">{{ test.title }} · {% if is_error_practice %}Entraînement ciblé terminé{% else %}Terminé{% endif %}</p>
-      <h1>
-        {% if attempt.percentage >= 85 %}
-          Excellente compréhension
-        {% elif attempt.percentage >= 70 %}
-          Très bon travail
-        {% elif attempt.percentage >= 50 %}
-          Une base solide à renforcer
-        {% else %}
-          Continuez, chaque correction compte
-        {% endif %}
-      </h1>
-      <p>Vous avez obtenu <b>{{ attempt.percentage }} %</b>. Parcourez les corrections pour comprendre précisément chaque choix.</p>
+      <h1>{{ test.title }}</h1>
+      <p>{% if is_error_practice %}Entraînement ciblé terminé{% else %}Test terminé{% endif %} · <b>{{ attempt.percentage }} %</b></p>
       <div class="ce-results-hero__facts">
         <span class="is-correct"><b>{{ attempt.score }}</b> bonnes réponses</span>
         <span class="is-wrong"><b>{{ wrong_count }}</b> à revoir</span>
@@ -75,8 +64,7 @@
 
   <section class="ce-results-map" aria-labelledby="ce-results-map-title">
     <div>
-      <p class="eyebrow">Vue d’ensemble</p>
-      <h2 id="ce-results-map-title">Vos {{ attempt.total_questions }} réponses</h2>
+      <h2 id="ce-results-map-title">Réponses</h2>
     </div>
     <div class="ce-results-map__grid">
       {% for item in review_items %}
@@ -90,10 +78,8 @@
   <section class="ce-review-list" aria-labelledby="ce-review-title">
     <div class="ce-section-heading">
       <div>
-        <p class="eyebrow">Correction détaillée</p>
         <h2 id="ce-review-title">Revoir les questions</h2>
       </div>
-      <p>Ouvrez une question pour retrouver le texte, votre choix et l’explication.</p>
     </div>
 
     {% for item in review_items %}

@@ -8,17 +8,15 @@
 <div class="question-bank-page" style="--question-bank-accent: {{ task.color }};">
 <header class="question-bank-hero">
   <div class="question-bank-hero__copy">
-    <p class="eyebrow">{{ question_bank.label }} · {{ task.name }}</p>
     <h1 class="title-with-icon" style="--icon-accent: {{ task.color }};">
       <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=task.icon only %}</span>
       <span>{{ question_bank.title }}</span>
     </h1>
-    <p>{{ question_bank.subtitle }}</p>
+    <p><strong>{{ question_bank.label }}</strong> · {{ question_bank.subtitle }}</p>
   </div>
   <dl class="question-bank-hero__metrics" aria-label="Contenu de la mémoire">
     <div><dt>Catégories</dt><dd>{{ question_bank.category_count }}</dd></div>
     <div><dt>Questions</dt><dd>{{ question_bank.question_count }}</dd></div>
-    <div><dt>Apprises</dt><dd data-memory-completed>{{ memory_progress.completed }}</dd></div>
   </dl>
 </header>
 
@@ -27,7 +25,6 @@
   <div class="memory-learning-summary__body">
     <div class="memory-learning-summary__copy">
       <div>
-        <p class="eyebrow">Progression de la mémoire</p>
         <h2 id="memory-learning-title"><span data-memory-completed>{{ memory_progress.completed }}</span> sur {{ memory_progress.total }} questions apprises</h2>
       </div>
       <span class="progress-status progress-status--{{ memory_progress.status }}" data-memory-status>{{ memory_progress.label }}</span>
@@ -43,7 +40,6 @@
   <aside class="question-bank-index card" aria-labelledby="question-bank-index-title">
     <div class="question-bank-index__head">
       <div>
-        <p class="eyebrow">Navigation</p>
         <h2 id="question-bank-index-title">Les catégories</h2>
       </div>
       <span>{{ question_bank.category_count }}</span>
@@ -69,12 +65,10 @@
         <header class="question-bank-section__head">
           <span class="question-bank-section__number">{{ section.number_label }}</span>
           <div>
-            <p>Partie {{ section.number }}</p>
             <h2>{{ section.title }}</h2>
           </div>
           <div class="question-bank-section__progress">
             <div>
-              <span class="progress-status progress-status--{{ section.progress.status }}" data-section-status>{{ section.progress.label }}</span>
               <span class="question-bank-section__count"><b data-section-completed>{{ section.progress.completed }}</b>/{{ section.progress.total }}</span>
             </div>
             <div class="progress" aria-label="{{ section.progress.percent }} % terminé" data-section-progress-bar>

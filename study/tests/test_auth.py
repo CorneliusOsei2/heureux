@@ -77,8 +77,14 @@ class AuthenticationTests(TestCase):
             "/login/",
             "/review/",
             "/response/1/",
+            "/eo/",
+            "/ee/",
+            "/ce/",
+            "/co/",
             "/expression/eo/",
+            "/expression/ee/",
             "/comprehension/ce/",
+            "/comprehension/co/",
         ):
             with self.subTest(path=path):
                 response = self.client.get(path)

@@ -260,8 +260,30 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             name="Tâche 2",
             exact=True,
         ).wait_for()
+        table_toggle = self.page.get_by_role("button", name="Tableau")
+        cards_toggle = self.page.get_by_role("button", name="Cartes")
+        table_header = self.page.locator(
+            ".collection-table-header--memories"
+        )
+        self.assertEqual(table_toggle.get_attribute("aria-pressed"), "true")
+        self.assertTrue(table_header.is_visible())
         memory_entry = self.page.locator(".memory-entry")
         self.assertEqual(memory_entry.count(), 1)
+        self.assertEqual(
+            len(
+                memory_entry.evaluate(
+                    "element => getComputedStyle(element)"
+                    ".gridTemplateColumns.split(' ')"
+                )
+            ),
+            3,
+        )
+        cards_toggle.click()
+        self.assertEqual(cards_toggle.get_attribute("aria-pressed"), "true")
+        self.assertFalse(table_header.is_visible())
+        table_toggle.click()
+        self.assertEqual(table_toggle.get_attribute("aria-pressed"), "true")
+        self.assertTrue(table_header.is_visible())
         self.assertLessEqual(memory_entry.bounding_box()["height"], 155)
         self.assertEqual(
             memory_entry.get_attribute("href"),

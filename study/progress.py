@@ -24,9 +24,13 @@ from .models import (
 
 
 SUBJECT_PATH_RE = re.compile(
-    r"^/(?P<part>eo|ee)/(?P<task>[-a-zA-Z0-9_]+)/"
+    r"^/expression/(?P<part>orale|ecrite)/(?P<task>[-a-zA-Z0-9_]+)/"
     r"sujets/(?P<prompt_id>\d+)/$"
 )
+EXPRESSION_PART_BY_PATH = {
+    "orale": "eo",
+    "ecrite": "ee",
+}
 RESPONSE_SOURCE_PREFIX = "response:"
 PHRASE_SOURCE_PREFIX = "phrase:"
 PHRASE_SOURCE_RE = re.compile(r"^phrase:(?P<phrase_id>[^:]+):")
@@ -316,7 +320,7 @@ def subject_progress_by_response(user, response_ids) -> dict[int, SubjectProgres
             if (
                 prompt
                 and prompt["theme__task__part__slug"]
-                == path_match.group("part")
+                == EXPRESSION_PART_BY_PATH[path_match.group("part")]
                 and prompt["theme__task__slug"] == path_match.group("task")
             ):
                 matched_response_ids.add(prompt["response_id"])

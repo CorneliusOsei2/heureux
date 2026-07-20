@@ -74,8 +74,8 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v93"', body)
-        self.assertIn("study/css/app.css?v=86", body)
+        self.assertIn('var CACHE = "heureux-v95"', body)
+        self.assertIn("study/css/app.css?v=88", body)
         self.assertIn("study/js/memory-progress.js?v=2", body)
         self.assertIn("study/js/theme-init.js?v=2", body)
         self.assertIn("study/js/app.js?v=34", body)
@@ -198,8 +198,14 @@ class SmokeTests(TestCase):
             "/response/1/",
             "/theme/culture/",
             "/family/opinion/",
+            "/eo/",
+            "/ee/",
+            "/ce/",
+            "/co/",
             "/expression/eo/",
+            "/expression/ee/",
             "/comprehension/ce/",
+            "/comprehension/co/",
             "/login/",
         )
         for path in legacy_paths:
@@ -387,6 +393,7 @@ class SmokeTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "<h1>Compréhension</h1>", html=True)
+        self.assertNotContains(response, 'aria-label="Fil d’Ariane"')
         self.assertContains(response, ">Écrite</strong>")
         self.assertContains(response, ">Orale</strong>")
         self.assertContains(
@@ -485,38 +492,38 @@ class SmokeTests(TestCase):
 
     def test_hierarchy_uses_expression_paths(self):
         url = reverse("study:task_detail", args=["eo", "tache-3"])
-        self.assertEqual(url, "/eo/tache-3/")
+        self.assertEqual(url, "/expression/orale/tache-3/")
 
-    def test_all_skill_routes_use_canonical_codes(self):
+    def test_all_skill_routes_use_readable_paths(self):
         self.assertEqual(
             reverse("study:comprehension_overview"),
-            "/ce/",
+            "/comprehension/ecrite/",
         )
         self.assertEqual(
             reverse(
                 "study:comprehension_question_study",
                 args=["test-1", 2],
             ),
-            "/ce/tests/test-1/questions/2/",
+            "/comprehension/ecrite/tests/test-1/questions/2/",
         )
         self.assertEqual(
             reverse("study:comprehension_oral_overview"),
-            "/co/",
+            "/comprehension/orale/",
         )
         self.assertEqual(
             reverse(
                 "study:comprehension_oral_question_study",
                 args=["oral-test-1", 2],
             ),
-            "/co/tests/oral-test-1/questions/2/",
+            "/comprehension/orale/tests/oral-test-1/questions/2/",
         )
         self.assertEqual(
             reverse("study:part_detail", args=["ee"]),
-            "/ee/",
+            "/expression/ecrite/",
         )
         self.assertEqual(
             reverse("study:task_detail", args=["eo", "tache-3"]),
-            "/eo/tache-3/",
+            "/expression/orale/tache-3/",
         )
 
     def test_public_tools_use_the_exact_canonical_hierarchy(self):
@@ -530,27 +537,27 @@ class SmokeTests(TestCase):
             reverse(
                 "study:task_browse",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/sujets/",
+            ): "/expression/orale/tache-3/sujets/",
             reverse(
                 "study:task_phrases",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/vocabulaire/",
+            ): "/expression/orale/tache-3/vocabulaire/",
             reverse(
                 "study:task_notes",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/notes/",
+            ): "/expression/orale/tache-3/notes/",
             reverse(
                 "study:task_search",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/recherche/",
+            ): "/expression/orale/tache-3/recherche/",
             reverse(
                 "study:task_stats",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/progression/",
+            ): "/expression/orale/tache-3/progression/",
             reverse(
                 "study:task_review",
                 args=["eo", "tache-3"],
-            ): "/eo/tache-3/revision/cartes/",
+            ): "/expression/orale/tache-3/revision/cartes/",
             reverse("study:login"): "/compte/connexion/",
             reverse("study:settings"): "/compte/parametres/",
         }
@@ -562,10 +569,15 @@ class SmokeTests(TestCase):
         for path in (
             "/comprehension-ecrite/",
             "/comprehension-orale/",
-            "/expression/orale/",
             "/expression/ecrit/",
+            "/eo/",
+            "/ee/",
+            "/ce/",
+            "/co/",
             "/expression/eo/",
+            "/expression/ee/",
             "/comprehension/ce/",
+            "/comprehension/co/",
             "/notes/orale/tache-3/",
             "/epreuve/orale/tache-3/",
         ):
@@ -972,7 +984,7 @@ class TaskOrganizationTests(TestCase):
             self._task_url("study:task_review_hub")
         )
         self.assertContains(response, "Entraînement mélangé")
-        self.assertContains(response, "aucun vocabulaire mélangé")
+        self.assertContains(response, "Rappel actif des réponses de cette tâche.")
         self.assertContains(response, "Ma liste à revoir")
         self.assertContains(
             response,
@@ -1532,7 +1544,7 @@ class ResponsePromptNavigationTests(TestCase):
         )
         self.assertEqual(
             self._detail_url(alias),
-            f"/eo/tache-3/sujets/{alias.pk}/",
+            f"/expression/orale/tache-3/sujets/{alias.pk}/",
         )
         self.assertEqual(page.context["selected_prompt"], alias)
         self.assertEqual(page.context["task"], self.task)

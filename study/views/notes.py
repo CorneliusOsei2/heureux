@@ -39,9 +39,14 @@ MAX_ANNOTATION_BODY_LENGTH = 20000
 
 ANNOTATION_SOURCE_KEY_RE = re.compile(r"^[A-Za-z0-9:._-]{0,200}$")
 SUBJECT_SOURCE_PATH_RE = re.compile(
-    r"^/(?P<part>eo|ee)/(?P<task>[-a-zA-Z0-9_]+)/"
+    r"^/expression/(?P<part>orale|ecrite)/"
+    r"(?P<task>[-a-zA-Z0-9_]+)/"
     r"sujets/(?P<prompt_id>\d+)/$"
 )
+EXPRESSION_PART_BY_PATH = {
+    "orale": "eo",
+    "ecrite": "ee",
+}
 
 
 def _annotation_counts(user):
@@ -455,7 +460,9 @@ def _annotation_source_scope(source_path):
                 pk=match.group("prompt_id"),
                 is_active=True,
                 response__is_active=True,
-                theme__task__part__slug=match.group("part"),
+                theme__task__part__slug=EXPRESSION_PART_BY_PATH[
+                    match.group("part")
+                ],
                 theme__task__slug=match.group("task"),
             )
             .select_related("response")
