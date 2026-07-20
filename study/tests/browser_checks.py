@@ -250,6 +250,28 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             overview_nav.locator("a.is-active").inner_text(),
             "Vue d'ensemble",
         )
+        self.page.set_viewport_size({"width": 320, "height": 700})
+        self.assertEqual(
+            len(
+                memory_entry.evaluate(
+                    "element => getComputedStyle(element)"
+                    ".gridTemplateColumns.split(' ')"
+                )
+            ),
+            2,
+        )
+        self.assertEqual(
+            len(
+                overview_nav.evaluate(
+                    "element => getComputedStyle(element)"
+                    ".gridTemplateColumns.split(' ')"
+                )
+            ),
+            2,
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 1280, "height": 850})
         memory_entry.click()
         self.page.wait_for_url(memory_url)
         self.page.get_by_role(

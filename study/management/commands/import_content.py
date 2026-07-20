@@ -133,7 +133,7 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS(
                 "Imported {t} themes, {f} families, {r} responses, "
-                "{p} prompts, {qm} Tâche 2 memories with {qb} questions, "
+                "{p} prompts, {qm} Tâche 2 {memory_label} with {qb} questions, "
                 "{ph} phrases, "
                 "{ct} comprehension tests, "
                 "{cq} comprehension questions, {c} cards.".format(
@@ -142,6 +142,11 @@ class Command(BaseCommand):
                     r=Response.objects.filter(is_active=True).count(),
                     p=Prompt.objects.filter(is_active=True).count(),
                     qm=len(question_banks),
+                    memory_label=(
+                        "memory"
+                        if len(question_banks) == 1
+                        else "memories"
+                    ),
                     qb=sum(bank.question_count for bank in question_banks),
                     ph=Phrase.objects.filter(is_active=True).count(),
                     ct=ComprehensionTest.objects.filter(is_active=True).count(),
