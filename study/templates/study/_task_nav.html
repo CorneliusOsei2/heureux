@@ -1,5 +1,5 @@
 {% if task and part %}
-<div class="task-context">
+<div class="task-context" style="--task-accent: {{ task.color }};">
   <a href="{% url 'study:expression' %}">Expression</a>
   <span aria-hidden="true">›</span>
   <a href="{% url 'study:part_detail' part.slug %}">{{ part.short_name }}</a>
@@ -12,7 +12,7 @@
     <strong>{{ task.name }}</strong>
   {% endif %}
 </div>
-<nav class="task-nav{% if memory_task %} task-nav--memories{% endif %}{% if compact %} task-nav--compact{% endif %}" aria-label="Navigation de {{ task.name }}">
+<nav class="task-nav{% if memory_task %} task-nav--memories{% endif %}{% if compact %} task-nav--compact{% endif %}" style="--task-accent: {{ task.color }};" aria-label="Navigation de {{ task.name }}">
   <a class="{% if request.resolver_match.url_name == 'task_detail' %}is-active{% endif %}"
      href="{% url 'study:task_detail' part.slug task.slug %}">Vue d'ensemble</a>
   {% if memory_task %}

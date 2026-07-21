@@ -7,7 +7,7 @@
   <title>{% block title %}Heureux{% endblock %}</title>
   <meta name="description" content="Révisions pour l'expression et la compréhension du français.">
   <script src="{% static 'study/js/theme-init.js' %}?v=2"></script>
-  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=105">
+  <link rel="stylesheet" href="{% static 'study/css/app.css' %}?v=107">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#173f90">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,6 +31,7 @@
   <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'study/icons/og-image.png' %}">
 </head>
 <body
+  data-active-area="{{ active_nav_area }}"
   data-annotation-task-id="{% if annotation_task %}{{ annotation_task.id }}{% endif %}"
   data-annotation-source-url="{% url 'study:annotations_for_source' %}"
   data-annotation-create-url="{% url 'study:annotation_create' %}">

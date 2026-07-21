@@ -4,7 +4,7 @@
 {% block content %}
 {% include "study/_task_nav.html" %}
 
-<header class="task-hero review-hero">
+<header class="task-hero review-hero" style="--task-accent: {{ task.color }};">
   <div>
     <h1>Pratiquer {{ task.name }}</h1>
     <p>Rappel actif des réponses de cette tâche.</p>

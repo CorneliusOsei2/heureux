@@ -1959,7 +1959,7 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
   text-decoration: none;
 }
 .question-bank-index nav a:hover {
-  background: color-mix(in srgb, var(--bank-accent) 7%, var(--surface));
+  background: var(--surface-2);
   color: var(--text);
 }
 .question-bank-index nav a > span {
@@ -2094,8 +2094,8 @@ h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
   border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
 }
 .question-bank-questions li.is-complete {
-  background: color-mix(in srgb, var(--success) 7%, var(--surface));
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--success) 16%, transparent);
+  background: transparent;
+  box-shadow: none;
 }
 .memory-question-check {
   width: 2rem;
@@ -2810,7 +2810,7 @@ html[data-collection-view-mode="table"]
   [data-collection-view="adaptive"]
   > [data-collection-item]:hover {
   border-color: var(--border);
-  background: color-mix(in srgb, var(--primary-soft) 38%, var(--surface));
+  background: var(--surface-2);
   box-shadow: none;
   transform: none;
 }
@@ -4270,7 +4270,7 @@ html[data-collection-view-mode="table"]
   padding: 0.58rem 1rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--primary-soft) 52%, var(--surface-2));
+  background: var(--surface-2);
   color: var(--text-soft);
   font-size: 0.82rem;
   font-weight: 750;
@@ -4301,7 +4301,7 @@ html[data-collection-view-mode="table"]
   background: color-mix(in srgb, var(--surface-2) 24%, var(--surface));
 }
 .annotation-table__row:hover td {
-  background: color-mix(in srgb, var(--primary-soft) 38%, var(--surface));
+  background: var(--surface-2);
 }
 .annotation-table tbody:last-of-type .annotation-table__row:last-child td {
   border-bottom: 0;
@@ -5288,7 +5288,7 @@ html[data-collection-view-mode="table"]
     transform 0.18s ease;
 }
 .batch-card[href]:hover {
-  border-color: color-mix(in srgb, var(--batch-accent) 48%, var(--border));
+  border-color: var(--border-strong);
   box-shadow: none;
   text-decoration: none;
   transform: none;
@@ -5328,15 +5328,15 @@ html[data-collection-view-mode="table"]
 .batch-card__status .ui-icon { width: 0.8rem; height: 0.8rem; }
 .batch-card--complete {
   --batch-accent: var(--success);
-  border-color: color-mix(in srgb, var(--success) 42%, var(--border));
-  background: var(--success-soft);
+  border-color: var(--border);
+  background: var(--surface);
 }
 .batch-card--complete .batch-card__number,
 .batch-card--complete .batch-card__status { color: var(--success); }
 .batch-card--in-progress {
   --batch-accent: var(--warning);
-  border-color: color-mix(in srgb, var(--warning) 45%, var(--border));
-  background: var(--warning-soft);
+  border-color: var(--border);
+  background: var(--surface);
 }
 .batch-card--in-progress .batch-card__number,
 .batch-card--in-progress .batch-card__status { color: var(--warning); }
@@ -6102,13 +6102,13 @@ a.qrow:focus-visible {
   transform: none;
 }
 .response-batch--featured {
-  border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
-  background: color-mix(in srgb, var(--primary-soft) 62%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface-2);
 }
 .response-batch--done,
 .response-batch[data-progress-status="done"] {
-  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
-  background: color-mix(in srgb, var(--success-soft) 58%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface-2);
 }
 .response-batch--done .response-batch__number,
 .response-batch--done .response-batch__arrow,
@@ -6123,8 +6123,8 @@ a.qrow:focus-visible {
   pointer-events: none;
 }
 .response-batch--disabled:hover {
-  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
-  background: color-mix(in srgb, var(--success-soft) 58%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface-2);
   box-shadow: none;
   transform: none;
 }
@@ -6314,7 +6314,7 @@ a.qrow:focus-visible {
 }
 .settings-form--compact { max-width: 460px; }
 .danger-zone--account {
-  background: color-mix(in srgb, var(--again) 4%, var(--surface));
+  background: var(--surface);
 }
 .response-edit {
   display: grid;
@@ -7344,8 +7344,8 @@ a.ce-group-test-row:hover {
   background: var(--surface-2);
 }
 .ce-study-choice.is-correct {
-  border-color: color-mix(in srgb, var(--success) 42%, var(--border));
-  background: color-mix(in srgb, var(--success-soft) 50%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface-2);
 }
 .ce-study-choice__answer {
   display: grid;
@@ -7886,8 +7886,8 @@ a.ce-group-test-row:hover {
   transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
 }
 button.ce-choice:hover {
-  border-color: color-mix(in srgb, var(--ce-blue) 50%, var(--border));
-  background: color-mix(in srgb, var(--ce-blue-soft) 55%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface);
   box-shadow: none;
   transform: none;
 }
@@ -7940,7 +7940,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .ce-choice__result .ui-icon { width: 14px; height: 14px; }
 .ce-choice.is-correct {
   border-color: color-mix(in srgb, var(--success) 48%, var(--border));
-  background: var(--success-soft);
+  background: var(--surface);
   cursor: default;
 }
 .ce-choice.is-correct .ce-choice__letter,
@@ -7951,7 +7951,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .ce-choice.is-wrong {
   border-color: color-mix(in srgb, var(--again) 44%, var(--border));
-  background: color-mix(in srgb, var(--again) 8%, var(--surface));
+  background: var(--surface);
   cursor: default;
 }
 .ce-choice.is-wrong .ce-choice__letter,
@@ -7980,14 +7980,14 @@ button.ce-choice:focus-visible .ce-choice__radio {
   --correction-accent: var(--success);
   margin-top: 1rem;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--correction-accent) 32%, var(--border));
+  border: 1px solid var(--border);
   border-radius: var(--card-radius);
   background: var(--surface);
   box-shadow: none;
 }
 .ce-correction--wrong {
   --correction-accent: var(--again);
-  border-color: color-mix(in srgb, var(--again) 32%, var(--border));
+  border-color: var(--border);
 }
 .ce-correction__head {
   display: flex;
@@ -7995,10 +7995,10 @@ button.ce-choice:focus-visible .ce-choice__radio {
   gap: 0.9rem;
   padding: 1.1rem 1.2rem;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--success-soft) 52%, var(--surface));
+  background: var(--surface-2);
 }
 .ce-correction--wrong .ce-correction__head {
-  background: color-mix(in srgb, var(--again) 6%, var(--surface));
+  background: var(--surface-2);
 }
 .ce-correction__mark {
   --icon-check-color: #fff;
@@ -8045,7 +8045,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
   padding: 0.75rem 0.85rem;
   border: 1px solid color-mix(in srgb, var(--again) 28%, var(--border));
   border-radius: 9px;
-  background: color-mix(in srgb, var(--again) 6%, var(--surface));
+  background: var(--surface);
 }
 .ce-selected-rationale strong {
   display: block;
@@ -8112,7 +8112,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
   line-height: 1.6;
 }
 .ce-rationales article.is-selected {
-  background: color-mix(in srgb, var(--again) 5%, var(--surface));
+  background: var(--surface);
 }
 .ce-rationales article.is-selected > span {
   background: var(--again);
@@ -8298,14 +8298,14 @@ button.ce-choice:focus-visible .ce-choice__radio {
   margin-bottom: 0.7rem;
   overflow: hidden;
   scroll-margin-top: 80px;
-  border: 1px solid color-mix(in srgb, var(--review-accent) 30%, var(--card-border));
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   background: var(--surface);
   box-shadow: none;
 }
 .ce-review-item.is-wrong {
   --review-accent: var(--again);
-  border-color: color-mix(in srgb, var(--again) 30%, var(--card-border));
+  border-color: var(--card-border);
 }
 .ce-review-item > summary {
   display: grid;
@@ -8319,7 +8319,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
   transition: background 0.18s ease;
 }
 .ce-review-item > summary:hover {
-  background: color-mix(in srgb, var(--review-accent) 5%, transparent);
+  background: var(--surface-2);
 }
 .ce-review-item > summary:focus-visible {
   outline: 0;
@@ -8416,13 +8416,13 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .ce-review-item__choices .is-correct {
   border-color: color-mix(in srgb, var(--success) 33%, var(--border));
-  background: var(--success-soft);
+  background: var(--surface);
 }
 .ce-review-item__choices .is-correct > span,
 .ce-review-item__choices .is-correct b { color: var(--success); }
 .ce-review-item__choices .is-wrong {
   border-color: color-mix(in srgb, var(--again) 30%, var(--border));
-  background: color-mix(in srgb, var(--again) 6%, var(--surface));
+  background: var(--surface);
 }
 .ce-review-item__choices .is-wrong > span,
 .ce-review-item__choices .is-wrong b { color: var(--again); }
@@ -9550,7 +9550,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .stats-theme + .stats-theme { border-top: 1px solid var(--border); }
 .stats-theme:hover {
-  background: color-mix(in srgb, var(--theme-accent) 5%, var(--surface));
+  background: var(--surface-2);
   text-decoration: none;
 }
 .stats-theme__icon {
@@ -10527,7 +10527,35 @@ button.ce-choice:focus-visible .ce-choice__radio {
   }
 }
 
-/* ---------- Semantic color surfaces ---------- */
+/* ---------- Semantic accents ---------- */
+body {
+  --area-accent: var(--primary);
+  --area-soft: var(--primary-soft);
+}
+body[data-active-area="home"] {
+  --area-accent: var(--tone-home);
+  --area-soft: var(--tone-home-soft);
+}
+body[data-active-area="comprehension"] {
+  --area-accent: var(--tone-comprehension);
+  --area-soft: var(--tone-comprehension-soft);
+}
+body[data-active-area="expression"] {
+  --area-accent: var(--tone-expression);
+  --area-soft: var(--tone-expression-soft);
+}
+body[data-active-area="vocabulary"] {
+  --area-accent: var(--tone-vocabulary);
+  --area-soft: var(--tone-vocabulary-soft);
+}
+body[data-active-area="notes"] {
+  --area-accent: var(--tone-notes);
+  --area-soft: var(--tone-notes-soft);
+}
+body[data-active-area="stats"] {
+  --area-accent: var(--tone-stats);
+  --area-soft: var(--tone-stats-soft);
+}
 .nav__primary-link[data-nav-tone="home"] {
   --nav-tone: var(--tone-home);
   --nav-tone-soft: var(--tone-home-soft);
@@ -10569,6 +10597,16 @@ button.ce-choice:focus-visible .ce-choice__radio {
   background: var(--tone-home-soft);
   color: var(--tone-home);
 }
+.nav__menu a:hover,
+.nav__menu button:hover,
+.nav__menu a.is-active {
+  background: color-mix(in srgb, var(--area-soft) 78%, var(--surface));
+  color: var(--area-accent);
+}
+.nav__menu form button:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
 
 :is(
   .home-hero,
@@ -10585,15 +10623,16 @@ button.ce-choice:focus-visible .ce-choice__radio {
   .stats-hero,
   .notes-overview > .grouped-overview__head
 ) {
-  border: 1px solid color-mix(in srgb, var(--hero-accent) 20%, var(--border));
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--hero-soft) 78%, var(--surface));
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
   box-shadow: none;
 }
 .home-hero {
   --hero-accent: var(--tone-home);
   --hero-soft: var(--tone-home-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
 }
 .expression-hub > .area-hero,
 .container > .area-hero,
@@ -10602,7 +10641,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .task-hero {
   --hero-accent: var(--tone-expression);
   --hero-soft: var(--tone-expression-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
 }
 .comprehension-hero,
 .ce-library-hero,
@@ -10610,22 +10649,68 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .ce-results-hero {
   --hero-accent: var(--tone-comprehension);
   --hero-soft: var(--tone-comprehension-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
 }
 .vocabulary-hero {
   --hero-accent: var(--tone-vocabulary);
   --hero-soft: var(--tone-vocabulary-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
 }
 .stats-hero {
   --hero-accent: var(--tone-stats);
   --hero-soft: var(--tone-stats-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
 }
 .notes-overview > .grouped-overview__head {
   --hero-accent: var(--tone-notes);
   --hero-soft: var(--tone-notes-soft);
-  padding: 1.05rem 1.15rem;
+  padding: 0.2rem 0 1rem;
+}
+.area-hero--identity {
+  --hero-accent: var(--page-accent, var(--area-accent));
+  --hero-soft: color-mix(in srgb, var(--hero-accent) 10%, var(--surface));
+}
+.task-hero {
+  --hero-accent: var(--task-accent, var(--area-accent));
+  --hero-soft: color-mix(in srgb, var(--hero-accent) 10%, var(--surface));
+}
+.memory-overview .memory-overview-hero {
+  --hero-accent: var(--memory-accent);
+  --hero-soft: color-mix(in srgb, var(--memory-accent) 10%, var(--surface));
+}
+.tache-two-subjects .memory-overview-hero {
+  --hero-accent: var(--subject-accent);
+  --hero-soft: color-mix(in srgb, var(--subject-accent) 10%, var(--surface));
+}
+.question-bank-page .question-bank-hero {
+  --hero-accent: var(--question-bank-accent);
+  --hero-soft: color-mix(in srgb, var(--question-bank-accent) 10%, var(--surface));
+}
+.page-head {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.task-context,
+.task-nav {
+  --task-tone: var(--task-accent, var(--area-accent));
+}
+.task-context strong { color: var(--task-tone); }
+.task-context a:hover { color: var(--task-tone); }
+.task-nav {
+  border-bottom-color: color-mix(in srgb, var(--task-tone) 20%, var(--border));
+}
+.task-nav a {
+  border-radius: 8px 8px 0 0;
+}
+.task-nav a:hover {
+  background: color-mix(in srgb, var(--task-tone) 7%, var(--surface));
+  color: var(--task-tone);
+}
+.task-nav a.is-active {
+  border-bottom-color: var(--task-tone);
+  background: color-mix(in srgb, var(--task-tone) 11%, var(--surface));
+  color: var(--task-tone);
 }
 
 .progress-status {
@@ -10642,11 +10727,65 @@ button.ce-choice:focus-visible .ce-choice__radio {
   border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
   background: var(--primary-soft);
 }
+.collection-table {
+  --collection-accent: var(--area-accent);
+  --collection-soft: var(--area-soft);
+}
+html[data-collection-view-mode="table"] .collection-table-header {
+  border-bottom-color: var(--border);
+  background: var(--surface-2);
+  color: var(--text-soft);
+}
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"] {
+  border-color: var(--border);
+}
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > [data-collection-item]:hover {
+  background: var(--surface-2);
+}
+[data-collection-item]:has(.progress-status--new) {
+  background: var(--surface);
+}
+[data-collection-item]:has(.progress-status--active) {
+  background: var(--surface);
+}
+[data-collection-item]:has(.progress-status--done) {
+  background: var(--surface);
+}
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > [data-collection-item]:has(.progress-status--new) {
+  background: var(--surface);
+}
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > [data-collection-item]:has(.progress-status--active),
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > .batch-card--in-progress,
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > .ce-group-test-row:has(.ce-status--progress) {
+  background: var(--surface);
+}
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > [data-collection-item]:has(.progress-status--done),
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > .batch-card--complete,
+html[data-collection-view-mode="table"]
+  [data-collection-view="adaptive"]
+  > .ce-group-test-row:has(.ce-status--done) {
+  background: var(--surface);
+}
 
 /* Dashboard */
 .daily-card {
-  border-color: color-mix(in srgb, var(--daily-accent) 22%, var(--border));
-  background: color-mix(in srgb, var(--daily-accent-soft) 78%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .daily-card--expression {
   --daily-accent: var(--tone-expression);
@@ -10666,29 +10805,29 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .resume-review {
   padding: 0.85rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--tone-home) 24%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--tone-home-soft) 72%, var(--surface));
+  background: var(--surface);
   color: var(--text);
 }
 .resume-review:hover {
-  background: var(--tone-home-soft);
-  border-color: color-mix(in srgb, var(--tone-home) 38%, var(--border));
+  background: var(--surface-2);
+  border-color: var(--border-strong);
 }
 
 /* Hubs, task cards, and collections */
 .expression-path {
-  border-color: color-mix(in srgb, var(--path-accent) 24%, var(--border));
-  background: color-mix(in srgb, var(--path-accent) 8%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .expression-path--available:hover {
-  border-color: color-mix(in srgb, var(--path-accent) 42%, var(--border));
-  background: color-mix(in srgb, var(--path-accent) 13%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface-2);
 }
 .expression-path__icon {
-  border: 1px solid color-mix(in srgb, var(--path-accent) 22%, var(--border));
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--path-accent) 14%, var(--surface));
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 .expression-path--available:hover .expression-path__arrow,
 .expression-path--ee:hover .expression-path__arrow {
@@ -10696,127 +10835,130 @@ button.ce-choice:focus-visible .ce-choice__radio {
 }
 .expression-path--soon {
   border-color: var(--border);
-  background: color-mix(in srgb, var(--bg-soft) 46%, var(--surface));
+  background: var(--surface-2);
 }
 .expression-path--soon .expression-path__icon {
-  background: color-mix(in srgb, var(--path-accent) 7%, var(--surface));
+  background: transparent;
 }
 .vocabulary-domain {
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 14px;
 }
+.vocabulary-hub > .vocabulary-domain + .vocabulary-domain {
+  padding-top: 1.25rem;
+}
 .vocabulary-domain--comprehension {
-  border-color: color-mix(in srgb, var(--tone-comprehension) 18%, var(--border));
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 48%, var(--bg));
+  border-color: var(--border);
+  background: transparent;
 }
 .vocabulary-domain--expression {
-  border-color: color-mix(in srgb, var(--tone-expression) 18%, var(--border));
-  background: color-mix(in srgb, var(--tone-expression-soft) 48%, var(--bg));
+  border-color: var(--border);
+  background: transparent;
 }
 .vocabulary-status {
   --status-soft: var(--primary-soft);
-  background: color-mix(in srgb, var(--status-soft) 78%, var(--surface));
+  background: var(--surface);
 }
 .vocabulary-status--saved { --status-soft: var(--success-soft); }
 .vocabulary-status--weak { --status-soft: var(--warning-soft); }
 .vocabulary-status__icon {
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--status-accent) 13%, var(--surface));
+  border-radius: 0;
+  background: transparent;
 }
 .deck {
-  background: color-mix(in srgb, var(--deck-color, var(--primary)) 7%, var(--surface));
+  background: var(--surface);
 }
 .deck:hover {
-  border-color: color-mix(in srgb, var(--deck-color, var(--primary)) 34%, var(--border));
-  background: color-mix(in srgb, var(--deck-color, var(--primary)) 11%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface-2);
 }
 .deck:has(.progress-status--active) {
-  background: color-mix(in srgb, var(--warning-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .deck:has(.progress-status--done) {
-  background: color-mix(in srgb, var(--success-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .deck--soon {
-  background: color-mix(in srgb, var(--bg-soft) 45%, var(--surface));
+  background: var(--surface-2);
 }
 .batch-card {
-  background: color-mix(in srgb, var(--primary-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .batch-card--unavailable {
-  background: color-mix(in srgb, var(--bg-soft) 45%, var(--surface));
+  background: var(--surface-2);
 }
 .memory-learning-summary {
-  background: color-mix(in srgb, var(--primary-soft) 62%, var(--surface));
+  background: var(--surface);
 }
 .memory-learning-summary--active {
-  background: color-mix(in srgb, var(--warning-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .memory-learning-summary--done {
-  background: color-mix(in srgb, var(--success-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .question-bank-index {
-  background: color-mix(in srgb, var(--primary-soft) 42%, var(--surface));
+  background: var(--surface);
 }
 .question-bank-section__head {
-  background: color-mix(in srgb, var(--bank-accent) 9%, var(--surface));
+  background: var(--surface-2);
 }
 
 /* Tâche 2 and response study */
 .tache-two-overview-panel--memories {
   --overview-panel-accent: var(--tone-comprehension);
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 70%, var(--surface));
+  background: var(--surface);
 }
 .tache-two-overview-panel--subjects {
   --overview-panel-accent: var(--tone-expression);
-  background: color-mix(in srgb, var(--tone-expression-soft) 72%, var(--surface));
+  background: var(--surface);
 }
 .memory-entry {
-  background: color-mix(in srgb, var(--primary-soft) 38%, var(--surface));
+  background: var(--surface);
 }
 .memory-entry:hover {
-  background: color-mix(in srgb, var(--primary-soft) 68%, var(--surface));
+  background: var(--surface-2);
 }
 .tache-two-month {
   --month-accent: var(--tone-expression);
   --month-soft: var(--tone-expression-soft);
   --subject-accent: var(--month-accent);
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--month-accent) 18%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: color-mix(in srgb, var(--month-soft) 52%, var(--bg));
+  background: transparent;
 }
 .tache-two-month[data-month-number="2"] {
   --month-accent: var(--tone-stats);
   --month-soft: var(--tone-stats-soft);
 }
 .tache-two-month__head {
-  border-color: color-mix(in srgb, var(--month-accent) 22%, var(--border));
+  border-color: var(--border);
 }
 .tache-two-month__eyebrow { color: var(--month-accent); }
 .subject-batch-card {
-  border-color: color-mix(in srgb, var(--month-accent) 18%, var(--border));
-  background: color-mix(in srgb, var(--month-soft) 74%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .subject-batch-card:hover {
-  border-color: color-mix(in srgb, var(--month-accent) 38%, var(--border));
-  background: color-mix(in srgb, var(--month-soft) 92%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface-2);
 }
 .tache-two-subject-card {
-  border-color: color-mix(in srgb, var(--subject-accent) 20%, var(--border));
-  background: color-mix(in srgb, var(--subject-accent) 7%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .tache-two-subject-card:hover {
-  border-color: color-mix(in srgb, var(--subject-accent) 38%, var(--border));
-  background: color-mix(in srgb, var(--subject-accent) 11%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface-2);
 }
 .tache-two-consigne {
-  border-color: color-mix(in srgb, var(--subject-accent) 24%, var(--border));
-  background: color-mix(in srgb, var(--subject-accent) 7%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .tache-two-question-list {
-  border-color: color-mix(in srgb, var(--subject-accent) 20%, var(--border));
-  background: color-mix(in srgb, var(--subject-accent) 4%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .task-deep-links {
   gap: 0.65rem;
@@ -10827,110 +10969,110 @@ button.ce-choice:focus-visible .ce-choice__radio {
   border-radius: 10px;
 }
 .task-deep-links a:nth-child(1) {
-  border-color: color-mix(in srgb, var(--tone-vocabulary) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 64%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .task-deep-links a:nth-child(2) {
-  border-color: color-mix(in srgb, var(--tone-notes) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-notes-soft) 64%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .task-deep-links a:nth-child(3) {
-  border-color: color-mix(in srgb, var(--tone-stats) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-stats-soft) 64%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .practice-launcher {
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--tone-expression) 20%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--tone-expression-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .practice-theme-card {
-  border-color: color-mix(in srgb, var(--theme-accent, var(--primary)) 24%, var(--border));
-  background: color-mix(in srgb, var(--theme-accent, var(--primary)) 7%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .practice-theme-card:hover {
-  border-color: color-mix(in srgb, var(--theme-accent, var(--primary)) 42%, var(--border));
-  background: color-mix(in srgb, var(--theme-accent, var(--primary)) 11%, var(--surface));
+  border-color: var(--border-strong);
+  background: var(--surface-2);
 }
 .practice-theme-card__icon {
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--theme-accent, var(--primary)) 14%, var(--surface));
+  border-radius: 0;
+  background: transparent;
 }
 .review-focus-grid {
   gap: 0.75rem;
   border: 0;
 }
 .review-focus-grid article {
-  border: 1px solid color-mix(in srgb, var(--tone-notes) 18%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--tone-notes-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .review-focus-grid article + article {
-  border: 1px solid color-mix(in srgb, var(--tone-expression) 18%, var(--border));
-  background: color-mix(in srgb, var(--tone-expression-soft) 58%, var(--surface));
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 .flashcard {
-  border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
-  background: color-mix(in srgb, var(--primary-soft) 52%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .grade--revisit {
   background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
 }
 .detail-head {
   padding: 1rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--tone-expression) 18%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 13px;
-  background: color-mix(in srgb, var(--tone-expression-soft) 58%, var(--bg));
+  background: var(--surface);
 }
 .answer-columns > .section-card {
-  border-color: color-mix(in srgb, var(--primary) 18%, var(--border));
-  background: color-mix(in srgb, var(--primary-soft) 38%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .answer-columns > .section-card--introduction,
 .answer-columns > .section-card--arguments {
-  border-color: color-mix(in srgb, var(--tone-expression) 18%, var(--border));
-  background: color-mix(in srgb, var(--tone-expression-soft) 42%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .answer-columns > .section-card--nuance {
-  border-color: color-mix(in srgb, var(--tone-notes) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-notes-soft) 52%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .answer-columns > .section-card--conclusion {
-  border-color: color-mix(in srgb, var(--tone-vocabulary) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 52%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .arg--full {
-  background: color-mix(in srgb, var(--surface) 84%, var(--primary-soft));
+  background: var(--surface-2);
 }
 .response-sidebar-card--status {
-  background: color-mix(in srgb, var(--primary-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .response-sidebar-card--aliases {
-  background: color-mix(in srgb, var(--tone-stats-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .response-sidebar-card--vocabulary {
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 62%, var(--surface));
+  background: var(--surface);
 }
 .response-sidebar-card--phrases {
-  background: color-mix(in srgb, var(--tone-notes-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 
 /* Notes */
 .notes-general {
   padding: 0.85rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--tone-notes) 22%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--tone-notes-soft) 68%, var(--surface));
+  background: var(--surface);
 }
 .notes-general:hover {
-  background: var(--tone-notes-soft);
+  background: var(--surface-2);
 }
 .notes-general__icon {
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--tone-notes) 14%, var(--surface));
+  border-radius: 0;
+  background: transparent;
 }
 .notes-task-card {
-  background: color-mix(in srgb, var(--deck-color, var(--tone-notes)) 7%, var(--surface));
+  background: var(--surface);
 }
 .notes-tab.is-active {
   background: var(--tone-notes-soft);
@@ -10943,43 +11085,57 @@ button.ce-choice:focus-visible .ce-choice__radio {
   color: var(--tone-notes);
 }
 .annotation-card {
-  background: color-mix(in srgb, var(--primary-soft) 42%, var(--surface));
+  background: var(--surface);
 }
 .annotation-card--highlight {
-  background: color-mix(in srgb, var(--success-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .annotation-table thead th,
 .annotation-table__group th {
-  background: color-mix(in srgb, var(--tone-notes-soft) 58%, var(--surface));
+  background: var(--surface-2);
+}
+.annotation-table .annotation-table__row--note td {
+  background: var(--surface);
+}
+.annotation-table .annotation-table__row--highlight td {
+  background: var(--surface);
+}
+.annotation-table .annotation-table__row:has(.annotation-card__study) td {
+  background: var(--surface);
+}
+.annotation-table .annotation-table__row:hover td {
+  background: var(--surface-2);
 }
 
 /* Comprehension quiz and results */
 .ce-question-map {
-  border-color: color-mix(in srgb, var(--ce-blue) 22%, var(--border));
-  background: color-mix(in srgb, var(--ce-blue-soft) 52%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .ce-passage-card {
-  background: color-mix(in srgb, var(--ce-blue-soft) 42%, var(--surface));
+  background: var(--surface);
 }
 .ce-passage-card > header {
-  background: color-mix(in srgb, var(--ce-blue-soft) 72%, var(--surface));
+  background: var(--surface-2);
 }
 .ce-answer-card {
-  background: color-mix(in srgb, var(--ce-blue-soft) 28%, var(--surface));
+  background: var(--surface);
 }
 .co-audio-reader {
-  border-color: color-mix(in srgb, var(--co-teal) 24%, var(--border));
-  background: color-mix(in srgb, var(--co-teal-soft) 72%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
-.ce-choice.is-wrong,
+.ce-choice.is-wrong {
+  background: var(--surface);
+}
 .ce-results-map__grid .is-wrong {
   background: color-mix(in srgb, var(--accent-soft) 82%, var(--surface));
 }
 .ce-correction {
-  background: color-mix(in srgb, var(--success-soft) 44%, var(--surface));
+  background: var(--surface);
 }
 .ce-correction--wrong {
-  background: color-mix(in srgb, var(--accent-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 .ce-results-hero__score {
   min-width: 6.5rem;
@@ -10999,15 +11155,15 @@ button.ce-choice:focus-visible .ce-choice__radio {
 .ce-results-hero__facts .is-wrong { background: var(--accent-soft); }
 .ce-results-map {
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ce-blue) 18%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: color-mix(in srgb, var(--ce-blue-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 .ce-review-item.is-correct {
-  background: color-mix(in srgb, var(--success-soft) 46%, var(--surface));
+  background: var(--surface);
 }
 .ce-review-item.is-wrong {
-  background: color-mix(in srgb, var(--accent-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 
 /* Stats */
@@ -11019,97 +11175,97 @@ button.ce-choice:focus-visible .ce-choice__radio {
   border: 0;
 }
 .stats-kpi {
-  border: 1px solid color-mix(in srgb, var(--stats-kpi-accent) 20%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--stats-kpi-soft) 72%, var(--surface));
+  background: var(--surface);
 }
-.stats-kpi:last-child { border-right: 1px solid color-mix(in srgb, var(--stats-kpi-accent) 20%, var(--border)); }
+.stats-kpi:last-child { border-right: 1px solid var(--border); }
 .stats-kpi__icon {
   width: 32px;
   height: 32px;
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--stats-kpi-accent) 13%, var(--surface));
+  border-radius: 0;
+  background: transparent;
 }
 .stats-action-grid {
   gap: 0.75rem;
   border: 0;
 }
 .stats-action {
-  border: 1px solid color-mix(in srgb, var(--tone-expression) 18%, var(--border));
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: color-mix(in srgb, var(--tone-expression-soft) 62%, var(--surface));
+  background: var(--surface);
 }
 .stats-action:last-child {
-  border: 1px solid color-mix(in srgb, var(--tone-vocabulary) 18%, var(--border));
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 62%, var(--surface));
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 .stats-action:hover {
-  background: var(--tone-expression-soft);
+  background: var(--surface-2);
 }
 .stats-action:last-child:hover {
-  background: var(--tone-vocabulary-soft);
+  background: var(--surface-2);
 }
 .stats-action__icon {
-  border-radius: 9px;
-  background: color-mix(in srgb, currentColor 12%, var(--surface));
+  border-radius: 0;
+  background: transparent;
 }
 .stats-chart-grid > .stats-panel:first-child {
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 .stats-chart-grid > .stats-panel:last-child {
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 .stats-panel--heatmap {
-  background: color-mix(in srgb, var(--tone-stats-soft) 48%, var(--surface));
+  background: var(--surface);
 }
 .stats-theme-list {
-  background: color-mix(in srgb, var(--tone-stats-soft) 32%, var(--surface));
+  background: var(--surface);
 }
 .stats-theme {
-  background: color-mix(in srgb, var(--theme-accent) 4%, transparent);
+  background: transparent;
 }
 .stats-theme:hover {
-  background: color-mix(in srgb, var(--theme-accent) 10%, var(--surface));
+  background: var(--surface-2);
 }
 .session-card {
-  background: color-mix(in srgb, var(--tone-home-soft) 42%, var(--surface));
+  background: var(--surface);
 }
 
 /* Settings, auth, and search */
 .settings-section:not(.danger-zone) {
-  background: color-mix(in srgb, var(--primary-soft) 56%, var(--surface));
+  background: var(--surface);
 }
 .settings-grid > .card:first-child {
-  background: color-mix(in srgb, var(--tone-notes-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .settings-grid > .card:last-child {
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 58%, var(--surface));
+  background: var(--surface);
 }
 .danger-zone {
-  background: color-mix(in srgb, var(--accent-soft) 62%, var(--surface));
+  background: var(--surface);
 }
 .danger-zone--account {
-  background: color-mix(in srgb, var(--accent-soft) 82%, var(--surface));
+  background: var(--surface);
 }
 .auth-shell {
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 58%, var(--bg));
+  background: var(--bg);
 }
 .auth-panel {
-  border-color: color-mix(in srgb, var(--tone-comprehension) 22%, var(--border));
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 58%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 .recovery-codes li {
-  background: color-mix(in srgb, var(--tone-vocabulary-soft) 52%, var(--surface));
+  background: var(--surface-2);
 }
 .search-summary {
-  border-color: color-mix(in srgb, var(--tone-comprehension) 20%, var(--border));
-  background: color-mix(in srgb, var(--tone-comprehension-soft) 58%, var(--surface));
+  border-color: var(--border);
+  background: var(--surface);
 }
 
 @media (max-width: 860px) {
   .stats-kpi,
   .stats-kpi:last-child {
-    border: 1px solid color-mix(in srgb, var(--stats-kpi-accent) 20%, var(--border));
+    border: 1px solid var(--border);
   }
 }
 
@@ -11129,7 +11285,7 @@ button.ce-choice:focus-visible .ce-choice__radio {
     .stats-hero,
     .notes-overview > .grouped-overview__head
   ) {
-    padding: 0.9rem;
+    padding: 0.2rem 0 0.75rem;
   }
   .tache-two-month { padding: 0.8rem; }
   .ce-results-hero__score {

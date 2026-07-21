@@ -4,7 +4,7 @@
 {% block content %}
 {% include "study/_task_nav.html" %}
 
-<header class="task-hero">
+<header class="task-hero" style="--task-accent: {{ task.color }};">
   <div>
     <h1 class="title-with-icon" style="--icon-accent: {{ task.color }};">
       <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=task.icon only %}</span>

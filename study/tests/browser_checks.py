@@ -204,6 +204,18 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
                 ".title-with-icon > span:last-child"
             ).evaluate("element => getComputedStyle(element).color"),
         )
+        self.assertEqual(
+            self.page.locator(".task-hero").evaluate(
+                "element => getComputedStyle(element).backgroundColor"
+            ),
+            "rgba(0, 0, 0, 0)",
+        )
+        self.assertNotEqual(
+            self.page.locator(".task-nav a.is-active").evaluate(
+                "element => getComputedStyle(element).backgroundColor"
+            ),
+            "rgba(0, 0, 0, 0)",
+        )
 
     def test_tache_two_memories_are_structured_on_desktop_and_mobile(self):
         Command()._import_sections(load_sections())
@@ -261,7 +273,18 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.page.goto(part_url)
         self.page.get_by_role("button", name="Tableau").click()
         guide_progress = self.page.locator(".deck__progress-cell--guide")
+        guide_row = self.page.locator(
+            ".deck:has(.deck__progress-cell--guide)"
+        )
         self.assertEqual(guide_progress.count(), 1)
+        self.assertNotEqual(
+            guide_row.evaluate(
+                "element => getComputedStyle(element).backgroundColor"
+            ),
+            self.page.locator(".collection-table--decks").evaluate(
+                "element => getComputedStyle(element).backgroundColor"
+            ),
+        )
         guide_style = guide_progress.evaluate(
             """
             element => ({
@@ -2378,6 +2401,22 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             "labels => labels.map(label => getComputedStyle(label).color)"
         )
         self.assertEqual(len(set(label_colors)), 4)
+        card_backgrounds = self.page.locator(".daily-card").evaluate_all(
+            "cards => cards.map(card => getComputedStyle(card).backgroundColor)"
+        )
+        surface_color = self.page.evaluate(
+            """
+            () => {
+              const probe = document.createElement("div");
+              probe.style.background = "var(--surface)";
+              document.body.append(probe);
+              const color = getComputedStyle(probe).backgroundColor;
+              probe.remove();
+              return color;
+            }
+            """
+        )
+        self.assertEqual(set(card_backgrounds), {surface_color})
         self.assert_no_horizontal_overflow()
 
         for width in (1024, 900, 861):

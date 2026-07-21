@@ -2,7 +2,7 @@
 {% block title %}{{ part.name }} · Heureux{% endblock %}
 
 {% block content %}
-<header class="area-hero">
+<header class="area-hero area-hero--identity" style="--page-accent: {{ part.color }};">
   <div class="area-hero__copy">
     <p class="eyebrow"><a href="{% url 'study:expression' %}">Expression</a> · {{ part.short_name }}</p>
     <h1 class="title-with-icon" style="--icon-accent: {{ part.color }};">
