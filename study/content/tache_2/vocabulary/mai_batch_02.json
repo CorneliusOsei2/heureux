@@ -1,0 +1,1230 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "subject_key": "tache2:mai:batch-02:subject-06",
+      "entries": [
+        {
+          "id": "T2M5S6V01",
+          "kind": "mot-cle",
+          "french": "ton séjour",
+          "english": "your trip/stay",
+          "example": "Salut ! J'ai appris que tu avais récemment voyagé au Canada — tu pourrais me raconter un peu ton séjour ?",
+          "usage": "Nom masculin précédé du possessif « ton » ; sert à demander un récit général de voyage."
+        },
+        {
+          "id": "T2M5S6V02",
+          "kind": "mot-cle",
+          "french": "ce voyage",
+          "english": "this trip",
+          "example": "Qu'est-ce qui t'a donné envie de choisir le Canada pour ce voyage ?",
+          "usage": "Groupe nominal avec démonstratif pour désigner le voyage dont on parle."
+        },
+        {
+          "id": "T2M5S6V03",
+          "kind": "mot-cle",
+          "french": "exactement",
+          "english": "exactly",
+          "example": "Tu es allé(e) dans quelles villes ou quelles régions exactement ?",
+          "usage": "Adverbe très fréquent en fin de question directe pour demander une précision."
+        },
+        {
+          "id": "T2M5S6V04",
+          "kind": "mot-cle",
+          "french": "des proches",
+          "english": "close friends and family",
+          "example": "Tu es parti(e) seul(e), avec des proches ou dans le cadre d'un voyage organisé ?",
+          "usage": "Nom masculin pluriel désignant les proches, amis ou famille."
+        },
+        {
+          "id": "T2M5S6V05",
+          "kind": "mot-cle",
+          "french": "les différentes étapes",
+          "english": "the different legs (of a trip)",
+          "example": "Comment te déplaçais-tu entre les différentes étapes — en train, en bus ou en voiture ?",
+          "usage": "Nom féminin pluriel désignant les parties d'un itinéraire."
+        },
+        {
+          "id": "T2M5S6V06",
+          "kind": "mot-cle",
+          "french": "des excursions",
+          "english": "day trips / excursions",
+          "example": "Y avait-il des visites ou des excursions que tu recommanderais particulièrement ?",
+          "usage": "Nom féminin pluriel désignant des sorties organisées de courte durée."
+        },
+        {
+          "id": "T2M5S6V07",
+          "kind": "mot-cle",
+          "french": "auberge",
+          "english": "hostel / inn",
+          "example": "Tu logeais plutôt à l'hôtel, en auberge ou ailleurs ?",
+          "usage": "Nom féminin désignant un hébergement simple et convivial ; s'utilise souvent avec « en »."
+        },
+        {
+          "id": "T2M5S6V08",
+          "kind": "mot-cle",
+          "french": "des spécialités locales",
+          "english": "local specialties",
+          "example": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "usage": "Plats ou produits typiques d'une région à découvrir sur place."
+        },
+        {
+          "id": "T2M5S6V09",
+          "kind": "mot-cle",
+          "french": "budget",
+          "english": "budget",
+          "example": "Parlons du budget — combien est-ce que ça t'a coûté approximativement au total ?",
+          "usage": "Montant prévu pour couvrir l'ensemble des dépenses."
+        },
+        {
+          "id": "T2M5S6V10",
+          "kind": "mot-cle",
+          "french": "des vêtements particuliers",
+          "english": "special clothing",
+          "example": "Quel temps faisait-il généralement — il fallait prévoir des vêtements particuliers ?",
+          "usage": "Groupe nominal pour évoquer une tenue adaptée à un climat ou une activité."
+        },
+        {
+          "id": "T2M5S6V11",
+          "kind": "collocation",
+          "french": "récemment voyagé",
+          "english": "recently traveled",
+          "example": "Salut ! J'ai appris que tu avais récemment voyagé au Canada — tu pourrais me raconter un peu ton séjour ?",
+          "usage": "Collocation adverbe + participe passé pour situer un voyage dans un passé proche."
+        },
+        {
+          "id": "T2M5S6V12",
+          "kind": "collocation",
+          "french": "envie de choisir",
+          "english": "the urge to choose",
+          "example": "Qu'est-ce qui t'a donné envie de choisir le Canada pour ce voyage ?",
+          "usage": "Collocation nom + préposition + infinitif pour exprimer une motivation."
+        },
+        {
+          "id": "T2M5S6V13",
+          "kind": "collocation",
+          "french": "quelles villes ou quelles régions",
+          "english": "which towns or regions",
+          "example": "Tu es allé(e) dans quelles villes ou quelles régions exactement ?",
+          "usage": "Structure interrogative redoublée avec « quel » pour proposer un choix d'échelle géographique."
+        },
+        {
+          "id": "T2M5S6V14",
+          "kind": "collocation",
+          "french": "resté(e) sur place",
+          "english": "stayed there",
+          "example": "Combien de temps es-tu resté(e) sur place ?",
+          "usage": "Collocation verbe + adverbe pour indiquer une durée passée à un endroit."
+        },
+        {
+          "id": "T2M5S6V15",
+          "kind": "collocation",
+          "french": "en train, en bus ou en voiture",
+          "english": "by train, bus, or car",
+          "example": "Comment te déplaçais-tu entre les différentes étapes — en train, en bus ou en voiture ?",
+          "usage": "Énumération de moyens de transport introduits par « en »."
+        },
+        {
+          "id": "T2M5S6V16",
+          "kind": "collocation",
+          "french": "un mélange des deux",
+          "english": "a mix of both",
+          "example": "Quelles activités as-tu faites — plutôt culturelles, en pleine nature ou un mélange des deux ?",
+          "usage": "Collocation nominale figée pour indiquer une combinaison de deux éléments proposés."
+        },
+        {
+          "id": "T2M5S6V17",
+          "kind": "collocation",
+          "french": "à l'hôtel",
+          "english": "at a hotel",
+          "example": "Tu logeais plutôt à l'hôtel, en auberge ou ailleurs ?",
+          "usage": "Collocation avec préposition « à » pour indiquer un lieu d'hébergement."
+        },
+        {
+          "id": "T2M5S6V18",
+          "kind": "collocation",
+          "french": "à essayer absolument",
+          "english": "an absolute must-try",
+          "example": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "usage": "Collocation adjectivale figée pour recommander fortement une spécialité."
+        },
+        {
+          "id": "T2M5S6V19",
+          "kind": "collocation",
+          "french": "ça t'a coûté approximativement",
+          "english": "it cost you approximately",
+          "example": "Parlons du budget — combien est-ce que ça t'a coûté approximativement au total ?",
+          "usage": "Demande une estimation sans exiger un montant exact."
+        },
+        {
+          "id": "T2M5S6V20",
+          "kind": "collocation",
+          "french": "il fallait prévoir",
+          "english": "you had to plan for",
+          "example": "Quel temps faisait-il généralement — il fallait prévoir des vêtements particuliers ?",
+          "usage": "Collocation à l'imparfait pour évoquer une nécessité dans un récit passé."
+        },
+        {
+          "id": "T2M5S6V21",
+          "kind": "tournure",
+          "french": "dans le cadre d'un voyage organisé",
+          "english": "as part of an organized/package trip",
+          "example": "Tu es parti(e) seul(e), avec des proches ou dans le cadre d'un voyage organisé ?",
+          "usage": "Locution prépositionnelle « dans le cadre de » pour situer une action dans un contexte précis."
+        },
+        {
+          "id": "T2M5S6V22",
+          "kind": "tournure",
+          "french": "comment te déplaçais-tu",
+          "english": "how were you getting around",
+          "example": "Comment te déplaçais-tu entre les différentes étapes — en train, en bus ou en voiture ?",
+          "usage": "Imparfait d'habitude pour interroger sur un moyen de transport pendant un voyage passé."
+        },
+        {
+          "id": "T2M5S6V23",
+          "kind": "tournure",
+          "french": "quelles activités as-tu faites",
+          "english": "what activities did you do",
+          "example": "Quelles activités as-tu faites — plutôt culturelles, en pleine nature ou un mélange des deux ?",
+          "usage": "Structure avec passé composé pour faire un bilan d'activités."
+        },
+        {
+          "id": "T2M5S6V24",
+          "kind": "tournure",
+          "french": "que tu recommanderais particulièrement",
+          "english": "that you would especially recommend",
+          "example": "Y avait-il des visites ou des excursions que tu recommanderais particulièrement ?",
+          "usage": "Conditionnel présent pour formuler une recommandation nuancée."
+        },
+        {
+          "id": "T2M5S6V25",
+          "kind": "tournure",
+          "french": "tu aurais des adresses à recommander",
+          "english": "would you happen to have addresses to recommend",
+          "example": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "usage": "Le conditionnel adoucit une demande de suggestion."
+        },
+        {
+          "id": "T2M5S6V26",
+          "kind": "tournure",
+          "french": "combien est-ce que ça t'a coûté",
+          "english": "how much did it cost you",
+          "example": "Parlons du budget — combien est-ce que ça t'a coûté approximativement au total ?",
+          "usage": "Structure orale avec « ça » pour demander un coût global."
+        },
+        {
+          "id": "T2M5S6V27",
+          "kind": "tournure",
+          "french": "qu'est-ce que tu as le plus apprécié",
+          "english": "what did you like most",
+          "example": "Qu'est-ce que tu as le plus apprécié ?",
+          "usage": "Structure interrogative avec superlatif « le plus » pour cibler un point positif."
+        },
+        {
+          "id": "T2M5S6V28",
+          "kind": "tournure",
+          "french": "y a-t-il quelque chose qui t'a moins plu",
+          "english": "was there anything you liked less",
+          "example": "Y a-t-il quelque chose qui t'a moins plu ?",
+          "usage": "Structure avec « moins » pour interroger poliment sur un aspect négatif."
+        },
+        {
+          "id": "T2M5S6V29",
+          "kind": "tournure",
+          "french": "si tu ne devais me recommander qu'une seule étape ou activité",
+          "english": "if you had to recommend just one leg or activity",
+          "example": "Pour finir — si tu ne devais me recommander qu'une seule étape ou activité, ce serait laquelle ?",
+          "usage": "Structure hypothétique avec « si » + imparfait pour clore la conversation en demandant une priorité."
+        },
+        {
+          "id": "T2M5S6V30",
+          "kind": "tournure",
+          "french": "ce serait laquelle",
+          "english": "which one would it be",
+          "example": "Pour finir — si tu ne devais me recommander qu'une seule étape ou activité, ce serait laquelle ?",
+          "usage": "Conditionnel présent pour formuler une question de clôture ouverte."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-02:subject-07",
+      "entries": [
+        {
+          "id": "T2M5S7V01",
+          "kind": "mot-cle",
+          "french": "en bord de mer",
+          "english": "by the seaside",
+          "example": "Bonjour ! Vous m'avez parlé de votre maison à louer en bord de mer — elle est située où exactement ?",
+          "usage": "Locution figée pour situer un lieu près de la mer."
+        },
+        {
+          "id": "T2M5S7V02",
+          "kind": "mot-cle",
+          "french": "la plage",
+          "english": "the beach",
+          "example": "La plage se trouve à quelle distance — on peut y aller à pied ?",
+          "usage": "Nom féminin très courant pour désigner le rivage de sable."
+        },
+        {
+          "id": "T2M5S7V03",
+          "kind": "mot-cle",
+          "french": "la superficie",
+          "english": "the floor area / size",
+          "example": "Quelle est la superficie de la maison — et combien de chambres y a-t-il ?",
+          "usage": "Nom féminin pour indiquer la surface habitable d'un logement."
+        },
+        {
+          "id": "T2M5S7V04",
+          "kind": "mot-cle",
+          "french": "confortablement",
+          "english": "comfortably",
+          "example": "Elle peut accueillir combien de personnes confortablement ?",
+          "usage": "Adverbe en -ment pour qualifier la capacité d'accueil d'un logement."
+        },
+        {
+          "id": "T2M5S7V05",
+          "kind": "mot-cle",
+          "french": "meublée",
+          "english": "furnished",
+          "example": "Est-ce que la maison est entièrement meublée, et quels équipements sont disponibles sur place ?",
+          "usage": "Adjectif féminin décrivant un logement équipé de meubles."
+        },
+        {
+          "id": "T2M5S7V06",
+          "kind": "mot-cle",
+          "french": "un jardin",
+          "english": "a garden",
+          "example": "Y a-t-il aussi un espace extérieur, comme une terrasse ou un jardin ?",
+          "usage": "Nom masculin désignant un espace extérieur planté, souvent privatif."
+        },
+        {
+          "id": "T2M5S7V07",
+          "kind": "mot-cle",
+          "french": "à l'année",
+          "english": "year-round / by the year",
+          "example": "La maison est disponible pour quelle période — à la semaine, pour quelques mois ou à l'année ?",
+          "usage": "Locution prépositionnelle pour indiquer une location de longue durée."
+        },
+        {
+          "id": "T2M5S7V08",
+          "kind": "mot-cle",
+          "french": "la location",
+          "english": "the rental",
+          "example": "Et côté tarifs, combien coûte la location — à la semaine ou au mois ?",
+          "usage": "Nom féminin désignant l'action de louer un logement ou son résultat."
+        },
+        {
+          "id": "T2M5S7V09",
+          "kind": "mot-cle",
+          "french": "le quartier",
+          "english": "the neighbourhood",
+          "example": "Comment est le quartier en général — plutôt calme ou animé ?",
+          "usage": "Nom masculin très courant pour désigner une zone résidentielle."
+        },
+        {
+          "id": "T2M5S7V10",
+          "kind": "mot-cle",
+          "french": "un parking",
+          "english": "a car park",
+          "example": "Y a-t-il un parking à proximité ou il vaut mieux venir en transports en commun ?",
+          "usage": "Nom masculin désignant un espace de stationnement à proximité d'un lieu."
+        },
+        {
+          "id": "T2M5S7V11",
+          "kind": "collocation",
+          "french": "à louer",
+          "english": "for rent",
+          "example": "Bonjour ! Vous m'avez parlé de votre maison à louer en bord de mer — elle est située où exactement ?",
+          "usage": "Locution avec « à » + infinitif pour indiquer la destination locative d'un bien."
+        },
+        {
+          "id": "T2M5S7V12",
+          "kind": "collocation",
+          "french": "à quelle distance",
+          "english": "how far / at what distance",
+          "example": "La plage se trouve à quelle distance — on peut y aller à pied ?",
+          "usage": "Structure interrogative avec « à quelle distance » pour situer un lieu."
+        },
+        {
+          "id": "T2M5S7V13",
+          "kind": "collocation",
+          "french": "combien de chambres",
+          "english": "how many bedrooms",
+          "example": "Quelle est la superficie de la maison — et combien de chambres y a-t-il ?",
+          "usage": "Structure interrogative avec « combien de » + nom pour quantifier."
+        },
+        {
+          "id": "T2M5S7V14",
+          "kind": "collocation",
+          "french": "un espace extérieur",
+          "english": "an outdoor space",
+          "example": "Y a-t-il aussi un espace extérieur, comme une terrasse ou un jardin ?",
+          "usage": "Groupe nominal générique désignant une terrasse, un jardin ou une cour."
+        },
+        {
+          "id": "T2M5S7V15",
+          "kind": "collocation",
+          "french": "à la semaine",
+          "english": "by the week",
+          "example": "La maison est disponible pour quelle période — à la semaine, pour quelques mois ou à l'année ?",
+          "usage": "Locution prépositionnelle pour indiquer une périodicité de location."
+        },
+        {
+          "id": "T2M5S7V16",
+          "kind": "collocation",
+          "french": "une durée minimale",
+          "english": "a minimum length (of stay)",
+          "example": "Y a-t-il une durée minimale de location ?",
+          "usage": "Groupe nominal pour évoquer une condition de séjour la plus courte possible."
+        },
+        {
+          "id": "T2M5S7V17",
+          "kind": "collocation",
+          "french": "les charges et l'eau",
+          "english": "utilities and water",
+          "example": "Le tarif comprend quoi exactement — les charges et l'eau sont-elles incluses ?",
+          "usage": "Association de deux noms féminins désignant des frais annexes au loyer."
+        },
+        {
+          "id": "T2M5S7V18",
+          "kind": "collocation",
+          "french": "verser une caution",
+          "english": "to pay a deposit",
+          "example": "Faut-il verser une caution — et le paiement se fait-il en une seule fois ?",
+          "usage": "Collocation verbe + nom très fréquente pour évoquer une garantie financière."
+        },
+        {
+          "id": "T2M5S7V19",
+          "kind": "collocation",
+          "french": "calme ou animé",
+          "english": "quiet or lively",
+          "example": "Comment est le quartier en général — plutôt calme ou animé ?",
+          "usage": "Collocation adjectivale par coordination pour caractériser un lieu ou un quartier."
+        },
+        {
+          "id": "T2M5S7V20",
+          "kind": "collocation",
+          "french": "à proximité",
+          "english": "nearby",
+          "example": "Y a-t-il un parking à proximité ou il vaut mieux venir en transports en commun ?",
+          "usage": "Locution adverbiale figée indiquant une faible distance."
+        },
+        {
+          "id": "T2M5S7V21",
+          "kind": "tournure",
+          "french": "elle est située où exactement",
+          "english": "exactly where is it located",
+          "example": "Bonjour ! Vous m'avez parlé de votre maison à louer en bord de mer — elle est située où exactement ?",
+          "usage": "Structure orale avec reprise pronominale « elle » pour localiser un lieu déjà mentionné."
+        },
+        {
+          "id": "T2M5S7V22",
+          "kind": "tournure",
+          "french": "elle peut accueillir combien de personnes",
+          "english": "how many people can it accommodate",
+          "example": "Elle peut accueillir combien de personnes confortablement ?",
+          "usage": "Structure avec verbe « accueillir » pour interroger sur une capacité d'hébergement."
+        },
+        {
+          "id": "T2M5S7V23",
+          "kind": "tournure",
+          "french": "est-ce que la maison est entièrement meublée",
+          "english": "is the house fully furnished",
+          "example": "Est-ce que la maison est entièrement meublée, et quels équipements sont disponibles sur place ?",
+          "usage": "Structure avec « est-ce que » pour poser une question fermée sans présupposer la réponse."
+        },
+        {
+          "id": "T2M5S7V24",
+          "kind": "tournure",
+          "french": "y a-t-il une durée minimale de location",
+          "english": "is there a minimum rental period",
+          "example": "Y a-t-il une durée minimale de location ?",
+          "usage": "Structure impersonnelle « y a-t-il » très fréquente pour vérifier l'existence d'une condition."
+        },
+        {
+          "id": "T2M5S7V25",
+          "kind": "tournure",
+          "french": "combien coûte la location",
+          "english": "how much does the rental cost",
+          "example": "Et côté tarifs, combien coûte la location — à la semaine ou au mois ?",
+          "usage": "Structure interrogative directe avec « combien coûte » pour demander un prix."
+        },
+        {
+          "id": "T2M5S7V26",
+          "kind": "tournure",
+          "french": "le tarif comprend quoi exactement",
+          "english": "what exactly does the rate include",
+          "example": "Le tarif comprend quoi exactement — les charges et l'eau sont-elles incluses ?",
+          "usage": "Structure orale avec « quoi » postposé pour interroger sur le contenu d'un tarif."
+        },
+        {
+          "id": "T2M5S7V27",
+          "kind": "tournure",
+          "french": "le paiement se fait-il en une seule fois",
+          "english": "is payment made all at once",
+          "example": "Faut-il verser une caution — et le paiement se fait-il en une seule fois ?",
+          "usage": "Inversion sujet-verbe pour poser une question formelle sur les modalités de paiement."
+        },
+        {
+          "id": "T2M5S7V28",
+          "kind": "tournure",
+          "french": "y a-t-il des commerces et des restaurants accessibles à pied",
+          "english": "are there shops and restaurants within walking distance",
+          "example": "Y a-t-il des commerces et des restaurants accessibles à pied ?",
+          "usage": "Structure impersonnelle « y a-t-il » pour vérifier la présence de commodités proches."
+        },
+        {
+          "id": "T2M5S7V29",
+          "kind": "tournure",
+          "french": "il vaut mieux venir en transports en commun",
+          "english": "it's better to come by public transport",
+          "example": "Y a-t-il un parking à proximité ou il vaut mieux venir en transports en commun ?",
+          "usage": "Tournure impersonnelle avec « il vaut mieux » pour recommander un mode de déplacement."
+        },
+        {
+          "id": "T2M5S7V30",
+          "kind": "tournure",
+          "french": "je pourrais visiter la maison avant de m'engager",
+          "english": "I could visit the house before committing",
+          "example": "D'accord, est-ce que je pourrais visiter la maison avant de m'engager et vous recontacter ensuite ?",
+          "usage": "Conditionnel présent de politesse pour formuler une demande prudente."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-02:subject-08",
+      "entries": [
+        {
+          "id": "T2M5S8V01",
+          "kind": "mot-cle",
+          "french": "surveiller",
+          "english": "to keep an eye on / watch over",
+          "example": "Salut ! Bien sûr, je peux surveiller ton appartement — tu pars à quelles dates exactement ?",
+          "usage": "Verbe très utile pour évoquer une garde temporaire d'un logement."
+        },
+        {
+          "id": "T2M5S8V02",
+          "kind": "mot-cle",
+          "french": "ton absence",
+          "english": "your absence",
+          "example": "Tu veux que je passe à quelle fréquence — tous les jours ou seulement quelques fois pendant ton absence ?",
+          "usage": "Nom féminin précédé du possessif « ton » pour désigner la période où quelqu'un n'est pas là."
+        },
+        {
+          "id": "T2M5S8V03",
+          "kind": "mot-cle",
+          "french": "le courrier",
+          "english": "the mail",
+          "example": "Est-ce que je dois relever le courrier et récupérer les éventuels colis ?",
+          "usage": "Nom masculin désignant les lettres et documents reçus à une adresse."
+        },
+        {
+          "id": "T2M5S8V04",
+          "kind": "mot-cle",
+          "french": "des plantes",
+          "english": "plants",
+          "example": "Y a-t-il des plantes à arroser — et si oui, à quelle fréquence ?",
+          "usage": "Nom féminin pluriel désignant les végétaux d'intérieur à entretenir."
+        },
+        {
+          "id": "T2M5S8V05",
+          "kind": "mot-cle",
+          "french": "un animal",
+          "english": "a pet / animal",
+          "example": "Est-ce qu'il y a un animal à nourrir ou d'autres responsabilités particulières ?",
+          "usage": "Nom masculin générique désignant un animal domestique."
+        },
+        {
+          "id": "T2M5S8V06",
+          "kind": "mot-cle",
+          "french": "un code",
+          "english": "a code",
+          "example": "Comment est-ce que j'entre — tu vas me laisser un double des clés ou il y a un code ?",
+          "usage": "Nom masculin désignant une combinaison numérique pour ouvrir une porte."
+        },
+        {
+          "id": "T2M5S8V07",
+          "kind": "mot-cle",
+          "french": "une alarme",
+          "english": "an alarm",
+          "example": "Y a-t-il une alarme ou des consignes de sécurité particulières à respecter ?",
+          "usage": "Nom féminin désignant un système de sécurité électronique."
+        },
+        {
+          "id": "T2M5S8V08",
+          "kind": "mot-cle",
+          "french": "un voisin",
+          "english": "a neighbour",
+          "example": "Est-ce que quelqu'un d'autre risque de passer pendant ton absence — un voisin, un proche ou une entreprise de livraison ?",
+          "usage": "Nom masculin désignant une personne qui habite à proximité."
+        },
+        {
+          "id": "T2M5S8V09",
+          "kind": "mot-cle",
+          "french": "joignable",
+          "english": "reachable",
+          "example": "Est-ce que tu seras facilement joignable pendant ton séjour ?",
+          "usage": "Adjectif dérivé du verbe « joindre » pour indiquer qu'on peut contacter quelqu'un."
+        },
+        {
+          "id": "T2M5S8V10",
+          "kind": "mot-cle",
+          "french": "à ton retour",
+          "english": "when you get back",
+          "example": "Pour finir, comment veux-tu que je te rende les clés à ton retour ?",
+          "usage": "Locution prépositionnelle pour situer une action après un retour de voyage."
+        },
+        {
+          "id": "T2M5S8V11",
+          "kind": "collocation",
+          "french": "quelles dates exactement",
+          "english": "exactly which dates",
+          "example": "Salut ! Bien sûr, je peux surveiller ton appartement — tu pars à quelles dates exactement ?",
+          "usage": "Structure interrogative avec « quel » pour préciser une période."
+        },
+        {
+          "id": "T2M5S8V12",
+          "kind": "collocation",
+          "french": "en priorité",
+          "english": "as a priority",
+          "example": "Qu'est-ce qu'il faudra faire en priorité pendant que tu seras parti(e) ?",
+          "usage": "Locution adverbiale figée pour hiérarchiser des tâches."
+        },
+        {
+          "id": "T2M5S8V13",
+          "kind": "collocation",
+          "french": "les éventuels colis",
+          "english": "any parcels",
+          "example": "Est-ce que je dois relever le courrier et récupérer les éventuels colis ?",
+          "usage": "Adjectif « éventuel » placé avant le nom pour évoquer une possibilité, pas une certitude."
+        },
+        {
+          "id": "T2M5S8V14",
+          "kind": "collocation",
+          "french": "régler le chauffage",
+          "english": "to adjust the heating",
+          "example": "Faut-il ouvrir les fenêtres, régler le chauffage ou vérifier quelque chose de précis dans l'appartement ?",
+          "usage": "Collocation verbe + nom pour évoquer le réglage d'un appareil domestique."
+        },
+        {
+          "id": "T2M5S8V15",
+          "kind": "collocation",
+          "french": "m'adapter assez librement",
+          "english": "adapt fairly freely",
+          "example": "Il y a une routine à suivre, ou je peux m'adapter assez librement ?",
+          "usage": "Collocation verbe pronominal + adverbe pour indiquer une certaine flexibilité."
+        },
+        {
+          "id": "T2M5S8V16",
+          "kind": "collocation",
+          "french": "un double des clés",
+          "english": "a spare set of keys",
+          "example": "Comment est-ce que j'entre — tu vas me laisser un double des clés ou il y a un code ?",
+          "usage": "Groupe nominal courant pour désigner une copie de clés confiée à quelqu'un."
+        },
+        {
+          "id": "T2M5S8V17",
+          "kind": "collocation",
+          "french": "consignes de sécurité",
+          "english": "safety instructions",
+          "example": "Y a-t-il une alarme ou des consignes de sécurité particulières à respecter ?",
+          "usage": "Collocation nom + préposition très fréquente pour désigner des règles à suivre."
+        },
+        {
+          "id": "T2M5S8V18",
+          "kind": "collocation",
+          "french": "une entreprise de livraison",
+          "english": "a delivery company",
+          "example": "Est-ce que quelqu'un d'autre risque de passer pendant ton absence — un voisin, un proche ou une entreprise de livraison ?",
+          "usage": "Groupe nominal désignant une société qui livre des colis."
+        },
+        {
+          "id": "T2M5S8V19",
+          "kind": "collocation",
+          "french": "en cas de problème",
+          "english": "in case of a problem",
+          "example": "En cas de problème dans l'immeuble, à qui faut-il s'adresser ?",
+          "usage": "Locution prépositionnelle très fréquente pour introduire une situation hypothétique."
+        },
+        {
+          "id": "T2M5S8V20",
+          "kind": "collocation",
+          "french": "je n'arrive pas à te joindre",
+          "english": "I can't manage to reach you",
+          "example": "S'il y a une urgence et que je n'arrive pas à te joindre, qui est-ce que je dois contacter ?",
+          "usage": "Collocation avec « arriver à » + infinitif pour exprimer une capacité, ici niée."
+        },
+        {
+          "id": "T2M5S8V21",
+          "kind": "tournure",
+          "french": "tu veux que je passe à quelle fréquence",
+          "english": "how often would you like me to stop by",
+          "example": "Tu veux que je passe à quelle fréquence — tous les jours ou seulement quelques fois pendant ton absence ?",
+          "usage": "Subjonctif après « vouloir que » pour exprimer un souhait concernant autrui."
+        },
+        {
+          "id": "T2M5S8V22",
+          "kind": "tournure",
+          "french": "qu'est-ce qu'il faudra faire",
+          "english": "what will need to be done",
+          "example": "Qu'est-ce qu'il faudra faire en priorité pendant que tu seras parti(e) ?",
+          "usage": "Futur impersonnel avec « il faudra » pour anticiper des obligations."
+        },
+        {
+          "id": "T2M5S8V23",
+          "kind": "tournure",
+          "french": "est-ce qu'il y a un animal à nourrir",
+          "english": "is there a pet to feed",
+          "example": "Est-ce qu'il y a un animal à nourrir ou d'autres responsabilités particulières ?",
+          "usage": "Structure impersonnelle « est-ce qu'il y a » pour vérifier l'existence de quelque chose."
+        },
+        {
+          "id": "T2M5S8V24",
+          "kind": "tournure",
+          "french": "il y a une routine à suivre",
+          "english": "is there a routine to follow",
+          "example": "Il y a une routine à suivre, ou je peux m'adapter assez librement ?",
+          "usage": "Structure impersonnelle « il y a » suivie d'un nom + « à » + infinitif pour évoquer une obligation."
+        },
+        {
+          "id": "T2M5S8V25",
+          "kind": "tournure",
+          "french": "comment est-ce que j'entre",
+          "english": "how do I get in",
+          "example": "Comment est-ce que j'entre — tu vas me laisser un double des clés ou il y a un code ?",
+          "usage": "Structure orale avec « comment est-ce que » pour interroger sur un moyen d'accès."
+        },
+        {
+          "id": "T2M5S8V26",
+          "kind": "tournure",
+          "french": "quelqu'un d'autre risque de passer",
+          "english": "someone else might come by",
+          "example": "Est-ce que quelqu'un d'autre risque de passer pendant ton absence — un voisin, un proche ou une entreprise de livraison ?",
+          "usage": "Verbe « risquer de » + infinitif pour évoquer une possibilité future."
+        },
+        {
+          "id": "T2M5S8V27",
+          "kind": "tournure",
+          "french": "à qui faut-il s'adresser",
+          "english": "who should one contact",
+          "example": "En cas de problème dans l'immeuble, à qui faut-il s'adresser ?",
+          "usage": "Structure impersonnelle avec « il faut » pour demander un interlocuteur."
+        },
+        {
+          "id": "T2M5S8V28",
+          "kind": "tournure",
+          "french": "tu seras facilement joignable",
+          "english": "you'll be easy to reach",
+          "example": "Est-ce que tu seras facilement joignable pendant ton séjour ?",
+          "usage": "Futur simple pour anticiper une disponibilité pendant une absence."
+        },
+        {
+          "id": "T2M5S8V29",
+          "kind": "tournure",
+          "french": "qui est-ce que je dois contacter",
+          "english": "who should I contact",
+          "example": "S'il y a une urgence et que je n'arrive pas à te joindre, qui est-ce que je dois contacter ?",
+          "usage": "Structure orale avec « qui est-ce que » pour interroger sur un interlocuteur."
+        },
+        {
+          "id": "T2M5S8V30",
+          "kind": "tournure",
+          "french": "comment veux-tu que je te rende les clés",
+          "english": "how would you like me to give you back the keys",
+          "example": "Pour finir, comment veux-tu que je te rende les clés à ton retour ?",
+          "usage": "Subjonctif après « vouloir que » pour organiser une restitution."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-02:subject-09",
+      "entries": [
+        {
+          "id": "T2M5S9V01",
+          "kind": "mot-cle",
+          "french": "passionné(e)",
+          "english": "passionate (about)",
+          "example": "Vous m'avez dit que vous étiez passionné(e) par la montagne — vous pratiquez depuis longtemps ?",
+          "usage": "Adjectif dérivé de « passion » pour exprimer un fort intérêt pour une activité."
+        },
+        {
+          "id": "T2M5S9V02",
+          "kind": "mot-cle",
+          "french": "votre passion",
+          "english": "your passion",
+          "example": "Comment est née votre passion pour la montagne ?",
+          "usage": "Nom féminin précédé du possessif « votre » pour désigner un centre d'intérêt fort."
+        },
+        {
+          "id": "T2M5S9V03",
+          "kind": "mot-cle",
+          "french": "la randonnée",
+          "english": "hiking",
+          "example": "Quelles activités pratiquez-vous surtout — la randonnée, l'escalade, le ski ou un peu de tout ?",
+          "usage": "Nom féminin désignant la marche sportive en pleine nature."
+        },
+        {
+          "id": "T2M5S9V04",
+          "kind": "mot-cle",
+          "french": "une station",
+          "english": "a (ski/mountain) resort",
+          "example": "Vous avez une région ou une station préférée ?",
+          "usage": "Nom féminin désignant un lieu aménagé pour les sports de montagne."
+        },
+        {
+          "id": "T2M5S9V05",
+          "kind": "mot-cle",
+          "french": "des vêtements particuliers",
+          "english": "special clothing",
+          "example": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "usage": "Groupe nominal désignant un équipement vestimentaire adapté à un climat."
+        },
+        {
+          "id": "T2M5S9V06",
+          "kind": "mot-cle",
+          "french": "aux débutants",
+          "english": "to beginners",
+          "example": "Ces activités s'adressent aussi aux débutants ou faut-il déjà avoir de l'expérience ?",
+          "usage": "Nom masculin pluriel précédé de « aux » pour désigner les personnes qui commencent une activité."
+        },
+        {
+          "id": "T2M5S9V07",
+          "kind": "mot-cle",
+          "french": "une préparation physique",
+          "english": "physical preparation / training",
+          "example": "Faut-il une préparation physique particulière avant de commencer ?",
+          "usage": "Groupe nominal désignant l'entraînement du corps avant un effort."
+        },
+        {
+          "id": "T2M5S9V08",
+          "kind": "mot-cle",
+          "french": "équipement",
+          "english": "equipment / gear",
+          "example": "Qu'est-ce qu'il faut apporter comme équipement pour une première sortie ?",
+          "usage": "Nom masculin désignant le matériel nécessaire à une activité."
+        },
+        {
+          "id": "T2M5S9V09",
+          "kind": "mot-cle",
+          "french": "le matériel",
+          "english": "the gear",
+          "example": "Est-ce qu'on peut louer le matériel sur place ou il vaut mieux avoir le sien ?",
+          "usage": "Nom masculin désignant l'ensemble des objets nécessaires à une activité."
+        },
+        {
+          "id": "T2M5S9V10",
+          "kind": "mot-cle",
+          "french": "un guide",
+          "english": "a guide",
+          "example": "Vous partez généralement seul(e), avec des amis ou avec un guide ?",
+          "usage": "Nom masculin désignant une personne qui accompagne une sortie en montagne."
+        },
+        {
+          "id": "T2M5S9V11",
+          "kind": "collocation",
+          "french": "depuis longtemps",
+          "english": "for a long time",
+          "example": "Vous m'avez dit que vous étiez passionné(e) par la montagne — vous pratiquez depuis longtemps ?",
+          "usage": "Locution adverbiale avec « depuis » pour indiquer la durée d'une pratique."
+        },
+        {
+          "id": "T2M5S9V12",
+          "kind": "collocation",
+          "french": "un peu de tout",
+          "english": "a bit of everything",
+          "example": "Quelles activités pratiquez-vous surtout — la randonnée, l'escalade, le ski ou un peu de tout ?",
+          "usage": "Expression figée pour indiquer une pratique variée sans exclusivité."
+        },
+        {
+          "id": "T2M5S9V13",
+          "kind": "collocation",
+          "french": "certains week-ends",
+          "english": "some weekends",
+          "example": "Vous y allez à quelle fréquence — seulement pendant les vacances ou aussi certains week-ends ?",
+          "usage": "Adjectif indéfini « certains » + nom pluriel pour indiquer une fréquence partielle."
+        },
+        {
+          "id": "T2M5S9V14",
+          "kind": "collocation",
+          "french": "attendre une autre saison",
+          "english": "wait for another season",
+          "example": "C'est une bonne période pour aller en montagne ou il vaut mieux attendre une autre saison ?",
+          "usage": "Collocation verbe + nom pour évoquer un report dans le temps."
+        },
+        {
+          "id": "T2M5S9V15",
+          "kind": "collocation",
+          "french": "prévoir des vêtements particuliers",
+          "english": "plan for special clothing",
+          "example": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "usage": "Collocation verbale pour anticiper un équipement adapté au climat."
+        },
+        {
+          "id": "T2M5S9V16",
+          "kind": "collocation",
+          "french": "avoir de l'expérience",
+          "english": "to have experience",
+          "example": "Ces activités s'adressent aussi aux débutants ou faut-il déjà avoir de l'expérience ?",
+          "usage": "Collocation verbe + nom très fréquente pour évoquer un niveau de pratique."
+        },
+        {
+          "id": "T2M5S9V17",
+          "kind": "collocation",
+          "french": "une première sortie",
+          "english": "a first outing",
+          "example": "Qu'est-ce qu'il faut apporter comme équipement pour une première sortie ?",
+          "usage": "Groupe nominal désignant la première fois que l'on pratique une activité."
+        },
+        {
+          "id": "T2M5S9V18",
+          "kind": "collocation",
+          "french": "avoir le sien",
+          "english": "to have your own (one)",
+          "example": "Est-ce qu'on peut louer le matériel sur place ou il vaut mieux avoir le sien ?",
+          "usage": "Pronom possessif « le sien » pour éviter de répéter un nom déjà mentionné."
+        },
+        {
+          "id": "T2M5S9V19",
+          "kind": "collocation",
+          "french": "des précautions particulières",
+          "english": "special precautions",
+          "example": "Y a-t-il des précautions particulières à prendre ou des choses à éviter ?",
+          "usage": "Collocation adjectif-nom réutilisable pour aborder les mesures de prudence."
+        },
+        {
+          "id": "T2M5S9V20",
+          "kind": "collocation",
+          "french": "en montagne",
+          "english": "in the mountains",
+          "example": "Qu'est-ce que vous appréciez le plus quand vous êtes en montagne ?",
+          "usage": "Locution prépositionnelle sans article pour situer une activité en pleine nature."
+        },
+        {
+          "id": "T2M5S9V21",
+          "kind": "tournure",
+          "french": "comment est née votre passion",
+          "english": "how did your passion begin",
+          "example": "Comment est née votre passion pour la montagne ?",
+          "usage": "Passé composé du verbe « naître » au sens figuré pour interroger sur une origine."
+        },
+        {
+          "id": "T2M5S9V22",
+          "kind": "tournure",
+          "french": "vous avez une région ou une station préférée",
+          "english": "do you have a favourite region or resort",
+          "example": "Vous avez une région ou une station préférée ?",
+          "usage": "Structure simple avec « avoir » pour interroger sur une préférence."
+        },
+        {
+          "id": "T2M5S9V23",
+          "kind": "tournure",
+          "french": "il vaut mieux attendre une autre saison",
+          "english": "it's better to wait for another season",
+          "example": "C'est une bonne période pour aller en montagne ou il vaut mieux attendre une autre saison ?",
+          "usage": "Tournure impersonnelle avec « il vaut mieux » pour recommander une alternative."
+        },
+        {
+          "id": "T2M5S9V24",
+          "kind": "tournure",
+          "french": "Quel temps fait-il généralement à cette époque",
+          "english": "What is the weather generally like at that time",
+          "example": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "usage": "Tournure impersonnelle « il fait » avec inversion, introduite par « quel temps »."
+        },
+        {
+          "id": "T2M5S9V25",
+          "kind": "tournure",
+          "french": "faut-il une préparation physique particulière",
+          "english": "is specific physical preparation necessary",
+          "example": "Faut-il une préparation physique particulière avant de commencer ?",
+          "usage": "Inversion avec « faut-il » pour poser une question formelle sur une nécessité."
+        },
+        {
+          "id": "T2M5S9V26",
+          "kind": "tournure",
+          "french": "il vaut mieux avoir le sien",
+          "english": "it's better to have your own",
+          "example": "Est-ce qu'on peut louer le matériel sur place ou il vaut mieux avoir le sien ?",
+          "usage": "Tournure impersonnelle « il vaut mieux » suivie d'un pronom possessif."
+        },
+        {
+          "id": "T2M5S9V27",
+          "kind": "tournure",
+          "french": "Y a-t-il des précautions particulières à prendre",
+          "english": "Are there any special precautions to take",
+          "example": "Y a-t-il des précautions particulières à prendre ou des choses à éviter ?",
+          "usage": "Structure figée très fréquente en Tâche 2 pour aborder les questions de sécurité."
+        },
+        {
+          "id": "T2M5S9V28",
+          "kind": "tournure",
+          "french": "vous partez généralement seul(e)",
+          "english": "do you generally go alone",
+          "example": "Vous partez généralement seul(e), avec des amis ou avec un guide ?",
+          "usage": "Structure avec adverbe « généralement » pour interroger sur une habitude."
+        },
+        {
+          "id": "T2M5S9V29",
+          "kind": "tournure",
+          "french": "qu'est-ce que vous appréciez le plus",
+          "english": "what do you enjoy most",
+          "example": "Qu'est-ce que vous appréciez le plus quand vous êtes en montagne ?",
+          "usage": "Structure interrogative avec superlatif « le plus » pour cibler un point positif."
+        },
+        {
+          "id": "T2M5S9V30",
+          "kind": "tournure",
+          "french": "si vous ne deviez me recommander qu'un seul endroit",
+          "english": "if you had to recommend just one place",
+          "example": "Pour finir — si vous ne deviez me recommander qu'un seul endroit pour débuter, ce serait lequel ?",
+          "usage": "Structure hypothétique avec « si » + imparfait pour clore la conversation en demandant une priorité."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-02:subject-10",
+      "entries": [
+        {
+          "id": "T2M5S10V01",
+          "kind": "mot-cle",
+          "french": "un meuble",
+          "english": "a piece of furniture",
+          "example": "Bonjour ! Je voudrais commander un meuble et me renseigner sur la livraison — quelles sont les différentes options proposées ?",
+          "usage": "Nom masculin désignant un objet mobilier comme une table ou une armoire."
+        },
+        {
+          "id": "T2M5S10V02",
+          "kind": "mot-cle",
+          "french": "la distance",
+          "english": "the distance",
+          "example": "Le prix de la livraison dépend-il de la taille du meuble ou de la distance ?",
+          "usage": "Nom féminin pour désigner l'éloignement entre deux lieux."
+        },
+        {
+          "id": "T2M5S10V03",
+          "kind": "mot-cle",
+          "french": "le transport",
+          "english": "the transport / shipping",
+          "example": "Le tarif comprend quoi exactement — le transport et la livraison jusque dans la pièce sont-ils inclus ?",
+          "usage": "Nom masculin désignant l'acheminement d'un bien d'un lieu à un autre."
+        },
+        {
+          "id": "T2M5S10V04",
+          "kind": "mot-cle",
+          "french": "Quel délai",
+          "english": "what lead time",
+          "example": "Quel délai faut-il prévoir entre la commande et la livraison ?",
+          "usage": "Nom masculin précédé de « quel » pour interroger sur le temps à prévoir avant une action."
+        },
+        {
+          "id": "T2M5S10V05",
+          "kind": "mot-cle",
+          "french": "un créneau horaire",
+          "english": "a time slot",
+          "example": "Est-ce qu'on peut choisir le jour et un créneau horaire précis ?",
+          "usage": "Groupe nominal désignant une plage horaire réservée pour un service."
+        },
+        {
+          "id": "T2M5S10V06",
+          "kind": "mot-cle",
+          "french": "le livreur",
+          "english": "the delivery person",
+          "example": "Comment puis-je suivre ma commande et savoir à quelle heure le livreur arrivera ?",
+          "usage": "Nom masculin désignant la personne qui apporte un colis ou un meuble."
+        },
+        {
+          "id": "T2M5S10V07",
+          "kind": "mot-cle",
+          "french": "un ascenseur",
+          "english": "an elevator / lift",
+          "example": "Faut-il vous signaler à l'avance qu'il y a des escaliers ou un ascenseur assez étroit ?",
+          "usage": "Nom masculin désignant l'appareil qui permet de monter dans un immeuble."
+        },
+        {
+          "id": "T2M5S10V08",
+          "kind": "mot-cle",
+          "french": "emballé",
+          "english": "wrapped / packaged",
+          "example": "Le meuble sera-t-il protégé et emballé pendant le transport ?",
+          "usage": "Participe passé du verbe « emballer », employé comme adjectif pour un objet protégé."
+        },
+        {
+          "id": "T2M5S10V09",
+          "kind": "mot-cle",
+          "french": "endommagé",
+          "english": "damaged",
+          "example": "Et si le meuble arrive endommagé, quelles sont les démarches à suivre ?",
+          "usage": "Participe passé du verbe « endommager », employé comme adjectif pour un objet abîmé."
+        },
+        {
+          "id": "T2M5S10V10",
+          "kind": "mot-cle",
+          "french": "le moindre souci",
+          "english": "the slightest problem",
+          "example": "S'il y a le moindre souci, à qui faut-il s'adresser ?",
+          "usage": "Expression figée pour désigner un problème même mineur, souvent utilisée pour rassurer sur le suivi."
+        },
+        {
+          "id": "T2M5S10V11",
+          "kind": "collocation",
+          "french": "me renseigner sur",
+          "english": "to find out about",
+          "example": "Bonjour ! Je voudrais commander un meuble et me renseigner sur la livraison — quelles sont les différentes options proposées ?",
+          "usage": "Collocation verbe pronominal + préposition pour demander des informations."
+        },
+        {
+          "id": "T2M5S10V12",
+          "kind": "collocation",
+          "french": "la taille du meuble",
+          "english": "the size of the furniture",
+          "example": "Le prix de la livraison dépend-il de la taille du meuble ou de la distance ?",
+          "usage": "Groupe nominal pour désigner les dimensions d'un objet."
+        },
+        {
+          "id": "T2M5S10V13",
+          "kind": "collocation",
+          "french": "coûte approximativement",
+          "english": "costs approximately",
+          "example": "Parlons du budget — combien est-ce que la livraison coûte approximativement ?",
+          "usage": "Collocation verbe + adverbe pour demander une estimation de prix."
+        },
+        {
+          "id": "T2M5S10V14",
+          "kind": "collocation",
+          "french": "entre la commande et la livraison",
+          "english": "between the order and the delivery",
+          "example": "Quel délai faut-il prévoir entre la commande et la livraison ?",
+          "usage": "Structure prépositionnelle pour situer un délai entre deux événements."
+        },
+        {
+          "id": "T2M5S10V15",
+          "kind": "collocation",
+          "french": "le soir ou le week-end",
+          "english": "in the evening or on the weekend",
+          "example": "Proposez-vous aussi des livraisons le soir ou le week-end ?",
+          "usage": "Coordination de deux compléments de temps pour proposer des créneaux."
+        },
+        {
+          "id": "T2M5S10V16",
+          "kind": "collocation",
+          "french": "à l'avance",
+          "english": "in advance",
+          "example": "Faut-il vous signaler à l'avance qu'il y a des escaliers ou un ascenseur assez étroit ?",
+          "usage": "Locution adverbiale figée pour indiquer une anticipation."
+        },
+        {
+          "id": "T2M5S10V17",
+          "kind": "collocation",
+          "french": "pendant le transport",
+          "english": "during transport",
+          "example": "Le meuble sera-t-il protégé et emballé pendant le transport ?",
+          "usage": "Locution prépositionnelle pour situer une action au cours d'un déplacement."
+        },
+        {
+          "id": "T2M5S10V18",
+          "kind": "collocation",
+          "french": "monter le meuble",
+          "english": "to bring up / assemble the furniture",
+          "example": "Est-ce que vos livreurs peuvent aussi monter le meuble sur place, ou est-ce à moi de le faire ?",
+          "usage": "Collocation verbe + nom pour évoquer l'installation d'un meuble chez le client."
+        },
+        {
+          "id": "T2M5S10V19",
+          "kind": "collocation",
+          "french": "les démarches à suivre",
+          "english": "the steps to follow",
+          "example": "Et si le meuble arrive endommagé, quelles sont les démarches à suivre ?",
+          "usage": "Groupe nominal très fréquent pour évoquer une procédure à respecter."
+        },
+        {
+          "id": "T2M5S10V20",
+          "kind": "collocation",
+          "french": "modifier ou annuler",
+          "english": "to change or cancel",
+          "example": "Quelles sont les conditions pour modifier ou annuler la livraison ?",
+          "usage": "Coordination de deux verbes à l'infinitif pour évoquer des options de gestion de commande."
+        },
+        {
+          "id": "T2M5S10V21",
+          "kind": "tournure",
+          "french": "quelles sont les différentes options proposées",
+          "english": "what are the different options available",
+          "example": "Bonjour ! Je voudrais commander un meuble et me renseigner sur la livraison — quelles sont les différentes options proposées ?",
+          "usage": "Structure interrogative avec « quelles sont » pour explorer des possibilités."
+        },
+        {
+          "id": "T2M5S10V22",
+          "kind": "tournure",
+          "french": "combien est-ce que la livraison coûte approximativement",
+          "english": "how much does the delivery cost approximately",
+          "example": "Parlons du budget — combien est-ce que la livraison coûte approximativement ?",
+          "usage": "Structure orale avec « combien est-ce que » pour demander une estimation."
+        },
+        {
+          "id": "T2M5S10V23",
+          "kind": "tournure",
+          "french": "le tarif comprend quoi exactement",
+          "english": "what exactly does the rate include",
+          "example": "Le tarif comprend quoi exactement — le transport et la livraison jusque dans la pièce sont-ils inclus ?",
+          "usage": "Structure orale avec « quoi » postposé pour interroger sur le contenu d'un tarif."
+        },
+        {
+          "id": "T2M5S10V24",
+          "kind": "tournure",
+          "french": "est-ce qu'on peut choisir le jour",
+          "english": "can one choose the day",
+          "example": "Est-ce qu'on peut choisir le jour et un créneau horaire précis ?",
+          "usage": "Structure avec « on » et « pouvoir » pour interroger sur une possibilité de choix."
+        },
+        {
+          "id": "T2M5S10V25",
+          "kind": "tournure",
+          "french": "comment puis-je suivre ma commande",
+          "english": "how can I track my order",
+          "example": "Comment puis-je suivre ma commande et savoir à quelle heure le livreur arrivera ?",
+          "usage": "Verbe « pouvoir » à la première personne du singulier (« puis-je ») pour une question polie."
+        },
+        {
+          "id": "T2M5S10V26",
+          "kind": "tournure",
+          "french": "faut-il vous signaler à l'avance",
+          "english": "should I let you know in advance",
+          "example": "Faut-il vous signaler à l'avance qu'il y a des escaliers ou un ascenseur assez étroit ?",
+          "usage": "Inversion avec « faut-il » pour poser une question formelle sur une obligation."
+        },
+        {
+          "id": "T2M5S10V27",
+          "kind": "tournure",
+          "french": "est-ce à moi de le faire",
+          "english": "is it up to me to do it",
+          "example": "Est-ce que vos livreurs peuvent aussi monter le meuble sur place, ou est-ce à moi de le faire ?",
+          "usage": "Structure avec « être à » + pronom pour interroger sur une responsabilité."
+        },
+        {
+          "id": "T2M5S10V28",
+          "kind": "tournure",
+          "french": "en cas de retard ou d'imprévu",
+          "english": "in case of delay or an unexpected event",
+          "example": "En cas de retard ou d'imprévu, comment ça se passe ?",
+          "usage": "Locution prépositionnelle pour introduire une situation imprévue."
+        },
+        {
+          "id": "T2M5S10V29",
+          "kind": "tournure",
+          "french": "quelles sont les conditions pour modifier ou annuler",
+          "english": "what are the conditions for changing or cancelling",
+          "example": "Quelles sont les conditions pour modifier ou annuler la livraison ?",
+          "usage": "Structure avec « quelles sont les conditions pour » pour interroger sur des modalités."
+        },
+        {
+          "id": "T2M5S10V30",
+          "kind": "tournure",
+          "french": "à qui faut-il s'adresser",
+          "english": "who should one contact",
+          "example": "S'il y a le moindre souci, à qui faut-il s'adresser ?",
+          "usage": "Tournure impersonnelle très utile pour demander l'interlocuteur compétent en cas de problème."
+        }
+      ]
+    }
+  ]
+}

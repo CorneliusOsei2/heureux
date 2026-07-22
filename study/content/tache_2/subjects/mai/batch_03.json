@@ -1,0 +1,279 @@
+{
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "batch": 3,
+  "subjects": [
+    {
+      "number": 11,
+      "title": "Nouveau dans l'entreprise",
+      "prompt": "Je suis un(e) de vos collègues. Vous êtes arrivé(e) récemment dans l'entreprise et vous souhaitez en savoir plus. Vous me posez des questions sur le fonctionnement de l'entreprise (organisation, ambiance, cantine, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je suis ravi(e) de faire ta connaissance — c'est mon premier jour aujourd'hui. Tu travailles ici depuis combien de temps ? Tu connais bien l'entreprise ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Comment tu trouves l'ambiance de travail en général ? Les gens sont sympas — c'est facile de s'intégrer ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Comment s'organise le travail au quotidien — plutôt en équipe ou de manière individuelle ?",
+          "memory_section": 21
+        },
+        {
+          "text": "À quelle heure ça commence le matin — il y a des horaires flexibles ou tout le monde doit arriver à la même heure ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Combien de temps dure la pause déjeuner — et c'est à midi pile ou ça peut varier ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Où est-ce que les gens mangent généralement le midi ? Il y a une cantine d'entreprise — et si oui, comment ça marche ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Parlons du budget — les repas à la cantine, c'est dans quelle gamme de prix ? Et la qualité est bonne ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il un espace pour réchauffer son repas si on apporte quelque chose ? Et des restaurants sympas dans les environs ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Est-ce qu'il y a des réunions régulières d'équipe ? Ça a lieu à quelle fréquence — et ça dure combien de temps généralement ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionne la communication interne — on utilise des emails ou une plateforme spécifique ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Combien de personnes travaillent dans notre département ? Et qui est notre responsable direct — comment est-il ou elle en tant que manager ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Est-ce que tu pourrais me présenter aux autres membres de l'équipe — surtout ceux avec qui je vais travailler étroitement ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Est-ce qu'il y a des possibilités de télétravail ou tout se fait au bureau ?",
+          "memory_section": 21
+        },
+        {
+          "text": "Quels sont les avantages dont bénéficient les employés — tickets restaurant, mutuelle, ce genre de choses ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour finir — qu'est-ce que tu me conseillerais pour bien m'intégrer rapidement dans l'équipe ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Première fête au Québec",
+      "prompt": "Je suis votre ami(e) et je vous invite à une fête. Vous venez de vous installer au Québec et c'est votre première fête ici. Vous me posez des questions sur cet événement (heure, cadeau à apporter, tenue, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Merci pour l'invitation — c'est vraiment gentil de ta part. C'est pour quelle occasion exactement — un anniversaire ou une pendaison de crémaillère ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "À quelle heure ça commence — je devrais arriver à l'heure pile ou un peu plus tard ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Ça va durer jusqu'à quelle heure environ ? C'est une soirée qui finit tard ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Ça se passe où exactement — chez quelqu'un ou dans un lieu loué ? C'est facilement accessible en transports en commun ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Il y aura combien de personnes environ — c'est une petite fête intime ou une grande réception ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Est-ce que je vais connaître d'autres invités ou est-ce que je serai la seule nouvelle personne ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Concernant la tenue — c'est plutôt formel ou décontracté ? Il y a un thème ou un code couleur particulier ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Est-ce que je dois apporter un cadeau ? Est-ce la coutume ici au Québec — et si oui, tu aurais des suggestions ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Parlons du budget — il y a un montant habituel pour ce genre de cadeau ou c'est vraiment selon nos moyens ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce que je peux apporter quelque chose à manger ou à boire plutôt qu'un cadeau ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Comment se passe la nourriture — c'est un buffet, un repas assis ou un cocktail ? Il y aura de l'alcool ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Y aura-t-il de la musique et de la danse ? Les gens seront sympas — ce sera facile de s'intégrer ?",
+          "memory_section": 15
+        },
+        {
+          "text": "C'est la première fête à laquelle je participe au Québec — j'appréhende un peu ! Y a-t-il des coutumes particulières que je devrais connaître ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Merci pour toutes ces infos — si j'ai d'autres questions, je peux te solliciter ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Club de sport du quartier",
+      "prompt": "Je travaille à l'accueil du club de sport de votre quartier. Vous voulez commencer une activité sportive mais vous hésitez. Vous me posez des questions sur les sports proposés (horaires, prix, matériel, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je viens d'emménager dans le quartier et je cherche un club de sport. Pourriez-vous me parler des différentes activités que vous proposez ici ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Est-ce qu'il y a des cours collectifs — yoga, pilates, spinning — ou c'est surtout de la musculation ?",
+          "memory_section": 10
+        },
+        {
+          "text": "À quelle heure commencent les cours collectifs — plutôt le matin ou en fin de journée ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ? Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Les cours sont-ils donnés par des professeurs qualifiés ? Et est-ce qu'il y a un coach personnel disponible si j'en ai besoin ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Quels sont les horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Une fois inscrit(e), on s'engage pour toute la session ou on peut venir de manière flexible ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "Est-ce qu'il est possible de suspendre l'abonnement si nécessaire ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter comme équipement — ou est-ce que tout est fourni sur place ? Y a-t-il des vestiaires et des douches disponibles ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou uniquement sur place ? Il reste encore des places ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance pour les cours ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Pour finir — quelle activité me recommanderiez-vous pour quelqu'un qui veut se remettre en forme et se tonifier ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Visite de musée",
+      "prompt": "Je travaille à l'accueil d'un musée. Vous souhaitez visiter ce musée avec des amis. Vous me posez des questions pour organiser votre visite (heures d'ouverture, prix, visites guidées, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Mes amis et moi aimerions visiter votre musée — c'est la première fois que nous venons. Quelles sont les collections principales qu'on peut voir ici ?",
+          "memory_section": 12
+        },
+        {
+          "text": "Où se trouve exactement le musée — est-il facilement accessible en transports en commun ? Y a-t-il un parking à proximité ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Quels sont vos horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ? On voudrait éviter la foule — quel moment nous conseillez-vous ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Combien de temps faut-il prévoir pour visiter l'ensemble du musée — quelques heures ou toute la journée ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement ? Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Nous serons cinq ou six personnes — proposez-vous des tarifs de groupe ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Y a-t-il des expositions temporaires en ce moment en plus de la collection permanente ?",
+          "memory_section": 12
+        },
+        {
+          "text": "Les expositions temporaires sont incluses dans le billet d'entrée ou faut-il payer un supplément ? Jusqu'à quand seront-elles accessibles ?",
+          "memory_section": 12
+        },
+        {
+          "text": "Proposez-vous des visites guidées — c'est inclus dans le tarif ou c'est un supplément ?",
+          "memory_section": 11
+        },
+        {
+          "text": "Quelle est la durée d'une visite guidée — environ une heure ou plutôt une heure et demie ? Et dans quelles langues les visites sont-elles proposées ?",
+          "memory_section": 11
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance pour les visites guidées ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Y a-t-il un audioguide disponible — c'est gratuit ou payant ? Et on peut prendre des photos à l'intérieur ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Y a-t-il une boutique de souvenirs ou une librairie sur place ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Pour finir — vous recommandez de commencer la visite par un étage ou une section en particulier ?",
+          "memory_section": 4
+        }
+      ]
+    }
+  ]
+}

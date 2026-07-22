@@ -345,7 +345,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertLessEqual(guide_style["barHeight"], 10)
         self.assertEqual(
             guide_progress.locator(".deck__progress-copy").inner_text(),
-            "0/90 apprises · 0/70 sujets terminés",
+            "0/90 apprises · 0/94 sujets terminés",
         )
 
         self.page.goto(overview_url)
@@ -562,6 +562,19 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertIn(
             "familles ? 03 Est-ce qu'on peut essayer",
             " ".join(spanning_text.split()),
+        )
+        structural_marks = self.page.locator(
+            ".question-bank-questions > mark.user-highlight, "
+            "[data-question-bank-question] > mark.user-highlight"
+        )
+        self.assertEqual(structural_marks.count(), 0)
+        self.assertEqual(
+            questions.nth(1).locator(":scope > *").count(),
+            3,
+        )
+        self.assertEqual(
+            questions.nth(2).locator(":scope > *").count(),
+            3,
         )
         desktop = self.page.locator("[data-question-bank]").evaluate(
             """

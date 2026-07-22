@@ -465,8 +465,11 @@
       var nodeEnd = offset + node.data.length;
       if (nodeEnd > start && nodeStart < end) {
         var parent = node.parentElement;
+        var segmentStart = Math.max(0, start - nodeStart);
+        var segmentEnd = Math.min(node.data.length, end - nodeStart);
         if (
           parent &&
+          node.data.slice(segmentStart, segmentEnd).trim() &&
           !(
             root === main &&
             !includeNestedRoots &&
@@ -479,8 +482,8 @@
         ) {
           segments.push({
             node: node,
-            start: Math.max(0, start - nodeStart),
-            end: Math.min(node.data.length, end - nodeStart)
+            start: segmentStart,
+            end: segmentEnd
           });
         }
       }

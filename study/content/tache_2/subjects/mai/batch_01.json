@@ -1,0 +1,334 @@
+{
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "batch": 1,
+  "subjects": [
+    {
+      "number": 1,
+      "title": "Bénévolat dans une association",
+      "prompt": "Je suis agent d'accueil dans un bureau d'information sur les associations locales. Vous souhaitez devenir bénévole dans une association près de chez vous. Vous me posez des questions sur les types d'associations, les activités proposées, le public concerné et les horaires.",
+      "questions": [
+        {
+          "text": "Bonjour, je m'intéresse au bénévolat dans le quartier — quels types d'associations proposez-vous ici ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Vous avez mentionné l'accompagnement scolaire — vous pourriez m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Concrètement, quelles missions sont confiées aux bénévoles au quotidien ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Ces associations s'adressent à quel public — des enfants, des personnes âgées, des familles ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce qu'il faut avoir des compétences particulières ou une expérience préalable pour s'engager ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Et si on n'a jamais fait de bénévolat, est-ce qu'une formation ou un accompagnement est prévu au début ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "À quelle heure ça commence — plutôt le matin ou en fin de journée ?",
+          "memory_section": 2
+        },
+        {
+          "text": "En général, combien d'heures par semaine faut-il prévoir ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Comment est l'ambiance en général — plutôt formelle ou décontractée ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Est-ce que les frais de transport ou de repas sont pris en charge pour les bénévoles ?",
+          "memory_section": 1
+        },
+        "Est-ce qu'on reçoit un certificat ou une lettre de recommandation à la fin de la mission ?",
+        {
+          "text": "Il faut s'inscrire à l'avance ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "S'il y a le moindre souci, à qui faut-il s'adresser ?",
+          "memory_section": 19
+        },
+        {
+          "text": "D'accord, si j'ai encore une question, je peux vous recontacter ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Cours particuliers de français",
+      "prompt": "Je suis professeur de français. Vous venez d'arriver au Canada et vous aimeriez suivre des cours particuliers. Vous me posez des questions sur mon parcours, ma manière d'enseigner et mes tarifs.",
+      "questions": [
+        {
+          "text": "Bonjour ! Je viens d'arriver au Canada et je cherche des cours particuliers de français — pourriez-vous me parler un peu de votre parcours et de votre expérience ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Depuis combien de temps enseignez-vous, et dans quels contextes — écoles, entreprises, cours particuliers ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Et concrètement, qu'est-ce qu'on apprend — c'est plutôt grammaire et théorie, conversation pratique, ou un mélange des deux ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Justement, ça s'adresse à quel niveau — plutôt aux débutants ou aux personnes déjà expérimentées ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il y a combien de séances par semaine, et quelle est la durée d'une séance — environ une heure ou plutôt une heure et demie ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Et côté tarifs, comment ça fonctionne — c'est à la séance ou sous forme de forfait mensuel ?",
+          "memory_section": 1
+        },
+        {
+          "text": "D'ailleurs, est-ce qu'on peut essayer avant de s'engager — il y a un premier cours d'essai ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Ça se passe où exactement — chez vous, à domicile, ou c'est possible aussi en ligne ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter — des manuels, des cahiers, ou est-ce que tout est fourni ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Vous avez mentionné le programme — vous pourriez m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Et sinon, comment évaluez-vous la progression de vos élèves — il y a des bilans réguliers ?",
+          "memory_section": 20
+        },
+        {
+          "text": "D'ailleurs, est-ce que vous préparez aussi vos élèves à des examens officiels de français ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Merci pour toutes ces infos — si j'ai d'autres questions, je peux vous solliciter ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Vacances à la montagne",
+      "prompt": "Je suis votre ami(e) canadien(ne). Je reviens de vacances à la montagne et vous avez envie de faire un séjour similaire. Vous me posez des questions sur le lieu, les activités possibles et l'hébergement.",
+      "questions": [
+        {
+          "text": "Salut ! J'ai entendu dire que tu as passé de super vacances à la montagne — tu pourrais me raconter un peu ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Tu es allé(e) où exactement — quelle région ou station de montagne ?",
+          "memory_section": 4
+        },
+        {
+          "text": "C'est une bonne période pour y aller ou il vaut mieux attendre une autre saison ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Combien de temps faut-il prévoir — quelques jours ou toute la semaine ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Quelles activités as-tu faites — ski, randonnée, autres sports ou plutôt détente ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Ça s'adresse à quel public — il y avait des activités pour les débutants aussi ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Tu connais de bons endroits où dormir — hôtels, chambres d'hôtes, campings ?",
+          "memory_section": 6
+        },
+        {
+          "text": "C'est dans quelle gamme de prix pour l'hébergement — plutôt cher ou abordable ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Il faut réserver à l'avance ou on peut trouver facilement sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement au total ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Tu as mentionné ton moment préféré — tu pourrais m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Cours de théâtre",
+      "prompt": "Je suis votre ami(e) et je participe chaque semaine à des cours de théâtre. Vous souhaitez vous inscrire vous aussi, et vous me posez des questions pour en savoir plus sur ces cours (organisation, prix, horaires, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'ai entendu dire que tu suis des cours de théâtre chaque semaine — tu pourrais m'en parler un peu ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Qu'est-ce qu'on apprend concrètement — improvisation, texte, mise en scène, ou un mélange des deux ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Y a-t-il des sorties pratiques ou tout se fait en salle ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il y a généralement combien de participants — c'est un petit groupe ou une grande classe ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Quelle est la durée d'une séance — environ une heure ou plutôt une heure et demie ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque cours séparément ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou uniquement sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Comment est l'ambiance en général — plutôt formelle ou décontractée ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Apéritif de bienvenue – Québec",
+      "prompt": "Vous venez de vous installer au Québec. Je suis votre voisin(e) et je vous ai invité(e) à un apéritif de bienvenue. Pendant la discussion, vous me posez des questions sur le quartier (voisinage, services disponibles, loisirs, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Merci pour l'invitation, c'est vraiment gentil — depuis combien de temps habitez-vous ici ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Comment est le quartier en général — plutôt calme ou animé ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Les gens sont sympas — c'est facile de s'intégrer quand on arrive ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme — familles, jeunes, retraités ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Y a-t-il un parking à proximité ou il vaut mieux venir en transports en commun ?",
+          "memory_section": 13
+        },
+        {
+          "text": "C'est facilement accessible en transports en commun ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Quels types de thèmes sont abordés dans les activités du quartier — sport, culture, loisirs, ou un peu de tout ?",
+          "memory_section": 10
+        },
+        {
+          "text": "La programmation est publiée à l'avance ou on la découvre sur place ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance pour les clubs ou ateliers ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il reste encore des places dans ces clubs ou c'est déjà complet ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Pour les repas, vous auriez des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Il faut réserver une table à l'avance ou on peut y aller directement ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Y a-t-il des festivals ou événements annuels que les habitants aiment particulièrement ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Et les endroits sympas pour rencontrer des gens dont vous parliez — comment ça se passe exactement ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me recommander qu'une seule chose pour bien démarrer dans ce quartier, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    }
+  ]
+}

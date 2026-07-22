@@ -1,0 +1,985 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "subject_key": "tache2:mai:batch-03:subject-11",
+      "entries": [
+        {
+          "id": "T2M5S11V01",
+          "kind": "mot-cle",
+          "french": "l'entreprise",
+          "english": "the company",
+          "example": "Bonjour ! Je suis ravi(e) de faire ta connaissance — c'est mon premier jour aujourd'hui. Tu travailles ici depuis combien de temps ? Tu connais bien l'entreprise ?",
+          "usage": "Nom courant en contexte professionnel pour désigner l'organisation employeuse."
+        },
+        {
+          "id": "T2M5S11V02",
+          "kind": "mot-cle",
+          "french": "l'ambiance de travail",
+          "english": "the work atmosphere",
+          "example": "Comment tu trouves l'ambiance de travail en général ? Les gens sont sympas — c'est facile de s'intégrer ?",
+          "usage": "Groupe nominal pour évoquer le climat général au sein d'une équipe."
+        },
+        {
+          "id": "T2M5S11V03",
+          "kind": "mot-cle",
+          "french": "la pause déjeuner",
+          "english": "the lunch break",
+          "example": "Combien de temps dure la pause déjeuner — et c'est à midi pile ou ça peut varier ?",
+          "usage": "Désigne l'interruption de mi-journée réservée au repas."
+        },
+        {
+          "id": "T2M5S11V04",
+          "kind": "mot-cle",
+          "french": "une cantine d'entreprise",
+          "english": "a company cafeteria",
+          "example": "Où est-ce que les gens mangent généralement le midi ? Il y a une cantine d'entreprise — et si oui, comment ça marche ?",
+          "usage": "Nom composé désignant le restaurant collectif réservé aux salariés."
+        },
+        {
+          "id": "T2M5S11V05",
+          "kind": "mot-cle",
+          "french": "des réunions régulières",
+          "english": "regular meetings",
+          "example": "Est-ce qu'il y a des réunions régulières d'équipe ? Ça a lieu à quelle fréquence — et ça dure combien de temps généralement ?",
+          "usage": "Groupe nominal indiquant la périodicité des rencontres d'équipe."
+        },
+        {
+          "id": "T2M5S11V06",
+          "kind": "mot-cle",
+          "french": "la communication interne",
+          "english": "internal communication",
+          "example": "Comment fonctionne la communication interne — on utilise des emails ou une plateforme spécifique ?",
+          "usage": "Terme d'entreprise pour les échanges d'information au sein de l'organisation."
+        },
+        {
+          "id": "T2M5S11V07",
+          "kind": "mot-cle",
+          "french": "responsable direct",
+          "english": "direct supervisor",
+          "example": "Combien de personnes travaillent dans notre département ? Et qui est notre responsable direct — comment est-il ou elle en tant que manager ?",
+          "usage": "Désigne la personne hiérarchiquement responsable au quotidien."
+        },
+        {
+          "id": "T2M5S11V08",
+          "kind": "mot-cle",
+          "french": "télétravail",
+          "english": "remote work",
+          "example": "Est-ce qu'il y a des possibilités de télétravail ou tout se fait au bureau ?",
+          "usage": "Nom composé désignant le travail effectué à distance, hors des locaux de l'entreprise."
+        },
+        {
+          "id": "T2M5S11V09",
+          "kind": "mot-cle",
+          "french": "les avantages",
+          "english": "the benefits/perks",
+          "example": "Quels sont les avantages dont bénéficient les employés — tickets restaurant, mutuelle, ce genre de choses ?",
+          "usage": "Terme générique pour les compléments proposés par l'employeur."
+        },
+        {
+          "id": "T2M5S11V10",
+          "kind": "mot-cle",
+          "french": "l'équipe",
+          "english": "the team",
+          "example": "Pour finir — qu'est-ce que tu me conseillerais pour bien m'intégrer rapidement dans l'équipe ?",
+          "usage": "Groupe nominal désignant l'ensemble des collègues avec qui on collabore."
+        },
+        {
+          "id": "T2M5S11V11",
+          "kind": "collocation",
+          "french": "en tant que manager",
+          "english": "as a manager",
+          "example": "Combien de personnes travaillent dans notre département ? Et qui est notre responsable direct — comment est-il ou elle en tant que manager ?",
+          "usage": "Locution prépositionnelle 'en tant que' + nom, pour préciser une fonction."
+        },
+        {
+          "id": "T2M5S11V12",
+          "kind": "collocation",
+          "french": "facile de s'intégrer",
+          "english": "easy to fit in",
+          "example": "Comment tu trouves l'ambiance de travail en général ? Les gens sont sympas — c'est facile de s'intégrer ?",
+          "usage": "Association adjectif + infinitif pour évaluer la facilité d'une action."
+        },
+        {
+          "id": "T2M5S11V13",
+          "kind": "collocation",
+          "french": "faire ta connaissance",
+          "english": "to meet you for the first time",
+          "example": "Bonjour ! Je suis ravi(e) de faire ta connaissance — c'est mon premier jour aujourd'hui. Tu travailles ici depuis combien de temps ? Tu connais bien l'entreprise ?",
+          "usage": "« Faire la connaissance de quelqu'un » signifie le rencontrer pour la première fois ; avec un possessif, on dit « faire ta connaissance »."
+        },
+        {
+          "id": "T2M5S11V14",
+          "kind": "collocation",
+          "french": "de manière individuelle",
+          "english": "individually",
+          "example": "Comment s'organise le travail au quotidien — plutôt en équipe ou de manière individuelle ?",
+          "usage": "Groupe adverbial fixe opposé à 'en équipe'."
+        },
+        {
+          "id": "T2M5S11V15",
+          "kind": "collocation",
+          "french": "horaires flexibles",
+          "english": "flexible hours",
+          "example": "À quelle heure ça commence le matin — il y a des horaires flexibles ou tout le monde doit arriver à la même heure ?",
+          "usage": "Association adjectif + nom pour décrire des horaires modulables."
+        },
+        {
+          "id": "T2M5S11V16",
+          "kind": "collocation",
+          "french": "à la même heure",
+          "english": "at the same time",
+          "example": "À quelle heure ça commence le matin — il y a des horaires flexibles ou tout le monde doit arriver à la même heure ?",
+          "usage": "Groupe prépositionnel figé pour indiquer une simultanéité horaire."
+        },
+        {
+          "id": "T2M5S11V17",
+          "kind": "collocation",
+          "french": "gamme de prix",
+          "english": "price range",
+          "example": "Parlons du budget — les repas à la cantine, c'est dans quelle gamme de prix ? Et la qualité est bonne ?",
+          "usage": "Groupe nominal courant pour évoquer un niveau de tarifs."
+        },
+        {
+          "id": "T2M5S11V18",
+          "kind": "collocation",
+          "french": "des restaurants sympas dans les environs",
+          "english": "nice restaurants in the area",
+          "example": "Y a-t-il un espace pour réchauffer son repas si on apporte quelque chose ? Et des restaurants sympas dans les environs ?",
+          "usage": "Groupe nominal désignant des établissements proches et agréables."
+        },
+        {
+          "id": "T2M5S11V19",
+          "kind": "collocation",
+          "french": "tickets restaurant",
+          "english": "meal vouchers",
+          "example": "Quels sont les avantages dont bénéficient les employés — tickets restaurant, mutuelle, ce genre de choses ?",
+          "usage": "Nom composé désignant les titres-repas fournis par l'employeur."
+        },
+        {
+          "id": "T2M5S11V20",
+          "kind": "collocation",
+          "french": "travailler étroitement",
+          "english": "to work closely",
+          "example": "Est-ce que tu pourrais me présenter aux autres membres de l'équipe — surtout ceux avec qui je vais travailler étroitement ?",
+          "usage": "Association verbe + adverbe pour décrire une collaboration rapprochée."
+        },
+        {
+          "id": "T2M5S11V21",
+          "kind": "tournure",
+          "french": "Tu travailles ici depuis combien de temps",
+          "english": "How long have you been working here",
+          "example": "Bonjour ! Je suis ravi(e) de faire ta connaissance — c'est mon premier jour aujourd'hui. Tu travailles ici depuis combien de temps ? Tu connais bien l'entreprise ?",
+          "usage": "Question directe sujet-verbe-complément, registre tutoiement, pour interroger sur une durée."
+        },
+        {
+          "id": "T2M5S11V22",
+          "kind": "tournure",
+          "french": "Comment tu trouves l'ambiance de travail en général",
+          "english": "What do you think of the work atmosphere in general",
+          "example": "Comment tu trouves l'ambiance de travail en général ? Les gens sont sympas — c'est facile de s'intégrer ?",
+          "usage": "Structure interrogative avec 'comment' pour demander une impression générale, registre tutoiement."
+        },
+        {
+          "id": "T2M5S11V23",
+          "kind": "tournure",
+          "french": "Comment s'organise le travail au quotidien",
+          "english": "How is the work organized day-to-day",
+          "example": "Comment s'organise le travail au quotidien — plutôt en équipe ou de manière individuelle ?",
+          "usage": "Question soutenue avec inversion du sujet 'le travail' après le verbe pronominal 'organise'."
+        },
+        {
+          "id": "T2M5S11V24",
+          "kind": "tournure",
+          "french": "À quelle heure ça commence le matin",
+          "english": "What time does it start in the morning",
+          "example": "À quelle heure ça commence le matin — il y a des horaires flexibles ou tout le monde doit arriver à la même heure ?",
+          "usage": "Question orale avec le groupe interrogatif 'à quelle heure' antéposé devant sujet et verbe."
+        },
+        {
+          "id": "T2M5S11V25",
+          "kind": "tournure",
+          "french": "Combien de temps dure la pause déjeuner",
+          "english": "How long does the lunch break last",
+          "example": "Combien de temps dure la pause déjeuner — et c'est à midi pile ou ça peut varier ?",
+          "usage": "Structure interrogative soutenue avec inversion du sujet 'la pause déjeuner' après le verbe 'dure'."
+        },
+        {
+          "id": "T2M5S11V26",
+          "kind": "tournure",
+          "french": "Où est-ce que les gens mangent généralement le midi",
+          "english": "Where do people generally eat lunch",
+          "example": "Où est-ce que les gens mangent généralement le midi ? Il y a une cantine d'entreprise — et si oui, comment ça marche ?",
+          "usage": "Tournure interrogative avec 'est-ce que', qui évite l'inversion du sujet."
+        },
+        {
+          "id": "T2M5S11V27",
+          "kind": "tournure",
+          "french": "Y a-t-il un espace pour réchauffer son repas si on apporte quelque chose",
+          "english": "Is there a place to heat up one's meal if you bring something",
+          "example": "Y a-t-il un espace pour réchauffer son repas si on apporte quelque chose ? Et des restaurants sympas dans les environs ?",
+          "usage": "Tournure interrogative soutenue avec inversion 'y a-t-il' et '-t-' euphonique."
+        },
+        {
+          "id": "T2M5S11V28",
+          "kind": "tournure",
+          "french": "Est-ce qu'il y a des réunions régulières d'équipe",
+          "english": "Are there regular team meetings",
+          "example": "Est-ce qu'il y a des réunions régulières d'équipe ? Ça a lieu à quelle fréquence — et ça dure combien de temps généralement ?",
+          "usage": "Structure avec 'est-ce que' pour poser une question fermée sans inversion."
+        },
+        {
+          "id": "T2M5S11V29",
+          "kind": "tournure",
+          "french": "Comment fonctionne la communication interne",
+          "english": "How does internal communication work",
+          "example": "Comment fonctionne la communication interne — on utilise des emails ou une plateforme spécifique ?",
+          "usage": "Question avec 'comment' suivie du verbe puis du sujet postposé 'la communication interne'."
+        },
+        {
+          "id": "T2M5S11V30",
+          "kind": "tournure",
+          "french": "qu'est-ce que tu me conseillerais pour bien m'intégrer rapidement dans l'équipe",
+          "english": "what would you advise me to do to fit in quickly within the team",
+          "example": "Pour finir — qu'est-ce que tu me conseillerais pour bien m'intégrer rapidement dans l'équipe ?",
+          "usage": "Tournure avec 'qu'est-ce que' et conditionnel de politesse pour demander un conseil, registre tutoiement."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-03:subject-12",
+      "entries": [
+        {
+          "id": "T2M5S12V01",
+          "kind": "mot-cle",
+          "french": "une pendaison de crémaillère",
+          "english": "a housewarming party",
+          "example": "Salut ! Merci pour l'invitation — c'est vraiment gentil de ta part. C'est pour quelle occasion exactement — un anniversaire ou une pendaison de crémaillère ?",
+          "usage": "Nom composé idiomatique désignant la fête organisée en emménageant dans un logement."
+        },
+        {
+          "id": "T2M5S12V02",
+          "kind": "mot-cle",
+          "french": "un lieu loué",
+          "english": "a rented venue",
+          "example": "Ça se passe où exactement — chez quelqu'un ou dans un lieu loué ? C'est facilement accessible en transports en commun ?",
+          "usage": "Groupe nominal désignant un endroit pris en location pour un événement."
+        },
+        {
+          "id": "T2M5S12V03",
+          "kind": "mot-cle",
+          "french": "une petite fête intime",
+          "english": "a small intimate party",
+          "example": "Il y aura combien de personnes environ — c'est une petite fête intime ou une grande réception ?",
+          "usage": "Groupe nominal opposé à 'une grande réception'."
+        },
+        {
+          "id": "T2M5S12V04",
+          "kind": "mot-cle",
+          "french": "la seule nouvelle personne",
+          "english": "the only new person",
+          "example": "Est-ce que je vais connaître d'autres invités ou est-ce que je serai la seule nouvelle personne ?",
+          "usage": "Groupe nominal pour se désigner comme le seul invité inconnu du groupe."
+        },
+        {
+          "id": "T2M5S12V05",
+          "kind": "mot-cle",
+          "french": "un code couleur",
+          "english": "a color code/dress code",
+          "example": "Concernant la tenue — c'est plutôt formel ou décontracté ? Il y a un thème ou un code couleur particulier ?",
+          "usage": "Terme utilisé pour une consigne vestimentaire fondée sur des couleurs précises."
+        },
+        {
+          "id": "T2M5S12V06",
+          "kind": "mot-cle",
+          "french": "la coutume",
+          "english": "the custom",
+          "example": "Est-ce que je dois apporter un cadeau ? Est-ce la coutume ici au Québec — et si oui, tu aurais des suggestions ?",
+          "usage": "Nom désignant une pratique sociale habituelle."
+        },
+        {
+          "id": "T2M5S12V07",
+          "kind": "mot-cle",
+          "french": "nos moyens",
+          "english": "our means/budget",
+          "example": "Parlons du budget — il y a un montant habituel pour ce genre de cadeau ou c'est vraiment selon nos moyens ?",
+          "usage": "Nom pluriel désignant les ressources financières disponibles."
+        },
+        {
+          "id": "T2M5S12V08",
+          "kind": "mot-cle",
+          "french": "un repas assis",
+          "english": "a sit-down meal",
+          "example": "Comment se passe la nourriture — c'est un buffet, un repas assis ou un cocktail ? Il y aura de l'alcool ?",
+          "usage": "Groupe nominal opposé à 'un buffet', désignant un repas servi à table."
+        },
+        {
+          "id": "T2M5S12V09",
+          "kind": "mot-cle",
+          "french": "un anniversaire",
+          "english": "a birthday",
+          "example": "Salut ! Merci pour l'invitation — c'est vraiment gentil de ta part. C'est pour quelle occasion exactement — un anniversaire ou une pendaison de crémaillère ?",
+          "usage": "Nom courant désignant la fête qui célèbre le jour de naissance, ici en alternative à une pendaison de crémaillère."
+        },
+        {
+          "id": "T2M5S12V10",
+          "kind": "mot-cle",
+          "french": "d'autres questions",
+          "english": "other/further questions",
+          "example": "Merci pour toutes ces infos — si j'ai d'autres questions, je peux te solliciter ?",
+          "usage": "Groupe nominal pour évoquer des interrogations supplémentaires."
+        },
+        {
+          "id": "T2M5S12V11",
+          "kind": "collocation",
+          "french": "gentil de ta part",
+          "english": "kind of you",
+          "example": "Salut ! Merci pour l'invitation — c'est vraiment gentil de ta part. C'est pour quelle occasion exactement — un anniversaire ou une pendaison de crémaillère ?",
+          "usage": "Locution figée après 'c'est' pour remercier quelqu'un de son geste."
+        },
+        {
+          "id": "T2M5S12V12",
+          "kind": "collocation",
+          "french": "en semaine",
+          "english": "on weekdays",
+          "example": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "usage": "Locution prépositionnelle fixe opposée à 'le week-end'."
+        },
+        {
+          "id": "T2M5S12V13",
+          "kind": "collocation",
+          "french": "à l'heure pile",
+          "english": "right on time",
+          "example": "À quelle heure ça commence — je devrais arriver à l'heure pile ou un peu plus tard ?",
+          "usage": "Groupe prépositionnel figé insistant sur la ponctualité exacte."
+        },
+        {
+          "id": "T2M5S12V14",
+          "kind": "collocation",
+          "french": "accessible en transports en commun",
+          "english": "accessible by public transport",
+          "example": "Ça se passe où exactement — chez quelqu'un ou dans un lieu loué ? C'est facilement accessible en transports en commun ?",
+          "usage": "Association adjectif + groupe prépositionnel pour décrire la desserte d'un lieu."
+        },
+        {
+          "id": "T2M5S12V15",
+          "kind": "collocation",
+          "french": "un montant habituel",
+          "english": "a usual amount",
+          "example": "Parlons du budget — il y a un montant habituel pour ce genre de cadeau ou c'est vraiment selon nos moyens ?",
+          "usage": "Association nom + adjectif pour désigner une somme couramment pratiquée."
+        },
+        {
+          "id": "T2M5S12V16",
+          "kind": "collocation",
+          "french": "finit tard",
+          "english": "ends late",
+          "example": "Ça va durer jusqu'à quelle heure environ ? C'est une soirée qui finit tard ?",
+          "usage": "Association fréquente du verbe « finir » et de l'adverbe « tard » pour décrire l'heure de fin d'un événement."
+        },
+        {
+          "id": "T2M5S12V17",
+          "kind": "collocation",
+          "french": "facile de s'intégrer",
+          "english": "easy to fit in",
+          "example": "Y aura-t-il de la musique et de la danse ? Les gens seront sympas — ce sera facile de s'intégrer ?",
+          "usage": "Association adjectif + infinitif pour évaluer la facilité d'une intégration sociale."
+        },
+        {
+          "id": "T2M5S12V18",
+          "kind": "collocation",
+          "french": "j'appréhende un peu",
+          "english": "I'm a bit apprehensive",
+          "example": "C'est la première fête à laquelle je participe au Québec — j'appréhende un peu ! Y a-t-il des coutumes particulières que je devrais connaître ?",
+          "usage": "Association verbe + adverbe pour exprimer une légère inquiétude."
+        },
+        {
+          "id": "T2M5S12V19",
+          "kind": "collocation",
+          "french": "toutes ces infos",
+          "english": "all this info",
+          "example": "Merci pour toutes ces infos — si j'ai d'autres questions, je peux te solliciter ?",
+          "usage": "Groupe nominal familier pour désigner un ensemble de renseignements."
+        },
+        {
+          "id": "T2M5S12V20",
+          "kind": "collocation",
+          "french": "te solliciter",
+          "english": "to reach out to you",
+          "example": "Merci pour toutes ces infos — si j'ai d'autres questions, je peux te solliciter ?",
+          "usage": "Association pronom complément + infinitif pour demander la permission de recontacter quelqu'un."
+        },
+        {
+          "id": "T2M5S12V21",
+          "kind": "tournure",
+          "french": "C'est pour quelle occasion exactement",
+          "english": "What occasion is it exactly for",
+          "example": "Salut ! Merci pour l'invitation — c'est vraiment gentil de ta part. C'est pour quelle occasion exactement — un anniversaire ou une pendaison de crémaillère ?",
+          "usage": "Question orale avec le groupe interrogatif maintenu en position finale, sans inversion (registre courant)."
+        },
+        {
+          "id": "T2M5S12V22",
+          "kind": "tournure",
+          "french": "Ça a lieu quel jour exactement",
+          "english": "What day exactly does it take place",
+          "example": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "usage": "Question orale avec l'expression interrogative placée après le verbe, sans inversion (registre courant)."
+        },
+        {
+          "id": "T2M5S12V23",
+          "kind": "tournure",
+          "french": "Ça va durer jusqu'à quelle heure environ",
+          "english": "Until what time roughly will it last",
+          "example": "Ça va durer jusqu'à quelle heure environ ? C'est une soirée qui finit tard ?",
+          "usage": "Question orale avec le groupe interrogatif maintenu après le verbe, sans inversion (registre courant)."
+        },
+        {
+          "id": "T2M5S12V24",
+          "kind": "tournure",
+          "french": "Est-ce que je vais connaître d'autres invités ou est-ce que je serai la seule nouvelle personne",
+          "english": "Am I going to know other guests or will I be the only new person",
+          "example": "Est-ce que je vais connaître d'autres invités ou est-ce que je serai la seule nouvelle personne ?",
+          "usage": "Structure interrogative alternative avec deux propositions introduites par 'est-ce que', reliées par 'ou'."
+        },
+        {
+          "id": "T2M5S12V25",
+          "kind": "tournure",
+          "french": "Est-ce que je dois apporter un cadeau",
+          "english": "Do I need to bring a gift",
+          "example": "Est-ce que je dois apporter un cadeau ? Est-ce la coutume ici au Québec — et si oui, tu aurais des suggestions ?",
+          "usage": "Question fermée avec 'est-ce que' pour demander une obligation, sans inversion."
+        },
+        {
+          "id": "T2M5S12V26",
+          "kind": "tournure",
+          "french": "Est-ce la coutume ici au Québec",
+          "english": "Is that the custom here in Quebec",
+          "example": "Est-ce que je dois apporter un cadeau ? Est-ce la coutume ici au Québec — et si oui, tu aurais des suggestions ?",
+          "usage": "Tournure avec inversion figée : « est-ce » résulte de l'inversion du sujet « ce » après le verbe « est » (« c'est » → « est-ce »), utilisée ici pour vérifier une pratique habituelle."
+        },
+        {
+          "id": "T2M5S12V27",
+          "kind": "tournure",
+          "french": "Est-ce que je peux apporter quelque chose à manger ou à boire plutôt qu'un cadeau",
+          "english": "Can I bring something to eat or drink instead of a gift",
+          "example": "Est-ce que je peux apporter quelque chose à manger ou à boire plutôt qu'un cadeau ?",
+          "usage": "Question avec 'est-ce que' proposant une alternative à l'aide de 'plutôt que'."
+        },
+        {
+          "id": "T2M5S12V28",
+          "kind": "tournure",
+          "french": "Comment se passe la nourriture",
+          "english": "How does the food work out / What's the food situation",
+          "example": "Comment se passe la nourriture — c'est un buffet, un repas assis ou un cocktail ? Il y aura de l'alcool ?",
+          "usage": "Question soutenue avec inversion du sujet 'la nourriture' après le verbe pronominal 'passe'."
+        },
+        {
+          "id": "T2M5S12V29",
+          "kind": "tournure",
+          "french": "C'est la première fête à laquelle je participe au Québec",
+          "english": "This is the first party I'm attending in Quebec",
+          "example": "C'est la première fête à laquelle je participe au Québec — j'appréhende un peu ! Y a-t-il des coutumes particulières que je devrais connaître ?",
+          "usage": "Structure avec le pronom relatif composé 'à laquelle' après 'la première fête'."
+        },
+        {
+          "id": "T2M5S12V30",
+          "kind": "tournure",
+          "french": "c'est plutôt formel ou décontracté",
+          "english": "is it rather formal or casual",
+          "example": "Concernant la tenue — c'est plutôt formel ou décontracté ? Il y a un thème ou un code couleur particulier ?",
+          "usage": "Question fermée proposant une alternative à l'aide de deux adjectifs opposés."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-03:subject-13",
+      "entries": [
+        {
+          "id": "T2M5S13V01",
+          "kind": "mot-cle",
+          "french": "un club de sport",
+          "english": "a sports club",
+          "example": "Bonjour ! Je viens d'emménager dans le quartier et je cherche un club de sport. Pourriez-vous me parler des différentes activités que vous proposez ici ?",
+          "usage": "Groupe nominal désignant un établissement dédié aux activités physiques."
+        },
+        {
+          "id": "T2M5S13V02",
+          "kind": "mot-cle",
+          "french": "des cours collectifs",
+          "english": "group classes",
+          "example": "Est-ce qu'il y a des cours collectifs — yoga, pilates, spinning — ou c'est surtout de la musculation ?",
+          "usage": "Groupe nominal opposé à 'de la musculation' en salle."
+        },
+        {
+          "id": "T2M5S13V03",
+          "kind": "mot-cle",
+          "french": "un coach personnel",
+          "english": "a personal trainer",
+          "example": "Les cours sont-ils donnés par des professeurs qualifiés ? Et est-ce qu'il y a un coach personnel disponible si j'en ai besoin ?",
+          "usage": "Groupe nominal désignant un entraîneur dédié à un seul client."
+        },
+        {
+          "id": "T2M5S13V04",
+          "kind": "mot-cle",
+          "french": "les horaires d'ouverture",
+          "english": "the opening hours",
+          "example": "Quels sont les horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "usage": "Groupe nominal indiquant les plages horaires d'accès à un établissement."
+        },
+        {
+          "id": "T2M5S13V05",
+          "kind": "mot-cle",
+          "french": "un abonnement",
+          "english": "a subscription/membership",
+          "example": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "usage": "Nom désignant un engagement payant régulier."
+        },
+        {
+          "id": "T2M5S13V06",
+          "kind": "mot-cle",
+          "french": "des tarifs réduits",
+          "english": "reduced rates",
+          "example": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "usage": "Groupe nominal désignant des prix diminués pour certains publics."
+        },
+        {
+          "id": "T2M5S13V07",
+          "kind": "mot-cle",
+          "french": "une période d'essai gratuite",
+          "english": "a free trial period",
+          "example": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "usage": "Groupe nominal désignant une durée d'essai sans frais avant engagement."
+        },
+        {
+          "id": "T2M5S13V08",
+          "kind": "mot-cle",
+          "french": "des vestiaires et des douches",
+          "english": "changing rooms and showers",
+          "example": "Qu'est-ce qu'il faut apporter comme équipement — ou est-ce que tout est fourni sur place ? Y a-t-il des vestiaires et des douches disponibles ?",
+          "usage": "Coordination de deux noms désignant les équipements sanitaires d'un club."
+        },
+        {
+          "id": "T2M5S13V09",
+          "kind": "mot-cle",
+          "french": "l'inscription",
+          "english": "the registration/sign-up",
+          "example": "Comment se passe l'inscription — en ligne ou uniquement sur place ? Il reste encore des places ?",
+          "usage": "Nom désignant la démarche administrative pour devenir membre."
+        },
+        {
+          "id": "T2M5S13V10",
+          "kind": "mot-cle",
+          "french": "des professeurs qualifiés",
+          "english": "qualified instructors",
+          "example": "Les cours sont-ils donnés par des professeurs qualifiés ? Et est-ce qu'il y a un coach personnel disponible si j'en ai besoin ?",
+          "usage": "Groupe nominal désignant des enseignants formés et compétents."
+        },
+        {
+          "id": "T2M5S13V11",
+          "kind": "collocation",
+          "french": "emménager dans le quartier",
+          "english": "to move into the neighborhood",
+          "example": "Bonjour ! Je viens d'emménager dans le quartier et je cherche un club de sport. Pourriez-vous me parler des différentes activités que vous proposez ici ?",
+          "usage": "Association verbe + groupe prépositionnel pour décrire une installation récente."
+        },
+        {
+          "id": "T2M5S13V12",
+          "kind": "collocation",
+          "french": "en fin de journée",
+          "english": "at the end of the day",
+          "example": "À quelle heure commencent les cours collectifs — plutôt le matin ou en fin de journée ?",
+          "usage": "Expression de temps fréquente à l'oral pour désigner la fin d'après-midi ou le soir."
+        },
+        {
+          "id": "T2M5S13V13",
+          "kind": "collocation",
+          "french": "se sentir perdu(e)",
+          "english": "to feel lost",
+          "example": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ? Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "usage": "Association verbe pronominal + adjectif pour exprimer un sentiment de confusion."
+        },
+        {
+          "id": "T2M5S13V14",
+          "kind": "collocation",
+          "french": "souscrire à un abonnement",
+          "english": "to take out a subscription",
+          "example": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "usage": "Association verbe + préposition + nom pour décrire un engagement payant."
+        },
+        {
+          "id": "T2M5S13V15",
+          "kind": "collocation",
+          "french": "payer chaque activité séparément",
+          "english": "to pay for each activity separately",
+          "example": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "usage": "Association verbe + complément + adverbe pour décrire un mode de paiement à l'unité."
+        },
+        {
+          "id": "T2M5S13V16",
+          "kind": "collocation",
+          "french": "avant de s'engager",
+          "english": "before committing",
+          "example": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "usage": "Locution prépositionnelle + infinitif pronominal pour évoquer une période préalable à un engagement."
+        },
+        {
+          "id": "T2M5S13V17",
+          "kind": "collocation",
+          "french": "de manière flexible",
+          "english": "in a flexible way",
+          "example": "Une fois inscrit(e), on s'engage pour toute la session ou on peut venir de manière flexible ?",
+          "usage": "Groupe adverbial fixe pour décrire une organisation souple."
+        },
+        {
+          "id": "T2M5S13V18",
+          "kind": "collocation",
+          "french": "suspendre l'abonnement",
+          "english": "to suspend the subscription",
+          "example": "Est-ce qu'il est possible de suspendre l'abonnement si nécessaire ?",
+          "usage": "Association verbe + nom pour décrire l'interruption temporaire d'un engagement."
+        },
+        {
+          "id": "T2M5S13V19",
+          "kind": "collocation",
+          "french": "se remettre en forme",
+          "english": "to get back in shape",
+          "example": "Pour finir — quelle activité me recommanderiez-vous pour quelqu'un qui veut se remettre en forme et se tonifier ?",
+          "usage": "Association verbe pronominal + groupe prépositionnel pour évoquer un objectif de remise en forme."
+        },
+        {
+          "id": "T2M5S13V20",
+          "kind": "collocation",
+          "french": "venir librement",
+          "english": "to come freely / without booking",
+          "example": "Il faut s'inscrire à l'avance pour les cours ou on peut venir librement ?",
+          "usage": "Association verbe + adverbe pour décrire une fréquentation sans contrainte d'horaire."
+        },
+        {
+          "id": "T2M5S13V21",
+          "kind": "tournure",
+          "french": "Pourriez-vous me parler des différentes activités que vous proposez ici",
+          "english": "Could you tell me about the different activities you offer here",
+          "example": "Bonjour ! Je viens d'emménager dans le quartier et je cherche un club de sport. Pourriez-vous me parler des différentes activités que vous proposez ici ?",
+          "usage": "Formule de politesse avec inversion du sujet après le conditionnel 'pourriez', registre vouvoiement."
+        },
+        {
+          "id": "T2M5S13V22",
+          "kind": "tournure",
+          "french": "Est-ce qu'il y a des cours collectifs",
+          "english": "Are there group classes",
+          "example": "Est-ce qu'il y a des cours collectifs — yoga, pilates, spinning — ou c'est surtout de la musculation ?",
+          "usage": "Structure avec 'est-ce que' pour poser une question fermée sans inversion."
+        },
+        {
+          "id": "T2M5S13V23",
+          "kind": "tournure",
+          "french": "Ça s'adresse à quel public",
+          "english": "Who is it aimed at",
+          "example": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ? Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "usage": "Question orale avec le groupe interrogatif 'quel public' maintenu après le verbe, sans inversion."
+        },
+        {
+          "id": "T2M5S13V24",
+          "kind": "tournure",
+          "french": "Les cours sont-ils donnés par des professeurs qualifiés",
+          "english": "Are the classes taught by qualified instructors",
+          "example": "Les cours sont-ils donnés par des professeurs qualifiés ? Et est-ce qu'il y a un coach personnel disponible si j'en ai besoin ?",
+          "usage": "Question avec inversion du pronom sujet 'ils' relié au verbe par un trait d'union."
+        },
+        {
+          "id": "T2M5S13V25",
+          "kind": "tournure",
+          "french": "Quels sont les horaires d'ouverture",
+          "english": "What are the opening hours",
+          "example": "Quels sont les horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "usage": "Question soutenue avec inversion du sujet 'les horaires d'ouverture' après le verbe 'sont'."
+        },
+        {
+          "id": "T2M5S13V26",
+          "kind": "tournure",
+          "french": "Comment fonctionnent les tarifs",
+          "english": "How do the rates work",
+          "example": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "usage": "Question soutenue avec inversion du sujet 'les tarifs' après le verbe 'fonctionnent'."
+        },
+        {
+          "id": "T2M5S13V27",
+          "kind": "tournure",
+          "french": "Le tarif comprend quoi exactement",
+          "english": "What exactly does the price include",
+          "example": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "usage": "Question orale à l'ordre habituel sujet-verbe, avec 'quoi' maintenu en position finale."
+        },
+        {
+          "id": "T2M5S13V28",
+          "kind": "tournure",
+          "french": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles",
+          "english": "Are there reduced rates for students, seniors or families",
+          "example": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "usage": "Tournure interrogative soutenue avec inversion 'y a-t-il' et '-t-' euphonique."
+        },
+        {
+          "id": "T2M5S13V29",
+          "kind": "tournure",
+          "french": "Qu'est-ce qu'il faut apporter comme équipement",
+          "english": "What equipment do you need to bring",
+          "example": "Qu'est-ce qu'il faut apporter comme équipement — ou est-ce que tout est fourni sur place ? Y a-t-il des vestiaires et des douches disponibles ?",
+          "usage": "Structure avec 'qu'est-ce que' pour interroger sur un contenu, sans inversion."
+        },
+        {
+          "id": "T2M5S13V30",
+          "kind": "tournure",
+          "french": "Comment se passe l'inscription",
+          "english": "How does the registration work",
+          "example": "Comment se passe l'inscription — en ligne ou uniquement sur place ? Il reste encore des places ?",
+          "usage": "Question soutenue avec inversion du sujet 'l'inscription' après le verbe pronominal 'passe'."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:mai:batch-03:subject-14",
+      "entries": [
+        {
+          "id": "T2M5S14V01",
+          "kind": "mot-cle",
+          "french": "les collections principales",
+          "english": "the main collections",
+          "example": "Bonjour ! Mes amis et moi aimerions visiter votre musée — c'est la première fois que nous venons. Quelles sont les collections principales qu'on peut voir ici ?",
+          "usage": "Groupe nominal désignant les ensembles d'œuvres phares d'un musée."
+        },
+        {
+          "id": "T2M5S14V02",
+          "kind": "mot-cle",
+          "french": "un parking à proximité",
+          "english": "nearby parking",
+          "example": "Où se trouve exactement le musée — est-il facilement accessible en transports en commun ? Y a-t-il un parking à proximité ?",
+          "usage": "Groupe nominal désignant un stationnement situé à faible distance."
+        },
+        {
+          "id": "T2M5S14V03",
+          "kind": "mot-cle",
+          "french": "vos horaires d'ouverture",
+          "english": "your opening hours",
+          "example": "Quels sont vos horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "usage": "Groupe nominal indiquant les plages horaires d'accès à un établissement."
+        },
+        {
+          "id": "T2M5S14V04",
+          "kind": "mot-cle",
+          "french": "la foule",
+          "english": "the crowd",
+          "example": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ? On voudrait éviter la foule — quel moment nous conseillez-vous ?",
+          "usage": "Nom collectif désignant un grand nombre de visiteurs réunis."
+        },
+        {
+          "id": "T2M5S14V05",
+          "kind": "mot-cle",
+          "french": "des tarifs de groupe",
+          "english": "group rates",
+          "example": "Nous serons cinq ou six personnes — proposez-vous des tarifs de groupe ?",
+          "usage": "Groupe nominal désignant des prix spécifiques pour plusieurs personnes."
+        },
+        {
+          "id": "T2M5S14V06",
+          "kind": "mot-cle",
+          "french": "la collection permanente",
+          "english": "the permanent collection",
+          "example": "Y a-t-il des expositions temporaires en ce moment en plus de la collection permanente ?",
+          "usage": "Groupe nominal opposé à 'les expositions temporaires'."
+        },
+        {
+          "id": "T2M5S14V07",
+          "kind": "mot-cle",
+          "french": "un supplément",
+          "english": "an extra fee/surcharge",
+          "example": "Les expositions temporaires sont incluses dans le billet d'entrée ou faut-il payer un supplément ? Jusqu'à quand seront-elles accessibles ?",
+          "usage": "Nom désignant un montant additionnel à payer."
+        },
+        {
+          "id": "T2M5S14V08",
+          "kind": "mot-cle",
+          "french": "une visite guidée",
+          "english": "a guided tour",
+          "example": "Quelle est la durée d'une visite guidée — environ une heure ou plutôt une heure et demie ? Et dans quelles langues les visites sont-elles proposées ?",
+          "usage": "Groupe nominal désignant une visite accompagnée par un guide."
+        },
+        {
+          "id": "T2M5S14V09",
+          "kind": "mot-cle",
+          "french": "un audioguide",
+          "english": "an audio guide",
+          "example": "Y a-t-il un audioguide disponible — c'est gratuit ou payant ? Et on peut prendre des photos à l'intérieur ?",
+          "usage": "Nom composé désignant un appareil de guidage sonore pour les visiteurs."
+        },
+        {
+          "id": "T2M5S14V10",
+          "kind": "mot-cle",
+          "french": "une boutique de souvenirs",
+          "english": "a souvenir shop",
+          "example": "Y a-t-il une boutique de souvenirs ou une librairie sur place ?",
+          "usage": "Groupe nominal désignant un commerce vendant des objets commémoratifs."
+        },
+        {
+          "id": "T2M5S14V11",
+          "kind": "collocation",
+          "french": "la première fois que nous venons",
+          "english": "the first time we're coming",
+          "example": "Bonjour ! Mes amis et moi aimerions visiter votre musée — c'est la première fois que nous venons. Quelles sont les collections principales qu'on peut voir ici ?",
+          "usage": "Association temporelle 'la première fois que' + proposition, pour signaler une découverte."
+        },
+        {
+          "id": "T2M5S14V12",
+          "kind": "collocation",
+          "french": "facilement accessible",
+          "english": "easily accessible",
+          "example": "Où se trouve exactement le musée — est-il facilement accessible en transports en commun ? Y a-t-il un parking à proximité ?",
+          "usage": "Association adverbe + adjectif pour décrire la facilité d'accès à un lieu."
+        },
+        {
+          "id": "T2M5S14V13",
+          "kind": "collocation",
+          "french": "y compris le week-end",
+          "english": "including the weekend",
+          "example": "Quels sont vos horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "usage": "Locution figée pour préciser qu'une règle s'applique aussi le week-end."
+        },
+        {
+          "id": "T2M5S14V14",
+          "kind": "collocation",
+          "french": "éviter la foule",
+          "english": "to avoid the crowd",
+          "example": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ? On voudrait éviter la foule — quel moment nous conseillez-vous ?",
+          "usage": "Association verbe + nom pour exprimer le souhait de ne pas croiser trop de monde."
+        },
+        {
+          "id": "T2M5S14V15",
+          "kind": "collocation",
+          "french": "en ce moment",
+          "english": "at the moment/currently",
+          "example": "Y a-t-il des expositions temporaires en ce moment en plus de la collection permanente ?",
+          "usage": "Locution adverbiale fixe pour situer une action dans le présent."
+        },
+        {
+          "id": "T2M5S14V16",
+          "kind": "collocation",
+          "french": "payer un supplément",
+          "english": "to pay an extra fee",
+          "example": "Les expositions temporaires sont incluses dans le billet d'entrée ou faut-il payer un supplément ? Jusqu'à quand seront-elles accessibles ?",
+          "usage": "Association verbe + nom pour décrire un paiement additionnel."
+        },
+        {
+          "id": "T2M5S14V17",
+          "kind": "collocation",
+          "french": "inclus dans le tarif",
+          "english": "included in the price",
+          "example": "Proposez-vous des visites guidées — c'est inclus dans le tarif ou c'est un supplément ?",
+          "usage": "Association participe passé + groupe prépositionnel pour préciser le contenu d'un prix."
+        },
+        {
+          "id": "T2M5S14V18",
+          "kind": "collocation",
+          "french": "une heure et demie",
+          "english": "an hour and a half",
+          "example": "Quelle est la durée d'une visite guidée — environ une heure ou plutôt une heure et demie ? Et dans quelles langues les visites sont-elles proposées ?",
+          "usage": "Groupe nominal figé pour exprimer une durée précise."
+        },
+        {
+          "id": "T2M5S14V19",
+          "kind": "collocation",
+          "french": "prendre des photos",
+          "english": "to take photos",
+          "example": "Y a-t-il un audioguide disponible — c'est gratuit ou payant ? Et on peut prendre des photos à l'intérieur ?",
+          "usage": "Association verbe + nom très courante pour évoquer la prise de clichés."
+        },
+        {
+          "id": "T2M5S14V20",
+          "kind": "collocation",
+          "french": "sur place",
+          "english": "on-site",
+          "example": "Y a-t-il une boutique de souvenirs ou une librairie sur place ?",
+          "usage": "Locution adverbiale figée pour indiquer que quelque chose se trouve à l'endroit même."
+        },
+        {
+          "id": "T2M5S14V21",
+          "kind": "tournure",
+          "french": "Quelles sont les collections principales qu'on peut voir ici",
+          "english": "What are the main collections one can see here",
+          "example": "Bonjour ! Mes amis et moi aimerions visiter votre musée — c'est la première fois que nous venons. Quelles sont les collections principales qu'on peut voir ici ?",
+          "usage": "Question soutenue avec inversion du sujet 'les collections principales' après le verbe 'sont'."
+        },
+        {
+          "id": "T2M5S14V22",
+          "kind": "tournure",
+          "french": "Où se trouve exactement le musée",
+          "english": "Where exactly is the museum located",
+          "example": "Où se trouve exactement le musée — est-il facilement accessible en transports en commun ? Y a-t-il un parking à proximité ?",
+          "usage": "Question soutenue avec inversion du sujet 'le musée' après le verbe pronominal 'se trouve'."
+        },
+        {
+          "id": "T2M5S14V23",
+          "kind": "tournure",
+          "french": "Quels sont vos horaires d'ouverture",
+          "english": "What are your opening hours",
+          "example": "Quels sont vos horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "usage": "Question soutenue avec inversion du sujet 'vos horaires d'ouverture' après le verbe 'sont'."
+        },
+        {
+          "id": "T2M5S14V24",
+          "kind": "tournure",
+          "french": "quel moment nous conseillez-vous",
+          "english": "what time would you recommend to us",
+          "example": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ? On voudrait éviter la foule — quel moment nous conseillez-vous ?",
+          "usage": "Question avec antéposition du groupe interrogatif 'quel moment' devant le sujet-verbe inversé 'conseillez-vous'."
+        },
+        {
+          "id": "T2M5S14V25",
+          "kind": "tournure",
+          "french": "Combien de temps faut-il prévoir pour visiter l'ensemble du musée",
+          "english": "How much time should one plan to visit the whole museum",
+          "example": "Combien de temps faut-il prévoir pour visiter l'ensemble du musée — quelques heures ou toute la journée ?",
+          "usage": "Question soutenue avec inversion impersonnelle 'faut-il'."
+        },
+        {
+          "id": "T2M5S14V26",
+          "kind": "tournure",
+          "french": "combien est-ce que ça coûte approximativement",
+          "english": "roughly how much does it cost",
+          "example": "Parlons du budget — combien est-ce que ça coûte approximativement ? Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "usage": "Tournure interrogative avec 'est-ce que', qui évite l'inversion du sujet."
+        },
+        {
+          "id": "T2M5S14V27",
+          "kind": "tournure",
+          "french": "proposez-vous des tarifs de groupe",
+          "english": "do you offer group rates",
+          "example": "Nous serons cinq ou six personnes — proposez-vous des tarifs de groupe ?",
+          "usage": "Question avec inversion du sujet 'vous' relié au verbe par un trait d'union, registre vouvoiement."
+        },
+        {
+          "id": "T2M5S14V28",
+          "kind": "tournure",
+          "french": "Jusqu'à quand seront-elles accessibles",
+          "english": "Until when will they be accessible",
+          "example": "Les expositions temporaires sont incluses dans le billet d'entrée ou faut-il payer un supplément ? Jusqu'à quand seront-elles accessibles ?",
+          "usage": "Question soutenue avec inversion du pronom sujet 'elles' relié au verbe par un trait d'union."
+        },
+        {
+          "id": "T2M5S14V29",
+          "kind": "tournure",
+          "french": "Proposez-vous des visites guidées",
+          "english": "Do you offer guided tours",
+          "example": "Proposez-vous des visites guidées — c'est inclus dans le tarif ou c'est un supplément ?",
+          "usage": "Question avec inversion du sujet 'vous' relié au verbe par un trait d'union, registre vouvoiement."
+        },
+        {
+          "id": "T2M5S14V30",
+          "kind": "tournure",
+          "french": "Il faut s'inscrire à l'avance pour les visites guidées",
+          "english": "You need to register in advance for guided tours",
+          "example": "Il faut s'inscrire à l'avance pour les visites guidées ou on peut venir librement ?",
+          "usage": "Tournure impersonnelle avec 'il faut' exprimant une nécessité, sans inversion."
+        }
+      ]
+    }
+  ]
+}

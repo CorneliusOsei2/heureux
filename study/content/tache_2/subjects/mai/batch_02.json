@@ -1,0 +1,355 @@
+{
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "batch": 2,
+  "subjects": [
+    {
+      "number": 6,
+      "title": "Voyage récent au Canada – Expérience d'un collègue",
+      "prompt": "Je suis votre collègue et j'ai récemment voyagé au Canada. Vous êtes intéressé(e) par mon expérience et vous me posez des questions sur ce séjour (activités, moyens de transport, loisirs, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'ai appris que tu avais récemment voyagé au Canada — tu pourrais me raconter un peu ton séjour ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Qu'est-ce qui t'a donné envie de choisir le Canada pour ce voyage ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Tu es allé(e) dans quelles villes ou quelles régions exactement ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Combien de temps es-tu resté(e) sur place ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Tu es parti(e) seul(e), avec des proches ou dans le cadre d'un voyage organisé ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Comment te déplaçais-tu entre les différentes étapes — en train, en bus ou en voiture ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Quelles activités as-tu faites — plutôt culturelles, en pleine nature ou un mélange des deux ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Y avait-il des visites ou des excursions que tu recommanderais particulièrement ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Tu logeais plutôt à l'hôtel, en auberge ou ailleurs ?",
+          "memory_section": 6
+        },
+        {
+          "text": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça t'a coûté approximativement au total ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Quel temps faisait-il généralement — il fallait prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Qu'est-ce que tu as le plus apprécié ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Y a-t-il quelque chose qui t'a moins plu ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule étape ou activité, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Maison à louer en bord de mer",
+      "prompt": "Je suis votre voisin(e) et je propose une maison à louer en bord de mer. Vous êtes intéressé(e) et vous me posez des questions sur cette location.",
+      "questions": [
+        {
+          "text": "Bonjour ! Vous m'avez parlé de votre maison à louer en bord de mer — elle est située où exactement ?",
+          "memory_section": 19
+        },
+        {
+          "text": "La plage se trouve à quelle distance — on peut y aller à pied ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Quelle est la superficie de la maison — et combien de chambres y a-t-il ?"
+        },
+        {
+          "text": "Elle peut accueillir combien de personnes confortablement ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Est-ce que la maison est entièrement meublée, et quels équipements sont disponibles sur place ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Y a-t-il aussi un espace extérieur, comme une terrasse ou un jardin ?",
+          "memory_section": 16
+        },
+        {
+          "text": "La maison est disponible pour quelle période — à la semaine, pour quelques mois ou à l'année ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Y a-t-il une durée minimale de location ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Et côté tarifs, combien coûte la location — à la semaine ou au mois ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Le tarif comprend quoi exactement — les charges et l'eau sont-elles incluses ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Faut-il verser une caution — et le paiement se fait-il en une seule fois ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Comment est le quartier en général — plutôt calme ou animé ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Y a-t-il des commerces et des restaurants accessibles à pied ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Y a-t-il un parking à proximité ou il vaut mieux venir en transports en commun ?",
+          "memory_section": 13
+        },
+        {
+          "text": "D'accord, est-ce que je pourrais visiter la maison avant de m'engager et vous recontacter ensuite ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Surveiller l'appartement d'un ami",
+      "prompt": "Je suis votre ami(e). Je pars bientôt en vacances et je souhaite que vous surveilliez mon appartement pendant mon absence. Vous me posez des questions (dates, choses à faire, consignes, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Bien sûr, je peux surveiller ton appartement — tu pars à quelles dates exactement ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Tu veux que je passe à quelle fréquence — tous les jours ou seulement quelques fois pendant ton absence ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Qu'est-ce qu'il faudra faire en priorité pendant que tu seras parti(e) ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Est-ce que je dois relever le courrier et récupérer les éventuels colis ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Y a-t-il des plantes à arroser — et si oui, à quelle fréquence ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Est-ce qu'il y a un animal à nourrir ou d'autres responsabilités particulières ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Faut-il ouvrir les fenêtres, régler le chauffage ou vérifier quelque chose de précis dans l'appartement ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Il y a une routine à suivre, ou je peux m'adapter assez librement ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Comment est-ce que j'entre — tu vas me laisser un double des clés ou il y a un code ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Y a-t-il une alarme ou des consignes de sécurité particulières à respecter ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Est-ce que quelqu'un d'autre risque de passer pendant ton absence — un voisin, un proche ou une entreprise de livraison ?",
+          "memory_section": 19
+        },
+        {
+          "text": "En cas de problème dans l'immeuble, à qui faut-il s'adresser ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Est-ce que tu seras facilement joignable pendant ton séjour ?",
+          "memory_section": 19
+        },
+        {
+          "text": "S'il y a une urgence et que je n'arrive pas à te joindre, qui est-ce que je dois contacter ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Pour finir, comment veux-tu que je te rende les clés à ton retour ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Passion pour la montagne – Rencontre en gare",
+      "prompt": "Nous venons de faire connaissance dans une gare. Vous engagez la conversation avec moi pour en savoir plus sur ma passion pour la montagne, et vous me posez des questions à ce sujet.",
+      "questions": [
+        {
+          "text": "Vous m'avez dit que vous étiez passionné(e) par la montagne — vous pratiquez depuis longtemps ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Comment est née votre passion pour la montagne ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Quelles activités pratiquez-vous surtout — la randonnée, l'escalade, le ski ou un peu de tout ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Vous avez une région ou une station préférée ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Vous y allez à quelle fréquence — seulement pendant les vacances ou aussi certains week-ends ?",
+          "memory_section": 2
+        },
+        {
+          "text": "C'est une bonne période pour aller en montagne ou il vaut mieux attendre une autre saison ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Ces activités s'adressent aussi aux débutants ou faut-il déjà avoir de l'expérience ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Faut-il une préparation physique particulière avant de commencer ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter comme équipement pour une première sortie ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Est-ce qu'on peut louer le matériel sur place ou il vaut mieux avoir le sien ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Y a-t-il des précautions particulières à prendre ou des choses à éviter ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Vous partez généralement seul(e), avec des amis ou avec un guide ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Qu'est-ce que vous appréciez le plus quand vous êtes en montagne ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me recommander qu'un seul endroit pour débuter, ce serait lequel ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Livraison d'un meuble",
+      "prompt": "Je travaille pour une entreprise de livraison. Vous voulez commander un meuble et vous me posez des questions pour connaître les détails (prix, délai de livraison, conditions, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je voudrais commander un meuble et me renseigner sur la livraison — quelles sont les différentes options proposées ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Le prix de la livraison dépend-il de la taille du meuble ou de la distance ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que la livraison coûte approximativement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Le tarif comprend quoi exactement — le transport et la livraison jusque dans la pièce sont-ils inclus ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Quel délai faut-il prévoir entre la commande et la livraison ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Est-ce qu'on peut choisir le jour et un créneau horaire précis ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Proposez-vous aussi des livraisons le soir ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment puis-je suivre ma commande et savoir à quelle heure le livreur arrivera ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Faut-il vous signaler à l'avance qu'il y a des escaliers ou un ascenseur assez étroit ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Le meuble sera-t-il protégé et emballé pendant le transport ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Est-ce que vos livreurs peuvent aussi monter le meuble sur place, ou est-ce à moi de le faire ?",
+          "memory_section": 10
+        },
+        {
+          "text": "En cas de retard ou d'imprévu, comment ça se passe ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "Et si le meuble arrive endommagé, quelles sont les démarches à suivre ?",
+          "memory_number": 2,
+          "memory_section": 3
+        },
+        {
+          "text": "Quelles sont les conditions pour modifier ou annuler la livraison ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "S'il y a le moindre souci, à qui faut-il s'adresser ?",
+          "memory_section": 19
+        }
+      ]
+    }
+  ]
+}

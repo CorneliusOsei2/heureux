@@ -1,0 +1,346 @@
+{
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "batch": 4,
+  "subjects": [
+    {
+      "number": 15,
+      "title": "Ville à visiter le temps d'un week-end",
+      "prompt": "Nous sommes collègues. Vous souhaitez partir en week-end et je vous conseille de visiter une ville que je connais bien. Vous me posez des questions sur cette ville (hébergements, restaurants, lieux à visiter, etc.).",
+      "questions": [
+        {
+          "text": "Tu m'as conseillé de visiter cette ville pour le week-end — qu'est-ce qui te plaît le plus là-bas ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Quelle est la distance — c'est à combien de temps d'ici environ ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Combien de temps faut-il prévoir pour bien découvrir la ville — deux jours suffisent ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Selon toi, quels sont les endroits incontournables que je devrais absolument voir ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Il y a des musées, des monuments ou des sites culturels qui valent vraiment la peine ?",
+          "memory_section": 12
+        },
+        {
+          "text": "Et côté plein air, est-ce qu'il y a de beaux parcs ou des quartiers agréables où se promener ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Il y a des événements spéciaux ou des animations pendant le week-end ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Tu connais de bons endroits où dormir — hôtels, chambres d'hôtes, auberges ?",
+          "memory_section": 6
+        },
+        {
+          "text": "C'est dans quelle gamme de prix pour l'hébergement — plutôt cher ou abordable ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Il faut réserver une table à l'avance ou on peut y aller directement ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Une fois sur place, il vaut mieux utiliser les transports en commun ou tout peut se faire à pied ?",
+          "memory_section": 13
+        },
+        {
+          "text": "C'est une bonne période pour y aller — quel temps fait-il généralement à cette époque ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement au total pour un week-end ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Agence immobilière – Recherche d'un logement",
+      "prompt": "Je travaille dans une agence immobilière. Vous cherchez un logement. Vous me posez des questions sur les offres disponibles (types de logement, prix, localisation, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour, je suis à la recherche d'un logement, en location ou à l'achat — qu'est-ce que vous avez de disponible en ce moment ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Je cherche plutôt un T2 ou un T3, meublé ou non — est-ce qu'il y a des options dans cette gamme ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Et ces biens sont dans quelle gamme de prix — plutôt abordables ou plutôt haut de gamme ?",
+          "memory_section": 1
+        },
+        {
+          "text": "En location, le loyer comprend quoi exactement — les charges, l'eau, le chauffage, c'est inclus ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Quels quartiers me conseilleriez-vous — et côté ambiance, c'est plutôt calme et résidentiel ou plus animé ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Et au niveau de l'accès, c'est facilement desservi en transports en commun ou il vaut mieux avoir une voiture ? S'il vaut mieux avoir une voiture, y a-t-il un parking à proximité ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Vous avez mentionné un quartier en particulier — vous pourriez m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Et les logements en eux-mêmes, ils sont en bon état général ou il y a des travaux à prévoir ?"
+        },
+        {
+          "text": "Pour la location, quelles sont les pièces à fournir pour le dossier — et est-ce qu'il faut un garant ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Et si je m'oriente plutôt vers l'achat, quelles sont les démarches — il faut un apport minimum ?",
+          "memory_section": 1
+        },
+        {
+          "text": "D'ailleurs, le marché est plutôt tendu en ce moment ou on trouve encore des offres intéressantes ?"
+        },
+        {
+          "text": "Sinon, y a-t-il des précautions particulières à prendre ou des choses à éviter ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Et concrètement, comment s'organisent les visites — c'est sur rendez-vous uniquement ?",
+          "memory_section": 11
+        },
+        {
+          "text": "D'accord, si j'ai encore une question, je peux vous recontacter ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Course à pied à Vancouver",
+      "prompt": "Je suis votre voisin(e). Je vais participer à une course à pied à Vancouver. Vous êtes intéressé(e). Vous me posez des questions sur cet événement (inscription, préparation, organisation, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Vous m'avez dit que vous allez participer à une course à pied à Vancouver — c'est quelle course exactement ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Ça a lieu quel jour exactement, et où se trouve le point de départ ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Quelles sont les différentes distances proposées — cinq kilomètres, dix kilomètres, semi-marathon ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Ça s'adresse aussi aux débutants ou faut-il déjà avoir de l'expérience ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou uniquement sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il reste encore des places ou les inscriptions ferment bientôt ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Et côté tarifs, combien coûte l'inscription ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Le tarif comprend quoi exactement — le dossard, le chronométrage et un ravitaillement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Combien de temps faut-il prévoir pour bien se préparer avant la course ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Est-ce qu'un programme d'entraînement ou un accompagnement est proposé aux participants ?",
+          "memory_number": 2,
+          "memory_section": 3
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter comme équipement le jour de la course ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Le parcours est comment — plutôt plat ou avec beaucoup de montées ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Y a-t-il des points d'eau et une assistance médicale tout au long du parcours ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Est-ce qu'il y a des règles particulières à respecter ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Pour finir — quelle distance me conseilleriez-vous pour une première participation ?",
+          "memory_number": 2,
+          "memory_section": 1
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Vacances dans une région connue d'un collègue",
+      "prompt": "Je suis votre collègue. Vous voulez partir en vacances dans une région que je connais bien. Vous me posez des questions sur cette région (activités, lieux touristiques, climat, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Tu connais bien cette région, alors j'aimerais préparer mes vacances — qu'est-ce que tu me conseilles en priorité ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Quelles villes ou quels villages méritent vraiment une visite ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Quels sont les lieux touristiques incontournables à ne pas manquer ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Côté nature, qu'est-ce que tu recommanderais — des parcs, des lacs ou des sentiers de randonnée ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Quelles activités peut-on faire sur place — plutôt culturelles, sportives ou un mélange des deux ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Y a-t-il des visites guidées ou des excursions intéressantes dans les environs ?",
+          "memory_section": 11
+        },
+        {
+          "text": "C'est une bonne période pour y aller ou il vaut mieux attendre une autre saison ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Combien de temps faut-il prévoir pour bien découvrir la région — une semaine ou plutôt deux ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Tu connais de bons endroits où dormir — hôtels, chambres d'hôtes, campings ?",
+          "memory_section": 6
+        },
+        {
+          "text": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Est-ce qu'il est facile de se déplacer en transports en commun — ou vaut-il mieux louer une voiture ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement au total ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Préparation d'une fête d'anniversaire",
+      "prompt": "Je suis votre ami(e). J'organise ma fête d'anniversaire. Vous voulez m'aider. Vous me posez des questions sur la préparation de la fête (repas, décoration, invités, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Je veux bien t'aider à préparer ton anniversaire — tu as déjà choisi la date et l'heure ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Ça se passe où exactement — chez toi ou dans un lieu loué ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Tu comptes inviter combien de personnes environ — ce sera une petite fête ou une grande soirée ?",
+          "memory_section": 14
+        },
+        {
+          "text": "La liste des invités est déjà prête ou tu veux que je t'aide à la compléter ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Tu veux une ambiance particulière — plutôt décontractée, élégante ou autour d'un thème ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Tu as déjà une idée pour la décoration — des couleurs ou un style précis ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Quel type de repas as-tu prévu — un buffet, un barbecue ou un repas assis ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Est-ce qu'il faut prévoir des plats végétariens ou tenir compte d'allergies ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Tu as déjà commandé le gâteau ou tu préfères qu'on le prépare nous-mêmes ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Qu'est-ce que tu veux proposer comme boissons — avec et sans alcool ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Pour la musique, tu as préparé une playlist ou tu veux que je m'en occupe ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Tu veux organiser des jeux ou des activités pendant la soirée ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que tu veux dépenser approximativement au total ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Tu as pensé à prendre des photos ou à confier ça à quelqu'un pendant la soirée ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Parmi tous ces préparatifs, de quoi veux-tu que je m'occupe en priorité ?",
+          "memory_section": 18
+        }
+      ]
+    }
+  ]
+}
