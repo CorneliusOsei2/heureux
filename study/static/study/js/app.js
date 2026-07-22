@@ -84,6 +84,24 @@
     window.addEventListener("hashchange", scrollActiveAnnotationAnchor);
   })();
 
+  /* ---------- Active Notes scope ---------- */
+  (function () {
+    var scopeNav = document.querySelector(".notes-scope-nav");
+    if (!scopeNav) return;
+    var activeScope = scopeNav.querySelector(".is-active");
+    if (!activeScope) return;
+
+    window.requestAnimationFrame(function () {
+      var navBox = scopeNav.getBoundingClientRect();
+      var activeBox = activeScope.getBoundingClientRect();
+      if (activeBox.left >= navBox.left && activeBox.right <= navBox.right) return;
+
+      var target = scopeNav.scrollLeft + activeBox.left - navBox.left -
+        (navBox.width - activeBox.width) / 2;
+      scopeNav.scrollTo({ left: Math.max(0, target), behavior: "auto" });
+    });
+  })();
+
   /* ---------- Tâche 2 month sections ---------- */
   (function () {
     var toggles = Array.from(

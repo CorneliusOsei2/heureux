@@ -74,11 +74,11 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v117"', body)
-        self.assertIn("study/css/app.css?v=110", body)
+        self.assertIn('var CACHE = "heureux-v121"', body)
+        self.assertIn("study/css/app.css?v=114", body)
         self.assertIn("study/js/memory-progress.js?v=2", body)
         self.assertIn("study/js/theme-init.js?v=2", body)
-        self.assertIn("study/js/app.js?v=35", body)
+        self.assertIn("study/js/app.js?v=36", body)
         self.assertIn("study/js/translate.js?v=13", body)
         self.assertIn("study/js/annotations.js?v=11", body)
         self.assertIn("study/icons/ui-icons.svg?v=3", body)
@@ -160,8 +160,50 @@ class SmokeTests(TestCase):
         self.assertNotContains(response, 'id="comprehension-vocabulary"')
         self.assertContains(
             response,
-            reverse("study:task_phrases", args=["eo", "tache-3"]),
+            reverse("study:part_vocabulary", args=["eo"]),
         )
+
+    def test_expression_vocabulary_tasks_open_subject_vocabulary(self):
+        prompt = Prompt.objects.select_related("theme__task__part").first()
+        subject_phrase = factories.make_phrase(tier="subject")
+        subject_phrase.source_prompts.add(prompt)
+        factories.make_phrase_card(phrase=subject_phrase, user=self.user)
+
+        directory_url = reverse(
+            "study:part_vocabulary",
+            args=[prompt.theme.task.part.slug],
+        )
+        task_vocabulary_url = reverse(
+            "study:task_phrases",
+            args=[prompt.theme.task.part.slug, prompt.theme.task.slug],
+        )
+        task_vocabulary_target = (
+            task_vocabulary_url + "#vocabulaire-par-sujet"
+        )
+        task_detail_url = reverse(
+            "study:task_detail",
+            args=[prompt.theme.task.part.slug, prompt.theme.task.slug],
+        )
+
+        directory = self.client.get(directory_url)
+
+        self.assertEqual(directory.status_code, 200)
+        self.assertTemplateUsed(directory, "study/vocabulary_part.html")
+        self.assertContains(
+            directory,
+            f'href="{task_vocabulary_target}"',
+            html=False,
+        )
+        self.assertNotContains(
+            directory,
+            f'href="{task_detail_url}"',
+            html=False,
+        )
+        self.assertContains(directory, "classé sujet par sujet")
+
+        task_vocabulary = self.client.get(task_vocabulary_url)
+        self.assertContains(task_vocabulary, "Vocabulaire par sujet")
+        self.assertContains(task_vocabulary, prompt.text)
 
     def test_written_comprehension_card_opens_only_test_decks(self):
         test = factories.make_comprehension_test(

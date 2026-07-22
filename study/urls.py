@@ -269,6 +269,11 @@ urlpatterns = [
         name="part_revisit_list",
     ),
     path(
+        "expression/<expression_part:part_slug>/vocabulaire/",
+        views.part_vocabulary,
+        name="part_vocabulary",
+    ),
+    path(
         "expression/<expression_part:part_slug>/<slug:task_slug>/",
         views.task_detail,
         name="task_detail",

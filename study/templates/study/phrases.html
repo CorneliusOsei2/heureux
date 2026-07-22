@@ -103,6 +103,11 @@
 </section>
 
 {% else %}
+{% if task %}
+<nav class="phrase-category-back" aria-label="Retour au vocabulaire">
+  <a href="{% url 'study:part_vocabulary' part.slug %}">{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Vocabulaire {{ part.short_name }}</a>
+</nav>
+{% endif %}
 <div class="vocabulary-hub">
   <header class="area-hero vocabulary-hero">
     <div class="area-hero__copy">
@@ -111,7 +116,7 @@
       {% if task %}
         <div class="active-filter">
           <span>Filtre actif · {{ part.short_name }} · {{ task.name }}</span>
-          <a href="{% url 'study:vocabulary' %}">Effacer</a>
+          <a href="{% url 'study:part_vocabulary' part.slug %}">Changer de tâche</a>
         </div>
       {% elif comprehension_directory %}
         <div class="active-filter">
@@ -127,14 +132,7 @@
     </dl>
   </header>
 
-  {% if task %}
-    {% if functional_categories or subject_theme_groups %}
-      {% include "study/partials/collection_view_toggle.html" %}
-    {% endif %}
-  {% elif comprehension_directory and comprehension_decks %}
-    {% include "study/partials/collection_view_toggle.html" %}
-  {% endif %}
-
+  <div class="vocabulary-summary-row">
   <section class="vocabulary-status-grid" aria-label="Votre vocabulaire à travailler">
     <a class="vocabulary-status vocabulary-status--due card" href="{% url 'study:review' %}?content=vocabulary">
       <span class="vocabulary-status__icon" aria-hidden="true">
@@ -174,6 +172,15 @@
       </span>
     </a>
   </section>
+
+  {% if task %}
+    {% if functional_categories or subject_theme_groups %}
+      {% include "study/partials/collection_view_toggle.html" %}
+    {% endif %}
+  {% elif comprehension_directory and comprehension_decks %}
+    {% include "study/partials/collection_view_toggle.html" %}
+  {% endif %}
+  </div>
 
   {% if vocabulary_landing %}
   <section class="vocabulary-domain vocabulary-domain--comprehension area-section" data-vocabulary-domain aria-labelledby="comprehension-paths-title">

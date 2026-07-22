@@ -69,7 +69,10 @@ from .common import (
     recent_review_sessions,
     summarize_review_batches,
 )
-from .dashboard import _vocabulary_expression_paths
+from .dashboard import (
+    _vocabulary_expression_paths,
+    _vocabulary_task_items,
+)
 
 def _subject_stats_for_themes(themes, user, now=None):
     now = now or timezone.now()
@@ -174,6 +177,45 @@ def part_detail(request, part_slug):
             "tasks": tasks,
             "available_task_count": sum(
                 task["task"].available for task in tasks
+            ),
+        },
+    )
+
+
+def part_vocabulary(request, part_slug):
+    part = get_object_or_404(
+        ExamPart.objects.filter(is_active=True).prefetch_related(
+            Prefetch("tasks", queryset=Task.objects.filter(is_active=True))
+        ),
+        slug=part_slug,
+    )
+    task_items = [
+        _task_card(task, timezone.now(), request.user)
+        for task in part.tasks.all()
+    ]
+    vocabulary_tasks = _vocabulary_task_items(
+        {"part": part, "tasks": task_items},
+        request.user,
+    )
+    if not part.available or not vocabulary_tasks:
+        return render(
+            request,
+            "study/coming_soon.html",
+            {"part": part, "task": None},
+        )
+    return render(
+        request,
+        "study/vocabulary_part.html",
+        {
+            "part": part,
+            "tasks": vocabulary_tasks,
+            "subject_count": sum(
+                item["vocabulary_prompt_count"]
+                for item in vocabulary_tasks
+            ),
+            "entry_count": sum(
+                item["vocabulary_count"]
+                for item in vocabulary_tasks
             ),
         },
     )

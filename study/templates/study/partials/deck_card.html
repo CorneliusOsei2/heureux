@@ -11,6 +11,7 @@ Params:
   guide         — optional question-bank summary instead of tracked progress.
   guide_title, count_categories, count_questions — guide content summary.
   count_prompts, count_responses — meta counts (available decks).
+  vocabulary + count_entries     — vocabulary-specific task summary.
   show_phrases + count_phrases   — append "· N expressions".
   show_complete + count_complete — append "· N terminé(s)".
   soon_meta     — meta line shown when not available (e.g. a task subtitle).
@@ -39,7 +40,7 @@ Params:
           </div>
         </div>
       {% else %}
-        <div class="deck__meta">{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_complete %} · {{ count_complete }} terminé{{ count_complete|pluralize }}{% endif %}</div>
+        <div class="deck__meta">{% if vocabulary %}{{ count_prompts }} sujets · {{ count_entries }} entrées{% else %}{{ count_prompts }} sujets · {{ count_responses }} réponses{% if show_phrases %} · {{ count_phrases }} expressions{% endif %}{% if show_complete %} · {{ count_complete }} terminé{{ count_complete|pluralize }}{% endif %}{% endif %}</div>
         <div class="deck__progress-cell">
           <span class="deck__progress-copy">{{ stats.completed }}/{{ stats.total }} terminés</span>
           <div class="progress">

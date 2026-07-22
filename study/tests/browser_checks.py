@@ -976,6 +976,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
 
     def test_subject_vocabulary_directory_searches_rich_decks(self):
+        self.page.set_viewport_size({"width": 1120, "height": 760})
         first_prompt = self.first.response.prompts.get(is_canonical=True)
         second_prompt = self.second.response.prompts.get(is_canonical=True)
         first_prompt.text = "Faut-il voyager pour découvrir le monde ?"
@@ -984,16 +985,65 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         second_prompt.save(update_fields=["text"])
         first_vocabulary = factories.make_phrase(tier="subject")
         first_vocabulary.source_prompts.add(first_prompt)
+        factories.make_phrase_card(
+            phrase=first_vocabulary,
+            user=self.user,
+        )
         second_vocabulary = factories.make_phrase(tier="subject")
         second_vocabulary.source_prompts.add(second_prompt)
+        factories.make_phrase_card(
+            phrase=second_vocabulary,
+            user=self.user,
+        )
 
         self.page.goto(
+            self.live_server_url + reverse("study:vocabulary")
+        )
+        self.page.locator(
+            "a[data-vocabulary-path].expression-path--eo"
+        ).click()
+        self.page.wait_for_url(
+            self.live_server_url
+            + reverse("study:part_vocabulary", args=[self.part.slug])
+        )
+        self.page.get_by_role(
+            "heading",
+            name=f"Vocabulaire · {self.part.name}",
+            exact=True,
+        ).wait_for()
+        self.assert_no_horizontal_overflow()
+        self.page.locator(
+            ".deck",
+            has_text=self.task.name,
+        ).click()
+        self.page.wait_for_url(
             self.live_server_url
             + reverse(
                 "study:task_phrases",
                 args=[self.part.slug, self.task.slug],
             )
+            + "#vocabulaire-par-sujet"
         )
+        summary_layout = self.page.evaluate(
+            """() => {
+              const hero = document.querySelector(
+                '.vocabulary-hub > .vocabulary-hero'
+              ).getBoundingClientRect();
+              const statuses = document.querySelector(
+                '.vocabulary-summary-row > .vocabulary-status-grid'
+              ).getBoundingClientRect();
+              const toolbar = document.querySelector(
+                '.vocabulary-summary-row > .collection-view-toolbar'
+              ).getBoundingClientRect();
+              return {
+                heroGap: statuses.top - hero.bottom,
+                sharesRow: toolbar.top < statuses.bottom &&
+                  toolbar.bottom > statuses.top,
+              };
+            }"""
+        )
+        self.assertLessEqual(summary_layout["heroGap"], 16)
+        self.assertTrue(summary_layout["sharesRow"])
 
         self.page.get_by_role(
             "heading",
@@ -2640,10 +2690,202 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             views_metric.evaluate("element => element.scrollWidth"),
             views_metric.evaluate("element => element.clientWidth"),
         )
+        mobile_hero_layout = self.page.locator(".home-hero").evaluate(
+            """hero => {
+              const heroBox = hero.getBoundingClientRect();
+              const copyBox = hero.querySelector(
+                '.home-hero__copy'
+              ).getBoundingClientRect();
+              const metrics = hero.querySelector('.home-hero__metrics');
+              const metricsBox = metrics.getBoundingClientRect();
+              const metricsStyle = getComputedStyle(metrics);
+              const heroStyle = getComputedStyle(hero);
+              return {
+                height: heroBox.height,
+                metricsWidth: metricsBox.width,
+                heroWidth: heroBox.width,
+                heroContentWidth: hero.clientWidth -
+                  parseFloat(heroStyle.paddingLeft) -
+                  parseFloat(heroStyle.paddingRight),
+                verticalGap: metricsBox.top - copyBox.bottom,
+                columns: metricsStyle.gridTemplateColumns.split(' ').length,
+                backgroundImage: heroStyle.backgroundImage,
+                radius: parseFloat(heroStyle.borderTopLeftRadius),
+              };
+            }"""
+        )
+        self.assertLessEqual(
+            mobile_hero_layout["height"], 190, mobile_hero_layout
+        )
+        self.assertAlmostEqual(
+            mobile_hero_layout["metricsWidth"],
+            mobile_hero_layout["heroContentWidth"],
+            delta=1,
+        )
+        self.assertLessEqual(mobile_hero_layout["verticalGap"], 12)
+        self.assertEqual(mobile_hero_layout["columns"], 3)
+        self.assertNotEqual(
+            mobile_hero_layout["backgroundImage"],
+            "none",
+            mobile_hero_layout,
+        )
+        self.assertGreaterEqual(mobile_hero_layout["radius"], 12)
         mobile_heights = self.page.locator(".daily-card").evaluate_all(
             "cards => cards.map(card => card.getBoundingClientRect().height)"
         )
         self.assertLessEqual(max(mobile_heights), 320)
+        self.assert_no_horizontal_overflow()
+
+    def test_mobile_active_notes_scope_scrolls_into_view(self):
+        for order, slug in enumerate(
+            ("tache-0", "tache-1", "tache-2"),
+            start=1,
+        ):
+            task = factories.make_task(part=self.part, slug=slug)
+            task.order = order
+            task.save(update_fields=["order"])
+        self.task.order = 99
+        self.task.save(update_fields=["order"])
+
+        self.page.set_viewport_size({"width": 320, "height": 568})
+        self.page.goto(
+            self.live_server_url
+            + reverse(
+                "study:task_notes",
+                args=[self.part.slug, self.task.slug],
+            )
+        )
+        self.page.wait_for_function(
+            """() => {
+              const nav = document.querySelector('.notes-scope-nav');
+              const active = nav && nav.querySelector('.is-active');
+              if (!active) return false;
+              const navBox = nav.getBoundingClientRect();
+              const activeBox = active.getBoundingClientRect();
+              return nav.scrollLeft > 0 &&
+                activeBox.left >= navBox.left - 1 &&
+                activeBox.right <= navBox.right + 1;
+            }"""
+        )
+        scope_layout = self.page.locator(".notes-scope-nav").evaluate(
+            """nav => {
+              const navBox = nav.getBoundingClientRect();
+              const activeBox = nav.querySelector(
+                '.is-active'
+              ).getBoundingClientRect();
+              return {
+                scrollLeft: nav.scrollLeft,
+                navLeft: navBox.left,
+                navRight: navBox.right,
+                activeLeft: activeBox.left,
+                activeRight: activeBox.right,
+              };
+            }"""
+        )
+        self.assertGreater(scope_layout["scrollLeft"], 0)
+        self.assertGreaterEqual(
+            scope_layout["activeLeft"],
+            scope_layout["navLeft"] - 1,
+        )
+        self.assertLessEqual(
+            scope_layout["activeRight"],
+            scope_layout["navRight"] + 1,
+        )
+        self.assert_no_horizontal_overflow()
+
+    def test_mobile_oral_audio_controls_are_circular_and_operable(self):
+        oral_test = factories.make_comprehension_test(
+            question_count=1,
+            mode=ComprehensionMode.ORALE,
+        )
+        self.page.add_init_script(
+            """
+            class FakeSpeechSynthesisUtterance {
+              constructor(text) {
+                this.text = text;
+              }
+            }
+            const fakeSpeechSynthesis = {
+              speaking: false,
+              pending: false,
+              paused: false,
+              getVoices() {
+                return [{
+                  name: 'Amélie',
+                  voiceURI: 'test-fr',
+                  lang: 'fr-FR',
+                  localService: true,
+                  default: true,
+                }];
+              },
+              addEventListener() {},
+              speak(utterance) {
+                this.lastUtterance = utterance;
+                this.speaking = true;
+              },
+              cancel() {
+                this.speaking = false;
+                this.pending = false;
+                this.paused = false;
+              },
+              resume() {
+                this.paused = false;
+              },
+            };
+            Object.defineProperty(window, 'speechSynthesis', {
+              configurable: true,
+              value: fakeSpeechSynthesis,
+            });
+            Object.defineProperty(window, 'SpeechSynthesisUtterance', {
+              configurable: true,
+              value: FakeSpeechSynthesisUtterance,
+            });
+            """
+        )
+        self.page.set_viewport_size({"width": 320, "height": 568})
+        self.page.goto(
+            self.live_server_url
+            + reverse(
+                "study:comprehension_oral_question_study",
+                args=[oral_test.slug, 1],
+            )
+        )
+
+        dialogue = self.page.locator(
+            '[data-co-audio-play][data-co-audio-target="dialogue"]'
+        )
+        dialogue.wait_for()
+        self.assertEqual(
+            dialogue.get_attribute("aria-label"),
+            "Écouter le dialogue en français",
+        )
+        stop = self.page.get_by_role("button", name="Arrêter la lecture")
+        stop_metrics = stop.evaluate(
+            """element => {
+              const style = getComputedStyle(element);
+              return {
+                width: parseFloat(style.width),
+                height: parseFloat(style.height),
+                radius: style.borderTopLeftRadius,
+              };
+            }"""
+        )
+        self.assertGreaterEqual(stop_metrics["width"], 42)
+        self.assertAlmostEqual(
+            stop_metrics["width"],
+            stop_metrics["height"],
+            delta=0.5,
+        )
+        self.assertEqual(stop_metrics["radius"], "50%")
+
+        self.assertTrue(dialogue.is_enabled())
+        self.assertFalse(stop.is_enabled())
+        dialogue.click()
+        self.assertEqual(dialogue.get_attribute("aria-pressed"), "true")
+        self.assertTrue(stop.is_enabled())
+        stop.click()
+        self.assertEqual(dialogue.get_attribute("aria-pressed"), "false")
+        self.assertFalse(stop.is_enabled())
         self.assert_no_horizontal_overflow()
 
     def test_written_expression_sections_and_notes_tabs_are_centered(self):
@@ -2672,6 +2914,12 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assert_no_horizontal_overflow()
 
     def test_text_and_icon_controls_have_distinct_shapes(self):
+        Annotation.objects.create(
+            user=self.user,
+            task=self.task,
+            kind=AnnotationKind.NOTE,
+            body="Note utilisée pour vérifier les contrôles mobiles.",
+        )
         self.page.set_viewport_size({"width": 1200, "height": 800})
         self.page.goto(
             self.live_server_url + reverse("study:notes_overview")
@@ -2727,6 +2975,80 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             tab_metrics["radius"], tab_metrics["height"] / 2 - 1
         )
 
+        self.page.set_viewport_size({"width": 320, "height": 568})
+        search_input_box = self.page.locator(
+            ".notes-toolbar .search-form__input"
+        ).bounding_box()
+        search_button = self.page.locator(
+            ".notes-toolbar .search-form .btn--icon"
+        )
+        search_button_box = search_button.bounding_box()
+        self.assertLess(search_input_box["x"], search_button_box["x"])
+        self.assertAlmostEqual(
+            search_input_box["y"] + search_input_box["height"] / 2,
+            search_button_box["y"] + search_button_box["height"] / 2,
+            delta=1,
+        )
+        self.assertAlmostEqual(
+            search_button_box["width"], search_button_box["height"], delta=0.5
+        )
+        self.assertEqual(
+            search_button.evaluate(
+                "element => getComputedStyle(element).borderTopLeftRadius"
+            ),
+            "50%",
+        )
+
+        action_boxes = self.page.locator(
+            ".notes-toolbar__actions .btn"
+        ).evaluate_all(
+            """elements => elements.map(element => {
+              const rect = element.getBoundingClientRect();
+              return {
+                y: rect.y,
+                width: rect.width,
+                height: rect.height,
+              };
+            })"""
+        )
+        self.assertEqual(len(action_boxes), 2)
+        self.assertAlmostEqual(action_boxes[0]["y"], action_boxes[1]["y"], delta=1)
+        self.assertAlmostEqual(
+            action_boxes[0]["width"], action_boxes[1]["width"], delta=1
+        )
+
+        tabs_box = self.page.locator(".notes-tabs").bounding_box()
+        view_toolbar_box = self.page.locator(
+            ".notes-view-controls > .collection-view-toolbar"
+        ).bounding_box()
+        self.assertAlmostEqual(
+            tabs_box["y"] + tabs_box["height"] / 2,
+            view_toolbar_box["y"] + view_toolbar_box["height"] / 2,
+            delta=1,
+        )
+        view_button_metrics = self.page.locator(
+            ".notes-view-controls .collection-view-toggle button"
+        ).evaluate_all(
+            """elements => elements.map(element => {
+              const style = getComputedStyle(element);
+              return {
+                width: parseFloat(style.width),
+                height: parseFloat(style.height),
+                radius: style.borderTopLeftRadius,
+              };
+            })"""
+        )
+        self.assertEqual(len(view_button_metrics), 2)
+        self.assertTrue(
+            all(
+                abs(item["width"] - item["height"]) <= 0.5
+                and item["radius"] == "50%"
+                for item in view_button_metrics
+            )
+        )
+        self.assert_no_horizontal_overflow()
+
+        self.page.set_viewport_size({"width": 1200, "height": 800})
         self.page.goto(
             self.live_server_url
             + reverse("study:review")

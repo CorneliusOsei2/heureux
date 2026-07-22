@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Vocabulaire · {{ part.name }} · Heureux{% endblock %}
+
+{% block content %}
+<nav class="phrase-category-back" aria-label="Retour au vocabulaire">
+  <a href="{% url 'study:vocabulary' %}">{% include "study/partials/ui_icon.html" with name="arrow-left" only %} Vue d’ensemble</a>
+</nav>
+
+<header class="area-hero vocabulary-hero area-hero--identity" style="--page-accent: {{ part.color }};">
+  <div class="area-hero__copy">
+    <p class="eyebrow">Vocabulaire · {{ part.short_name }}</p>
+    <h1 class="title-with-icon" style="--icon-accent: {{ part.color }};">
+      <span class="title-with-icon__glyph">{% include "study/partials/ui_icon.html" with name=part.icon only %}</span>
+      <span>Vocabulaire · {{ part.name }}</span>
+    </h1>
+    <p>Choisis une tâche pour retrouver le vocabulaire classé sujet par sujet.</p>
+  </div>
+  <dl class="area-hero__metrics" aria-label="Vocabulaire du parcours">
+    <div><dt>Tâches</dt><dd>{{ tasks|length }}</dd></div>
+    <div><dt>Sujets</dt><dd>{{ subject_count }}</dd></div>
+    <div><dt>Entrées</dt><dd>{{ entry_count }}</dd></div>
+  </dl>
+</header>
+
+{% include "study/partials/collection_view_toggle.html" %}
+
+<div class="grid grid--decks area-section collection-table collection-table--decks" data-collection-view="adaptive">
+  {% include "study/partials/collection_table_header.html" with variant="decks" column_1="Tâche" column_2="Vocabulaire" column_3="Progression" column_4="Accès" only %}
+  {% for item in tasks %}
+    {% include "study/partials/deck_card.html" with url=item.vocabulary_url available=True color=item.task.color icon=item.task.icon name=item.task.name stats=item.vocabulary_stats count_prompts=item.vocabulary_prompt_count vocabulary=True count_entries=item.vocabulary_count only %}
+  {% endfor %}
+</div>
+{% endblock %}

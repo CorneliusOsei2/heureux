@@ -92,6 +92,84 @@ def _home_expression_paths(parts):
     return paths
 
 
+def _vocabulary_cards_for_tasks(task_ids, user):
+    return (
+        Card.objects.current_content()
+        .filter(
+            user=user,
+            phrase__source_prompts__is_active=True,
+            phrase__source_prompts__theme__is_active=True,
+            phrase__source_prompts__theme__task_id__in=task_ids,
+            phrase__category__is_active=True,
+        )
+        .filter(
+            Q(
+                phrase__tier=PhraseTier.SUBJECT,
+                card_type=CardType.PHRASE_PRODUCTION,
+            )
+            | Q(
+                phrase__tier=PhraseTier.SHARED,
+                phrase__category__name__in=(
+                    FUNCTIONAL_PHRASE_CATEGORY_NAMES
+                ),
+                card_type__in=[
+                    CardType.PHRASE_PRODUCTION,
+                    CardType.PHRASE_RECOGNITION,
+                ],
+            )
+        )
+        .distinct()
+    )
+
+
+def _vocabulary_task_items(part_item, user, *, with_progress=True):
+    items = []
+    for task_item in part_item["tasks"]:
+        vocabulary_count = (
+            task_item["functional_phrase_count"]
+            + task_item["subject_vocabulary_count"]
+        )
+        if not task_item["task"].available or not vocabulary_count:
+            continue
+        item = {
+            **task_item,
+            "vocabulary_count": vocabulary_count,
+            "vocabulary_prompt_count": task_item[
+                "subject_vocabulary_prompt_count"
+            ],
+            "vocabulary_url": (
+                reverse(
+                    "study:task_phrases",
+                    args=[
+                        task_item["task"].part.slug,
+                        task_item["task"].slug,
+                    ],
+                )
+                + "#vocabulaire-par-sujet"
+            ),
+        }
+        if with_progress:
+            progress = card_unit_progress(
+                _vocabulary_cards_for_tasks([task_item["task"].pk], user)
+            )
+            item.update(
+                {
+                    "vocabulary_progress": progress,
+                    "vocabulary_stats": {
+                        "total": progress.total,
+                        "completed": progress.completed,
+                        "started_new": max(
+                            progress.started - progress.completed,
+                            0,
+                        ),
+                        "progress": progress,
+                    },
+                }
+            )
+        items.append(item)
+    return items
+
+
 def _vocabulary_expression_paths(now, user):
     part_items = _parts_with_task_cards(now, user)
     path_specs = (
@@ -118,17 +196,11 @@ def _vocabulary_expression_paths(now, user):
             ),
             None,
         )
-        vocabulary_tasks = []
-        if item:
-            vocabulary_tasks = [
-                task_item
-                for task_item in item["tasks"]
-                if task_item["task"].available
-                and (
-                    task_item["functional_phrase_count"]
-                    + task_item["subject_vocabulary_count"]
-                )
-            ]
+        vocabulary_tasks = (
+            _vocabulary_task_items(item, user, with_progress=False)
+            if item
+            else []
+        )
         available = bool(
             item and item["part"].available and vocabulary_tasks
         )
@@ -138,45 +210,15 @@ def _vocabulary_expression_paths(now, user):
             task_ids = [
                 task_item["task"].pk for task_item in vocabulary_tasks
             ]
-            vocabulary_cards = (
-                Card.objects.current_content()
-                .filter(
-                    user=user,
-                    phrase__source_prompts__is_active=True,
-                    phrase__source_prompts__theme__is_active=True,
-                    phrase__source_prompts__theme__task_id__in=task_ids,
-                    phrase__category__is_active=True,
-                )
-                .filter(
-                    Q(
-                        phrase__tier=PhraseTier.SUBJECT,
-                        card_type=CardType.PHRASE_PRODUCTION,
-                    )
-                    | Q(
-                        phrase__tier=PhraseTier.SHARED,
-                        phrase__category__name__in=(
-                            FUNCTIONAL_PHRASE_CATEGORY_NAMES
-                        ),
-                        card_type__in=[
-                            CardType.PHRASE_PRODUCTION,
-                            CardType.PHRASE_RECOGNITION,
-                        ],
-                    )
-                )
-                .distinct()
+            vocabulary_cards = _vocabulary_cards_for_tasks(
+                task_ids,
+                user,
             )
             vocabulary_progress = card_unit_progress(vocabulary_cards)
-            if len(vocabulary_tasks) == 1:
-                task = vocabulary_tasks[0]["task"]
-                url = reverse(
-                    "study:task_phrases",
-                    args=[task.part.slug, task.slug],
-                )
-            else:
-                url = reverse(
-                    "study:part_detail",
-                    args=[item["part"].slug],
-                )
+            url = reverse(
+                "study:part_vocabulary",
+                args=[item["part"].slug],
+            )
         paths.append(
             {
                 "title": spec["title"],
@@ -190,7 +232,7 @@ def _vocabulary_expression_paths(now, user):
                 "url": url,
                 "task_count": len(vocabulary_tasks),
                 "prompt_count": sum(
-                    task_item["prompt_count"]
+                    task_item["vocabulary_prompt_count"]
                     for task_item in vocabulary_tasks
                 ),
                 "vocabulary_count": (

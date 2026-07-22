@@ -585,6 +585,14 @@ def _task_card(task, now, user):
             source_prompts__theme__is_active=True,
             source_prompts__theme__task=task,
         ).distinct().count()
+        subject_vocabulary_prompt_count = Prompt.objects.filter(
+            is_active=True,
+            response__is_active=True,
+            theme__is_active=True,
+            theme__task=task,
+            phrases__is_active=True,
+            phrases__tier=PhraseTier.SUBJECT,
+        ).distinct().count()
     else:
         response_stats = None
         phrase_stats = None
@@ -598,6 +606,7 @@ def _task_card(task, now, user):
         phrase_count = 0
         functional_phrase_count = 0
         subject_vocabulary_count = 0
+        subject_vocabulary_prompt_count = 0
     return {
         "task": task,
         "stats": stats,
@@ -612,5 +621,6 @@ def _task_card(task, now, user):
         "phrase_count": phrase_count,
         "functional_phrase_count": functional_phrase_count,
         "subject_vocabulary_count": subject_vocabulary_count,
+        "subject_vocabulary_prompt_count": subject_vocabulary_prompt_count,
         "question_bank": question_bank,
     }
