@@ -1,0 +1,309 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 1,
+  "subjects": [
+    {
+      "number": 1,
+      "title": "Prendre des nouvelles d'un(e) ami(e) canadien(ne)",
+      "prompt": "Je suis votre ami(e) canadien(ne) et nous ne nous sommes pas vus depuis longtemps. Vous prenez de mes nouvelles et vous me posez des questions sur ma vie quotidienne (loisirs, famille, travail, etc.).",
+      "questions": [
+        {
+          "text": "Alors, comment va ta vie en général en ce moment ?",
+          "memory_number": 6,
+          "memory_section": 1
+        },
+        {
+          "text": "Qu'est-ce que tu fais pendant ton temps libre là-bas ?"
+        },
+        {
+          "text": "Et ta famille, comment va-t-elle ?"
+        },
+        {
+          "text": "Le travail, ça se passe bien pour toi en ce moment ?"
+        },
+        {
+          "text": "Qu'est-ce qui a le plus changé dans ta vie depuis la dernière fois qu'on s'est vus ?",
+          "memory_number": 6,
+          "memory_section": 1
+        },
+        {
+          "text": "Tu habites où maintenant exactement au Canada ?"
+        },
+        {
+          "text": "Tu as de nouveaux projets ou des plans importants pour les prochains mois ?",
+          "memory_number": 6,
+          "memory_section": 1
+        },
+        {
+          "text": "Tu arrives à voir pas mal de monde — comment est ta vie sociale là-bas ?",
+          "memory_number": 6,
+          "memory_section": 1
+        },
+        {
+          "text": "Et côté santé et moral, tu te sens bien ?"
+        },
+        {
+          "text": "Qu'est-ce qui te manque le plus de chez nous ?"
+        },
+        {
+          "text": "Est-ce qu'il t'est arrivé quelque chose d'inattendu depuis qu'on s'est vus ?"
+        },
+        {
+          "text": "Quand tu penses à nous, c'est quoi ton meilleur souvenir ?"
+        },
+        {
+          "text": "Tu as voyagé un peu récemment, au Canada ou ailleurs ?"
+        },
+        {
+          "text": "Et ton français, tu as l'occasion de le pratiquer souvent là-bas ?"
+        },
+        {
+          "text": "On pourra se revoir quand, à ton avis ?"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Poster un paquet pour un(e) ami(e)",
+      "prompt": "Je suis votre ami(e). Je dois poster un paquet mais je ne peux pas y aller. Je vous demande de l'aide. Vous me posez des questions pour décider si vous pouvez me rendre ce service (délai, volume, durée, etc.).",
+      "questions": [
+        {
+          "text": "Tu dois poster quoi exactement, et le paquet est gros comment ?"
+        },
+        {
+          "text": "Il pèse à peu près combien ?"
+        },
+        {
+          "text": "Tu veux l'envoyer à quelle adresse exactement, et dans quel pays ?"
+        },
+        {
+          "text": "C'est urgent au point de devoir partir aujourd'hui, ou ça peut attendre un peu plus tard dans la semaine ?"
+        },
+        {
+          "text": "Au plus tard, le paquet doit arriver quand ?"
+        },
+        {
+          "text": "Tu préfères que je passe par La Poste ou par un autre service de livraison ?"
+        },
+        {
+          "text": "Tu veux un envoi standard, express, suivi ou assuré ?"
+        },
+        {
+          "text": "Il faut garder le colis au chaud ou à l'abri ? Il y a des conditions de transport particulières ?"
+        },
+        {
+          "text": "Le colis est déjà bien fermé et l'étiquette est déjà prête ?"
+        },
+        {
+          "text": "Il y a quelque chose de fragile ou de réglementé à l'intérieur ?"
+        },
+        {
+          "text": "Tu veux que je prévoie combien d'argent pour les frais d'envoi ?"
+        },
+        {
+          "text": "Je dois l'adresser au nom de qui exactement ?"
+        },
+        {
+          "text": "Il y a des consignes particulières à transmettre au destinataire ?"
+        },
+        {
+          "text": "S'il y a un problème au guichet, tu veux que je fasse quoi ?"
+        },
+        {
+          "text": "Après, je peux te laisser le reçu où ? Et tu me rembourseras les frais d'envoi comment ?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Cadeau d'anniversaire pour la sœur d'un(e) ami(e)",
+      "prompt": "Je suis votre ami(e). Je vous invite à l'anniversaire de ma sœur. Vous me posez des questions sur elle pour savoir quel cadeau lui offrir (goûts, activités, personnalité, etc.).",
+      "questions": [
+        {
+          "text": "Ta sœur fête bientôt son anniversaire, et je cherche un cadeau — tu pourrais m'aider à trouver une idée ?",
+          "memory_section": 19
+        },
+        {
+          "text": "C'est exactement quand, son anniversaire ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Elle va avoir quel âge ?",
+          "memory_section": 2,
+          "memory_number": 3
+        },
+        {
+          "text": "Comment est son caractère — plutôt discrète, ou elle aime qu'on lui fasse une surprise ?",
+          "memory_section": 2,
+          "memory_number": 3
+        },
+        {
+          "text": "Quels sont ses loisirs ou ses passions en ce moment ?",
+          "memory_section": 2,
+          "memory_number": 3
+        },
+        {
+          "text": "Elle préfère plutôt les cadeaux utiles, ou les choses plus originales et amusantes ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Elle a un style ou des couleurs qu'elle préfère particulièrement ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Il y a des choses qu'elle a déjà, pour éviter de lui offrir la même chose ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Tu aurais une idée de budget pour un cadeau qui lui ferait vraiment plaisir ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Vous allez fêter ça comment — une petite soirée, un repas en famille ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Elle préfère plutôt recevoir un objet, ou une expérience comme une sortie ou un atelier ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Tu as mentionné qu'elle aimait quelque chose en particulier — tu pourrais m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Ce serait plutôt un cadeau de ma part seul(e), ou on pourrait s'associer à plusieurs ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Tu connais un endroit ou un site où je pourrais trouver ce genre de cadeau facilement ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Pour finir — parmi toutes ces idées, laquelle lui ferait le plus plaisir selon toi ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Choisir une série télévisée",
+      "prompt": "Je suis votre ami(e). Vous voulez regarder une série télévisée. Vous ne savez pas laquelle choisir. Vous me posez des questions pour choisir une série à regarder (types de séries, acteurs, chaînes, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Je voudrais commencer une série télé, mais je ne sais pas laquelle choisir — tu me conseillerais quoi ?"
+        },
+        {
+          "text": "Qu'est-ce que tu as regardé récemment et que tu as vraiment aimé ?",
+          "memory_number": 4,
+          "memory_section": 5
+        },
+        {
+          "text": "C'est quel genre — plutôt comédie, thriller, science-fiction, drame ?"
+        },
+        {
+          "text": "De quoi ça parle, sans trop m'en dire pour ne pas gâcher l'histoire ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Qui joue dedans — il y a des acteurs que je connaîtrais peut-être ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Il y a combien de saisons et d'épisodes — c'est vite fini ou ça dure longtemps ?"
+        },
+        {
+          "text": "Les épisodes durent combien de temps chacun ?"
+        },
+        {
+          "text": "C'est une série terminée ou encore en cours de diffusion ?"
+        },
+        {
+          "text": "C'est diffusé sur quelle chaîne, et quel jour à quelle heure ?"
+        },
+        {
+          "text": "Si je rate un épisode à la télé, je peux le revoir où après ?"
+        },
+        {
+          "text": "C'est plutôt une série pour tout le monde, ou plus adaptée à un public particulier ?"
+        },
+        {
+          "text": "Elle est disponible en version française, ou il faut la regarder en version originale sous-titrée ?"
+        },
+        {
+          "text": "Il faut attendre longtemps avant que ça devienne vraiment intéressant, ou on accroche dès le début ?"
+        },
+        {
+          "text": "Qu'est-ce qui la rend différente des autres séries du même genre ?"
+        },
+        {
+          "text": "Pour finir — si je ne dois en commencer qu'une seule, laquelle tu me recommandes vraiment ?"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Rencontrer des gens après une arrivée au Canada",
+      "prompt": "Vous venez d'arriver au Canada. Je suis votre collègue. Vous avez envie de rencontrer des gens. Vous me posez des questions pour savoir où et comment rencontrer de nouvelles personnes (activités, associations, lieux de convivialité, etc.).",
+      "questions": [
+        {
+          "text": "Les Canadiens sont-ils accueillants avec les nouveaux arrivants ?"
+        },
+        {
+          "text": "Quelles activités aident le plus à rencontrer des gens quand on vient d'arriver ?",
+          "memory_number": 6,
+          "memory_section": 4
+        },
+        {
+          "text": "Il y a des associations pour les nouveaux arrivants ou pour les francophones ?",
+          "memory_number": 6,
+          "memory_section": 4
+        },
+        {
+          "text": "Tu connais des clubs de sport où on peut facilement faire des rencontres ?"
+        },
+        {
+          "text": "Et pour les groupes culturels, tu me conseillerais quoi ?"
+        },
+        {
+          "text": "Le bénévolat, c'est une bonne façon de rencontrer du monde ici ?"
+        },
+        {
+          "text": "Il y a des événements spécialement organisés pour les personnes qui viennent d'arriver ?"
+        },
+        {
+          "text": "Quels quartiers ou quels endroits sont les plus conviviaux pour sortir et parler avec des gens ?"
+        },
+        {
+          "text": "Tu connais des applis ou des groupes en ligne utiles pour les nouveaux arrivants ?"
+        },
+        {
+          "text": "Toi, tu as mis combien de temps à te faire de vrais amis ici ?"
+        },
+        {
+          "text": "C'est facile de trouver des gens qui parlent français ?"
+        },
+        {
+          "text": "Quelle erreur faut-il éviter quand on essaie de rencontrer du monde au Canada ?",
+          "memory_number": 6,
+          "memory_section": 4
+        },
+        {
+          "text": "D'après toi, quel type d'activité aide le plus à se faire des amis durables ?",
+          "memory_number": 6,
+          "memory_section": 1
+        },
+        {
+          "text": "La vie sociale est plutôt active ici — et il y a aussi des événements gratuits ?"
+        },
+        {
+          "text": "Si tu ne devais me donner qu'un seul conseil pour bien rencontrer des gens après mon arrivée, ce serait quoi ?"
+        }
+      ]
+    }
+  ]
+}

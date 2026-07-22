@@ -71,9 +71,9 @@
       "title": "Cours de photographie dans l'association",
       "prompt": "Je suis votre voisin(e). Je prends des cours de photographie dans l'association du quartier. Vous êtes intéressé(e) et vous me posez des questions sur le cours (prix, horaires, matériel, etc.).",
       "questions": [
-        "Bonjour ! Je t'ai croisé(e) l'autre jour avec ton appareil photo — tu prends des cours de photographie à l'association du quartier, c'est bien ça ?",
+        "Bonjour ! Je vous ai croisé(e) l'autre jour avec votre appareil photo — vous prenez des cours de photographie à l'association du quartier, c'est bien ça ?",
         {
-          "text": "Ça fait longtemps que tu suis ces cours ? Tu es satisfait(e) de ta progression jusqu'à présent ?",
+          "text": "Ça fait longtemps que vous suivez ces cours ? Vous êtes satisfait(e) de votre progression jusqu'à présent ?",
           "memory_section": 9
         },
         {

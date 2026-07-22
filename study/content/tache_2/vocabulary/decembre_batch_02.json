@@ -2,10 +2,10 @@
   "version": 1,
   "subjects": [
     {
-      "subject_key": "tache2:janvier:batch-02:subject-06",
+      "subject_key": "tache2:decembre:batch-02:subject-06",
       "entries": [
         {
-          "id": "T2J1S6V01",
+          "id": "T2D12S6V01",
           "kind": "mot-cle",
           "french": "initiative",
           "english": "an initiative",
@@ -13,7 +13,7 @@
           "usage": "Nom féminin désignant une action entreprise volontairement ; ici pour valoriser un projet."
         },
         {
-          "id": "T2J1S6V02",
+          "id": "T2D12S6V02",
           "kind": "mot-cle",
           "french": "participants",
           "english": "participants",
@@ -21,7 +21,7 @@
           "usage": "Nom pluriel désignant les personnes qui prennent part à une activité."
         },
         {
-          "id": "T2J1S6V03",
+          "id": "T2D12S6V03",
           "kind": "mot-cle",
           "french": "la durée",
           "english": "the duration",
@@ -29,7 +29,7 @@
           "usage": "Nom féminin utilisé pour interroger sur la longueur dans le temps d'un événement."
         },
         {
-          "id": "T2J1S6V04",
+          "id": "T2D12S6V04",
           "kind": "mot-cle",
           "french": "l'équipement",
           "english": "the equipment",
@@ -37,7 +37,7 @@
           "usage": "Nom masculin collectif désignant le matériel nécessaire à une activité."
         },
         {
-          "id": "T2J1S6V05",
+          "id": "T2D12S6V05",
           "kind": "mot-cle",
           "french": "le matériel",
           "english": "the equipment/gear",
@@ -45,7 +45,7 @@
           "usage": "Nom masculin proche d'\"équipement\", registre courant à l'oral comme à l'écrit."
         },
         {
-          "id": "T2J1S6V06",
+          "id": "T2D12S6V06",
           "kind": "mot-cle",
           "french": "la tenue",
           "english": "the outfit/attire",
@@ -53,7 +53,7 @@
           "usage": "Nom féminin désignant les vêtements portés pour une occasion précise."
         },
         {
-          "id": "T2J1S6V07",
+          "id": "T2D12S6V07",
           "kind": "mot-cle",
           "french": "débutants",
           "english": "beginners",
@@ -61,7 +61,7 @@
           "usage": "Nom pluriel désignant les personnes qui commencent une activité."
         },
         {
-          "id": "T2J1S6V08",
+          "id": "T2D12S6V08",
           "kind": "mot-cle",
           "french": "méditation",
           "english": "meditation",
@@ -69,7 +69,7 @@
           "usage": "Nom féminin désignant une pratique de concentration ou de relaxation mentale."
         },
         {
-          "id": "T2J1S6V09",
+          "id": "T2D12S6V09",
           "kind": "mot-cle",
           "french": "l'inscription",
           "english": "the registration/sign-up",
@@ -77,7 +77,7 @@
           "usage": "Nom féminin désignant la démarche administrative pour participer à une activité."
         },
         {
-          "id": "T2J1S6V10",
+          "id": "T2D12S6V10",
           "kind": "mot-cle",
           "french": "des adaptations",
           "english": "adaptations",
@@ -85,7 +85,7 @@
           "usage": "Nom pluriel désignant des ajustements faits pour convenir à chacun."
         },
         {
-          "id": "T2J1S6V11",
+          "id": "T2D12S6V11",
           "kind": "collocation",
           "french": "entendu parler des",
           "english": "heard about the",
@@ -93,7 +93,7 @@
           "usage": "Forme contractée de l'expression \"entendre parler de\" (+ les = des), utilisée pour dire qu'on a eu des échos de quelque chose."
         },
         {
-          "id": "T2J1S6V12",
+          "id": "T2D12S6V12",
           "kind": "collocation",
           "french": "avant le travail",
           "english": "before work",
@@ -101,7 +101,7 @@
           "usage": "Groupe prépositionnel courant pour situer un moment dans la journée par rapport au travail."
         },
         {
-          "id": "T2J1S6V13",
+          "id": "T2D12S6V13",
           "kind": "collocation",
           "french": "en fin de journée",
           "english": "at the end of the day",
@@ -109,7 +109,7 @@
           "usage": "Expression de temps très fréquente à l'oral pour désigner la fin d'après-midi ou le soir."
         },
         {
-          "id": "T2J1S6V14",
+          "id": "T2D12S6V14",
           "kind": "collocation",
           "french": "par semaine",
           "english": "per week",
@@ -117,7 +117,7 @@
           "usage": "Groupe prépositionnel servant à indiquer une fréquence hebdomadaire."
         },
         {
-          "id": "T2J1S6V15",
+          "id": "T2D12S6V15",
           "kind": "collocation",
           "french": "limité à une seule",
           "english": "limited to just one",
@@ -125,7 +125,7 @@
           "usage": "Structure adjectivale exprimant une restriction quantitative."
         },
         {
-          "id": "T2J1S6V16",
+          "id": "T2D12S6V16",
           "kind": "collocation",
           "french": "bien aérée",
           "english": "well ventilated",
@@ -133,7 +133,7 @@
           "usage": "Collocation adjectivale décrivant une pièce qui bénéficie d'une bonne circulation d'air."
         },
         {
-          "id": "T2J1S6V17",
+          "id": "T2D12S6V17",
           "kind": "collocation",
           "french": "lumière naturelle",
           "english": "natural light",
@@ -141,7 +141,7 @@
           "usage": "Groupe nominal courant en architecture et en immobilier pour décrire l'éclairage d'une pièce."
         },
         {
-          "id": "T2J1S6V18",
+          "id": "T2D12S6V18",
           "kind": "collocation",
           "french": "vêtements de sport",
           "english": "sportswear",
@@ -149,7 +149,7 @@
           "usage": "Groupe nominal désignant les tenues adaptées à l'activité physique."
         },
         {
-          "id": "T2J1S6V19",
+          "id": "T2D12S6V19",
           "kind": "collocation",
           "french": "exercices physiques",
           "english": "physical exercises",
@@ -157,7 +157,7 @@
           "usage": "Collocation désignant les mouvements corporels pratiqués pour la santé ou le sport."
         },
         {
-          "id": "T2J1S6V20",
+          "id": "T2D12S6V20",
           "kind": "collocation",
           "french": "participation financière",
           "english": "financial contribution/fee",
@@ -165,7 +165,7 @@
           "usage": "Groupe nominal désignant une somme d'argent demandée en contrepartie d'un service."
         },
         {
-          "id": "T2J1S6V21",
+          "id": "T2D12S6V21",
           "kind": "tournure",
           "french": "Tu fais ça depuis longtemps",
           "english": "Have you been doing this for a long time",
@@ -173,7 +173,7 @@
           "usage": "Tournure orale au présent pour interroger sur l'ancienneté d'une activité (informel, tutoiement)."
         },
         {
-          "id": "T2J1S6V22",
+          "id": "T2D12S6V22",
           "kind": "tournure",
           "french": "il y a combien de",
           "english": "how many ... are there",
@@ -181,7 +181,7 @@
           "usage": "Structure interrogative très courante à l'oral pour demander une quantité."
         },
         {
-          "id": "T2J1S6V23",
+          "id": "T2D12S6V23",
           "kind": "tournure",
           "french": "ont lieu quel jour exactement",
           "english": "take place on which day exactly",
@@ -189,7 +189,7 @@
           "usage": "Question orale avec le mot interrogatif « quel jour » laissé in situ (sans inversion), le sujet restant à sa place normale avant le verbe ; structure typique du français parlé."
         },
         {
-          "id": "T2J1S6V24",
+          "id": "T2D12S6V24",
           "kind": "tournure",
           "french": "On peut assister à",
           "english": "Can we attend",
@@ -197,7 +197,7 @@
           "usage": "Question orale avec « on » pour demander si la participation est possible."
         },
         {
-          "id": "T2J1S6V25",
+          "id": "T2D12S6V25",
           "kind": "tournure",
           "french": "se déroulent où exactement",
           "english": "take place where exactly",
@@ -205,7 +205,7 @@
           "usage": "Tournure orale plaçant le verbe avant l'adverbe interrogatif, fréquente en conversation."
         },
         {
-          "id": "T2J1S6V26",
+          "id": "T2D12S6V26",
           "kind": "tournure",
           "french": "Concernant l'équipement,",
           "english": "Regarding the equipment,",
@@ -213,7 +213,7 @@
           "usage": "Tournure introductive formelle utilisée pour annoncer le sujet d'une question."
         },
         {
-          "id": "T2J1S6V27",
+          "id": "T2D12S6V27",
           "kind": "tournure",
           "french": "Quel type de yoga est proposé",
           "english": "What type of yoga is offered",
@@ -221,7 +221,7 @@
           "usage": "Structure interrogative avec \"quel type de\" pour demander une catégorie précise."
         },
         {
-          "id": "T2J1S6V28",
+          "id": "T2D12S6V28",
           "kind": "tournure",
           "french": "il faut s'inscrire à l'avance",
           "english": "you have to register in advance",
@@ -229,7 +229,7 @@
           "usage": "Tournure impersonnelle avec \"il faut\" exprimant une nécessité ou obligation."
         },
         {
-          "id": "T2J1S6V29",
+          "id": "T2D12S6V29",
           "kind": "tournure",
           "french": "c'est gratuit ou",
           "english": "is it free or",
@@ -237,7 +237,7 @@
           "usage": "Structure interrogative simple pour proposer une alternative sur le prix."
         },
         {
-          "id": "T2J1S6V30",
+          "id": "T2D12S6V30",
           "kind": "tournure",
           "french": "la pratique reste possible",
           "english": "the practice remains possible",
@@ -247,10 +247,10 @@
       ]
     },
     {
-      "subject_key": "tache2:janvier:batch-02:subject-07",
+      "subject_key": "tache2:decembre:batch-02:subject-07",
       "entries": [
         {
-          "id": "T2J1S7V01",
+          "id": "T2D12S7V01",
           "kind": "mot-cle",
           "french": "appareil photo",
           "english": "a camera",
@@ -258,7 +258,7 @@
           "usage": "Nom masculin désignant l'objet utilisé pour prendre des photographies."
         },
         {
-          "id": "T2J1S7V02",
+          "id": "T2D12S7V02",
           "kind": "mot-cle",
           "french": "progression",
           "english": "progress",
@@ -266,7 +266,7 @@
           "usage": "Nom féminin désignant l'évolution positive dans l'apprentissage d'une compétence."
         },
         {
-          "id": "T2J1S7V03",
+          "id": "T2D12S7V03",
           "kind": "mot-cle",
           "french": "l'ambiance",
           "english": "the atmosphere/vibe",
@@ -274,7 +274,7 @@
           "usage": "Nom féminin désignant le climat général ressenti dans un groupe ou un lieu."
         },
         {
-          "id": "T2J1S7V04",
+          "id": "T2D12S7V04",
           "kind": "mot-cle",
           "french": "l'inscription",
           "english": "the registration/enrollment fee",
@@ -282,7 +282,7 @@
           "usage": "Nom féminin désignant la démarche ou le coût pour s'inscrire à une activité."
         },
         {
-          "id": "T2J1S7V05",
+          "id": "T2D12S7V05",
           "kind": "mot-cle",
           "french": "un reflex",
           "english": "a DSLR camera",
@@ -290,7 +290,7 @@
           "usage": "Nom masculin désignant un type d'appareil photo professionnel à visée réflexe."
         },
         {
-          "id": "T2J1S7V06",
+          "id": "T2D12S7V06",
           "kind": "mot-cle",
           "french": "l'association",
           "english": "the association/club",
@@ -298,7 +298,7 @@
           "usage": "Nom féminin désignant une structure à but non lucratif organisant des activités."
         },
         {
-          "id": "T2J1S7V07",
+          "id": "T2D12S7V07",
           "kind": "mot-cle",
           "french": "logiciel",
           "english": "software program",
@@ -306,7 +306,7 @@
           "usage": "Nom masculin désignant un programme informatique, ici pour retoucher des photos."
         },
         {
-          "id": "T2J1S7V08",
+          "id": "T2D12S7V08",
           "kind": "mot-cle",
           "french": "les bases",
           "english": "the basics/fundamentals",
@@ -314,7 +314,7 @@
           "usage": "Nom pluriel désignant les notions élémentaires d'un domaine."
         },
         {
-          "id": "T2J1S7V09",
+          "id": "T2D12S7V09",
           "kind": "mot-cle",
           "french": "portrait",
           "english": "portrait (photography)",
@@ -322,7 +322,7 @@
           "usage": "Nom masculin désignant un genre photographique centré sur une personne."
         },
         {
-          "id": "T2J1S7V10",
+          "id": "T2D12S7V10",
           "kind": "mot-cle",
           "french": "des expositions",
           "english": "exhibitions",
@@ -330,7 +330,7 @@
           "usage": "Nom pluriel désignant des présentations publiques d'œuvres ou de travaux."
         },
         {
-          "id": "T2J1S7V11",
+          "id": "T2D12S7V11",
           "kind": "collocation",
           "french": "emploi du temps professionnel",
           "english": "professional/work schedule",
@@ -338,7 +338,7 @@
           "usage": "Groupe nominal désignant l'organisation du temps liée à l'activité professionnelle."
         },
         {
-          "id": "T2J1S7V12",
+          "id": "T2D12S7V12",
           "kind": "collocation",
           "french": "en une seule fois",
           "english": "all at once/in one go",
@@ -346,7 +346,7 @@
           "usage": "Locution adverbiale indiquant qu'une action se fait en un seul versement ou geste."
         },
         {
-          "id": "T2J1S7V13",
+          "id": "T2D12S7V13",
           "kind": "collocation",
           "french": "en plusieurs fois",
           "english": "in several installments",
@@ -354,7 +354,7 @@
           "usage": "Locution adverbiale exprimant un fractionnement, souvent utilisée pour un paiement."
         },
         {
-          "id": "T2J1S7V14",
+          "id": "T2D12S7V14",
           "kind": "collocation",
           "french": "propre équipement",
           "english": "one's own equipment",
@@ -362,7 +362,7 @@
           "usage": "Collocation avec l'adjectif \"propre\" antéposé signifiant \"à soi\"."
         },
         {
-          "id": "T2J1S7V15",
+          "id": "T2D12S7V15",
           "kind": "collocation",
           "french": "prendre des photos",
           "english": "to take photos/pictures",
@@ -370,7 +370,7 @@
           "usage": "Collocation verbale de base et très fréquente autour de la photographie."
         },
         {
-          "id": "T2J1S7V16",
+          "id": "T2D12S7V16",
           "kind": "collocation",
           "french": "tout se fait en salle",
           "english": "everything is done indoors",
@@ -378,7 +378,7 @@
           "usage": "Structure impersonnelle avec \"se faire\" pour décrire un lieu de pratique."
         },
         {
-          "id": "T2J1S7V17",
+          "id": "T2D12S7V17",
           "kind": "collocation",
           "french": "photo de rue",
           "english": "street photography",
@@ -386,7 +386,7 @@
           "usage": "Groupe nominal désignant un genre photographique centré sur la vie urbaine."
         },
         {
-          "id": "T2J1S7V18",
+          "id": "T2D12S7V18",
           "kind": "collocation",
           "french": "un peu de tout",
           "english": "a bit of everything",
@@ -394,7 +394,7 @@
           "usage": "Locution figée exprimant une variété ou un mélange."
         },
         {
-          "id": "T2J1S7V19",
+          "id": "T2D12S7V19",
           "kind": "collocation",
           "french": "tarifs réduits",
           "english": "reduced rates/discounted fees",
@@ -402,7 +402,7 @@
           "usage": "Groupe nominal désignant des prix diminués pour certains publics."
         },
         {
-          "id": "T2J1S7V20",
+          "id": "T2D12S7V20",
           "kind": "collocation",
           "french": "projets de fin de session",
           "english": "end-of-term projects",
@@ -410,7 +410,7 @@
           "usage": "Groupe nominal désignant des travaux réalisés à la conclusion d'un cycle de cours."
         },
         {
-          "id": "T2J1S7V21",
+          "id": "T2D12S7V21",
           "kind": "tournure",
           "french": "Ça fait longtemps que",
           "english": "Have you been ... for a long time",
@@ -418,7 +418,7 @@
           "usage": "Tournure orale très courante avec \"ça fait ... que\" pour exprimer la durée depuis un début."
         },
         {
-          "id": "T2J1S7V22",
+          "id": "T2D12S7V22",
           "kind": "tournure",
           "french": "dure combien de temps",
           "english": "how long does it last",
@@ -426,7 +426,7 @@
           "usage": "Structure interrogative directe et informelle pour demander une durée."
         },
         {
-          "id": "T2J1S7V23",
+          "id": "T2D12S7V23",
           "kind": "tournure",
           "french": "Il y a généralement combien de",
           "english": "How many ... are there generally",
@@ -434,7 +434,7 @@
           "usage": "Tournure interrogative introduite par \"il y a\" avec l'adverbe \"généralement\" pour une moyenne typique."
         },
         {
-          "id": "T2J1S7V24",
+          "id": "T2D12S7V24",
           "kind": "tournure",
           "french": "Est-ce qu'il est possible de",
           "english": "Is it possible to",
@@ -442,7 +442,7 @@
           "usage": "Structure interrogative standard avec \"est-ce que\" pour demander une possibilité."
         },
         {
-          "id": "T2J1S7V25",
+          "id": "T2D12S7V25",
           "kind": "tournure",
           "french": "Y a-t-il du",
           "english": "Is there any",
@@ -450,7 +450,7 @@
           "usage": "Tournure interrogative avec inversion, registre soutenu à l'oral, pour demander l'existence de quelque chose."
         },
         {
-          "id": "T2J1S7V26",
+          "id": "T2D12S7V26",
           "kind": "tournure",
           "french": "Est-ce qu'on peut même",
           "english": "Can you even",
@@ -458,7 +458,7 @@
           "usage": "Structure interrogative avec \"même\" ajoutant une nuance de surprise ou d'extension."
         },
         {
-          "id": "T2J1S7V27",
+          "id": "T2D12S7V27",
           "kind": "tournure",
           "french": "Qu'est-ce qu'on apprend concrètement",
           "english": "What do you actually/concretely learn",
@@ -466,7 +466,7 @@
           "usage": "Tournure interrogative avec \"qu'est-ce que\" pour demander un contenu précis."
         },
         {
-          "id": "T2J1S7V28",
+          "id": "T2D12S7V28",
           "kind": "tournure",
           "french": "s'adressent-ils plutôt à",
           "english": "are they aimed more at",
@@ -474,7 +474,7 @@
           "usage": "Tournure avec inversion verbe-sujet, registre soutenu, pour interroger sur le public visé."
         },
         {
-          "id": "T2J1S7V29",
+          "id": "T2D12S7V29",
           "kind": "tournure",
           "french": "Y a-t-il des sorties pratiques pour",
           "english": "Are there practical outings for",
@@ -482,7 +482,7 @@
           "usage": "Tournure interrogative avec inversion pour demander l'existence d'activités concrètes."
         },
         {
-          "id": "T2J1S7V30",
+          "id": "T2D12S7V30",
           "kind": "tournure",
           "french": "Et pour finir —",
           "english": "And to finish —",
@@ -492,10 +492,10 @@
       ]
     },
     {
-      "subject_key": "tache2:janvier:batch-02:subject-08",
+      "subject_key": "tache2:decembre:batch-02:subject-08",
       "entries": [
         {
-          "id": "T2J1S8V01",
+          "id": "T2D12S8V01",
           "kind": "mot-cle",
           "french": "l'ouverture",
           "english": "the opening",
@@ -503,7 +503,7 @@
           "usage": "Nom féminin désignant l'inauguration ou la mise en service d'un lieu."
         },
         {
-          "id": "T2J1S8V02",
+          "id": "T2D12S8V02",
           "kind": "mot-cle",
           "french": "un mélange",
           "english": "a mix/blend",
@@ -511,7 +511,7 @@
           "usage": "Nom masculin désignant la combinaison de plusieurs éléments différents."
         },
         {
-          "id": "T2J1S8V03",
+          "id": "T2D12S8V03",
           "kind": "mot-cle",
           "french": "des ateliers",
           "english": "workshops",
@@ -519,7 +519,7 @@
           "usage": "Nom pluriel désignant des séances pratiques d'apprentissage en petit groupe."
         },
         {
-          "id": "T2J1S8V04",
+          "id": "T2D12S8V04",
           "kind": "mot-cle",
           "french": "des spectacles",
           "english": "shows/performances",
@@ -527,7 +527,7 @@
           "usage": "Nom pluriel désignant des représentations artistiques présentées à un public."
         },
         {
-          "id": "T2J1S8V05",
+          "id": "T2D12S8V05",
           "kind": "mot-cle",
           "french": "les vacances scolaires",
           "english": "school holidays",
@@ -535,7 +535,7 @@
           "usage": "Groupe nominal figé désignant les périodes de congé du calendrier scolaire."
         },
         {
-          "id": "T2J1S8V06",
+          "id": "T2D12S8V06",
           "kind": "mot-cle",
           "french": "un abonnement",
           "english": "a subscription/membership",
@@ -543,7 +543,7 @@
           "usage": "Nom masculin désignant un contrat donnant un accès régulier à un service."
         },
         {
-          "id": "T2J1S8V07",
+          "id": "T2D12S8V07",
           "kind": "mot-cle",
           "french": "le tarif",
           "english": "the price/rate",
@@ -551,7 +551,7 @@
           "usage": "Nom masculin désignant le prix appliqué à un service ou une activité."
         },
         {
-          "id": "T2J1S8V08",
+          "id": "T2D12S8V08",
           "kind": "mot-cle",
           "french": "l'ambiance",
           "english": "the atmosphere",
@@ -559,7 +559,7 @@
           "usage": "Nom féminin désignant le climat général ressenti dans un lieu ou un groupe."
         },
         {
-          "id": "T2J1S8V09",
+          "id": "T2D12S8V09",
           "kind": "mot-cle",
           "french": "l'inscription",
           "english": "the registration",
@@ -567,7 +567,7 @@
           "usage": "Nom féminin désignant la démarche pour s'inscrire à une activité."
         },
         {
-          "id": "T2J1S8V10",
+          "id": "T2D12S8V10",
           "kind": "mot-cle",
           "french": "une librairie",
           "english": "a bookshop",
@@ -575,7 +575,7 @@
           "usage": "Nom féminin désignant un magasin où l'on vend des livres."
         },
         {
-          "id": "T2J1S8V11",
+          "id": "T2D12S8V11",
           "kind": "collocation",
           "french": "transports en commun",
           "english": "public transportation",
@@ -583,7 +583,7 @@
           "usage": "Groupe nominal très courant désignant les moyens de transport collectifs."
         },
         {
-          "id": "T2J1S8V12",
+          "id": "T2D12S8V12",
           "kind": "collocation",
           "french": "pièces de théâtre",
           "english": "theatre plays",
@@ -591,7 +591,7 @@
           "usage": "Groupe nominal désignant des œuvres dramatiques jouées sur scène."
         },
         {
-          "id": "T2J1S8V13",
+          "id": "T2D12S8V13",
           "kind": "collocation",
           "french": "projections de films",
           "english": "film screenings",
@@ -599,7 +599,7 @@
           "usage": "Groupe nominal désignant la diffusion publique de films."
         },
         {
-          "id": "T2J1S8V14",
+          "id": "T2D12S8V14",
           "kind": "collocation",
           "french": "expositions temporaires",
           "english": "temporary exhibitions",
@@ -607,7 +607,7 @@
           "usage": "Groupe nominal désignant des présentations limitées dans le temps, par opposition au fonds permanent."
         },
         {
-          "id": "T2J1S8V15",
+          "id": "T2D12S8V15",
           "kind": "collocation",
           "french": "collection permanente",
           "english": "permanent collection",
@@ -615,7 +615,7 @@
           "usage": "Groupe nominal désignant l'ensemble des œuvres exposées en continu dans un lieu culturel."
         },
         {
-          "id": "T2J1S8V16",
+          "id": "T2D12S8V16",
           "kind": "collocation",
           "french": "en fin de journée",
           "english": "at the end of the day",
@@ -623,7 +623,7 @@
           "usage": "Expression de temps courante pour désigner la fin d'après-midi ou le soir."
         },
         {
-          "id": "T2J1S8V17",
+          "id": "T2D12S8V17",
           "kind": "collocation",
           "french": "tarifs réduits",
           "english": "reduced rates",
@@ -631,7 +631,7 @@
           "usage": "Groupe nominal désignant des prix diminués pour certains publics comme les étudiants ou seniors."
         },
         {
-          "id": "T2J1S8V18",
+          "id": "T2D12S8V18",
           "kind": "collocation",
           "french": "boutique de souvenirs",
           "english": "gift/souvenir shop",
@@ -639,7 +639,7 @@
           "usage": "Groupe nominal désignant un magasin vendant des objets souvenirs, fréquent dans les lieux culturels."
         },
         {
-          "id": "T2J1S8V19",
+          "id": "T2D12S8V19",
           "kind": "collocation",
           "french": "petit groupe",
           "english": "small group",
@@ -647,7 +647,7 @@
           "usage": "Groupe nominal désignant un effectif restreint de participants."
         },
         {
-          "id": "T2J1S8V20",
+          "id": "T2D12S8V20",
           "kind": "collocation",
           "french": "grande classe",
           "english": "large class",
@@ -655,7 +655,7 @@
           "usage": "Groupe nominal désignant un effectif important de participants, par opposition à \"petit groupe\"."
         },
         {
-          "id": "T2J1S8V21",
+          "id": "T2D12S8V21",
           "kind": "tournure",
           "french": "depuis quand est-il ouvert exactement",
           "english": "since when exactly has it been open",
@@ -663,7 +663,7 @@
           "usage": "Tournure interrogative avec inversion pour demander une date de départ précise."
         },
         {
-          "id": "T2J1S8V22",
+          "id": "T2D12S8V22",
           "kind": "tournure",
           "french": "Ça se passe où exactement",
           "english": "Where exactly does it take place",
@@ -671,7 +671,7 @@
           "usage": "Tournure orale informelle avec \"ça\" pour localiser un événement."
         },
         {
-          "id": "T2J1S8V23",
+          "id": "T2D12S8V23",
           "kind": "tournure",
           "french": "proposez-vous également",
           "english": "do you also offer",
@@ -679,7 +679,7 @@
           "usage": "Tournure interrogative avec inversion et l'adverbe \"également\" pour ajouter un élément à une liste."
         },
         {
-          "id": "T2J1S8V24",
+          "id": "T2D12S8V24",
           "kind": "tournure",
           "french": "Y a-t-il des expositions temporaires",
           "english": "Are there any temporary exhibitions",
@@ -687,7 +687,7 @@
           "usage": "Question avec inversion pour demander si un type d'exposition est actuellement proposé."
         },
         {
-          "id": "T2J1S8V25",
+          "id": "T2D12S8V25",
           "kind": "tournure",
           "french": "À quelle heure commencent",
           "english": "At what time do ... start",
@@ -695,7 +695,7 @@
           "usage": "Tournure interrogative introduite par un groupe prépositionnel en tête de phrase."
         },
         {
-          "id": "T2J1S8V26",
+          "id": "T2D12S8V26",
           "kind": "tournure",
           "french": "Comment fonctionnent les tarifs",
           "english": "How do the rates/pricing work",
@@ -703,7 +703,7 @@
           "usage": "Tournure interrogative avec \"comment\" pour demander une explication de fonctionnement."
         },
         {
-          "id": "T2J1S8V27",
+          "id": "T2D12S8V27",
           "kind": "tournure",
           "french": "certaines activités sont-elles gratuites",
           "english": "are some activities free",
@@ -711,7 +711,7 @@
           "usage": "Tournure avec inversion complexe (reprise pronominale) au registre soutenu."
         },
         {
-          "id": "T2J1S8V28",
+          "id": "T2D12S8V28",
           "kind": "tournure",
           "french": "Il y a généralement combien de",
           "english": "How many ... are there generally",
@@ -719,7 +719,7 @@
           "usage": "Tournure interrogative avec \"il y a\" et l'adverbe \"généralement\" pour demander une moyenne."
         },
         {
-          "id": "T2J1S8V29",
+          "id": "T2D12S8V29",
           "kind": "tournure",
           "french": "Comment se passe l'inscription",
           "english": "How does registration work",
@@ -727,7 +727,7 @@
           "usage": "Question ouverte avec « comment » pour demander les modalités d'inscription avant de préciser les options."
         },
         {
-          "id": "T2J1S8V30",
+          "id": "T2D12S8V30",
           "kind": "tournure",
           "french": "si vous ne deviez me recommander qu'une seule activité",
           "english": "if you had to recommend just one activity to me",
@@ -737,10 +737,10 @@
       ]
     },
     {
-      "subject_key": "tache2:janvier:batch-02:subject-09",
+      "subject_key": "tache2:decembre:batch-02:subject-09",
       "entries": [
         {
-          "id": "T2J1S9V01",
+          "id": "T2D12S9V01",
           "kind": "mot-cle",
           "french": "des randonnées",
           "english": "hikes",
@@ -748,7 +748,7 @@
           "usage": "Nom pluriel désignant des promenades sportives en milieu naturel."
         },
         {
-          "id": "T2J1S9V02",
+          "id": "T2D12S9V02",
           "kind": "mot-cle",
           "french": "des monuments historiques",
           "english": "historical monuments",
@@ -756,7 +756,7 @@
           "usage": "Groupe nominal désignant des bâtiments ou sites protégés pour leur valeur patrimoniale."
         },
         {
-          "id": "T2J1S9V03",
+          "id": "T2D12S9V03",
           "kind": "mot-cle",
           "french": "des sites culturels",
           "english": "cultural sites",
@@ -764,7 +764,7 @@
           "usage": "Groupe nominal désignant des lieux liés à l'art, l'histoire ou les traditions."
         },
         {
-          "id": "T2J1S9V04",
+          "id": "T2D12S9V04",
           "kind": "mot-cle",
           "french": "des festivals",
           "english": "festivals",
@@ -772,7 +772,7 @@
           "usage": "Nom pluriel désignant des événements culturels ou artistiques organisés périodiquement."
         },
         {
-          "id": "T2J1S9V05",
+          "id": "T2D12S9V05",
           "kind": "mot-cle",
           "french": "des spécialités locales",
           "english": "local specialties",
@@ -780,7 +780,7 @@
           "usage": "Groupe nominal désignant des plats ou produits typiques d'une région."
         },
         {
-          "id": "T2J1S9V06",
+          "id": "T2D12S9V06",
           "kind": "mot-cle",
           "french": "kayak",
           "english": "kayak/kayaking",
@@ -788,7 +788,7 @@
           "usage": "Nom masculin désignant à la fois l'embarcation et l'activité nautique associée."
         },
         {
-          "id": "T2J1S9V07",
+          "id": "T2D12S9V07",
           "kind": "mot-cle",
           "french": "une voiture",
           "english": "a car",
@@ -796,7 +796,7 @@
           "usage": "Nom féminin désignant le véhicule de transport individuel le plus courant."
         },
         {
-          "id": "T2J1S9V08",
+          "id": "T2D12S9V08",
           "kind": "mot-cle",
           "french": "une autre saison",
           "english": "another season",
@@ -804,7 +804,7 @@
           "usage": "Nom féminin désignant l'une des quatre périodes de l'année, ici au sens touristique."
         },
         {
-          "id": "T2J1S9V09",
+          "id": "T2D12S9V09",
           "kind": "mot-cle",
           "french": "la nature",
           "english": "nature",
@@ -812,7 +812,7 @@
           "usage": "Nom féminin désignant l'environnement naturel, thème central du tourisme vert."
         },
         {
-          "id": "T2J1S9V10",
+          "id": "T2D12S9V10",
           "kind": "mot-cle",
           "french": "un supplément",
           "english": "an extra charge/surcharge",
@@ -820,7 +820,7 @@
           "usage": "Nom masculin désignant un coût additionnel par rapport au tarif de base."
         },
         {
-          "id": "T2J1S9V11",
+          "id": "T2D12S9V11",
           "kind": "collocation",
           "french": "parcs naturels",
           "english": "natural parks",
@@ -828,7 +828,7 @@
           "usage": "Groupe nominal désignant des espaces protégés dédiés à la préservation de la nature."
         },
         {
-          "id": "T2J1S9V12",
+          "id": "T2D12S9V12",
           "kind": "collocation",
           "french": "espaces protégés",
           "english": "protected areas",
@@ -836,7 +836,7 @@
           "usage": "Groupe nominal désignant des zones naturelles bénéficiant d'un statut de préservation."
         },
         {
-          "id": "T2J1S9V13",
+          "id": "T2D12S9V13",
           "kind": "collocation",
           "french": "accessibles à tous les niveaux",
           "english": "accessible to all levels",
@@ -844,7 +844,7 @@
           "usage": "Structure adjectivale indiquant qu'une activité convient aux débutants comme aux confirmés."
         },
         {
-          "id": "T2J1S9V14",
+          "id": "T2D12S9V14",
           "kind": "collocation",
           "french": "points de vue panoramiques",
           "english": "panoramic viewpoints",
@@ -852,7 +852,7 @@
           "usage": "Groupe nominal désignant des endroits offrant une vue étendue sur un paysage."
         },
         {
-          "id": "T2J1S9V15",
+          "id": "T2D12S9V15",
           "kind": "collocation",
           "french": "villages typiques",
           "english": "typical/quaint villages",
@@ -860,7 +860,7 @@
           "usage": "Groupe nominal désignant des localités représentatives du charme régional."
         },
         {
-          "id": "T2J1S9V16",
+          "id": "T2D12S9V16",
           "kind": "collocation",
           "french": "visites guidées",
           "english": "guided tours",
@@ -868,7 +868,7 @@
           "usage": "Groupe nominal désignant des visites accompagnées par un professionnel."
         },
         {
-          "id": "T2J1S9V17",
+          "id": "T2D12S9V17",
           "kind": "collocation",
           "french": "marchés locaux",
           "english": "local markets",
@@ -876,7 +876,7 @@
           "usage": "Groupe nominal désignant des marchés proposant des produits de la région."
         },
         {
-          "id": "T2J1S9V18",
+          "id": "T2D12S9V18",
           "kind": "collocation",
           "french": "activités de plein air",
           "english": "outdoor activities",
@@ -884,7 +884,7 @@
           "usage": "Groupe nominal désignant des loisirs pratiqués en extérieur."
         },
         {
-          "id": "T2J1S9V19",
+          "id": "T2D12S9V19",
           "kind": "collocation",
           "french": "louer du matériel",
           "english": "to rent equipment",
@@ -892,7 +892,7 @@
           "usage": "Collocation verbale courante pour parler de la location d'objets pour une activité."
         },
         {
-          "id": "T2J1S9V20",
+          "id": "T2D12S9V20",
           "kind": "collocation",
           "french": "se déplacer en transports en commun",
           "english": "to get around by public transport",
@@ -900,7 +900,7 @@
           "usage": "Collocation verbale décrivant un mode de déplacement urbain courant."
         },
         {
-          "id": "T2J1S9V21",
+          "id": "T2D12S9V21",
           "kind": "tournure",
           "french": "que me conseillez-vous",
           "english": "what do you recommend to me",
@@ -908,7 +908,7 @@
           "usage": "Tournure interrogative avec inversion, registre soutenu et vouvoiement, typique du discours touristique."
         },
         {
-          "id": "T2J1S9V22",
+          "id": "T2D12S9V22",
           "kind": "tournure",
           "french": "à ne pas manquer",
           "english": "not to be missed",
@@ -916,7 +916,7 @@
           "usage": "Tournure figée utilisée pour recommander fortement quelque chose."
         },
         {
-          "id": "T2J1S9V23",
+          "id": "T2D12S9V23",
           "kind": "tournure",
           "french": "me recommandez-vous en priorité",
           "english": "would you recommend to me first/foremost",
@@ -924,7 +924,7 @@
           "usage": "Tournure interrogative avec inversion pour demander un ordre de priorité."
         },
         {
-          "id": "T2J1S9V24",
+          "id": "T2D12S9V24",
           "kind": "tournure",
           "french": "Conseillez-vous la visite de",
           "english": "Would you recommend visiting",
@@ -932,7 +932,7 @@
           "usage": "Tournure interrogative avec inversion, vouvoiement, pour demander un avis touristique."
         },
         {
-          "id": "T2J1S9V25",
+          "id": "T2D12S9V25",
           "kind": "tournure",
           "french": "Dans quelles langues sont-elles disponibles",
           "english": "In which languages are they available",
@@ -940,7 +940,7 @@
           "usage": "Tournure interrogative avec inversion et pronom de reprise \"elles\"."
         },
         {
-          "id": "T2J1S9V26",
+          "id": "T2D12S9V26",
           "kind": "tournure",
           "french": "vous auriez des adresses à recommander",
           "english": "would you have some addresses to recommend",
@@ -948,7 +948,7 @@
           "usage": "Tournure polie au conditionnel pour demander une suggestion sans imposer."
         },
         {
-          "id": "T2J1S9V27",
+          "id": "T2D12S9V27",
           "kind": "tournure",
           "french": "Est-il possible de louer",
           "english": "Is it possible to rent",
@@ -956,7 +956,7 @@
           "usage": "Tournure interrogative avec inversion et registre soutenu."
         },
         {
-          "id": "T2J1S9V28",
+          "id": "T2D12S9V28",
           "kind": "tournure",
           "french": "que recommandez-vous de faire le soir",
           "english": "what do you recommend doing in the evening",
@@ -964,7 +964,7 @@
           "usage": "Tournure interrogative avec inversion pour demander un conseil sur les activités nocturnes."
         },
         {
-          "id": "T2J1S9V29",
+          "id": "T2D12S9V29",
           "kind": "tournure",
           "french": "Est-ce qu'il est facile de",
           "english": "Is it easy to",
@@ -972,7 +972,7 @@
           "usage": "Tournure interrogative standard avec \"est-ce que\" pour évaluer une difficulté."
         },
         {
-          "id": "T2J1S9V30",
+          "id": "T2D12S9V30",
           "kind": "tournure",
           "french": "si vous ne deviez me recommander qu'une seule chose",
           "english": "if you had to recommend just one thing to me",
@@ -982,10 +982,10 @@
       ]
     },
     {
-      "subject_key": "tache2:janvier:batch-02:subject-10",
+      "subject_key": "tache2:decembre:batch-02:subject-10",
       "entries": [
         {
-          "id": "T2J1S10V01",
+          "id": "T2D12S10V01",
           "kind": "mot-cle",
           "french": "un ascenseur",
           "english": "an elevator/lift",
@@ -993,7 +993,7 @@
           "usage": "Nom masculin désignant l'appareil permettant de monter ou descendre entre les étages."
         },
         {
-          "id": "T2J1S10V02",
+          "id": "T2D12S10V02",
           "kind": "mot-cle",
           "french": "le camion",
           "english": "the truck",
@@ -1001,7 +1001,7 @@
           "usage": "Nom masculin désignant le véhicule utilitaire utilisé pour transporter des meubles."
         },
         {
-          "id": "T2J1S10V03",
+          "id": "T2D12S10V03",
           "kind": "mot-cle",
           "french": "les cartons",
           "english": "the (cardboard) boxes",
@@ -1009,7 +1009,7 @@
           "usage": "Nom pluriel désignant les boîtes en carton utilisées pour emballer des affaires."
         },
         {
-          "id": "T2J1S10V04",
+          "id": "T2D12S10V04",
           "kind": "mot-cle",
           "french": "des objets fragiles",
           "english": "fragile items",
@@ -1017,7 +1017,7 @@
           "usage": "Groupe nominal désignant des affaires pouvant se casser facilement."
         },
         {
-          "id": "T2J1S10V05",
+          "id": "T2D12S10V05",
           "kind": "mot-cle",
           "french": "une camionnette",
           "english": "a van",
@@ -1025,7 +1025,7 @@
           "usage": "Nom féminin désignant un véhicule utilitaire plus petit qu'un camion."
         },
         {
-          "id": "T2J1S10V06",
+          "id": "T2D12S10V06",
           "kind": "mot-cle",
           "french": "un seul trajet",
           "english": "a single trip/journey",
@@ -1033,7 +1033,7 @@
           "usage": "Nom masculin désignant un déplacement d'un point à un autre, ici en un seul aller."
         },
         {
-          "id": "T2J1S10V07",
+          "id": "T2D12S10V07",
           "kind": "mot-cle",
           "french": "le permis",
           "english": "the (driving) license",
@@ -1041,7 +1041,7 @@
           "usage": "Nom masculin désignant l'autorisation officielle de conduire un véhicule."
         },
         {
-          "id": "T2J1S10V08",
+          "id": "T2D12S10V08",
           "kind": "mot-cle",
           "french": "des gants",
           "english": "gloves",
@@ -1049,7 +1049,7 @@
           "usage": "Nom pluriel désignant l'équipement de protection pour les mains."
         },
         {
-          "id": "T2J1S10V09",
+          "id": "T2D12S10V09",
           "kind": "mot-cle",
           "french": "du papier bulle",
           "english": "bubble wrap",
@@ -1057,7 +1057,7 @@
           "usage": "Nom masculin désignant un matériau d'emballage protecteur pour les objets fragiles."
         },
         {
-          "id": "T2J1S10V10",
+          "id": "T2D12S10V10",
           "kind": "mot-cle",
           "french": "un parking",
           "english": "a parking lot/space",
@@ -1065,7 +1065,7 @@
           "usage": "Nom masculin désignant un espace destiné au stationnement des véhicules."
         },
         {
-          "id": "T2J1S10V11",
+          "id": "T2D12S10V11",
           "kind": "collocation",
           "french": "au rez-de-chaussée",
           "english": "on the ground floor",
@@ -1073,7 +1073,7 @@
           "usage": "Groupe prépositionnel désignant le niveau d'un bâtiment situé au niveau de la rue."
         },
         {
-          "id": "T2J1S10V12",
+          "id": "T2D12S10V12",
           "kind": "collocation",
           "french": "particulièrement lourds ou encombrants",
           "english": "particularly heavy or bulky",
@@ -1081,7 +1081,7 @@
           "usage": "Structure adjectivale coordonnée pour décrire des objets difficiles à déménager."
         },
         {
-          "id": "T2J1S10V13",
+          "id": "T2D12S10V13",
           "kind": "collocation",
           "french": "une attention particulière",
           "english": "special/particular attention",
@@ -1089,7 +1089,7 @@
           "usage": "Groupe nominal désignant un soin renforcé accordé à quelque chose."
         },
         {
-          "id": "T2J1S10V14",
+          "id": "T2D12S10V14",
           "kind": "collocation",
           "french": "matériel de protection",
           "english": "protective equipment",
@@ -1097,7 +1097,7 @@
           "usage": "Groupe nominal désignant les objets destinés à protéger des affaires ou des personnes."
         },
         {
-          "id": "T2J1S10V15",
+          "id": "T2D12S10V15",
           "kind": "collocation",
           "french": "type de véhicule",
           "english": "type of vehicle",
@@ -1105,7 +1105,7 @@
           "usage": "Groupe nominal utilisé pour catégoriser les véhicules selon leurs caractéristiques."
         },
         {
-          "id": "T2J1S10V16",
+          "id": "T2D12S10V16",
           "kind": "collocation",
           "french": "à manger et à boire",
           "english": "food and drink",
@@ -1113,7 +1113,7 @@
           "usage": "Locution figée désignant les provisions nécessaires pour une journée."
         },
         {
-          "id": "T2J1S10V17",
+          "id": "T2D12S10V17",
           "kind": "collocation",
           "french": "en transports en commun",
           "english": "by public transportation",
@@ -1121,7 +1121,7 @@
           "usage": "Groupe prépositionnel courant pour indiquer un mode de déplacement collectif."
         },
         {
-          "id": "T2J1S10V18",
+          "id": "T2D12S10V18",
           "kind": "collocation",
           "french": "à proximité",
           "english": "nearby/close by",
@@ -1129,7 +1129,7 @@
           "usage": "Locution adverbiale indiquant la proximité géographique d'un lieu."
         },
         {
-          "id": "T2J1S10V19",
+          "id": "T2D12S10V19",
           "kind": "collocation",
           "french": "vont venir aider",
           "english": "are going to come help",
@@ -1137,7 +1137,7 @@
           "usage": "Collocation verbale au futur proche décrivant une aide apportée par des tiers."
         },
         {
-          "id": "T2J1S10V20",
+          "id": "T2D12S10V20",
           "kind": "collocation",
           "french": "toute la journée",
           "english": "all day long",
@@ -1145,7 +1145,7 @@
           "usage": "Groupe nominal adverbial très courant pour indiquer une durée complète."
         },
         {
-          "id": "T2J1S10V21",
+          "id": "T2D12S10V21",
           "kind": "tournure",
           "french": "c'est confirmé, tu vas bientôt déménager",
           "english": "it's confirmed, you're moving soon",
@@ -1153,7 +1153,7 @@
           "usage": "Tournure orale informelle combinant une affirmation et une question de confirmation."
         },
         {
-          "id": "T2J1S10V22",
+          "id": "T2D12S10V22",
           "kind": "tournure",
           "french": "il se situe où exactement",
           "english": "where exactly is it located",
@@ -1161,7 +1161,7 @@
           "usage": "Tournure orale avec le pronom \"il\" reprenant le sujet pour localiser un lieu."
         },
         {
-          "id": "T2J1S10V23",
+          "id": "T2D12S10V23",
           "kind": "tournure",
           "french": "As-tu déjà fixé la date de",
           "english": "Have you already set the date for",
@@ -1169,7 +1169,7 @@
           "usage": "Tournure interrogative avec inversion et tutoiement, registre semi-formel à l'oral."
         },
         {
-          "id": "T2J1S10V24",
+          "id": "T2D12S10V24",
           "kind": "tournure",
           "french": "À quelle heure aimerais-tu qu'on commence",
           "english": "What time would you like us to start",
@@ -1177,7 +1177,7 @@
           "usage": "Tournure interrogative avec le conditionnel de politesse et le subjonctif après \"aimerais que\"."
         },
         {
-          "id": "T2J1S10V25",
+          "id": "T2D12S10V25",
           "kind": "tournure",
           "french": "L'accès est pratique pour",
           "english": "Access is convenient for",
@@ -1185,7 +1185,7 @@
           "usage": "Tournure descriptive suivie d'un infinitif de but, utile pour évaluer la praticité d'un lieu."
         },
         {
-          "id": "T2J1S10V26",
+          "id": "T2D12S10V26",
           "kind": "tournure",
           "french": "Tu as déjà demandé à d'autres amis",
           "english": "Have you already asked other friends",
@@ -1193,7 +1193,7 @@
           "usage": "Tournure orale au passé composé avec tutoiement pour vérifier une démarche antérieure."
         },
         {
-          "id": "T2J1S10V27",
+          "id": "T2D12S10V27",
           "kind": "tournure",
           "french": "il faudra aussi t'aider à",
           "english": "you'll also need help to",
@@ -1201,7 +1201,7 @@
           "usage": "Tournure impersonnelle au futur avec \"il faudra\" exprimant une nécessité à venir."
         },
         {
-          "id": "T2J1S10V28",
+          "id": "T2D12S10V28",
           "kind": "tournure",
           "french": "Comment allons-nous transporter toutes tes affaires",
           "english": "How are we going to transport all your belongings",
@@ -1209,7 +1209,7 @@
           "usage": "Tournure interrogative avec \"nous\" pour impliquer les deux interlocuteurs dans l'organisation."
         },
         {
-          "id": "T2J1S10V29",
+          "id": "T2D12S10V29",
           "kind": "tournure",
           "french": "Qu'est-ce qu'il faut apporter comme équipement",
           "english": "What equipment do you need to bring",
@@ -1217,7 +1217,7 @@
           "usage": "Tournure interrogative avec \"qu'est-ce que\" et \"comme\" pour demander une liste d'objets."
         },
         {
-          "id": "T2J1S10V30",
+          "id": "T2D12S10V30",
           "kind": "tournure",
           "french": "il vaut mieux venir en transports en commun",
           "english": "it's better to come by public transportation",

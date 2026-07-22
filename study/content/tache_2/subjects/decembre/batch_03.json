@@ -1,0 +1,354 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 3,
+  "subjects": [
+    {
+      "number": 11,
+      "title": "Nouveau centre sportif de la ville",
+      "prompt": "Je suis votre ami(e). Je viens de rejoindre le nouveau centre sportif de notre ville. Vous êtes intéressé(e). Vous me posez des questions (horaires, tarifs, sports proposés, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'ai vu que tu viens de t'inscrire au nouveau centre sportif — ça m'intéresse aussi, tu pourrais m'en parler un peu ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Quels sports et quelles activités est-ce qu'on peut y faire — il y a des cours collectifs comme le yoga, le pilates ou le spinning, ou c'est surtout de la musculation ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Le centre est bien équipé — il y a une piscine, une salle de cardio et des terrains ?",
+          "memory_section": 10
+        },
+        {
+          "text": "À quelle heure commencent les cours collectifs — plutôt le matin ou en fin de journée ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Quels sont les horaires d'ouverture — c'est ouvert tous les jours, y compris le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Le centre propose-t-il des activités adaptées à tous les niveaux, y compris aux débutants ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Les cours sont-ils encadrés par des professeurs qualifiés — et est-ce qu'on peut avoir un coach personnel si besoin ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — il faut souscrire un abonnement ou on peut payer chaque activité séparément ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Une fois inscrit, on s'engage pour toute l'année ou on peut arrêter quand on veut ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter comme équipement — ou est-ce que tout est fourni sur place ? Y a-t-il des vestiaires et des douches ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou directement sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Toi qui viens de t'inscrire, qu'est-ce qui t'a le plus plu dans ce centre ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — quelle activité me recommanderais-tu pour me remettre en forme ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Sorties culturelles de la mairie",
+      "prompt": "Je suis votre voisin(e). Je participe souvent à des sorties culturelles de la mairie. Vous êtes intéressé(e). Vous me posez des questions (lieux, dates, activités, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! J'ai appris que vous participez souvent aux sorties culturelles organisées par la mairie — ça m'intéresse, vous pourriez m'en parler ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Quel genre de sorties propose la mairie — des visites de musées, des expositions, des spectacles ou des concerts ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Quels types de thèmes sont abordés — le patrimoine, l'art, la musique, ou un peu de tout ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Ces sorties ont lieu où en général — dans la ville même ou aussi dans les environs ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "À quelle fréquence sont-elles organisées — chaque semaine ou seulement de temps en temps ?",
+          "memory_section": 2
+        },
+        {
+          "text": "La programmation est publiée à l'avance ou on la découvre au dernier moment ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — c'est gratuit pour les habitants ou il faut payer chaque sortie ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou directement auprès de la mairie ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Faut-il s'inscrire longtemps à l'avance ou il reste souvent des places ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce que le transport est prévu ou faut-il se rendre sur place par ses propres moyens ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Ces sorties conviennent-elles aussi aux familles avec enfants ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Qu'est-ce que vous appréciez le plus dans ces sorties ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me recommander qu'une seule sortie, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Découvrir le quartier – Nouveau voisin",
+      "prompt": "Je suis votre voisin(e). Vous venez d'arriver dans l'immeuble. Vous cherchez des infos sur le quartier. Vous me posez des questions (écoles, loisirs, commerces, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je viens d'emménager dans l'immeuble et je ne connais pas encore le quartier — vous pourriez me renseigner un peu ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Comment est le quartier en général — plutôt calme et résidentiel ou animé ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Est-ce que les voisins se connaissent et s'entraident facilement dans l'immeuble ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Pour les enfants, y a-t-il de bonnes écoles et des garderies à proximité ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Ces écoles sont-elles accessibles à pied ou faut-il prévoir un transport ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Côté commerces, y a-t-il des supermarchés, des marchés ou des magasins de quartier pas trop loin ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Pour les courses du quotidien, est-ce que tout est accessible à pied ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Quels sont les loisirs disponibles dans le coin — des parcs, des salles de sport, des bibliothèques ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Y a-t-il des activités ou des clubs pour rencontrer du monde et se faire des amis ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Le quartier est-il bien desservi par les transports en commun ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Y a-t-il un parking ou c'est compliqué de se garer dans le quartier ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Pour les soins, comment trouver un médecin ou une pharmacie quand on vient d'arriver ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Y a-t-il des choses à savoir sur la vie de l'immeuble — des règles à respecter entre voisins ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Selon vous, qu'est-ce qui est le plus pratique dans ce quartier au quotidien ?",
+          "memory_number": 2,
+          "memory_section": 4
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me donner qu'un seul conseil pour bien m'installer ici, ce serait lequel ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Location de voiture – Agence",
+      "prompt": "Je travaille dans une agence de location de voitures. Vous voulez en louer une pour vos vacances. Vous me posez des questions (prix, modèles, assurance, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je voudrais louer une voiture pour mes vacances — pouvez-vous me présenter vos différentes offres ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Quels types de véhicules proposez-vous — citadine, berline, break ou SUV ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "Pour un couple avec deux enfants et des bagages, quel modèle me conseilleriez-vous ?",
+          "memory_number": 2,
+          "memory_section": 1
+        },
+        {
+          "text": "La voiture est-elle automatique ou manuelle — et fonctionne-t-elle à l'essence, au diesel ou à l'électricité ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — c'est un prix par jour, par semaine ou au kilométrage ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Le kilométrage est-il illimité ou y a-t-il une limite à ne pas dépasser ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Est-ce que l'assurance est comprise dans le tarif ou faut-il la prendre en supplément ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Que couvre exactement l'assurance en cas d'accident ou de vol — y a-t-il une franchise ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Faut-il verser une caution — et de quel montant à peu près ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il un âge minimum ou une ancienneté de permis exigée pour louer ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Faut-il rendre la voiture avec le plein d'essence ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Comment se passe la location concrètement, de la réservation à la restitution du véhicule ?",
+          "memory_number": 2,
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce qu'on peut rendre la voiture en dehors des heures d'ouverture ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Que se passe-t-il si je rends le véhicule en retard ou avec un petit dommage ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "Pour finir — si je réserve à l'avance, est-ce que j'obtiens un meilleur tarif ?",
+          "memory_section": 1
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "École de langues – Renseignements",
+      "prompt": "Je travaille dans une école de langues. Vous voulez apprendre une langue étrangère. Vous me posez des questions (cours, professeurs, prix, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je souhaite apprendre une nouvelle langue et je me renseigne sur votre école — pourriez-vous m'expliquer comment ça fonctionne ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Quelles langues proposez-vous — et lesquelles sont les plus demandées ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Comment sont organisés les cours — en petits groupes, en classe ou en cours particuliers ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Les cours ont lieu à quelle fréquence, et combien de temps dure une séance ?",
+          "memory_section": 2
+        },
+        {
+          "text": "À quel niveau ça s'adresse — plutôt aux débutants ou aussi aux personnes qui ont déjà des bases ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Comment évaluez-vous mon niveau au départ — il y a un test de placement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Qui sont les enseignants — sont-ils diplômés et locuteurs natifs ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Les cours sont-ils plutôt axés sur la grammaire, la conversation, ou un mélange des deux ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — c'est à la séance ou sous forme de forfait ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants ou pour une inscription à l'année ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a un cours d'essai gratuit ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter — des manuels, des cahiers, ou est-ce que tout est fourni ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Comment suivez-vous la progression des élèves — il y a des bilans réguliers ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Est-ce que vous préparez aussi aux examens ou aux certifications officielles ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Pour finir — si je veux progresser rapidement, quelle formule me conseilleriez-vous ?",
+          "memory_number": 2,
+          "memory_section": 1
+        }
+      ]
+    }
+  ]
+}

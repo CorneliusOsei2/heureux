@@ -1,0 +1,322 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 6,
+  "subjects": [
+    {
+      "number": 26,
+      "title": "Fête de l'école – Premier participation",
+      "prompt": "Je suis parent d'élève. Nos enfants vont à la même école. Vous allez participer à la fête de l'école pour la première fois. Vous me posez des questions sur l'événement (horaires, programme, animations, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Ce sera ma première fête de l'école et j'aimerais bien comprendre comment cela se passe — pourriez-vous m'en donner un aperçu ?"
+        },
+        {
+          "text": "À quelle heure l'événement commence-t-il et se termine-t-il en général ?"
+        },
+        {
+          "text": "Qu'est-ce qu'il y a au programme — spectacles, jeux, stands, animations ?"
+        },
+        {
+          "text": "Y a-t-il un thème particulier cette année ?"
+        },
+        {
+          "text": "Qui organise la fête exactement — les parents, les enseignants, les élèves ?"
+        },
+        {
+          "text": "Il y a habituellement beaucoup de monde ?"
+        },
+        {
+          "text": "Est-ce qu'on doit apporter quelque chose — un plat, une boisson ?",
+          "memory_number": 5,
+          "memory_section": 4
+        },
+        {
+          "text": "Y a-t-il des activités spécialement prévues pour les enfants ?"
+        },
+        {
+          "text": "Est-ce qu'il y a une tombola ou une collecte de fonds liée à la fête ?"
+        },
+        {
+          "text": "Vous me conseilleriez quelle tenue pour être à l'aise ?"
+        },
+        {
+          "text": "Faut-il acheter des billets à l'avance ou l'entrée est-elle gratuite ?"
+        },
+        {
+          "text": "Est-ce qu'il y a un parking pratique à proximité de l'école ?"
+        },
+        {
+          "text": "Prévoit-on des stands de nourriture ou un repas partagé ?"
+        },
+        {
+          "text": "Que se passe-t-il s'il fait mauvais temps — il y a un plan B ?"
+        },
+        {
+          "text": "Pour finir — s'il y a une seule chose à ne pas manquer pendant cette fête de l'école, ce serait laquelle ?"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Louer un logement dans la ville d'un(e) ami(e)",
+      "prompt": "Je suis votre ami(e). J'habite dans une grande ville. Vous voulez louer un logement dans cette ville. Vous me posez des questions à ce sujet (offres, prix, quartier, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'aimerais louer un logement dans ta ville et je ne sais pas trop par où commencer — tu pourrais me conseiller ?"
+        },
+        {
+          "text": "Quels quartiers me conseillerais-tu, plutôt calmes et abordables pour commencer ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Et à l'inverse, y a-t-il des quartiers à éviter, ou trop chers pour un premier logement ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Question budget, à quoi dois-je m'attendre pour un studio ou un petit appartement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des pièges à éviter avec certains propriétaires ou certaines annonces ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Tu utiliserais quels sites ou applications pour chercher un logement là-bas ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Le marché est-il très compétitif en ce moment, ou on trouve encore facilement ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Il vaut mieux commencer à chercher combien de temps à l'avance ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Quels documents demande-t-on généralement pour un dossier de location ?",
+          "memory_number": 3,
+          "memory_section": 1
+        },
+        {
+          "text": "Pour un premier logement, tu viserais plutôt un studio, une colocation ou un petit appartement ?"
+        },
+        {
+          "text": "Ces quartiers sont-ils faciles d'accès en métro ou en bus, si je n'ai pas de voiture ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Côté ambiance, quels quartiers sont plutôt calmes et lesquels sont plus animés ?"
+        },
+        {
+          "text": "Pour les services du quotidien — commerces, écoles, santé — quels quartiers sont les mieux équipés ?"
+        },
+        {
+          "text": "Il y a des choses à vérifier absolument avant de signer un bail ?"
+        },
+        {
+          "text": "Pour finir — si tu ne devais me donner qu'un seul conseil pour bien commencer, ce serait lequel ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Club de sport du quartier",
+      "prompt": "Je travaille dans un club sportif. Vous voulez vous inscrire à un cours de sport. Vous me posez des questions pour obtenir des informations et faire votre choix (sports proposés, horaires, tarifs, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je viens d'emménager dans le quartier et je cherche un club de sport. Pourriez-vous me parler des différentes activités que vous proposez ici ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Est-ce qu'il y a des cours collectifs — yoga, pilates, spinning — ou c'est surtout de la musculation ?",
+          "memory_section": 10
+        },
+        {
+          "text": "À quelle heure commencent les cours collectifs — plutôt le matin ou en fin de journée ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ? Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Les cours sont-ils donnés par des professeurs qualifiés ? Et est-ce qu'il y a un coach personnel disponible si j'en ai besoin ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Quels sont les horaires d'ouverture — vous êtes ouverts tous les jours, y compris le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque activité séparément ? Le tarif comprend quoi exactement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Une fois inscrit(e), on s'engage pour toute la session ou on peut venir de manière flexible ?",
+          "memory_number": 2,
+          "memory_section": 5
+        },
+        {
+          "text": "Est-ce qu'il est possible de suspendre l'abonnement si nécessaire ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter comme équipement — ou est-ce que tout est fourni sur place ? Y a-t-il des vestiaires et des douches disponibles ?",
+          "memory_section": 5
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou uniquement sur place ? Il reste encore des places ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance pour les cours ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Pour finir — quelle activité me recommanderiez-vous pour quelqu'un qui veut se remettre en forme et se tonifier ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "title": "Voyage touristique – Agence de voyages",
+      "prompt": "Je travaille dans une agence de voyages. Vous cherchez une destination de vacances. Vous me posez des questions pour obtenir des informations et faire votre choix (prix, lieu, activités, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je voudrais organiser un voyage touristique — pouvez-vous me donner un aperçu des options disponibles ?",
+          "memory_section": 1,
+          "memory_number": 2
+        },
+        {
+          "text": "Quelles destinations et quels types de circuits proposez-vous — culture, nature, aventure, gastronomie ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Combien de temps faut-il prévoir — quelques jours ou toute une semaine ?",
+          "memory_section": 9
+        },
+        {
+          "text": "C'est une bonne période pour y aller ou il vaut mieux attendre une autre saison ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Il y a beaucoup de monde en ce moment ou c'est plutôt calme ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement, transport, hébergement et repas inclus ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Le tarif comprend quoi exactement — l'assurance, le guide et le transport privé sont-ils inclus ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'il est possible de payer en plusieurs fois ou faut-il régler en une seule fois ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Faut-il réserver le circuit longtemps à l'avance ou peut-on s'y prendre au dernier moment ?",
+          "memory_section": 6
+        },
+        {
+          "text": "Il reste encore des places ou c'est déjà complet ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce que ces circuits conviennent aux familles — faut-il une condition physique particulière ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Vous avez mentionné le circuit le plus apprécié — vous pourriez m'en dire un peu plus ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me recommander qu'une seule destination, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "title": "Inscription à la ludothèque",
+      "prompt": "Je travaille à la ludothèque de votre ville. Vous souhaitez vous inscrire. Vous me posez des questions sur la ludothèque (horaires, tarifs, types de jeux, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour, je voudrais m'inscrire à la ludothèque — comment dois-je procéder ?"
+        },
+        {
+          "text": "Quels documents faut-il apporter pour l'inscription — une pièce d'identité, un justificatif de domicile ?",
+          "memory_number": 3,
+          "memory_section": 1
+        },
+        {
+          "text": "L'inscription est-elle gratuite, ou faut-il payer une cotisation annuelle ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Quels sont les horaires d'ouverture — vous êtes aussi ouverts le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Quels types de jeux et de jouets proposez-vous — jeux de société, puzzles, jouets éducatifs, jeux d'extérieur, voire jeux vidéo ?"
+        },
+        {
+          "text": "Avez-vous des espaces ou des sections selon les âges des enfants ?"
+        },
+        {
+          "text": "Peut-on essayer certains jeux sur place avant de les emprunter ?"
+        },
+        {
+          "text": "Combien de jeux peut-on emprunter à la fois ?"
+        },
+        {
+          "text": "Et pendant combien de temps peut-on les garder avant de les rapporter ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Y a-t-il des frais si on rend un jeu en retard ?"
+        },
+        {
+          "text": "Que se passe-t-il s'il manque une pièce au moment du retour ?"
+        },
+        {
+          "text": "Organisez-vous des animations, comme des ateliers ou des moments de découverte ?"
+        },
+        {
+          "text": "Y a-t-il des jeux pour les tout-petits, mais aussi pour les plus grands ou même les adultes ?"
+        },
+        {
+          "text": "Peut-on prolonger un emprunt en ligne, ou faut-il revenir sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Pour finir — si vous ne deviez me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    }
+  ]
+}

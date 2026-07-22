@@ -1,0 +1,1230 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "subject_key": "tache2:decembre:batch-01:subject-01",
+      "entries": [
+        {
+          "id": "T2D12S1V01",
+          "kind": "mot-cle",
+          "french": "ta vie en général",
+          "english": "your life in general",
+          "example": "Alors, comment va ta vie en général en ce moment ?",
+          "usage": "Groupe nominal possessif pour parler de la situation personnelle dans son ensemble."
+        },
+        {
+          "id": "T2D12S1V02",
+          "kind": "mot-cle",
+          "french": "ton temps libre",
+          "english": "your free time",
+          "example": "Qu'est-ce que tu fais pendant ton temps libre là-bas ?",
+          "usage": "Groupe nominal pour désigner les moments disponibles hors obligations."
+        },
+        {
+          "id": "T2D12S1V03",
+          "kind": "mot-cle",
+          "french": "ta famille",
+          "english": "your family",
+          "example": "Et ta famille, comment va-t-elle ?",
+          "usage": "Groupe nominal possessif utilisé pour évoquer les proches."
+        },
+        {
+          "id": "T2D12S1V04",
+          "kind": "mot-cle",
+          "french": "Le travail",
+          "english": "work",
+          "example": "Le travail, ça se passe bien pour toi en ce moment ?",
+          "usage": "Nom masculin employé ici comme thème de conversation sur la vie professionnelle."
+        },
+        {
+          "id": "T2D12S1V05",
+          "kind": "mot-cle",
+          "french": "au Canada",
+          "english": "in Canada",
+          "example": "Tu habites où maintenant exactement au Canada ?",
+          "usage": "Groupe prépositionnel pour situer quelqu’un dans un pays."
+        },
+        {
+          "id": "T2D12S1V06",
+          "kind": "mot-cle",
+          "french": "de nouveaux projets",
+          "english": "new plans/projects",
+          "example": "Tu as de nouveaux projets ou des plans importants pour les prochains mois ?",
+          "usage": "Groupe nominal introduit par « de » pour évoquer des intentions à venir."
+        },
+        {
+          "id": "T2D12S1V07",
+          "kind": "mot-cle",
+          "french": "ta vie sociale",
+          "english": "your social life",
+          "example": "Tu arrives à voir pas mal de monde — comment est ta vie sociale là-bas ?",
+          "usage": "Groupe nominal possessif pour parler des relations et des sorties."
+        },
+        {
+          "id": "T2D12S1V08",
+          "kind": "mot-cle",
+          "french": "santé et moral",
+          "english": "health and morale",
+          "example": "Et côté santé et moral, tu te sens bien ?",
+          "usage": "Coordination nominale pour aborder le bien-être physique et mental."
+        },
+        {
+          "id": "T2D12S1V09",
+          "kind": "mot-cle",
+          "french": "quelque chose d'inattendu",
+          "english": "something unexpected",
+          "example": "Est-ce qu'il t'est arrivé quelque chose d'inattendu depuis qu'on s'est vus ?",
+          "usage": "Groupe nominal indéfini pour désigner un événement imprévu."
+        },
+        {
+          "id": "T2D12S1V10",
+          "kind": "mot-cle",
+          "french": "voyagé un peu récemment",
+          "english": "travelled a bit recently",
+          "example": "Tu as voyagé un peu récemment, au Canada ou ailleurs ?",
+          "usage": "Groupe verbal au passé composé pour parler de déplacements récents."
+        },
+        {
+          "id": "T2D12S1V11",
+          "kind": "collocation",
+          "french": "comment va ta vie",
+          "english": "how your life is going",
+          "example": "Alors, comment va ta vie en général en ce moment ?",
+          "usage": "Suite figée fréquente pour demander des nouvelles de façon naturelle."
+        },
+        {
+          "id": "T2D12S1V12",
+          "kind": "collocation",
+          "french": "pendant ton temps libre",
+          "english": "during your free time",
+          "example": "Qu'est-ce que tu fais pendant ton temps libre là-bas ?",
+          "usage": "Groupe prépositionnel servant à situer une activité dans les loisirs."
+        },
+        {
+          "id": "T2D12S1V13",
+          "kind": "collocation",
+          "french": "ça se passe bien",
+          "english": "it is going well",
+          "example": "Le travail, ça se passe bien pour toi en ce moment ?",
+          "usage": "Expression orale courante pour demander si une situation évolue positivement."
+        },
+        {
+          "id": "T2D12S1V14",
+          "kind": "collocation",
+          "french": "depuis la dernière fois",
+          "english": "since the last time",
+          "example": "Qu'est-ce qui a le plus changé dans ta vie depuis la dernière fois qu'on s'est vus ?",
+          "usage": "Locution temporelle pour comparer avec une rencontre précédente."
+        },
+        {
+          "id": "T2D12S1V15",
+          "kind": "collocation",
+          "french": "habites où maintenant",
+          "english": "live where now",
+          "example": "Tu habites où maintenant exactement au Canada ?",
+          "usage": "Suite orale typique avec l’interrogatif laissé en fin d’énoncé."
+        },
+        {
+          "id": "T2D12S1V16",
+          "kind": "collocation",
+          "french": "des plans importants",
+          "english": "important plans",
+          "example": "Tu as de nouveaux projets ou des plans importants pour les prochains mois ?",
+          "usage": "Groupe nominal pour parler de projets concrets à venir."
+        },
+        {
+          "id": "T2D12S1V17",
+          "kind": "collocation",
+          "french": "voir pas mal de monde",
+          "english": "see quite a lot of people",
+          "example": "Tu arrives à voir pas mal de monde — comment est ta vie sociale là-bas ?",
+          "usage": "Expression verbale familière pour évoquer des contacts sociaux nombreux."
+        },
+        {
+          "id": "T2D12S1V18",
+          "kind": "collocation",
+          "french": "te sens bien",
+          "english": "feel well",
+          "example": "Et côté santé et moral, tu te sens bien ?",
+          "usage": "Suite verbale pronominale utilisée pour parler de son état général."
+        },
+        {
+          "id": "T2D12S1V19",
+          "kind": "collocation",
+          "french": "te manque le plus",
+          "english": "you miss the most",
+          "example": "Qu'est-ce qui te manque le plus de chez nous ?",
+          "usage": "Structure verbale avec superlatif pour exprimer une nostalgie forte."
+        },
+        {
+          "id": "T2D12S1V20",
+          "kind": "collocation",
+          "french": "le pratiquer souvent",
+          "english": "practise it often",
+          "example": "Et ton français, tu as l'occasion de le pratiquer souvent là-bas ?",
+          "usage": "Collocation verbe + pronom pour parler d’un usage régulier d’une langue."
+        },
+        {
+          "id": "T2D12S1V21",
+          "kind": "tournure",
+          "french": "comment va ta vie en général en ce moment",
+          "english": "how is your life in general right now",
+          "example": "Alors, comment va ta vie en général en ce moment ?",
+          "usage": "Question ouverte informelle pour prendre des nouvelles globales."
+        },
+        {
+          "id": "T2D12S1V22",
+          "kind": "tournure",
+          "french": "qu'est-ce que tu fais pendant ton temps libre",
+          "english": "what do you do in your free time",
+          "example": "Qu'est-ce que tu fais pendant ton temps libre là-bas ?",
+          "usage": "Question en « qu’est-ce que » pour demander des loisirs de façon naturelle."
+        },
+        {
+          "id": "T2D12S1V23",
+          "kind": "tournure",
+          "french": "Et ta famille, comment va-t-elle",
+          "english": "and your family, how is it doing",
+          "example": "Et ta famille, comment va-t-elle ?",
+          "usage": "Question avec reprise thématique pour enchaîner sur la famille."
+        },
+        {
+          "id": "T2D12S1V24",
+          "kind": "tournure",
+          "french": "qu'est-ce qui a le plus changé dans ta vie",
+          "english": "what has changed the most in your life",
+          "example": "Qu'est-ce qui a le plus changé dans ta vie depuis la dernière fois qu'on s'est vus ?",
+          "usage": "Question au passé composé avec superlatif pour faire un bilan."
+        },
+        {
+          "id": "T2D12S1V25",
+          "kind": "tournure",
+          "french": "tu as de nouveaux projets ou des plans importants",
+          "english": "do you have new projects or important plans",
+          "example": "Tu as de nouveaux projets ou des plans importants pour les prochains mois ?",
+          "usage": "Question alternative informelle pour sonder les intentions futures."
+        },
+        {
+          "id": "T2D12S1V26",
+          "kind": "tournure",
+          "french": "comment est ta vie sociale là-bas",
+          "english": "how is your social life there",
+          "example": "Tu arrives à voir pas mal de monde — comment est ta vie sociale là-bas ?",
+          "usage": "Question descriptive pour parler des relations dans un nouveau lieu."
+        },
+        {
+          "id": "T2D12S1V27",
+          "kind": "tournure",
+          "french": "est-ce qu'il t'est arrivé quelque chose d'inattendu",
+          "english": "has something unexpected happened to you",
+          "example": "Est-ce qu'il t'est arrivé quelque chose d'inattendu depuis qu'on s'est vus ?",
+          "usage": "Question avec « est-ce que » au passé composé pour demander un imprévu."
+        },
+        {
+          "id": "T2D12S1V28",
+          "kind": "tournure",
+          "french": "quand tu penses à nous",
+          "english": "when you think of us",
+          "example": "Quand tu penses à nous, c'est quoi ton meilleur souvenir ?",
+          "usage": "Subordonnée temporelle utilisée pour introduire un souvenir partagé."
+        },
+        {
+          "id": "T2D12S1V29",
+          "kind": "tournure",
+          "french": "tu as l'occasion de le pratiquer souvent là-bas",
+          "english": "do you get the chance to practise it often there",
+          "example": "Et ton français, tu as l'occasion de le pratiquer souvent là-bas ?",
+          "usage": "Question informelle sur la fréquence d’une pratique linguistique."
+        },
+        {
+          "id": "T2D12S1V30",
+          "kind": "tournure",
+          "french": "On pourra se revoir quand, à ton avis",
+          "english": "when will we be able to see each other again, in your opinion",
+          "example": "On pourra se revoir quand, à ton avis ?",
+          "usage": "Question de clôture au futur proche pour envisager une prochaine rencontre."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:decembre:batch-01:subject-02",
+      "entries": [
+        {
+          "id": "T2D12S2V01",
+          "kind": "mot-cle",
+          "french": "le paquet",
+          "english": "the package",
+          "example": "Tu dois poster quoi exactement, et le paquet est gros comment ?",
+          "usage": "Nom masculin désignant l’objet à envoyer par la poste."
+        },
+        {
+          "id": "T2D12S2V02",
+          "kind": "mot-cle",
+          "french": "à peu près",
+          "english": "approximately",
+          "example": "Il pèse à peu près combien ?",
+          "usage": "Locution adverbiale utilisée pour donner une estimation."
+        },
+        {
+          "id": "T2D12S2V03",
+          "kind": "mot-cle",
+          "french": "quelle adresse",
+          "english": "which address",
+          "example": "Tu veux l'envoyer à quelle adresse exactement, et dans quel pays ?",
+          "usage": "Groupe interrogatif servant à demander la destination précise."
+        },
+        {
+          "id": "T2D12S2V04",
+          "kind": "mot-cle",
+          "french": "urgent",
+          "english": "urgent",
+          "example": "C'est urgent au point de devoir partir aujourd'hui, ou ça peut attendre un peu plus tard dans la semaine ?",
+          "usage": "Adjectif qualifiant ce qui doit être traité sans délai."
+        },
+        {
+          "id": "T2D12S2V05",
+          "kind": "mot-cle",
+          "french": "Au plus tard",
+          "english": "at the latest",
+          "example": "Au plus tard, le paquet doit arriver quand ?",
+          "usage": "Locution adverbiale pour fixer une limite temporelle maximale."
+        },
+        {
+          "id": "T2D12S2V06",
+          "kind": "mot-cle",
+          "french": "La Poste",
+          "english": "the postal service",
+          "example": "Tu préfères que je passe par La Poste ou par un autre service de livraison ?",
+          "usage": "Nom propre désignant le service postal public."
+        },
+        {
+          "id": "T2D12S2V07",
+          "kind": "mot-cle",
+          "french": "suivi",
+          "english": "tracked",
+          "example": "Tu veux un envoi standard, express, suivi ou assuré ?",
+          "usage": "Adjectif ou nom utilisé pour parler d’un envoi avec traçabilité."
+        },
+        {
+          "id": "T2D12S2V08",
+          "kind": "mot-cle",
+          "french": "des conditions de transport",
+          "english": "transport conditions",
+          "example": "Il faut garder le colis au chaud ou à l'abri ? Il y a des conditions de transport particulières ?",
+          "usage": "Groupe nominal pluriel pour préciser des contraintes d’acheminement."
+        },
+        {
+          "id": "T2D12S2V09",
+          "kind": "mot-cle",
+          "french": "quelque chose de fragile",
+          "english": "something fragile",
+          "example": "Il y a quelque chose de fragile ou de réglementé à l'intérieur ?",
+          "usage": "Groupe nominal indéfini pour signaler un contenu délicat."
+        },
+        {
+          "id": "T2D12S2V10",
+          "kind": "mot-cle",
+          "french": "le reçu",
+          "english": "the receipt",
+          "example": "Après, je peux te laisser le reçu où ? Et tu me rembourseras les frais d'envoi comment ?",
+          "usage": "Nom masculin désignant le justificatif remis après paiement ou dépôt."
+        },
+        {
+          "id": "T2D12S2V11",
+          "kind": "collocation",
+          "french": "poster quoi exactement",
+          "english": "post what exactly",
+          "example": "Tu dois poster quoi exactement, et le paquet est gros comment ?",
+          "usage": "Suite verbale interrogative pour demander le contenu précis d’un service."
+        },
+        {
+          "id": "T2D12S2V12",
+          "kind": "collocation",
+          "french": "dans quel pays",
+          "english": "to which country",
+          "example": "Tu veux l'envoyer à quelle adresse exactement, et dans quel pays ?",
+          "usage": "Groupe interrogatif servant à préciser la destination internationale."
+        },
+        {
+          "id": "T2D12S2V13",
+          "kind": "collocation",
+          "french": "partir aujourd'hui",
+          "english": "leave today",
+          "example": "C'est urgent au point de devoir partir aujourd'hui, ou ça peut attendre un peu plus tard dans la semaine ?",
+          "usage": "Collocation verbale pour évoquer un départ le jour même."
+        },
+        {
+          "id": "T2D12S2V14",
+          "kind": "collocation",
+          "french": "un autre service de livraison",
+          "english": "another delivery service",
+          "example": "Tu préfères que je passe par La Poste ou par un autre service de livraison ?",
+          "usage": "Groupe nominal pour opposer plusieurs options d’envoi."
+        },
+        {
+          "id": "T2D12S2V15",
+          "kind": "collocation",
+          "french": "garder le colis au chaud",
+          "english": "keep the parcel warm",
+          "example": "Il faut garder le colis au chaud ou à l'abri ? Il y a des conditions de transport particulières ?",
+          "usage": "Suite verbale utilisée pour décrire une consigne de conservation."
+        },
+        {
+          "id": "T2D12S2V16",
+          "kind": "collocation",
+          "french": "bien fermé",
+          "english": "properly sealed",
+          "example": "Le colis est déjà bien fermé et l'étiquette est déjà prête ?",
+          "usage": "Collocation adjectivale pour vérifier qu’un colis est correctement fermé."
+        },
+        {
+          "id": "T2D12S2V17",
+          "kind": "collocation",
+          "french": "à l'intérieur",
+          "english": "inside",
+          "example": "Il y a quelque chose de fragile ou de réglementé à l'intérieur ?",
+          "usage": "Locution prépositionnelle pour situer le contenu dans le colis."
+        },
+        {
+          "id": "T2D12S2V18",
+          "kind": "collocation",
+          "french": "les frais d'envoi",
+          "english": "shipping costs",
+          "example": "Tu veux que je prévoie combien d'argent pour les frais d'envoi ?",
+          "usage": "Groupe nominal pour parler du montant à payer pour l’expédition."
+        },
+        {
+          "id": "T2D12S2V19",
+          "kind": "collocation",
+          "french": "au nom de qui",
+          "english": "in whose name",
+          "example": "Je dois l'adresser au nom de qui exactement ?",
+          "usage": "Suite interrogative utilisée pour demander le nom du destinataire officiel."
+        },
+        {
+          "id": "T2D12S2V20",
+          "kind": "collocation",
+          "french": "un problème au guichet",
+          "english": "a problem at the counter",
+          "example": "S'il y a un problème au guichet, tu veux que je fasse quoi ?",
+          "usage": "Groupe nominal pour évoquer une difficulté au point de service postal."
+        },
+        {
+          "id": "T2D12S2V21",
+          "kind": "tournure",
+          "french": "il pèse à peu près combien",
+          "english": "about how much does it weigh",
+          "example": "Il pèse à peu près combien ?",
+          "usage": "Question orale typique pour demander un poids approximatif."
+        },
+        {
+          "id": "T2D12S2V22",
+          "kind": "tournure",
+          "french": "tu veux l'envoyer à quelle adresse exactement",
+          "english": "what exact address do you want to send it to",
+          "example": "Tu veux l'envoyer à quelle adresse exactement, et dans quel pays ?",
+          "usage": "Question directe avec l’interrogatif laissé en fin de phrase."
+        },
+        {
+          "id": "T2D12S2V23",
+          "kind": "tournure",
+          "french": "ça peut attendre un peu plus tard dans la semaine",
+          "english": "can it wait until a bit later in the week",
+          "example": "C'est urgent au point de devoir partir aujourd'hui, ou ça peut attendre un peu plus tard dans la semaine ?",
+          "usage": "Tournure informelle pour vérifier si une action peut être reportée."
+        },
+        {
+          "id": "T2D12S2V24",
+          "kind": "tournure",
+          "french": "le paquet doit arriver quand",
+          "english": "when must the package arrive",
+          "example": "Au plus tard, le paquet doit arriver quand ?",
+          "usage": "Question simple pour demander une échéance de livraison."
+        },
+        {
+          "id": "T2D12S2V25",
+          "kind": "tournure",
+          "french": "tu préfères que je passe par La Poste",
+          "english": "do you prefer that I use La Poste",
+          "example": "Tu préfères que je passe par La Poste ou par un autre service de livraison ?",
+          "usage": "Question avec préférence et subjonctif pour proposer une solution."
+        },
+        {
+          "id": "T2D12S2V26",
+          "kind": "tournure",
+          "french": "tu veux un envoi standard, express, suivi ou assuré",
+          "english": "do you want standard, express, tracked or insured shipping",
+          "example": "Tu veux un envoi standard, express, suivi ou assuré ?",
+          "usage": "Question alternative pour faire choisir un type d’expédition."
+        },
+        {
+          "id": "T2D12S2V27",
+          "kind": "tournure",
+          "french": "il y a des conditions de transport particulières",
+          "english": "are there any special transport conditions",
+          "example": "Il faut garder le colis au chaud ou à l'abri ? Il y a des conditions de transport particulières ?",
+          "usage": "Question avec « il y a » pour vérifier des contraintes logistiques."
+        },
+        {
+          "id": "T2D12S2V28",
+          "kind": "tournure",
+          "french": "il y a des consignes particulières à transmettre au destinataire",
+          "english": "are there any special instructions to pass on to the recipient",
+          "example": "Il y a des consignes particulières à transmettre au destinataire ?",
+          "usage": "Question pour demander un message précis à communiquer."
+        },
+        {
+          "id": "T2D12S2V29",
+          "kind": "tournure",
+          "french": "s'il y a un problème au guichet",
+          "english": "if there is a problem at the counter",
+          "example": "S'il y a un problème au guichet, tu veux que je fasse quoi ?",
+          "usage": "Subordonnée hypothétique utilisée pour anticiper une difficulté pratique."
+        },
+        {
+          "id": "T2D12S2V30",
+          "kind": "tournure",
+          "french": "je peux te laisser le reçu où",
+          "english": "where can I leave you the receipt",
+          "example": "Après, je peux te laisser le reçu où ? Et tu me rembourseras les frais d'envoi comment ?",
+          "usage": "Question orale avec l’interrogatif en fin d’énoncé, typique du registre familier."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:decembre:batch-01:subject-03",
+      "entries": [
+        {
+          "id": "T2D12S3V01",
+          "kind": "mot-cle",
+          "french": "un cadeau",
+          "english": "a gift",
+          "example": "Ta sœur fête bientôt son anniversaire, et je cherche un cadeau — tu pourrais m'aider à trouver une idée ?",
+          "usage": "Nom masculin désignant un objet offert pour faire plaisir à quelqu'un."
+        },
+        {
+          "id": "T2D12S3V02",
+          "kind": "mot-cle",
+          "french": "son anniversaire",
+          "english": "her birthday",
+          "example": "C'est exactement quand, son anniversaire ?",
+          "usage": "Groupe nominal possessif désignant la date de naissance célébrée chaque année."
+        },
+        {
+          "id": "T2D12S3V03",
+          "kind": "mot-cle",
+          "french": "quel âge",
+          "english": "what age",
+          "example": "Elle va avoir quel âge ?",
+          "usage": "Groupe interrogatif standard pour demander l'âge de quelqu'un."
+        },
+        {
+          "id": "T2D12S3V04",
+          "kind": "mot-cle",
+          "french": "discrète",
+          "english": "discreet / reserved",
+          "example": "Comment est son caractère — plutôt discrète, ou elle aime qu'on lui fasse une surprise ?",
+          "usage": "Adjectif féminin qualifiant une personne peu encline à se faire remarquer."
+        },
+        {
+          "id": "T2D12S3V05",
+          "kind": "mot-cle",
+          "french": "ses passions",
+          "english": "her passions",
+          "example": "Quels sont ses loisirs ou ses passions en ce moment ?",
+          "usage": "Nom pluriel possessif désignant les centres d'intérêt marqués d'une personne."
+        },
+        {
+          "id": "T2D12S3V06",
+          "kind": "mot-cle",
+          "french": "originales et amusantes",
+          "english": "original and fun",
+          "example": "Elle préfère plutôt les cadeaux utiles, ou les choses plus originales et amusantes ?",
+          "usage": "Groupe adjectival coordonné pour qualifier des idées créatives."
+        },
+        {
+          "id": "T2D12S3V07",
+          "kind": "mot-cle",
+          "french": "des couleurs",
+          "english": "colors",
+          "example": "Elle a un style ou des couleurs qu'elle préfère particulièrement ?",
+          "usage": "Nom pluriel désignant des teintes appréciées par une personne."
+        },
+        {
+          "id": "T2D12S3V08",
+          "kind": "mot-cle",
+          "french": "la même chose",
+          "english": "the same thing",
+          "example": "Il y a des choses qu'elle a déjà, pour éviter de lui offrir la même chose ?",
+          "usage": "Groupe nominal pour désigner un objet identique à un autre déjà possédé."
+        },
+        {
+          "id": "T2D12S3V09",
+          "kind": "mot-cle",
+          "french": "une idée de budget",
+          "english": "a budget estimate",
+          "example": "Tu aurais une idée de budget pour un cadeau qui lui ferait vraiment plaisir ?",
+          "usage": "Groupe nominal désignant une fourchette de prix envisagée."
+        },
+        {
+          "id": "T2D12S3V10",
+          "kind": "mot-cle",
+          "french": "en famille",
+          "english": "as a family / with family",
+          "example": "Vous allez fêter ça comment — une petite soirée, un repas en famille ?",
+          "usage": "Locution adverbiale désignant une activité partagée avec les proches."
+        },
+        {
+          "id": "T2D12S3V11",
+          "kind": "collocation",
+          "french": "trouver une idée",
+          "english": "to find an idea",
+          "example": "Ta sœur fête bientôt son anniversaire, et je cherche un cadeau — tu pourrais m'aider à trouver une idée ?",
+          "usage": "Collocation verbe + nom pour exprimer la recherche d'une inspiration."
+        },
+        {
+          "id": "T2D12S3V12",
+          "kind": "collocation",
+          "french": "exactement quand",
+          "english": "exactly when",
+          "example": "C'est exactement quand, son anniversaire ?",
+          "usage": "Collocation adverbe + interrogatif pour préciser une date."
+        },
+        {
+          "id": "T2D12S3V13",
+          "kind": "collocation",
+          "french": "avoir quel âge",
+          "english": "to be what age",
+          "example": "Elle va avoir quel âge ?",
+          "usage": "Collocation verbe + interrogatif pour demander un âge précis."
+        },
+        {
+          "id": "T2D12S3V14",
+          "kind": "collocation",
+          "french": "lui fasse une surprise",
+          "english": "surprises her",
+          "example": "Comment est son caractère — plutôt discrète, ou elle aime qu'on lui fasse une surprise ?",
+          "usage": "Collocation subjonctif + nom pour évoquer un effet de surprise recherché."
+        },
+        {
+          "id": "T2D12S3V15",
+          "kind": "collocation",
+          "french": "ses loisirs",
+          "english": "her hobbies",
+          "example": "Quels sont ses loisirs ou ses passions en ce moment ?",
+          "usage": "Nom pluriel possessif désignant les activités de détente d'une personne."
+        },
+        {
+          "id": "T2D12S3V16",
+          "kind": "collocation",
+          "french": "une expérience",
+          "english": "an experience",
+          "example": "Elle préfère plutôt recevoir un objet, ou une expérience comme une sortie ou un atelier ?",
+          "usage": "Nom féminin désignant une activité vécue plutôt qu'un objet matériel."
+        },
+        {
+          "id": "T2D12S3V17",
+          "kind": "collocation",
+          "french": "en particulier",
+          "english": "in particular",
+          "example": "Tu as mentionné qu'elle aimait quelque chose en particulier — tu pourrais m'en dire un peu plus ?",
+          "usage": "Locution adverbiale pour insister sur un élément précis parmi d'autres."
+        },
+        {
+          "id": "T2D12S3V18",
+          "kind": "collocation",
+          "french": "s'associer à plusieurs",
+          "english": "to team up / chip in together",
+          "example": "Ce serait plutôt un cadeau de ma part seul(e), ou on pourrait s'associer à plusieurs ?",
+          "usage": "Collocation verbe pronominal + adverbe pour évoquer un cadeau collectif."
+        },
+        {
+          "id": "T2D12S3V19",
+          "kind": "collocation",
+          "french": "ce genre de cadeau",
+          "english": "this kind of gift",
+          "example": "Tu connais un endroit ou un site où je pourrais trouver ce genre de cadeau facilement ?",
+          "usage": "Collocation démonstrative pour désigner une catégorie de présent."
+        },
+        {
+          "id": "T2D12S3V20",
+          "kind": "collocation",
+          "french": "le plus plaisir",
+          "english": "the most pleasure/joy",
+          "example": "Pour finir — parmi toutes ces idées, laquelle lui ferait le plus plaisir selon toi ?",
+          "usage": "Collocation superlative + nom pour évaluer le degré de satisfaction procuré."
+        },
+        {
+          "id": "T2D12S3V21",
+          "kind": "tournure",
+          "french": "elle préfère plutôt les cadeaux utiles",
+          "english": "she rather prefers useful gifts",
+          "example": "Elle préfère plutôt les cadeaux utiles, ou les choses plus originales et amusantes ?",
+          "usage": "Tournure alternative pour comparer deux types de préférences."
+        },
+        {
+          "id": "T2D12S3V22",
+          "kind": "tournure",
+          "french": "elle a un style ou des couleurs qu'elle préfère",
+          "english": "does she have a style or colors she prefers",
+          "example": "Elle a un style ou des couleurs qu'elle préfère particulièrement ?",
+          "usage": "Tournure interrogative pour cerner des goûts esthétiques précis."
+        },
+        {
+          "id": "T2D12S3V23",
+          "kind": "tournure",
+          "french": "pour éviter de lui offrir la même chose",
+          "english": "to avoid giving her the same thing",
+          "example": "Il y a des choses qu'elle a déjà, pour éviter de lui offrir la même chose ?",
+          "usage": "Tournure avec « pour éviter de » pour justifier une question de vérification."
+        },
+        {
+          "id": "T2D12S3V24",
+          "kind": "tournure",
+          "french": "tu aurais une idée de budget",
+          "english": "would you have a budget in mind",
+          "example": "Tu aurais une idée de budget pour un cadeau qui lui ferait vraiment plaisir ?",
+          "usage": "Tournure au conditionnel pour demander poliment une estimation chiffrée."
+        },
+        {
+          "id": "T2D12S3V25",
+          "kind": "tournure",
+          "french": "vous allez fêter ça comment",
+          "english": "how are you going to celebrate it",
+          "example": "Vous allez fêter ça comment — une petite soirée, un repas en famille ?",
+          "usage": "Tournure interrogative informelle pour se renseigner sur l'organisation d'une fête."
+        },
+        {
+          "id": "T2D12S3V26",
+          "kind": "tournure",
+          "french": "elle préfère plutôt recevoir un objet",
+          "english": "does she rather prefer to receive an object",
+          "example": "Elle préfère plutôt recevoir un objet, ou une expérience comme une sortie ou un atelier ?",
+          "usage": "Tournure alternative pour comparer un cadeau matériel et une expérience."
+        },
+        {
+          "id": "T2D12S3V27",
+          "kind": "tournure",
+          "french": "tu pourrais m'en dire un peu plus",
+          "english": "could you tell me a bit more about it",
+          "example": "Tu as mentionné qu'elle aimait quelque chose en particulier — tu pourrais m'en dire un peu plus ?",
+          "usage": "Tournure informelle au conditionnel pour demander un développement à un(e) ami(e)."
+        },
+        {
+          "id": "T2D12S3V28",
+          "kind": "tournure",
+          "french": "on pourrait s'associer à plusieurs",
+          "english": "we could team up together",
+          "example": "Ce serait plutôt un cadeau de ma part seul(e), ou on pourrait s'associer à plusieurs ?",
+          "usage": "Tournure au conditionnel pour proposer un cadeau collectif."
+        },
+        {
+          "id": "T2D12S3V29",
+          "kind": "tournure",
+          "french": "tu connais un endroit ou un site",
+          "english": "do you know a place or a website",
+          "example": "Tu connais un endroit ou un site où je pourrais trouver ce genre de cadeau facilement ?",
+          "usage": "Tournure interrogative pour solliciter une recommandation pratique."
+        },
+        {
+          "id": "T2D12S3V30",
+          "kind": "tournure",
+          "french": "laquelle lui ferait le plus plaisir",
+          "english": "which one would please her the most",
+          "example": "Pour finir — parmi toutes ces idées, laquelle lui ferait le plus plaisir selon toi ?",
+          "usage": "Tournure de clôture au conditionnel pour solliciter un choix final."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:decembre:batch-01:subject-04",
+      "entries": [
+        {
+          "id": "T2D12S4V01",
+          "kind": "mot-cle",
+          "french": "une série télé",
+          "english": "a TV series",
+          "example": "Salut ! Je voudrais commencer une série télé, mais je ne sais pas laquelle choisir — tu me conseillerais quoi ?",
+          "usage": "Groupe nominal désignant une fiction télévisée découpée en épisodes."
+        },
+        {
+          "id": "T2D12S4V02",
+          "kind": "mot-cle",
+          "french": "quel genre",
+          "english": "what genre",
+          "example": "C'est quel genre — plutôt comédie, thriller, science-fiction, drame ?",
+          "usage": "Groupe interrogatif sur le type de série."
+        },
+        {
+          "id": "T2D12S4V03",
+          "kind": "mot-cle",
+          "french": "l'histoire",
+          "english": "the story/plot",
+          "example": "De quoi ça parle, sans trop m'en dire pour ne pas gâcher l'histoire ?",
+          "usage": "Nom féminin employé pour parler de l’intrigue d’une série."
+        },
+        {
+          "id": "T2D12S4V04",
+          "kind": "mot-cle",
+          "french": "des acteurs",
+          "english": "actors",
+          "example": "Qui joue dedans — il y a des acteurs que je connaîtrais peut-être ?",
+          "usage": "Nom pluriel désignant les interprètes visibles à l’écran."
+        },
+        {
+          "id": "T2D12S4V05",
+          "kind": "mot-cle",
+          "french": "les épisodes",
+          "english": "the episodes",
+          "example": "Les épisodes durent combien de temps chacun ?",
+          "usage": "Nom pluriel désignant les épisodes."
+        },
+        {
+          "id": "T2D12S4V06",
+          "kind": "mot-cle",
+          "french": "une série terminée",
+          "english": "a finished series",
+          "example": "C'est une série terminée ou encore en cours de diffusion ?",
+          "usage": "Groupe nominal pour parler d’une série déjà achevée."
+        },
+        {
+          "id": "T2D12S4V07",
+          "kind": "mot-cle",
+          "french": "quelle chaîne",
+          "english": "which channel",
+          "example": "C'est diffusé sur quelle chaîne, et quel jour à quelle heure ?",
+          "usage": "Groupe interrogatif servant à demander le diffuseur télévisé."
+        },
+        {
+          "id": "T2D12S4V08",
+          "kind": "mot-cle",
+          "french": "un épisode",
+          "english": "an episode",
+          "example": "Si je rate un épisode à la télé, je peux le revoir où après ?",
+          "usage": "Nom masculin désignant une partie d’une série."
+        },
+        {
+          "id": "T2D12S4V09",
+          "kind": "mot-cle",
+          "french": "un public particulier",
+          "english": "a specific audience",
+          "example": "C'est plutôt une série pour tout le monde, ou plus adaptée à un public particulier ?",
+          "usage": "Groupe nominal pour un public ciblé."
+        },
+        {
+          "id": "T2D12S4V10",
+          "kind": "mot-cle",
+          "french": "version française",
+          "english": "French version",
+          "example": "Elle est disponible en version française, ou il faut la regarder en version originale sous-titrée ?",
+          "usage": "Groupe nominal désignant la version diffusée en français."
+        },
+        {
+          "id": "T2D12S4V11",
+          "kind": "collocation",
+          "french": "tu as vraiment aimé",
+          "english": "you really liked",
+          "example": "Qu'est-ce que tu as regardé récemment et que tu as vraiment aimé ?",
+          "usage": "Locution verbale sur l'appréciation."
+        },
+        {
+          "id": "T2D12S4V12",
+          "kind": "collocation",
+          "french": "sans trop m'en dire",
+          "english": "without telling me too much",
+          "example": "De quoi ça parle, sans trop m'en dire pour ne pas gâcher l'histoire ?",
+          "usage": "Locution pour éviter les révélations."
+        },
+        {
+          "id": "T2D12S4V13",
+          "kind": "collocation",
+          "french": "qui joue dedans",
+          "english": "who is in it",
+          "example": "Qui joue dedans — il y a des acteurs que je connaîtrais peut-être ?",
+          "usage": "Locution verbale familière sur le casting."
+        },
+        {
+          "id": "T2D12S4V14",
+          "kind": "collocation",
+          "french": "combien de saisons et d'épisodes",
+          "english": "how many seasons and episodes",
+          "example": "Il y a combien de saisons et d'épisodes — c'est vite fini ou ça dure longtemps ?",
+          "usage": "Locution interrogative sur le volume."
+        },
+        {
+          "id": "T2D12S4V15",
+          "kind": "collocation",
+          "french": "en cours de diffusion",
+          "english": "currently airing",
+          "example": "C'est une série terminée ou encore en cours de diffusion ?",
+          "usage": "Locution sur le statut de diffusion."
+        },
+        {
+          "id": "T2D12S4V16",
+          "kind": "collocation",
+          "french": "à quelle heure",
+          "english": "at what time",
+          "example": "C'est diffusé sur quelle chaîne, et quel jour à quelle heure ?",
+          "usage": "Groupe interrogatif très courant pour demander un horaire précis."
+        },
+        {
+          "id": "T2D12S4V17",
+          "kind": "collocation",
+          "french": "le revoir où après",
+          "english": "watch it again where afterwards",
+          "example": "Si je rate un épisode à la télé, je peux le revoir où après ?",
+          "usage": "Suite verbale familière pour demander l’endroit du replay."
+        },
+        {
+          "id": "T2D12S4V18",
+          "kind": "collocation",
+          "french": "version originale sous-titrée",
+          "english": "original version with subtitles",
+          "example": "Elle est disponible en version française, ou il faut la regarder en version originale sous-titrée ?",
+          "usage": "Groupe nominal désignant une diffusion en langue originale accompagnée de sous-titres."
+        },
+        {
+          "id": "T2D12S4V19",
+          "kind": "collocation",
+          "french": "accroche dès le début",
+          "english": "hooks you from the start",
+          "example": "Il faut attendre longtemps avant que ça devienne vraiment intéressant, ou on accroche dès le début ?",
+          "usage": "Collocation verbale familière pour dire qu’une série devient immédiatement prenante."
+        },
+        {
+          "id": "T2D12S4V20",
+          "kind": "collocation",
+          "french": "du même genre",
+          "english": "of the same genre",
+          "example": "Qu'est-ce qui la rend différente des autres séries du même genre ?",
+          "usage": "Groupe prépositionnel utilisé pour comparer des séries similaires."
+        },
+        {
+          "id": "T2D12S4V21",
+          "kind": "tournure",
+          "french": "tu me conseillerais quoi",
+          "english": "what would you recommend to me",
+          "example": "Salut ! Je voudrais commencer une série télé, mais je ne sais pas laquelle choisir — tu me conseillerais quoi ?",
+          "usage": "Question au conditionnel pour demander une recommandation de façon détendue."
+        },
+        {
+          "id": "T2D12S4V22",
+          "kind": "tournure",
+          "french": "de quoi ça parle",
+          "english": "what it is about",
+          "example": "De quoi ça parle, sans trop m'en dire pour ne pas gâcher l'histoire ?",
+          "usage": "Tournure très fréquente pour demander le sujet d’une œuvre sans entrer dans les détails."
+        },
+        {
+          "id": "T2D12S4V23",
+          "kind": "tournure",
+          "french": "c'est diffusé sur quelle chaîne",
+          "english": "what channel is it broadcast on",
+          "example": "C'est diffusé sur quelle chaîne, et quel jour à quelle heure ?",
+          "usage": "Question passive courante pour identifier le canal de diffusion."
+        },
+        {
+          "id": "T2D12S4V24",
+          "kind": "tournure",
+          "french": "si je rate un épisode à la télé",
+          "english": "if I miss an episode on TV",
+          "example": "Si je rate un épisode à la télé, je peux le revoir où après ?",
+          "usage": "Subordonnée hypothétique utilisée pour parler d’un épisode manqué."
+        },
+        {
+          "id": "T2D12S4V25",
+          "kind": "tournure",
+          "french": "c'est plutôt une série pour tout le monde",
+          "english": "it is more a series for everyone",
+          "example": "C'est plutôt une série pour tout le monde, ou plus adaptée à un public particulier ?",
+          "usage": "Tournure descriptive pour évaluer l’accessibilité d’une série à différents publics."
+        },
+        {
+          "id": "T2D12S4V26",
+          "kind": "tournure",
+          "french": "il faut la regarder en version originale sous-titrée",
+          "english": "you have to watch it in the original subtitled version",
+          "example": "Elle est disponible en version française, ou il faut la regarder en version originale sous-titrée ?",
+          "usage": "Tournure impersonnelle pour demander si un format de visionnage est nécessaire."
+        },
+        {
+          "id": "T2D12S4V27",
+          "kind": "tournure",
+          "french": "ça devienne vraiment intéressant",
+          "english": "it becomes really interesting",
+          "example": "Il faut attendre longtemps avant que ça devienne vraiment intéressant, ou on accroche dès le début ?",
+          "usage": "Subordonnée avec subjonctif pour parler du moment où une série prend de l’intérêt."
+        },
+        {
+          "id": "T2D12S4V28",
+          "kind": "tournure",
+          "french": "qu'est-ce qui la rend différente",
+          "english": "what makes it different",
+          "example": "Qu'est-ce qui la rend différente des autres séries du même genre ?",
+          "usage": "Question en « qu’est-ce qui » pour faire ressortir l’originalité d’une série."
+        },
+        {
+          "id": "T2D12S4V29",
+          "kind": "tournure",
+          "french": "si je ne dois en commencer qu'une seule",
+          "english": "if I should start only one",
+          "example": "Pour finir — si je ne dois en commencer qu'une seule, laquelle tu me recommandes vraiment ?",
+          "usage": "Tournure restrictive de clôture pour réduire le choix à une seule option."
+        },
+        {
+          "id": "T2D12S4V30",
+          "kind": "tournure",
+          "french": "laquelle tu me recommandes vraiment",
+          "english": "which one you really recommend to me",
+          "example": "Pour finir — si je ne dois en commencer qu'une seule, laquelle tu me recommandes vraiment ?",
+          "usage": "Question finale informelle pour obtenir une recommandation tranchée."
+        }
+      ]
+    },
+    {
+      "subject_key": "tache2:decembre:batch-01:subject-05",
+      "entries": [
+        {
+          "id": "T2D12S5V01",
+          "kind": "mot-cle",
+          "french": "les nouveaux arrivants",
+          "english": "newcomers",
+          "example": "Les Canadiens sont-ils accueillants avec les nouveaux arrivants ?",
+          "usage": "Groupe nominal pluriel désignant les personnes récemment installées dans un pays."
+        },
+        {
+          "id": "T2D12S5V02",
+          "kind": "mot-cle",
+          "french": "activités",
+          "english": "activities",
+          "example": "Quelles activités aident le plus à rencontrer des gens quand on vient d'arriver ?",
+          "usage": "Nom pluriel servant à parler de loisirs ou d’occupations sociales."
+        },
+        {
+          "id": "T2D12S5V03",
+          "kind": "mot-cle",
+          "french": "des associations",
+          "english": "associations",
+          "example": "Il y a des associations pour les nouveaux arrivants ou pour les francophones ?",
+          "usage": "Nom pluriel désignant des groupes organisés autour d’un intérêt commun."
+        },
+        {
+          "id": "T2D12S5V04",
+          "kind": "mot-cle",
+          "french": "des clubs de sport",
+          "english": "sports clubs",
+          "example": "Tu connais des clubs de sport où on peut facilement faire des rencontres ?",
+          "usage": "Groupe nominal pour désigner des lieux où l’on pratique une activité physique en groupe."
+        },
+        {
+          "id": "T2D12S5V05",
+          "kind": "mot-cle",
+          "french": "les groupes culturels",
+          "english": "cultural groups",
+          "example": "Et pour les groupes culturels, tu me conseillerais quoi ?",
+          "usage": "Groupe nominal pluriel pour parler de communautés ou d’activités liées à la culture."
+        },
+        {
+          "id": "T2D12S5V06",
+          "kind": "mot-cle",
+          "french": "Le bénévolat",
+          "english": "volunteering",
+          "example": "Le bénévolat, c'est une bonne façon de rencontrer du monde ici ?",
+          "usage": "Nom masculin désignant une activité faite gratuitement pour aider."
+        },
+        {
+          "id": "T2D12S5V07",
+          "kind": "mot-cle",
+          "french": "des événements",
+          "english": "events",
+          "example": "Il y a des événements spécialement organisés pour les personnes qui viennent d'arriver ?",
+          "usage": "Nom pluriel pour parler de rencontres ou d’activités organisées."
+        },
+        {
+          "id": "T2D12S5V08",
+          "kind": "mot-cle",
+          "french": "les plus conviviaux",
+          "english": "the friendliest",
+          "example": "Quels quartiers ou quels endroits sont les plus conviviaux pour sortir et parler avec des gens ?",
+          "usage": "Superlatif adjectival utilisé pour qualifier les lieux les plus chaleureux."
+        },
+        {
+          "id": "T2D12S5V09",
+          "kind": "mot-cle",
+          "french": "des groupes en ligne",
+          "english": "online groups",
+          "example": "Tu connais des applis ou des groupes en ligne utiles pour les nouveaux arrivants ?",
+          "usage": "Groupe nominal désignant des communautés qui échangent sur Internet."
+        },
+        {
+          "id": "T2D12S5V10",
+          "kind": "mot-cle",
+          "french": "de vrais amis",
+          "english": "real friends",
+          "example": "Toi, tu as mis combien de temps à te faire de vrais amis ici ?",
+          "usage": "Groupe nominal pour évoquer des relations solides et sincères."
+        },
+        {
+          "id": "T2D12S5V11",
+          "kind": "collocation",
+          "french": "rencontrer des gens",
+          "english": "meet people",
+          "example": "Quelles activités aident le plus à rencontrer des gens quand on vient d'arriver ?",
+          "usage": "Collocation verbale très fréquente pour parler de socialisation."
+        },
+        {
+          "id": "T2D12S5V12",
+          "kind": "collocation",
+          "french": "faire des rencontres",
+          "english": "make connections / meet people",
+          "example": "Tu connais des clubs de sport où on peut facilement faire des rencontres ?",
+          "usage": "Expression verbale courante pour parler de nouveaux contacts."
+        },
+        {
+          "id": "T2D12S5V13",
+          "kind": "collocation",
+          "french": "rencontrer du monde",
+          "english": "meet people",
+          "example": "Le bénévolat, c'est une bonne façon de rencontrer du monde ici ?",
+          "usage": "Expression familière pour parler du fait d’élargir son cercle social."
+        },
+        {
+          "id": "T2D12S5V14",
+          "kind": "collocation",
+          "french": "parler avec des gens",
+          "english": "talk with people",
+          "example": "Quels quartiers ou quels endroits sont les plus conviviaux pour sortir et parler avec des gens ?",
+          "usage": "Suite verbale simple pour évoquer un échange social direct."
+        },
+        {
+          "id": "T2D12S5V15",
+          "kind": "collocation",
+          "french": "te faire de vrais amis",
+          "english": "make real friends",
+          "example": "Toi, tu as mis combien de temps à te faire de vrais amis ici ?",
+          "usage": "Expression pronominale pour parler de liens amicaux durables."
+        },
+        {
+          "id": "T2D12S5V16",
+          "kind": "collocation",
+          "french": "parlent français",
+          "english": "speak French",
+          "example": "C'est facile de trouver des gens qui parlent français ?",
+          "usage": "Suite verbale servant à identifier une compétence linguistique."
+        },
+        {
+          "id": "T2D12S5V17",
+          "kind": "collocation",
+          "french": "au Canada",
+          "english": "in Canada",
+          "example": "Quelle erreur faut-il éviter quand on essaie de rencontrer du monde au Canada ?",
+          "usage": "Groupe prépositionnel pour situer une action dans un pays précis."
+        },
+        {
+          "id": "T2D12S5V18",
+          "kind": "collocation",
+          "french": "se faire des amis durables",
+          "english": "make lasting friends",
+          "example": "D'après toi, quel type d'activité aide le plus à se faire des amis durables ?",
+          "usage": "Expression pronominale pour évoquer des amitiés qui durent dans le temps."
+        },
+        {
+          "id": "T2D12S5V19",
+          "kind": "collocation",
+          "french": "des événements gratuits",
+          "english": "free events",
+          "example": "La vie sociale est plutôt active ici — et il y a aussi des événements gratuits ?",
+          "usage": "Groupe nominal pour parler d’activités sans frais d’entrée."
+        },
+        {
+          "id": "T2D12S5V20",
+          "kind": "collocation",
+          "french": "bien rencontrer des gens",
+          "english": "successfully meet people",
+          "example": "Si tu ne devais me donner qu'un seul conseil pour bien rencontrer des gens après mon arrivée, ce serait quoi ?",
+          "usage": "Suite verbale avec adverbe pour parler d’une bonne manière de créer des contacts."
+        },
+        {
+          "id": "T2D12S5V21",
+          "kind": "tournure",
+          "french": "Les Canadiens sont-ils accueillants",
+          "english": "are Canadians welcoming",
+          "example": "Les Canadiens sont-ils accueillants avec les nouveaux arrivants ?",
+          "usage": "Question avec inversion pour demander une appréciation générale."
+        },
+        {
+          "id": "T2D12S5V22",
+          "kind": "tournure",
+          "french": "quand on vient d'arriver",
+          "english": "when you have just arrived",
+          "example": "Quelles activités aident le plus à rencontrer des gens quand on vient d'arriver ?",
+          "usage": "Subordonnée temporelle pour situer une situation juste après l’installation."
+        },
+        {
+          "id": "T2D12S5V23",
+          "kind": "tournure",
+          "french": "il y a des associations pour les nouveaux arrivants",
+          "english": "are there associations for newcomers",
+          "example": "Il y a des associations pour les nouveaux arrivants ou pour les francophones ?",
+          "usage": "Question avec « il y a » pour demander l’existence d’une ressource."
+        },
+        {
+          "id": "T2D12S5V24",
+          "kind": "tournure",
+          "french": "tu me conseillerais quoi",
+          "english": "what would you recommend to me",
+          "example": "Et pour les groupes culturels, tu me conseillerais quoi ?",
+          "usage": "Question au conditionnel pour demander un conseil de façon souple."
+        },
+        {
+          "id": "T2D12S5V25",
+          "kind": "tournure",
+          "french": "c'est une bonne façon de rencontrer du monde ici",
+          "english": "is that a good way to meet people here",
+          "example": "Le bénévolat, c'est une bonne façon de rencontrer du monde ici ?",
+          "usage": "Question évaluative pour juger l’efficacité d’une démarche sociale."
+        },
+        {
+          "id": "T2D12S5V26",
+          "kind": "tournure",
+          "french": "les personnes qui viennent d'arriver",
+          "english": "people who have just arrived",
+          "example": "Il y a des événements spécialement organisés pour les personnes qui viennent d'arriver ?",
+          "usage": "Groupe nominal avec relative pour désigner un public précis."
+        },
+        {
+          "id": "T2D12S5V27",
+          "kind": "tournure",
+          "french": "quels endroits sont les plus conviviaux",
+          "english": "which places are the friendliest",
+          "example": "Quels quartiers ou quels endroits sont les plus conviviaux pour sortir et parler avec des gens ?",
+          "usage": "Question avec superlatif pour demander les meilleurs lieux de rencontre."
+        },
+        {
+          "id": "T2D12S5V28",
+          "kind": "tournure",
+          "french": "tu as mis combien de temps",
+          "english": "how long did it take you",
+          "example": "Toi, tu as mis combien de temps à te faire de vrais amis ici ?",
+          "usage": "Question orale fréquente pour demander une durée d’expérience."
+        },
+        {
+          "id": "T2D12S5V29",
+          "kind": "tournure",
+          "french": "quelle erreur faut-il éviter",
+          "english": "what mistake should be avoided",
+          "example": "Quelle erreur faut-il éviter quand on essaie de rencontrer du monde au Canada ?",
+          "usage": "Question avec tournure impersonnelle pour demander un conseil pratique."
+        },
+        {
+          "id": "T2D12S5V30",
+          "kind": "tournure",
+          "french": "si tu ne devais me donner qu'un seul conseil",
+          "english": "if you had to give me only one piece of advice",
+          "example": "Si tu ne devais me donner qu'un seul conseil pour bien rencontrer des gens après mon arrivée, ce serait quoi ?",
+          "usage": "Tournure hypothétique de clôture pour solliciter une recommandation prioritaire."
+        }
+      ]
+    }
+  ]
+}

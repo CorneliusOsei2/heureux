@@ -158,10 +158,10 @@
         })
       )
     ).forEach(function (monthKey) {
-      var expanded = true;
+      var expanded = false;
       try {
         expanded =
-          localStorage.getItem("tacheTwoMonth:" + monthKey) !== "collapsed";
+          localStorage.getItem("tacheTwoMonth:" + monthKey) === "expanded";
       } catch (e) {}
       setMonthExpanded(monthKey, expanded, false);
     });

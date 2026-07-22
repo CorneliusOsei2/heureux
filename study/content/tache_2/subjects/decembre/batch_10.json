@@ -1,0 +1,325 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 10,
+  "subjects": [
+    {
+      "number": 46,
+      "title": "Séjour balnéaire de l'année dernière – Conseils d'un ami",
+      "prompt": "Je suis votre ami(e). Je suis allé(e) en vacances au bord de la mer l'année dernière. Vous êtes intéressé(e), et vous me demandez des conseils pour organiser votre séjour (hébergement, activités, budget, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Tu m'as dit que tu avais passé de super vacances au bord de la mer l'année dernière — j'aimerais faire la même chose, tu pourrais me donner des conseils ?"
+        },
+        {
+          "text": "Tu es parti(e) où exactement — c'était au Canada ou à l'étranger ?",
+          "memory_section": 4
+        },
+        {
+          "text": "C'était plutôt une station balnéaire animée ou un endroit plus calme et authentique ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Combien de temps faut-il prévoir pour ce type de séjour — une semaine ou plutôt deux ?",
+          "memory_section": 9
+        },
+        {
+          "text": "C'est une bonne période pour y aller ou il vaut mieux attendre une autre saison ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_section": 8
+        },
+        {
+          "text": "Tu connais de bons endroits où séjourner — hôtels, chambres d'hôtes, locations ?",
+          "memory_section": 6
+        },
+        {
+          "text": "C'est dans quelle gamme de prix pour l'hébergement — plutôt cher ou abordable ?",
+          "memory_section": 6
+        },
+        {
+          "text": "Il faut réserver à l'avance ou on peut trouver facilement sur place ?",
+          "memory_section": 6
+        },
+        {
+          "text": "Parlons du budget — combien est-ce que ça coûte approximativement au total ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour les repas, tu aurais des adresses à recommander — des spécialités locales à essayer absolument ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Il faut réserver une table à l'avance ou on peut y aller directement ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Quelles activités as-tu faites — il y avait des choses à faire en dehors de la plage aussi ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Tu as mentionné que c'était formidable — tu pourrais m'en dire un peu plus sur ce qui t'a le plus marqué(e) ?",
+          "memory_number": 2,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "title": "Cours de danse dans une association",
+      "prompt": "Je suis votre collègue. Je suis inscrit(e) à des cours de danse dans une association. Vous êtes intéressé(e), et vous me posez des questions sur ces cours (styles de danse, lieu, horaires, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'ai entendu dire que tu suis des cours de danse dans une association — tu pourrais m'en parler un peu ?"
+        },
+        {
+          "text": "C'est quel style de danse — contemporaine, salsa, hip-hop, classique ?"
+        },
+        {
+          "text": "Les cours se passent dans quel type de salle — un studio de danse dédié, une salle polyvalente ?"
+        },
+        {
+          "text": "Ça s'adresse à quel public — plutôt aux débutants ou aux personnes déjà expérimentées ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il y a généralement combien de participants — c'est un petit groupe ou une grande classe ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Ça a lieu quel jour exactement — plutôt en semaine ou le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Quelle est la durée d'une séance — environ une heure ou plutôt une heure et demie ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — faut-il souscrire à un abonnement ou payer chaque cours séparément ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il des tarifs réduits pour les étudiants, les seniors ou les familles ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Il faut s'inscrire à l'avance ou on peut venir librement ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne ou uniquement sur place ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une période d'essai gratuite ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Comment est l'ambiance en général — plutôt formelle ou décontractée ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Pour finir — si tu ne devais me recommander qu'une seule chose, ce serait laquelle ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "title": "Fête pour la promotion d'un(e) collègue",
+      "prompt": "Je suis votre collègue. J'organise une fête pour célébrer ma nomination à un poste de responsable. Vous me posez des questions pour avoir des informations (lieu, horaires, invités, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Alors comme ça tu as décroché un poste de responsable — félicitations ! Tu organises une fête pour ça ?"
+        },
+        {
+          "text": "C'est prévu pour quand exactement — tu as déjà fixé la date ?"
+        },
+        {
+          "text": "Ça se passe où — au bureau, dans une salle, au restaurant ?"
+        },
+        {
+          "text": "Ça commence à quelle heure, et ça risque de durer jusqu'à quand ?"
+        },
+        {
+          "text": "Qui est invité — seulement les collègues, ou aussi la famille et les amis ?",
+          "memory_number": 5,
+          "memory_section": 4
+        },
+        {
+          "text": "On sera nombreux à peu près ?"
+        },
+        {
+          "text": "Comment ça va se dérouler — il y a un programme, des discours, un repas ?"
+        },
+        {
+          "text": "Il y a un thème ou une tenue particulière à prévoir ?"
+        },
+        {
+          "text": "Qu'est-ce qui est prévu côté repas — un buffet, un traiteur ?"
+        },
+        {
+          "text": "Est-ce qu'on doit apporter quelque chose — un plat, une boisson ?",
+          "memory_number": 5,
+          "memory_section": 4
+        },
+        {
+          "text": "Pour le cadeau, on fait quelque chose en commun, ou chacun apporte le sien ?"
+        },
+        {
+          "text": "Tu veux un coup de main pour organiser quoi que ce soit ?"
+        },
+        {
+          "text": "Comment on s'y rend — c'est accessible en transports, il y a un parking ?"
+        },
+        {
+          "text": "Est-ce qu'il faut confirmer sa présence, et jusqu'à quand ?"
+        },
+        {
+          "text": "En tout cas je serai là avec plaisir — tu veux que je m'occupe de quelque chose en particulier ?"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "title": "Garder l'enfant d'un(e) voisin(e) pendant une journée",
+      "prompt": "Je suis votre voisin(e). Vous avez accepté de garder mon enfant pendant une journée pour me rendre service. Vous me demandez des informations à son sujet (habitudes, repas, activités préférées, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! D'accord pour garder votre enfant pendant la journée — c'est prévu pour quel jour exactement, et quels sont les horaires souhaités ?"
+        },
+        {
+          "text": "Pour que je m'organise, quel est le prénom et l'âge de votre enfant ?",
+          "memory_number": 3,
+          "memory_section": 2
+        },
+        {
+          "text": "Concrètement, qu'attendez-vous de moi pendant la garde — quelles seront mes principales responsabilités ?",
+          "memory_section": 5,
+          "memory_number": 3
+        },
+        {
+          "text": "Pour les repas, qu'avez-vous prévu, et à quelles heures faut-il les servir ?",
+          "memory_section": 2,
+          "memory_number": 3
+        },
+        {
+          "text": "Y a-t-il des allergies ou des choses à éviter côté alimentation ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Quelles sont les activités préférées de votre enfant — plutôt des jeux à la maison, des activités créatives ou sportives ?",
+          "memory_section": 2,
+          "memory_number": 3
+        },
+        {
+          "text": "S'il fait beau et que je sors avec votre enfant, y a-t-il des consignes particulières à respecter — un vêtement à prévoir, une limite de temps, ce genre de chose ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Y a-t-il des règles particulières à respecter pour la télévision, les écrans ou les jeux vidéo ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Si la garde se prolonge le soir, à quelle heure faut-il prévoir le coucher, et y a-t-il une routine particulière ?",
+          "memory_section": 20
+        },
+        {
+          "text": "Y a-t-il des soins particuliers à prévoir ou des médicaments à donner ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Qu'est-ce qu'il faut prévoir de mon côté, ou est-ce que vous fournissez tout le nécessaire ?",
+          "memory_section": 5
+        },
+        {
+          "text": "La garde aurait lieu chez vous ou chez moi ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Y a-t-il d'autres habitudes ou règles importantes à respecter avec votre enfant ?",
+          "memory_section": 20
+        },
+        {
+          "text": "En cas de problème, comment puis-je vous joindre, et y a-t-il une autre personne à contacter si vous n'êtes pas disponible ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Pour finir — y a-t-il autre chose d'important que je devrais savoir avant ce week-end ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "title": "Découvrir la ville avec des amis – Office de tourisme",
+      "prompt": "Je travaille à l'accueil de l'office de tourisme. Vous souhaitez découvrir la ville avec des amis. Vous me posez des questions sur les possibilités proposées (activités, tarifs, horaires, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je voudrais découvrir la ville avec des amis — pouvez-vous me présenter les principales activités proposées ?"
+        },
+        {
+          "text": "Quels sont les monuments ou lieux emblématiques à ne pas manquer en priorité ?",
+          "memory_number": 6,
+          "memory_section": 3
+        },
+        {
+          "text": "Quels musées et sites culturels importants me recommandez-vous en priorité ?"
+        },
+        {
+          "text": "Proposez-vous des visites guidées, et si oui, dans quelles langues et à quel tarif ?"
+        },
+        {
+          "text": "Y a-t-il des circuits en bateau ou en bus touristique pour découvrir la ville plus facilement ?"
+        },
+        {
+          "text": "Quels quartiers typiques ou animés conseillez-vous de visiter pour se promener et profiter de l'ambiance ?",
+          "memory_number": 6,
+          "memory_section": 3
+        },
+        {
+          "text": "Y a-t-il des événements culturels, des festivals ou des marchés locaux en ce moment ?"
+        },
+        {
+          "text": "Y a-t-il des restaurants que vous recommandez pour découvrir les spécialités locales ?",
+          "memory_number": 6,
+          "memory_section": 3
+        },
+        {
+          "text": "Quelles activités peut-on faire entre amis — par exemple des visites insolites, des ateliers ou des escape games ?"
+        },
+        {
+          "text": "Que recommandez-vous de faire en soirée — la ville est-elle animée après le dîner ?"
+        },
+        {
+          "text": "Est-ce qu'il est facile de se déplacer en transports en commun — ou vaut-il mieux prendre un pass ou louer des vélos ?"
+        },
+        {
+          "text": "Y a-t-il des pass touristiques ou des tarifs combinés pour plusieurs musées et attractions ?"
+        },
+        {
+          "text": "Quels sont les horaires habituels des principaux musées et attractions — certains jours sont-ils plus pratiques ?"
+        },
+        {
+          "text": "Faut-il réserver certaines visites ou activités à l'avance, surtout pour les plus demandées ?"
+        },
+        {
+          "text": "Pour finir — si vous ne deviez nous recommander qu'une seule chose, ce serait laquelle ?"
+        }
+      ]
+    }
+  ]
+}

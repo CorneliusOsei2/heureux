@@ -345,7 +345,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertLessEqual(guide_style["barHeight"], 10)
         self.assertEqual(
             guide_progress.locator(".deck__progress-copy").inner_text(),
-            "0/140 apprises · 0/233 sujets terminés",
+            "0/190 apprises · 0/348 sujets terminés",
         )
 
         self.page.goto(overview_url)
@@ -456,7 +456,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertEqual(table_toggle.get_attribute("aria-pressed"), "true")
         self.assertTrue(table_header.is_visible())
         memory_entry = self.page.locator(".memory-entry")
-        self.assertEqual(memory_entry.count(), 4)
+        self.assertEqual(memory_entry.count(), 6)
         memory_entry = memory_entry.first
         self.assertEqual(
             len(
@@ -732,7 +732,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             memory_panel.locator(
                 ".tache-two-progress-summary__copy > span:last-child"
             ).inner_text(),
-            "1/140 questions apprises",
+            "1/190 questions apprises",
         )
         self.assertTrue(
             "progress-status--active"
@@ -840,6 +840,25 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
             self.page.locator("[data-tache-two-subject-batch]").count(),
             batch_count,
         )
+        card_month_toggles = self.page.locator(
+            ".tache-two-month__toggle"
+        )
+        self.assertTrue(
+            all(
+                card_month_toggles.nth(index).get_attribute(
+                    "aria-expanded"
+                )
+                == "false"
+                for index in range(card_month_toggles.count())
+            )
+        )
+        card_month_grids = self.page.locator(".subject-batch-grid")
+        self.assertTrue(
+            all(
+                card_month_grids.nth(index).is_hidden()
+                for index in range(card_month_grids.count())
+            )
+        )
         self.assertEqual(self.page.get_by_role("note").count(), 0)
         self.assertEqual(self.page.get_by_text("Réflexe Mémoire").count(), 0)
 
@@ -862,7 +881,7 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         self.assertEqual(table_rows.count(), batch_count)
         self.assertTrue(
             all(
-                table_rows.nth(index).is_visible()
+                table_rows.nth(index).is_hidden()
                 for index in range(table_rows.count())
             )
         )
@@ -879,24 +898,19 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         first_month_toggle.click()
         self.assertEqual(
             first_month_toggle.get_attribute("aria-expanded"),
-            "false",
+            "true",
         )
         self.assertTrue(
             all(
-                first_month_rows.nth(index).is_hidden()
+                first_month_rows.nth(index).is_visible()
                 for index in range(first_month_rows.count())
             )
         )
         self.assertTrue(
             all(
-                second_month_rows.nth(index).is_visible()
+                second_month_rows.nth(index).is_hidden()
                 for index in range(second_month_rows.count())
             )
-        )
-        first_month_toggle.click()
-        self.assertEqual(
-            first_month_toggle.get_attribute("aria-expanded"),
-            "true",
         )
 
         table_shell = self.page.locator(".tache-two-batch-table-shell")

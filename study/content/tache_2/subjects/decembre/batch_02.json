@@ -1,15 +1,15 @@
 {
   "month": {
-    "number": 6,
-    "slug": "juin",
-    "name": "Juin"
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
   },
-  "batch": 5,
+  "batch": 2,
   "subjects": [
     {
-      "number": 21,
+      "number": 6,
       "title": "Séances de yoga pour les employés",
-      "prompt": "Je suis votre collègue. J'organise des séances de yoga pour les employé(e)s de l'entreprise. Vous êtes intéressé(e) et vous me posez des questions pour obtenir des informations (lieux, horaires, équipements, etc.).",
+      "prompt": "Je suis votre collègue. J'organise des séances de yoga pour les employé(e)s de l'entreprise. Vous êtes intéressé(e). Vous me posez des questions pour obtenir des informations (lieux, horaires, équipements, etc.).",
       "questions": [
         {
           "text": "Salut ! J'ai entendu parler des séances de yoga que tu organises pour l'entreprise. C'est une excellente initiative. Tu fais ça depuis longtemps ou c'est un projet assez récent ?",
@@ -67,9 +67,9 @@
       ]
     },
     {
-      "number": 22,
+      "number": 7,
       "title": "Cours de photographie dans l'association",
-      "prompt": "Je suis votre voisin(e). Je prends des cours de photographie dans l'association du quartier. Vous êtes intéressé(e) et vous me posez des questions sur le cours (prix, horaires, matériel, etc.).",
+      "prompt": "Je suis votre voisin(e). Je prends des cours de photographie dans l'association du quartier. Vous êtes intéressé(e). Vous me posez des questions sur le cours (prix, horaires, matériel, etc.).",
       "questions": [
         "Bonjour ! Je vous ai croisé(e) l'autre jour avec votre appareil photo — vous prenez des cours de photographie à l'association du quartier, c'est bien ça ?",
         {
@@ -135,9 +135,9 @@
       ]
     },
     {
-      "number": 23,
+      "number": 8,
       "title": "Centre culturel de la ville",
-      "prompt": "Je travaille à l'accueil du nouveau centre culturel de votre ville. Vous êtes intéressé(e) et vous me posez des questions sur les activités proposées par le centre (horaires, prix, etc.).",
+      "prompt": "Je travaille à l'accueil du nouveau centre culturel de votre ville. Vous êtes intéressé(e). Vous me posez des questions sur les activités proposées par le centre (horaires, prix, etc.).",
       "questions": [
         {
           "text": "Bonjour ! J'ai appris récemment l'ouverture de ce nouveau centre culturel — depuis quand est-il ouvert exactement ?",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "number": 24,
+      "number": 9,
       "title": "Office de tourisme — activités régionales",
       "prompt": "Je travaille à l'office de tourisme de votre lieu de vacances. Vous me posez des questions sur les activités à faire dans la région (parcs, musées, restaurants, etc.).",
       "questions": [
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "number": 25,
+      "number": 10,
       "title": "Aide au déménagement",
       "prompt": "Vous êtes mon ami(e). Vous allez m'aider à déménager dans mon nouveau logement. Vous me posez des questions sur l'organisation de la journée (lieu, date, participants, etc.).",
       "questions": [

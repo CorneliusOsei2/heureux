@@ -20,20 +20,21 @@
       <button
         class="tache-two-month__toggle"
         type="button"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-controls="{% if overview %}overview-{% endif %}subject-month-cards-{{ month.slug }}"
-        aria-label="Réduire {{ month.name }}"
+        aria-label="Afficher {{ month.name }}"
         data-tache-two-month-key="{{ month.slug }}"
         data-tache-two-month-name="{{ month.name }}"
         data-tache-two-month-toggle>
-        <span data-tache-two-month-toggle-label>Réduire</span>
+        <span data-tache-two-month-toggle-label>Afficher</span>
         {% include "study/partials/ui_icon.html" with name="arrow-right" only %}
       </button>
     </div>
   </header>
   <div
-    class="subject-batch-grid"
-    id="{% if overview %}overview-{% endif %}subject-month-cards-{{ month.slug }}">
+    class="subject-batch-grid is-collapsed"
+    id="{% if overview %}overview-{% endif %}subject-month-cards-{{ month.slug }}"
+    hidden>
     {% for batch in month.batches %}
       {% include "study/partials/tache_two_subject_batch_card.html" with month=month batch=batch part=part task=task only %}
     {% endfor %}

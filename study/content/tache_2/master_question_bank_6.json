@@ -1,0 +1,89 @@
+{
+  "number": 6,
+  "title": "Mémoire 6",
+  "label": "Questions de vie sociale",
+  "icon": "hand-wave",
+  "subtitle": "Vingt-cinq formulations stables pour naviguer la vie sociale : reprendre des nouvelles, explorer l'engagement associatif, découvrir un lieu, s'intégrer en tant que nouvel arrivant et confirmer sa participation.",
+  "sections": [
+    {
+      "number": 1,
+      "title": "Prendre des nouvelles — vie, projets et liens sociaux",
+      "groups": [
+        {
+          "guidance": "Pour reprendre contact après une absence et faire le point sur la vie quotidienne d'un proche, ses changements, ses projets et sa vie sociale. Q5 invite une réflexion générale sur ce qui crée des liens durables — une question de sagesse sociale valable hors de tout contexte d'arrivée précis.",
+          "questions": [
+            "Alors, comment va ta vie en général en ce moment ?",
+            "Qu'est-ce qui a le plus changé dans ta vie depuis la dernière fois qu'on s'est vus ?",
+            "Tu as de nouveaux projets ou des plans importants pour les prochains mois ?",
+            "Tu arrives à voir pas mal de monde — comment est ta vie sociale là-bas ?",
+            "D'après toi, quel type d'activité aide le plus à se faire des amis durables ?"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Vie associative — missions, engagement et impact",
+      "groups": [
+        {
+          "guidance": "Pour explorer le travail bénévole ou salarié d'un ami dans une association : type d'organisation, missions concrètes, raisons de l'engagement, satisfaction et projets en cours.",
+          "questions": [
+            "C'est quel type d'association exactement, et quel est son objectif principal ?",
+            "Concrètement, quelles sont tes missions au quotidien ?",
+            "Comment tu as commencé à t'impliquer dans cette association ?",
+            "Qu'est-ce que tu trouves le plus gratifiant dans ce que tu fais ?",
+            "L'association a-t-elle des projets ou de nouvelles initiatives en cours en ce moment ?"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Découvrir une destination — lieux, quartiers et expériences",
+      "groups": [
+        {
+          "guidance": "Pour obtenir des recommandations de découverte d'une ville ou d'une destination : sites emblématiques, quartiers vivants, gastronomie locale, endroits confidentiels et impressions personnelles. Q1–Q3 s'utilisent en registre vous (office de tourisme ou professionnel) ; Q4–Q5 s'utilisent en registre tu (guide local, ami ou interlocuteur de confiance).",
+          "questions": [
+            "Quels sont les monuments ou lieux emblématiques à ne pas manquer en priorité ?",
+            "Quels quartiers typiques ou animés conseillez-vous de visiter pour se promener et profiter de l'ambiance ?",
+            "Y a-t-il des restaurants que vous recommandez pour découvrir les spécialités locales ?",
+            "Il y a des endroits plus confidentiels que les touristes ratent souvent ?",
+            "Qu'est-ce qui t'a le plus surpris dans ce pays ?"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "S'intégrer — rencontres, adaptation et culture locale",
+      "groups": [
+        {
+          "guidance": "Pour accompagner l'intégration d'un nouvel arrivant : trouver des activités sociales, identifier les associations utiles, éviter les erreurs courantes et comprendre les pratiques culturelles locales. Q1–Q3 s'adressent en registre tu (collègue ou ami) ; Q4–Q5 s'utilisent en registre vous (enquête, entretien ou contexte formel). Q1 porte sur les types d'activités pour rencontrer des gens à l'arrivée ; S1 Q5 porte sur la qualité des liens durables dans une conversation de rattrapage — deux angles distincts qui ne se répètent pas.",
+          "questions": [
+            "Quelles activités aident le plus à rencontrer des gens quand on vient d'arriver ?",
+            "Il y a des associations pour les nouveaux arrivants ou pour les francophones ?",
+            "Quelle erreur faut-il éviter quand on essaie de rencontrer du monde au Canada ?",
+            "Quelles habitudes ou quelles coutumes canadiennes vous ont le plus surpris(e) depuis votre arrivée ?",
+            "Comment faites-vous pour rencontrer des gens et vous faire des amis ici ?"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Confirmer un séjour ou une sortie — règles, annulation et organisation",
+      "groups": [
+        {
+          "guidance": "Pour clarifier les modalités pratiques avant de confirmer une réservation ou une sortie : règles du lieu, conditions d'annulation, logistique d'arrivée, partage des frais et point de rendez-vous. Q1–Q3 s'utilisent en registre vous (réservation professionnelle, camping ou hébergement) ; Q4–Q5 s'utilisent en registre tu (sortie entre amis, club ou activité de groupe).",
+          "questions": [
+            "Quelles sont les règles à respecter — il y a des horaires de silence le soir ?",
+            "Et en cas d'imprévu, quelles sont vos conditions d'annulation ?",
+            "Pour finir — comment se passe l'arrivée sur place, et à partir de quelle heure peut-on s'installer ?",
+            "Il y a une participation aux frais, ou tu t'occupes de tout ?",
+            "On se retrouve où pour partir — directement sur place ou il faut prévoir du transport ?"
+          ]
+        }
+      ]
+    }
+  ]
+}

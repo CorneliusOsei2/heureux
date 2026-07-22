@@ -1,0 +1,287 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 4,
+  "subjects": [
+    {
+      "number": 16,
+      "title": "Location de vélos",
+      "prompt": "Je suis employé dans une agence de location de vélos. Vous voulez en louer un. Vous effectuez des recherches pour trouver le modèle de vélo qui conviendra le mieux à vos besoins. (modèles, tarifs, fonctionnement, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je cherche un vélo à louer et j'aimerais trouver le modèle qui correspond le mieux à mes besoins — pouvez-vous me présenter vos différentes options ?"
+        },
+        {
+          "text": "Quels modèles de vélos proposez-vous — vélo de ville, VTT, vélo électrique ?"
+        },
+        {
+          "text": "Selon l'usage que je veux en faire, quel modèle me conseilleriez-vous ?"
+        },
+        {
+          "text": "Comment fonctionnent les tarifs de location — c'est à l'heure, à la journée ou sous forme d'abonnement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Faut-il verser une caution — et de quel montant à peu près ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Quelles sont les conditions pour louer — faut-il une pièce d'identité ou un âge minimum ?"
+        },
+        {
+          "text": "Est-ce que le casque et l'antivol sont fournis avec le vélo ?"
+        },
+        {
+          "text": "Est-ce que l'assurance est comprise dans le tarif ou faut-il la prendre en supplément ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Que se passe-t-il en cas de crevaison ou de problème mécanique pendant la location ?"
+        },
+        {
+          "text": "Est-ce qu'on peut rendre le vélo à un autre point de la ville ou faut-il revenir ici ?"
+        },
+        {
+          "text": "Pouvez-vous aussi me conseiller un itinéraire adapté selon l'usage que je veux faire du vélo ?"
+        },
+        {
+          "text": "Est-ce qu'il faut réserver à l'avance ou on peut louer directement sur place ?"
+        },
+        {
+          "text": "Jusqu'à quelle heure peut-on rendre le vélo le soir ?"
+        },
+        {
+          "text": "Que se passe-t-il si je rends le vélo en retard ou abîmé ?"
+        },
+        {
+          "text": "Pour finir — si je réserve à l'avance, est-ce que j'obtiens un meilleur tarif ?",
+          "memory_section": 1
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Conseils sur les transports en commun – Ami canadien",
+      "prompt": "Je suis un ami canadien. Vous venez d'arriver dans ma ville, vous logez chez moi. Vous avez l'intention de vous balader en ville et vous sollicitez mes conseils pour utiliser les transports en commun (type, destination, horaire, tarifs, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Je viens d'arriver chez toi et j'aimerais me déplacer facilement en ville — tu peux m'expliquer un peu comment fonctionnent les transports ici ?"
+        },
+        {
+          "text": "Quels types de transports sont disponibles ici — bus, métro, tramway ?",
+          "memory_section": 10
+        },
+        {
+          "text": "Est-ce que le réseau couvre toute la ville ou seulement certaines zones ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Y a-t-il une application pour suivre les transports en temps réel ?",
+          "memory_section": 16
+        },
+        {
+          "text": "L'application permet-elle aussi de planifier un itinéraire ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Pour aller au centre-ville et voir les principaux endroits à visiter, tu me conseillerais quel moyen de transport ?"
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — où j'achète les tickets, et combien coûte un trajet en général ?"
+        },
+        {
+          "text": "Il y a un pass journée ou un pass touristique intéressant pour se déplacer plus facilement ?"
+        },
+        {
+          "text": "Les bus ou le métro passent souvent, ou il faut parfois attendre longtemps ?"
+        },
+        {
+          "text": "Le réseau fonctionne-t-il chaque jour de la semaine — les horaires changent-ils le week-end ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Il y a aussi un système de vélos en libre-service, si je veux alterner avec les transports ?"
+        },
+        {
+          "text": "Sans voiture, quels quartiers sont les plus pratiques et les mieux desservis au quotidien ?"
+        },
+        {
+          "text": "Il y a des lignes à éviter ou des stations un peu compliquées quand on débute ?"
+        },
+        {
+          "text": "Si je veux aller d'un bout à l'autre de la ville, c'est plutôt simple ou ça prend beaucoup de temps ?"
+        },
+        {
+          "text": "Pour finir — si tu ne devais me donner qu'un seul conseil pour bien utiliser les transports ici, ce serait lequel ?"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Article sur une ville pour un magazine culturel",
+      "prompt": "Je suis un ami francophone. Il vous est demandé d'écrire un article sur une ville pour un magazine culturel. Vous cherchez des idées. Vous m'interrogez sur les villes que j'aime (activités, architecture, transports, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! On m'a demandé d'écrire un article sur une ville pour un magazine culturel — tu pourrais m'aider à trouver de bonnes idées ?"
+        },
+        {
+          "text": "Quelle ville tu aimes le plus, et pourquoi ?"
+        },
+        {
+          "text": "Qu'est-ce qui la rend intéressante sur le plan architectural — bâtiments historiques, style particulier, monuments ?"
+        },
+        {
+          "text": "Qu'est-ce qu'on peut y faire de vraiment intéressant — plutôt des activités culturelles, de la nature, ou une vraie vie nocturne ?"
+        },
+        {
+          "text": "Les transports y sont faciles et efficaces, ou c'est une ville où on passe beaucoup de temps à se déplacer ?"
+        },
+        {
+          "text": "S'il fallait explorer un quartier en priorité, tu me conseillerais lequel ?"
+        },
+        {
+          "text": "Il y a des endroits plus confidentiels que les touristes ratent souvent ?",
+          "memory_number": 6,
+          "memory_section": 3
+        },
+        {
+          "text": "Selon toi, quelle est la meilleure période de l'année pour la découvrir ?"
+        },
+        {
+          "text": "La cuisine locale, elle est comment — il y a des spécialités à goûter absolument ?"
+        },
+        {
+          "text": "Les habitants sont plutôt accueillants avec les visiteurs ?"
+        },
+        {
+          "text": "Si on a un budget serré, on peut quand même bien profiter de la ville ?"
+        },
+        {
+          "text": "S'il fallait choisir un lieu ou une activité qui résume vraiment cette ville, ce serait quoi ?"
+        },
+        {
+          "text": "C'est une ville où on peut se promener seul(e) assez facilement et en sécurité ?"
+        },
+        {
+          "text": "Il faut combien de temps pour vraiment découvrir la ville sans tout faire en vitesse ?"
+        },
+        {
+          "text": "Pour finir — s'il y a une seule ville que tu me recommanderais pour cet article, ce serait laquelle ?"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Festival de musique organisé par un ami",
+      "prompt": "Je suis un ami. J'organise un festival de musique dans votre ville. Vous souhaitez y participer. Vous me questionnez afin d'obtenir des informations sur l'événement. (dates, horaires, concerts, prix, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Tu organises un festival de musique dans la ville — ça m'intéresse beaucoup et j'aimerais y participer, tu peux m'en dire plus ?"
+        },
+        {
+          "text": "Ça se passe quand exactement — sur combien de jours et à quelles heures ?"
+        },
+        {
+          "text": "Ça se déroule où — en plein air, dans une salle ?",
+          "memory_section": 4
+        },
+        {
+          "text": "Quels styles de musique seront au programme ?"
+        },
+        {
+          "text": "Tu as déjà prévu quels artistes ou quels groupes ?"
+        },
+        {
+          "text": "Comment le programme s'organise d'un jour à l'autre ?"
+        },
+        {
+          "text": "Il y aura plusieurs scènes ou des espaces différents selon les styles ?"
+        },
+        {
+          "text": "Les billets coûtent combien — et il y a un tarif à la journée ou un pass complet ?"
+        },
+        {
+          "text": "Il faut acheter sa place à l'avance, ou on pourra aussi prendre un billet sur place ?"
+        },
+        {
+          "text": "Comment on s'organise pour le transport ou le stationnement sur place ?",
+          "memory_section": 13
+        },
+        {
+          "text": "On peut manger ou boire quelque chose sur place ?"
+        },
+        {
+          "text": "Faut-il un billet spécial pour le camping, si on veut rester sur place plusieurs jours ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Est-ce que tu cherches aussi des bénévoles si jamais je veux donner un coup de main ?"
+        },
+        {
+          "text": "Y a-t-il une limite d'âge ou des règles particulières à respecter sur place ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Pour finir — qu'est-ce que je ne dois surtout pas oublier d'apporter pour profiter du festival ?"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Le Nouvel An au Canada",
+      "prompt": "Je suis votre professeur de français. Vous allez passer le prochain Nouvel an au Canada. Vous vous demandez comment les Canadiens célèbrent cette fête. Vous me posez des questions pour vous faire une idée (lieux, activités, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je vais passer le prochain Nouvel An au Canada et j'aimerais mieux comprendre comment on le célèbre — pourriez-vous m'en parler ?"
+        },
+        {
+          "text": "De manière générale, comment les Canadiens fêtent-ils le réveillon du 31 décembre ?"
+        },
+        {
+          "text": "Quels sont les lieux les plus populaires pour passer la soirée — centre-ville, événements en plein air, bars, restaurants ?"
+        },
+        {
+          "text": "Y a-t-il habituellement de grands événements publics ou des feux d'artifice ?"
+        },
+        {
+          "text": "À quel moment de la soirée l'ambiance est-elle la plus forte en général ?"
+        },
+        {
+          "text": "Les familles et les jeunes célèbrent-ils cette fête de la même façon, ou pas vraiment ?"
+        },
+        {
+          "text": "Y a-t-il des plats ou des habitudes culinaires typiques pour cette soirée ?"
+        },
+        {
+          "text": "Quel temps fait-il généralement à cette époque — il faut prévoir des vêtements particuliers ?",
+          "memory_number": 1,
+          "memory_section": 8
+        },
+        {
+          "text": "Le 1er janvier est-il un jour férié au Canada, et que font généralement les gens ce jour-là ?"
+        },
+        {
+          "text": "Y a-t-il aussi des activités ou des festivals d'hiver autour du Nouvel An ?"
+        },
+        {
+          "text": "Est-ce qu'il y a des traditions canadiennes spécifiques que je devrais connaître ?"
+        },
+        {
+          "text": "Est-ce que la manière de célébrer au Québec est différente du reste du Canada ?"
+        },
+        {
+          "text": "Y a-t-il des régions du Canada où les festivités du Nouvel An sont particulièrement réputées ?"
+        },
+        {
+          "text": "Si on est invité à une fête privée pour le réveillon, qu'est-ce qu'il faut savoir — tenue, cadeaux, horaires habituels ?"
+        },
+        {
+          "text": "Pour finir — s'il y a une seule chose à ne pas manquer le 31 décembre au Canada, ce serait laquelle ?"
+        }
+      ]
+    }
+  ]
+}

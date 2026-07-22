@@ -98,7 +98,9 @@
           "text": "Tu préfères qu'on apporte quelque chose — un cadeau, à boire, à manger ?"
         },
         {
-          "text": "Il y a une participation aux frais, ou tu t'occupes de tout ?"
+          "text": "Il y a une participation aux frais, ou tu t'occupes de tout ?",
+          "memory_number": 6,
+          "memory_section": 5
         },
         {
           "text": "Tu comptes inviter combien de personnes environ — ce sera une petite fête ou une grande soirée ?",
@@ -167,7 +169,9 @@
           "text": "Qu'est-ce qu'il faut prévoir comme équipement — de bonnes chaussures, des bâtons, un coupe-vent ?"
         },
         {
-          "text": "On se retrouve où pour partir — directement sur place ou il faut prévoir du transport ?"
+          "text": "On se retrouve où pour partir — directement sur place ou il faut prévoir du transport ?",
+          "memory_number": 6,
+          "memory_section": 5
         },
         {
           "text": "Il y a combien de personnes dans le groupe — c'est plutôt convivial ?"
@@ -287,16 +291,22 @@
           "text": "Est-ce que les animaux sont acceptés sur le camping ?"
         },
         {
-          "text": "Quelles sont les règles à respecter — il y a des horaires de silence le soir ?"
+          "text": "Quelles sont les règles à respecter — il y a des horaires de silence le soir ?",
+          "memory_number": 6,
+          "memory_section": 5
         },
         {
           "text": "Comment se passe la réservation — un acompte est-il demandé à l'avance ?"
         },
         {
-          "text": "Et en cas d'imprévu, quelles sont vos conditions d'annulation ?"
+          "text": "Et en cas d'imprévu, quelles sont vos conditions d'annulation ?",
+          "memory_number": 6,
+          "memory_section": 5
         },
         {
-          "text": "Pour finir — comment se passe l'arrivée sur place, et à partir de quelle heure peut-on s'installer ?"
+          "text": "Pour finir — comment se passe l'arrivée sur place, et à partir de quelle heure peut-on s'installer ?",
+          "memory_number": 6,
+          "memory_section": 5
         }
       ]
     }

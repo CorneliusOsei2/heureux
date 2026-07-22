@@ -22,6 +22,7 @@
     </thead>
     {% for month in subject_months %}
       <tbody
+        class="is-collapsed"
         id="subject-month-table-{{ month.slug }}"
         data-tache-two-month-group>
         <tr class="tache-two-batch-table__month-row">
@@ -29,9 +30,9 @@
             <button
               class="tache-two-batch-table__month-toggle"
               type="button"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-controls="subject-month-table-{{ month.slug }}"
-              aria-label="Réduire {{ month.name }}"
+              aria-label="Afficher {{ month.name }}"
               data-tache-two-month-key="{{ month.slug }}"
               data-tache-two-month-name="{{ month.name }}"
               data-tache-two-month-toggle>
@@ -50,7 +51,7 @@
           </th>
         </tr>
         {% for batch in month.batches %}
-          <tr class="tache-two-batch-table__row" data-tache-two-month-row>
+          <tr class="tache-two-batch-table__row" data-tache-two-month-row hidden>
             <th scope="row">
               <a
                 class="tache-two-batch-table__batch-link"

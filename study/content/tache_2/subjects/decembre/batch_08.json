@@ -1,0 +1,291 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 8,
+  "subjects": [
+    {
+      "number": 36,
+      "title": "Enquête sur la vie d'un étudiant francophone",
+      "prompt": "Dans le cadre de vos cours de français, vous réalisez une enquête sur les activités d’un jeune étudiant issu d’un pays francophone. Je joue le rôle de cet étudiant et vous celui de l’enquêteur. Vous me posez des questions (quoi, où, quand, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Pour commencer, de quel pays francophone venez-vous ?"
+        },
+        {
+          "text": "Et depuis combien de temps êtes-vous au Canada ?"
+        },
+        {
+          "text": "Qu'est-ce que vous étudiez en ce moment, et dans quel établissement ?"
+        },
+        {
+          "text": "À quoi ressemble une journée typique pour vous pendant la semaine ?"
+        },
+        {
+          "text": "À quelle heure commencent généralement vos cours ou vos journées ?"
+        },
+        {
+          "text": "Et en soirée, à quelle heure rentrez-vous habituellement ?"
+        },
+        {
+          "text": "Comment vous déplacez-vous au quotidien — à pied, en bus, en métro, à vélo ou autrement ?"
+        },
+        {
+          "text": "Pour les repas, vous mangez plutôt à la cafétéria, chez vous, ou au restaurant ?"
+        },
+        {
+          "text": "Qu'est-ce que vous aimez faire pendant votre temps libre — du sport, de la musique, de la lecture, les réseaux sociaux ?"
+        },
+        {
+          "text": "Est-ce que vous avez un petit travail à côté de vos études ?"
+        },
+        {
+          "text": "Comment faites-vous pour rencontrer des gens et vous faire des amis ici ?",
+          "memory_number": 6,
+          "memory_section": 4
+        },
+        {
+          "text": "Quelles habitudes ou quelles coutumes canadiennes vous ont le plus surpris(e) depuis votre arrivée ?",
+          "memory_number": 6,
+          "memory_section": 4
+        },
+        {
+          "text": "Est-ce que vous participez à des activités culturelles ou à des associations ?"
+        },
+        {
+          "text": "Après vos études, quels sont vos projets ?"
+        },
+        {
+          "text": "Pour finir — si vous deviez décrire votre semaine idéale ici en tant qu'étudiant, à quoi ressemblerait-elle ?"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "title": "Jeu organisé par la librairie",
+      "prompt": "Je travaille dans une librairie qui organise un jeu ouvert au public. Vous me posez des questions sur ce jeu (modalités d’inscription, contenu, intérêt, etc.) afin de décider si vous souhaitez y participer.",
+      "questions": [
+        {
+          "text": "Bonjour ! J'ai entendu parler du jeu que votre librairie organise — vous pourriez m'expliquer de quoi il s'agit exactement ?"
+        },
+        {
+          "text": "Quel type de jeu est-ce — un quiz, une chasse au trésor, un défi littéraire ou autre chose ?"
+        },
+        {
+          "text": "Qui peut participer — c'est ouvert à tous les âges ou y a-t-il un âge minimum ?"
+        },
+        {
+          "text": "Faut-il s'inscrire à l'avance, et comment ?"
+        },
+        {
+          "text": "Est-ce que la participation est gratuite ou y a-t-il des frais ?"
+        },
+        {
+          "text": "Quand est-ce que cela a lieu exactement, et combien de temps cela dure-t-il ?"
+        },
+        {
+          "text": "Où est-ce que ça se passe — uniquement dans la librairie ou aussi à l'extérieur ?"
+        },
+        {
+          "text": "Peut-on participer en équipe, ou seulement individuellement ?"
+        },
+        {
+          "text": "Combien de participants acceptez-vous au maximum ?"
+        },
+        {
+          "text": "Quel niveau de connaissances littéraires faut-il avoir pour se sentir à l'aise ?"
+        },
+        {
+          "text": "Quelles sont les règles principales, et peut-on les consulter avant de décider ?"
+        },
+        {
+          "text": "Qu'est-ce qu'on peut gagner — y a-t-il des prix ou des cadeaux ?"
+        },
+        {
+          "text": "Comment déterminez-vous le gagnant à la fin ?"
+        },
+        {
+          "text": "Quel est l'intérêt pour la librairie d'organiser ce jeu ?"
+        },
+        {
+          "text": "Pour finir — selon vous, quelle est la meilleure raison de s'inscrire ?"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "title": "Activité artistique d'un(e) ami(e) canadien(ne)",
+      "prompt": "Je suis un(e) ami(e) canadien(ne) et je pratique une activité artistique (théâtre, danse, musique, etc.). Vous trouvez cette idée intéressante et aimeriez faire la même chose. Vous me posez des questions sur cette activité (intérêt, lieu, horaires, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! J'ai entendu dire que tu pratiquais une activité artistique chaque semaine — tu pourrais m'en parler un peu ?"
+        },
+        {
+          "text": "C'est quel type d'activité exactement — tu fais du théâtre, de la danse, de la musique ou autre chose ?"
+        },
+        {
+          "text": "Les séances se passent où — dans un studio, une salle polyvalente, en extérieur ?"
+        },
+        {
+          "text": "Ça s'adresse à quel niveau — plutôt aux débutants ou aux personnes déjà expérimentées ?"
+        },
+        {
+          "text": "Si on débute complètement, est-ce qu'on risque de se sentir perdu(e) ?",
+          "memory_section": 3
+        },
+        {
+          "text": "Il y a généralement combien de participants — c'est un petit groupe ou un grand groupe ?"
+        },
+        {
+          "text": "Ça a lieu quels jours, et plutôt à quelle heure ?"
+        },
+        {
+          "text": "Quelle est la durée d'une séance — environ une heure ou plutôt plus ?"
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — faut-il payer à la séance ou s'inscrire pour toute la session ?"
+        },
+        {
+          "text": "Qu'est-ce qu'il faut apporter — du matériel, une tenue particulière, ou est-ce que tout est fourni ?"
+        },
+        {
+          "text": "Comment se passe l'inscription — en ligne, sur place, ou directement auprès du professeur ?"
+        },
+        {
+          "text": "Est-ce qu'on peut essayer avant de s'engager — il y a une séance d'essai ?"
+        },
+        {
+          "text": "Est-ce qu'il y a des spectacles, des concerts ou des présentations à la fin de l'année ?"
+        },
+        {
+          "text": "Toi, qu'est-ce que tu aimes le plus dans cette activité — tu en es content(e) ?"
+        },
+        {
+          "text": "Pour finir — tu me conseillerais de commencer par quoi, si je veux me lancer moi aussi ?"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "title": "Conseils pour trouver un logement dans la ville d'un ami",
+      "prompt": "Je suis un(e) ami(e) francophone. Vous souhaitez vous installer dans ma ville, et vous me demandez des conseils pour trouver un logement (démarches, quartier, budget, etc.).",
+      "questions": [
+        {
+          "text": "Je cherche un appartement dans ta ville et je ne sais pas trop par où commencer — tu pourrais m'aider ?"
+        },
+        {
+          "text": "Quels quartiers me conseillerais-tu, plutôt calmes et abordables pour commencer ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Et à l'inverse, y a-t-il des quartiers à éviter, ou trop chers pour un premier logement ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Question budget, à quoi dois-je m'attendre pour un studio ou un petit appartement ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Ces quartiers sont-ils faciles d'accès en métro ou en bus, si je n'ai pas de voiture ?",
+          "memory_section": 13
+        },
+        {
+          "text": "Tu utiliserais quels sites ou applications pour chercher un logement dans ta ville ?"
+        },
+        {
+          "text": "Quels documents demande-t-on généralement pour un dossier de location ?",
+          "memory_section": 1,
+          "memory_number": 3
+        },
+        {
+          "text": "Faut-il absolument un garant, ou existe-t-il d'autres solutions si on n'en a pas ?",
+          "memory_number": 3,
+          "memory_section": 1
+        },
+        {
+          "text": "Il vaut mieux commencer à chercher combien de temps à l'avance ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Le marché est-il très compétitif en ce moment, ou on trouve encore facilement ?",
+          "memory_section": 18
+        },
+        {
+          "text": "D'après toi, vaut-il mieux vivre seul(e) ou partager un appartement pour commencer ?",
+          "memory_section": 18
+        },
+        {
+          "text": "Y a-t-il des quartiers plus pratiques pour les commerces et la vie quotidienne ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Y a-t-il des pièges à éviter avec certains propriétaires ou certaines annonces ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Y a-t-il un quartier qui offre une très bonne qualité de vie sans être trop cher — tu me le décris ?"
+        },
+        {
+          "text": "Pour finir — si tu ne devais me donner qu'un seul conseil pour bien commencer, ce serait lequel ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "title": "Pays visités par un(e) ami(e) francophone",
+      "prompt": "Je suis l’un(e) de vos ami(e)s francophones. Vous cherchez une destination de voyage et vous voulez savoir quels pays j’ai visités. Vous me posez des questions pour obtenir des informations sur ces pays (activités, climat, tarifs, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Je cherche une destination de voyage et j'ai entendu dire que tu avais voyagé dans plusieurs pays — tu pourrais me donner des idées ?"
+        },
+        {
+          "text": "Quels pays as-tu visités jusqu'ici ?"
+        },
+        {
+          "text": "Parmi tous ces pays, lequel a été ton préféré, et pourquoi ?"
+        },
+        {
+          "text": "Dans ce pays-là, qu'est-ce qu'on peut faire comme activités intéressantes ?"
+        },
+        {
+          "text": "Le climat y est comment, et quelle est la meilleure période pour y aller ?"
+        },
+        {
+          "text": "Côté budget, il faut prévoir combien à peu près pour le vol et l'hébergement ?"
+        },
+        {
+          "text": "Pour un francophone, c'est facile de voyager là-bas ou il vaut mieux parler une autre langue ?"
+        },
+        {
+          "text": "Qu'est-ce qui t'a le plus surpris dans ce pays ?",
+          "memory_number": 6,
+          "memory_section": 3
+        },
+        {
+          "text": "Et au niveau de la nourriture, qu'est-ce qu'il faut absolument goûter ?"
+        },
+        {
+          "text": "Il y a des questions de sécurité ou des précautions particulières à connaître ?"
+        },
+        {
+          "text": "Quels endroits sont vraiment incontournables sur place ?"
+        },
+        {
+          "text": "Et à l'inverse, tu connais un lieu moins touristique qui vaut vraiment le détour ?"
+        },
+        {
+          "text": "Pour bien profiter du voyage, il vaut mieux partir combien de temps ?"
+        },
+        {
+          "text": "Tu conseillerais d'y aller seul(e), avec des amis ou avec un voyage organisé ?"
+        },
+        {
+          "text": "Pour finir — si j'aime surtout la nature, la culture ou l'aventure, quelle destination me recommanderais-tu, et dans quel pays retournerais-tu tout de suite ?"
+        }
+      ]
+    }
+  ]
+}

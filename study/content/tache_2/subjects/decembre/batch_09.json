@@ -1,0 +1,300 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "batch": 9,
+  "subjects": [
+    {
+      "number": 41,
+      "title": "Cours de guitare avec un professeur particulier",
+      "prompt": "Je suis professeur de guitare. Vous souhaitez suivre des cours avec moi. Vous me posez des questions sur l’organisation des leçons (horaires, tarifs, styles musicaux, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! J'aimerais prendre des cours de guitare avec vous — comment cela se passe-t-il en général ?"
+        },
+        {
+          "text": "Les cours sont-ils individuels, ou proposez-vous aussi des petits groupes ?"
+        },
+        {
+          "text": "Vous enseignez à quels niveaux — est-ce que les grands débutants sont les bienvenus ?"
+        },
+        {
+          "text": "Un cours dure combien de temps en général ?"
+        },
+        {
+          "text": "Vous conseillez quelle fréquence pour progresser régulièrement ?"
+        },
+        {
+          "text": "Les cours ont lieu où exactement — chez vous, chez l'élève, ou dans un studio ?"
+        },
+        {
+          "text": "Quels styles de guitare enseignez-vous — classique, folk, rock, jazz, flamenco ?"
+        },
+        {
+          "text": "Quelle méthode utilisez-vous — plutôt lecture, pratique, accompagnement de chansons, ou un mélange ?"
+        },
+        {
+          "text": "Faut-il avoir sa propre guitare dès le début, ou pouvez-vous en prêter une pour les premières séances ?"
+        },
+        {
+          "text": "Au bout de combien de temps peut-on commencer à jouer de vrais morceaux ?"
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — à la séance, ou sous forme de forfait mensuel ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Est-ce qu'il y a possibilité de faire un cours d'essai avant de s'engager ?"
+        },
+        {
+          "text": "Comment suivez-vous la progression de vos élèves — avez-vous des étapes ou des objectifs précis ?"
+        },
+        {
+          "text": "Est-ce que vous auriez éventuellement d'autres élèves ou anciens élèves que je pourrais contacter pour avoir un retour ?"
+        },
+        {
+          "text": "Pour finir — comment fixe-t-on le premier rendez-vous, et qu'est-ce que je dois apporter pour la première leçon ?"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "title": "Maison d'un(e) collègue à louer pendant l'été",
+      "prompt": "Je suis l’un(e) de vos collègues. Je mets ma maison en location pendant les vacances d’été. Vous êtes intéressé(e), et vous me posez des questions sur le logement (nombre de pièces, cadre, prix, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Tu m'as dit que tu louais ta maison pendant les vacances d'été — elle se trouve où exactement ?"
+        },
+        {
+          "text": "Le cadre autour de la maison est comment — plutôt calme, à la campagne, près d'un lac ou proche du centre ?"
+        },
+        {
+          "text": "Quelle est la superficie de la maison — et combien de pièces ou de chambres y a-t-il ?"
+        },
+        {
+          "text": "Elle peut accueillir combien de personnes confortablement ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Est-ce qu'elle est entièrement meublée, et quels équipements sont disponibles sur place ?"
+        },
+        {
+          "text": "Y a-t-il aussi un espace extérieur, comme une terrasse, un jardin ou un barbecue ?"
+        },
+        {
+          "text": "Elle est disponible à quelles dates pendant l'été ?"
+        },
+        {
+          "text": "Y a-t-il une durée minimale de location ?",
+          "memory_number": 3,
+          "memory_section": 1
+        },
+        {
+          "text": "Et côté prix, combien ça coûte pour une semaine ou pour tout le séjour ?"
+        },
+        {
+          "text": "Le tarif comprend quoi exactement — les charges, l'eau et l'électricité sont incluses ?"
+        },
+        {
+          "text": "Faut-il verser une caution, et comment se fait le paiement ?"
+        },
+        {
+          "text": "Est-ce qu'il y a des commodités à proximité — supermarchés, restaurants, pharmacie ?"
+        },
+        {
+          "text": "Est-ce qu'il y a des règles particulières à respecter ?",
+          "memory_section": 17
+        },
+        {
+          "text": "Y a-t-il un parking, ou est-ce qu'on peut venir facilement en transports en commun ?"
+        },
+        {
+          "text": "Est-ce que tu aurais des photos à m'envoyer pour que je me fasse une idée avant de me décider ?"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "title": "Travail dans une association – Curiosité d'un ami",
+      "prompt": "Je suis votre ami(e). Je travaille dans une association. Vous êtes intéressé(e), et vous me posez des questions sur mon activité (association, missions, temps de travail, etc.).",
+      "questions": [
+        {
+          "text": "Salut ! Tu m'as dit que tu travaillais dans une association — tu pourrais m'en dire un peu plus ?"
+        },
+        {
+          "text": "C'est quel type d'association exactement, et quel est son objectif principal ?",
+          "memory_number": 6,
+          "memory_section": 2
+        },
+        {
+          "text": "Elle aide qui en priorité ?"
+        },
+        {
+          "text": "Concrètement, quelles sont tes missions au quotidien ?",
+          "memory_number": 6,
+          "memory_section": 2
+        },
+        {
+          "text": "Tu y consacres combien d'heures par semaine en général ?"
+        },
+        {
+          "text": "C'est un travail salarié, du bénévolat, ou un mélange des deux ?"
+        },
+        {
+          "text": "Comment tu as commencé à t'impliquer dans cette association ?",
+          "memory_number": 6,
+          "memory_section": 2
+        },
+        {
+          "text": "Qu'est-ce que tu trouves le plus gratifiant dans ce que tu fais ?",
+          "memory_number": 6,
+          "memory_section": 2
+        },
+        {
+          "text": "Et à l'inverse, qu'est-ce qui est le plus difficile ?"
+        },
+        {
+          "text": "Quelles compétences faut-il pour faire ce genre d'activité ?"
+        },
+        {
+          "text": "Tu as l'impression que l'association a un impact concret sur les personnes qu'elle aide ?"
+        },
+        {
+          "text": "Tu te sens bien accompagné(e) et soutenu(e) dans l'association ?"
+        },
+        {
+          "text": "Tu te vois continuer encore longtemps dans cette association ?"
+        },
+        {
+          "text": "L'association a-t-elle des projets ou de nouvelles initiatives en cours en ce moment ?",
+          "memory_number": 6,
+          "memory_section": 2
+        },
+        {
+          "text": "Pour finir — si tu devais me décrire une journée ou une semaine type dans l'association, ça ressemblerait à quoi ?"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "title": "Nouveau dans l'entreprise",
+      "prompt": "Je suis votre collègue. C’est votre premier jour dans une entreprise canadienne. Vous me posez des questions sur le fonctionnement de l’entreprise (organisation, équipe, repas, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je suis ravi(e) de faire ta connaissance — c'est mon premier jour aujourd'hui. Tu travailles ici depuis combien de temps ? Tu connais bien l'entreprise ?",
+          "memory_section": 9
+        },
+        {
+          "text": "Comment tu trouves l'ambiance de travail en général ? Les gens sont sympas — c'est facile de s'intégrer ?",
+          "memory_section": 15
+        },
+        {
+          "text": "Comment s'organise le travail au quotidien — plutôt en équipe ou de manière individuelle ?",
+          "memory_section": 21
+        },
+        {
+          "text": "À quelle heure ça commence le matin — il y a des horaires flexibles ou tout le monde doit arriver à la même heure ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Combien de temps dure la pause déjeuner — et c'est à midi pile ou ça peut varier ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Où est-ce que les gens mangent généralement le midi ? Il y a une cantine d'entreprise — et si oui, comment ça marche ?",
+          "memory_section": 7
+        },
+        {
+          "text": "Parlons du budget — les repas à la cantine, c'est dans quelle gamme de prix ? Et la qualité est bonne ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Y a-t-il un espace pour réchauffer son repas si on apporte quelque chose ? Et des restaurants sympas dans les environs ?",
+          "memory_section": 16
+        },
+        {
+          "text": "Est-ce qu'il y a des réunions régulières d'équipe ? Ça a lieu à quelle fréquence — et ça dure combien de temps généralement ?",
+          "memory_section": 2
+        },
+        {
+          "text": "Comment fonctionne la communication interne — on utilise des emails ou une plateforme spécifique ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Combien de personnes travaillent dans notre département ? Et qui est notre responsable direct — comment est-il ou elle en tant que manager ?",
+          "memory_section": 14
+        },
+        {
+          "text": "Est-ce que tu pourrais me présenter aux autres membres de l'équipe — surtout ceux avec qui je vais travailler étroitement ?",
+          "memory_section": 19
+        },
+        {
+          "text": "Est-ce qu'il y a des possibilités de télétravail ou tout se fait au bureau ?",
+          "memory_section": 21
+        },
+        {
+          "text": "Quels sont les avantages dont bénéficient les employés — tickets restaurant, mutuelle, ce genre de choses ?",
+          "memory_section": 1
+        },
+        {
+          "text": "Pour finir — qu'est-ce que tu me conseillerais pour bien m'intégrer rapidement dans l'équipe ?",
+          "memory_section": 4
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "title": "Cours de langues pour adultes à l'université",
+      "prompt": "Je travaille au secrétariat d’une université à Calgary. Vous vous intéressez aux cours de langues pour adultes. Vous me posez des questions pour obtenir des informations sur les formations proposées (langues, tarifs, horaires, etc.).",
+      "questions": [
+        {
+          "text": "Bonjour ! Je m'intéresse aux cours de langues pour adultes à votre université de Calgary — pourriez-vous m'expliquer comment cela fonctionne ?"
+        },
+        {
+          "text": "Quelles langues proposez-vous, et lesquelles sont les plus demandées ?"
+        },
+        {
+          "text": "Ces formations s'adressent-elles uniquement aux adultes, ou y a-t-il des conditions d'âge particulières ?"
+        },
+        {
+          "text": "Est-ce que les cours conviennent à quelqu'un qui travaille à temps plein ?"
+        },
+        {
+          "text": "Proposez-vous des cours en soirée ou le week-end ?"
+        },
+        {
+          "text": "Les cours se suivent-ils par semestre, et combien de temps dure un semestre ?"
+        },
+        {
+          "text": "Est-ce qu'il y a des dates limites d'inscription à respecter ?"
+        },
+        {
+          "text": "Comment sont organisés les cours — en groupes, en présentiel, en ligne ou en formule hybride ?"
+        },
+        {
+          "text": "Est-ce qu'il existe aussi des cours particuliers ou du tutorat individuel ?"
+        },
+        {
+          "text": "À quel niveau ça s'adresse — et y a-t-il un test de placement au départ ?"
+        },
+        {
+          "text": "Ces cours donnent-ils des crédits universitaires, ou s'agit-il plutôt de formation continue sans crédits ?"
+        },
+        {
+          "text": "Qui sont les enseignants — sont-ils diplômés et expérimentés ?"
+        },
+        {
+          "text": "Comment fonctionnent les tarifs — c'est par cours, par semestre ou sous forme de forfait ?"
+        },
+        {
+          "text": "Qu'est-ce qu'il faut faire concrètement pour s'inscrire ?"
+        },
+        {
+          "text": "Pour finir — si je veux progresser rapidement tout en travaillant, quelle formule me conseilleriez-vous ?"
+        }
+      ]
+    }
+  ]
+}
