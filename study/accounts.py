@@ -35,6 +35,7 @@ THROTTLE_RETENTION = timedelta(days=2)
 RECOVERY_CODE_COUNT = 8
 RECOVERY_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
 STUDY_DATA_LOCK_ID = 20341866963359064
+STUDY_DATA_BATCH_SIZE = 500
 
 
 def acquire_study_data_lock() -> None:
@@ -141,6 +142,7 @@ def provision_user_study_data(user) -> None:
                 )
             ],
             ignore_conflicts=True,
+            batch_size=STUDY_DATA_BATCH_SIZE,
         )
 
         phrase_card_types = (
@@ -169,6 +171,7 @@ def provision_user_study_data(user) -> None:
                     for phrase in phrases.exclude(pk__in=existing_phrases)
                 ],
                 ignore_conflicts=True,
+                batch_size=STUDY_DATA_BATCH_SIZE,
             )
 
         Settings.load(user)

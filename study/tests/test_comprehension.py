@@ -4,6 +4,7 @@ import json
 import tempfile
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
 
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError, transaction
@@ -289,6 +290,34 @@ class ComprehensionImportTests(TestCase):
         self.assertEqual(question.passage_fr, "Passage corrigé.")
         self.assertEqual(answer.question_id, question_pk)
         self.assertEqual(answer.selected_choice_id, choice.pk)
+
+    def test_unchanged_import_skips_all_comprehension_bulk_updates(self):
+        tests = content.load_comprehension_tests()
+        command = Command()
+        command._import_comprehension_tests(tests)
+
+        with (
+            patch.object(
+                ComprehensionTest.objects,
+                "bulk_update",
+                wraps=ComprehensionTest.objects.bulk_update,
+            ) as test_bulk_update,
+            patch.object(
+                ComprehensionQuestion.objects,
+                "bulk_update",
+                wraps=ComprehensionQuestion.objects.bulk_update,
+            ) as question_bulk_update,
+            patch.object(
+                ComprehensionChoice.objects,
+                "bulk_update",
+                wraps=ComprehensionChoice.objects.bulk_update,
+            ) as choice_bulk_update,
+        ):
+            command._import_comprehension_tests(tests)
+
+        test_bulk_update.assert_not_called()
+        question_bulk_update.assert_not_called()
+        choice_bulk_update.assert_not_called()
 
     def test_missing_shared_test_is_archived_not_deleted(self):
         test = factories.make_comprehension_test()

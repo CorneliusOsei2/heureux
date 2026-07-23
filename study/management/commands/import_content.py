@@ -47,6 +47,16 @@ PHRASE_ID_MERGES = {
 IMPORT_BATCH_SIZE = 500
 
 
+def _apply_values(instance, values):
+    changed = False
+    for attribute, value in values.items():
+        if getattr(instance, attribute) == value:
+            continue
+        setattr(instance, attribute, value)
+        changed = True
+    return changed
+
+
 class Command(BaseCommand):
     help = "Import themes, families, responses, prompts and phrases."
 
@@ -59,6 +69,8 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
+        self.stdout.write("Waiting for the database content-import lock...")
+        self.stdout.flush()
         self._acquire_import_lock()
         fingerprint = self._source_fingerprint()
         if (
@@ -71,6 +83,8 @@ class Command(BaseCommand):
             self.stdout.write("Bundled content unchanged; import skipped.")
             return
 
+        self.stdout.write("Bundled content changed; parsing source files...")
+        self.stdout.flush()
         subject_months = content.load_tache_two_subject_months()
         ee_tache3_months = content.load_ee_tache3_months()
         themes = [
@@ -137,6 +151,8 @@ class Command(BaseCommand):
             )
         phrases = all_phrases
 
+        self.stdout.write("Synchronizing shared content rows...")
+        self.stdout.flush()
         task_by_slug = self._import_sections(sections)
         theme_by_name = self._import_themes(themes, task_by_slug)
         family_by_name = self._import_families(families)
@@ -150,6 +166,11 @@ class Command(BaseCommand):
         self._import_comprehension_tests(comprehension_tests)
         self._link_comprehension_vocabulary(comprehension_vocabulary)
         users = list(users_with_study_state())
+        self.stdout.write(
+            f"Synchronizing {len(users)} learner deck"
+            f"{'' if len(users) == 1 else 's'}..."
+        )
+        self.stdout.flush()
         if users:
             for user in users:
                 provision_user_study_data(user)
@@ -309,59 +330,176 @@ class Command(BaseCommand):
         return mapping
 
     def _import_comprehension_tests(self, tests):
-        seen_tests = set()
+        test_fields = [
+            "mode",
+            "number",
+            "title",
+            "description",
+            "expected_question_count",
+            "order",
+            "is_published",
+            "is_active",
+        ]
+        existing_tests = ComprehensionTest.objects.in_bulk(
+            [test_data.slug for test_data in tests],
+            field_name="slug",
+        )
+        tests_by_slug = {}
+        new_tests = []
+        changed_tests = []
         for test_data in tests:
-            test, _ = ComprehensionTest.objects.update_or_create(
-                slug=test_data.slug,
-                defaults={
-                    "mode": test_data.mode,
-                    "number": test_data.number,
-                    "title": test_data.title,
-                    "description": test_data.description,
-                    "expected_question_count": test_data.expected_question_count,
-                    "order": test_data.order,
-                    "is_published": test_data.is_published,
-                    "is_active": True,
-                },
+            values = {
+                "mode": test_data.mode,
+                "number": test_data.number,
+                "title": test_data.title,
+                "description": test_data.description,
+                "expected_question_count": test_data.expected_question_count,
+                "order": test_data.order,
+                "is_published": test_data.is_published,
+                "is_active": True,
+            }
+            test = existing_tests.get(test_data.slug)
+            if test is None:
+                test = ComprehensionTest(slug=test_data.slug, **values)
+                new_tests.append(test)
+            elif _apply_values(test, values):
+                changed_tests.append(test)
+            tests_by_slug[test_data.slug] = test
+
+        ComprehensionTest.objects.bulk_create(
+            new_tests,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        if changed_tests:
+            ComprehensionTest.objects.bulk_update(
+                changed_tests,
+                test_fields,
+                batch_size=IMPORT_BATCH_SIZE,
             )
-            seen_tests.add(test.pk)
-            seen_questions = set()
-            for question_data in test_data.questions:
-                question, _ = ComprehensionQuestion.objects.update_or_create(
+
+        question_rows = [
+            (tests_by_slug[test_data.slug], question_data)
+            for test_data in tests
+            for question_data in test_data.questions
+        ]
+        question_fields = [
+            "test",
+            "number",
+            "passage_fr",
+            "passage_en",
+            "prompt_fr",
+            "prompt_en",
+            "correct_explanation",
+            "is_active",
+        ]
+        existing_questions = ComprehensionQuestion.objects.in_bulk(
+            [question_data.content_key for _test, question_data in question_rows],
+            field_name="content_key",
+        )
+        questions_by_key = {}
+        new_questions = []
+        changed_questions = []
+        for test, question_data in question_rows:
+            values = {
+                "test_id": test.pk,
+                "number": question_data.number,
+                "passage_fr": question_data.passage_fr,
+                "passage_en": question_data.passage_en,
+                "prompt_fr": question_data.prompt_fr,
+                "prompt_en": question_data.prompt_en,
+                "correct_explanation": question_data.correct_explanation,
+                "is_active": True,
+            }
+            question = existing_questions.get(question_data.content_key)
+            if question is None:
+                question = ComprehensionQuestion(
                     content_key=question_data.content_key,
-                    defaults={
-                        "test": test,
-                        "number": question_data.number,
-                        "passage_fr": question_data.passage_fr,
-                        "passage_en": question_data.passage_en,
-                        "prompt_fr": question_data.prompt_fr,
-                        "prompt_en": question_data.prompt_en,
-                        "correct_explanation": (
-                            question_data.correct_explanation
-                        ),
-                        "is_active": True,
-                    },
+                    **values,
                 )
-                seen_questions.add(question.pk)
-                seen_letters = set()
-                for choice_data in question_data.choices:
-                    ComprehensionChoice.objects.update_or_create(
-                        question=question,
+                new_questions.append(question)
+            elif _apply_values(question, values):
+                changed_questions.append(question)
+            questions_by_key[question_data.content_key] = question
+
+        ComprehensionQuestion.objects.bulk_create(
+            new_questions,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        if changed_questions:
+            ComprehensionQuestion.objects.bulk_update(
+                changed_questions,
+                question_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
+
+        choice_fields = [
+            "text_fr",
+            "text_en",
+            "rationale",
+            "is_correct",
+            "is_active",
+        ]
+        question_ids = [question.pk for question in questions_by_key.values()]
+        existing_choices = {
+            (choice.question_id, choice.letter): choice
+            for choice in ComprehensionChoice.objects.filter(
+                question_id__in=question_ids
+            )
+        }
+        seen_choice_ids = set()
+        new_choices = []
+        changed_choices = []
+        for _test, question_data in question_rows:
+            question = questions_by_key[question_data.content_key]
+            for choice_data in question_data.choices:
+                values = {
+                    "text_fr": choice_data.text_fr,
+                    "text_en": choice_data.text_en,
+                    "rationale": choice_data.rationale,
+                    "is_correct": choice_data.is_correct,
+                    "is_active": True,
+                }
+                choice = existing_choices.get(
+                    (question.pk, choice_data.letter)
+                )
+                if choice is None:
+                    choice = ComprehensionChoice(
+                        question_id=question.pk,
                         letter=choice_data.letter,
-                        defaults={
-                            "text_fr": choice_data.text_fr,
-                            "text_en": choice_data.text_en,
-                            "rationale": choice_data.rationale,
-                            "is_correct": choice_data.is_correct,
-                            "is_active": True,
-                        },
+                        **values,
                     )
-                    seen_letters.add(choice_data.letter)
-                ComprehensionChoice.objects.filter(question=question).exclude(
-                    letter__in=seen_letters
-                ).update(is_active=False)
-            test.questions.exclude(pk__in=seen_questions).update(is_active=False)
-        ComprehensionTest.objects.exclude(pk__in=seen_tests).update(
+                    new_choices.append(choice)
+                elif _apply_values(choice, values):
+                    changed_choices.append(choice)
+                if choice.pk is not None:
+                    seen_choice_ids.add(choice.pk)
+
+        ComprehensionChoice.objects.bulk_create(
+            new_choices,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        seen_choice_ids.update(
+            choice.pk for choice in new_choices if choice.pk is not None
+        )
+        if changed_choices:
+            ComprehensionChoice.objects.bulk_update(
+                changed_choices,
+                choice_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
+
+        if question_ids:
+            ComprehensionChoice.objects.filter(
+                question_id__in=question_ids
+            ).exclude(pk__in=seen_choice_ids).update(is_active=False)
+
+        seen_question_ids = set(question_ids)
+        seen_test_ids = {test.pk for test in tests_by_slug.values()}
+        if seen_test_ids:
+            ComprehensionQuestion.objects.filter(
+                test_id__in=seen_test_ids
+            ).exclude(pk__in=seen_question_ids).update(is_active=False)
+        ComprehensionTest.objects.exclude(pk__in=seen_test_ids).update(
             is_active=False,
             is_published=False,
         )
@@ -418,7 +556,6 @@ class Command(BaseCommand):
         )
 
     def _import_responses(self, responses, theme_by_name, family_by_name):
-        seen = set()
         mapping = {}
         claimed = set()
         incoming_keys = {data.content_key for data in responses}
@@ -427,31 +564,53 @@ class Command(BaseCommand):
             .exclude(content_key__isnull=True)
             .values_list("content_key", "response_id")
         )
+        existing_by_key = Response.objects.in_bulk(
+            incoming_keys,
+            field_name="content_key",
+        )
+        existing_by_pk = Response.objects.in_bulk(
+            set(prompt_response_ids.values())
+        )
         response_sources = {}
+        new_responses = []
+        changed_responses = []
+        response_fields = [
+            "content_key",
+            "body_hash",
+            "theme",
+            "family",
+            "prompt",
+            "reformulation",
+            "position",
+            "position_claire",
+            "nuance",
+            "conclusion",
+            "body",
+            "body_html",
+            "is_active",
+        ]
         for data in responses:
             source_ids = {
                 prompt_response_ids[prompt.content_key]
                 for prompt in data.prompts
                 if prompt.content_key in prompt_response_ids
             }
-            obj = Response.objects.filter(content_key=data.content_key).first()
+            obj = existing_by_key.get(data.content_key)
             if obj is None:
-                prompt_keys = [prompt.content_key for prompt in data.prompts]
-                obj = (
-                    Response.objects.filter(
-                        prompts__content_key__in=prompt_keys,
-                    )
-                    .exclude(pk__in=claimed)
-                    .exclude(content_key__in=incoming_keys)
-                    .distinct()
-                    .order_by("pk")
-                    .first()
+                candidates = (
+                    existing_by_pk[response_id]
+                    for response_id in source_ids
+                    if response_id in existing_by_pk
+                    and response_id not in claimed
+                    and existing_by_pk[response_id].content_key
+                    not in incoming_keys
                 )
+                obj = min(candidates, key=lambda item: item.pk, default=None)
             values = {
                 "content_key": data.content_key,
                 "body_hash": data.body_hash,
-                "theme": theme_by_name[data.theme],
-                "family": family_by_name[data.family],
+                "theme_id": theme_by_name[data.theme].pk,
+                "family_id": family_by_name[data.family].pk,
                 "prompt": data.prompt,
                 "reformulation": data.reformulation,
                 "position": data.position,
@@ -463,31 +622,82 @@ class Command(BaseCommand):
                 "is_active": True,
             }
             if obj is None:
-                obj = Response.objects.create(**values)
+                obj = Response(**values)
+                new_responses.append(obj)
             else:
                 source_ids.add(obj.pk)
-                for field, value in values.items():
-                    setattr(obj, field, value)
-                obj.save(update_fields=list(values))
+                if _apply_values(obj, values):
+                    changed_responses.append(obj)
             mapping[data.content_key] = obj
             response_sources[data.content_key] = source_ids
-            seen.add(obj.pk)
-            claimed.add(obj.pk)
+            if obj.pk is not None:
+                claimed.add(obj.pk)
 
-            arg_orders = set()
+        if changed_responses:
+            Response.objects.bulk_update(
+                changed_responses,
+                response_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
+        Response.objects.bulk_create(
+            new_responses,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+
+        seen = {obj.pk for obj in mapping.values()}
+        existing_arguments = {
+            (argument.response_id, argument.order): argument
+            for argument in Argument.objects.filter(response_id__in=seen)
+        }
+        desired_argument_keys = set()
+        new_arguments = []
+        changed_arguments = []
+        argument_fields = [
+            "idea",
+            "developpement",
+            "exemple",
+            "consequence",
+        ]
+        for data in responses:
+            response = mapping[data.content_key]
             for arg in data.arguments:
-                Argument.objects.update_or_create(
-                    response=obj,
-                    order=arg.order,
-                    defaults={
-                        "idea": arg.idea,
-                        "developpement": arg.developpement,
-                        "exemple": arg.exemple,
-                        "consequence": arg.consequence,
-                    },
-                )
-                arg_orders.add(arg.order)
-            obj.arguments.exclude(order__in=arg_orders).delete()
+                key = (response.pk, arg.order)
+                desired_argument_keys.add(key)
+                values = {
+                    "idea": arg.idea,
+                    "developpement": arg.developpement,
+                    "exemple": arg.exemple,
+                    "consequence": arg.consequence,
+                }
+                argument = existing_arguments.get(key)
+                if argument is None:
+                    new_arguments.append(
+                        Argument(
+                            response_id=response.pk,
+                            order=arg.order,
+                            **values,
+                        )
+                    )
+                elif _apply_values(argument, values):
+                    changed_arguments.append(argument)
+
+        removed_argument_ids = [
+            argument.pk
+            for key, argument in existing_arguments.items()
+            if key not in desired_argument_keys
+        ]
+        if removed_argument_ids:
+            Argument.objects.filter(pk__in=removed_argument_ids).delete()
+        Argument.objects.bulk_create(
+            new_arguments,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        if changed_arguments:
+            Argument.objects.bulk_update(
+                changed_arguments,
+                argument_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
 
         Response.objects.exclude(pk__in=seen).update(is_active=False)
         self._response_sources = response_sources
@@ -496,25 +706,56 @@ class Command(BaseCommand):
     def _import_prompts(
         self, responses, response_by_key, theme_by_name, family_by_name
     ):
-        seen = set()
         index = {}
-        for data in responses:
-            response = response_by_key[data.content_key]
-            for prompt in data.prompts:
-                obj, _ = Prompt.objects.update_or_create(
-                    content_key=prompt.content_key,
-                    defaults={
-                        "theme": theme_by_name[prompt.theme],
-                        "number": prompt.number,
-                        "response": response,
-                        "family": family_by_name[prompt.family],
-                        "text": prompt.text,
-                        "is_canonical": prompt.is_canonical,
-                        "is_active": True,
-                    },
-                )
-                index[(prompt.theme, prompt.number)] = obj
-                seen.add(obj.pk)
+        prompt_rows = [
+            (response_by_key[data.content_key], prompt)
+            for data in responses
+            for prompt in data.prompts
+        ]
+        existing_prompts = Prompt.objects.in_bulk(
+            [prompt.content_key for _response, prompt in prompt_rows],
+            field_name="content_key",
+        )
+        new_prompts = []
+        changed_prompts = []
+        prompt_fields = [
+            "theme",
+            "number",
+            "response",
+            "family",
+            "text",
+            "is_canonical",
+            "is_active",
+        ]
+        for response, prompt in prompt_rows:
+            values = {
+                "theme_id": theme_by_name[prompt.theme].pk,
+                "number": prompt.number,
+                "response_id": response.pk,
+                "family_id": family_by_name[prompt.family].pk,
+                "text": prompt.text,
+                "is_canonical": prompt.is_canonical,
+                "is_active": True,
+            }
+            obj = existing_prompts.get(prompt.content_key)
+            if obj is None:
+                obj = Prompt(content_key=prompt.content_key, **values)
+                new_prompts.append(obj)
+            elif _apply_values(obj, values):
+                changed_prompts.append(obj)
+            index[(prompt.theme, prompt.number)] = obj
+
+        Prompt.objects.bulk_create(
+            new_prompts,
+            batch_size=IMPORT_BATCH_SIZE,
+        )
+        if changed_prompts:
+            Prompt.objects.bulk_update(
+                changed_prompts,
+                prompt_fields,
+                batch_size=IMPORT_BATCH_SIZE,
+            )
+        seen = {prompt.pk for prompt in index.values()}
         Prompt.objects.exclude(pk__in=seen).update(is_active=False)
         return index
 
@@ -531,7 +772,6 @@ class Command(BaseCommand):
                     f"Phrase {data.phrase_id} references unknown prompts: {labels}"
                 )
 
-        Phrase.objects.update(is_active=False)
         seen_categories = {}
         order = 0
         lot_orders = dict(
@@ -541,6 +781,19 @@ class Command(BaseCommand):
         existing_by_id = Phrase.objects.in_bulk(field_name="phrase_id")
         new_phrases = []
         changed_phrases = []
+        phrase_fields = [
+            "tier",
+            "category",
+            "english_cue",
+            "expression",
+            "anchor",
+            "example",
+            "note",
+            "sources_raw",
+            "order",
+            "lot_order",
+            "is_active",
+        ]
         for data in phrases:
             if data.category not in seen_categories:
                 order += 1
@@ -566,40 +819,29 @@ class Command(BaseCommand):
             else:
                 lot_order = existing_lot_order
             phrase = existing_by_id.get(data.phrase_id)
+            values = {
+                "tier": data.tier,
+                "category_id": category.pk,
+                "english_cue": data.english_cue,
+                "expression": data.expression,
+                "anchor": data.anchor,
+                "example": data.example,
+                "note": data.note,
+                "sources_raw": data.sources_raw,
+                "order": data.order,
+                "lot_order": lot_order,
+                "is_active": True,
+            }
             if phrase is None:
-                phrase = Phrase(phrase_id=data.phrase_id)
+                phrase = Phrase(phrase_id=data.phrase_id, **values)
                 new_phrases.append(phrase)
-            else:
+            elif _apply_values(phrase, values):
                 changed_phrases.append(phrase)
-            phrase.tier = data.tier
-            phrase.category = category
-            phrase.english_cue = data.english_cue
-            phrase.expression = data.expression
-            phrase.anchor = data.anchor
-            phrase.example = data.example
-            phrase.note = data.note
-            phrase.sources_raw = data.sources_raw
-            phrase.order = data.order
-            phrase.lot_order = lot_order
-            phrase.is_active = True
 
         Phrase.objects.bulk_create(
             new_phrases,
             batch_size=IMPORT_BATCH_SIZE,
         )
-        phrase_fields = [
-            "tier",
-            "category",
-            "english_cue",
-            "expression",
-            "anchor",
-            "example",
-            "note",
-            "sources_raw",
-            "order",
-            "lot_order",
-            "is_active",
-        ]
         if changed_phrases:
             Phrase.objects.bulk_update(
                 changed_phrases,
@@ -613,21 +855,45 @@ class Command(BaseCommand):
             field_name="phrase_id",
         )
         seen_phrases = {phrase.pk for phrase in phrase_by_id.values()}
+        Phrase.objects.exclude(pk__in=seen_phrases).filter(
+            is_active=True
+        ).update(is_active=False)
         through_model = Phrase.source_prompts.through
-        seen_phrase_ids = list(seen_phrases)
-        for start in range(0, len(seen_phrase_ids), IMPORT_BATCH_SIZE):
-            through_model.objects.filter(
-                phrase_id__in=seen_phrase_ids[
-                    start : start + IMPORT_BATCH_SIZE
-                ]
-            ).delete()
-        source_links = [
-            through_model(
-                phrase_id=phrase_by_id[data.phrase_id].pk,
-                prompt_id=prompt_index[source].pk,
+        desired_links = {
+            (
+                phrase_by_id[data.phrase_id].pk,
+                prompt_index[source].pk,
             )
             for data in phrases
             for source in data.sources
+        }
+        existing_links = {}
+        seen_phrase_ids = list(seen_phrases)
+        for start in range(0, len(seen_phrase_ids), IMPORT_BATCH_SIZE):
+            rows = through_model.objects.filter(
+                phrase_id__in=seen_phrase_ids[
+                    start : start + IMPORT_BATCH_SIZE
+                ]
+            ).values_list("pk", "phrase_id", "prompt_id")
+            existing_links.update(
+                {
+                    (phrase_id, prompt_id): link_id
+                    for link_id, phrase_id, prompt_id in rows
+                }
+            )
+        obsolete_link_ids = [
+            link_id
+            for pair, link_id in existing_links.items()
+            if pair not in desired_links
+        ]
+        for start in range(0, len(obsolete_link_ids), IMPORT_BATCH_SIZE):
+            through_model.objects.filter(
+                pk__in=obsolete_link_ids[start : start + IMPORT_BATCH_SIZE]
+            ).delete()
+        source_links = [
+            through_model(phrase_id=phrase_id, prompt_id=prompt_id)
+            for phrase_id, prompt_id in desired_links
+            if (phrase_id, prompt_id) not in existing_links
         ]
         through_model.objects.bulk_create(
             source_links,

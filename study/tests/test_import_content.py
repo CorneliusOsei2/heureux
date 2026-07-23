@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib
 from datetime import timedelta
 from io import StringIO
+from unittest.mock import patch
 
 from django.apps import apps
 from django.core.management import call_command
@@ -14,12 +15,15 @@ from study.management.commands.import_content import Command
 from study.models import (
     Annotation,
     AnnotationKind,
+    Argument,
     Card,
     CardState,
     CardType,
     ContentImportState,
+    Phrase,
     Prompt,
     Rating,
+    Response,
     ReviewLog,
     ReviewSession,
     Theme,
@@ -251,6 +255,31 @@ class NonDestructiveImportTests(TestCase):
         self.assertEqual(card.pk, card_id)
         self.assertEqual(card.reps, 1)
         self.assertTrue(ReviewLog.objects.filter(pk=log_id, card=card).exists())
+
+    def test_unchanged_response_skips_response_and_argument_updates(self):
+        response = factories.make_response()
+        data = self._response_data(response)
+        command = Command()
+        theme_map = {response.theme.name: response.theme}
+        family_map = {response.family.name: response.family}
+        command._import_responses([data], theme_map, family_map)
+
+        with (
+            patch.object(
+                Response.objects,
+                "bulk_update",
+                wraps=Response.objects.bulk_update,
+            ) as response_bulk_update,
+            patch.object(
+                Argument.objects,
+                "bulk_update",
+                wraps=Argument.objects.bulk_update,
+            ) as argument_bulk_update,
+        ):
+            command._import_responses([data], theme_map, family_map)
+
+        response_bulk_update.assert_not_called()
+        argument_bulk_update.assert_not_called()
 
     def test_removed_response_is_archived_without_deleting_private_state(self):
         user = factories.make_user("archive-user")
@@ -512,7 +541,13 @@ class NonDestructiveImportTests(TestCase):
         command = Command()
         prompt_index = {(prompt.theme.name, prompt.number): prompt}
         command._import_phrases([data, new_data], prompt_index)
-        command._import_phrases([data, new_data], prompt_index)
+        with patch.object(
+            Phrase.objects,
+            "bulk_update",
+            wraps=Phrase.objects.bulk_update,
+        ) as phrase_bulk_update:
+            command._import_phrases([data, new_data], prompt_index)
+        phrase_bulk_update.assert_not_called()
 
         phrase.refresh_from_db()
         card.refresh_from_db()
