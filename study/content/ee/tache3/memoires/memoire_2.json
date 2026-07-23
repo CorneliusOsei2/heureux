@@ -1,0 +1,518 @@
+{
+  "number": 2,
+  "title": "Mémoire 2",
+  "label": "Formulations réutilisables — EE Tâche 3",
+  "icon": "book-open",
+  "subtitle": "Une banque de formulations stables à mémoriser et à adapter à chaque sujet de la Tâche 3 (avril, mai et juin 2025).",
+  "sections": [
+    {
+      "number": 1,
+      "title": "Titres — schémas",
+      "groups": [
+        {
+          "title": "Encadrement, conditions et équilibre",
+          "questions": [
+            "… : une sécurité à encadrer",
+            "… : un usage à encadrer",
+            "… : une solution enrichissante sous conditions",
+            "… : un facteur d’épanouissement sous conditions",
+            "… : investir sous conditions",
+            "… : économiser sous conditions",
+            "… : un équilibre à construire",
+            "… : une place essentielle à équilibrer",
+            "… : un choix occasionnel à équilibrer",
+            "… : une démarche à nuancer"
+          ]
+        },
+        {
+          "title": "Limiter, protéger et concilier",
+          "questions": [
+            "… : protéger sans emprisonner",
+            "… : prévenir … sans interdire",
+            "… : apprendre sans s’épuiser",
+            "… : choisir sans subir",
+            "… : réduire plutôt que supprimer",
+            "… : réduire et mieux choisir",
+            "… : diversifier sans imposer",
+            "… : une transition à préparer",
+            "… : de l’urgence à l’autonomie",
+            "… ou … : concilier proximité et praticité"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Partie 1 — Ouvertures neutres",
+      "groups": [
+        {
+          "title": "Constater un débat",
+          "questions": [
+            "La question de … suscite des avis partagés.",
+            "La question de … divise les opinions.",
+            "La présence de … divise les opinions.",
+            "… suscite des avis partagés.",
+            "… divise les opinions.",
+            "… suscite un débat.",
+            "… fait l’objet d’un débat nuancé.",
+            "… fait l’objet de points de vue opposés.",
+            "… présente des avantages et des inconvénients.",
+            "… est un mode de vie qui présente des avantages et des inconvénients."
+          ]
+        },
+        {
+          "title": "Opposer deux choix ou deux visions",
+          "questions": [
+            "… oppose deux visions de …",
+            "La place de … dans … oppose deux visions de …",
+            "Le choix entre … et … divise les …",
+            "Les effets de … font l’objet de points de vue opposés.",
+            "L’organisation de … oppose deux visions de …",
+            "Les deux documents présentent une même inquiétude concernant …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Partie 1 — Présenter les deux documents",
+      "groups": [
+        {
+          "title": "Partisans et opposants",
+          "questions": [
+            "D’un côté, ses partisans mettent en avant … En revanche, ses détracteurs soulignent …",
+            "D’un côté, ses opposants considèrent … En revanche, ses défenseurs rappellent …",
+            "Ses défenseurs estiment que … En revanche, ses opposants jugent …",
+            "Ses partisans valorisent … Toutefois, ses détracteurs dénoncent …",
+            "Leurs défenseurs invoquent … En revanche, leurs opposants craignent …",
+            "Ses opposants dénoncent … En revanche, ses défenseurs valorisent …",
+            "D’un côté, certains défendent … En revanche, d’autres soutiennent …",
+            "Une vision favorable souligne … Toutefois, une position opposée considère …"
+          ]
+        },
+        {
+          "title": "Documents, visions et témoignages",
+          "questions": [
+            "Le premier document met en avant … En revanche, le second souligne …",
+            "Le premier document dénonce … En revanche, le second valorise …",
+            "Le premier document affirme que … En revanche, le second rappelle …",
+            "Le premier témoignage valorise … En revanche, le second défend …",
+            "Le texte insiste sur … En revanche, une vision opposée souligne …",
+            "Le témoignage défend … Toutefois, une position opposée privilégie …",
+            "Le premier document propose de … En revanche, le second présente … comme …",
+            "Les deux documents s’inquiètent de … Toutefois, une position opposée rappelle que …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Connecteurs d'opposition",
+      "groups": [
+        {
+          "questions": [
+            "En revanche, …",
+            "Toutefois, …",
+            "Cependant, …",
+            "D’un côté, … ; en revanche, …",
+            "… mais …",
+            "… tout en …",
+            "… malgré …",
+            "… tandis que …",
+            "… plutôt que …",
+            "… sans …",
+            "… contrairement à …",
+            "… à l’opposé de …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Partie 2 — Prises de position",
+      "groups": [
+        {
+          "title": "Exprimer son avis",
+          "questions": [
+            "À mon avis, …",
+            "Selon moi, …",
+            "Personnellement, je pense que …",
+            "Personnellement, je considère que …",
+            "Personnellement, je suis favorable à …",
+            "À mon avis, il est préférable de …",
+            "Selon moi, … devrait …"
+          ]
+        },
+        {
+          "title": "Formuler une position nuancée",
+          "questions": [
+            "… peuvent être utiles, mais seulement si …",
+            "… est enrichissant à condition que …",
+            "… est acceptable seulement si …",
+            "… ne devrait … que si …",
+            "… peut rester …, mais ne devrait pas devenir …",
+            "… peuvent coexister, mais …",
+            "… doivent se compléter.",
+            "Il est préférable de … sans nécessairement …",
+            "… est souhaitable, sans supposer que …",
+            "… est raisonnable si …",
+            "… peut convenir à …, à condition que …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Développer un argument",
+      "groups": [
+        {
+          "title": "Justification et progression",
+          "questions": [
+            "Tout d’abord, …",
+            "Ensuite, …",
+            "De plus, …",
+            "En effet, …",
+            "Puis, …",
+            "Enfin, …"
+          ]
+        },
+        {
+          "title": "Effet, conséquence et portée",
+          "questions": [
+            "Cela permet de …",
+            "Cela favorise …",
+            "Cela contribue à …",
+            "… permet de …",
+            "… peut contribuer à …",
+            "… réduit …",
+            "… renforce …",
+            "… protège …",
+            "… facilite …",
+            "… risque de …",
+            "… exige de …",
+            "… aide à …",
+            "… afin de …",
+            "… grâce à …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Introduire un exemple",
+      "groups": [
+        {
+          "title": "Amorces générales",
+          "questions": [
+            "Par exemple, …",
+            "Prenons l’exemple de …"
+          ]
+        },
+        {
+          "title": "Exemples concrets",
+          "questions": [
+            "Par exemple, une personne peut …",
+            "Par exemple, une famille peut …",
+            "Par exemple, une entreprise peut …",
+            "Par exemple, une ville pourrait …",
+            "Par exemple, une école pourrait …",
+            "Par exemple, des parents peuvent …",
+            "Par exemple, une équipe peut …",
+            "Par exemple, une association peut …",
+            "Par exemple, une cantine pourrait …",
+            "Par exemple, un parc pourrait …",
+            "Par exemple, des agents formés pourraient …",
+            "Par exemple, à Montréal, …",
+            "Par exemple, entre … et …, …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Concession / nuance",
+      "groups": [
+        {
+          "title": "Reconnaître une limite",
+          "questions": [
+            "Cependant, il faut aussi reconnaître que …",
+            "Il faut toutefois tenir compte de …",
+            "Certes, …, mais …",
+            "Même si …, …",
+            "Bien que …, …",
+            "Sans nier que …, …",
+            "Cette solution présente néanmoins des limites : …"
+          ]
+        },
+        {
+          "title": "Nuancer selon le contexte",
+          "questions": [
+            "… malgré les efforts.",
+            "… même dans de bonnes conditions.",
+            "Cette organisation ne convient pas à tous les …",
+            "Les besoins diffèrent selon …",
+            "Les résultats restent incertains.",
+            "Les habitudes évoluent lentement.",
+            "Une telle transition exige des investissements importants.",
+            "Chaque … a une empreinte différente."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Conclusions",
+      "groups": [
+        {
+          "title": "Amorces de conclusion",
+          "questions": [
+            "En conclusion, le plus important est de …",
+            "En définitive, le plus important est de …"
+          ]
+        },
+        {
+          "title": "Bilans nuancés",
+          "questions": [
+            "En conclusion, le plus important est de garantir … sans sacrifier …",
+            "En définitive, le plus important est de choisir … et de préserver …",
+            "En conclusion, le plus important est de conjuguer … et …",
+            "En définitive, le plus important est de concilier …, … et …",
+            "En conclusion, le plus important est de … grâce à …",
+            "En définitive, le plus important est de … plutôt que d’imposer …",
+            "En conclusion, le plus important est de procéder progressivement, d’informer … et d’associer …",
+            "En définitive, le plus important est de comparer …",
+            "En conclusion, le plus important est de soumettre … à …",
+            "En définitive, le plus important est de protéger … grâce à des règles strictes.",
+            "En conclusion, le plus important est de consommer moins, de choisir mieux et de …",
+            "En définitive, le plus important est de maintenir … fondé sur …",
+            "En conclusion, le plus important est de trouver un équilibre raisonnable entre … et …"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Vocabulaire thématique",
+      "groups": [
+        {
+          "title": "Santé / alimentation",
+          "questions": [
+            "des repas équilibrés",
+            "les besoins nutritionnels",
+            "les habitudes alimentaires",
+            "des produits frais",
+            "les protéines animales",
+            "les sources de protéines",
+            "les légumineuses",
+            "les risques de carences",
+            "une alimentation bien planifiée",
+            "les connaissances nutritionnelles",
+            "les menus sans viande",
+            "la restauration rapide",
+            "des portions raisonnables",
+            "trop de sel, de gras ou de sucre",
+            "un suivi nutritionnel",
+            "l’équilibre alimentaire",
+            "les normes d’hygiène"
+          ]
+        },
+        {
+          "title": "Éducation / école",
+          "questions": [
+            "les résultats scolaires",
+            "la concentration scolaire",
+            "la communauté scolaire",
+            "la médiation dans la cour",
+            "des règles clairement expliquées",
+            "l’expression personnelle des élèves",
+            "le sentiment d’appartenance",
+            "les différences visibles entre classes sociales",
+            "les dépenses des familles",
+            "un uniforme simple et abordable",
+            "une règle élaborée avec les élèves et les familles",
+            "une année scolaire exigeante",
+            "les devoirs",
+            "les services essentiels de santé et d’éducation"
+          ]
+        },
+        {
+          "title": "Technologie / numérique / surveillance",
+          "questions": [
+            "la vidéosurveillance urbaine",
+            "les caméras de surveillance",
+            "l’analyse des images",
+            "la conservation des images",
+            "protéger la vie privée",
+            "une surveillance permanente",
+            "l’accès aux enquêteurs autorisés",
+            "le sentiment de sécurité",
+            "les jeux vidéo",
+            "les contenus violents",
+            "les mécanismes de dépendance",
+            "un usage modéré",
+            "les consoles hors de la chambre",
+            "la capacité à résoudre des problèmes"
+          ]
+        },
+        {
+          "title": "Environnement / animaux",
+          "questions": [
+            "la protection du vivant",
+            "l’équilibre des écosystèmes",
+            "la biodiversité",
+            "la souffrance animale",
+            "l’élevage industriel",
+            "les émissions de carbone",
+            "l’empreinte écologique",
+            "l’impact environnemental",
+            "les emballages plastiques",
+            "les contenants réutilisables",
+            "la qualité de l’air",
+            "la dépendance au pétrole",
+            "les espèces menacées",
+            "les programmes de reproduction",
+            "les comportements naturels des animaux",
+            "une réserve protégée",
+            "des produits locaux et saisonniers"
+          ]
+        },
+        {
+          "title": "Famille / jeunes",
+          "questions": [
+            "la vigilance parentale",
+            "la vie familiale",
+            "les responsabilités familiales",
+            "le congé parental",
+            "le budget familial",
+            "les enfants grandissent vite",
+            "la pression des logos",
+            "le prestige des marques",
+            "l’appartenance à un groupe",
+            "les goûts individuels",
+            "une activité sportive en famille",
+            "les besoins de chacun",
+            "du temps pour les proches",
+            "le dialogue avec les parents",
+            "une limite quotidienne"
+          ]
+        },
+        {
+          "title": "Société / égalité / solidarité / logement",
+          "questions": [
+            "l’égalité des chances",
+            "les préjugés conscients ou inconscients",
+            "une candidature anonyme",
+            "une procédure équitable",
+            "les discriminations",
+            "le respect mutuel",
+            "une communication ouverte",
+            "le manque d’intimité",
+            "les charges financières",
+            "rompre l’isolement",
+            "le partage des tâches",
+            "les personnes pauvres",
+            "un secours sans délai",
+            "les causes de l’exclusion",
+            "l’accompagnement à long terme",
+            "l’accès au logement",
+            "l’autonomie des bénéficiaires",
+            "le lien social",
+            "la convivialité locale"
+          ]
+        },
+        {
+          "title": "Culture / loisirs / sport",
+          "questions": [
+            "les grands événements sportifs",
+            "une grande compétition",
+            "la visibilité culturelle",
+            "les retombées touristiques",
+            "le divertissement",
+            "les échanges entre joueurs",
+            "la créativité",
+            "la capacité d’analyse",
+            "une activité sportive",
+            "les traditions culinaires",
+            "l’expression de la personnalité",
+            "le spectacle",
+            "les loisirs",
+            "des activités variées"
+          ]
+        },
+        {
+          "title": "Travail / formation / emploi",
+          "questions": [
+            "l’équilibre entre vie professionnelle et personnelle",
+            "un emploi stable",
+            "les conditions de travail",
+            "le sentiment d’utilité",
+            "la productivité",
+            "des horaires raisonnables",
+            "la charge de chaque salarié",
+            "la fatigue et le stress",
+            "la réduction du temps de travail",
+            "la semaine de quatre jours",
+            "les compétences pratiques",
+            "un emploi saisonnier",
+            "le travail en équipe",
+            "l’expérience et les diplômes",
+            "le recrutement",
+            "le savoir-faire",
+            "des grilles salariales transparentes",
+            "une rémunération égale",
+            "des recrutements impartiaux",
+            "le manque de reconnaissance"
+          ]
+        },
+        {
+          "title": "Économie / consommation",
+          "questions": [
+            "les économies",
+            "le coût initial",
+            "les matières premières",
+            "le budget",
+            "les prix bas",
+            "les promotions",
+            "les petits commerces",
+            "les supermarchés",
+            "les commerces de quartier",
+            "les emplois locaux",
+            "les moyens financiers",
+            "des tarifs plus élevés",
+            "les frais supplémentaires",
+            "le coût total",
+            "un tarif transparent",
+            "les petits budgets",
+            "les dépenses publiques",
+            "le risque d’endettement",
+            "les retombées économiques",
+            "un budget transparent"
+          ]
+        },
+        {
+          "title": "Transports / voyage / ville",
+          "questions": [
+            "les transports en commun renforcés",
+            "les stationnements périphériques",
+            "une zone sans voitures",
+            "les services d’urgence ou de livraison",
+            "les travailleurs et les personnes handicapées",
+            "des autobus fréquents",
+            "une mobilité accessible, fiable et équitable",
+            "la circulation urbaine",
+            "les vols à bas prix",
+            "les frais de bagage",
+            "le faible confort",
+            "un trajet court",
+            "le train plutôt que l’avion",
+            "les sièges inconfortables",
+            "des destinations accessibles",
+            "un réseau de transport",
+            "les infrastructures modernes",
+            "les espaces publics"
+          ]
+        }
+      ]
+    }
+  ]
+}

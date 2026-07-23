@@ -1,0 +1,3469 @@
+{
+  "version": 1,
+  "task": "ee/tache-3",
+  "month": {
+    "number": 3,
+    "slug": "mars",
+    "name": "Mars"
+  },
+  "responses": [
+    {
+      "response_key": "ee-tache3:mars:combinaison-1",
+      "combinaison": "Combinaison 1",
+      "sujet": "Les Vêtements de Grandes Marques",
+      "entries": [
+        {
+          "id": "E3-MAR-C01-01",
+          "kind": "phrase-modele",
+          "french": "La question des vêtements de grandes marques pour les jeunes suscite des avis partagés",
+          "english": "The question of designer clothes for young people divides opinion",
+          "example": "La question des vêtements de grandes marques pour les jeunes suscite des avis partagés.",
+          "usage": "Formule argumentative ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, les enfants grandissent vite et abîment facilement leurs tenues en jouant, ce qui rend ces achats coûteux et peu durables.",
+          "usage": "Connecteur adverbial ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-03",
+          "kind": "mot-cle",
+          "french": "l’expression personnelle",
+          "english": "personal expression",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-04",
+          "kind": "mot-cle",
+          "french": "l’appartenance à un groupe",
+          "english": "belonging to a group",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-05",
+          "kind": "mot-cle",
+          "french": "l’adolescence",
+          "english": "adolescence",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-06",
+          "kind": "mot-cle",
+          "french": "l’identité d’un enfant",
+          "english": "a child’s identity",
+          "example": "À mon avis, les vêtements de marque peuvent être achetés occasionnellement, mais ils ne devraient pas définir l’identité d’un enfant.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-07",
+          "kind": "mot-cle",
+          "french": "le budget familial",
+          "english": "the family budget",
+          "example": "Tout d’abord, privilégier des habits solides et abordables protège le budget familial.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-08",
+          "kind": "mot-cle",
+          "french": "l’esprit critique",
+          "english": "critical thinking",
+          "example": "Ensuite, apprendre à choisir selon la qualité plutôt que selon un logo développe l’esprit critique.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-09",
+          "kind": "mot-cle",
+          "french": "une veste griffée",
+          "english": "a designer jacket",
+          "example": "Par exemple, des parents peuvent offrir une veste griffée pour un anniversaire, puis acheter le reste des tenues d’occasion.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-10",
+          "kind": "mot-cle",
+          "french": "la confiance en soi",
+          "english": "self-confidence",
+          "example": "Cependant, il faut aussi reconnaître que porter la même marque que ses camarades peut renforcer la confiance en soi.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-11",
+          "kind": "mot-cle",
+          "french": "la surconsommation",
+          "english": "overconsumption",
+          "example": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-12",
+          "kind": "mot-cle",
+          "french": "la pression sociale",
+          "english": "social pressure",
+          "example": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale.",
+          "usage": "Groupe nominal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-13",
+          "kind": "collocation",
+          "french": "des habits solides et abordables",
+          "english": "durable, affordable clothes",
+          "example": "Tout d’abord, privilégier des habits solides et abordables protège le budget familial.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-14",
+          "kind": "collocation",
+          "french": "selon la qualité",
+          "english": "according to quality",
+          "example": "Ensuite, apprendre à choisir selon la qualité plutôt que selon un logo développe l’esprit critique.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-15",
+          "kind": "collocation",
+          "french": "selon un logo",
+          "english": "according to a logo",
+          "example": "Ensuite, apprendre à choisir selon la qualité plutôt que selon un logo développe l’esprit critique.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-16",
+          "kind": "collocation",
+          "french": "des tenues d’occasion",
+          "english": "second-hand outfits",
+          "example": "Par exemple, des parents peuvent offrir une veste griffée pour un anniversaire, puis acheter le reste des tenues d’occasion.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-17",
+          "kind": "collocation",
+          "french": "porter la même marque que ses camarades",
+          "english": "to wear the same brand as one’s peers",
+          "example": "Cependant, il faut aussi reconnaître que porter la même marque que ses camarades peut renforcer la confiance en soi.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-18",
+          "kind": "collocation",
+          "french": "respecter les goûts des jeunes",
+          "english": "to respect young people’s tastes",
+          "example": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale.",
+          "usage": "Association lexicale ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-19",
+          "kind": "tournure",
+          "french": "notamment durant l’adolescence",
+          "english": "especially during adolescence",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Construction réutilisable ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-20",
+          "kind": "tournure",
+          "french": "ce qui rend ces achats coûteux et peu durables",
+          "english": "which makes these purchases costly and short-lived",
+          "example": "En revanche, les enfants grandissent vite et abîment facilement leurs tenues en jouant, ce qui rend ces achats coûteux et peu durables.",
+          "usage": "Construction réutilisable ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-21",
+          "kind": "tournure",
+          "french": "plutôt que selon un logo",
+          "english": "rather than according to a logo",
+          "example": "Ensuite, apprendre à choisir selon la qualité plutôt que selon un logo développe l’esprit critique.",
+          "usage": "Construction réutilisable ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-22",
+          "kind": "tournure",
+          "french": "sans encourager la surconsommation ni la pression sociale",
+          "english": "without encouraging overconsumption or social pressure",
+          "example": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale.",
+          "usage": "Construction réutilisable ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-23",
+          "kind": "phrase-modele",
+          "french": "À mon avis, les vêtements de marque peuvent être achetés occasionnellement, mais ils ne devraient pas définir l’identité d’un enfant",
+          "english": "In my opinion, designer clothes may be bought occasionally, but they should not define a child’s identity",
+          "example": "À mon avis, les vêtements de marque peuvent être achetés occasionnellement, mais ils ne devraient pas définir l’identité d’un enfant.",
+          "usage": "Formule argumentative ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que porter la même marque que ses camarades peut renforcer la confiance en soi",
+          "english": "However, it must also be acknowledged that wearing the same brand as one’s peers can build self-confidence",
+          "example": "Cependant, il faut aussi reconnaître que porter la même marque que ses camarades peut renforcer la confiance en soi.",
+          "usage": "Formule argumentative ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale",
+          "english": "In conclusion, the most important thing is to respect young people’s tastes without encouraging overconsumption or social pressure",
+          "example": "En conclusion, le plus important est de respecter les goûts des jeunes sans encourager la surconsommation ni la pression sociale.",
+          "usage": "Formule argumentative ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-26",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Connecteur adverbial ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, des parents peuvent offrir une veste griffée pour un anniversaire, puis acheter le reste des tenues d’occasion.",
+          "usage": "Connecteur adverbial ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-28",
+          "kind": "verbe-action",
+          "french": "privilégier des habits solides et abordables",
+          "english": "to favour durable, affordable clothes",
+          "example": "Tout d’abord, privilégier des habits solides et abordables protège le budget familial.",
+          "usage": "Groupe verbal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-29",
+          "kind": "verbe-action",
+          "french": "apprendre à choisir selon la qualité",
+          "english": "to learn to choose according to quality",
+          "example": "Ensuite, apprendre à choisir selon la qualité plutôt que selon un logo développe l’esprit critique.",
+          "usage": "Groupe verbal ; réutilisable en Mode/Consommation."
+        },
+        {
+          "id": "E3-MAR-C01-30",
+          "kind": "reformulation",
+          "french": "ces habits",
+          "english": "these clothes",
+          "example": "D’un côté, ces habits favorisent l’expression personnelle et l’appartenance à un groupe, notamment durant l’adolescence.",
+          "usage": "Reprise anaphorique ; réutilisable en Mode/Consommation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-2",
+      "combinaison": "Combinaison 2",
+      "sujet": "Les animaux de compagnie pour les enfants, pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C02-01",
+          "kind": "phrase-modele",
+          "french": "Les animaux de compagnie pour les enfants font l’objet d’un débat nuancé",
+          "english": "Pets for children are the subject of a nuanced debate",
+          "example": "Les animaux de compagnie pour les enfants font l’objet d’un débat nuancé.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second rappelle qu’un animal représente une responsabilité coûteuse et durable, même lorsque l’enfant s’en désintéresse.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-03",
+          "kind": "mot-cle",
+          "french": "la solitude",
+          "english": "loneliness",
+          "example": "Le premier document souligne qu’ils réduisent la solitude, renforcent la confiance et enseignent l’autonomie ainsi que le respect du vivant.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-04",
+          "kind": "mot-cle",
+          "french": "le respect du vivant",
+          "english": "respect for living things",
+          "example": "Le premier document souligne qu’ils réduisent la solitude, renforcent la confiance et enseignent l’autonomie ainsi que le respect du vivant.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-05",
+          "kind": "mot-cle",
+          "french": "une responsabilité coûteuse et durable",
+          "english": "a costly, long-term responsibility",
+          "example": "En revanche, le second rappelle qu’un animal représente une responsabilité coûteuse et durable, même lorsque l’enfant s’en désintéresse.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-06",
+          "kind": "mot-cle",
+          "french": "l’empathie",
+          "english": "empathy",
+          "example": "Tout d’abord, s’occuper d’un être vivant développe l’empathie et le sens des responsabilités.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-07",
+          "kind": "mot-cle",
+          "french": "le sens des responsabilités",
+          "english": "a sense of responsibility",
+          "example": "Tout d’abord, s’occuper d’un être vivant développe l’empathie et le sens des responsabilités.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-08",
+          "kind": "mot-cle",
+          "french": "une véritable sécurité affective",
+          "english": "genuine emotional security",
+          "example": "Ensuite, sa présence peut apporter une véritable sécurité affective à l’enfant.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-09",
+          "kind": "mot-cle",
+          "french": "la gamelle de son chat",
+          "english": "his cat’s food bowl",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-10",
+          "kind": "mot-cle",
+          "french": "les soins vétérinaires",
+          "english": "veterinary care",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-11",
+          "kind": "mot-cle",
+          "french": "les dépenses",
+          "english": "expenses",
+          "example": "Cependant, il faut aussi reconnaître que l’enfant peut se lasser et que les dépenses deviennent parfois lourdes.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-12",
+          "kind": "mot-cle",
+          "french": "les conditions de vie",
+          "english": "living conditions",
+          "example": "En définitive, le plus important est de vérifier le temps, le budget et les conditions de vie disponibles avant toute adoption.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-13",
+          "kind": "collocation",
+          "french": "accueillir un animal",
+          "english": "to welcome a pet",
+          "example": "Selon moi, accueillir un animal est bénéfique à condition que toute la famille assume cet engagement.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-14",
+          "kind": "collocation",
+          "french": "toute la famille assume cet engagement",
+          "english": "the whole family takes on this commitment",
+          "example": "Selon moi, accueillir un animal est bénéfique à condition que toute la famille assume cet engagement.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-15",
+          "kind": "collocation",
+          "french": "s’occuper d’un être vivant",
+          "english": "to care for a living being",
+          "example": "Tout d’abord, s’occuper d’un être vivant développe l’empathie et le sens des responsabilités.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-16",
+          "kind": "collocation",
+          "french": "apporter une véritable sécurité affective",
+          "english": "to provide genuine emotional security",
+          "example": "Ensuite, sa présence peut apporter une véritable sécurité affective à l’enfant.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-17",
+          "kind": "collocation",
+          "french": "remplir chaque matin la gamelle",
+          "english": "to fill the bowl every morning",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-18",
+          "kind": "collocation",
+          "french": "avant toute adoption",
+          "english": "before any adoption",
+          "example": "En définitive, le plus important est de vérifier le temps, le budget et les conditions de vie disponibles avant toute adoption.",
+          "usage": "Association lexicale ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-19",
+          "kind": "tournure",
+          "french": "même lorsque l’enfant s’en désintéresse",
+          "english": "even when the child loses interest",
+          "example": "En revanche, le second rappelle qu’un animal représente une responsabilité coûteuse et durable, même lorsque l’enfant s’en désintéresse.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-20",
+          "kind": "tournure",
+          "french": "à condition que toute la famille assume cet engagement",
+          "english": "provided the whole family takes on this commitment",
+          "example": "Selon moi, accueillir un animal est bénéfique à condition que toute la famille assume cet engagement.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-21",
+          "kind": "tournure",
+          "french": "tandis que ses parents organisent les soins vétérinaires",
+          "english": "while the parents arrange veterinary care",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-22",
+          "kind": "tournure",
+          "french": "le temps, le budget et les conditions de vie disponibles",
+          "english": "the available time, budget and living conditions",
+          "example": "En définitive, le plus important est de vérifier le temps, le budget et les conditions de vie disponibles avant toute adoption.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-23",
+          "kind": "phrase-modele",
+          "french": "Selon moi, accueillir un animal est bénéfique à condition que toute la famille assume cet engagement",
+          "english": "In my view, welcoming a pet is beneficial provided the whole family takes on the commitment",
+          "example": "Selon moi, accueillir un animal est bénéfique à condition que toute la famille assume cet engagement.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que l’enfant peut se lasser et que les dépenses deviennent parfois lourdes",
+          "english": "However, it must also be acknowledged that the child may lose interest and expenses can become burdensome",
+          "example": "Cependant, il faut aussi reconnaître que l’enfant peut se lasser et que les dépenses deviennent parfois lourdes.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de vérifier le temps, le budget et les conditions de vie disponibles avant toute adoption",
+          "english": "Ultimately, the most important thing is to check the available time, budget and living conditions before adopting",
+          "example": "En définitive, le plus important est de vérifier le temps, le budget et les conditions de vie disponibles avant toute adoption.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, s’occuper d’un être vivant développe l’empathie et le sens des responsabilités.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-28",
+          "kind": "verbe-action",
+          "french": "renforcent la confiance",
+          "english": "build confidence",
+          "example": "Le premier document souligne qu’ils réduisent la solitude, renforcent la confiance et enseignent l’autonomie ainsi que le respect du vivant.",
+          "usage": "Groupe verbal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-29",
+          "kind": "verbe-action",
+          "french": "organisent les soins vétérinaires",
+          "english": "arrange veterinary care",
+          "example": "Par exemple, un garçon peut remplir chaque matin la gamelle de son chat, tandis que ses parents organisent les soins vétérinaires.",
+          "usage": "Groupe verbal ; réutilisable en Famille/Animaux."
+        },
+        {
+          "id": "E3-MAR-C02-30",
+          "kind": "reformulation",
+          "french": "sa présence",
+          "english": "its presence",
+          "example": "Ensuite, sa présence peut apporter une véritable sécurité affective à l’enfant.",
+          "usage": "Reprise anaphorique ; réutilisable en Famille/Animaux."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-3",
+      "combinaison": "Combinaison 3",
+      "sujet": "La lecture pour les enfants.",
+      "entries": [
+        {
+          "id": "E3-MAR-C03-01",
+          "kind": "phrase-modele",
+          "french": "La lecture des enfants oppose deux visions éducatives",
+          "english": "Children’s reading contrasts two educational visions",
+          "example": "La lecture des enfants oppose deux visions éducatives.",
+          "usage": "Formule argumentative ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, d’autres valorisent une pratique régulière qui enrichit le langage, la concentration et la complicité familiale.",
+          "usage": "Connecteur adverbial ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-03",
+          "kind": "mot-cle",
+          "french": "l’attrait des écrans",
+          "english": "the appeal of screens",
+          "example": "D’un côté, certains refusent de l’imposer et préfèrent laisser chaque jeune choisir ses activités et ses livres, surtout face à l’attrait des écrans et du sport.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-04",
+          "kind": "mot-cle",
+          "french": "une pratique régulière",
+          "english": "regular practice",
+          "example": "En revanche, d’autres valorisent une pratique régulière qui enrichit le langage, la concentration et la complicité familiale.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-05",
+          "kind": "mot-cle",
+          "french": "la concentration",
+          "english": "concentration",
+          "example": "En revanche, d’autres valorisent une pratique régulière qui enrichit le langage, la concentration et la complicité familiale.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-06",
+          "kind": "mot-cle",
+          "french": "la complicité familiale",
+          "english": "family bonding",
+          "example": "En revanche, d’autres valorisent une pratique régulière qui enrichit le langage, la concentration et la complicité familiale.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-07",
+          "kind": "mot-cle",
+          "french": "des textes adaptés",
+          "english": "suitable texts",
+          "example": "Tout d’abord, des textes adaptés aux intérêts de l’enfant nourrissent son vocabulaire et sa capacité d’analyse.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-08",
+          "kind": "mot-cle",
+          "french": "son vocabulaire",
+          "english": "one’s vocabulary",
+          "example": "Tout d’abord, des textes adaptés aux intérêts de l’enfant nourrissent son vocabulaire et sa capacité d’analyse.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-09",
+          "kind": "mot-cle",
+          "french": "sa capacité d’analyse",
+          "english": "one’s analytical ability",
+          "example": "Tout d’abord, des textes adaptés aux intérêts de l’enfant nourrissent son vocabulaire et sa capacité d’analyse.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-10",
+          "kind": "mot-cle",
+          "french": "un moment partagé",
+          "english": "shared time",
+          "example": "De plus, un moment partagé avec un parent associe les livres au plaisir.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-11",
+          "kind": "mot-cle",
+          "french": "une bande dessinée",
+          "english": "a comic book",
+          "example": "Par exemple, une famille peut lire dix minutes chaque soir une bande dessinée choisie par l’enfant, puis échanger sur son personnage préféré.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-12",
+          "kind": "mot-cle",
+          "french": "son personnage préféré",
+          "english": "one’s favourite character",
+          "example": "Par exemple, une famille peut lire dix minutes chaque soir une bande dessinée choisie par l’enfant, puis échanger sur son personnage préféré.",
+          "usage": "Groupe nominal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-13",
+          "kind": "collocation",
+          "french": "deux visions éducatives",
+          "english": "two educational visions",
+          "example": "La lecture des enfants oppose deux visions éducatives.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-14",
+          "kind": "collocation",
+          "french": "intérêts de l’enfant",
+          "english": "the child’s interests",
+          "example": "Tout d’abord, des textes adaptés aux intérêts de l’enfant nourrissent son vocabulaire et sa capacité d’analyse.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-15",
+          "kind": "collocation",
+          "french": "associe les livres au plaisir",
+          "english": "associates books with enjoyment",
+          "example": "De plus, un moment partagé avec un parent associe les livres au plaisir.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-16",
+          "kind": "collocation",
+          "french": "dix minutes chaque soir",
+          "english": "ten minutes every evening",
+          "example": "Par exemple, une famille peut lire dix minutes chaque soir une bande dessinée choisie par l’enfant, puis échanger sur son personnage préféré.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-17",
+          "kind": "collocation",
+          "french": "des lectures variées",
+          "english": "varied reading materials",
+          "example": "En conclusion, le plus important est de proposer régulièrement des lectures variées tout en respectant les goûts et le rythme de chacun.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-18",
+          "kind": "collocation",
+          "french": "les goûts et le rythme de chacun",
+          "english": "everyone’s tastes and pace",
+          "example": "En conclusion, le plus important est de proposer régulièrement des lectures variées tout en respectant les goûts et le rythme de chacun.",
+          "usage": "Association lexicale ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-19",
+          "kind": "tournure",
+          "french": "surtout face à l’attrait des écrans et du sport",
+          "english": "especially given the appeal of screens and sport",
+          "example": "D’un côté, certains refusent de l’imposer et préfèrent laisser chaque jeune choisir ses activités et ses livres, surtout face à l’attrait des écrans et du sport.",
+          "usage": "Construction réutilisable ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-20",
+          "kind": "tournure",
+          "french": "sans la transformer en punition",
+          "english": "without turning it into a punishment",
+          "example": "Personnellement, je pense qu’il faut encourager la lecture sans la transformer en punition.",
+          "usage": "Construction réutilisable ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-21",
+          "kind": "tournure",
+          "french": "grâce au sport ou à la musique",
+          "english": "through sport or music",
+          "example": "Cependant, il faut aussi reconnaître que certains jeunes se détendent davantage grâce au sport ou à la musique.",
+          "usage": "Construction réutilisable ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-22",
+          "kind": "tournure",
+          "french": "tout en respectant les goûts et le rythme de chacun",
+          "english": "while respecting everyone’s tastes and pace",
+          "example": "En conclusion, le plus important est de proposer régulièrement des lectures variées tout en respectant les goûts et le rythme de chacun.",
+          "usage": "Construction réutilisable ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-23",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense qu’il faut encourager la lecture sans la transformer en punition",
+          "english": "Personally, I think reading should be encouraged without turning it into a punishment",
+          "example": "Personnellement, je pense qu’il faut encourager la lecture sans la transformer en punition.",
+          "usage": "Formule argumentative ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certains jeunes se détendent davantage grâce au sport ou à la musique",
+          "english": "However, it must also be acknowledged that some young people relax more through sport or music",
+          "example": "Cependant, il faut aussi reconnaître que certains jeunes se détendent davantage grâce au sport ou à la musique.",
+          "usage": "Formule argumentative ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de proposer régulièrement des lectures variées tout en respectant les goûts et le rythme de chacun",
+          "english": "In conclusion, the most important thing is to regularly offer varied reading while respecting everyone’s tastes and pace",
+          "example": "En conclusion, le plus important est de proposer régulièrement des lectures variées tout en respectant les goûts et le rythme de chacun.",
+          "usage": "Formule argumentative ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-26",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, certains refusent de l’imposer et préfèrent laisser chaque jeune choisir ses activités et ses livres, surtout face à l’attrait des écrans et du sport.",
+          "usage": "Connecteur adverbial ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une famille peut lire dix minutes chaque soir une bande dessinée choisie par l’enfant, puis échanger sur son personnage préféré.",
+          "usage": "Connecteur adverbial ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-28",
+          "kind": "verbe-action",
+          "french": "encourager la lecture",
+          "english": "to encourage reading",
+          "example": "Personnellement, je pense qu’il faut encourager la lecture sans la transformer en punition.",
+          "usage": "Groupe verbal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-29",
+          "kind": "verbe-action",
+          "french": "échanger sur son personnage préféré",
+          "english": "to discuss one’s favourite character",
+          "example": "Par exemple, une famille peut lire dix minutes chaque soir une bande dessinée choisie par l’enfant, puis échanger sur son personnage préféré.",
+          "usage": "Groupe verbal ; réutilisable en Culture/Éducation."
+        },
+        {
+          "id": "E3-MAR-C03-30",
+          "kind": "reformulation",
+          "french": "les livres",
+          "english": "books",
+          "example": "De plus, un moment partagé avec un parent associe les livres au plaisir.",
+          "usage": "Reprise anaphorique ; réutilisable en Culture/Éducation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-4",
+      "combinaison": "Combinaison 4",
+      "sujet": "Les Produits Faits Maison : Pour Ou Contre ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C04-01",
+          "kind": "phrase-modele",
+          "french": "Les produits biologiques faits maison présentent des avantages et des inconvénients",
+          "english": "Homemade organic products have advantages and disadvantages",
+          "example": "Les produits biologiques faits maison présentent des avantages et des inconvénients.",
+          "usage": "Formule argumentative ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-02",
+          "kind": "expression",
+          "french": "Toutefois",
+          "english": "However",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Connecteur adverbial ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-03",
+          "kind": "mot-cle",
+          "french": "la maîtrise des ingrédients",
+          "english": "control over ingredients",
+          "example": "Leurs partisans mettent en avant la maîtrise des ingrédients, les économies, la créativité et la réduction des emballages plastiques.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-04",
+          "kind": "mot-cle",
+          "french": "la créativité",
+          "english": "creativity",
+          "example": "Leurs partisans mettent en avant la maîtrise des ingrédients, les économies, la créativité et la réduction des emballages plastiques.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-05",
+          "kind": "mot-cle",
+          "french": "la réduction des emballages plastiques",
+          "english": "the reduction of plastic packaging",
+          "example": "Leurs partisans mettent en avant la maîtrise des ingrédients, les économies, la créativité et la réduction des emballages plastiques.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-06",
+          "kind": "mot-cle",
+          "french": "le temps de préparation",
+          "english": "preparation time",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-07",
+          "kind": "mot-cle",
+          "french": "le coût initial",
+          "english": "the initial cost",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-08",
+          "kind": "mot-cle",
+          "french": "les risques d’irritation ou de contamination",
+          "english": "the risks of irritation or contamination",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-09",
+          "kind": "mot-cle",
+          "french": "les contenants réutilisables",
+          "english": "reusable containers",
+          "example": "Tout d’abord, les contenants réutilisables permettent de réduire les déchets et les dépenses.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-10",
+          "kind": "mot-cle",
+          "french": "les substances inutiles",
+          "english": "unnecessary substances",
+          "example": "Ensuite, connaître précisément les ingrédients limite les substances inutiles.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-11",
+          "kind": "mot-cle",
+          "french": "un nettoyant ménager",
+          "english": "a household cleaner",
+          "example": "Par exemple, une famille peut préparer un nettoyant ménager au vinaigre dans une bouteille étiquetée, plutôt qu’une crème destinée à la peau.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-12",
+          "kind": "mot-cle",
+          "french": "les règles de conservation",
+          "english": "storage rules",
+          "example": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels.",
+          "usage": "Groupe nominal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-13",
+          "kind": "collocation",
+          "french": "une conservation inadéquate",
+          "english": "inadequate storage",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-14",
+          "kind": "collocation",
+          "french": "une bonne démarche",
+          "english": "a sound approach",
+          "example": "À mon avis, fabriquer certains produits chez soi est une bonne démarche, mais seulement si les recettes sont simples et fiables.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-15",
+          "kind": "collocation",
+          "french": "les recettes sont simples et fiables",
+          "english": "the recipes are simple and reliable",
+          "example": "À mon avis, fabriquer certains produits chez soi est une bonne démarche, mais seulement si les recettes sont simples et fiables.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-16",
+          "kind": "collocation",
+          "french": "une bouteille étiquetée",
+          "english": "a labelled bottle",
+          "example": "Par exemple, une famille peut préparer un nettoyant ménager au vinaigre dans une bouteille étiquetée, plutôt qu’une crème destinée à la peau.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-17",
+          "kind": "collocation",
+          "french": "une mauvaise formulation",
+          "english": "a poor formulation",
+          "example": "Cependant, il faut aussi reconnaître qu’une mauvaise formulation peut nuire à la santé ou devenir inefficace.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-18",
+          "kind": "collocation",
+          "french": "des recettes vérifiées",
+          "english": "verified recipes",
+          "example": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels.",
+          "usage": "Association lexicale ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-19",
+          "kind": "tournure",
+          "french": "liés à une formulation et à une conservation inadéquates",
+          "english": "linked to inadequate formulation and storage",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Construction réutilisable ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-20",
+          "kind": "tournure",
+          "french": "mais seulement si les recettes sont simples et fiables",
+          "english": "but only if the recipes are simple and reliable",
+          "example": "À mon avis, fabriquer certains produits chez soi est une bonne démarche, mais seulement si les recettes sont simples et fiables.",
+          "usage": "Construction réutilisable ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-21",
+          "kind": "tournure",
+          "french": "plutôt qu’une crème destinée à la peau",
+          "english": "rather than a cream intended for the skin",
+          "example": "Par exemple, une famille peut préparer un nettoyant ménager au vinaigre dans une bouteille étiquetée, plutôt qu’une crème destinée à la peau.",
+          "usage": "Construction réutilisable ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-22",
+          "kind": "tournure",
+          "french": "auprès de professionnels",
+          "english": "from professionals",
+          "example": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels.",
+          "usage": "Construction réutilisable ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-23",
+          "kind": "phrase-modele",
+          "french": "À mon avis, fabriquer certains produits chez soi est une bonne démarche, mais seulement si les recettes sont simples et fiables",
+          "english": "In my opinion, making certain products at home is a sound approach, but only if the recipes are simple and reliable",
+          "example": "À mon avis, fabriquer certains produits chez soi est une bonne démarche, mais seulement si les recettes sont simples et fiables.",
+          "usage": "Formule argumentative ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître qu’une mauvaise formulation peut nuire à la santé ou devenir inefficace",
+          "english": "However, it must also be acknowledged that a poor formulation can harm health or be ineffective",
+          "example": "Cependant, il faut aussi reconnaître qu’une mauvaise formulation peut nuire à la santé ou devenir inefficace.",
+          "usage": "Formule argumentative ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels",
+          "english": "Ultimately, the most important thing is to choose verified recipes, follow storage rules and buy sensitive products from professionals",
+          "example": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels.",
+          "usage": "Formule argumentative ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-26",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une famille peut préparer un nettoyant ménager au vinaigre dans une bouteille étiquetée, plutôt qu’une crème destinée à la peau.",
+          "usage": "Connecteur adverbial ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-27",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de choisir des recettes vérifiées, de respecter les règles de conservation et d’acheter les produits sensibles auprès de professionnels.",
+          "usage": "Connecteur adverbial ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-28",
+          "kind": "verbe-action",
+          "french": "réduire les déchets et les dépenses",
+          "english": "to reduce waste and expenses",
+          "example": "Tout d’abord, les contenants réutilisables permettent de réduire les déchets et les dépenses.",
+          "usage": "Groupe verbal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-29",
+          "kind": "verbe-action",
+          "french": "nuire à la santé",
+          "english": "to harm health",
+          "example": "Cependant, il faut aussi reconnaître qu’une mauvaise formulation peut nuire à la santé ou devenir inefficace.",
+          "usage": "Groupe verbal ; réutilisable en Environnement/Santé."
+        },
+        {
+          "id": "E3-MAR-C04-30",
+          "kind": "reformulation",
+          "french": "leurs détracteurs",
+          "english": "their critics",
+          "example": "Toutefois, leurs détracteurs soulignent le temps de préparation, le coût initial et les risques d’irritation ou de contamination liés à une formulation et à une conservation inadéquates.",
+          "usage": "Reprise anaphorique ; réutilisable en Environnement/Santé."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-5",
+      "combinaison": "Combinaison 5",
+      "sujet": "Les Écoles Privées Ou Publiques ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C05-01",
+          "kind": "phrase-modele",
+          "french": "Le choix entre écoles privées et publiques oppose deux visions de l’éducation",
+          "english": "The choice between private and public schools contrasts two visions of education",
+          "example": "Le choix entre écoles privées et publiques oppose deux visions de l’éducation.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second dénonce des frais qui excluent les familles défavorisées, limitent la mixité sociale et contribuent à reproduire les inégalités.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-03",
+          "kind": "mot-cle",
+          "french": "le succès du privé",
+          "english": "the success of private education",
+          "example": "Le premier document explique le succès du privé par sa réputation, son encadrement et ses classes socialement homogènes.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-04",
+          "kind": "mot-cle",
+          "french": "sa réputation",
+          "english": "its reputation",
+          "example": "Le premier document explique le succès du privé par sa réputation, son encadrement et ses classes socialement homogènes.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-05",
+          "kind": "mot-cle",
+          "french": "son encadrement",
+          "english": "its supervision",
+          "example": "Le premier document explique le succès du privé par sa réputation, son encadrement et ses classes socialement homogènes.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-06",
+          "kind": "mot-cle",
+          "french": "les familles défavorisées",
+          "english": "disadvantaged families",
+          "example": "En revanche, le second dénonce des frais qui excluent les familles défavorisées, limitent la mixité sociale et contribuent à reproduire les inégalités.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-07",
+          "kind": "mot-cle",
+          "french": "la mixité sociale",
+          "english": "social diversity",
+          "example": "En revanche, le second dénonce des frais qui excluent les familles défavorisées, limitent la mixité sociale et contribuent à reproduire les inégalités.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-08",
+          "kind": "mot-cle",
+          "french": "des revenus familiaux",
+          "english": "family income",
+          "example": "Selon moi, la qualité de l’éducation ne devrait jamais dépendre des revenus familiaux.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-09",
+          "kind": "mot-cle",
+          "french": "apprentissages fondamentaux",
+          "english": "fundamental learning",
+          "example": "Tout d’abord, une école publique bien financée garantit à chaque élève les mêmes apprentissages fondamentaux.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-10",
+          "kind": "mot-cle",
+          "french": "l’ouverture d’esprit",
+          "english": "open-mindedness",
+          "example": "De plus, la mixité sociale développe l’ouverture d’esprit et prépare à vivre avec des personnes différentes.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-11",
+          "kind": "mot-cle",
+          "french": "le tutorat",
+          "english": "tutoring",
+          "example": "Par exemple, un collège peut limiter les effectifs, renforcer le tutorat et organiser des projets réunissant des jeunes de plusieurs quartiers.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-12",
+          "kind": "mot-cle",
+          "french": "la liberté de choix des familles",
+          "english": "families’ freedom of choice",
+          "example": "En conclusion, le plus important est d’améliorer toutes les écoles publiques sans supprimer la liberté de choix des familles.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-13",
+          "kind": "collocation",
+          "french": "classes socialement homogènes",
+          "english": "socially homogeneous classes",
+          "example": "Le premier document explique le succès du privé par sa réputation, son encadrement et ses classes socialement homogènes.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-14",
+          "kind": "collocation",
+          "french": "reproduire les inégalités",
+          "english": "to reproduce inequalities",
+          "example": "En revanche, le second dénonce des frais qui excluent les familles défavorisées, limitent la mixité sociale et contribuent à reproduire les inégalités.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-15",
+          "kind": "collocation",
+          "french": "une école publique bien financée",
+          "english": "a well-funded public school",
+          "example": "Tout d’abord, une école publique bien financée garantit à chaque élève les mêmes apprentissages fondamentaux.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-16",
+          "kind": "collocation",
+          "french": "les mêmes apprentissages fondamentaux",
+          "english": "the same fundamental learning",
+          "example": "Tout d’abord, une école publique bien financée garantit à chaque élève les mêmes apprentissages fondamentaux.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-17",
+          "kind": "collocation",
+          "french": "des personnes différentes",
+          "english": "different people",
+          "example": "De plus, la mixité sociale développe l’ouverture d’esprit et prépare à vivre avec des personnes différentes.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-18",
+          "kind": "collocation",
+          "french": "un encadrement mieux adapté",
+          "english": "better-adapted supervision",
+          "example": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-19",
+          "kind": "tournure",
+          "french": "ne devrait jamais dépendre des revenus familiaux",
+          "english": "should never depend on family income",
+          "example": "Selon moi, la qualité de l’éducation ne devrait jamais dépendre des revenus familiaux.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-20",
+          "kind": "tournure",
+          "french": "pour obtenir un encadrement mieux adapté",
+          "english": "to obtain better-adapted supervision",
+          "example": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-21",
+          "kind": "tournure",
+          "french": "aux besoins de leur enfant",
+          "english": "to their child’s needs",
+          "example": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-22",
+          "kind": "tournure",
+          "french": "sans supprimer la liberté de choix des familles",
+          "english": "without removing families’ freedom of choice",
+          "example": "En conclusion, le plus important est d’améliorer toutes les écoles publiques sans supprimer la liberté de choix des familles.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-23",
+          "kind": "phrase-modele",
+          "french": "Selon moi, la qualité de l’éducation ne devrait jamais dépendre des revenus familiaux",
+          "english": "In my view, the quality of education should never depend on family income",
+          "example": "Selon moi, la qualité de l’éducation ne devrait jamais dépendre des revenus familiaux.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant",
+          "english": "However, it must also be acknowledged that some parents choose private education to obtain supervision better suited to their child’s needs",
+          "example": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est d’améliorer toutes les écoles publiques sans supprimer la liberté de choix des familles",
+          "english": "In conclusion, the most important thing is to improve all public schools without removing families’ freedom of choice",
+          "example": "En conclusion, le plus important est d’améliorer toutes les écoles publiques sans supprimer la liberté de choix des familles.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, une école publique bien financée garantit à chaque élève les mêmes apprentissages fondamentaux.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un collège peut limiter les effectifs, renforcer le tutorat et organiser des projets réunissant des jeunes de plusieurs quartiers.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-28",
+          "kind": "verbe-action",
+          "french": "limiter les effectifs",
+          "english": "to limit class sizes",
+          "example": "Par exemple, un collège peut limiter les effectifs, renforcer le tutorat et organiser des projets réunissant des jeunes de plusieurs quartiers.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-29",
+          "kind": "verbe-action",
+          "french": "renforcer le tutorat",
+          "english": "to strengthen tutoring",
+          "example": "Par exemple, un collège peut limiter les effectifs, renforcer le tutorat et organiser des projets réunissant des jeunes de plusieurs quartiers.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Société."
+        },
+        {
+          "id": "E3-MAR-C05-30",
+          "kind": "reformulation",
+          "french": "le privé",
+          "english": "private education",
+          "example": "Cependant, il faut aussi reconnaître que certains parents choisissent le privé pour obtenir un encadrement mieux adapté aux besoins de leur enfant.",
+          "usage": "Reprise anaphorique ; réutilisable en Éducation/Société."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-6",
+      "combinaison": "Combinaison 6",
+      "sujet": "Les Devoirs à la Maison.",
+      "entries": [
+        {
+          "id": "E3-MAR-C06-01",
+          "kind": "phrase-modele",
+          "french": "Les devoirs à la maison suscitent des avis partagés",
+          "english": "Homework divides opinion",
+          "example": "Les devoirs à la maison suscitent des avis partagés.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, leurs opposants contestent leur efficacité et dénoncent les inégalités entre les enfants aidés chez eux et ceux dont les familles manquent de temps ou de compétences.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-03",
+          "kind": "mot-cle",
+          "french": "l’autonomie des élèves",
+          "english": "pupils’ autonomy",
+          "example": "Leurs défenseurs estiment qu’ils développent l’autonomie des élèves et créent un lien quotidien entre les parents et l’école.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-04",
+          "kind": "mot-cle",
+          "french": "un lien quotidien",
+          "english": "a daily connection",
+          "example": "Leurs défenseurs estiment qu’ils développent l’autonomie des élèves et créent un lien quotidien entre les parents et l’école.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-05",
+          "kind": "mot-cle",
+          "french": "les inégalités",
+          "english": "inequalities",
+          "example": "En revanche, leurs opposants contestent leur efficacité et dénoncent les inégalités entre les enfants aidés chez eux et ceux dont les familles manquent de temps ou de compétences.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-06",
+          "kind": "mot-cle",
+          "french": "des devoirs courts",
+          "english": "short homework assignments",
+          "example": "Personnellement, je pense que des devoirs courts sont utiles, mais qu’ils doivent rester réalisables sans aide parentale.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-07",
+          "kind": "mot-cle",
+          "french": "une révision régulière",
+          "english": "regular review",
+          "example": "Tout d’abord, une révision régulière consolide les apprentissages et apprend à organiser son temps.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-08",
+          "kind": "mot-cle",
+          "french": "les apprentissages",
+          "english": "learning",
+          "example": "Tout d’abord, une révision régulière consolide les apprentissages et apprend à organiser son temps.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-09",
+          "kind": "mot-cle",
+          "french": "le repos",
+          "english": "rest",
+          "example": "Ensuite, limiter la quantité préserve le repos et les activités familiales.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-10",
+          "kind": "mot-cle",
+          "french": "les activités familiales",
+          "english": "family activities",
+          "example": "Ensuite, limiter la quantité préserve le repos et les activités familiales.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-11",
+          "kind": "mot-cle",
+          "french": "le matériel numérique",
+          "english": "digital equipment",
+          "example": "Cependant, il faut aussi reconnaître que le matériel numérique et le soutien disponibles à la maison varient fortement selon les familles.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-12",
+          "kind": "mot-cle",
+          "french": "le soutien",
+          "english": "support",
+          "example": "Cependant, il faut aussi reconnaître que le matériel numérique et le soutien disponibles à la maison varient fortement selon les familles.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-13",
+          "kind": "collocation",
+          "french": "les parents et l’école",
+          "english": "parents and the school",
+          "example": "Leurs défenseurs estiment qu’ils développent l’autonomie des élèves et créent un lien quotidien entre les parents et l’école.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-14",
+          "kind": "collocation",
+          "french": "les enfants aidés chez eux",
+          "english": "children helped at home",
+          "example": "En revanche, leurs opposants contestent leur efficacité et dénoncent les inégalités entre les enfants aidés chez eux et ceux dont les familles manquent de temps ou de compétences.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-15",
+          "kind": "collocation",
+          "french": "sans aide parentale",
+          "english": "without parental help",
+          "example": "Personnellement, je pense que des devoirs courts sont utiles, mais qu’ils doivent rester réalisables sans aide parentale.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-16",
+          "kind": "collocation",
+          "french": "organiser son temps",
+          "english": "to organize one’s time",
+          "example": "Tout d’abord, une révision régulière consolide les apprentissages et apprend à organiser son temps.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-17",
+          "kind": "collocation",
+          "french": "les difficultés en classe",
+          "english": "difficulties in class",
+          "example": "Par exemple, un enseignant peut demander dix minutes de lecture puis corriger les difficultés en classe le lendemain.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-18",
+          "kind": "collocation",
+          "french": "des exercices brefs, adaptés et accompagnés",
+          "english": "brief, suitable and supported exercises",
+          "example": "En définitive, le plus important est de proposer des exercices brefs, adaptés et accompagnés à l’école afin de ne pas renforcer les inégalités.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-19",
+          "kind": "tournure",
+          "french": "ceux dont les familles manquent de temps ou de compétences",
+          "english": "those whose families lack time or skills",
+          "example": "En revanche, leurs opposants contestent leur efficacité et dénoncent les inégalités entre les enfants aidés chez eux et ceux dont les familles manquent de temps ou de compétences.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-20",
+          "kind": "tournure",
+          "french": "mais qu’ils doivent rester réalisables sans aide parentale",
+          "english": "but they must remain achievable without parental help",
+          "example": "Personnellement, je pense que des devoirs courts sont utiles, mais qu’ils doivent rester réalisables sans aide parentale.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-21",
+          "kind": "tournure",
+          "french": "le lendemain",
+          "english": "the next day",
+          "example": "Par exemple, un enseignant peut demander dix minutes de lecture puis corriger les difficultés en classe le lendemain.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-22",
+          "kind": "tournure",
+          "french": "afin de ne pas renforcer les inégalités",
+          "english": "so as not to reinforce inequalities",
+          "example": "En définitive, le plus important est de proposer des exercices brefs, adaptés et accompagnés à l’école afin de ne pas renforcer les inégalités.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-23",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense que des devoirs courts sont utiles, mais qu’ils doivent rester réalisables sans aide parentale",
+          "english": "Personally, I think short homework assignments are useful, but they must remain achievable without parental help",
+          "example": "Personnellement, je pense que des devoirs courts sont utiles, mais qu’ils doivent rester réalisables sans aide parentale.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que le matériel numérique et le soutien disponibles à la maison varient fortement selon les familles",
+          "english": "However, it must also be acknowledged that digital equipment and support available at home vary greatly between families",
+          "example": "Cependant, il faut aussi reconnaître que le matériel numérique et le soutien disponibles à la maison varient fortement selon les familles.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de proposer des exercices brefs, adaptés et accompagnés à l’école afin de ne pas renforcer les inégalités",
+          "english": "Ultimately, the most important thing is to offer brief, suitable and supported exercises at school so as not to reinforce inequalities",
+          "example": "En définitive, le plus important est de proposer des exercices brefs, adaptés et accompagnés à l’école afin de ne pas renforcer les inégalités.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, une révision régulière consolide les apprentissages et apprend à organiser son temps.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un enseignant peut demander dix minutes de lecture puis corriger les difficultés en classe le lendemain.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-28",
+          "kind": "verbe-action",
+          "french": "consolide les apprentissages",
+          "english": "consolidates learning",
+          "example": "Tout d’abord, une révision régulière consolide les apprentissages et apprend à organiser son temps.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-29",
+          "kind": "verbe-action",
+          "french": "limiter la quantité",
+          "english": "to limit the amount",
+          "example": "Ensuite, limiter la quantité préserve le repos et les activités familiales.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Famille."
+        },
+        {
+          "id": "E3-MAR-C06-30",
+          "kind": "reformulation",
+          "french": "leurs opposants",
+          "english": "their opponents",
+          "example": "En revanche, leurs opposants contestent leur efficacité et dénoncent les inégalités entre les enfants aidés chez eux et ceux dont les familles manquent de temps ou de compétences.",
+          "usage": "Reprise anaphorique ; réutilisable en Éducation/Famille."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-7",
+      "combinaison": "Combinaison 7",
+      "sujet": "Utilisation des nouvelles technologies dans les écoles : pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C07-01",
+          "kind": "phrase-modele",
+          "french": "L’utilisation des nouvelles technologies à l’école oppose deux conceptions de l’apprentissage",
+          "english": "The use of new technologies at school contrasts two conceptions of learning",
+          "example": "L’utilisation des nouvelles technologies à l’école oppose deux conceptions de l’apprentissage.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, Sara redoute la dépendance aux écrans et la diminution des interactions humaines, qu’elle juge essentielles au développement équilibré.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-03",
+          "kind": "mot-cle",
+          "french": "l’engagement",
+          "english": "engagement",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-04",
+          "kind": "mot-cle",
+          "french": "la créativité",
+          "english": "creativity",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-05",
+          "kind": "mot-cle",
+          "french": "l’autonomie",
+          "english": "autonomy",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-06",
+          "kind": "mot-cle",
+          "french": "la dépendance aux écrans",
+          "english": "screen dependency",
+          "example": "En revanche, Sara redoute la dépendance aux écrans et la diminution des interactions humaines, qu’elle juge essentielles au développement équilibré.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-07",
+          "kind": "mot-cle",
+          "french": "des interactions humaines",
+          "english": "human interactions",
+          "example": "En revanche, Sara redoute la dépendance aux écrans et la diminution des interactions humaines, qu’elle juge essentielles au développement équilibré.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-08",
+          "kind": "mot-cle",
+          "french": "développement équilibré",
+          "english": "balanced development",
+          "example": "En revanche, Sara redoute la dépendance aux écrans et la diminution des interactions humaines, qu’elle juge essentielles au développement équilibré.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-09",
+          "kind": "mot-cle",
+          "french": "le numérique",
+          "english": "digital technology",
+          "example": "À mon avis, le numérique enrichit l’enseignement à condition de rester un outil plutôt qu’une fin.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-10",
+          "kind": "mot-cle",
+          "french": "le lien humain",
+          "english": "human connection",
+          "example": "Ensuite, le travail collectif avec un professeur préserve le lien humain et l’esprit critique.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-11",
+          "kind": "mot-cle",
+          "french": "l’esprit critique",
+          "english": "critical thinking",
+          "example": "Ensuite, le travail collectif avec un professeur préserve le lien humain et l’esprit critique.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-12",
+          "kind": "mot-cle",
+          "french": "les inégalités d’équipement",
+          "english": "equipment inequalities",
+          "example": "Cependant, il faut aussi reconnaître qu’un temps d’écran excessif nuit à la concentration et accentue les inégalités d’équipement.",
+          "usage": "Groupe nominal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-13",
+          "kind": "collocation",
+          "french": "de nombreuses ressources",
+          "english": "numerous resources",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-14",
+          "kind": "collocation",
+          "french": "des ressources actualisées",
+          "english": "up-to-date resources",
+          "example": "Tout d’abord, il donne accès à des ressources actualisées et permet d’adapter certains exercices au niveau de l’élève.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-15",
+          "kind": "collocation",
+          "french": "le travail collectif",
+          "english": "collaborative work",
+          "example": "Ensuite, le travail collectif avec un professeur préserve le lien humain et l’esprit critique.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-16",
+          "kind": "collocation",
+          "french": "un temps d’écran excessif",
+          "english": "excessive screen time",
+          "example": "Cependant, il faut aussi reconnaître qu’un temps d’écran excessif nuit à la concentration et accentue les inégalités d’équipement.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-17",
+          "kind": "collocation",
+          "french": "écriture manuelle",
+          "english": "handwriting",
+          "example": "En conclusion, le plus important est d’alterner outils numériques, livres, écriture manuelle et échanges directs selon des règles claires.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-18",
+          "kind": "collocation",
+          "french": "des règles claires",
+          "english": "clear rules",
+          "example": "En conclusion, le plus important est d’alterner outils numériques, livres, écriture manuelle et échanges directs selon des règles claires.",
+          "usage": "Association lexicale ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-19",
+          "kind": "tournure",
+          "french": "tout en donnant accès à de nombreuses ressources",
+          "english": "while providing access to numerous resources",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-20",
+          "kind": "tournure",
+          "french": "à condition de rester un outil plutôt qu’une fin",
+          "english": "provided it remains a tool rather than an end",
+          "example": "À mon avis, le numérique enrichit l’enseignement à condition de rester un outil plutôt qu’une fin.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-21",
+          "kind": "tournure",
+          "french": "au niveau de l’élève",
+          "english": "to the pupil’s level",
+          "example": "Tout d’abord, il donne accès à des ressources actualisées et permet d’adapter certains exercices au niveau de l’élève.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-22",
+          "kind": "tournure",
+          "french": "selon des règles claires",
+          "english": "according to clear rules",
+          "example": "En conclusion, le plus important est d’alterner outils numériques, livres, écriture manuelle et échanges directs selon des règles claires.",
+          "usage": "Construction réutilisable ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-23",
+          "kind": "phrase-modele",
+          "french": "À mon avis, le numérique enrichit l’enseignement à condition de rester un outil plutôt qu’une fin",
+          "english": "In my opinion, digital technology enriches teaching provided it remains a tool rather than an end",
+          "example": "À mon avis, le numérique enrichit l’enseignement à condition de rester un outil plutôt qu’une fin.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître qu’un temps d’écran excessif nuit à la concentration et accentue les inégalités d’équipement",
+          "english": "However, it must also be acknowledged that excessive screen time harms concentration and worsens equipment inequalities",
+          "example": "Cependant, il faut aussi reconnaître qu’un temps d’écran excessif nuit à la concentration et accentue les inégalités d’équipement.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est d’alterner outils numériques, livres, écriture manuelle et échanges directs selon des règles claires",
+          "english": "In conclusion, the most important thing is to alternate digital tools, books, handwriting and direct discussion according to clear rules",
+          "example": "En conclusion, le plus important est d’alterner outils numériques, livres, écriture manuelle et échanges directs selon des règles claires.",
+          "usage": "Formule argumentative ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, il donne accès à des ressources actualisées et permet d’adapter certains exercices au niveau de l’élève.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une classe peut utiliser une tablette pour comparer deux sources, puis débattre oralement de leur fiabilité.",
+          "usage": "Connecteur adverbial ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-28",
+          "kind": "verbe-action",
+          "french": "adapter certains exercices",
+          "english": "to adapt certain exercises",
+          "example": "Tout d’abord, il donne accès à des ressources actualisées et permet d’adapter certains exercices au niveau de l’élève.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-29",
+          "kind": "verbe-action",
+          "french": "débattre oralement de leur fiabilité",
+          "english": "to discuss their reliability orally",
+          "example": "Par exemple, une classe peut utiliser une tablette pour comparer deux sources, puis débattre oralement de leur fiabilité.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-MAR-C07-30",
+          "kind": "reformulation",
+          "french": "les tablettes et les ordinateurs",
+          "english": "tablets and computers",
+          "example": "Jean affirme que les tablettes et les ordinateurs stimulent l’engagement, la créativité et l’autonomie tout en donnant accès à de nombreuses ressources.",
+          "usage": "Reprise anaphorique ; réutilisable en Éducation/Numérique."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-8",
+      "combinaison": "Combinaison 8",
+      "sujet": "Les Vols à Bas Prix",
+      "entries": [
+        {
+          "id": "E3-MAR-C08-01",
+          "kind": "phrase-modele",
+          "french": "Les vols à bas prix font l’objet d’un débat nuancé",
+          "english": "Low-cost flights are the subject of a nuanced debate",
+          "example": "Les vols à bas prix font l’objet d’un débat nuancé.",
+          "usage": "Formule argumentative ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Connecteur adverbial ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-03",
+          "kind": "mot-cle",
+          "french": "l’absence de services",
+          "english": "the lack of services",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-04",
+          "kind": "mot-cle",
+          "french": "le faible confort",
+          "english": "limited comfort",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-05",
+          "kind": "mot-cle",
+          "french": "les conditions de travail",
+          "english": "working conditions",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-06",
+          "kind": "mot-cle",
+          "french": "la vétusté des appareils",
+          "english": "the ageing condition of aircraft",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-07",
+          "kind": "mot-cle",
+          "french": "un trajet court",
+          "english": "a short trip",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-08",
+          "kind": "mot-cle",
+          "french": "petits budgets",
+          "english": "people on small budgets",
+          "example": "Tout d’abord, ces billets rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-09",
+          "kind": "mot-cle",
+          "french": "les frais supplémentaires",
+          "english": "additional fees",
+          "example": "Ensuite, il faut comparer les frais supplémentaires, le confort et l’empreinte carbone.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-10",
+          "kind": "mot-cle",
+          "french": "l’empreinte carbone",
+          "english": "the carbon footprint",
+          "example": "Ensuite, il faut comparer les frais supplémentaires, le confort et l’empreinte carbone.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-11",
+          "kind": "mot-cle",
+          "french": "une région mal desservie",
+          "english": "a poorly served region",
+          "example": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-12",
+          "kind": "mot-cle",
+          "french": "le coût total",
+          "english": "the total cost",
+          "example": "En définitive, le plus important est de choisir après avoir évalué le coût total, la sécurité, la durée et les solutions disponibles.",
+          "usage": "Groupe nominal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-13",
+          "kind": "collocation",
+          "french": "des tarifs parfois inférieurs",
+          "english": "fares that are sometimes lower",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-14",
+          "kind": "collocation",
+          "french": "d’éventuels risques de sécurité",
+          "english": "potential safety risks",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-15",
+          "kind": "collocation",
+          "french": "un vol à bas prix",
+          "english": "a low-cost flight",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-16",
+          "kind": "collocation",
+          "french": "les normes respectées",
+          "english": "standards being met",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-17",
+          "kind": "collocation",
+          "french": "un vol peu avantageux",
+          "english": "a flight offering poor value",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage, plutôt qu’un vol peu avantageux.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-18",
+          "kind": "collocation",
+          "french": "un vol abordable",
+          "english": "an affordable flight",
+          "example": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie.",
+          "usage": "Association lexicale ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-19",
+          "kind": "tournure",
+          "french": "malgré l’absence de services",
+          "english": "despite the lack of services",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Construction réutilisable ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-20",
+          "kind": "tournure",
+          "french": "sur les longues distances",
+          "english": "over long distances",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Construction réutilisable ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-21",
+          "kind": "tournure",
+          "french": "mais seulement si le tarif est transparent",
+          "english": "but only if the fare is transparent",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées.",
+          "usage": "Construction réutilisable ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-22",
+          "kind": "tournure",
+          "french": "plutôt qu’un vol peu avantageux",
+          "english": "rather than a flight offering poor value",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage, plutôt qu’un vol peu avantageux.",
+          "usage": "Construction réutilisable ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-23",
+          "kind": "phrase-modele",
+          "french": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées",
+          "english": "Personally, I would accept a low-cost flight for a short trip, but only if the fare is transparent and standards are met",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et les normes respectées.",
+          "usage": "Formule argumentative ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie",
+          "english": "However, it must also be acknowledged that an affordable flight remains useful to a poorly served region",
+          "example": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie.",
+          "usage": "Formule argumentative ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de choisir après avoir évalué le coût total, la sécurité, la durée et les solutions disponibles",
+          "english": "Ultimately, the most important thing is to choose after assessing total cost, safety, duration and available options",
+          "example": "En définitive, le plus important est de choisir après avoir évalué le coût total, la sécurité, la durée et les solutions disponibles.",
+          "usage": "Formule argumentative ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, ces billets rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Connecteur adverbial ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage, plutôt qu’un vol peu avantageux.",
+          "usage": "Connecteur adverbial ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-28",
+          "kind": "verbe-action",
+          "french": "comparer les frais supplémentaires",
+          "english": "to compare additional fees",
+          "example": "Ensuite, il faut comparer les frais supplémentaires, le confort et l’empreinte carbone.",
+          "usage": "Groupe verbal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-29",
+          "kind": "verbe-action",
+          "french": "travailler confortablement pendant le voyage",
+          "english": "to work comfortably during the journey",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage, plutôt qu’un vol peu avantageux.",
+          "usage": "Groupe verbal ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-MAR-C08-30",
+          "kind": "reformulation",
+          "french": "ces billets",
+          "english": "these tickets",
+          "example": "Tout d’abord, ces billets rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Reprise anaphorique ; réutilisable en Transport/Environnement."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-9",
+      "combinaison": "Combinaison 9",
+      "sujet": "Faut-il faire ses courses dans des petits magasins ou dans des supermarchés ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C09-01",
+          "kind": "phrase-modele",
+          "french": "Faire ses courses dans un supermarché ou un petit commerce oppose deux habitudes de consommation",
+          "english": "Shopping at a supermarket or small shop contrasts two consumer habits",
+          "example": "Faire ses courses dans un supermarché ou un petit commerce oppose deux habitudes de consommation.",
+          "usage": "Formule argumentative ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Connecteur adverbial ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-03",
+          "kind": "mot-cle",
+          "french": "deux habitudes de consommation",
+          "english": "two consumer habits",
+          "example": "Faire ses courses dans un supermarché ou un petit commerce oppose deux habitudes de consommation.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-04",
+          "kind": "mot-cle",
+          "french": "le stationnement",
+          "english": "parking",
+          "example": "Le premier document valorise la variété, le stationnement, les promotions et la possibilité de tout acheter au même endroit.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-05",
+          "kind": "mot-cle",
+          "french": "les promotions",
+          "english": "promotions",
+          "example": "Le premier document valorise la variété, le stationnement, les promotions et la possibilité de tout acheter au même endroit.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-06",
+          "kind": "mot-cle",
+          "french": "les épiceries de quartier",
+          "english": "neighbourhood grocery stores",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-07",
+          "kind": "mot-cle",
+          "french": "l’économie locale",
+          "english": "the local economy",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-08",
+          "kind": "mot-cle",
+          "french": "la convivialité",
+          "english": "conviviality",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-09",
+          "kind": "mot-cle",
+          "french": "des emplois locaux",
+          "english": "local jobs",
+          "example": "Tout d’abord, acheter dans son quartier soutient des emplois locaux et entretient le lien social.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-10",
+          "kind": "mot-cle",
+          "french": "le lien social",
+          "english": "social connection",
+          "example": "Tout d’abord, acheter dans son quartier soutient des emplois locaux et entretient le lien social.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-11",
+          "kind": "mot-cle",
+          "french": "des conseils personnalisés",
+          "english": "personalized advice",
+          "example": "De plus, les commerçants proposent souvent des produits frais et des conseils personnalisés.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-12",
+          "kind": "mot-cle",
+          "french": "les grandes surfaces",
+          "english": "large supermarkets",
+          "example": "Cependant, il faut aussi reconnaître que les grandes surfaces restent pratiques pour les petits budgets et les zones peu desservies.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-13",
+          "kind": "collocation",
+          "french": "au même endroit",
+          "english": "in the same place",
+          "example": "Le premier document valorise la variété, le stationnement, les promotions et la possibilité de tout acheter au même endroit.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-14",
+          "kind": "collocation",
+          "french": "des produits frais",
+          "english": "fresh products",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-15",
+          "kind": "collocation",
+          "french": "les petits commerces",
+          "english": "small shops",
+          "example": "Selon moi, il faut privilégier les petits commerces sans renoncer totalement aux supermarchés.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-16",
+          "kind": "collocation",
+          "french": "un maraîcher voisin",
+          "english": "a nearby market gardener",
+          "example": "Par exemple, une famille peut acheter chaque semaine ses légumes chez un maraîcher voisin, puis se rendre mensuellement au supermarché pour les produits moins chers.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-17",
+          "kind": "collocation",
+          "french": "les produits moins chers",
+          "english": "less expensive products",
+          "example": "Par exemple, une famille peut acheter chaque semaine ses légumes chez un maraîcher voisin, puis se rendre mensuellement au supermarché pour les produits moins chers.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-18",
+          "kind": "collocation",
+          "french": "les zones peu desservies",
+          "english": "poorly served areas",
+          "example": "Cependant, il faut aussi reconnaître que les grandes surfaces restent pratiques pour les petits budgets et les zones peu desservies.",
+          "usage": "Association lexicale ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-19",
+          "kind": "tournure",
+          "french": "sans renoncer totalement aux supermarchés",
+          "english": "without giving up supermarkets entirely",
+          "example": "Selon moi, il faut privilégier les petits commerces sans renoncer totalement aux supermarchés.",
+          "usage": "Construction réutilisable ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-20",
+          "kind": "tournure",
+          "french": "chaque semaine",
+          "english": "every week",
+          "example": "Par exemple, une famille peut acheter chaque semaine ses légumes chez un maraîcher voisin, puis se rendre mensuellement au supermarché pour les produits moins chers.",
+          "usage": "Construction réutilisable ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-21",
+          "kind": "tournure",
+          "french": "se rendre mensuellement au supermarché",
+          "english": "to go to the supermarket monthly",
+          "example": "Par exemple, une famille peut acheter chaque semaine ses légumes chez un maraîcher voisin, puis se rendre mensuellement au supermarché pour les produits moins chers.",
+          "usage": "Construction réutilisable ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-22",
+          "kind": "tournure",
+          "french": "selon le prix, la qualité et l’impact sur la vie du quartier",
+          "english": "according to price, quality and the impact on neighbourhood life",
+          "example": "En conclusion, le plus important est de répartir ses achats selon le prix, la qualité et l’impact sur la vie du quartier.",
+          "usage": "Construction réutilisable ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-23",
+          "kind": "phrase-modele",
+          "french": "Selon moi, il faut privilégier les petits commerces sans renoncer totalement aux supermarchés",
+          "english": "In my view, small shops should be favoured without giving up supermarkets entirely",
+          "example": "Selon moi, il faut privilégier les petits commerces sans renoncer totalement aux supermarchés.",
+          "usage": "Formule argumentative ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les grandes surfaces restent pratiques pour les petits budgets et les zones peu desservies",
+          "english": "However, it must also be acknowledged that large supermarkets remain practical for small budgets and poorly served areas",
+          "example": "Cependant, il faut aussi reconnaître que les grandes surfaces restent pratiques pour les petits budgets et les zones peu desservies.",
+          "usage": "Formule argumentative ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de répartir ses achats selon le prix, la qualité et l’impact sur la vie du quartier",
+          "english": "In conclusion, the most important thing is to distribute one’s purchases according to price, quality and their impact on neighbourhood life",
+          "example": "En conclusion, le plus important est de répartir ses achats selon le prix, la qualité et l’impact sur la vie du quartier.",
+          "usage": "Formule argumentative ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, acheter dans son quartier soutient des emplois locaux et entretient le lien social.",
+          "usage": "Connecteur adverbial ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une famille peut acheter chaque semaine ses légumes chez un maraîcher voisin, puis se rendre mensuellement au supermarché pour les produits moins chers.",
+          "usage": "Connecteur adverbial ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-28",
+          "kind": "verbe-action",
+          "french": "soutenir l’économie locale",
+          "english": "to support the local economy",
+          "example": "En revanche, le second défend les épiceries de quartier pour soutenir l’économie locale, obtenir des produits frais et renforcer la convivialité.",
+          "usage": "Groupe verbal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-29",
+          "kind": "verbe-action",
+          "french": "répartir ses achats",
+          "english": "to distribute one’s purchases",
+          "example": "En conclusion, le plus important est de répartir ses achats selon le prix, la qualité et l’impact sur la vie du quartier.",
+          "usage": "Groupe verbal ; réutilisable en Consommation/Société."
+        },
+        {
+          "id": "E3-MAR-C09-30",
+          "kind": "reformulation",
+          "french": "les commerçants",
+          "english": "shopkeepers",
+          "example": "De plus, les commerçants proposent souvent des produits frais et des conseils personnalisés.",
+          "usage": "Reprise anaphorique ; réutilisable en Consommation/Société."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-10",
+      "combinaison": "Combinaison 10",
+      "sujet": "La sévérité des parents envers les enfants",
+      "entries": [
+        {
+          "id": "E3-MAR-C10-01",
+          "kind": "phrase-modele",
+          "french": "La sévérité des parents envers leurs enfants suscite un débat",
+          "english": "Parental strictness toward children sparks debate",
+          "example": "La sévérité des parents envers leurs enfants suscite un débat.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second avertit qu’une éducation trop permissive peut aussi être nuisible, car les jeunes ont besoin de règles pour devenir autonomes et vivre en société.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-03",
+          "kind": "mot-cle",
+          "french": "une autorité persistante",
+          "english": "persistent authority",
+          "example": "Le premier témoignage décrit une autorité persistante qui limite fortement les sorties, même à l’âge adulte.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-04",
+          "kind": "mot-cle",
+          "french": "l’âge adulte",
+          "english": "adulthood",
+          "example": "Le premier témoignage décrit une autorité persistante qui limite fortement les sorties, même à l’âge adulte.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-05",
+          "kind": "mot-cle",
+          "french": "une éducation trop permissive",
+          "english": "overly permissive parenting",
+          "example": "En revanche, le second avertit qu’une éducation trop permissive peut aussi être nuisible, car les jeunes ont besoin de règles pour devenir autonomes et vivre en société.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-06",
+          "kind": "mot-cle",
+          "french": "l’autorité parentale",
+          "english": "parental authority",
+          "example": "Personnellement, je pense que l’autorité parentale est nécessaire, mais qu’elle doit évoluer avec l’âge.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-07",
+          "kind": "mot-cle",
+          "french": "des règles claires",
+          "english": "clear rules",
+          "example": "Tout d’abord, des règles claires protègent l’enfant et lui donnent des repères.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-08",
+          "kind": "mot-cle",
+          "french": "des repères",
+          "english": "guidelines",
+          "example": "Tout d’abord, des règles claires protègent l’enfant et lui donnent des repères.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-09",
+          "kind": "mot-cle",
+          "french": "une heure de retour",
+          "english": "a curfew",
+          "example": "Par exemple, les parents d’une adolescente peuvent fixer ensemble une heure de retour, puis l’assouplir lorsqu’elle respecte régulièrement ses engagements.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-10",
+          "kind": "mot-cle",
+          "french": "ses engagements",
+          "english": "one’s commitments",
+          "example": "Par exemple, les parents d’une adolescente peuvent fixer ensemble une heure de retour, puis l’assouplir lorsqu’elle respecte régulièrement ses engagements.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-11",
+          "kind": "mot-cle",
+          "french": "une vigilance accrue",
+          "english": "heightened vigilance",
+          "example": "Cependant, il faut aussi reconnaître que certaines situations dangereuses exigent une vigilance accrue.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-12",
+          "kind": "mot-cle",
+          "french": "un équilibre raisonnable",
+          "english": "a reasonable balance",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Groupe nominal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-13",
+          "kind": "collocation",
+          "french": "vivre en société",
+          "english": "to live in society",
+          "example": "En revanche, le second avertit qu’une éducation trop permissive peut aussi être nuisible, car les jeunes ont besoin de règles pour devenir autonomes et vivre en société.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-14",
+          "kind": "collocation",
+          "french": "évoluer avec l’âge",
+          "english": "to evolve with age",
+          "example": "Personnellement, je pense que l’autorité parentale est nécessaire, mais qu’elle doit évoluer avec l’âge.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-15",
+          "kind": "collocation",
+          "french": "la confiance plutôt que la peur",
+          "english": "trust rather than fear",
+          "example": "Ensuite, expliquer ces limites favorise la confiance plutôt que la peur.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-16",
+          "kind": "collocation",
+          "french": "certaines situations dangereuses",
+          "english": "certain dangerous situations",
+          "example": "Cependant, il faut aussi reconnaître que certaines situations dangereuses exigent une vigilance accrue.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-17",
+          "kind": "collocation",
+          "french": "entre sécurité, dialogue et liberté",
+          "english": "between safety, dialogue and freedom",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-18",
+          "kind": "collocation",
+          "french": "leurs propres décisions",
+          "english": "their own decisions",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Association lexicale ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-19",
+          "kind": "tournure",
+          "french": "même à l’âge adulte",
+          "english": "even in adulthood",
+          "example": "Le premier témoignage décrit une autorité persistante qui limite fortement les sorties, même à l’âge adulte.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-20",
+          "kind": "tournure",
+          "french": "mais qu’elle doit évoluer avec l’âge",
+          "english": "but it must evolve with age",
+          "example": "Personnellement, je pense que l’autorité parentale est nécessaire, mais qu’elle doit évoluer avec l’âge.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-21",
+          "kind": "tournure",
+          "french": "lorsqu’elle respecte régulièrement ses engagements",
+          "english": "when she regularly honours her commitments",
+          "example": "Par exemple, les parents d’une adolescente peuvent fixer ensemble une heure de retour, puis l’assouplir lorsqu’elle respecte régulièrement ses engagements.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-22",
+          "kind": "tournure",
+          "french": "afin de préparer progressivement les jeunes",
+          "english": "in order to prepare young people gradually",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Construction réutilisable ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-23",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense que l’autorité parentale est nécessaire, mais qu’elle doit évoluer avec l’âge",
+          "english": "Personally, I think parental authority is necessary, but it must evolve with age",
+          "example": "Personnellement, je pense que l’autorité parentale est nécessaire, mais qu’elle doit évoluer avec l’âge.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certaines situations dangereuses exigent une vigilance accrue",
+          "english": "However, it must also be acknowledged that certain dangerous situations require heightened vigilance",
+          "example": "Cependant, il faut aussi reconnaître que certaines situations dangereuses exigent une vigilance accrue.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions",
+          "english": "Ultimately, the most important thing is to find a reasonable balance between safety, dialogue and freedom in order to prepare young people gradually to make their own decisions",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Formule argumentative ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, des règles claires protègent l’enfant et lui donnent des repères.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, les parents d’une adolescente peuvent fixer ensemble une heure de retour, puis l’assouplir lorsqu’elle respecte régulièrement ses engagements.",
+          "usage": "Connecteur adverbial ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-28",
+          "kind": "verbe-action",
+          "french": "fixer ensemble une heure de retour",
+          "english": "to set a curfew together",
+          "example": "Par exemple, les parents d’une adolescente peuvent fixer ensemble une heure de retour, puis l’assouplir lorsqu’elle respecte régulièrement ses engagements.",
+          "usage": "Groupe verbal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-29",
+          "kind": "verbe-action",
+          "french": "prendre leurs propres décisions",
+          "english": "to make their own decisions",
+          "example": "En définitive, le plus important est de trouver un équilibre raisonnable entre sécurité, dialogue et liberté afin de préparer progressivement les jeunes à prendre leurs propres décisions.",
+          "usage": "Groupe verbal ; réutilisable en Famille/Éducation."
+        },
+        {
+          "id": "E3-MAR-C10-30",
+          "kind": "reformulation",
+          "french": "ces limites",
+          "english": "these limits",
+          "example": "Ensuite, expliquer ces limites favorise la confiance plutôt que la peur.",
+          "usage": "Reprise anaphorique ; réutilisable en Famille/Éducation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-11",
+      "combinaison": "Combinaison 11",
+      "sujet": "L’utilisation des distributeurs automatiques au sein des établissements scolaires, pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C11-01",
+          "kind": "phrase-modele",
+          "french": "La question des distributeurs de boissons à l’école suscite des avis partagés",
+          "english": "The question of drink vending machines at school divides opinion",
+          "example": "La question des distributeurs de boissons à l’école suscite des avis partagés.",
+          "usage": "Formule argumentative ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, leurs détracteurs craignent qu’une offre trop sucrée favorise l’obésité et le diabète chez les élèves.",
+          "usage": "Connecteur adverbial ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-03",
+          "kind": "mot-cle",
+          "french": "leurs défenseurs",
+          "english": "their supporters",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-04",
+          "kind": "mot-cle",
+          "french": "un service pratique",
+          "english": "a convenient service",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-05",
+          "kind": "mot-cle",
+          "french": "des choix sains",
+          "english": "healthy choices",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-06",
+          "kind": "mot-cle",
+          "french": "leurs détracteurs",
+          "english": "their critics",
+          "example": "En revanche, leurs détracteurs craignent qu’une offre trop sucrée favorise l’obésité et le diabète chez les élèves.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-07",
+          "kind": "mot-cle",
+          "french": "l’obésité",
+          "english": "obesity",
+          "example": "En revanche, leurs détracteurs craignent qu’une offre trop sucrée favorise l’obésité et le diabète chez les élèves.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-08",
+          "kind": "mot-cle",
+          "french": "le diabète",
+          "english": "diabetes",
+          "example": "En revanche, leurs détracteurs craignent qu’une offre trop sucrée favorise l’obésité et le diabète chez les élèves.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-09",
+          "kind": "mot-cle",
+          "french": "l’accès rapide à l’eau",
+          "english": "quick access to water",
+          "example": "Tout d’abord, l’accès rapide à l’eau aide les élèves à rester concentrés.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-10",
+          "kind": "mot-cle",
+          "french": "les outils pédagogiques",
+          "english": "educational tools",
+          "example": "Ensuite, les bénéfices peuvent soutenir les outils pédagogiques plutôt qu’une entreprise privée.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-11",
+          "kind": "mot-cle",
+          "french": "les revenus supplémentaires",
+          "english": "additional revenue",
+          "example": "Par exemple, un lycée pourrait vendre uniquement de l’eau, du lait et des boissons sans sucre ajouté, puis financer sa bibliothèque avec les revenus supplémentaires.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-12",
+          "kind": "mot-cle",
+          "french": "des habitudes alimentaires saines",
+          "english": "healthy eating habits",
+          "example": "En conclusion, le plus important est de favoriser des habitudes alimentaires saines grâce à une sélection contrôlée et transparente.",
+          "usage": "Groupe nominal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-13",
+          "kind": "collocation",
+          "french": "une offre trop sucrée",
+          "english": "an overly sugary selection",
+          "example": "En revanche, leurs détracteurs craignent qu’une offre trop sucrée favorise l’obésité et le diabète chez les élèves.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-14",
+          "kind": "collocation",
+          "french": "des règles claires",
+          "english": "clear rules",
+          "example": "À mon avis, ces appareils sont utiles, mais seulement si leur contenu respecte des règles claires.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-15",
+          "kind": "collocation",
+          "french": "une entreprise privée",
+          "english": "a private company",
+          "example": "Ensuite, les bénéfices peuvent soutenir les outils pédagogiques plutôt qu’une entreprise privée.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-16",
+          "kind": "collocation",
+          "french": "sans sucre ajouté",
+          "english": "with no added sugar",
+          "example": "Par exemple, un lycée pourrait vendre uniquement de l’eau, du lait et des boissons sans sucre ajouté, puis financer sa bibliothèque avec les revenus supplémentaires.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-17",
+          "kind": "collocation",
+          "french": "une sélection contrôlée et transparente",
+          "english": "a controlled and transparent selection",
+          "example": "En conclusion, le plus important est de favoriser des habitudes alimentaires saines grâce à une sélection contrôlée et transparente.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-18",
+          "kind": "collocation",
+          "french": "la publicité influence facilement les jeunes",
+          "english": "advertising easily influences young people",
+          "example": "Cependant, il faut aussi reconnaître que la publicité influence facilement les jeunes.",
+          "usage": "Association lexicale ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-19",
+          "kind": "tournure",
+          "french": "capable de proposer des choix sains",
+          "english": "able to offer healthy choices",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Construction réutilisable ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-20",
+          "kind": "tournure",
+          "french": "mais seulement si leur contenu respecte des règles claires",
+          "english": "but only if their contents follow clear rules",
+          "example": "À mon avis, ces appareils sont utiles, mais seulement si leur contenu respecte des règles claires.",
+          "usage": "Construction réutilisable ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-21",
+          "kind": "tournure",
+          "french": "plutôt qu’une entreprise privée",
+          "english": "rather than a private company",
+          "example": "Ensuite, les bénéfices peuvent soutenir les outils pédagogiques plutôt qu’une entreprise privée.",
+          "usage": "Construction réutilisable ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-22",
+          "kind": "tournure",
+          "french": "grâce à une sélection contrôlée et transparente",
+          "english": "through a controlled and transparent selection",
+          "example": "En conclusion, le plus important est de favoriser des habitudes alimentaires saines grâce à une sélection contrôlée et transparente.",
+          "usage": "Construction réutilisable ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-23",
+          "kind": "phrase-modele",
+          "french": "À mon avis, ces appareils sont utiles, mais seulement si leur contenu respecte des règles claires",
+          "english": "In my opinion, these machines are useful, but only if their contents follow clear rules",
+          "example": "À mon avis, ces appareils sont utiles, mais seulement si leur contenu respecte des règles claires.",
+          "usage": "Formule argumentative ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que la publicité influence facilement les jeunes",
+          "english": "However, it must also be acknowledged that advertising easily influences young people",
+          "example": "Cependant, il faut aussi reconnaître que la publicité influence facilement les jeunes.",
+          "usage": "Formule argumentative ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de favoriser des habitudes alimentaires saines grâce à une sélection contrôlée et transparente",
+          "english": "In conclusion, the most important thing is to foster healthy eating habits through a controlled and transparent selection",
+          "example": "En conclusion, le plus important est de favoriser des habitudes alimentaires saines grâce à une sélection contrôlée et transparente.",
+          "usage": "Formule argumentative ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-26",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Connecteur adverbial ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un lycée pourrait vendre uniquement de l’eau, du lait et des boissons sans sucre ajouté, puis financer sa bibliothèque avec les revenus supplémentaires.",
+          "usage": "Connecteur adverbial ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-28",
+          "kind": "verbe-action",
+          "french": "financer des projets scolaires",
+          "english": "to fund school projects",
+          "example": "D’un côté, leurs défenseurs y voient un service pratique, capable de proposer des choix sains et de financer des projets scolaires.",
+          "usage": "Groupe verbal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-29",
+          "kind": "verbe-action",
+          "french": "rester concentrés",
+          "english": "to stay focused",
+          "example": "Tout d’abord, l’accès rapide à l’eau aide les élèves à rester concentrés.",
+          "usage": "Groupe verbal ; réutilisable en Santé/Éducation."
+        },
+        {
+          "id": "E3-MAR-C11-30",
+          "kind": "reformulation",
+          "french": "ces appareils",
+          "english": "these machines",
+          "example": "À mon avis, ces appareils sont utiles, mais seulement si leur contenu respecte des règles claires.",
+          "usage": "Reprise anaphorique ; réutilisable en Santé/Éducation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-12",
+      "combinaison": "Combinaison 12",
+      "sujet": "Cuisinier amateur ou cuisinier professionnel ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C12-01",
+          "kind": "phrase-modele",
+          "french": "Le débat entre cuisiniers amateurs et professionnels oppose deux visions du métier",
+          "english": "The debate between amateur and professional cooks contrasts two visions of the profession",
+          "example": "Le débat entre cuisiniers amateurs et professionnels oppose deux visions du métier.",
+          "usage": "Formule argumentative ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-02",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second montre qu’Internet peut révéler des autodidactes, dont certains transforment leur succès en carrière et publient des ouvrages culinaires.",
+          "usage": "Connecteur adverbial ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-03",
+          "kind": "mot-cle",
+          "french": "la maîtrise technique",
+          "english": "technical mastery",
+          "example": "Le premier document estime que la maîtrise technique s’acquiert par la formation et l’expérience.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-04",
+          "kind": "mot-cle",
+          "french": "la formation et l’expérience",
+          "english": "training and experience",
+          "example": "Le premier document estime que la maîtrise technique s’acquiert par la formation et l’expérience.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-05",
+          "kind": "mot-cle",
+          "french": "des autodidactes",
+          "english": "self-taught people",
+          "example": "En revanche, le second montre qu’Internet peut révéler des autodidactes, dont certains transforment leur succès en carrière et publient des ouvrages culinaires.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-06",
+          "kind": "mot-cle",
+          "french": "des ouvrages culinaires",
+          "english": "culinary books",
+          "example": "En revanche, le second montre qu’Internet peut révéler des autodidactes, dont certains transforment leur succès en carrière et publient des ouvrages culinaires.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-07",
+          "kind": "mot-cle",
+          "french": "le professionnalisme",
+          "english": "professionalism",
+          "example": "Selon moi, la passion ne suffit pas toujours, mais un diplôme ne constitue pas l’unique chemin vers le professionnalisme.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-08",
+          "kind": "mot-cle",
+          "french": "l’hygiène",
+          "english": "hygiene",
+          "example": "En effet, un cuisinier doit maîtriser l’hygiène, les cuissons, l’organisation et la gestion des coûts.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-09",
+          "kind": "mot-cle",
+          "french": "la gestion des coûts",
+          "english": "cost management",
+          "example": "En effet, un cuisinier doit maîtriser l’hygiène, les cuissons, l’organisation et la gestion des coûts.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-10",
+          "kind": "mot-cle",
+          "french": "une pratique exigeante",
+          "english": "demanding practice",
+          "example": "Ces compétences peuvent s’apprendre dans une école ou grâce à une pratique exigeante accompagnée par des experts.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-11",
+          "kind": "mot-cle",
+          "french": "la popularité sur les réseaux sociaux",
+          "english": "popularity on social media",
+          "example": "Cependant, il faut aussi reconnaître que la popularité sur les réseaux sociaux ne garantit pas la qualité.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-12",
+          "kind": "mot-cle",
+          "french": "son savoir-faire",
+          "english": "one’s know-how",
+          "example": "En définitive, le plus important est de prouver son savoir-faire et de continuer à se former.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-13",
+          "kind": "collocation",
+          "french": "leur succès en carrière",
+          "english": "their success into a career",
+          "example": "En revanche, le second montre qu’Internet peut révéler des autodidactes, dont certains transforment leur succès en carrière et publient des ouvrages culinaires.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-14",
+          "kind": "collocation",
+          "french": "des cours en ligne",
+          "english": "online courses",
+          "example": "Par exemple, une amatrice ayant suivi des cours en ligne peut effectuer ensuite un stage dans un restaurant avant d’ouvrir son activité.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-15",
+          "kind": "collocation",
+          "french": "un stage dans un restaurant",
+          "english": "an internship in a restaurant",
+          "example": "Par exemple, une amatrice ayant suivi des cours en ligne peut effectuer ensuite un stage dans un restaurant avant d’ouvrir son activité.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-16",
+          "kind": "collocation",
+          "french": "ne garantit pas la qualité",
+          "english": "does not guarantee quality",
+          "example": "Cependant, il faut aussi reconnaître que la popularité sur les réseaux sociaux ne garantit pas la qualité.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-17",
+          "kind": "collocation",
+          "french": "accompagnée par des experts",
+          "english": "guided by experts",
+          "example": "Ces compétences peuvent s’apprendre dans une école ou grâce à une pratique exigeante accompagnée par des experts.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-18",
+          "kind": "collocation",
+          "french": "continuer à se former",
+          "english": "to continue training",
+          "example": "En définitive, le plus important est de prouver son savoir-faire et de continuer à se former.",
+          "usage": "Association lexicale ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-19",
+          "kind": "tournure",
+          "french": "s’acquiert par la formation et l’expérience",
+          "english": "is acquired through training and experience",
+          "example": "Le premier document estime que la maîtrise technique s’acquiert par la formation et l’expérience.",
+          "usage": "Construction réutilisable ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-20",
+          "kind": "tournure",
+          "french": "ne suffit pas toujours",
+          "english": "is not always enough",
+          "example": "Selon moi, la passion ne suffit pas toujours, mais un diplôme ne constitue pas l’unique chemin vers le professionnalisme.",
+          "usage": "Construction réutilisable ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-21",
+          "kind": "tournure",
+          "french": "grâce à une pratique exigeante",
+          "english": "through demanding practice",
+          "example": "Ces compétences peuvent s’apprendre dans une école ou grâce à une pratique exigeante accompagnée par des experts.",
+          "usage": "Construction réutilisable ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-22",
+          "kind": "tournure",
+          "french": "avant d’ouvrir son activité",
+          "english": "before starting one’s business",
+          "example": "Par exemple, une amatrice ayant suivi des cours en ligne peut effectuer ensuite un stage dans un restaurant avant d’ouvrir son activité.",
+          "usage": "Construction réutilisable ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-23",
+          "kind": "phrase-modele",
+          "french": "Selon moi, la passion ne suffit pas toujours, mais un diplôme ne constitue pas l’unique chemin vers le professionnalisme",
+          "english": "In my view, passion is not always enough, but a diploma is not the only path to professionalism",
+          "example": "Selon moi, la passion ne suffit pas toujours, mais un diplôme ne constitue pas l’unique chemin vers le professionnalisme.",
+          "usage": "Formule argumentative ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que la popularité sur les réseaux sociaux ne garantit pas la qualité",
+          "english": "However, it must also be acknowledged that social-media popularity does not guarantee quality",
+          "example": "Cependant, il faut aussi reconnaître que la popularité sur les réseaux sociaux ne garantit pas la qualité.",
+          "usage": "Formule argumentative ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-25",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de prouver son savoir-faire et de continuer à se former",
+          "english": "Ultimately, the most important thing is to prove one’s know-how and continue training",
+          "example": "En définitive, le plus important est de prouver son savoir-faire et de continuer à se former.",
+          "usage": "Formule argumentative ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-26",
+          "kind": "expression",
+          "french": "En effet",
+          "english": "Indeed",
+          "example": "En effet, un cuisinier doit maîtriser l’hygiène, les cuissons, l’organisation et la gestion des coûts.",
+          "usage": "Connecteur adverbial ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une amatrice ayant suivi des cours en ligne peut effectuer ensuite un stage dans un restaurant avant d’ouvrir son activité.",
+          "usage": "Connecteur adverbial ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-28",
+          "kind": "verbe-action",
+          "french": "maîtriser l’hygiène",
+          "english": "to master hygiene",
+          "example": "En effet, un cuisinier doit maîtriser l’hygiène, les cuissons, l’organisation et la gestion des coûts.",
+          "usage": "Groupe verbal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-29",
+          "kind": "verbe-action",
+          "french": "ouvrir son activité",
+          "english": "to start one’s business",
+          "example": "Par exemple, une amatrice ayant suivi des cours en ligne peut effectuer ensuite un stage dans un restaurant avant d’ouvrir son activité.",
+          "usage": "Groupe verbal ; réutilisable en Travail/Formation."
+        },
+        {
+          "id": "E3-MAR-C12-30",
+          "kind": "reformulation",
+          "french": "Ces compétences",
+          "english": "These skills",
+          "example": "Ces compétences peuvent s’apprendre dans une école ou grâce à une pratique exigeante accompagnée par des experts.",
+          "usage": "Reprise anaphorique ; réutilisable en Travail/Formation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-13",
+      "combinaison": "Combinaison 13",
+      "sujet": "Vivre En Colocation : Pour Ou Contre ?",
+      "entries": [
+        {
+          "id": "E3-MAR-C13-01",
+          "kind": "phrase-modele",
+          "french": "La colocation est un mode de vie qui présente des avantages et des inconvénients",
+          "english": "Shared housing is a lifestyle with advantages and disadvantages",
+          "example": "La colocation est un mode de vie qui présente des avantages et des inconvénients.",
+          "usage": "Formule argumentative ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-02",
+          "kind": "expression",
+          "french": "Toutefois",
+          "english": "However",
+          "example": "Toutefois, ses détracteurs soulignent les conflits liés aux habitudes, aux tâches ménagères et au manque d’intimité, qui exigent une communication ouverte.",
+          "usage": "Connecteur adverbial ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-03",
+          "kind": "mot-cle",
+          "french": "la colocation",
+          "english": "shared housing",
+          "example": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-04",
+          "kind": "mot-cle",
+          "french": "les économies",
+          "english": "savings",
+          "example": "Ses partisans valorisent les économies, le lien social et les échanges entre personnes d’horizons variés.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-05",
+          "kind": "mot-cle",
+          "french": "le lien social",
+          "english": "social connection",
+          "example": "Ses partisans valorisent les économies, le lien social et les échanges entre personnes d’horizons variés.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-06",
+          "kind": "mot-cle",
+          "french": "tâches ménagères",
+          "english": "household chores",
+          "example": "Toutefois, ses détracteurs soulignent les conflits liés aux habitudes, aux tâches ménagères et au manque d’intimité, qui exigent une communication ouverte.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-07",
+          "kind": "mot-cle",
+          "french": "manque d’intimité",
+          "english": "lack of privacy",
+          "example": "Toutefois, ses détracteurs soulignent les conflits liés aux habitudes, aux tâches ménagères et au manque d’intimité, qui exigent une communication ouverte.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-08",
+          "kind": "mot-cle",
+          "french": "une communication ouverte",
+          "english": "open communication",
+          "example": "Toutefois, ses détracteurs soulignent les conflits liés aux habitudes, aux tâches ménagères et au manque d’intimité, qui exigent une communication ouverte.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-09",
+          "kind": "mot-cle",
+          "french": "les charges financières",
+          "english": "financial costs",
+          "example": "Tout d’abord, elle réduit les charges financières, notamment lorsqu’on arrive dans une nouvelle ville.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-10",
+          "kind": "mot-cle",
+          "french": "les échanges culturels",
+          "english": "cultural exchanges",
+          "example": "Ensuite, elle favorise le lien social et les échanges culturels.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-11",
+          "kind": "mot-cle",
+          "french": "la vie locale",
+          "english": "local life",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-12",
+          "kind": "mot-cle",
+          "french": "respect mutuel",
+          "english": "mutual respect",
+          "example": "En conclusion, le plus important est de fixer des règles équitables et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-13",
+          "kind": "collocation",
+          "french": "personnes d’horizons variés",
+          "english": "people from varied backgrounds",
+          "example": "Ses partisans valorisent les économies, le lien social et les échanges entre personnes d’horizons variés.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-14",
+          "kind": "collocation",
+          "french": "les responsabilités soient définies",
+          "english": "responsibilities are defined",
+          "example": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-15",
+          "kind": "collocation",
+          "french": "dès le départ",
+          "english": "from the outset",
+          "example": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-16",
+          "kind": "collocation",
+          "french": "partager un appartement",
+          "english": "to share an apartment",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-17",
+          "kind": "collocation",
+          "french": "espace personnel",
+          "english": "personal space",
+          "example": "Cependant, il faut aussi reconnaître que chacun a besoin d’espace personnel et que le ménage peut créer des tensions.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-18",
+          "kind": "collocation",
+          "french": "des règles équitables",
+          "english": "fair rules",
+          "example": "En conclusion, le plus important est de fixer des règles équitables et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Association lexicale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-19",
+          "kind": "tournure",
+          "french": "à condition que les responsabilités soient définies dès le départ",
+          "english": "provided responsibilities are defined from the outset",
+          "example": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Construction réutilisable ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-20",
+          "kind": "tournure",
+          "french": "notamment lorsqu’on arrive dans une nouvelle ville",
+          "english": "especially when arriving in a new city",
+          "example": "Tout d’abord, elle réduit les charges financières, notamment lorsqu’on arrive dans une nouvelle ville.",
+          "usage": "Construction réutilisable ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-21",
+          "kind": "tournure",
+          "french": "grâce à ses colocataires",
+          "english": "thanks to one’s roommates",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Construction réutilisable ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-22",
+          "kind": "tournure",
+          "french": "entre convivialité, respect mutuel et intimité",
+          "english": "between conviviality, mutual respect and privacy",
+          "example": "En conclusion, le plus important est de fixer des règles équitables et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Construction réutilisable ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-23",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ",
+          "english": "Personally, I find shared housing rewarding provided responsibilities are defined from the outset",
+          "example": "Personnellement, je trouve la colocation enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Formule argumentative ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que chacun a besoin d’espace personnel et que le ménage peut créer des tensions",
+          "english": "However, it must also be acknowledged that everyone needs personal space and housework can create tension",
+          "example": "Cependant, il faut aussi reconnaître que chacun a besoin d’espace personnel et que le ménage peut créer des tensions.",
+          "usage": "Formule argumentative ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de fixer des règles équitables et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité",
+          "english": "In conclusion, the most important thing is to set fair rules and preserve a reasonable balance between conviviality, mutual respect and privacy",
+          "example": "En conclusion, le plus important est de fixer des règles équitables et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Formule argumentative ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-26",
+          "kind": "expression",
+          "french": "Tout d’abord",
+          "english": "First of all",
+          "example": "Tout d’abord, elle réduit les charges financières, notamment lorsqu’on arrive dans une nouvelle ville.",
+          "usage": "Connecteur adverbial ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Connecteur adverbial ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-28",
+          "kind": "verbe-action",
+          "french": "réduit les charges financières",
+          "english": "reduces financial costs",
+          "example": "Tout d’abord, elle réduit les charges financières, notamment lorsqu’on arrive dans une nouvelle ville.",
+          "usage": "Groupe verbal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-29",
+          "kind": "verbe-action",
+          "french": "économiser sur le loyer",
+          "english": "to save on rent",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Groupe verbal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAR-C13-30",
+          "kind": "reformulation",
+          "french": "ses colocataires",
+          "english": "one’s roommates",
+          "example": "Par exemple, une personne qui s’installe au Québec peut partager un appartement, économiser sur le loyer et découvrir la vie locale grâce à ses colocataires.",
+          "usage": "Reprise anaphorique ; réutilisable en Logement/Société."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mars:combinaison-14",
+      "combinaison": "Combinaison 14",
+      "sujet": "L’aide aux personnes pauvres",
+      "entries": [
+        {
+          "id": "E3-MAR-C14-01",
+          "kind": "phrase-modele",
+          "french": "L’aide aux personnes en situation de précarité fait l’objet d’un débat nuancé",
+          "english": "Aid for people in precarious situations is the subject of a nuanced debate",
+          "example": "L’aide aux personnes en situation de précarité fait l’objet d’un débat nuancé.",
+          "usage": "Formule argumentative ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-02",
+          "kind": "expression",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, l’engagement associatif est jugé plus durable lorsqu’il conduit les bénéficiaires vers un logement, un emploi et l’autonomie.",
+          "usage": "Connecteur adverbial ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-03",
+          "kind": "mot-cle",
+          "french": "personnes en situation de précarité",
+          "english": "people in precarious situations",
+          "example": "L’aide aux personnes en situation de précarité fait l’objet d’un débat nuancé.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-04",
+          "kind": "mot-cle",
+          "french": "un devoir solidaire",
+          "english": "a duty of solidarity",
+          "example": "D’un côté, une contribution directe en temps ou en argent est présentée comme un devoir solidaire, particulièrement en hiver.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-05",
+          "kind": "mot-cle",
+          "french": "l’engagement associatif",
+          "english": "community involvement",
+          "example": "Cependant, l’engagement associatif est jugé plus durable lorsqu’il conduit les bénéficiaires vers un logement, un emploi et l’autonomie.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-06",
+          "kind": "mot-cle",
+          "french": "les bénéficiaires",
+          "english": "beneficiaries",
+          "example": "Cependant, l’engagement associatif est jugé plus durable lorsqu’il conduit les bénéficiaires vers un logement, un emploi et l’autonomie.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-07",
+          "kind": "mot-cle",
+          "french": "l’aide immédiate",
+          "english": "immediate aid",
+          "example": "Je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-08",
+          "kind": "mot-cle",
+          "french": "l’accompagnement à long terme",
+          "english": "long-term support",
+          "example": "Je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-09",
+          "kind": "mot-cle",
+          "french": "un programme d’insertion",
+          "english": "an integration program",
+          "example": "En effet, une personne qui a froid ou faim ne peut pas attendre les résultats d’un programme d’insertion.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-10",
+          "kind": "mot-cle",
+          "french": "une aide ponctuelle",
+          "english": "one-off aid",
+          "example": "De plus, une aide ponctuelle reste insuffisante pour combattre durablement l’exclusion.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-11",
+          "kind": "mot-cle",
+          "french": "un suivi vers l’emploi",
+          "english": "employment support",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud et un manteau, puis proposer une adresse administrative, une formation et un suivi vers l’emploi.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-12",
+          "kind": "mot-cle",
+          "french": "des ressources stables",
+          "english": "stable resources",
+          "example": "Cependant, il faut aussi reconnaître que ces actions nécessitent des professionnels et des ressources stables.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-13",
+          "kind": "collocation",
+          "french": "une contribution directe en temps ou en argent",
+          "english": "a direct contribution of time or money",
+          "example": "D’un côté, une contribution directe en temps ou en argent est présentée comme un devoir solidaire, particulièrement en hiver.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-14",
+          "kind": "collocation",
+          "french": "un logement, un emploi et l’autonomie",
+          "english": "housing, employment and autonomy",
+          "example": "Cependant, l’engagement associatif est jugé plus durable lorsqu’il conduit les bénéficiaires vers un logement, un emploi et l’autonomie.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-15",
+          "kind": "collocation",
+          "french": "un repas chaud et un manteau",
+          "english": "a hot meal and a coat",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud et un manteau, puis proposer une adresse administrative, une formation et un suivi vers l’emploi.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-16",
+          "kind": "collocation",
+          "french": "une adresse administrative",
+          "english": "a mailing address",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud et un manteau, puis proposer une adresse administrative, une formation et un suivi vers l’emploi.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-17",
+          "kind": "collocation",
+          "french": "la solidarité concrète",
+          "english": "practical solidarity",
+          "example": "En conclusion, le plus important est d’unir la solidarité concrète aux solutions durables qui conduisent vers le logement, le travail et l’autonomie.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-18",
+          "kind": "collocation",
+          "french": "solutions durables",
+          "english": "lasting solutions",
+          "example": "En conclusion, le plus important est d’unir la solidarité concrète aux solutions durables qui conduisent vers le logement, le travail et l’autonomie.",
+          "usage": "Association lexicale ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-19",
+          "kind": "tournure",
+          "french": "particulièrement en hiver",
+          "english": "particularly in winter",
+          "example": "D’un côté, une contribution directe en temps ou en argent est présentée comme un devoir solidaire, particulièrement en hiver.",
+          "usage": "Construction réutilisable ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-20",
+          "kind": "tournure",
+          "french": "ne peut pas attendre les résultats",
+          "english": "cannot wait for the results",
+          "example": "En effet, une personne qui a froid ou faim ne peut pas attendre les résultats d’un programme d’insertion.",
+          "usage": "Construction réutilisable ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-21",
+          "kind": "tournure",
+          "french": "pour combattre durablement l’exclusion",
+          "english": "to combat exclusion sustainably",
+          "example": "De plus, une aide ponctuelle reste insuffisante pour combattre durablement l’exclusion.",
+          "usage": "Construction réutilisable ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-22",
+          "kind": "tournure",
+          "french": "vers le logement, le travail et l’autonomie",
+          "english": "toward housing, work and autonomy",
+          "example": "En conclusion, le plus important est d’unir la solidarité concrète aux solutions durables qui conduisent vers le logement, le travail et l’autonomie.",
+          "usage": "Construction réutilisable ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-23",
+          "kind": "phrase-modele",
+          "french": "Je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter",
+          "english": "I think immediate aid and long-term support should complement each other",
+          "example": "Je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Formule argumentative ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que ces actions nécessitent des professionnels et des ressources stables",
+          "english": "However, it must also be acknowledged that these actions require professionals and stable resources",
+          "example": "Cependant, il faut aussi reconnaître que ces actions nécessitent des professionnels et des ressources stables.",
+          "usage": "Formule argumentative ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-25",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est d’unir la solidarité concrète aux solutions durables qui conduisent vers le logement, le travail et l’autonomie",
+          "english": "In conclusion, the most important thing is to combine practical solidarity with lasting solutions leading to housing, work and autonomy",
+          "example": "En conclusion, le plus important est d’unir la solidarité concrète aux solutions durables qui conduisent vers le logement, le travail et l’autonomie.",
+          "usage": "Formule argumentative ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-26",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, une contribution directe en temps ou en argent est présentée comme un devoir solidaire, particulièrement en hiver.",
+          "usage": "Connecteur adverbial ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-27",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud et un manteau, puis proposer une adresse administrative, une formation et un suivi vers l’emploi.",
+          "usage": "Connecteur adverbial ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-28",
+          "kind": "verbe-action",
+          "french": "combattre durablement l’exclusion",
+          "english": "to combat exclusion sustainably",
+          "example": "De plus, une aide ponctuelle reste insuffisante pour combattre durablement l’exclusion.",
+          "usage": "Groupe verbal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-29",
+          "kind": "verbe-action",
+          "french": "offrir un repas chaud et un manteau",
+          "english": "to provide a hot meal and a coat",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud et un manteau, puis proposer une adresse administrative, une formation et un suivi vers l’emploi.",
+          "usage": "Groupe verbal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-MAR-C14-30",
+          "kind": "reformulation",
+          "french": "ces actions",
+          "english": "these actions",
+          "example": "Cependant, il faut aussi reconnaître que ces actions nécessitent des professionnels et des ressources stables.",
+          "usage": "Reprise anaphorique ; réutilisable en Solidarité/Emploi."
+        }
+      ]
+    }
+  ]
+}

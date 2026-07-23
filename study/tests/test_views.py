@@ -405,7 +405,7 @@ class SmokeTests(TestCase):
             hub,
             reverse("study:part_detail", args=["ee"]),
         )
-        self.assertContains(hub, "3 tâches · contenus en préparation")
+        self.assertContains(hub, "3 tâches · 0 sujets · 0/0 sujets commencés")
         self.assertEqual(written.status_code, 200)
         self.assertContains(written, "Tâche 1")
         self.assertContains(written, "Tâche 2")
@@ -415,12 +415,13 @@ class SmokeTests(TestCase):
             written,
             "Raconter et expliquer une expérience",
         )
-        self.assertContains(
+        self.assertContains(written, "0 sujets · 0 réponses")
+        self.assertNotContains(
             written,
             "Comparer des points de vue et argumenter",
         )
-        self.assertContains(written, "À venir", count=3)
-        self.assertContains(written, "<dd>Préparation</dd>", html=True)
+        self.assertContains(written, "À venir", count=2)
+        self.assertContains(written, "<dd>Actif</dd>", html=True)
 
     def test_dashboard_presents_four_explicit_daily_activities(self):
         factories.make_comprehension_test()

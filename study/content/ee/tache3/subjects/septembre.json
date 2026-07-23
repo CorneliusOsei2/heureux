@@ -1,0 +1,95 @@
+{
+  "month": {
+    "number": 9,
+    "slug": "septembre",
+    "name": "Septembre"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 6,
+  "sujets": [
+    {
+      "id": 357,
+      "combinaison": "Combinaison 1",
+      "sujet": "Le travail : Favorable ou Défavorable ?",
+      "document1": "Le travail est au centre de notre vie. Dès l’enfance, on entend souvent la question : « Qu’est-ce que tu veux faire quand tu seras grand ? ». Le travail devrait être synonyme de réussite et de satisfaction, mais il est trop souvent synonyme de fatigue et d’emprisonnement. Aujourd’hui, beaucoup pensent que l’on ne passe pas assez de temps avec sa famille, ses amis. Il est urgent de revoir la place occupée par le travail dans notre société. Certains pensent que travailler moins permettrait d’avoir plus de temps libre pour mieux vivre.",
+      "document2": "Certaines personnes ont décidé d’arrêter de travailler pour changer de mode de vie. Pourtant, aujourd’hui, travailler, c’est exister. La question : « Qu’est-ce que tu fais dans la vie ? » revient souvent lors d’une première rencontre. Elle prouve que l’emploi fait partie de notre identité. D’après le spécialiste Jean-Daniel Remond, la vie en entreprise est très importante. Les contacts quotidiens, les réseaux, les amitiés, l’impression d’être utile, mais aussi les difficultés, tout cela contribue à construire notre personnalité et notre identité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 358,
+      "combinaison": "Combinaison 2",
+      "sujet": "Vivre en colocation",
+      "document1": "La vie en colocation offre de nombreux avantages. Partager un logement avec d’autres personnes permet de réduire les dépenses, que ce soit le loyer, les factures ou les frais généraux. De plus, cela favorise les interactions sociales et les échanges culturels. Vivre avec des colocataires permet de rencontrer des individus de différents horizons, de nouer des amitiés et de partager des expériences enrichissantes.",
+      "document2": "La colocation peut cependant présenter des défis. Les différences de personnalité et de mode de vie entre les colocataires peuvent entraîner des tensions. La gestion des responsabilités et des tâches ménagères peut également être source de conflits. De plus, la colocation peut limiter l’intimité et l’espace personnel. Il est important d’établir une communication ouverte et respectueuse, ainsi que des règles de vie commune, pour favoriser une cohabitation harmonieuse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 359,
+      "combinaison": "Combinaison 3",
+      "sujet": "Cuisinier Amateur Ou Cuisinier Professionnel ?",
+      "document1": "Les amateurs ont fait des recettes réussies, mais ils manquent toujours de compétences et de technique, c’est pourquoi la formation et l’expérience sont nécessaires pour être un vrai cuisinier.",
+      "document2": "Il parle des cuisiniers qui ont appris le métier de cuisinier sur internet et qui ont le buzz sur les réseaux sociaux. Il raconte aussi l’histoire d’une amatrice qui est devenue professionnelle et qui a rédigé plusieurs livres sur la cuisine pour les amateurs de cuisine à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 360,
+      "combinaison": "Combinaison 4",
+      "sujet": "Les relations amicales au travail",
+      "document1": "Les amitiés entre collègues au travail peuvent être extrêmement bénéfiques. Elles favorisent un climat de travail agréable et une ambiance positive au sein de l’équipe. Avoir des amis parmi ses collègues permet de renforcer les liens professionnels et de créer un sentiment de camaraderie. Cela peut contribuer à une meilleure communication, une collaboration plus étroite et une résolution plus efficace des problèmes. De plus, partager des moments de convivialité en dehors du travail, comme des déjeuners ou des activités après le bureau, peut renforcer les liens et créer une dynamique de groupe solide.",
+      "document2": "Il est important de trouver un équilibre entre amitié et professionnalisme au travail. Les amitiés excessivement proches peuvent parfois créer des tensions ou des conflits lorsque des décisions professionnelles doivent être prises. De plus, les amitiés exclusives entre certains collègues peuvent exclure les autres membres de l’équipe, ce qui peut nuire à la cohésion et à la collaboration. Il est essentiel de maintenir des limites claires et de veiller à ce que les amitiés ne compromettent pas le professionnalisme, la hiérarchie ou la productivité au sein de l’organisation.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 361,
+      "combinaison": "Combinaison 5",
+      "sujet": "Le travail des étudiants pendant les vacances : Pour ou contre ?",
+      "document1": "Opinion 1 : Alexandre, un conseiller d’orientation “Je suis fermement pour le travail des jeunes pendant les vacances. C’est une excellente occasion d’acquérir des compétences pratiques, d’apprendre à travailler en équipe et de découvrir différentes industries. Les jeunes peuvent gagner de l’argent qu’ils peuvent économiser pour l’avenir ou utiliser pour financer des activités ou des loisirs. De plus, le fait d’avoir une expérience de travail sur leur CV peut leur donner un avantage lorsqu’ils postulent pour des emplois ou des stages à l’avenir. Les vacances d’été sont longues et il y a amplement de temps pour se reposer et travailler.”",
+      "document2": "Opinion 2 : Élise, une psychologue pour adolescents “Je suis contre l’idée que les jeunes doivent travailler pendant leurs vacances. Les adolescents sont déjà sous une énorme pression pendant l’année scolaire avec les études, les examens et les activités parascolaires. Les vacances doivent être une période pour eux de se détendre, de se décompresser et de poursuivre des intérêts personnels. Les forcer à travailler pourrait contribuer au stress et à l’épuisement. Il est également important pour les jeunes de disposer de temps non structuré pour explorer leur créativité, passer du temps avec leurs amis et leur famille, et tout simplement être des enfants. Le travail peut attendre.”",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 363,
+      "combinaison": "Combinaison 7",
+      "sujet": "Égalité Homme/Femme en Milieu de Travail",
+      "document1": "Certains postes sont majoritairement occupés par des hommes. Au Québec, l’égalité entre les femmes et les hommes est respectée, les femmes peuvent exercer les métiers réservés aux hommes tels que les postes de direction.",
+      "document2": "Malgré les efforts pour imposer la parité à tous les postes dans les entreprises et les collectivités, il y a, dans les faits, des métiers où les femmes sont largement majoritaires tels que : les sages-femmes. De plus, les femmes ne doivent pas faire les métiers d’homme, car elles doivent prendre soin de leurs enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

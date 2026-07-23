@@ -1,0 +1,69 @@
+{
+  "month": {
+    "number": 10,
+    "slug": "octobre",
+    "name": "Octobre"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 4,
+  "sujets": [
+    {
+      "id": 353,
+      "combinaison": "Combinaison 1",
+      "sujet": "Les publicités : Pour ou contre ?",
+      "document1": "Certaines personnes trouvent la publicité ennuyeuse, mais, à mon avis, elle est indispensable pour le commerce et les entreprises. Grâce à la publicité, on fait connaître un produit ou un service. Et puis, parfois, elles sont drôles ! J’aime bien les écouter quand je suis en voiture. Cela me permet aussi d’être informé des nouveautés et des promotions. Personnellement, j’adore comparer les articles : je peux ainsi faire beaucoup d’économies sur mes achats. Enfin, beaucoup de personnes jouent à des jeux gratuits sur leur téléphone : sans publicité, ces jeux seraient tous payants. Quentin, 28 ans",
+      "document2": "La publicité est présente partout dans notre vie de tous les jours : journaux, radios, télévision, téléphone, Internet… Par exemple, sur certaines chaînes de télévision, les émissions sont coupées par la publicité et c’est agaçant. Puis, recevoir des dizaines de kilos de papier de publicité par an dans la boîte aux lettres, ce n’est pas très respectueux de l’environnement ! Je pense qu’il est nécessaire de faire voter une loi pour réduire les publicités par courrier et à la télévision. Si la publicité était plus discrète, elle serait plus appréciée. Estelle, 35 ans",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 354,
+      "combinaison": "Combinaison 2",
+      "sujet": "Les Vols à Bas Prix",
+      "document1": "Je fais souvent mes voyages avec des compagnies aériennes à bas prix. Les compagnies low-cost mettent à disposition des prix inférieurs à ceux proposés par les compagnies aériennes régulières. Cela me coûte des fois moins cher que de voyager en voiture ou en train. Avec ces tarifs-là, vous vous doutez qu’il y a un hic : en effet, vous n’aurez droit à aucun service à bord (ni aliments, ni boissons). Je dirais donc que le low-cost n’est surtout pas fait pour les vols long-courriers.",
+      "document2": "Récemment, j’ai pris la décision de ne plus voyager avec les compagnies aériennes à bas prix. En effet, j’ai longuement réfléchi afin de prendre ma décision, mais ce choix était évident : des sièges inconfortables, des conditions de travail pénibles et surtout des avions vétustes qui remettent en cause la sécurité ! Dès lors, pour certains voyages, je vais opter pour la voiture ou même le train, ce dernier permettant même de découvrir de jolis paysages. Quant aux longs trajets, mieux vaut prendre un vol en compagnie régulière.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 355,
+      "combinaison": "Combinaison 3",
+      "sujet": "Les cours de langue en ligne.",
+      "document1": "Apprendre une langue en ligne grâce à Internet, c’est possible et cela donne de bons résultats ! Contrairement aux cours classiques, on peut apprendre quand on veut : les cours sont disponibles tout le temps. Cela permet de mieux organiser sa journée. On n’a pas non plus besoin de faire des kilomètres pour aller dans une école de langues. On peut apprendre de son salon, de son bureau ou même d’un café près de chez soi ! Cela permet aussi de faire des économies.",
+      "document2": "Cela semble facile d’apprendre une langue en ligne mais ce n’est pas possible pour tout le monde. En effet, il faut avoir une bonne connexion à Internet et un outil numérique adapté (ordinateur, smartphone, tablette) pour apprendre en ligne. De plus, il faut être très autonome pour être capable d’apprendre seul : il est difficile de se mettre au travail chez soi et de rester motivé quand on n’a pas l’aide d’un professeur et de collègues. Dans ces conditions, on peut se décourager et abandonner très vite.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 356,
+      "combinaison": "Combinaison 4",
+      "sujet": "Que pensez-vous des maisons de retraite?",
+      "document1": "J’habite dans un pays où il y a très peu de maisons de retraite. Ici, quand une personne âgée ne peut plus être autonome, elle habite avec les générations plus jeunes, et dans l’ensemble, cela ne pose pas de problèmes majeurs. Il nous paraît étrange de confier nos parents ou grands-parents à des personnes qu’ils ne connaissent pas.",
+      "document2": "Beaucoup de gens critiquent les maisons de retraite, pourtant c’est une bonne solution d’accueil pour les personnes âgées ! D’abord, pour lutter contre l’isolement puisqu’elles sont entourées de personnes de leur âge à la maison de retraite. Ensuite, pour les soins et les services médicaux offerts dans ce type d’établissement. Enfin, parce que c’est pratique et rassurant pour leurs enfants et petits-enfants. Malheureusement, ce type de logement reste encore trop cher pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

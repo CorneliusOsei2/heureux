@@ -1,0 +1,82 @@
+{
+  "month": {
+    "number": 6,
+    "slug": "juin",
+    "name": "Juin"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 5,
+  "sujets": [
+    {
+      "id": 320,
+      "combinaison": "Combinaison 1",
+      "sujet": "Photo sur le CV : pour ou contre ?",
+      "document1": "Aujourd’hui, certains candidats mettent une photo sur leur CV, d’autres non. Il faudrait interdire les photos sur les CV pour éviter les discriminations et les injustices. Selon une étude menée par des spécialistes de l’emploi, cette pratique est inutile. L’étude révèle que les employeurs prêtent plus attention à l’expérience professionnelle (32%) et aux diplômes (15%) qu’à l’apparence physique. Seulement 2% des employeurs commencent la lecture d’un CV par la photo. C’est une statistique surprenante, surtout quand on connaît l’importance que certaines personnes accordent à leur apparence physique.",
+      "document2": "La question de la photo sur le CV divise les employeurs. Pour certains, la photo permet de mieux se représenter la personne avant de la rencontrer. De plus, une photo peut aider à se souvenir d’un candidat lorsqu’un grand nombre de CV sont reçus. Pour d’autres, cela dépend du poste : pour des métiers d’accueil, par exemple, il peut être pertinent d’inclure une photo. Cependant, elle doit toujours être professionnelle pour donner une impression positive.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 321,
+      "combinaison": "Combinaison 2",
+      "sujet": "Vie en colocation entre adultes.",
+      "document1": "Vivre avec d’autres personnes demande d’avoir une bonne entente et de respecter certaines règles. Il n’est pas toujours possible d’écouter sa musique préférée à volume élevé, d’inviter tous ses amis pour faire la fête ou de laisser de la vaisselle sale dans la cuisine. Chaque individu a des habitudes susceptibles d’irriter les autres. C’est pourquoi il est essentiel d’établir des règles de vie en communauté et de les respecter mutuellement. Il est important de communiquer avec ses colocataires chaque fois qu’un problème survient. L’organisation et la discussion sont les clés d’une colocation réussie.",
+      "document2": "",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": true,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 322,
+      "combinaison": "Combinaison 3",
+      "sujet": "L'aide aux personnes pauvres.",
+      "document1": "Tous les ans, en hiver, je donne un peu de mon temps et de mon argent pour aider les personnes qui vivent dans la rue et ont froid. Pour moi, c’est important de se soucier de ceux qui sont dans le besoin. Je trouve très important de donner quelques dollars à ces personnes ou aux associations qui peuvent les aider. Et puis, cette action me donne l’impression d’être utile, au moins une fois dans l’année ! C’est un geste de solidarité qui est à la portée de tout le monde.",
+      "document2": "",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": true,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 712,
+      "combinaison": "Combinaison 13",
+      "sujet": "Travail : Pour ou contre ?",
+      "document1": "Le travail est au centre de notre vie. Dès l’enfance, on entend souvent la question : « Qu’est-ce que tu veux faire quand tu seras grand ? » Le travail devrait être synonyme de réussite et de satisfaction, mais il est trop souvent synonyme de fatigue et d’emprisonnement. Aujourd’hui, beaucoup pensent que l’on ne passe pas assez de temps avec sa famille, ses amis. Il est urgent de revoir la place occupée par le travail dans notre société. Certains pensent que travailler moins permettrait d’avoir plus de temps libre pour mieux vivre.",
+      "document2": "Certaines personnes ont décidé d’arrêter de travailler pour changer de mode de vie. Pourtant, aujourd’hui, travailler, c’est exister. La question : « Qu’est-ce que tu fais dans la vie ? » revient souvent lors d’une première rencontre. Elle prouve que l’emploi fait partie de notre identité. D’après le spécialiste Jean-Daniel Remond, la vie en entreprise est très importante. Les contacts quotidiens, les réseaux, les amitiés, l’impression d’être utile, mais aussi les difficultés, tout cela contribue à construire notre personnalité et notre identité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 722,
+      "combinaison": "Combinaison 14",
+      "sujet": "Faut-il faire ses courses dans des petits magasins ou dans des supermarchés ?",
+      "document1": "Le supermarché est très pratique ; on y trouve une grande variété de produits, tous à portée de main. Vous pouvez garer votre voiture dans le parking et faire le tour des rayons pour acheter tout ce dont vous avez besoin : fruits, légumes, fromages, viandes, boissons... De plus, les supermarchés offrent plusieurs marques pour un même produit, tout en proposant régulièrement des promotions et des remises.",
+      "document2": "ASSOCIATION POUR LA SAUVEGARDE DES PETITS COMMERCES Le défi « Février sans supermarché » a été créé pour limiter la superpuissance des supermarchés et, par conséquent, permettre aux petits commerces de survivre et de réaliser des chiffres d'affaires plus conséquents. Ce défi consiste à boycotter les supermarchés pendant une durée d'un mois, en faisant toutes ses courses dans les épiceries de quartier. Le client aura tout à gagner : il bénéficiera non seulement de produits frais de meilleure qualité, mais aura également l'opportunité de papoter avec les voisins.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

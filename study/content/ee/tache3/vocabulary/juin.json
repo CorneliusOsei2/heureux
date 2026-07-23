@@ -1,0 +1,1246 @@
+{
+  "version": 1,
+  "task": "ee/tache-3",
+  "month": {
+    "number": 6,
+    "slug": "juin",
+    "name": "Juin"
+  },
+  "responses": [
+    {
+      "response_key": "ee-tache3:juin:combinaison-1",
+      "combinaison": "Combinaison 1",
+      "sujet": "Photo sur le CV : pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-JUN-C01-01",
+          "kind": "phrase-modele",
+          "french": "La présence d’une photo sur le CV divise les opinions",
+          "english": "The presence of a photo on a résumé divides opinion",
+          "example": "La présence d’une photo sur le CV divise les opinions.",
+          "usage": "Formule d’ouverture ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-02",
+          "kind": "mot-cle",
+          "french": "photo sur le CV",
+          "english": "photo on a résumé",
+          "example": "La présence d’une photo sur le CV divise les opinions.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-03",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Connecteur adverbial ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-04",
+          "kind": "mot-cle",
+          "french": "ses opposants",
+          "english": "its opponents",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Nom masculin pluriel ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-05",
+          "kind": "tournure",
+          "french": "susceptible de favoriser les discriminations",
+          "english": "likely to foster discrimination",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Construction avec adjectif ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-06",
+          "kind": "mot-cle",
+          "french": "les discriminations",
+          "english": "discrimination",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Nom féminin pluriel ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-07",
+          "kind": "mot-cle",
+          "french": "l’expérience",
+          "english": "experience",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-08",
+          "kind": "mot-cle",
+          "french": "les diplômes",
+          "english": "qualifications",
+          "example": "D’un côté, ses opposants la jugent inutile et susceptible de favoriser les discriminations, puisque les recruteurs privilégient surtout l’expérience et les diplômes.",
+          "usage": "Nom masculin pluriel ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-09",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, ses défenseurs estiment qu’elle aide à identifier puis à mémoriser un candidat, notamment pour certains métiers d’accueil.",
+          "usage": "Connecteur d’opposition ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-10",
+          "kind": "mot-cle",
+          "french": "ses défenseurs",
+          "english": "its supporters",
+          "example": "En revanche, ses défenseurs estiment qu’elle aide à identifier puis à mémoriser un candidat, notamment pour certains métiers d’accueil.",
+          "usage": "Nom masculin pluriel ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-11",
+          "kind": "collocation",
+          "french": "certains métiers d’accueil",
+          "english": "certain customer-facing jobs",
+          "example": "En revanche, ses défenseurs estiment qu’elle aide à identifier puis à mémoriser un candidat, notamment pour certains métiers d’accueil.",
+          "usage": "Groupe nominal ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-12",
+          "kind": "phrase-modele",
+          "french": "À mon avis, la photo devrait rester facultative",
+          "english": "In my opinion, the photo should remain optional",
+          "example": "À mon avis, la photo devrait rester facultative, afin que les compétences déterminent d’abord le recrutement.",
+          "usage": "Formule de prise de position ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-13",
+          "kind": "tournure",
+          "french": "afin que les compétences déterminent d’abord le recrutement",
+          "english": "so that skills determine recruitment first",
+          "example": "À mon avis, la photo devrait rester facultative, afin que les compétences déterminent d’abord le recrutement.",
+          "usage": "Locution suivie du subjonctif ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-14",
+          "kind": "mot-cle",
+          "french": "les compétences",
+          "english": "skills",
+          "example": "À mon avis, la photo devrait rester facultative, afin que les compétences déterminent d’abord le recrutement.",
+          "usage": "Nom féminin pluriel ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-15",
+          "kind": "collocation",
+          "french": "des préjugés conscients ou inconscients",
+          "english": "conscious or unconscious bias",
+          "example": "Tout d’abord, l’apparence peut provoquer des préjugés conscients ou inconscients et réduire l’égalité des chances.",
+          "usage": "Groupe nominal ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-16",
+          "kind": "collocation",
+          "french": "l’égalité des chances",
+          "english": "equal opportunity",
+          "example": "Tout d’abord, l’apparence peut provoquer des préjugés conscients ou inconscients et réduire l’égalité des chances.",
+          "usage": "Groupe nominal ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-17",
+          "kind": "mot-cle",
+          "french": "une candidature anonyme",
+          "english": "an anonymous application",
+          "example": "Ensuite, une candidature anonyme permet au recruteur d’évaluer plus objectivement l’expérience et les diplômes.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-18",
+          "kind": "verbe-action",
+          "french": "évaluer plus objectivement l’expérience et les diplômes",
+          "english": "to assess experience and qualifications more objectively",
+          "example": "Ensuite, une candidature anonyme permet au recruteur d’évaluer plus objectivement l’expérience et les diplômes.",
+          "usage": "Construction infinitive ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une entreprise pourrait masquer les photos et les noms lors de la première sélection, puis rencontrer les candidats retenus selon les mêmes critères.",
+          "usage": "Connecteur d’illustration ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-20",
+          "kind": "collocation",
+          "french": "la première sélection",
+          "english": "the initial screening",
+          "example": "Par exemple, une entreprise pourrait masquer les photos et les noms lors de la première sélection, puis rencontrer les candidats retenus selon les mêmes critères.",
+          "usage": "Groupe nominal ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-21",
+          "kind": "verbe-action",
+          "french": "rencontrer les candidats retenus",
+          "english": "to meet shortlisted candidates",
+          "example": "Par exemple, une entreprise pourrait masquer les photos et les noms lors de la première sélection, puis rencontrer les candidats retenus selon les mêmes critères.",
+          "usage": "Construction infinitive ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-22",
+          "kind": "tournure",
+          "french": "selon les mêmes critères",
+          "english": "according to the same criteria",
+          "example": "Par exemple, une entreprise pourrait masquer les photos et les noms lors de la première sélection, puis rencontrer les candidats retenus selon les mêmes critères.",
+          "usage": "Locution prépositive ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certains portraits professionnels facilitent la mémorisation après un entretien",
+          "english": "However, it must also be acknowledged that some professional portraits aid recall after an interview",
+          "example": "Cependant, il faut aussi reconnaître que certains portraits professionnels facilitent la mémorisation après un entretien.",
+          "usage": "Formule de concession ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-24",
+          "kind": "collocation",
+          "french": "certains portraits professionnels",
+          "english": "some professional portraits",
+          "example": "Cependant, il faut aussi reconnaître que certains portraits professionnels facilitent la mémorisation après un entretien.",
+          "usage": "Groupe nominal ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-25",
+          "kind": "mot-cle",
+          "french": "la mémorisation",
+          "english": "recall",
+          "example": "Cependant, il faut aussi reconnaître que certains portraits professionnels facilitent la mémorisation après un entretien.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-26",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de garantir une procédure équitable centrée sur le savoir-faire.",
+          "usage": "Connecteur conclusif ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-27",
+          "kind": "phrase-modele",
+          "french": "le plus important est de garantir une procédure équitable centrée sur le savoir-faire",
+          "english": "the most important thing is to ensure a fair procedure focused on know-how",
+          "example": "En conclusion, le plus important est de garantir une procédure équitable centrée sur le savoir-faire.",
+          "usage": "Formule de conclusion ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-28",
+          "kind": "mot-cle",
+          "french": "une procédure équitable",
+          "english": "a fair procedure",
+          "example": "En conclusion, le plus important est de garantir une procédure équitable centrée sur le savoir-faire.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-29",
+          "kind": "collocation",
+          "french": "centrée sur le savoir-faire",
+          "english": "focused on know-how",
+          "example": "En conclusion, le plus important est de garantir une procédure équitable centrée sur le savoir-faire.",
+          "usage": "Groupe adjectival ; réutilisable en Emploi/Égalité."
+        },
+        {
+          "id": "E3-JUN-C01-30",
+          "kind": "reformulation",
+          "french": "l’apparence",
+          "english": "appearance",
+          "example": "Tout d’abord, l’apparence peut provoquer des préjugés conscients ou inconscients et réduire l’égalité des chances.",
+          "usage": "Nom féminin ; réutilisable en Emploi/Égalité."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:juin:combinaison-2",
+      "combinaison": "Combinaison 2",
+      "sujet": "Vie en colocation entre adultes.",
+      "entries": [
+        {
+          "id": "E3-JUN-C02-01",
+          "kind": "phrase-modele",
+          "french": "La vie en colocation entre adultes présente des avantages et des inconvénients",
+          "english": "Shared living among adults has advantages and disadvantages",
+          "example": "La vie en colocation entre adultes présente des avantages et des inconvénients.",
+          "usage": "Formule d’ouverture ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-02",
+          "kind": "mot-cle",
+          "french": "la colocation",
+          "english": "shared housing",
+          "example": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Nom féminin ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-03",
+          "kind": "collocation",
+          "french": "des avantages et des inconvénients",
+          "english": "advantages and disadvantages",
+          "example": "La vie en colocation entre adultes présente des avantages et des inconvénients.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-04",
+          "kind": "verbe-action",
+          "french": "établir des règles",
+          "english": "to establish rules",
+          "example": "Le texte insiste sur la nécessité d’établir des règles, de respecter les habitudes de chacun et de discuter dès qu’un conflit apparaît.",
+          "usage": "Construction infinitive ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-05",
+          "kind": "collocation",
+          "french": "les habitudes de chacun",
+          "english": "everyone’s habits",
+          "example": "Le texte insiste sur la nécessité d’établir des règles, de respecter les habitudes de chacun et de discuter dès qu’un conflit apparaît.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-06",
+          "kind": "tournure",
+          "french": "dès qu’un conflit apparaît",
+          "english": "as soon as a conflict arises",
+          "example": "Le texte insiste sur la nécessité d’établir des règles, de respecter les habitudes de chacun et de discuter dès qu’un conflit apparaît.",
+          "usage": "Subordonnée temporelle ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-07",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, une vision opposée souligne que ces contraintes peuvent limiter la liberté, l’intimité et la spontanéité au quotidien.",
+          "usage": "Connecteur d’opposition ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-08",
+          "kind": "mot-cle",
+          "french": "la liberté",
+          "english": "freedom",
+          "example": "En revanche, une vision opposée souligne que ces contraintes peuvent limiter la liberté, l’intimité et la spontanéité au quotidien.",
+          "usage": "Nom féminin ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-09",
+          "kind": "mot-cle",
+          "french": "l’intimité",
+          "english": "privacy",
+          "example": "En revanche, une vision opposée souligne que ces contraintes peuvent limiter la liberté, l’intimité et la spontanéité au quotidien.",
+          "usage": "Nom féminin ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-10",
+          "kind": "tournure",
+          "french": "au quotidien",
+          "english": "on a daily basis",
+          "example": "En revanche, une vision opposée souligne que ces contraintes peuvent limiter la liberté, l’intimité et la spontanéité au quotidien.",
+          "usage": "Locution adverbiale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-11",
+          "kind": "phrase-modele",
+          "french": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ",
+          "english": "In my view, shared housing is rewarding provided responsibilities are defined from the outset",
+          "example": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Formule de position nuancée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-12",
+          "kind": "collocation",
+          "french": "une solution enrichissante",
+          "english": "a rewarding solution",
+          "example": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-13",
+          "kind": "tournure",
+          "french": "à condition que les responsabilités soient définies dès le départ",
+          "english": "provided responsibilities are defined from the outset",
+          "example": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Locution suivie du subjonctif ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-14",
+          "kind": "mot-cle",
+          "french": "les responsabilités",
+          "english": "responsibilities",
+          "example": "Selon moi, la colocation est une solution enrichissante à condition que les responsabilités soient définies dès le départ.",
+          "usage": "Nom féminin pluriel ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-15",
+          "kind": "mot-cle",
+          "french": "les charges financières",
+          "english": "financial costs",
+          "example": "Tout d’abord, elle réduit les charges financières et rompt l’isolement.",
+          "usage": "Nom féminin pluriel ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-16",
+          "kind": "verbe-action",
+          "french": "rompt l’isolement",
+          "english": "breaks isolation",
+          "example": "Tout d’abord, elle réduit les charges financières et rompt l’isolement.",
+          "usage": "Groupe verbal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-17",
+          "kind": "collocation",
+          "french": "une communication ouverte",
+          "english": "open communication",
+          "example": "Ensuite, une communication ouverte apprend à respecter les besoins de chacun.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-18",
+          "kind": "mot-cle",
+          "french": "les besoins de chacun",
+          "english": "everyone’s needs",
+          "example": "Ensuite, une communication ouverte apprend à respecter les besoins de chacun.",
+          "usage": "Nom masculin pluriel ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, trois adultes peuvent fixer un calendrier de ménage, des heures calmes et des règles concernant les invités, puis faire un bilan chaque mois.",
+          "usage": "Connecteur d’illustration ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-20",
+          "kind": "mot-cle",
+          "french": "un calendrier de ménage",
+          "english": "a cleaning schedule",
+          "example": "Par exemple, trois adultes peuvent fixer un calendrier de ménage, des heures calmes et des règles concernant les invités, puis faire un bilan chaque mois.",
+          "usage": "Nom masculin ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-21",
+          "kind": "collocation",
+          "french": "des heures calmes",
+          "english": "quiet hours",
+          "example": "Par exemple, trois adultes peuvent fixer un calendrier de ménage, des heures calmes et des règles concernant les invités, puis faire un bilan chaque mois.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-22",
+          "kind": "tournure",
+          "french": "faire un bilan chaque mois",
+          "english": "to review things every month",
+          "example": "Par exemple, trois adultes peuvent fixer un calendrier de ménage, des heures calmes et des règles concernant les invités, puis faire un bilan chaque mois.",
+          "usage": "Locution verbale ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certaines habitudes incompatibles créent des tensions malgré les efforts",
+          "english": "However, it must also be acknowledged that some incompatible habits create tension despite efforts",
+          "example": "Cependant, il faut aussi reconnaître que certaines habitudes incompatibles créent des tensions malgré les efforts.",
+          "usage": "Formule de concession ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-24",
+          "kind": "collocation",
+          "french": "certaines habitudes incompatibles",
+          "english": "some incompatible habits",
+          "example": "Cependant, il faut aussi reconnaître que certaines habitudes incompatibles créent des tensions malgré les efforts.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-25",
+          "kind": "mot-cle",
+          "french": "des tensions",
+          "english": "tension",
+          "example": "Cependant, il faut aussi reconnaître que certaines habitudes incompatibles créent des tensions malgré les efforts.",
+          "usage": "Nom féminin pluriel ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-26",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Connecteur conclusif ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-27",
+          "kind": "phrase-modele",
+          "french": "le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable",
+          "english": "the most important thing is to choose roommates carefully and preserve a reasonable balance",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Formule de conclusion ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-28",
+          "kind": "mot-cle",
+          "french": "un équilibre raisonnable",
+          "english": "a reasonable balance",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Nom masculin ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-29",
+          "kind": "collocation",
+          "french": "convivialité, respect mutuel et intimité",
+          "english": "conviviality, mutual respect and privacy",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Groupe nominal ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-JUN-C02-30",
+          "kind": "reformulation",
+          "french": "ses colocataires",
+          "english": "one’s roommates",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de préserver un équilibre raisonnable entre convivialité, respect mutuel et intimité.",
+          "usage": "Nom masculin pluriel ; réutilisable en Logement/Société."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:juin:combinaison-3",
+      "combinaison": "Combinaison 3",
+      "sujet": "L'aide aux personnes pauvres.",
+      "entries": [
+        {
+          "id": "E3-JUN-C03-01",
+          "kind": "phrase-modele",
+          "french": "L’aide aux personnes pauvres suscite un débat sur la meilleure forme de solidarité",
+          "english": "Aid for poor people sparks debate over the best form of solidarity",
+          "example": "L’aide aux personnes pauvres suscite un débat sur la meilleure forme de solidarité.",
+          "usage": "Formule d’ouverture ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-02",
+          "kind": "mot-cle",
+          "french": "personnes pauvres",
+          "english": "poor people",
+          "example": "L’aide aux personnes pauvres suscite un débat sur la meilleure forme de solidarité.",
+          "usage": "Nom féminin pluriel ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-03",
+          "kind": "mot-cle",
+          "french": "solidarité",
+          "english": "solidarity",
+          "example": "L’aide aux personnes pauvres suscite un débat sur la meilleure forme de solidarité.",
+          "usage": "Nom féminin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-04",
+          "kind": "collocation",
+          "french": "les dons de temps ou d’argent",
+          "english": "donations of time or money",
+          "example": "Le témoignage défend les dons de temps ou d’argent, accessibles à tous et particulièrement nécessaires en hiver.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-05",
+          "kind": "tournure",
+          "french": "accessibles à tous",
+          "english": "accessible to everyone",
+          "example": "Le témoignage défend les dons de temps ou d’argent, accessibles à tous et particulièrement nécessaires en hiver.",
+          "usage": "Groupe adjectival ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-06",
+          "kind": "expression",
+          "french": "Toutefois",
+          "english": "However",
+          "example": "Toutefois, une position opposée considère ces gestes trop ponctuels et privilégie un accompagnement durable vers le logement, la formation, l’emploi et l’autonomie.",
+          "usage": "Connecteur d’opposition ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-07",
+          "kind": "collocation",
+          "french": "ces gestes trop ponctuels",
+          "english": "these overly sporadic gestures",
+          "example": "Toutefois, une position opposée considère ces gestes trop ponctuels et privilégie un accompagnement durable vers le logement, la formation, l’emploi et l’autonomie.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-08",
+          "kind": "mot-cle",
+          "french": "un accompagnement durable",
+          "english": "lasting support",
+          "example": "Toutefois, une position opposée considère ces gestes trop ponctuels et privilégie un accompagnement durable vers le logement, la formation, l’emploi et l’autonomie.",
+          "usage": "Nom masculin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-09",
+          "kind": "collocation",
+          "french": "vers le logement, la formation, l’emploi et l’autonomie",
+          "english": "toward housing, training, employment and autonomy",
+          "example": "Toutefois, une position opposée considère ces gestes trop ponctuels et privilégie un accompagnement durable vers le logement, la formation, l’emploi et l’autonomie.",
+          "usage": "Groupe prépositionnel ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-10",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter",
+          "english": "Personally, I think immediate aid and long-term support should complement each other",
+          "example": "Personnellement, je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Formule de prise de position ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-11",
+          "kind": "mot-cle",
+          "french": "l’aide immédiate",
+          "english": "immediate aid",
+          "example": "Personnellement, je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Nom féminin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-12",
+          "kind": "mot-cle",
+          "french": "l’accompagnement à long terme",
+          "english": "long-term support",
+          "example": "Personnellement, je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Nom masculin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-13",
+          "kind": "verbe-action",
+          "french": "se compléter",
+          "english": "to complement each other",
+          "example": "Personnellement, je pense que l’aide immédiate et l’accompagnement à long terme doivent se compléter.",
+          "usage": "Verbe pronominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-14",
+          "kind": "collocation",
+          "french": "un secours sans délai",
+          "english": "immediate relief",
+          "example": "Tout d’abord, une personne qui a faim ou froid a besoin d’un secours sans délai.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-15",
+          "kind": "mot-cle",
+          "french": "un suivi régulier",
+          "english": "regular follow-up",
+          "example": "Ensuite, un suivi régulier permet d’agir sur les causes de l’exclusion.",
+          "usage": "Nom masculin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-16",
+          "kind": "verbe-action",
+          "french": "agir sur les causes de l’exclusion",
+          "english": "to address the causes of exclusion",
+          "example": "Ensuite, un suivi régulier permet d’agir sur les causes de l’exclusion.",
+          "usage": "Construction infinitive ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-17",
+          "kind": "mot-cle",
+          "french": "les causes de l’exclusion",
+          "english": "the causes of exclusion",
+          "example": "Ensuite, un suivi régulier permet d’agir sur les causes de l’exclusion.",
+          "usage": "Nom féminin pluriel ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-18",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud, puis aider le bénéficiaire à obtenir une adresse, une formation et un emploi stable.",
+          "usage": "Connecteur d’illustration ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-19",
+          "kind": "collocation",
+          "french": "un repas chaud",
+          "english": "a hot meal",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud, puis aider le bénéficiaire à obtenir une adresse, une formation et un emploi stable.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-20",
+          "kind": "mot-cle",
+          "french": "le bénéficiaire",
+          "english": "the beneficiary",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud, puis aider le bénéficiaire à obtenir une adresse, une formation et un emploi stable.",
+          "usage": "Nom masculin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-21",
+          "kind": "mot-cle",
+          "french": "un emploi stable",
+          "english": "stable employment",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud, puis aider le bénéficiaire à obtenir une adresse, une formation et un emploi stable.",
+          "usage": "Nom masculin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-22",
+          "kind": "tournure",
+          "french": "obtenir une adresse, une formation et un emploi stable",
+          "english": "to obtain an address, training and stable employment",
+          "example": "Par exemple, à Montréal, une association peut offrir un repas chaud, puis aider le bénéficiaire à obtenir une adresse, une formation et un emploi stable.",
+          "usage": "Construction infinitive ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que ces actions exigent des professionnels et des ressources durables",
+          "english": "However, it must also be acknowledged that these actions require professionals and lasting resources",
+          "example": "Cependant, il faut aussi reconnaître que ces actions exigent des professionnels et des ressources durables.",
+          "usage": "Formule de concession ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-24",
+          "kind": "collocation",
+          "french": "des ressources durables",
+          "english": "lasting resources",
+          "example": "Cependant, il faut aussi reconnaître que ces actions exigent des professionnels et des ressources durables.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-25",
+          "kind": "tournure",
+          "french": "exigent des professionnels",
+          "english": "require professionals",
+          "example": "Cependant, il faut aussi reconnaître que ces actions exigent des professionnels et des ressources durables.",
+          "usage": "Groupe verbal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-26",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de conjuguer une solidarité concrète et des solutions qui restaurent l’autonomie.",
+          "usage": "Connecteur conclusif ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-27",
+          "kind": "phrase-modele",
+          "french": "le plus important est de conjuguer une solidarité concrète et des solutions qui restaurent l’autonomie",
+          "english": "the most important thing is to combine practical solidarity with solutions that restore autonomy",
+          "example": "En conclusion, le plus important est de conjuguer une solidarité concrète et des solutions qui restaurent l’autonomie.",
+          "usage": "Formule de conclusion ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-28",
+          "kind": "collocation",
+          "french": "une solidarité concrète",
+          "english": "practical solidarity",
+          "example": "En conclusion, le plus important est de conjuguer une solidarité concrète et des solutions qui restaurent l’autonomie.",
+          "usage": "Groupe nominal ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-29",
+          "kind": "mot-cle",
+          "french": "l’autonomie",
+          "english": "autonomy",
+          "example": "En conclusion, le plus important est de conjuguer une solidarité concrète et des solutions qui restaurent l’autonomie.",
+          "usage": "Nom féminin ; réutilisable en Solidarité/Emploi."
+        },
+        {
+          "id": "E3-JUN-C03-30",
+          "kind": "reformulation",
+          "french": "ces actions",
+          "english": "these initiatives",
+          "example": "Cependant, il faut aussi reconnaître que ces actions exigent des professionnels et des ressources durables.",
+          "usage": "Groupe nominal pluriel ; réutilisable en Solidarité/Emploi."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:juin:combinaison-13",
+      "combinaison": "Combinaison 13",
+      "sujet": "Travail : Pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-JUN-C13-01",
+          "kind": "phrase-modele",
+          "french": "La place du travail dans la vie oppose deux visions de l’épanouissement",
+          "english": "The place of work in life contrasts two visions of fulfilment",
+          "example": "La place du travail dans la vie oppose deux visions de l’épanouissement.",
+          "usage": "Formule d’ouverture ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-02",
+          "kind": "mot-cle",
+          "french": "place du travail",
+          "english": "the place of work",
+          "example": "La place du travail dans la vie oppose deux visions de l’épanouissement.",
+          "usage": "Nom féminin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-03",
+          "kind": "mot-cle",
+          "french": "l’épanouissement",
+          "english": "fulfilment",
+          "example": "La place du travail dans la vie oppose deux visions de l’épanouissement.",
+          "usage": "Nom masculin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-04",
+          "kind": "mot-cle",
+          "french": "la fatigue",
+          "english": "fatigue",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Nom féminin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-05",
+          "kind": "collocation",
+          "french": "le manque de temps consacré aux proches",
+          "english": "the lack of time devoted to loved ones",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-06",
+          "kind": "tournure",
+          "french": "travailler moins pour mieux vivre",
+          "english": "to work less in order to live better",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Construction infinitive ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-07",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second présente l’emploi comme une source d’identité, de lien social, d’apprentissage et de sentiment d’utilité.",
+          "usage": "Connecteur d’opposition ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-08",
+          "kind": "mot-cle",
+          "french": "une source d’identité",
+          "english": "a source of identity",
+          "example": "En revanche, le second présente l’emploi comme une source d’identité, de lien social, d’apprentissage et de sentiment d’utilité.",
+          "usage": "Nom féminin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-09",
+          "kind": "mot-cle",
+          "french": "lien social",
+          "english": "social connection",
+          "example": "En revanche, le second présente l’emploi comme une source d’identité, de lien social, d’apprentissage et de sentiment d’utilité.",
+          "usage": "Nom masculin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-10",
+          "kind": "collocation",
+          "french": "sentiment d’utilité",
+          "english": "a sense of usefulness",
+          "example": "En revanche, le second présente l’emploi comme une source d’identité, de lien social, d’apprentissage et de sentiment d’utilité.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-11",
+          "kind": "phrase-modele",
+          "french": "À mon avis, le travail contribue à l’épanouissement, mais il ne doit pas envahir toute l’existence",
+          "english": "In my opinion, work contributes to fulfilment, but it must not take over one’s whole life",
+          "example": "À mon avis, le travail contribue à l’épanouissement, mais il ne doit pas envahir toute l’existence.",
+          "usage": "Formule de position nuancée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-12",
+          "kind": "verbe-action",
+          "french": "contribue à l’épanouissement",
+          "english": "contributes to fulfilment",
+          "example": "À mon avis, le travail contribue à l’épanouissement, mais il ne doit pas envahir toute l’existence.",
+          "usage": "Groupe verbal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-13",
+          "kind": "tournure",
+          "french": "ne doit pas envahir toute l’existence",
+          "english": "must not take over one’s whole life",
+          "example": "À mon avis, le travail contribue à l’épanouissement, mais il ne doit pas envahir toute l’existence.",
+          "usage": "Proposition négative ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-14",
+          "kind": "mot-cle",
+          "french": "un emploi stable",
+          "english": "stable employment",
+          "example": "Tout d’abord, un emploi stable procure des revenus, des relations et un sentiment d’utilité.",
+          "usage": "Nom masculin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-15",
+          "kind": "expression",
+          "french": "De plus",
+          "english": "Moreover",
+          "example": "De plus, des conditions de travail équilibrées protègent la santé et la vie familiale.",
+          "usage": "Connecteur de progression ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-16",
+          "kind": "collocation",
+          "french": "des conditions de travail équilibrées",
+          "english": "balanced working conditions",
+          "example": "De plus, des conditions de travail équilibrées protègent la santé et la vie familiale.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-17",
+          "kind": "mot-cle",
+          "french": "la vie familiale",
+          "english": "family life",
+          "example": "De plus, des conditions de travail équilibrées protègent la santé et la vie familiale.",
+          "usage": "Nom féminin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-18",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une entreprise qui adopte une semaine de quatre jours peut maintenir ses objectifs tout en laissant aux salariés davantage de temps pour leurs proches.",
+          "usage": "Connecteur d’illustration ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-19",
+          "kind": "collocation",
+          "french": "une semaine de quatre jours",
+          "english": "a four-day workweek",
+          "example": "Par exemple, une entreprise qui adopte une semaine de quatre jours peut maintenir ses objectifs tout en laissant aux salariés davantage de temps pour leurs proches.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-20",
+          "kind": "verbe-action",
+          "french": "maintenir ses objectifs",
+          "english": "to maintain one’s targets",
+          "example": "Par exemple, une entreprise qui adopte une semaine de quatre jours peut maintenir ses objectifs tout en laissant aux salariés davantage de temps pour leurs proches.",
+          "usage": "Construction infinitive ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-21",
+          "kind": "tournure",
+          "french": "tout en laissant aux salariés davantage de temps",
+          "english": "while giving employees more time",
+          "example": "Par exemple, une entreprise qui adopte une semaine de quatre jours peut maintenir ses objectifs tout en laissant aux salariés davantage de temps pour leurs proches.",
+          "usage": "Gérondif concessif ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-22",
+          "kind": "mot-cle",
+          "french": "salariés",
+          "english": "employees",
+          "example": "Par exemple, une entreprise qui adopte une semaine de quatre jours peut maintenir ses objectifs tout en laissant aux salariés davantage de temps pour leurs proches.",
+          "usage": "Nom masculin pluriel ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que cette organisation n’est pas possible dans tous les secteurs",
+          "english": "However, it must also be acknowledged that this arrangement is not possible in every sector",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation n’est pas possible dans tous les secteurs.",
+          "usage": "Formule de concession ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-24",
+          "kind": "collocation",
+          "french": "dans tous les secteurs",
+          "english": "in every sector",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation n’est pas possible dans tous les secteurs.",
+          "usage": "Groupe prépositionnel ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-25",
+          "kind": "mot-cle",
+          "french": "un travail digne",
+          "english": "decent work",
+          "example": "En définitive, le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle.",
+          "usage": "Nom masculin ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-26",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle.",
+          "usage": "Connecteur conclusif ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-27",
+          "kind": "phrase-modele",
+          "french": "le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle",
+          "english": "the most important thing is to ensure decent work without sacrificing work-life balance",
+          "example": "En définitive, le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle.",
+          "usage": "Formule de conclusion ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-28",
+          "kind": "collocation",
+          "french": "l’équilibre entre vie professionnelle et personnelle",
+          "english": "work-life balance",
+          "example": "En définitive, le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle.",
+          "usage": "Groupe nominal ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-29",
+          "kind": "tournure",
+          "french": "sans sacrifier l’équilibre",
+          "english": "without sacrificing balance",
+          "example": "En définitive, le plus important est de garantir un travail digne sans sacrifier l’équilibre entre vie professionnelle et personnelle.",
+          "usage": "Locution prépositive ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-JUN-C13-30",
+          "kind": "reformulation",
+          "french": "l’emploi",
+          "english": "employment",
+          "example": "En revanche, le second présente l’emploi comme une source d’identité, de lien social, d’apprentissage et de sentiment d’utilité.",
+          "usage": "Nom masculin ; réutilisable en Travail/Bien-être."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:juin:combinaison-14",
+      "combinaison": "Combinaison 14",
+      "sujet": "Faut-il faire ses courses dans des petits magasins ou dans des supermarchés ?",
+      "entries": [
+        {
+          "id": "E3-JUN-C14-01",
+          "kind": "phrase-modele",
+          "french": "Le choix entre petits magasins et supermarchés divise les consommateurs",
+          "english": "The choice between small shops and supermarkets divides consumers",
+          "example": "Le choix entre petits magasins et supermarchés divise les consommateurs.",
+          "usage": "Formule d’ouverture ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-02",
+          "kind": "mot-cle",
+          "french": "les consommateurs",
+          "english": "consumers",
+          "example": "Le choix entre petits magasins et supermarchés divise les consommateurs.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-03",
+          "kind": "mot-cle",
+          "french": "grandes surfaces",
+          "english": "large supermarkets",
+          "example": "Le premier document valorise la praticité des grandes surfaces, leur vaste choix, leurs stationnements et leurs promotions.",
+          "usage": "Nom féminin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-04",
+          "kind": "collocation",
+          "french": "leur vaste choix",
+          "english": "their wide selection",
+          "example": "Le premier document valorise la praticité des grandes surfaces, leur vaste choix, leurs stationnements et leurs promotions.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-05",
+          "kind": "mot-cle",
+          "french": "leurs promotions",
+          "english": "their special offers",
+          "example": "Le premier document valorise la praticité des grandes surfaces, leur vaste choix, leurs stationnements et leurs promotions.",
+          "usage": "Nom féminin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-06",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second encourage les achats dans les commerces de quartier afin de soutenir leur survie, de profiter de produits frais et de renforcer la convivialité locale.",
+          "usage": "Connecteur d’opposition ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-07",
+          "kind": "mot-cle",
+          "french": "les commerces de quartier",
+          "english": "neighbourhood shops",
+          "example": "En revanche, le second encourage les achats dans les commerces de quartier afin de soutenir leur survie, de profiter de produits frais et de renforcer la convivialité locale.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-08",
+          "kind": "verbe-action",
+          "french": "soutenir leur survie",
+          "english": "to support their survival",
+          "example": "En revanche, le second encourage les achats dans les commerces de quartier afin de soutenir leur survie, de profiter de produits frais et de renforcer la convivialité locale.",
+          "usage": "Construction infinitive ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-09",
+          "kind": "collocation",
+          "french": "produits frais",
+          "english": "fresh products",
+          "example": "En revanche, le second encourage les achats dans les commerces de quartier afin de soutenir leur survie, de profiter de produits frais et de renforcer la convivialité locale.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-10",
+          "kind": "collocation",
+          "french": "la convivialité locale",
+          "english": "local conviviality",
+          "example": "En revanche, le second encourage les achats dans les commerces de quartier afin de soutenir leur survie, de profiter de produits frais et de renforcer la convivialité locale.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-11",
+          "kind": "phrase-modele",
+          "french": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier",
+          "english": "In my view, both models can coexist, but small shops deserve regular support",
+          "example": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier.",
+          "usage": "Formule de position nuancée ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-12",
+          "kind": "reformulation",
+          "french": "les deux modèles",
+          "english": "both models",
+          "example": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-13",
+          "kind": "verbe-action",
+          "french": "peuvent coexister",
+          "english": "can coexist",
+          "example": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier.",
+          "usage": "Groupe verbal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-14",
+          "kind": "mot-cle",
+          "french": "les petits commerces",
+          "english": "small shops",
+          "example": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-15",
+          "kind": "collocation",
+          "french": "un soutien régulier",
+          "english": "regular support",
+          "example": "Selon moi, les deux modèles peuvent coexister, mais les petits commerces méritent un soutien régulier.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-16",
+          "kind": "mot-cle",
+          "french": "lien social",
+          "english": "social connection",
+          "example": "Tout d’abord, ils maintiennent des emplois et du lien social dans le quartier.",
+          "usage": "Nom masculin ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-17",
+          "kind": "tournure",
+          "french": "dans le quartier",
+          "english": "in the neighbourhood",
+          "example": "Tout d’abord, ils maintiennent des emplois et du lien social dans le quartier.",
+          "usage": "Groupe prépositionnel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-18",
+          "kind": "expression",
+          "french": "Ensuite",
+          "english": "Next",
+          "example": "Ensuite, les supermarchés restent utiles pour regrouper les achats et maîtriser le budget grâce aux prix bas.",
+          "usage": "Connecteur de progression ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-19",
+          "kind": "tournure",
+          "french": "regrouper les achats",
+          "english": "to combine purchases",
+          "example": "Ensuite, les supermarchés restent utiles pour regrouper les achats et maîtriser le budget grâce aux prix bas.",
+          "usage": "Construction infinitive ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-20",
+          "kind": "tournure",
+          "french": "maîtriser le budget grâce aux prix bas",
+          "english": "to keep the budget under control thanks to low prices",
+          "example": "Ensuite, les supermarchés restent utiles pour regrouper les achats et maîtriser le budget grâce aux prix bas.",
+          "usage": "Construction infinitive ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-21",
+          "kind": "mot-cle",
+          "french": "prix bas",
+          "english": "low prices",
+          "example": "Ensuite, les supermarchés restent utiles pour regrouper les achats et maîtriser le budget grâce aux prix bas.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-22",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une famille peut acheter ses produits frais chez un marchand local, puis se rendre une fois par mois en grande surface pour les articles ménagers.",
+          "usage": "Connecteur d’illustration ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-23",
+          "kind": "collocation",
+          "french": "un marchand local",
+          "english": "a local shopkeeper",
+          "example": "Par exemple, une famille peut acheter ses produits frais chez un marchand local, puis se rendre une fois par mois en grande surface pour les articles ménagers.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-24",
+          "kind": "mot-cle",
+          "french": "les articles ménagers",
+          "english": "household items",
+          "example": "Par exemple, une famille peut acheter ses produits frais chez un marchand local, puis se rendre une fois par mois en grande surface pour les articles ménagers.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-25",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les commerces indépendants proposent parfois moins de choix et des tarifs plus élevés",
+          "english": "However, it must also be acknowledged that independent shops sometimes offer less choice and higher prices",
+          "example": "Cependant, il faut aussi reconnaître que les commerces indépendants proposent parfois moins de choix et des tarifs plus élevés.",
+          "usage": "Formule de concession ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-26",
+          "kind": "collocation",
+          "french": "des tarifs plus élevés",
+          "english": "higher prices",
+          "example": "Cependant, il faut aussi reconnaître que les commerces indépendants proposent parfois moins de choix et des tarifs plus élevés.",
+          "usage": "Groupe nominal ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-27",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de consommer de manière réfléchie en conciliant proximité, qualité, praticité et moyens financiers.",
+          "usage": "Connecteur conclusif ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de consommer de manière réfléchie en conciliant proximité, qualité, praticité et moyens financiers",
+          "english": "the most important thing is to consume thoughtfully by balancing proximity, quality, convenience and financial means",
+          "example": "En conclusion, le plus important est de consommer de manière réfléchie en conciliant proximité, qualité, praticité et moyens financiers.",
+          "usage": "Formule de conclusion ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-29",
+          "kind": "tournure",
+          "french": "consommer de manière réfléchie",
+          "english": "to consume thoughtfully",
+          "example": "En conclusion, le plus important est de consommer de manière réfléchie en conciliant proximité, qualité, praticité et moyens financiers.",
+          "usage": "Construction infinitive ; réutilisable en Consommation/Économie."
+        },
+        {
+          "id": "E3-JUN-C14-30",
+          "kind": "mot-cle",
+          "french": "moyens financiers",
+          "english": "financial means",
+          "example": "En conclusion, le plus important est de consommer de manière réfléchie en conciliant proximité, qualité, praticité et moyens financiers.",
+          "usage": "Nom masculin pluriel ; réutilisable en Consommation/Économie."
+        }
+      ]
+    }
+  ]
+}

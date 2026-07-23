@@ -1,0 +1,264 @@
+{
+  "month": {
+    "number": 7,
+    "slug": "juillet",
+    "name": "Juillet"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 19,
+  "sujets": [
+    {
+      "id": 300,
+      "combinaison": "Combinaison 1",
+      "sujet": "La Chasse aux Animaux : Pour ou Contre ?",
+      "document1": "“Je suis de ceux qui n’arrivent pas à comprendre comment l’on peut prendre du plaisir à tuer des animaux. Je suis de ceux qui n’arrivent pas à comprendre comment on peut prétendre aimer la nature alors qu’on la détruit”, Gala 29 ans",
+      "document2": "“Les gens chassent pour différentes raisons : la subsistance, le commerce, la conservation et l’aménagement de la faune, la protection de la propriété, l’exercice, le loisir et le prestige.” David, Journaliste de la FRM",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 301,
+      "combinaison": "Combinaison 2",
+      "sujet": "Les Produits Faits Maison : Pour Ou Contre ?",
+      "document1": "Fabriquer vos propres produits biologiques à la maison offre un contrôle total sur les ingrédients, garantissant des options plus saines et personnalisées. Cela contribue également à réduire les déchets plastiques grâce à des emballages réutilisables. De plus, vous économiserez de l’argent à long terme et développerez des compétences créatives, favorisant ainsi un mode de vie plus durable.",
+      "document2": "Cependant, la fabrication de produits biologiques à domicile comporte des risques. Les erreurs de formulation peuvent entraîner des produits inefficaces ou irritants. De plus, le temps et les efforts nécessaires pour trouver et préparer les ingrédients peuvent être contraignants. Il y a également un manque de garantie de sécurité et de stabilité des produits faits maison, avec un risque accru de contamination bactérienne si les produits ne sont pas correctement conservés. Enfin, le coût initial élevé pour l’achat d’ingrédients de qualité peut être dissuasif pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 302,
+      "combinaison": "Combinaison 3",
+      "sujet": "Livraison de repas au bureau : pour ou contre ?",
+      "document1": "La livraison de repas permet de gagner du temps. Par exemple, quand on travaille, on peut se faire livrer un repas au bureau sans se déplacer. On perd moins de temps pendant la pause déjeuner, on rentre donc plus tôt chez soi. Généralement, cela offre plus de choix : si un de nos collègues veut commander une pizza mais que nous souhaitons manger des sushis, plus de disputes, il suffit de commander des plats dans différents restaurants. L’autre avantage de ce nouveau mode de consommation est qu’il est disponible à toute heure. En effet, on trouve toujours des restaurants qui restent ouverts 24 heures sur 24. Céline, 25 ans",
+      "document2": "Cette pratique révèle souvent des inconvénients à cause de sa notoriété montante. Certains jours, il arrive que les responsables de livraisons soient envahis par un grand nombre de livraisons à faire et cela risque de générer des perturbations liées au stress de l’attente. De même pour les employés, une trop longue heure de travail peut causer un état de fatigue si ce dernier ne quitte pas son bureau pour le repas. Dans tous les cas, il est recommandé de toujours marquer des temps de pause lors des durs labeurs.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 303,
+      "combinaison": "Combinaison 4",
+      "sujet": "Caméras de surveillance : pour ou contre ?",
+      "document1": "De nos jours, il y a de plus en plus de caméras de surveillance dans les villes. La vidéosurveillance est appréciée par les Français car cela leur donne un sentiment de sécurité. D’après un sondage, 75 % d’entre eux sont pour le développement de la vidéosurveillance. Ils seraient d’accord pour être filmés, mais seulement dans l’espace public : la rue, les magasins ou encore les transports. Cependant, ils refusent d’être surveillés par leur employeur. En France, peu de caméras de vidéosurveillance sont installées sur le lieu de travail.",
+      "document2": "Certaines enquêtes montrent que la vidéosurveillance coûte cher et que ses résultats sont insuffisants. D’une part, la présence des caméras est facile à remarquer. Par conséquent, la vidéosurveillance est inutile pour éviter les vols, la consommation de drogue et la violence dans les villes. D’autre part, l’utilisation de la vidéosurveillance demande beaucoup de personnel. Une étude allemande montre que sept personnes par caméra sont nécessaires pour analyser les informations.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 304,
+      "combinaison": "Combinaison 5",
+      "sujet": "Les jeux vidéo",
+      "document1": "Les jeux vidéo ont la réputation d’être néfastes ; cependant, plusieurs études montrent qu’en y jouant, un adulte peut développer des capacités cognitives ; ils permettent par exemple d’améliorer l’aptitude à réagir. Cela peut être considéré comme un point positif surtout si on sait que 88,4 % des joueurs sont des adultes. Cela dit, il faut rester vigilant car de nombreux jeux favorisent plutôt la violence et l’addiction et ne développent par conséquent aucune zone du cerveau.",
+      "document2": "Vu les chiffres d’affaires de plus en plus importants qu’ils réalisent, les jeux vidéo font régulièrement l’objet de plusieurs études. Parmi ces études, une a duré trois ans et s’est intéressée à des enfants âgés de 8 à 17 ans. Son résultat n’est sans doute pas une grande surprise ; les enfants les plus addicts aux jeux développent des comportements violents, nerveux et sont souvent stressés. Dans certains cas, cela peut même se répercuter sur les résultats scolaires. Il est donc primordial que les parents interviennent afin d’imposer des règles et limiter le temps de jeu.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 305,
+      "combinaison": "Combinaison 6",
+      "sujet": "Le bien-être au travail.",
+      "document1": "Nous avons installé, dans votre entreprise, des bureaux réglables qui montent et descendent, ceci pour permettre aux employés de choisir la position qui leur convient le mieux pour travailler. Les employés sont satisfaits et disent qu’ils sont plus productifs et plus efficaces lors des négociations au téléphone, par exemple. Même le climat social est plus convivial et la communication verbale entre collègues s’est renforcée. « Lorie, responsable ».",
+      "document2": "De nos jours, les entreprises veulent toujours plus de productivité et d’efficacité, et les employés passent plus de temps sur les lieux de travail. Les entreprises cherchent toujours des moyens ou astuces pour convaincre leurs employés de travailler plus et qu’elles pensent à leur santé. Moi, ce qui m’importe, c’est de faire mon job sur mon temps de travail réel sans être obligé de faire des rallonges en heures supplémentaires. « Florian, ingénieur ».",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 306,
+      "combinaison": "Combinaison 7",
+      "sujet": "Égalité Homme/Femme en Milieu de Travail",
+      "document1": "Certains postes sont majoritairement occupés par des hommes. Au Québec, l’égalité entre les femmes et les hommes est respectée, les femmes peuvent exercer les métiers réservés aux hommes tels que les postes de direction.",
+      "document2": "Malgré les efforts pour imposer la parité à tous les postes dans les entreprises et les collectivités, il y a, dans les faits, des métiers où les femmes sont largement majoritaires tels que : les sages-femmes. De plus, les femmes ne doivent pas faire les métiers d’homme, car elles doivent prendre soin de leurs enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 307,
+      "combinaison": "Combinaison 8",
+      "sujet": "La gratuité des transports en commun : pour ou contre ?",
+      "document1": "Les transports en commun gratuits, c’est une très bonne idée. Cela permet de diminuer le nombre de voitures en ville et d’éviter les bouchons. C’est aussi une bonne mesure pour réduire la pollution et donc les risques de maladies respiratoires. Dans ma ville, il y a des transports en commun gratuits. On observe que les gens utilisent plus souvent les transports publics depuis que la gratuité est en place. Cette mesure a aussi profité aux commerçants : les gens reviennent faire leurs achats dans le centre-ville et vont moins dans les hypermarchés.",
+      "document2": "L’idée n’est pas bonne. D’une part, cela coûterait cher aux villes. Or, il me semble que la ville de Toulouse a d’autres problèmes à régler en priorité. Par exemple, il faudrait d’abord réaménager les espaces verts, cela profiterait à tout le monde. D’autre part, il vaudrait mieux réorganiser les transports publics au lieu de les rendre gratuits. Aujourd’hui, les gens préfèrent prendre leur voiture parce que la ville manque de transports publics dans certains quartiers éloignés. Enfin, selon moi, il faut garder les transports publics payants. Les gens respecteront davantage les équipements s’ils participent à leur financement en payant un titre de transport.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 308,
+      "combinaison": "Combinaison 9",
+      "sujet": "Les Devoirs à la Maison.",
+      "document1": "Selon des associations de parents d’élèves, les devoirs à la maison sont utiles, car ils permettent aux élèves d’apprendre à organiser leur temps de manière autonome. Pour les parents, les devoirs sont un lien quotidien avec l’école. Même s’il est parfois difficile de suivre les devoirs après une journée de travail fatigante, ils apprécient ce moment partagé avec leurs enfants parce que ceux-ci sont contents que leurs parents s’intéressent à eux. C’est valorisant !",
+      "document2": "Nous protestons depuis longtemps contre les devoirs à la maison pour plusieurs raisons. Personne n’a jamais prouvé leur utilité pour améliorer les résultats des élèves. Beaucoup de parents ont peu de temps pour encadrer les devoirs de leurs enfants et certains parents ne savent pas le faire. Quant aux élèves, ceux qui ont réussi les exercices en classe perdent leur temps à faire à la maison. Ceux qui ne sont pas aidés à la maison ne réussissent toujours pas, ils sont défavorisés. C’est pourquoi nous pensons qu’il faut supprimer les devoirs à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 309,
+      "combinaison": "Combinaison 10",
+      "sujet": "Les écoles privées ou publiques ?",
+      "document1": "À la rentrée, le nombre d’élèves inscrits dans des écoles privées a augmenté en France. Le succès des établissements privés n’est pas directement lié aux bons résultats scolaires de leurs élèves. C’est la réputation de ces lieux qui explique un tel enthousiasme. Aux yeux de nombreux parents, les élèves y sont mieux encadrés, mieux surveillés et les professeurs sont plus présents. Les parents sont aussi rassurés parce que les classes sont homogènes : elles accueillent généralement des élèves de milieux sociaux favorisés. En effet, les études dans ces établissements sont payantes, ce qui n’est pas le cas dans les écoles publiques.",
+      "document2": "Dans les collèges privés, il y a peu d’élèves de milieux sociaux défavorisés. Comme les études dans ces établissements sont payantes, certaines catégories de population en sont exclues. Ce système qui oppose écoles publiques et écoles privées ne facilite pas la mixité sociale. Ainsi, les élèves du privé ont rarement l’occasion de rencontrer d’autres jeunes issus de milieux sociaux moins favorisés qu’eux et inversement. Ce modèle scolaire reproduit les inégalités sociales et renforce le sentiment d’exclusion de certains jeunes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 310,
+      "combinaison": "Combinaison 11",
+      "sujet": "les produits faits maison : pour ou contre ?",
+      "document1": "Fabriquer vos propres produits biologiques à la maison offre un contrôle total sur les ingrédients, garantissant des options plus saines et personnalisées. Cela contribue également à réduire les déchets plastiques grâce à des emballages réutilisables. De plus, vous économiserez de l’argent à long terme et développerez des compétences créatives, favorisant ainsi un mode de vie plus durable.",
+      "document2": "Cependant, la fabrication de produits biologiques à domicile comporte des risques. Les erreurs de formulation peuvent entraîner des produits inefficaces ou irritants. De plus, le temps et les efforts nécessaires pour trouver et préparer les ingrédients peuvent être contraignants. Il y a également un manque de garantie de sécurité et de stabilité des produits faits maison, avec un risque accru de contamination bactérienne si les produits ne sont pas correctement conservés. Enfin, le coût initial élevé pour l’achat d’ingrédients de qualité peut être dissuasif pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 311,
+      "combinaison": "Combinaison 12",
+      "sujet": "Utilisation Des Nouvelles Technologies Dans Les Écoles : Pour Ou Contre ?",
+      "document1": "Jean : Je suis fermement convaincu que l’intégration des nouvelles technologies dans les écoles est cruciale pour préparer les élèves à un avenir numérique. Je pense que l’usage des tablettes et des ordinateurs stimule non seulement l’engagement des élèves mais enrichit également leur expérience éducative en leur offrant un accès facile à une variété de ressources, encourageant ainsi leur créativité et autonomie.",
+      "document2": "Sara : Je suis sceptique quant à l’usage intensif des technologies dans l’enseignement. Je crois que cela peut réduire les interactions humaines essentielles et favoriser une dépendance préoccupante aux écrans. À mon avis, les méthodes d’enseignement traditionnelles et le contact direct entre enseignants et élèves restent indispensables pour un développement équilibré et complet des compétences des jeunes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 312,
+      "combinaison": "Combinaison 13",
+      "sujet": "Caméras de surveillance : pour ou contre ?",
+      "document1": "De nos jours, il y a de plus en plus de caméras de surveillance dans les villes. La vidéosurveillance est appréciée par les Français car cela leur donne un sentiment de sécurité. D’après un sondage, 75 % d’entre eux sont pour le développement de la vidéosurveillance. Ils seraient d’accord pour être filmés, mais seulement dans l’espace public : la rue, les magasins ou encore les transports. Cependant, ils refusent d’être surveillés par leur employeur. En France, peu de caméras de vidéosurveillance sont installées sur le lieu de travail.",
+      "document2": "Certaines enquêtes montrent que la vidéosurveillance coûte cher et que ses résultats sont insuffisants. D’une part, la présence des caméras est facile à remarquer. Par conséquent, la vidéosurveillance est inutile pour éviter les vols, la consommation de drogue et la violence dans les villes. D’autre part, l’utilisation de la vidéosurveillance demande beaucoup de personnel. Une étude allemande montre que sept personnes par caméra sont nécessaires pour analyser les informations.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 313,
+      "combinaison": "Combinaison 14",
+      "sujet": "Les Vêtements de Grandes Marques",
+      "document1": "Les vêtements de marques sont très importants pour les enfants et les adolescents. C’est un moyen de s’exprimer et de se rattacher à un groupe social. Cette attirance pour les marques est très présente chez les adolescents qui se cherchent et montrent leur personnalité. Les enfants aiment également porter des vêtements de marques avec des images des dessins animés qu’ils regardent ou des logos qu’ils apprécient.",
+      "document2": "Les enfants grandissent très vite et les vêtements sont portés pendant une courte période. Ainsi, les vêtements deviennent rapidement trop petits. Mais il y a aussi le fait que les enfants usent assez rapidement les vêtements en jouant à l’extérieur avec les copains, en s’amusant dans l’herbe ou à l’aire de jeux. Les habits sont très vite sales ou troués.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 314,
+      "combinaison": "Combinaison 15",
+      "sujet": "La Réduction Du Temps De Travail",
+      "document1": "La réduction du temps de travail permet aux employés de mieux équilibrer leur vie professionnelle et personnelle. En travaillant moins, ils peuvent consacrer plus de temps à leur famille, à leurs loisirs et à leur santé. Cela peut également augmenter leur satisfaction au travail et réduire le stress, améliorant ainsi leur productivité globale.",
+      "document2": "La réduction du temps de travail peut bénéficier aux entreprises en diminuant l’absentéisme et en améliorant la rétention des employés. Avec des horaires plus flexibles, les employés sont souvent plus motivés et engagés. Cependant, cela nécessite une bonne organisation et une adaptation des processus pour maintenir l’efficacité et répondre aux besoins de l’entreprise.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 316,
+      "combinaison": "Combinaison 41",
+      "sujet": "Cuisinier amateur ou cuisinier professionnel ?",
+      "document1": "Les amateurs ont fait des recettes réussies, mais ils manquent toujours de compétences et de technique, c’est pourquoi la formation et l’expérience sont nécessaires pour être un vrai cuisinier.",
+      "document2": "Il parle des cuisiniers qui ont appris le métier de cuisinier sur internet et qui ont le buzz sur les réseaux sociaux ; il raconte aussi l’histoire d’une amatrice qui est devenue professionnelle et qui a rédigé plusieurs livres sur la cuisine pour les amateurs de cuisine à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 317,
+      "combinaison": "Combinaison 42",
+      "sujet": "Vivre en colocation",
+      "document1": "La vie en colocation offre de nombreux avantages. Partager un logement avec d’autres personnes permet de réduire les dépenses, que ce soit le loyer, les factures ou les frais généraux. De plus, cela favorise les interactions sociales et les échanges culturels. Vivre avec des colocataires permet de rencontrer des individus de différents horizons, de nouer des amitiés et de partager des expériences enrichissantes.",
+      "document2": "La colocation peut cependant présenter des défis. Les différences de personnalité et de mode de vie entre les colocataires peuvent entraîner des tensions. La gestion des responsabilités et des tâches ménagères peut également être source de conflits. De plus, la colocation peut limiter l’intimité et l’espace personnel. Il est important d’établir une communication ouverte et respectueuse, ainsi que des règles de vie commune, pour favoriser une cohabitation harmonieuse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 318,
+      "combinaison": "Combinaison 43",
+      "sujet": "Le travail : favorable ou défavorable ?",
+      "document1": "Le travail est au centre de notre vie. Dès l’enfance, on entend souvent la question : « Qu’est-ce que tu veux faire quand tu seras grand ? » Le travail devrait être synonyme de réussite et de satisfaction, mais il est trop souvent synonyme de fatigue et d’emprisonnement. Aujourd’hui, beaucoup pensent que l’on ne passe pas assez de temps avec sa famille, ses amis. Il est urgent de revoir la place occupée par le travail dans notre société. Certains pensent que travailler moins permettrait d’avoir plus de temps libre pour mieux vivre.",
+      "document2": "Certaines personnes ont décidé d’arrêter de travailler pour changer de mode de vie. Pourtant, aujourd’hui, travailler, c’est exister. La question : « Qu’est-ce que tu fais dans la vie ? » revient souvent lors d’une première rencontre. Elle prouve que l’emploi fait partie de notre identité. D’après le spécialiste Jean-Daniel Remond, la vie en entreprise est très importante. Les contacts quotidiens, les réseaux, les amitiés, l’impression d’être utile, mais aussi les difficultés, tout cela contribue à construire notre personnalité et notre identité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 319,
+      "combinaison": "Combinaison 44",
+      "sujet": "Les Relations Amicales au Travail",
+      "document1": "Les amitiés entre collègues au travail peuvent être extrêmement bénéfiques. Elles favorisent un climat de travail agréable et une ambiance positive au sein de l’équipe. Avoir des amis parmi ses collègues permet de renforcer les liens professionnels et de créer un sentiment de camaraderie. Cela peut contribuer à une meilleure communication, une collaboration plus étroite et une résolution plus efficace des problèmes. De plus, partager des moments de convivialité en dehors du travail, comme des déjeuners ou des activités après le bureau, peut renforcer les liens et créer une dynamique de groupe solide.",
+      "document2": "Il est important de trouver un équilibre entre amitié et professionnalisme au travail. Les amitiés excessivement proches peuvent parfois créer des tensions ou des conflits lorsque des décisions professionnelles doivent être prises. De plus, les amitiés exclusives entre certains collègues peuvent exclure les autres membres de l’équipe, ce qui peut nuire à la cohésion et à la collaboration. Il est essentiel de maintenir des limites claires et de veiller à ce que les amitiés ne compromettent pas le professionnalisme, la hiérarchie ou la productivité au sein de l’organisation.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

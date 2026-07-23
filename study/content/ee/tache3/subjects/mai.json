@@ -1,0 +1,121 @@
+{
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 8,
+  "sujets": [
+    {
+      "id": 323,
+      "combinaison": "Combinaison 1",
+      "sujet": "Les Jeux Vidéo : Pour ou contre ?",
+      "document1": "Les enfants, jusqu’à l’âge de l’adolescence, jouent d’une manière régulière aux jeux vidéo et à force, ils peuvent développer des pensées négatives et des comportements agressifs. En effet, une étude récente, menée sur des enfants âgés de 9 à 18 ans jouant fréquemment aux jeux vidéo, a révélé que le fait de jouer à des jeux de violence augmente considérablement un comportement agressif. Et selon Diego Gentil, ce phénomène est inévitable, quel que soit le degré de vigilance des parents !",
+      "document2": "On parle tout le temps des effets négatifs des jeux vidéo, mais ces derniers peuvent également avoir quelques avantages pour le fonctionnement du cerveau et pour la santé d’une manière générale. Si on prend, par exemple, leur rapport pour le cerveau, les jeux vidéo permettent d’améliorer plusieurs fonctions cognitives telles que l’amélioration de la concentration, de la création et de la capacité d’analyse. Ceci peut paraître évident, dans la mesure où lorsqu’on y joue, on doit toujours trouver.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 324,
+      "combinaison": "Combinaison 2",
+      "sujet": "Les parcs zoologiques : Pour ou contre ?",
+      "document1": "Le texte a montré qu’il ne faut pas mettre les animaux sauvages dans les zoos parce que ce n’est pas leur environnement. C’est une prison pour eux. On trouve des ours polaires dans un zoo dont la température est de 15 degrés. Les animaux ont besoin de la nature et de la liberté.",
+      "document2": "Le texte affirme que les zoos ont beaucoup d’avantages, même pour les animaux en voie de disparition, les animaux sont bien soignés dans les zoos. Les études montrent que le nombre de reproductions a augmenté grâce aux zoos et ils peuvent sauver la vie des animaux.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 325,
+      "combinaison": "Combinaison 3",
+      "sujet": "Le travail : Favorable ou défavorable ?",
+      "document1": "Le travail est au centre de notre vie. Dès l’enfance, on entend souvent la question : « Qu’est-ce que tu veux faire quand tu seras grand ? » Le travail devrait être synonyme de réussite et de satisfaction, mais il est trop souvent synonyme de fatigue et d’emprisonnement. Aujourd’hui, beaucoup pensent que l’on ne passe pas assez de temps avec sa famille, ses amis. Il est urgent de revoir la place occupée par le travail dans notre société. Certains pensent que travailler moins permettrait d’avoir plus de temps libre pour mieux vivre.",
+      "document2": "Certaines personnes ont décidé d’arrêter de travailler pour changer de mode de vie. Pourtant, aujourd’hui, travailler, c’est exister. La question : « Qu’est-ce que tu fais dans la vie ? » revient souvent lors d’une première rencontre. Elle prouve que l’emploi fait partie de notre identité. D’après le spécialiste Jean-Daniel Remond, la vie en entreprise est très importante. Les contacts quotidiens, les réseaux, les amitiés, l’impression d’être utile, mais aussi les difficultés, tout cela contribue à construire notre personnalité et notre identité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 326,
+      "combinaison": "Combinaison 3",
+      "sujet": "Jeux Vidéo : Pour Ou Contre ?",
+      "document1": "Les jeux vidéo, sur console ou sur ordinateur, chez soi ou en salle, seul, avec des amis ou en ligne avec des inconnus, peuvent provoquer une dépendance chez certaines personnes. On parle d’addiction quand le jeu vidéo devient le principal (ou l’unique) centre d’intérêt, à la place d’autres activités (relationnelle, professionnelle, scolaire, loisirs, sport…). Cette dépendance est particulièrement préoccupante lors de l’adolescence, période importante où les jeux vidéo peuvent avoir un impact négatif sur les résultats scolaires.",
+      "document2": "Les jeux vidéo, sur console ou sur ordinateur, chez soi ou en salle, seul, avec des amis ou en ligne avec des inconnus, peuvent provoquer une dépendance chez certaines personnes. On parle d’addiction quand le jeu vidéo devient le principal (ou l’unique) centre d’intérêt, à la place d’autres activités (relationnelle, professionnelle, scolaire, loisirs, sport…). Cette dépendance est particulièrement préoccupante lors de l’adolescence, période importante où les jeux vidéo peuvent avoir un impact négatif sur les résultats scolaires.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": true,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 667,
+      "combinaison": "Combinaison 4",
+      "sujet": "L'organisation des événements sportifs",
+      "document1": "Il faut dire que ces grands événements sportifs représentent des dépenses considérables pour l’État. Au lieu d’investir dans des compétitions coûteuses, je pense que les fonds publics devraient être prioritairement alloués à des secteurs essentiels comme la santé et l’éducation. De plus, de nombreux pays ayant accueilli ces événements se sont retrouvés endettés, sans bénéfices réels pour leurs citoyens.",
+      "document2": "L’État devrait organiser de grands événements sportifs comme les Jeux Olympiques, la Coupe du Monde ou la Coupe d’Afrique. Ces compétitions sont des occasions uniques de mettre en valeur notre culture et d’attirer l’attention du monde entier. Elles favorisent aussi l’économie en créant des emplois et en modernisant les infrastructures, ce qui profite à long terme à toute la population.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 668,
+      "combinaison": "Combinaison 5",
+      "sujet": "Le végétarisme en Europe",
+      "document1": "La France compte plus de 1,5 million de végétariens. Pour Brigitte G., membre d'une association, on est végétarien parce qu'on refuse d'exploiter les animaux et qu'on veut prendre leur défense. Le végétarisme est souvent accompagné d'un aspect écologique. En effet, selon une étude scientifique, l'élevage serait responsable de 18% des émissions mondiales de CO2. La grande majorité des Français mange de tout mais la sensibilité envers la condition des animaux s'est largement répandue. Conviction, écologie ou contestation, le respect de la vie animale arrive en tête des motivations des Français qui souhaitent arrêter la consommation des produits animaliers.",
+      "document2": "D'après les conclusions d'une étude scientifique, une alimentation végétarienne serait plus polluante qu'une alimentation classique comprenant de la viande. Les chercheurs de l'université de Carnegie-Mellon ont comparé les émissions de carbone produites dans le cadre de la culture de fruits et légumes avec celles de l'élevage d'animaux destinés à la consommation. Elle révèle que la production et le transport d'une laitue seraient trois fois plus polluants que ceux d'un poulet. Cette étude supprime donc un certain nombre d'idées reçues.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 669,
+      "combinaison": "Combinaison 6",
+      "sujet": "La consommation de viande",
+      "document1": "Quentin, 45 ans : Est-ce bien nécessaire de consommer de la viande tous les jours? Je me suis longtemps posé la question et, finalement, j'ai décidé de limiter ma consommation de viande et de poisson. J'en mange donc occasionnellement, quand je suis invité chez des amis ou quand je vais au restaurant. Je n'en cuisine jamais à la maison. Je pense que c'est une bonne solution : j'ai une alimentation plus équilibrée qu'avant, c'est donc bon pour ma santé car je mange mos gras. J'imagine que c'est aussi mieux pour la planète.",
+      "document2": "Vanessa, 24 ans : Manger moins de viande, c'est un débat d'actualité ! En ce qui me concerne, je ne pourrais pas me passer de viande. J'ai des amis végétariens et quand je mange chez eux, j'apprécie beaucoup leur cuisine. Chez moi, je trouve quand même que c'est compliqué de préparer des menus sans viande... Et puis, peut-on vraiment arrêter de manger de la viande sans risques pour sa santé ? J'ai déjà essayé de moins en consommer et je me sentais fatiguée. Je pense que nous devons manger de tout pour être en bonne santé.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 670,
+      "combinaison": "Combinaison 7",
+      "sujet": "La colocation : Pour ou contre ?",
+      "document1": "Il y a ceux qui aiment les plateaux télé et ceux qui ne supportent pas de manger tout seuls. Pour ces derniers, le mieux est la colocation. En effet, vivre en colocation permet d'avoir de réels moments d'échange, que ce soit pendant les repas ou à d'autres moments, par exemple en jouant à des jeux de société. Autre élément important, la vaisselle et toutes les autres tâches ménagères se font aussi à plusieurs. Vivre avec d'autres personnes permet d'ouvrir son esprit, de découvrir d'autres façons de vivre, de créer des liens uniques, de partager des expériences et de se rendre des services l'un l'autre.",
+      "document2": "Il peut être difficile de vivre en colocation quand, certains soirs, vous aimeriez bien vous retrouver au calme et seul. Vous devrez également accepter le fait de recevoir des amis qui ne sont pas forcément les vôtres, et veiller à ce que les tours du ménage soient bien respectés, au lieu de devoir tout faire vous-même (ou de laisser l'autre tout faire à votre place). Autrement dit, vous allez devoir vous montrer diplomate sur bien des points. À moins, bien entendu, de tomber sur le colocataire parfait. D'après nrj.fr",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

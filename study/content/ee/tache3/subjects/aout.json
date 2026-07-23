@@ -1,0 +1,225 @@
+{
+  "month": {
+    "number": 8,
+    "slug": "aout",
+    "name": "Août"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 16,
+  "sujets": [
+    {
+      "id": 241,
+      "combinaison": "Combinaison 1",
+      "sujet": "Les maisons de retraite, pour ou contre ?",
+      "document1": "Les maisons de retraite représentent une solution adaptée pour les personnes âgées. Elles y bénéficient de soins appropriés et d’un encadrement professionnel. En plus, elles ont la possibilité de participer à diverses activités qui leur permettent de garder une vie sociale et d’éviter la solitude. Dans certains cas, c’est mieux que de rester seules chez elles. (Sophie, infirmière)",
+      "document2": "Les maisons de retraite peuvent priver les personnes âgées de la présence de leur famille et donner l’impression d’être abandonnées. De plus, les conditions de vie ne sont pas toujours satisfaisantes et certains établissements manquent parfois de personnel compétent. Selon moi, l’aide à domicile est une meilleure solution pour vieillir auprès de ses proches. (Jean, retraité)",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 242,
+      "combinaison": "Combinaison 2",
+      "sujet": "La restauration rapide",
+      "document1": "Les restaurants de restauration rapide offrent une gamme variée de plats équilibrés tout en respectant les normes d’hygiène. Le client, ayant la liberté de composer son propre menu, assume ainsi la responsabilité de ses choix alimentaires.",
+      "document2": "La consommation fréquente de restauration rapide peut avoir des effets néfastes sur la santé, contribuant à l’apparition de problèmes graves et irréversibles tels que l’obésité et d’autres maladies associées.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 243,
+      "combinaison": "Combinaison 3",
+      "sujet": "Faire ses courses alimentaires chez les producteurs locaux ou au supermarché",
+      "document1": "Jean qui vit à la campagne favorise l’achat des produits alimentaires directement à la ferme pour la bonne qualité, quitte à payer un peu plus cher.",
+      "document2": "Camille qui vit dans la ville préfère faire ses courses au supermarché pour la variété qu’il propose et pour les prix abordables.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 244,
+      "combinaison": "Combinaison 4",
+      "sujet": "La chasse aux animaux : pour ou contre ?",
+      "document1": "“Je suis de ceux qui n’arrivent pas à comprendre comment l’on peut prendre du plaisir à tuer des animaux. Je suis de ceux qui n’arrivent pas à comprendre comment on peut prétendre aimer la nature alors qu’on la détruit.”",
+      "document2": "“Les gens chassent pour différentes raisons : la subsistance, le commerce, la conservation et l’aménagement de la faune, la protection de la propriété, l’exercice, le loisir et le prestige.”",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 245,
+      "combinaison": "Combinaison 8",
+      "sujet": "La Restauration Rapide.",
+      "document1": "Les restaurants rapides se distinguent par leur engagement à proposer une variété de plats équilibrés, respectant strictement les normes d’hygiène. En laissant aux clients la liberté de composer leur propre menu, ces établissements les responsabilisent dans leurs choix alimentaires, tout en satisfaisant leurs préférences gustatives.",
+      "document2": "Les spécialistes affirment que manger régulièrement dans des restaurants de fast-food, qui proposent de la restauration rapide, est dangereux pour la santé. La nourriture servie est souvent la même : frites, hamburgers et boissons sucrées. Ces aliments contiennent une grande quantité de calories, bien trop pour un seul repas. De plus, la plupart des produits dans ces restaurants sont emballés dans du plastique. Par conséquent, manger dans un fast-food augmente la production de déchets plastiques, ce qui est nuisible pour l’environnement.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 246,
+      "combinaison": "Combinaison 9",
+      "sujet": "les vêtements de grande marque",
+      "document1": "Les vêtements de marque sont très importants pour les enfants et les adolescents. C’est un moyen de s’exprimer et de se rattacher à un groupe social. Cette attirance pour les marques est très présente chez les adolescents qui se cherchent et montrent leur personnalité. Les enfants aiment également porter des vêtements de marque avec des images de dessins animés qu’ils regardent ou des logos qu’ils apprécient.",
+      "document2": "Les enfants grandissent très vite et les vêtements sont portés pendant une courte période. Ainsi, les vêtements deviennent rapidement trop petits. Mais il y a aussi le fait que les enfants usent assez rapidement les vêtements en jouant à l’extérieur avec les copains, en s’amusant dans l’herbe ou à l’aire de jeux. Les habits sont très vite sales ou troués.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 247,
+      "combinaison": "Combinaison 10",
+      "sujet": "La réduction du temps de travail",
+      "document1": "La réduction du temps de travail permet aux employés de mieux équilibrer leur vie professionnelle et personnelle. En travaillant moins, ils peuvent consacrer plus de temps à leur famille, à leurs loisirs et à leur santé. Cela peut également augmenter leur satisfaction au travail et réduire le stress, améliorant ainsi leur productivité globale.",
+      "document2": "Réduire les heures de travail peut aider les entreprises en réduisant l’absentéisme et en augmentant la fidélisation des employés. En offrant des horaires plus flexibles, les employés sont généralement plus motivés et impliqués. Cependant, cela nécessite une organisation efficace et une adaptation des processus pour maintenir la productivité et répondre aux besoins de l’entreprise.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 248,
+      "combinaison": "Combinaison 11",
+      "sujet": "Les Caméras De Surveillance À L’école : Pour Ou Contre ?",
+      "document1": "Dans l’école où j’enseigne à Montréal, les caméras de surveillance sont omniprésentes. Leur présence permet de dissuader les élèves de commettre des actes de violence. Les enseignants, les parents et la majorité des élèves les acceptent volontiers, car ils se sentent rassurés quant à la sécurité des enfants et cela permet aux enseignants de travailler dans de bonnes conditions. Toutefois, certains élèves considèrent que cela porte atteinte à leur vie privée.",
+      "document2": "Je suis opposé à l’installation des caméras de surveillance dans nos écoles à Montréal. Les résultats obtenus dans les pays où ce système est utilisé ne sont pas convaincants. Les personnes mal intentionnées peuvent facilement contourner les caméras, qui sont très visibles. Les problèmes de discipline dans une école peuvent être résolus en améliorant la communication entre les enseignants, l’administration et les élèves. Il est également nécessaire de faire respecter et expliquer les règles de l’école par tous, plutôt que de recourir aux caméras.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 249,
+      "combinaison": "Combinaison 12",
+      "sujet": "L’art Urbain : Pour Ou Contre ?",
+      "document1": "Grâce à l’art, la curiosité des citadins est attisée dans l’espace urbain. Que ce soit par une peinture ou un spectacle de rue, l’atmosphère éphémère ainsi créée offre une interaction entre des artistes peu connus et un public hétéroclite, parfois peu habitué à côtoyer cette forme d’art. Les villes d’aujourd’hui n’ont plus la même vocation que celles d’hier. Plus qu’un lieu de résidence, la ville se réinvente, s’enrichit de la diversité de sa population, s’agence différemment et s’ouvre sur le monde. Les espaces verts se créent et les murs se parent de couleurs grâce au street art. Cela débouche sur des lieux où la qualité de vie est privilégiée, tout en respectant la nature et l’environnement.",
+      "document2": "Mais à une plus large échelle, cela n’est pas aussi évident. Les graffitis peuvent être perçus comme une dégradation de la communauté, une pollution visuelle ou une preuve de la rupture sociale. On les considère comme du vandalisme qui défigure les biens publics. Le débat sur les avantages et les inconvénients des graffitis fait rage parmi les artistes, les législateurs et les membres de la communauté.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 250,
+      "combinaison": "Combinaison 13",
+      "sujet": "Les objets connectés",
+      "document1": "Les objets intelligents rendent notre quotidien plus pratique. Ce sont des appareils qui peuvent être contrôlés à distance par un téléphone ou Internet, comme le chauffage ou les systèmes de sécurité de la maison. Par ailleurs, des objets tels que les montres ou bracelets connectés suivent nos activités et nous motivent à faire plus d’exercice, en mesurant par exemple nos pas. Leur utilité est particulièrement notable dans le domaine de la santé. Certains objets agissent comme un assistant santé, nous rappelant les rendez-vous médicaux ou la prise de nos médicaments.",
+      "document2": "On estime qu’il y aurait 50 milliards d’objets intelligents dans le monde, tels que des alarmes, des téléviseurs, des caméras de surveillance, des volets ou des détecteurs de fumée, entre autres. Avec cette expansion, la question de la sécurité devient cruciale. En effet, un hacker pourrait prendre le contrôle de ces appareils en quelques minutes. Par exemple, un cambrioleur pourrait, grâce aux caméras de surveillance connectées, vérifier si les habitants sont absents avant de commettre un cambriolage. Il est même possible d’accéder au système connecté d’une voiture et de la contrôler à distance.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 251,
+      "combinaison": "Combinaison 14",
+      "sujet": "L'accès gratuit aux musées : avantage ou inconvénient ?",
+      "document1": "L’accès gratuit aux musées peut engendrer une affluence excessive, altérant ainsi la qualité de la visite. De plus, cela risque de diminuer leurs revenus, compromettant l’entretien des lieux et la conservation des œuvres. Une tarification réduite serait une alternative équilibrée pour favoriser l’accès à la culture tout en assurant le bon fonctionnement des musées.",
+      "document2": "Rendre les musées gratuits est une excellente initiative, car cela permet à tous d’accéder à la culture, quel que soit leur revenu. J’ai eu l’opportunité de visiter plusieurs musées sans frais, ce qui m’a permis d’enrichir mes connaissances sans me préoccuper du coût. À mon avis, la gratuité des musées joue un rôle clé dans l’éducation du public et la diffusion du patrimoine culturel.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 252,
+      "combinaison": "Combinaison 15",
+      "sujet": "La Restauration Rapide.",
+      "document1": "Les restaurants rapides se distinguent par leur engagement à proposer une variété de plats équilibrés, respectant strictement les normes d’hygiène. En laissant aux clients la liberté de composer leur propre menu, ces établissements les responsabilisent dans leurs choix alimentaires, tout en satisfaisant leurs préférences gustatives.",
+      "document2": "Je m’oppose à l’installation des caméras de surveillance dans nos écoles à Montréal. Les résultats obtenus dans d’autres pays utilisant ce système ne sont pas convaincants. Les individus mal intentionnés peuvent facilement contourner ces caméras très visibles. Pour résoudre les problèmes de discipline à l’école, il est préférable d’améliorer la communication entre enseignants, administration et élèves, et de faire respecter les règles scolaires par tous, plutôt que de dépendre des caméras.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 253,
+      "combinaison": "Combinaison 16",
+      "sujet": "Influence de la publicité sur les enfants : pour ou contre ?",
+      "document1": "D’après une enquête, les enfants sont en permanence confrontés à de nombreuses publicités diffusées à la télévision, dans les journaux ou sur Internet, souvent dans des espaces où ils sont vulnérables. Celles-ci ciblent principalement les jouets, les jeux vidéo et les aliments peu sains, ce qui influence leurs décisions et leurs demandes familiales.",
+      "document2": "Un travail de recherche paru dans une revue scientifique montre que les enfants comprennent difficilement les messages publicitaires, même s’ils savent généralement que leur but est de persuader. Pourtant, d’autres facteurs comme l’éducation reçue des parents, la société et la culture ont un poids plus fort sur leurs choix de consommation que la publicité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 254,
+      "combinaison": "Combinaison 17",
+      "sujet": "La vie à la campagne ou en ville",
+      "document1": "Selon moi, vivre en ville offre beaucoup d’occasions de se divertir : aller au cinéma, manger dans un restaurant, faire les magasins… Tout est accessible sans devoir parcourir de longues distances ni chercher un taxi pour un trajet. On trouve facilement tout ce dont on a besoin. De plus, les amateurs de culture y trouvent aussi leur bonheur : musées, théâtres, opéras… tout est présent !",
+      "document2": "Récemment, j’ai choisi de quitter la vie urbaine pour m’installer à la campagne, car je ressentais le besoin de me rapprocher de la nature et de profiter de la tranquillité. Aujourd’hui, au lieu de sortir chaque jour dans un café ou un restaurant, je préfère inviter mes amis sur ma terrasse ou organiser parfois un barbecue dans mon jardin. Une autre raison qui m’a poussé à faire ce choix, c’est le prix des logements : à la campagne, les maisons sont beaucoup plus abordables. Avec mon budget actuel, je profite d’une grande maison avec terrasse et jardin, alors qu’en ville je n’avais qu’un petit appartement au cinquième étage.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 255,
+      "combinaison": "Combinaison 18",
+      "sujet": "Diplôme ou expérience pour l’emploi des jeunes ?",
+      "document1": "Beaucoup de jeunes sortant de l’université se retrouvent sans emploi. La valeur des diplômes sur le marché du travail pose des questions. Souvent, les recruteurs leur reprochent d’avoir trop étudié et trop peu d’expérience, ou considèrent leur jeunesse comme un frein. Plus de 60 % des diplômés restent sans travail un an après leurs études. Il paraît donc urgent de mieux reconnaître les diplômes et de faciliter l’insertion professionnelle.",
+      "document2": "On parle souvent de dirigeants célèbres qui ont réussi sans suivre de cursus universitaire. Ces exemples peuvent laisser penser qu’il suffit d’être talentueux pour diriger une entreprise. Certains chefs d’entreprise considèrent même que l’université peut freiner la créativité. Selon eux, elle pousse les étudiants à suivre des parcours standards et limite l’innovation. Pour les futurs entrepreneurs, rien ne remplacerait l’expérience pratique et l’autoformation, sans dépendre d’une institution académique.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 256,
+      "combinaison": "Combinaison 19",
+      "sujet": "La sieste au travail.",
+      "document1": "Faire une sieste au travail présente de nombreux bénéfices pour les salariés et les entreprises. Permettre aux employés de se reposer quelques minutes peut accroître leur productivité et améliorer leur santé et leur bien-être. Les courtes siestes renforcent la concentration, diminuent le stress et améliorent l’humeur. Elles peuvent aussi réduire les coûts liés à la fatigue et aux accidents. Les entreprises devraient donc envisager d’intégrer cette pratique pour leur personnel.",
+      "document2": "Même si la sieste au travail présente de nombreux bénéfices, il n’est pas facile pour toutes les entreprises d’aménager des espaces ou des lits pour cela. Les contraintes financières, logistiques ou les règles strictes peuvent empêcher les salariés de se reposer. De plus, certains employés peuvent se sentir mal à l’aise. Il est donc important que les entreprises évaluent avantages et limites et trouvent des solutions pour favoriser le repos.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

@@ -59,6 +59,13 @@ class Task(models.Model):
     def __str__(self) -> str:
         return f"{self.part.short_name} · {self.name}"
 
+    @property
+    def supports_memoires(self) -> bool:
+        """True when this task exposes a "Mémoires" question-bank section."""
+        from . import content
+
+        return (self.part.slug, self.slug) in content.MEMOIRE_TASKS
+
 
 class Theme(models.Model):
     """A French exam theme, e.g. Culture or Santé."""

@@ -1,0 +1,999 @@
+{
+  "version": 1,
+  "task": "ee/tache-3",
+  "month": {
+    "number": 10,
+    "slug": "octobre",
+    "name": "Octobre"
+  },
+  "responses": [
+    {
+      "response_key": "ee-tache3:octobre:combinaison-1",
+      "combinaison": "Combinaison 1",
+      "sujet": "Les publicités : Pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-OCT-C01-01",
+          "kind": "phrase-modele",
+          "french": "La question des publicités suscite des avis partagés",
+          "english": "The issue of advertising divides opinion",
+          "example": "La question des publicités suscite des avis partagés.",
+          "usage": "Formule d’ouverture neutre ; réutilisable pour tout sujet controversé."
+        },
+        {
+          "id": "E3-OCT-C01-02",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Connecteur d’opposition ; introduit le premier point de vue."
+        },
+        {
+          "id": "E3-OCT-C01-03",
+          "kind": "mot-cle",
+          "french": "leurs défenseurs",
+          "english": "their supporters",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Nom masculin pluriel ; réutilisable dans toute synthèse de débat."
+        },
+        {
+          "id": "E3-OCT-C01-04",
+          "kind": "collocation",
+          "french": "faire connaître les produits",
+          "english": "to promote products",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Groupe verbal ; réutilisable en Publicité/Commerce."
+        },
+        {
+          "id": "E3-OCT-C01-05",
+          "kind": "collocation",
+          "french": "signaler les promotions",
+          "english": "to advertise special offers",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Groupe verbal ; réutilisable en Publicité/Consommation."
+        },
+        {
+          "id": "E3-OCT-C01-06",
+          "kind": "collocation",
+          "french": "comparer les prix",
+          "english": "to compare prices",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Groupe verbal ; réutilisable en Consommation/Budget."
+        },
+        {
+          "id": "E3-OCT-C01-07",
+          "kind": "mot-cle",
+          "french": "services gratuits",
+          "english": "free services",
+          "example": "D’un côté, leurs défenseurs les jugent indispensables pour faire connaître les produits, signaler les promotions, comparer les prix et financer certains services gratuits.",
+          "usage": "Nom masculin pluriel ; réutilisable en Médias/Numérique."
+        },
+        {
+          "id": "E3-OCT-C01-08",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, leurs détracteurs dénoncent leur omniprésence agaçante, les interruptions des programmes et les déchets de papier qu’elles produisent.",
+          "usage": "Connecteur d’opposition ; introduit un avis contraire."
+        },
+        {
+          "id": "E3-OCT-C01-09",
+          "kind": "mot-cle",
+          "french": "leurs détracteurs",
+          "english": "their critics",
+          "example": "En revanche, leurs détracteurs dénoncent leur omniprésence agaçante, les interruptions des programmes et les déchets de papier qu’elles produisent.",
+          "usage": "Nom masculin pluriel ; réutilisable dans toute synthèse de débat."
+        },
+        {
+          "id": "E3-OCT-C01-10",
+          "kind": "collocation",
+          "french": "leur omniprésence agaçante",
+          "english": "their irritating omnipresence",
+          "example": "En revanche, leurs détracteurs dénoncent leur omniprésence agaçante, les interruptions des programmes et les déchets de papier qu’elles produisent.",
+          "usage": "Groupe nominal féminin ; réutilisable en Publicité/Médias."
+        },
+        {
+          "id": "E3-OCT-C01-11",
+          "kind": "mot-cle",
+          "french": "les interruptions des programmes",
+          "english": "programme interruptions",
+          "example": "En revanche, leurs détracteurs dénoncent leur omniprésence agaçante, les interruptions des programmes et les déchets de papier qu’elles produisent.",
+          "usage": "Nom féminin pluriel ; réutilisable en Médias/Publicité."
+        },
+        {
+          "id": "E3-OCT-C01-12",
+          "kind": "mot-cle",
+          "french": "les déchets de papier",
+          "english": "paper waste",
+          "example": "En revanche, leurs détracteurs dénoncent leur omniprésence agaçante, les interruptions des programmes et les déchets de papier qu’elles produisent.",
+          "usage": "Nom masculin pluriel ; réutilisable en Environnement/Consommation."
+        },
+        {
+          "id": "E3-OCT-C01-13",
+          "kind": "phrase-modele",
+          "french": "À mon avis, la publicité reste utile, mais elle doit être mieux encadrée",
+          "english": "In my opinion, advertising remains useful, but it should be better regulated",
+          "example": "À mon avis, la publicité reste utile, mais elle doit être mieux encadrée.",
+          "usage": "Formule d’opinion nuancée ; adapter le thème et la mesure d’encadrement."
+        },
+        {
+          "id": "E3-OCT-C01-14",
+          "kind": "mot-cle",
+          "french": "les consommateurs",
+          "english": "consumers",
+          "example": "Tout d’abord, elle informe les consommateurs et aide les petites entreprises à faire connaître leurs produits.",
+          "usage": "Nom masculin pluriel ; réutilisable en Commerce/Économie."
+        },
+        {
+          "id": "E3-OCT-C01-15",
+          "kind": "mot-cle",
+          "french": "les petites entreprises",
+          "english": "small businesses",
+          "example": "Tout d’abord, elle informe les consommateurs et aide les petites entreprises à faire connaître leurs produits.",
+          "usage": "Nom féminin pluriel ; réutilisable en Commerce/Emploi."
+        },
+        {
+          "id": "E3-OCT-C01-16",
+          "kind": "tournure",
+          "french": "mais elle doit être mieux encadrée",
+          "english": "but it should be better regulated",
+          "example": "À mon avis, la publicité reste utile, mais elle doit être mieux encadrée.",
+          "usage": "Construction de nuance ; réutilisable pour proposer une réglementation."
+        },
+        {
+          "id": "E3-OCT-C01-17",
+          "kind": "collocation",
+          "french": "une diffusion moins envahissante",
+          "english": "less intrusive distribution",
+          "example": "Ensuite, une diffusion moins envahissante protège l’attention et réduit les déchets.",
+          "usage": "Groupe nominal féminin ; réutilisable en Publicité/Médias."
+        },
+        {
+          "id": "E3-OCT-C01-18",
+          "kind": "mot-cle",
+          "french": "l’attention",
+          "english": "attention",
+          "example": "Ensuite, une diffusion moins envahissante protège l’attention et réduit les déchets.",
+          "usage": "Nom féminin singulier ; réutilisable en Médias/Éducation."
+        },
+        {
+          "id": "E3-OCT-C01-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une municipalité pourrait interdire les prospectus non sollicités tout en autorisant une plateforme locale présentant les promotions des commerces.",
+          "usage": "Connecteur d’illustration ; introduit un cas concret."
+        },
+        {
+          "id": "E3-OCT-C01-20",
+          "kind": "mot-cle",
+          "french": "les prospectus non sollicités",
+          "english": "unsolicited flyers",
+          "example": "Par exemple, une municipalité pourrait interdire les prospectus non sollicités tout en autorisant une plateforme locale présentant les promotions des commerces.",
+          "usage": "Nom masculin pluriel ; réutilisable en Publicité/Environnement."
+        },
+        {
+          "id": "E3-OCT-C01-21",
+          "kind": "mot-cle",
+          "french": "une plateforme locale",
+          "english": "a local platform",
+          "example": "Par exemple, une municipalité pourrait interdire les prospectus non sollicités tout en autorisant une plateforme locale présentant les promotions des commerces.",
+          "usage": "Nom féminin singulier ; réutilisable en Numérique/Commerce local."
+        },
+        {
+          "id": "E3-OCT-C01-22",
+          "kind": "tournure",
+          "french": "tout en autorisant une plateforme locale",
+          "english": "while allowing a local platform",
+          "example": "Par exemple, une municipalité pourrait interdire les prospectus non sollicités tout en autorisant une plateforme locale présentant les promotions des commerces.",
+          "usage": "Tout en + participe présent ; exprime deux actions simultanées."
+        },
+        {
+          "id": "E3-OCT-C01-23",
+          "kind": "collocation",
+          "french": "les promotions des commerces",
+          "english": "retailers’ special offers",
+          "example": "Par exemple, une municipalité pourrait interdire les prospectus non sollicités tout en autorisant une plateforme locale présentant les promotions des commerces.",
+          "usage": "Groupe nominal féminin pluriel ; réutilisable en Commerce/Consommation."
+        },
+        {
+          "id": "E3-OCT-C01-24",
+          "kind": "tournure",
+          "french": "sans remplir leurs boîtes aux lettres",
+          "english": "without filling their mailboxes",
+          "example": "Cela permettrait aux habitants de comparer les prix sans remplir leurs boîtes aux lettres.",
+          "usage": "Sans + infinitif ; réutilisable pour exprimer un avantage sans nuisance."
+        },
+        {
+          "id": "E3-OCT-C01-25",
+          "kind": "reformulation",
+          "french": "ces annonces",
+          "english": "these advertisements",
+          "example": "Cependant, il faut aussi reconnaître que ces annonces financent des contenus gratuits.",
+          "usage": "Reprise nominale au féminin pluriel ; évite de répéter « publicités »."
+        },
+        {
+          "id": "E3-OCT-C01-26",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que ces annonces financent des contenus gratuits",
+          "english": "However, it must also be acknowledged that these ads fund free content",
+          "example": "Cependant, il faut aussi reconnaître que ces annonces financent des contenus gratuits.",
+          "usage": "Formule de concession ; réutilisable en Publicité/Médias."
+        },
+        {
+          "id": "E3-OCT-C01-27",
+          "kind": "tournure",
+          "french": "Cependant, il faut aussi reconnaître que",
+          "english": "However, it must also be acknowledged that",
+          "example": "Cependant, il faut aussi reconnaître que ces annonces financent des contenus gratuits.",
+          "usage": "Cadre concessif ; à compléter par une limite ou un contre-argument."
+        },
+        {
+          "id": "E3-OCT-C01-28",
+          "kind": "verbe-action",
+          "french": "limiter leur quantité",
+          "english": "to limit their quantity",
+          "example": "En conclusion, le plus important est de limiter leur quantité, d’exiger leur transparence et de privilégier des supports respectueux de l’environnement.",
+          "usage": "Construction infinitive ; réutilisable en Réglementation/Environnement."
+        },
+        {
+          "id": "E3-OCT-C01-29",
+          "kind": "verbe-action",
+          "french": "exiger leur transparence",
+          "english": "to require their transparency",
+          "example": "En conclusion, le plus important est de limiter leur quantité, d’exiger leur transparence et de privilégier des supports respectueux de l’environnement.",
+          "usage": "Construction infinitive ; réutilisable en Publicité/Politiques publiques."
+        },
+        {
+          "id": "E3-OCT-C01-30",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de limiter leur quantité, d’exiger leur transparence et de privilégier des supports respectueux de l’environnement",
+          "english": "In conclusion, the most important thing is to limit their quantity, require transparency and favour environmentally friendly media",
+          "example": "En conclusion, le plus important est de limiter leur quantité, d’exiger leur transparence et de privilégier des supports respectueux de l’environnement.",
+          "usage": "Formule de conclusion ; réutilisable pour hiérarchiser plusieurs mesures."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:octobre:combinaison-2",
+      "combinaison": "Combinaison 2",
+      "sujet": "Les Vols à Bas Prix",
+      "entries": [
+        {
+          "id": "E3-OCT-C02-01",
+          "kind": "phrase-modele",
+          "french": "Les vols à bas prix font l’objet d’un débat nuancé",
+          "english": "Low-cost flights are the subject of a nuanced debate",
+          "example": "Les vols à bas prix font l’objet d’un débat nuancé.",
+          "usage": "Formule d’ouverture neutre ; réutilisable pour tout débat complexe."
+        },
+        {
+          "id": "E3-OCT-C02-02",
+          "kind": "mot-cle",
+          "french": "vols à bas prix",
+          "english": "low-cost flights",
+          "example": "Les vols à bas prix font l’objet d’un débat nuancé.",
+          "usage": "Nom masculin pluriel ; réutilisable en Transport/Tourisme."
+        },
+        {
+          "id": "E3-OCT-C02-03",
+          "kind": "collocation",
+          "french": "des tarifs parfois inférieurs au train ou à la voiture",
+          "english": "fares sometimes lower than train or car travel",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Groupe nominal masculin pluriel ; réutilisable en Transport/Budget."
+        },
+        {
+          "id": "E3-OCT-C02-04",
+          "kind": "tournure",
+          "french": "malgré l’absence de services",
+          "english": "despite the lack of services",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Malgré + nom ; introduit une concession."
+        },
+        {
+          "id": "E3-OCT-C02-05",
+          "kind": "mot-cle",
+          "french": "l’absence de services",
+          "english": "the lack of services",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Nom féminin singulier ; réutilisable en Transport/Consommation."
+        },
+        {
+          "id": "E3-OCT-C02-06",
+          "kind": "collocation",
+          "french": "le faible confort",
+          "english": "limited comfort",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Groupe nominal masculin ; réutilisable en Transport/Voyage."
+        },
+        {
+          "id": "E3-OCT-C02-07",
+          "kind": "tournure",
+          "french": "sur les longues distances",
+          "english": "over long distances",
+          "example": "Le premier témoignage apprécie des tarifs parfois inférieurs au train ou à la voiture, malgré l’absence de services et le faible confort sur les longues distances.",
+          "usage": "Locution prépositionnelle ; réutilisable en Transport/Voyage."
+        },
+        {
+          "id": "E3-OCT-C02-08",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Connecteur d’opposition ; introduit le second point de vue."
+        },
+        {
+          "id": "E3-OCT-C02-09",
+          "kind": "mot-cle",
+          "french": "les conditions de travail",
+          "english": "working conditions",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Nom féminin pluriel ; réutilisable en Travail/Transport."
+        },
+        {
+          "id": "E3-OCT-C02-10",
+          "kind": "mot-cle",
+          "french": "la vétusté des appareils",
+          "english": "the ageing condition of aircraft",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Nom féminin singulier ; réutilisable en Transport/Sécurité."
+        },
+        {
+          "id": "E3-OCT-C02-11",
+          "kind": "collocation",
+          "french": "d’éventuels risques de sécurité",
+          "english": "potential safety risks",
+          "example": "En revanche, le second redoute les conditions de travail, la vétusté des appareils et d’éventuels risques de sécurité.",
+          "usage": "Groupe nominal masculin pluriel ; réutilisable en Sécurité/Transport."
+        },
+        {
+          "id": "E3-OCT-C02-12",
+          "kind": "phrase-modele",
+          "french": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées",
+          "english": "Personally, I would accept a low-cost flight for a short trip, but only if the fare is transparent and standards are met",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées.",
+          "usage": "Formule d’opinion conditionnelle ; réutilisable en Transport/Consommation."
+        },
+        {
+          "id": "E3-OCT-C02-13",
+          "kind": "mot-cle",
+          "french": "un trajet court",
+          "english": "a short trip",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées.",
+          "usage": "Nom masculin singulier ; réutilisable en Transport/Voyage."
+        },
+        {
+          "id": "E3-OCT-C02-14",
+          "kind": "collocation",
+          "french": "le tarif est transparent",
+          "english": "the fare is transparent",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées.",
+          "usage": "Proposition réutilisable ; utile pour juger une offre commerciale."
+        },
+        {
+          "id": "E3-OCT-C02-15",
+          "kind": "collocation",
+          "french": "les normes sont respectées",
+          "english": "standards are met",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées.",
+          "usage": "Proposition passive ; réutilisable en Sécurité/Réglementation."
+        },
+        {
+          "id": "E3-OCT-C02-16",
+          "kind": "tournure",
+          "french": "mais seulement si le tarif est transparent",
+          "english": "but only if the fare is transparent",
+          "example": "Personnellement, j’accepterais un vol à bas prix pour un trajet court, mais seulement si le tarif est transparent et si les normes sont respectées.",
+          "usage": "Mais seulement si + indicatif ; pose une condition stricte."
+        },
+        {
+          "id": "E3-OCT-C02-17",
+          "kind": "mot-cle",
+          "french": "petits budgets",
+          "english": "people on small budgets",
+          "example": "Tout d’abord, ces compagnies rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Nom masculin pluriel ; réutilisable en Économie/Accessibilité."
+        },
+        {
+          "id": "E3-OCT-C02-18",
+          "kind": "verbe-action",
+          "french": "rendent les déplacements accessibles aux petits budgets",
+          "english": "make travel accessible to people on small budgets",
+          "example": "Tout d’abord, ces compagnies rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Groupe verbal ; réutilisable en Transport/Accessibilité."
+        },
+        {
+          "id": "E3-OCT-C02-19",
+          "kind": "mot-cle",
+          "french": "les frais de bagage",
+          "english": "baggage fees",
+          "example": "Ensuite, il faut comparer les frais de bagage, le confort et l’empreinte carbone avec les autres moyens de transport.",
+          "usage": "Nom masculin pluriel ; réutilisable en Transport/Budget."
+        },
+        {
+          "id": "E3-OCT-C02-20",
+          "kind": "mot-cle",
+          "french": "l’empreinte carbone",
+          "english": "the carbon footprint",
+          "example": "Ensuite, il faut comparer les frais de bagage, le confort et l’empreinte carbone avec les autres moyens de transport.",
+          "usage": "Nom féminin singulier ; réutilisable en Transport/Environnement."
+        },
+        {
+          "id": "E3-OCT-C02-21",
+          "kind": "verbe-action",
+          "french": "comparer les frais de bagage, le confort et l’empreinte carbone",
+          "english": "to compare baggage fees, comfort and carbon footprint",
+          "example": "Ensuite, il faut comparer les frais de bagage, le confort et l’empreinte carbone avec les autres moyens de transport.",
+          "usage": "Construction infinitive ; réutilisable pour évaluer plusieurs critères."
+        },
+        {
+          "id": "E3-OCT-C02-22",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage.",
+          "usage": "Connecteur d’illustration ; introduit un cas concret."
+        },
+        {
+          "id": "E3-OCT-C02-23",
+          "kind": "tournure",
+          "french": "pendant le voyage",
+          "english": "during the journey",
+          "example": "Par exemple, entre Montréal et Toronto, je privilégierais le train, qui permet de travailler confortablement pendant le voyage.",
+          "usage": "Locution temporelle ; réutilisable en Transport/Tourisme."
+        },
+        {
+          "id": "E3-OCT-C02-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie",
+          "english": "However, it must also be acknowledged that an affordable flight remains useful for a poorly served region",
+          "example": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie.",
+          "usage": "Formule de concession ; réutilisable en Transport/Accessibilité."
+        },
+        {
+          "id": "E3-OCT-C02-25",
+          "kind": "collocation",
+          "french": "une région mal desservie",
+          "english": "a poorly served region",
+          "example": "Cependant, il faut aussi reconnaître qu’un vol abordable reste utile vers une région mal desservie.",
+          "usage": "Groupe nominal féminin ; réutilisable en Transport/Aménagement."
+        },
+        {
+          "id": "E3-OCT-C02-26",
+          "kind": "reformulation",
+          "french": "ces compagnies",
+          "english": "these airlines",
+          "example": "Tout d’abord, ces compagnies rendent les déplacements accessibles aux petits budgets.",
+          "usage": "Reprise nominale au féminin pluriel ; évite de répéter « compagnies aériennes »."
+        },
+        {
+          "id": "E3-OCT-C02-27",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de choisir selon le coût total, la sécurité, la durée et l’impact environnemental.",
+          "usage": "Connecteur de conclusion ; annonce la position finale."
+        },
+        {
+          "id": "E3-OCT-C02-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de choisir selon le coût total, la sécurité, la durée et l’impact environnemental",
+          "english": "the most important thing is to choose based on total cost, safety, duration and environmental impact",
+          "example": "En définitive, le plus important est de choisir selon le coût total, la sécurité, la durée et l’impact environnemental.",
+          "usage": "Formule de conclusion ; réutilisable pour un choix multicritère."
+        },
+        {
+          "id": "E3-OCT-C02-29",
+          "kind": "mot-cle",
+          "french": "le coût total",
+          "english": "the total cost",
+          "example": "En définitive, le plus important est de choisir selon le coût total, la sécurité, la durée et l’impact environnemental.",
+          "usage": "Nom masculin singulier ; réutilisable en Budget/Consommation."
+        },
+        {
+          "id": "E3-OCT-C02-30",
+          "kind": "mot-cle",
+          "french": "l’impact environnemental",
+          "english": "environmental impact",
+          "example": "En définitive, le plus important est de choisir selon le coût total, la sécurité, la durée et l’impact environnemental.",
+          "usage": "Nom masculin singulier ; réutilisable en Transport/Environnement."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:octobre:combinaison-3",
+      "combinaison": "Combinaison 3",
+      "sujet": "Les cours de langue en ligne.",
+      "entries": [
+        {
+          "id": "E3-OCT-C03-01",
+          "kind": "phrase-modele",
+          "french": "Les cours de langues en ligne font l’objet de points de vue opposés",
+          "english": "Online language courses are the subject of opposing viewpoints",
+          "example": "Les cours de langues en ligne font l’objet de points de vue opposés.",
+          "usage": "Formule d’ouverture neutre ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-02",
+          "kind": "mot-cle",
+          "french": "cours de langues en ligne",
+          "english": "online language courses",
+          "example": "Les cours de langues en ligne font l’objet de points de vue opposés.",
+          "usage": "Nom masculin pluriel ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-03",
+          "kind": "mot-cle",
+          "french": "la flexibilité",
+          "english": "flexibility",
+          "example": "Leurs partisans apprécient la flexibilité, l’accès depuis tout lieu et les économies de transport.",
+          "usage": "Nom féminin singulier ; réutilisable en Éducation/Travail."
+        },
+        {
+          "id": "E3-OCT-C03-04",
+          "kind": "tournure",
+          "french": "depuis tout lieu",
+          "english": "from anywhere",
+          "example": "Leurs partisans apprécient la flexibilité, l’accès depuis tout lieu et les économies de transport.",
+          "usage": "Locution prépositionnelle ; réutilisable pour un service à distance."
+        },
+        {
+          "id": "E3-OCT-C03-05",
+          "kind": "mot-cle",
+          "french": "les économies de transport",
+          "english": "transportation savings",
+          "example": "Leurs partisans apprécient la flexibilité, l’accès depuis tout lieu et les économies de transport.",
+          "usage": "Nom féminin pluriel ; réutilisable en Numérique/Budget."
+        },
+        {
+          "id": "E3-OCT-C03-06",
+          "kind": "expression",
+          "french": "Cependant",
+          "english": "However",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Connecteur d’opposition ou de concession ; très réutilisable."
+        },
+        {
+          "id": "E3-OCT-C03-07",
+          "kind": "reformulation",
+          "french": "leurs détracteurs",
+          "english": "their critics",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Reprise nominale au masculin pluriel ; désigne les opposants."
+        },
+        {
+          "id": "E3-OCT-C03-08",
+          "kind": "collocation",
+          "french": "une connexion fiable",
+          "english": "a reliable connection",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Groupe nominal féminin ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-OCT-C03-09",
+          "kind": "collocation",
+          "french": "un équipement adapté",
+          "english": "suitable equipment",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Groupe nominal masculin ; réutilisable en Numérique/Accessibilité."
+        },
+        {
+          "id": "E3-OCT-C03-10",
+          "kind": "mot-cle",
+          "french": "l’autonomie",
+          "english": "autonomy",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Nom féminin singulier ; réutilisable en Éducation/Travail."
+        },
+        {
+          "id": "E3-OCT-C03-11",
+          "kind": "collocation",
+          "french": "une forte motivation",
+          "english": "strong motivation",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Groupe nominal féminin ; réutilisable en Éducation/Emploi."
+        },
+        {
+          "id": "E3-OCT-C03-12",
+          "kind": "mot-cle",
+          "french": "le découragement et l’abandon",
+          "english": "discouragement and dropping out",
+          "example": "Cependant, leurs détracteurs rappellent qu’une connexion fiable, un équipement adapté, de l’autonomie et une forte motivation sont nécessaires pour éviter le découragement et l’abandon.",
+          "usage": "Noms masculins singuliers ; réutilisables en Éducation/Formation."
+        },
+        {
+          "id": "E3-OCT-C03-13",
+          "kind": "phrase-modele",
+          "french": "Selon moi, l’apprentissage en ligne est efficace à condition d’associer flexibilité et encadrement",
+          "english": "In my view, online learning is effective provided flexibility and guidance are combined",
+          "example": "Selon moi, l’apprentissage en ligne est efficace à condition d’associer flexibilité et encadrement.",
+          "usage": "Formule d’opinion nuancée ; à condition de + infinitif."
+        },
+        {
+          "id": "E3-OCT-C03-14",
+          "kind": "mot-cle",
+          "french": "l’apprentissage en ligne",
+          "english": "online learning",
+          "example": "Selon moi, l’apprentissage en ligne est efficace à condition d’associer flexibilité et encadrement.",
+          "usage": "Nom masculin singulier ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-15",
+          "kind": "tournure",
+          "french": "à condition d’associer flexibilité et encadrement",
+          "english": "provided flexibility and guidance are combined",
+          "example": "Selon moi, l’apprentissage en ligne est efficace à condition d’associer flexibilité et encadrement.",
+          "usage": "À condition de + infinitif ; exprime une condition."
+        },
+        {
+          "id": "E3-OCT-C03-16",
+          "kind": "mot-cle",
+          "french": "les ressources numériques",
+          "english": "digital resources",
+          "example": "Tout d’abord, les ressources numériques permettent de réviser régulièrement sans perdre du temps dans les déplacements.",
+          "usage": "Nom féminin pluriel ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-17",
+          "kind": "verbe-action",
+          "french": "réviser régulièrement",
+          "english": "to review regularly",
+          "example": "Tout d’abord, les ressources numériques permettent de réviser régulièrement sans perdre du temps dans les déplacements.",
+          "usage": "Construction infinitive ; réutilisable en Études/Formation."
+        },
+        {
+          "id": "E3-OCT-C03-18",
+          "kind": "tournure",
+          "french": "sans perdre du temps dans les déplacements",
+          "english": "without wasting time travelling",
+          "example": "Tout d’abord, les ressources numériques permettent de réviser régulièrement sans perdre du temps dans les déplacements.",
+          "usage": "Sans + infinitif ; exprime un avantage pratique."
+        },
+        {
+          "id": "E3-OCT-C03-19",
+          "kind": "mot-cle",
+          "french": "la prononciation",
+          "english": "pronunciation",
+          "example": "Ensuite, les échanges avec un professeur corrigent la prononciation et entretiennent la motivation.",
+          "usage": "Nom féminin singulier ; réutilisable en Langues/Éducation."
+        },
+        {
+          "id": "E3-OCT-C03-20",
+          "kind": "verbe-action",
+          "french": "entretiennent la motivation",
+          "english": "sustain motivation",
+          "example": "Ensuite, les échanges avec un professeur corrigent la prononciation et entretiennent la motivation.",
+          "usage": "Groupe verbal ; réutilisable en Éducation/Travail."
+        },
+        {
+          "id": "E3-OCT-C03-21",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une personne nouvellement installée au Québec peut suivre trois courtes leçons chez elle chaque semaine et participer le samedi à une conversation de groupe.",
+          "usage": "Connecteur d’illustration ; introduit un cas concret."
+        },
+        {
+          "id": "E3-OCT-C03-22",
+          "kind": "collocation",
+          "french": "trois courtes leçons",
+          "english": "three short lessons",
+          "example": "Par exemple, une personne nouvellement installée au Québec peut suivre trois courtes leçons chez elle chaque semaine et participer le samedi à une conversation de groupe.",
+          "usage": "Groupe nominal féminin pluriel ; réutilisable en Formation/Organisation."
+        },
+        {
+          "id": "E3-OCT-C03-23",
+          "kind": "collocation",
+          "french": "une conversation de groupe",
+          "english": "a group conversation",
+          "example": "Par exemple, une personne nouvellement installée au Québec peut suivre trois courtes leçons chez elle chaque semaine et participer le samedi à une conversation de groupe.",
+          "usage": "Groupe nominal féminin ; réutilisable en Langues/Société."
+        },
+        {
+          "id": "E3-OCT-C03-24",
+          "kind": "tournure",
+          "french": "chez elle chaque semaine",
+          "english": "at home every week",
+          "example": "Par exemple, une personne nouvellement installée au Québec peut suivre trois courtes leçons chez elle chaque semaine et participer le samedi à une conversation de groupe.",
+          "usage": "Locution de lieu et de fréquence ; réutilisable pour une routine."
+        },
+        {
+          "id": "E3-OCT-C03-25",
+          "kind": "mot-cle",
+          "french": "Cette régularité",
+          "english": "This regularity",
+          "example": "Cette régularité favorise des progrès concrets.",
+          "usage": "Nom féminin singulier ; reprise démonstrative utile pour exprimer une conséquence."
+        },
+        {
+          "id": "E3-OCT-C03-26",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les inégalités d’équipement excluent certains apprenants",
+          "english": "However, it must also be acknowledged that unequal access to equipment excludes some learners",
+          "example": "Cependant, il faut aussi reconnaître que les inégalités d’équipement excluent certains apprenants.",
+          "usage": "Formule de concession ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-27",
+          "kind": "mot-cle",
+          "french": "les inégalités d’équipement",
+          "english": "unequal access to equipment",
+          "example": "Cependant, il faut aussi reconnaître que les inégalités d’équipement excluent certains apprenants.",
+          "usage": "Nom féminin pluriel ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-OCT-C03-28",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de proposer une connexion accessible, des objectifs clairs et un véritable lien humain.",
+          "usage": "Connecteur de conclusion ; annonce la position finale."
+        },
+        {
+          "id": "E3-OCT-C03-29",
+          "kind": "phrase-modele",
+          "french": "le plus important est de proposer une connexion accessible, des objectifs clairs et un véritable lien humain",
+          "english": "the most important thing is to provide an accessible connection, clear objectives and genuine human connection",
+          "example": "En conclusion, le plus important est de proposer une connexion accessible, des objectifs clairs et un véritable lien humain.",
+          "usage": "Formule de conclusion ; réutilisable en Éducation/Numérique."
+        },
+        {
+          "id": "E3-OCT-C03-30",
+          "kind": "collocation",
+          "french": "des objectifs clairs",
+          "english": "clear objectives",
+          "example": "En conclusion, le plus important est de proposer une connexion accessible, des objectifs clairs et un véritable lien humain.",
+          "usage": "Groupe nominal masculin pluriel ; réutilisable en Études/Travail."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:octobre:combinaison-4",
+      "combinaison": "Combinaison 4",
+      "sujet": "Que pensez-vous des maisons de retraite?",
+      "entries": [
+        {
+          "id": "E3-OCT-C04-01",
+          "kind": "phrase-modele",
+          "french": "La prise en charge des personnes âgées oppose deux visions",
+          "english": "The care of older people contrasts two viewpoints",
+          "example": "La prise en charge des personnes âgées oppose deux visions.",
+          "usage": "Formule d’ouverture neutre ; réutilisable en Société/Santé."
+        },
+        {
+          "id": "E3-OCT-C04-02",
+          "kind": "mot-cle",
+          "french": "La prise en charge des personnes âgées",
+          "english": "the care of older people",
+          "example": "La prise en charge des personnes âgées oppose deux visions.",
+          "usage": "Nom féminin singulier ; réutilisable en Santé/Société."
+        },
+        {
+          "id": "E3-OCT-C04-03",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, vivre avec les jeunes générations préserve les liens familiaux et évite de confier un proche à des inconnus.",
+          "usage": "Connecteur d’opposition ; introduit le premier point de vue."
+        },
+        {
+          "id": "E3-OCT-C04-04",
+          "kind": "mot-cle",
+          "french": "les jeunes générations",
+          "english": "younger generations",
+          "example": "D’un côté, vivre avec les jeunes générations préserve les liens familiaux et évite de confier un proche à des inconnus.",
+          "usage": "Nom féminin pluriel ; réutilisable en Famille/Société."
+        },
+        {
+          "id": "E3-OCT-C04-05",
+          "kind": "mot-cle",
+          "french": "les liens familiaux",
+          "english": "family ties",
+          "example": "D’un côté, vivre avec les jeunes générations préserve les liens familiaux et évite de confier un proche à des inconnus.",
+          "usage": "Nom masculin pluriel ; réutilisable en Famille/Société."
+        },
+        {
+          "id": "E3-OCT-C04-06",
+          "kind": "tournure",
+          "french": "évite de confier un proche à des inconnus",
+          "english": "avoids entrusting a loved one to strangers",
+          "example": "D’un côté, vivre avec les jeunes générations préserve les liens familiaux et évite de confier un proche à des inconnus.",
+          "usage": "Éviter de + infinitif ; réutilisable en Famille/Soins."
+        },
+        {
+          "id": "E3-OCT-C04-07",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, les maisons de retraite réduisent l’isolement, assurent des soins adaptés et rassurent les familles, mais leur coût reste parfois inaccessible.",
+          "usage": "Connecteur d’opposition ; introduit le second point de vue."
+        },
+        {
+          "id": "E3-OCT-C04-08",
+          "kind": "mot-cle",
+          "french": "les maisons de retraite",
+          "english": "retirement homes",
+          "example": "En revanche, les maisons de retraite réduisent l’isolement, assurent des soins adaptés et rassurent les familles, mais leur coût reste parfois inaccessible.",
+          "usage": "Nom féminin pluriel ; réutilisable en Vieillissement/Logement."
+        },
+        {
+          "id": "E3-OCT-C04-09",
+          "kind": "mot-cle",
+          "french": "l’isolement",
+          "english": "isolation",
+          "example": "En revanche, les maisons de retraite réduisent l’isolement, assurent des soins adaptés et rassurent les familles, mais leur coût reste parfois inaccessible.",
+          "usage": "Nom masculin singulier ; réutilisable en Société/Santé mentale."
+        },
+        {
+          "id": "E3-OCT-C04-10",
+          "kind": "collocation",
+          "french": "des soins adaptés",
+          "english": "appropriate care",
+          "example": "En revanche, les maisons de retraite réduisent l’isolement, assurent des soins adaptés et rassurent les familles, mais leur coût reste parfois inaccessible.",
+          "usage": "Groupe nominal masculin pluriel ; réutilisable en Santé/Vieillissement."
+        },
+        {
+          "id": "E3-OCT-C04-11",
+          "kind": "collocation",
+          "french": "leur coût reste parfois inaccessible",
+          "english": "their cost is sometimes unaffordable",
+          "example": "En revanche, les maisons de retraite réduisent l’isolement, assurent des soins adaptés et rassurent les familles, mais leur coût reste parfois inaccessible.",
+          "usage": "Proposition réutilisable ; exprime une limite financière."
+        },
+        {
+          "id": "E3-OCT-C04-12",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense que les maisons de retraite constituent une bonne solution lorsqu’elles répondent réellement aux besoins de chacun",
+          "english": "Personally, I think retirement homes are a good solution when they genuinely meet everyone’s needs",
+          "example": "Personnellement, je pense que les maisons de retraite constituent une bonne solution lorsqu’elles répondent réellement aux besoins de chacun.",
+          "usage": "Formule d’opinion conditionnelle ; réutilisable en Logement/Santé."
+        },
+        {
+          "id": "E3-OCT-C04-13",
+          "kind": "tournure",
+          "french": "lorsqu’elles répondent réellement aux besoins de chacun",
+          "english": "when they genuinely meet everyone’s needs",
+          "example": "Personnellement, je pense que les maisons de retraite constituent une bonne solution lorsqu’elles répondent réellement aux besoins de chacun.",
+          "usage": "Lorsque + indicatif ; pose une condition concrète."
+        },
+        {
+          "id": "E3-OCT-C04-14",
+          "kind": "mot-cle",
+          "french": "besoins de chacun",
+          "english": "everyone’s needs",
+          "example": "Personnellement, je pense que les maisons de retraite constituent une bonne solution lorsqu’elles répondent réellement aux besoins de chacun.",
+          "usage": "Nom masculin pluriel ; réutilisable en Famille/Services publics."
+        },
+        {
+          "id": "E3-OCT-C04-15",
+          "kind": "mot-cle",
+          "french": "un personnel qualifié",
+          "english": "qualified staff",
+          "example": "Tout d’abord, un personnel qualifié peut assurer des soins continus et prévenir les accidents.",
+          "usage": "Nom masculin collectif ; réutilisable en Santé/Travail."
+        },
+        {
+          "id": "E3-OCT-C04-16",
+          "kind": "collocation",
+          "french": "des soins continus",
+          "english": "continuous care",
+          "example": "Tout d’abord, un personnel qualifié peut assurer des soins continus et prévenir les accidents.",
+          "usage": "Groupe nominal masculin pluriel ; réutilisable en Santé/Vieillissement."
+        },
+        {
+          "id": "E3-OCT-C04-17",
+          "kind": "verbe-action",
+          "french": "prévenir les accidents",
+          "english": "to prevent accidents",
+          "example": "Tout d’abord, un personnel qualifié peut assurer des soins continus et prévenir les accidents.",
+          "usage": "Construction infinitive ; réutilisable en Santé/Sécurité."
+        },
+        {
+          "id": "E3-OCT-C04-18",
+          "kind": "mot-cle",
+          "french": "les activités collectives",
+          "english": "group activities",
+          "example": "Ensuite, les activités collectives favorisent le lien social sans remplacer les visites familiales.",
+          "usage": "Nom féminin pluriel ; réutilisable en Loisirs/Société."
+        },
+        {
+          "id": "E3-OCT-C04-19",
+          "kind": "mot-cle",
+          "french": "le lien social",
+          "english": "social connection",
+          "example": "Ensuite, les activités collectives favorisent le lien social sans remplacer les visites familiales.",
+          "usage": "Nom masculin singulier ; réutilisable en Société/Bien-être."
+        },
+        {
+          "id": "E3-OCT-C04-20",
+          "kind": "tournure",
+          "french": "sans remplacer les visites familiales",
+          "english": "without replacing family visits",
+          "example": "Ensuite, les activités collectives favorisent le lien social sans remplacer les visites familiales.",
+          "usage": "Sans + infinitif ; exprime une limite à respecter."
+        },
+        {
+          "id": "E3-OCT-C04-21",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une résidente peu autonome peut recevoir son traitement sur place, participer à un atelier de musique et dîner chaque dimanche avec ses enfants.",
+          "usage": "Connecteur d’illustration ; introduit un cas concret."
+        },
+        {
+          "id": "E3-OCT-C04-22",
+          "kind": "collocation",
+          "french": "une résidente peu autonome",
+          "english": "a resident with limited independence",
+          "example": "Par exemple, une résidente peu autonome peut recevoir son traitement sur place, participer à un atelier de musique et dîner chaque dimanche avec ses enfants.",
+          "usage": "Groupe nominal féminin ; réutilisable en Vieillissement/Santé."
+        },
+        {
+          "id": "E3-OCT-C04-23",
+          "kind": "collocation",
+          "french": "un atelier de musique",
+          "english": "a music workshop",
+          "example": "Par exemple, une résidente peu autonome peut recevoir son traitement sur place, participer à un atelier de musique et dîner chaque dimanche avec ses enfants.",
+          "usage": "Groupe nominal masculin ; réutilisable en Loisirs/Éducation."
+        },
+        {
+          "id": "E3-OCT-C04-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certains établissements sont coûteux et peuvent éloigner les aînés de leurs repères",
+          "english": "However, it must also be acknowledged that some facilities are expensive and may distance older people from familiar surroundings",
+          "example": "Cependant, il faut aussi reconnaître que certains établissements sont coûteux et peuvent éloigner les aînés de leurs repères.",
+          "usage": "Formule de concession ; réutilisable en Logement/Vieillissement."
+        },
+        {
+          "id": "E3-OCT-C04-25",
+          "kind": "reformulation",
+          "french": "les aînés",
+          "english": "older people",
+          "example": "Cependant, il faut aussi reconnaître que certains établissements sont coûteux et peuvent éloigner les aînés de leurs repères.",
+          "usage": "Nom masculin pluriel ; reformulation respectueuse de « personnes âgées »."
+        },
+        {
+          "id": "E3-OCT-C04-26",
+          "kind": "verbe-action",
+          "french": "éloigner les aînés de leurs repères",
+          "english": "to distance older people from familiar surroundings",
+          "example": "Cependant, il faut aussi reconnaître que certains établissements sont coûteux et peuvent éloigner les aînés de leurs repères.",
+          "usage": "Construction infinitive ; réutilisable en Famille/Vieillissement."
+        },
+        {
+          "id": "E3-OCT-C04-27",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est d’offrir un choix accessible entre accompagnement à domicile, accueil spécialisé et solidarité familiale",
+          "english": "Ultimately, the most important thing is to offer an accessible choice between home support, specialized care and family solidarity",
+          "example": "En définitive, le plus important est d’offrir un choix accessible entre accompagnement à domicile, accueil spécialisé et solidarité familiale.",
+          "usage": "Formule de conclusion ; réutilisable pour proposer plusieurs options."
+        },
+        {
+          "id": "E3-OCT-C04-28",
+          "kind": "collocation",
+          "french": "accompagnement à domicile",
+          "english": "home support",
+          "example": "En définitive, le plus important est d’offrir un choix accessible entre accompagnement à domicile, accueil spécialisé et solidarité familiale.",
+          "usage": "Groupe nominal masculin ; réutilisable en Santé/Services sociaux."
+        },
+        {
+          "id": "E3-OCT-C04-29",
+          "kind": "tournure",
+          "french": "entre accompagnement à domicile, accueil spécialisé et solidarité familiale",
+          "english": "between home support, specialized care and family solidarity",
+          "example": "En définitive, le plus important est d’offrir un choix accessible entre accompagnement à domicile, accueil spécialisé et solidarité familiale.",
+          "usage": "Structure entre X, Y et Z ; réutilisable pour présenter un choix."
+        },
+        {
+          "id": "E3-OCT-C04-30",
+          "kind": "mot-cle",
+          "french": "solidarité familiale",
+          "english": "family solidarity",
+          "example": "En définitive, le plus important est d’offrir un choix accessible entre accompagnement à domicile, accueil spécialisé et solidarité familiale.",
+          "usage": "Nom féminin singulier ; réutilisable en Famille/Société."
+        }
+      ]
+    }
+  ]
+}

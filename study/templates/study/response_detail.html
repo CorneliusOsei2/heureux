@@ -20,15 +20,37 @@
 
 <div class="detail-grid">
   <div class="answer-columns" data-annotation-root data-annotation-source-key="response:{{ response.content_key }}">
+    {% if ee_response %}
+      {% if source_documents_html %}
+        <section class="card section-card section-card--ee-documents">
+          <div class="spine-label">Documents sources</div>
+          <div class="ee-source-docs">{{ source_documents_html|safe }}</div>
+        </section>
+      {% endif %}
+
+      {% if response_content.position %}
+        <section class="card section-card section-card--ee-synthese">
+          <div class="spine-label">Partie 1 — Synthèse <span class="spine-count">· {{ response_content.position|wordcount }} mots</span></div>
+          <p class="spine-text">{{ response_content.position }}</p>
+        </section>
+      {% endif %}
+
+      {% if response_content.position_claire %}
+        <section class="card section-card section-card--ee-point-de-vue">
+          <div class="spine-label">Partie 2 — Point de vue personnel <span class="spine-count">· {{ response_content.position_claire|wordcount }} mots</span></div>
+          <p class="spine-text">{{ response_content.position_claire }}</p>
+        </section>
+      {% endif %}
+    {% else %}
     {% if response_content.position %}
-      <section class="card section-card section-card--position">
+      <section class="card section-card">
         <div class="spine-label">Position</div>
         <p class="spine-text">{{ response_content.position }}</p>
       </section>
     {% endif %}
 
     {% if response_content.position_claire %}
-      <section class="card section-card section-card--introduction">
+      <section class="card section-card">
         <div class="spine-label">Introduction</div>
         <p class="spine-text">{{ response_content.position_claire }}</p>
       </section>
@@ -78,6 +100,7 @@
         <div class="spine-label">Conclusion</div>
         <p class="spine-text">{{ response_content.conclusion }}</p>
       </section>
+    {% endif %}
     {% endif %}
 
   </div>

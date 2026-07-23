@@ -123,8 +123,7 @@ def _phrase_deck_stats(now, user=None, task=None):
     return deck_stats(cards, now)
 
 
-def _question_bank_memory_context(user):
-    memories = content_module.load_question_banks()
+def _question_bank_memory_context(user, memories):
     memory_states = _memory_progress(user, memories)
     memory_items = [
         {
@@ -237,7 +236,10 @@ def task_detail(request, part_slug, task_slug):
             {"part": task.part, "task": task},
         )
     if (task.part.slug, task.slug) == content_module.QUESTION_BANK_TASK:
-        memory_context = _question_bank_memory_context(request.user)
+        memory_context = _question_bank_memory_context(
+            request.user,
+            content_module.load_question_banks(),
+        )
         subject_state = _tache_two_progress(
             request.user,
             content_module.load_tache_two_subject_months(),
@@ -624,11 +626,36 @@ def _memory_task(part_slug, task_slug):
     return task
 
 
-def _memory_by_number(memory_number):
+def _memoire_task(part_slug, task_slug):
+    """Gate for tasks that expose a Mémoires section (EO T2 and EE T3)."""
+    task = get_object_or_404(
+        Task.objects.select_related("part"),
+        slug=task_slug,
+        part__slug=part_slug,
+        is_active=True,
+        part__is_active=True,
+        available=True,
+    )
+    if (task.part.slug, task.slug) not in content_module.MEMOIRE_TASKS:
+        raise Http404
+    return task
+
+
+def _load_task_memoires(task):
+    directory, namespace = content_module.MEMOIRE_TASKS[
+        (task.part.slug, task.slug)
+    ]
+    return content_module.load_question_banks(
+        directory,
+        key_namespace=namespace,
+    )
+
+
+def _memory_by_number(memories, memory_number):
     memory = next(
         (
             memory
-            for memory in content_module.load_question_banks()
+            for memory in memories
             if memory.number == memory_number
         ),
         None,
@@ -639,15 +666,19 @@ def _memory_by_number(memory_number):
 
 
 def task_memories(request, part_slug, task_slug):
-    task = _memory_task(part_slug, task_slug)
+    task = _memoire_task(part_slug, task_slug)
+    memories = _load_task_memoires(task)
     return render(
         request,
         "study/tache_two_memories.html",
         {
             "part": task.part,
             "task": task,
-            "memory_task": True,
-            **_question_bank_memory_context(request.user),
+            "memory_task": (
+                (task.part.slug, task.slug)
+                == content_module.QUESTION_BANK_TASK
+            ),
+            **_question_bank_memory_context(request.user, memories),
         },
     )
 
@@ -868,8 +899,9 @@ def _memory_progress_error(request, message):
 
 
 def task_memory_detail(request, part_slug, task_slug, memory_number):
-    task = _memory_task(part_slug, task_slug)
-    question_bank = _memory_by_number(memory_number)
+    task = _memoire_task(part_slug, task_slug)
+    memories = _load_task_memoires(task)
+    question_bank = _memory_by_number(memories, memory_number)
     memory_state = _memory_progress(
         request.user,
         (question_bank,),
@@ -880,7 +912,10 @@ def task_memory_detail(request, part_slug, task_slug, memory_number):
         {
             "part": task.part,
             "task": task,
-            "memory_task": True,
+            "memory_task": (
+                (task.part.slug, task.slug)
+                == content_module.QUESTION_BANK_TASK
+            ),
             "question_bank": question_bank,
             "memory_progress": memory_state["progress"],
             "memory_sections": _memory_sections(
@@ -893,8 +928,9 @@ def task_memory_detail(request, part_slug, task_slug, memory_number):
 
 @require_POST
 def task_memory_progress(request, part_slug, task_slug, memory_number):
-    task = _memory_task(part_slug, task_slug)
-    memory = _memory_by_number(memory_number)
+    task = _memoire_task(part_slug, task_slug)
+    memories = _load_task_memoires(task)
+    memory = _memory_by_number(memories, memory_number)
     question_key = request.POST.get("question_key", "").strip()
     completed = request.POST.get("completed")
     if completed not in {"0", "1"}:
@@ -1240,6 +1276,11 @@ def response_detail(request, part_slug, task_slug, prompt_id):
             "part": task.part,
             "response_content": response_content,
             "arguments": response_content.arguments,
+            "ee_response": (
+                (task.part.slug, task.slug)
+                == content_module.EE_TACHE3_TASK
+            ),
+            "source_documents_html": response.body_html,
             "prompts": prompts,
             "card": card,
             "subject_progress": subject_progress,

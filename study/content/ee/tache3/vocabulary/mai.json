@@ -1,0 +1,1987 @@
+{
+  "version": 1,
+  "task": "ee/tache-3",
+  "month": {
+    "number": 5,
+    "slug": "mai",
+    "name": "Mai"
+  },
+  "responses": [
+    {
+      "response_key": "ee-tache3:mai:combinaison-1",
+      "combinaison": "Combinaison 1",
+      "sujet": "Les Jeux Vidéo : Pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAI-C01-01",
+          "kind": "phrase-modele",
+          "french": "La question des jeux vidéo chez les enfants suscite des avis partagés",
+          "english": "The question of video games for children divides opinion",
+          "example": "La question des jeux vidéo chez les enfants suscite des avis partagés.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-02",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, certaines études associent les jeux violents à des comportements agressifs, malgré la vigilance parentale.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-03",
+          "kind": "collocation",
+          "french": "des avis partagés",
+          "english": "divided opinions",
+          "example": "La question des jeux vidéo chez les enfants suscite des avis partagés.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-04",
+          "kind": "mot-cle",
+          "french": "les jeux violents",
+          "english": "violent video games",
+          "example": "D’un côté, certaines études associent les jeux violents à des comportements agressifs, malgré la vigilance parentale.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-05",
+          "kind": "collocation",
+          "french": "des comportements agressifs",
+          "english": "aggressive behaviour",
+          "example": "D’un côté, certaines études associent les jeux violents à des comportements agressifs, malgré la vigilance parentale.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-06",
+          "kind": "mot-cle",
+          "french": "la vigilance parentale",
+          "english": "parental supervision",
+          "example": "D’un côté, certaines études associent les jeux violents à des comportements agressifs, malgré la vigilance parentale.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-07",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-08",
+          "kind": "reformulation",
+          "french": "leurs défenseurs",
+          "english": "their supporters",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-09",
+          "kind": "verbe-action",
+          "french": "stimuler la concentration",
+          "english": "to stimulate concentration",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-10",
+          "kind": "mot-cle",
+          "french": "la créativité",
+          "english": "creativity",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-11",
+          "kind": "mot-cle",
+          "french": "la capacité d’analyse",
+          "english": "analytical ability",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-12",
+          "kind": "collocation",
+          "french": "fonctionnement du cerveau",
+          "english": "brain function",
+          "example": "En revanche, leurs défenseurs soulignent qu’une pratique adaptée peut stimuler la concentration, la créativité et la capacité d’analyse, tout en contribuant au fonctionnement du cerveau.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-13",
+          "kind": "phrase-modele",
+          "french": "À mon avis, les jeux vidéo peuvent être utiles, mais seulement si leur durée et leur contenu sont encadrés",
+          "english": "In my opinion, video games can be useful, but only if their duration and content are supervised",
+          "example": "À mon avis, les jeux vidéo peuvent être utiles, mais seulement si leur durée et leur contenu sont encadrés.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-14",
+          "kind": "tournure",
+          "french": "mais seulement si leur durée et leur contenu sont encadrés",
+          "english": "but only if their duration and content are supervised",
+          "example": "À mon avis, les jeux vidéo peuvent être utiles, mais seulement si leur durée et leur contenu sont encadrés.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-15",
+          "kind": "verbe-action",
+          "french": "développent la réflexion et la coordination",
+          "english": "develop thinking and coordination",
+          "example": "Tout d’abord, certains jeux développent la réflexion et la coordination.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-16",
+          "kind": "mot-cle",
+          "french": "une limite quotidienne",
+          "english": "a daily limit",
+          "example": "Ensuite, une limite quotidienne protège le sommeil, les résultats scolaires et le lien social.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-17",
+          "kind": "mot-cle",
+          "french": "le sommeil",
+          "english": "sleep",
+          "example": "Ensuite, une limite quotidienne protège le sommeil, les résultats scolaires et le lien social.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-18",
+          "kind": "collocation",
+          "french": "les résultats scolaires",
+          "english": "academic results",
+          "example": "Ensuite, une limite quotidienne protège le sommeil, les résultats scolaires et le lien social.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-19",
+          "kind": "mot-cle",
+          "french": "le lien social",
+          "english": "social connection",
+          "example": "Ensuite, une limite quotidienne protège le sommeil, les résultats scolaires et le lien social.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-20",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un adolescent peut jouer trente minutes à un jeu de stratégie après ses devoirs, puis pratiquer un sport avec ses amis.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-21",
+          "kind": "collocation",
+          "french": "un jeu de stratégie",
+          "english": "a strategy game",
+          "example": "Par exemple, un adolescent peut jouer trente minutes à un jeu de stratégie après ses devoirs, puis pratiquer un sport avec ses amis.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-22",
+          "kind": "verbe-action",
+          "french": "pratiquer un sport avec ses amis",
+          "english": "to play a sport with friends",
+          "example": "Par exemple, un adolescent peut jouer trente minutes à un jeu de stratégie après ses devoirs, puis pratiquer un sport avec ses amis.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-23",
+          "kind": "tournure",
+          "french": "sans remplacer ses autres activités",
+          "english": "without replacing other activities",
+          "example": "Cela favorise ses capacités sans remplacer ses autres activités.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-24",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les contenus violents et les mécanismes de dépendance présentent des risques réels",
+          "english": "However, it must also be acknowledged that violent content and addictive mechanisms pose real risks",
+          "example": "Cependant, il faut aussi reconnaître que les contenus violents et les mécanismes de dépendance présentent des risques réels.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-25",
+          "kind": "mot-cle",
+          "french": "les mécanismes de dépendance",
+          "english": "addictive mechanisms",
+          "example": "Cependant, il faut aussi reconnaître que les contenus violents et les mécanismes de dépendance présentent des risques réels.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-26",
+          "kind": "collocation",
+          "french": "des risques réels",
+          "english": "real risks",
+          "example": "Cependant, il faut aussi reconnaître que les contenus violents et les mécanismes de dépendance présentent des risques réels.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-27",
+          "kind": "tournure",
+          "french": "il faut aussi reconnaître que",
+          "english": "it must also be acknowledged that",
+          "example": "Cependant, il faut aussi reconnaître que les contenus violents et les mécanismes de dépendance présentent des risques réels.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-28",
+          "kind": "phrase-modele",
+          "french": "En conclusion, le plus important est de choisir des jeux adaptés et d’établir des règles claires",
+          "english": "In conclusion, the most important thing is to choose suitable games and set clear rules",
+          "example": "En conclusion, le plus important est de choisir des jeux adaptés et d’établir des règles claires.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-29",
+          "kind": "tournure",
+          "french": "le plus important est de choisir",
+          "english": "the most important thing is to choose",
+          "example": "En conclusion, le plus important est de choisir des jeux adaptés et d’établir des règles claires.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C01-30",
+          "kind": "verbe-action",
+          "french": "établir des règles claires",
+          "english": "to set clear rules",
+          "example": "En conclusion, le plus important est de choisir des jeux adaptés et d’établir des règles claires.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-2",
+      "combinaison": "Combinaison 2",
+      "sujet": "Les parcs zoologiques : Pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAI-C02-01",
+          "kind": "phrase-modele",
+          "french": "La question des parcs zoologiques divise les opinions",
+          "english": "The question of zoos divides opinion",
+          "example": "La question des parcs zoologiques divise les opinions.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-02",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, leurs détracteurs considèrent la captivité comme une prison inadaptée aux besoins naturels des animaux sauvages.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-03",
+          "kind": "reformulation",
+          "french": "leurs détracteurs",
+          "english": "their critics",
+          "example": "D’un côté, leurs détracteurs considèrent la captivité comme une prison inadaptée aux besoins naturels des animaux sauvages.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-04",
+          "kind": "mot-cle",
+          "french": "la captivité",
+          "english": "captivity",
+          "example": "D’un côté, leurs détracteurs considèrent la captivité comme une prison inadaptée aux besoins naturels des animaux sauvages.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-05",
+          "kind": "collocation",
+          "french": "besoins naturels des animaux sauvages",
+          "english": "the natural needs of wild animals",
+          "example": "D’un côté, leurs détracteurs considèrent la captivité comme une prison inadaptée aux besoins naturels des animaux sauvages.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-06",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, leurs défenseurs mettent en avant les soins, les programmes de reproduction et la protection des espèces menacées, qui peuvent contribuer à leur survie.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-07",
+          "kind": "mot-cle",
+          "french": "les programmes de reproduction",
+          "english": "breeding programmes",
+          "example": "En revanche, leurs défenseurs mettent en avant les soins, les programmes de reproduction et la protection des espèces menacées, qui peuvent contribuer à leur survie.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-08",
+          "kind": "collocation",
+          "french": "la protection des espèces menacées",
+          "english": "the protection of endangered species",
+          "example": "En revanche, leurs défenseurs mettent en avant les soins, les programmes de reproduction et la protection des espèces menacées, qui peuvent contribuer à leur survie.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-09",
+          "kind": "verbe-action",
+          "french": "contribuer à leur survie",
+          "english": "to contribute to their survival",
+          "example": "En revanche, leurs défenseurs mettent en avant les soins, les programmes de reproduction et la protection des espèces menacées, qui peuvent contribuer à leur survie.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-10",
+          "kind": "phrase-modele",
+          "french": "Selon moi, les zoos ne sont acceptables que s’ils donnent la priorité au bien-être et à la conservation",
+          "english": "In my view, zoos are acceptable only if they prioritize welfare and conservation",
+          "example": "Selon moi, les zoos ne sont acceptables que s’ils donnent la priorité au bien-être et à la conservation.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-11",
+          "kind": "tournure",
+          "french": "ne sont acceptables que s’ils donnent la priorité",
+          "english": "are acceptable only if they give priority",
+          "example": "Selon moi, les zoos ne sont acceptables que s’ils donnent la priorité au bien-être et à la conservation.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-12",
+          "kind": "mot-cle",
+          "french": "bien-être",
+          "english": "well-being",
+          "example": "Selon moi, les zoos ne sont acceptables que s’ils donnent la priorité au bien-être et à la conservation.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-13",
+          "kind": "mot-cle",
+          "french": "la conservation",
+          "english": "conservation",
+          "example": "Selon moi, les zoos ne sont acceptables que s’ils donnent la priorité au bien-être et à la conservation.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-14",
+          "kind": "collocation",
+          "french": "des espaces vastes et adaptés",
+          "english": "large, suitable spaces",
+          "example": "Tout d’abord, des espaces vastes et adaptés permettent aux animaux d’exprimer leurs comportements naturels.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-15",
+          "kind": "verbe-action",
+          "french": "exprimer leurs comportements naturels",
+          "english": "to express their natural behaviours",
+          "example": "Tout d’abord, des espaces vastes et adaptés permettent aux animaux d’exprimer leurs comportements naturels.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-16",
+          "kind": "collocation",
+          "french": "des programmes scientifiques sérieux",
+          "english": "serious scientific programmes",
+          "example": "De plus, des programmes scientifiques sérieux peuvent préserver des espèces menacées.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-17",
+          "kind": "verbe-action",
+          "french": "préserver des espèces menacées",
+          "english": "to preserve endangered species",
+          "example": "De plus, des programmes scientifiques sérieux peuvent préserver des espèces menacées.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-18",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, un parc pourrait reproduire une espèce rare, sensibiliser les visiteurs, puis réintroduire les jeunes dans une réserve protégée.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-19",
+          "kind": "mot-cle",
+          "french": "une espèce rare",
+          "english": "a rare species",
+          "example": "Par exemple, un parc pourrait reproduire une espèce rare, sensibiliser les visiteurs, puis réintroduire les jeunes dans une réserve protégée.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-20",
+          "kind": "verbe-action",
+          "french": "sensibiliser les visiteurs",
+          "english": "to raise visitors’ awareness",
+          "example": "Par exemple, un parc pourrait reproduire une espèce rare, sensibiliser les visiteurs, puis réintroduire les jeunes dans une réserve protégée.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-21",
+          "kind": "mot-cle",
+          "french": "une réserve protégée",
+          "english": "a protected reserve",
+          "example": "Par exemple, un parc pourrait reproduire une espèce rare, sensibiliser les visiteurs, puis réintroduire les jeunes dans une réserve protégée.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-22",
+          "kind": "tournure",
+          "french": "réintroduire les jeunes dans une réserve protégée",
+          "english": "to reintroduce the young into a protected reserve",
+          "example": "Par exemple, un parc pourrait reproduire une espèce rare, sensibiliser les visiteurs, puis réintroduire les jeunes dans une réserve protégée.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certaines espèces souffrent même dans de bonnes installations et ne devraient jamais être exposées",
+          "english": "However, it must also be acknowledged that some species suffer even in good facilities and should never be displayed",
+          "example": "Cependant, il faut aussi reconnaître que certaines espèces souffrent même dans de bonnes installations et ne devraient jamais être exposées.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-24",
+          "kind": "collocation",
+          "french": "de bonnes installations",
+          "english": "good facilities",
+          "example": "Cependant, il faut aussi reconnaître que certaines espèces souffrent même dans de bonnes installations et ne devraient jamais être exposées.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-25",
+          "kind": "mot-cle",
+          "french": "certaines espèces",
+          "english": "some species",
+          "example": "Cependant, il faut aussi reconnaître que certaines espèces souffrent même dans de bonnes installations et ne devraient jamais être exposées.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-26",
+          "kind": "tournure",
+          "french": "ne devraient jamais être exposées",
+          "english": "should never be displayed",
+          "example": "Cependant, il faut aussi reconnaître que certaines espèces souffrent même dans de bonnes installations et ne devraient jamais être exposées.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-27",
+          "kind": "phrase-modele",
+          "french": "En définitive, le plus important est de contrôler strictement les établissements et de fermer ceux qui privilégient le spectacle",
+          "english": "Ultimately, the most important thing is to regulate facilities strictly and close those that prioritize entertainment",
+          "example": "En définitive, le plus important est de contrôler strictement les établissements et de fermer ceux qui privilégient le spectacle.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-28",
+          "kind": "mot-cle",
+          "french": "les établissements",
+          "english": "the facilities",
+          "example": "En définitive, le plus important est de contrôler strictement les établissements et de fermer ceux qui privilégient le spectacle.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-29",
+          "kind": "tournure",
+          "french": "le plus important est de contrôler strictement",
+          "english": "the most important thing is to regulate strictly",
+          "example": "En définitive, le plus important est de contrôler strictement les établissements et de fermer ceux qui privilégient le spectacle.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Animaux/Environnement."
+        },
+        {
+          "id": "E3-MAI-C02-30",
+          "kind": "collocation",
+          "french": "privilégient le spectacle",
+          "english": "prioritize entertainment",
+          "example": "En définitive, le plus important est de contrôler strictement les établissements et de fermer ceux qui privilégient le spectacle.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Animaux/Environnement."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-3",
+      "combinaison": "Combinaison 3",
+      "sujet": "Le travail : Favorable ou défavorable ?",
+      "entries": [
+        {
+          "id": "E3-MAI-C03-01",
+          "kind": "phrase-modele",
+          "french": "La place du travail dans nos vies fait l’objet d’un débat nuancé",
+          "english": "The place of work in our lives is the subject of a nuanced debate",
+          "example": "La place du travail dans nos vies fait l’objet d’un débat nuancé.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-02",
+          "kind": "mot-cle",
+          "french": "place du travail",
+          "english": "the place of work",
+          "example": "La place du travail dans nos vies fait l’objet d’un débat nuancé.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-03",
+          "kind": "collocation",
+          "french": "un débat nuancé",
+          "english": "a nuanced debate",
+          "example": "La place du travail dans nos vies fait l’objet d’un débat nuancé.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-04",
+          "kind": "verbe-action",
+          "french": "travailler moins pour mieux vivre",
+          "english": "to work less to live better",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-05",
+          "kind": "mot-cle",
+          "french": "le manque de temps",
+          "english": "lack of time",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-06",
+          "kind": "tournure",
+          "french": "consacré aux proches",
+          "english": "devoted to loved ones",
+          "example": "Le premier document dénonce la fatigue et le manque de temps consacré aux proches, puis propose de travailler moins pour mieux vivre.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-07",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second souligne que l’emploi construit l’identité, crée des relations et nourrit le sentiment d’utilité.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-08",
+          "kind": "reformulation",
+          "french": "l’emploi",
+          "english": "employment",
+          "example": "En revanche, le second souligne que l’emploi construit l’identité, crée des relations et nourrit le sentiment d’utilité.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-09",
+          "kind": "collocation",
+          "french": "le sentiment d’utilité",
+          "english": "a sense of usefulness",
+          "example": "En revanche, le second souligne que l’emploi construit l’identité, crée des relations et nourrit le sentiment d’utilité.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-10",
+          "kind": "verbe-action",
+          "french": "construit l’identité",
+          "english": "builds identity",
+          "example": "En revanche, le second souligne que l’emploi construit l’identité, crée des relations et nourrit le sentiment d’utilité.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-11",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je pense que le travail reste essentiel, mais qu’il ne doit pas envahir la vie personnelle",
+          "english": "Personally, I think work remains essential, but it must not encroach on personal life",
+          "example": "Personnellement, je pense que le travail reste essentiel, mais qu’il ne doit pas envahir la vie personnelle.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-12",
+          "kind": "tournure",
+          "french": "ne doit pas envahir la vie personnelle",
+          "english": "must not encroach on personal life",
+          "example": "Personnellement, je pense que le travail reste essentiel, mais qu’il ne doit pas envahir la vie personnelle.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-13",
+          "kind": "collocation",
+          "french": "un emploi stable",
+          "english": "stable employment",
+          "example": "Tout d’abord, un emploi stable procure un revenu, des relations et un sentiment d’utilité.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-14",
+          "kind": "mot-cle",
+          "french": "un revenu",
+          "english": "an income",
+          "example": "Tout d’abord, un emploi stable procure un revenu, des relations et un sentiment d’utilité.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-15",
+          "kind": "mot-cle",
+          "french": "des horaires raisonnables",
+          "english": "reasonable working hours",
+          "example": "Ensuite, des horaires raisonnables préviennent le stress et la fatigue chronique.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-16",
+          "kind": "mot-cle",
+          "french": "le stress",
+          "english": "stress",
+          "example": "Ensuite, des horaires raisonnables préviennent le stress et la fatigue chronique.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-17",
+          "kind": "collocation",
+          "french": "la fatigue chronique",
+          "english": "chronic fatigue",
+          "example": "Ensuite, des horaires raisonnables préviennent le stress et la fatigue chronique.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-18",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une entreprise qui adopte quatre journées bien organisées peut maintenir sa productivité tout en laissant aux salariés davantage de temps pour leur famille.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-19",
+          "kind": "collocation",
+          "french": "quatre journées bien organisées",
+          "english": "four well-organized days",
+          "example": "Par exemple, une entreprise qui adopte quatre journées bien organisées peut maintenir sa productivité tout en laissant aux salariés davantage de temps pour leur famille.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-20",
+          "kind": "verbe-action",
+          "french": "maintenir sa productivité",
+          "english": "to maintain productivity",
+          "example": "Par exemple, une entreprise qui adopte quatre journées bien organisées peut maintenir sa productivité tout en laissant aux salariés davantage de temps pour leur famille.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-21",
+          "kind": "mot-cle",
+          "french": "salariés",
+          "english": "employees",
+          "example": "Par exemple, une entreprise qui adopte quatre journées bien organisées peut maintenir sa productivité tout en laissant aux salariés davantage de temps pour leur famille.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-22",
+          "kind": "tournure",
+          "french": "tout en laissant aux salariés davantage de temps",
+          "english": "while giving employees more time",
+          "example": "Par exemple, une entreprise qui adopte quatre journées bien organisées peut maintenir sa productivité tout en laissant aux salariés davantage de temps pour leur famille.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que cette organisation convient moins à certains secteurs continus ou aux petites équipes",
+          "english": "However, it must also be acknowledged that this arrangement is less suitable for some continuous-operation sectors or small teams",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation convient moins à certains secteurs continus ou aux petites équipes.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-24",
+          "kind": "collocation",
+          "french": "certains secteurs continus",
+          "english": "some continuous-operation sectors",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation convient moins à certains secteurs continus ou aux petites équipes.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-25",
+          "kind": "mot-cle",
+          "french": "petites équipes",
+          "english": "small teams",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation convient moins à certains secteurs continus ou aux petites équipes.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-26",
+          "kind": "tournure",
+          "french": "convient moins à",
+          "english": "is less suitable for",
+          "example": "Cependant, il faut aussi reconnaître que cette organisation convient moins à certains secteurs continus ou aux petites équipes.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-27",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de garantir des conditions de travail équilibrées sans nier la valeur sociale de l’emploi.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de garantir des conditions de travail équilibrées",
+          "english": "the most important thing is to ensure balanced working conditions",
+          "example": "En conclusion, le plus important est de garantir des conditions de travail équilibrées sans nier la valeur sociale de l’emploi.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-29",
+          "kind": "verbe-action",
+          "french": "garantir des conditions de travail équilibrées",
+          "english": "to ensure balanced working conditions",
+          "example": "En conclusion, le plus important est de garantir des conditions de travail équilibrées sans nier la valeur sociale de l’emploi.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Travail/Bien-être."
+        },
+        {
+          "id": "E3-MAI-C03-30",
+          "kind": "mot-cle",
+          "french": "la valeur sociale de l’emploi",
+          "english": "the social value of employment",
+          "example": "En conclusion, le plus important est de garantir des conditions de travail équilibrées sans nier la valeur sociale de l’emploi.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Travail/Bien-être."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-3-bis",
+      "combinaison": "Combinaison 3",
+      "sujet": "Jeux Vidéo : Pour Ou Contre ?",
+      "entries": [
+        {
+          "id": "E3-MAI-C03B-01",
+          "kind": "phrase-modele",
+          "french": "Les deux documents présentent la même inquiétude concernant les jeux vidéo",
+          "english": "Both documents express the same concern about video games",
+          "example": "Les deux documents présentent la même inquiétude concernant les jeux vidéo : lorsqu’ils deviennent le principal centre d’intérêt, ils peuvent provoquer une dépendance et nuire aux résultats scolaires des adolescents.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-02",
+          "kind": "mot-cle",
+          "french": "le principal centre d’intérêt",
+          "english": "the main focus of interest",
+          "example": "Les deux documents présentent la même inquiétude concernant les jeux vidéo : lorsqu’ils deviennent le principal centre d’intérêt, ils peuvent provoquer une dépendance et nuire aux résultats scolaires des adolescents.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-03",
+          "kind": "verbe-action",
+          "french": "provoquer une dépendance",
+          "english": "to cause addiction",
+          "example": "Les deux documents présentent la même inquiétude concernant les jeux vidéo : lorsqu’ils deviennent le principal centre d’intérêt, ils peuvent provoquer une dépendance et nuire aux résultats scolaires des adolescents.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-04",
+          "kind": "collocation",
+          "french": "résultats scolaires des adolescents",
+          "english": "teenagers’ academic results",
+          "example": "Les deux documents présentent la même inquiétude concernant les jeux vidéo : lorsqu’ils deviennent le principal centre d’intérêt, ils peuvent provoquer une dépendance et nuire aux résultats scolaires des adolescents.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-05",
+          "kind": "tournure",
+          "french": "lorsqu’ils deviennent le principal centre d’intérêt",
+          "english": "when they become the main focus of interest",
+          "example": "Les deux documents présentent la même inquiétude concernant les jeux vidéo : lorsqu’ils deviennent le principal centre d’intérêt, ils peuvent provoquer une dépendance et nuire aux résultats scolaires des adolescents.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-06",
+          "kind": "expression",
+          "french": "Toutefois",
+          "english": "However",
+          "example": "Toutefois, une position opposée rappelle qu’une pratique modérée peut offrir du divertissement, développer certaines capacités et favoriser les échanges entre joueurs.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-07",
+          "kind": "reformulation",
+          "french": "une position opposée",
+          "english": "an opposing view",
+          "example": "Toutefois, une position opposée rappelle qu’une pratique modérée peut offrir du divertissement, développer certaines capacités et favoriser les échanges entre joueurs.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-08",
+          "kind": "collocation",
+          "french": "une pratique modérée",
+          "english": "moderate use",
+          "example": "Toutefois, une position opposée rappelle qu’une pratique modérée peut offrir du divertissement, développer certaines capacités et favoriser les échanges entre joueurs.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-09",
+          "kind": "verbe-action",
+          "french": "favoriser les échanges entre joueurs",
+          "english": "to foster interaction between players",
+          "example": "Toutefois, une position opposée rappelle qu’une pratique modérée peut offrir du divertissement, développer certaines capacités et favoriser les échanges entre joueurs.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-10",
+          "kind": "mot-cle",
+          "french": "divertissement",
+          "english": "entertainment",
+          "example": "Toutefois, une position opposée rappelle qu’une pratique modérée peut offrir du divertissement, développer certaines capacités et favoriser les échanges entre joueurs.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-11",
+          "kind": "phrase-modele",
+          "french": "À mon avis, il ne faut pas interdire les jeux vidéo, mais les intégrer dans un emploi du temps équilibré",
+          "english": "In my opinion, video games should not be banned, but integrated into a balanced schedule",
+          "example": "À mon avis, il ne faut pas interdire les jeux vidéo, mais les intégrer dans un emploi du temps équilibré.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-12",
+          "kind": "tournure",
+          "french": "il ne faut pas interdire les jeux vidéo",
+          "english": "video games should not be banned",
+          "example": "À mon avis, il ne faut pas interdire les jeux vidéo, mais les intégrer dans un emploi du temps équilibré.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-13",
+          "kind": "collocation",
+          "french": "un emploi du temps équilibré",
+          "english": "a balanced schedule",
+          "example": "À mon avis, il ne faut pas interdire les jeux vidéo, mais les intégrer dans un emploi du temps équilibré.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-14",
+          "kind": "mot-cle",
+          "french": "la stratégie",
+          "english": "strategy",
+          "example": "Tout d’abord, leur usage modéré peut développer la stratégie, la persévérance et la coopération.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-15",
+          "kind": "mot-cle",
+          "french": "la persévérance",
+          "english": "perseverance",
+          "example": "Tout d’abord, leur usage modéré peut développer la stratégie, la persévérance et la coopération.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-16",
+          "kind": "mot-cle",
+          "french": "la coopération",
+          "english": "cooperation",
+          "example": "Tout d’abord, leur usage modéré peut développer la stratégie, la persévérance et la coopération.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-17",
+          "kind": "collocation",
+          "french": "des règles précises",
+          "english": "specific rules",
+          "example": "Ensuite, des règles précises empêchent le jeu de remplacer le sommeil, les études ou le sport.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-18",
+          "kind": "verbe-action",
+          "french": "empêchent le jeu de remplacer le sommeil",
+          "english": "prevent gaming from replacing sleep",
+          "example": "Ensuite, des règles précises empêchent le jeu de remplacer le sommeil, les études ou le sport.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, des parents peuvent autoriser une heure de jeu après les devoirs et conserver les consoles hors de la chambre la nuit.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-20",
+          "kind": "collocation",
+          "french": "une heure de jeu",
+          "english": "one hour of gaming",
+          "example": "Par exemple, des parents peuvent autoriser une heure de jeu après les devoirs et conserver les consoles hors de la chambre la nuit.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-21",
+          "kind": "mot-cle",
+          "french": "les devoirs",
+          "english": "homework",
+          "example": "Par exemple, des parents peuvent autoriser une heure de jeu après les devoirs et conserver les consoles hors de la chambre la nuit.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-22",
+          "kind": "tournure",
+          "french": "hors de la chambre la nuit",
+          "english": "outside the bedroom at night",
+          "example": "Par exemple, des parents peuvent autoriser une heure de jeu après les devoirs et conserver les consoles hors de la chambre la nuit.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que certains adolescents perdent le contrôle et nécessitent un accompagnement professionnel",
+          "english": "However, it must also be acknowledged that some teenagers lose control and need professional support",
+          "example": "Cependant, il faut aussi reconnaître que certains adolescents perdent le contrôle et nécessitent un accompagnement professionnel.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-24",
+          "kind": "mot-cle",
+          "french": "un accompagnement professionnel",
+          "english": "professional support",
+          "example": "Cependant, il faut aussi reconnaître que certains adolescents perdent le contrôle et nécessitent un accompagnement professionnel.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-25",
+          "kind": "collocation",
+          "french": "perdent le contrôle",
+          "english": "lose control",
+          "example": "Cependant, il faut aussi reconnaître que certains adolescents perdent le contrôle et nécessitent un accompagnement professionnel.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-26",
+          "kind": "tournure",
+          "french": "il faut aussi reconnaître que",
+          "english": "it must also be acknowledged that",
+          "example": "Cependant, il faut aussi reconnaître que certains adolescents perdent le contrôle et nécessitent un accompagnement professionnel.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-27",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de prévenir la dépendance grâce au dialogue, à des limites claires et à des activités variées.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de prévenir la dépendance",
+          "english": "the most important thing is to prevent addiction",
+          "example": "En définitive, le plus important est de prévenir la dépendance grâce au dialogue, à des limites claires et à des activités variées.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-29",
+          "kind": "verbe-action",
+          "french": "prévenir la dépendance",
+          "english": "to prevent addiction",
+          "example": "En définitive, le plus important est de prévenir la dépendance grâce au dialogue, à des limites claires et à des activités variées.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Numérique/Éducation."
+        },
+        {
+          "id": "E3-MAI-C03B-30",
+          "kind": "mot-cle",
+          "french": "des activités variées",
+          "english": "varied activities",
+          "example": "En définitive, le plus important est de prévenir la dépendance grâce au dialogue, à des limites claires et à des activités variées.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Numérique/Éducation."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-4",
+      "combinaison": "Combinaison 4",
+      "sujet": "L'organisation des événements sportifs",
+      "entries": [
+        {
+          "id": "E3-MAI-C04-01",
+          "kind": "phrase-modele",
+          "french": "L’organisation de grands événements sportifs oppose deux visions de l’investissement public",
+          "english": "The organization of major sporting events contrasts two views of public investment",
+          "example": "L’organisation de grands événements sportifs oppose deux visions de l’investissement public.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-02",
+          "kind": "mot-cle",
+          "french": "l’investissement public",
+          "english": "public investment",
+          "example": "L’organisation de grands événements sportifs oppose deux visions de l’investissement public.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-03",
+          "kind": "mot-cle",
+          "french": "le risque d’endettement",
+          "english": "the risk of debt",
+          "example": "Le premier document dénonce leur coût, le risque d’endettement et le détournement de fonds destinés à la santé ou à l’éducation.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-04",
+          "kind": "collocation",
+          "french": "le détournement de fonds",
+          "english": "the diversion of funds",
+          "example": "Le premier document dénonce leur coût, le risque d’endettement et le détournement de fonds destinés à la santé ou à l’éducation.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-05",
+          "kind": "tournure",
+          "french": "destinés à la santé ou à l’éducation",
+          "english": "intended for health or education",
+          "example": "Le premier document dénonce leur coût, le risque d’endettement et le détournement de fonds destinés à la santé ou à l’éducation.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-06",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second valorise les emplois, les infrastructures modernes, les retombées économiques et la visibilité culturelle qu’ils peuvent apporter.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-07",
+          "kind": "reformulation",
+          "french": "les infrastructures modernes",
+          "english": "modern infrastructure",
+          "example": "En revanche, le second valorise les emplois, les infrastructures modernes, les retombées économiques et la visibilité culturelle qu’ils peuvent apporter.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-08",
+          "kind": "mot-cle",
+          "french": "les retombées économiques",
+          "english": "economic benefits",
+          "example": "En revanche, le second valorise les emplois, les infrastructures modernes, les retombées économiques et la visibilité culturelle qu’ils peuvent apporter.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-09",
+          "kind": "collocation",
+          "french": "la visibilité culturelle",
+          "english": "cultural visibility",
+          "example": "En revanche, le second valorise les emplois, les infrastructures modernes, les retombées économiques et la visibilité culturelle qu’ils peuvent apporter.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-10",
+          "kind": "verbe-action",
+          "french": "valorise les emplois",
+          "english": "highlights jobs",
+          "example": "En revanche, le second valorise les emplois, les infrastructures modernes, les retombées économiques et la visibilité culturelle qu’ils peuvent apporter.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-11",
+          "kind": "phrase-modele",
+          "french": "Selon moi, un État peut accueillir une grande compétition, mais seulement si les bénéfices durables sont démontrés",
+          "english": "In my view, a state can host a major competition, but only if lasting benefits are demonstrated",
+          "example": "Selon moi, un État peut accueillir une grande compétition, mais seulement si les bénéfices durables sont démontrés.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-12",
+          "kind": "tournure",
+          "french": "mais seulement si les bénéfices durables sont démontrés",
+          "english": "but only if lasting benefits are demonstrated",
+          "example": "Selon moi, un État peut accueillir une grande compétition, mais seulement si les bénéfices durables sont démontrés.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-13",
+          "kind": "collocation",
+          "french": "une grande compétition",
+          "english": "a major competition",
+          "example": "Selon moi, un État peut accueillir une grande compétition, mais seulement si les bénéfices durables sont démontrés.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-14",
+          "kind": "mot-cle",
+          "french": "les bénéfices durables",
+          "english": "lasting benefits",
+          "example": "Selon moi, un État peut accueillir une grande compétition, mais seulement si les bénéfices durables sont démontrés.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-15",
+          "kind": "collocation",
+          "french": "le budget doit rester transparent",
+          "english": "the budget must remain transparent",
+          "example": "Tout d’abord, le budget doit rester transparent et préserver les services essentiels.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-16",
+          "kind": "verbe-action",
+          "french": "préserver les services essentiels",
+          "english": "to preserve essential services",
+          "example": "Tout d’abord, le budget doit rester transparent et préserver les services essentiels.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-17",
+          "kind": "mot-cle",
+          "french": "les nouvelles infrastructures",
+          "english": "new infrastructure",
+          "example": "Ensuite, les nouvelles infrastructures doivent servir quotidiennement à la population.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-18",
+          "kind": "tournure",
+          "french": "servir quotidiennement à la population",
+          "english": "to serve the public daily",
+          "example": "Ensuite, les nouvelles infrastructures doivent servir quotidiennement à la population.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une ville pourrait rénover un réseau de transport prévu dans son plan urbain, l’utiliser pendant les Jeux, puis le conserver pour ses habitants.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-20",
+          "kind": "collocation",
+          "french": "un réseau de transport",
+          "english": "a transport network",
+          "example": "Par exemple, une ville pourrait rénover un réseau de transport prévu dans son plan urbain, l’utiliser pendant les Jeux, puis le conserver pour ses habitants.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-21",
+          "kind": "mot-cle",
+          "french": "plan urbain",
+          "english": "an urban plan",
+          "example": "Par exemple, une ville pourrait rénover un réseau de transport prévu dans son plan urbain, l’utiliser pendant les Jeux, puis le conserver pour ses habitants.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-22",
+          "kind": "verbe-action",
+          "french": "rénover un réseau de transport",
+          "english": "to renovate a transport network",
+          "example": "Par exemple, une ville pourrait rénover un réseau de transport prévu dans son plan urbain, l’utiliser pendant les Jeux, puis le conserver pour ses habitants.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les prévisions touristiques sont incertaines et que les dépassements de coûts sont fréquents",
+          "english": "However, it must also be acknowledged that tourism forecasts are uncertain and cost overruns are frequent",
+          "example": "Cependant, il faut aussi reconnaître que les prévisions touristiques sont incertaines et que les dépassements de coûts sont fréquents.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-24",
+          "kind": "collocation",
+          "french": "les prévisions touristiques",
+          "english": "tourism forecasts",
+          "example": "Cependant, il faut aussi reconnaître que les prévisions touristiques sont incertaines et que les dépassements de coûts sont fréquents.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-25",
+          "kind": "mot-cle",
+          "french": "les dépassements de coûts",
+          "english": "cost overruns",
+          "example": "Cependant, il faut aussi reconnaître que les prévisions touristiques sont incertaines et que les dépassements de coûts sont fréquents.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-26",
+          "kind": "tournure",
+          "french": "il faut aussi reconnaître que",
+          "english": "it must also be acknowledged that",
+          "example": "Cependant, il faut aussi reconnaître que les prévisions touristiques sont incertaines et que les dépassements de coûts sont fréquents.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-27",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de soumettre chaque projet à un contrôle indépendant et à une consultation publique.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de soumettre chaque projet à un contrôle indépendant",
+          "english": "the most important thing is to subject each project to independent oversight",
+          "example": "En conclusion, le plus important est de soumettre chaque projet à un contrôle indépendant et à une consultation publique.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-29",
+          "kind": "verbe-action",
+          "french": "soumettre chaque projet à un contrôle indépendant",
+          "english": "to subject each project to independent oversight",
+          "example": "En conclusion, le plus important est de soumettre chaque projet à un contrôle indépendant et à une consultation publique.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Économie/Société."
+        },
+        {
+          "id": "E3-MAI-C04-30",
+          "kind": "mot-cle",
+          "french": "une consultation publique",
+          "english": "a public consultation",
+          "example": "En conclusion, le plus important est de soumettre chaque projet à un contrôle indépendant et à une consultation publique.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Économie/Société."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-5",
+      "combinaison": "Combinaison 5",
+      "sujet": "Le végétarisme en Europe",
+      "entries": [
+        {
+          "id": "E3-MAI-C05-01",
+          "kind": "phrase-modele",
+          "french": "Le végétarisme en Europe fait l’objet d’un débat écologique et éthique",
+          "english": "Vegetarianism in Europe is the subject of an ecological and ethical debate",
+          "example": "Le végétarisme en Europe fait l’objet d’un débat écologique et éthique.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-02",
+          "kind": "collocation",
+          "french": "un débat écologique et éthique",
+          "english": "an ecological and ethical debate",
+          "example": "Le végétarisme en Europe fait l’objet d’un débat écologique et éthique.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-03",
+          "kind": "expression",
+          "french": "D’un côté",
+          "english": "On the one hand",
+          "example": "D’un côté, ses partisans défendent la condition animale et rappellent que l’élevage produit une part importante des émissions de carbone.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-04",
+          "kind": "reformulation",
+          "french": "ses partisans",
+          "english": "its supporters",
+          "example": "D’un côté, ses partisans défendent la condition animale et rappellent que l’élevage produit une part importante des émissions de carbone.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-05",
+          "kind": "mot-cle",
+          "french": "la condition animale",
+          "english": "animal welfare",
+          "example": "D’un côté, ses partisans défendent la condition animale et rappellent que l’élevage produit une part importante des émissions de carbone.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-06",
+          "kind": "verbe-action",
+          "french": "défendent la condition animale",
+          "english": "defend animal welfare",
+          "example": "D’un côté, ses partisans défendent la condition animale et rappellent que l’élevage produit une part importante des émissions de carbone.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-07",
+          "kind": "collocation",
+          "french": "émissions de carbone",
+          "english": "carbon emissions",
+          "example": "D’un côté, ses partisans défendent la condition animale et rappellent que l’élevage produit une part importante des émissions de carbone.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-08",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, une étude soutient que la culture et le transport de certains végétaux peuvent parfois polluer davantage que la production de viande.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-09",
+          "kind": "mot-cle",
+          "french": "la production de viande",
+          "english": "meat production",
+          "example": "En revanche, une étude soutient que la culture et le transport de certains végétaux peuvent parfois polluer davantage que la production de viande.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-10",
+          "kind": "tournure",
+          "french": "polluer davantage que",
+          "english": "to pollute more than",
+          "example": "En revanche, une étude soutient que la culture et le transport de certains végétaux peuvent parfois polluer davantage que la production de viande.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-11",
+          "kind": "phrase-modele",
+          "french": "Personnellement, je considère qu’une alimentation davantage végétale est souhaitable, sans supposer que tous les légumes sont écologiques",
+          "english": "Personally, I believe a more plant-based diet is desirable, without assuming all vegetables are ecological",
+          "example": "Personnellement, je considère qu’une alimentation davantage végétale est souhaitable, sans supposer que tous les légumes sont écologiques.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-12",
+          "kind": "collocation",
+          "french": "une alimentation davantage végétale",
+          "english": "a more plant-based diet",
+          "example": "Personnellement, je considère qu’une alimentation davantage végétale est souhaitable, sans supposer que tous les légumes sont écologiques.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-13",
+          "kind": "tournure",
+          "french": "sans supposer que tous les légumes sont écologiques",
+          "english": "without assuming all vegetables are ecological",
+          "example": "Personnellement, je considère qu’une alimentation davantage végétale est souhaitable, sans supposer que tous les légumes sont écologiques.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-14",
+          "kind": "verbe-action",
+          "french": "réduire l’élevage intensif",
+          "english": "to reduce intensive farming",
+          "example": "Tout d’abord, réduire l’élevage intensif limite la souffrance animale et certaines émissions.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-15",
+          "kind": "mot-cle",
+          "french": "la souffrance animale",
+          "english": "animal suffering",
+          "example": "Tout d’abord, réduire l’élevage intensif limite la souffrance animale et certaines émissions.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-16",
+          "kind": "collocation",
+          "french": "des produits locaux et saisonniers",
+          "english": "local, seasonal products",
+          "example": "De plus, choisir des produits locaux et saisonniers diminue les transports inutiles.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-17",
+          "kind": "verbe-action",
+          "french": "diminue les transports inutiles",
+          "english": "reduces unnecessary transport",
+          "example": "De plus, choisir des produits locaux et saisonniers diminue les transports inutiles.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-18",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une famille peut remplacer deux repas de viande par des lentilles cultivées dans sa région plutôt que par des légumes importés par avion.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-19",
+          "kind": "mot-cle",
+          "french": "des lentilles",
+          "english": "lentils",
+          "example": "Par exemple, une famille peut remplacer deux repas de viande par des lentilles cultivées dans sa région plutôt que par des légumes importés par avion.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-20",
+          "kind": "collocation",
+          "french": "des légumes importés par avion",
+          "english": "vegetables imported by air",
+          "example": "Par exemple, une famille peut remplacer deux repas de viande par des lentilles cultivées dans sa région plutôt que par des légumes importés par avion.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-21",
+          "kind": "tournure",
+          "french": "plutôt que par des légumes importés",
+          "english": "rather than vegetables imported",
+          "example": "Par exemple, une famille peut remplacer deux repas de viande par des lentilles cultivées dans sa région plutôt que par des légumes importés par avion.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-22",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente",
+          "english": "However, it must also be acknowledged that a vegetarian diet requires nutritional knowledge and that each production method has a different footprint",
+          "example": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-23",
+          "kind": "mot-cle",
+          "french": "ce régime végétarien",
+          "english": "this vegetarian diet",
+          "example": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-24",
+          "kind": "mot-cle",
+          "french": "des connaissances nutritionnelles",
+          "english": "nutritional knowledge",
+          "example": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-25",
+          "kind": "collocation",
+          "french": "une empreinte différente",
+          "english": "a different footprint",
+          "example": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-26",
+          "kind": "tournure",
+          "french": "il faut aussi reconnaître que",
+          "english": "it must also be acknowledged that",
+          "example": "Cependant, il faut aussi reconnaître que ce régime végétarien exige des connaissances nutritionnelles et que chaque production a une empreinte différente.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-27",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de manger de façon équilibrée en considérant l’origine, la saison et le mode de production.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de manger de façon équilibrée",
+          "english": "the most important thing is to eat a balanced diet",
+          "example": "En définitive, le plus important est de manger de façon équilibrée en considérant l’origine, la saison et le mode de production.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-29",
+          "kind": "verbe-action",
+          "french": "manger de façon équilibrée",
+          "english": "to eat a balanced diet",
+          "example": "En définitive, le plus important est de manger de façon équilibrée en considérant l’origine, la saison et le mode de production.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Environnement."
+        },
+        {
+          "id": "E3-MAI-C05-30",
+          "kind": "mot-cle",
+          "french": "le mode de production",
+          "english": "the production method",
+          "example": "En définitive, le plus important est de manger de façon équilibrée en considérant l’origine, la saison et le mode de production.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Environnement."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-6",
+      "combinaison": "Combinaison 6",
+      "sujet": "La consommation de viande",
+      "entries": [
+        {
+          "id": "E3-MAI-C06-01",
+          "kind": "phrase-modele",
+          "french": "La consommation de viande suscite des avis partagés",
+          "english": "Meat consumption divides opinion",
+          "example": "La consommation de viande suscite des avis partagés.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-02",
+          "kind": "collocation",
+          "french": "des avis partagés",
+          "english": "divided opinions",
+          "example": "La consommation de viande suscite des avis partagés.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-03",
+          "kind": "mot-cle",
+          "french": "une consommation réduite",
+          "english": "reduced consumption",
+          "example": "Le premier témoignage valorise une consommation réduite, jugée bénéfique pour l’équilibre alimentaire, la santé et la planète.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-04",
+          "kind": "collocation",
+          "french": "l’équilibre alimentaire",
+          "english": "nutritional balance",
+          "example": "Le premier témoignage valorise une consommation réduite, jugée bénéfique pour l’équilibre alimentaire, la santé et la planète.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-05",
+          "kind": "reformulation",
+          "french": "la planète",
+          "english": "the planet",
+          "example": "Le premier témoignage valorise une consommation réduite, jugée bénéfique pour l’équilibre alimentaire, la santé et la planète.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-06",
+          "kind": "expression",
+          "french": "En revanche",
+          "english": "On the other hand",
+          "example": "En revanche, le second défend une alimentation variée, souligne la difficulté de préparer des menus végétariens et craint qu’une diminution entraîne de la fatigue ou des carences.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-07",
+          "kind": "mot-cle",
+          "french": "une alimentation variée",
+          "english": "a varied diet",
+          "example": "En revanche, le second défend une alimentation variée, souligne la difficulté de préparer des menus végétariens et craint qu’une diminution entraîne de la fatigue ou des carences.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-08",
+          "kind": "collocation",
+          "french": "des menus végétariens",
+          "english": "vegetarian menus",
+          "example": "En revanche, le second défend une alimentation variée, souligne la difficulté de préparer des menus végétariens et craint qu’une diminution entraîne de la fatigue ou des carences.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-09",
+          "kind": "mot-cle",
+          "french": "des carences",
+          "english": "deficiencies",
+          "example": "En revanche, le second défend une alimentation variée, souligne la difficulté de préparer des menus végétariens et craint qu’une diminution entraîne de la fatigue ou des carences.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-10",
+          "kind": "verbe-action",
+          "french": "entraîne de la fatigue ou des carences",
+          "english": "causes fatigue or deficiencies",
+          "example": "En revanche, le second défend une alimentation variée, souligne la difficulté de préparer des menus végétariens et craint qu’une diminution entraîne de la fatigue ou des carences.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-11",
+          "kind": "phrase-modele",
+          "french": "À mon avis, il est préférable de consommer moins de viande sans nécessairement la supprimer",
+          "english": "In my opinion, it is better to eat less meat without necessarily eliminating it",
+          "example": "À mon avis, il est préférable de consommer moins de viande sans nécessairement la supprimer.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-12",
+          "kind": "tournure",
+          "french": "il est préférable de consommer moins de viande",
+          "english": "it is better to eat less meat",
+          "example": "À mon avis, il est préférable de consommer moins de viande sans nécessairement la supprimer.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-13",
+          "kind": "tournure",
+          "french": "sans nécessairement la supprimer",
+          "english": "without necessarily eliminating it",
+          "example": "À mon avis, il est préférable de consommer moins de viande sans nécessairement la supprimer.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-14",
+          "kind": "verbe-action",
+          "french": "varier les sources de protéines",
+          "english": "to vary protein sources",
+          "example": "Tout d’abord, varier les sources de protéines peut réduire les graisses et l’empreinte écologique.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-15",
+          "kind": "mot-cle",
+          "french": "les sources de protéines",
+          "english": "protein sources",
+          "example": "Tout d’abord, varier les sources de protéines peut réduire les graisses et l’empreinte écologique.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-16",
+          "kind": "collocation",
+          "french": "l’empreinte écologique",
+          "english": "the ecological footprint",
+          "example": "Tout d’abord, varier les sources de protéines peut réduire les graisses et l’empreinte écologique.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-17",
+          "kind": "mot-cle",
+          "french": "une diminution progressive",
+          "english": "a gradual reduction",
+          "example": "Ensuite, une diminution progressive facilite l’adaptation des habitudes alimentaires.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-18",
+          "kind": "collocation",
+          "french": "habitudes alimentaires",
+          "english": "eating habits",
+          "example": "Ensuite, une diminution progressive facilite l’adaptation des habitudes alimentaires.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-19",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, une personne peut cuisiner des pois chiches deux soirs par semaine, conserver un repas de viande de qualité et demander conseil à un nutritionniste.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-20",
+          "kind": "mot-cle",
+          "french": "des pois chiches",
+          "english": "chickpeas",
+          "example": "Par exemple, une personne peut cuisiner des pois chiches deux soirs par semaine, conserver un repas de viande de qualité et demander conseil à un nutritionniste.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-21",
+          "kind": "collocation",
+          "french": "un repas de viande de qualité",
+          "english": "a quality meat meal",
+          "example": "Par exemple, une personne peut cuisiner des pois chiches deux soirs par semaine, conserver un repas de viande de qualité et demander conseil à un nutritionniste.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-22",
+          "kind": "verbe-action",
+          "french": "demander conseil à un nutritionniste",
+          "english": "to seek advice from a nutritionist",
+          "example": "Par exemple, une personne peut cuisiner des pois chiches deux soirs par semaine, conserver un repas de viande de qualité et demander conseil à un nutritionniste.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que les besoins diffèrent selon l’âge, la santé et le mode de vie",
+          "english": "However, it must also be acknowledged that needs differ according to age, health and lifestyle",
+          "example": "Cependant, il faut aussi reconnaître que les besoins diffèrent selon l’âge, la santé et le mode de vie.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-24",
+          "kind": "mot-cle",
+          "french": "le mode de vie",
+          "english": "lifestyle",
+          "example": "Cependant, il faut aussi reconnaître que les besoins diffèrent selon l’âge, la santé et le mode de vie.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-25",
+          "kind": "tournure",
+          "french": "les besoins diffèrent selon l’âge",
+          "english": "needs differ according to age",
+          "example": "Cependant, il faut aussi reconnaître que les besoins diffèrent selon l’âge, la santé et le mode de vie.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-26",
+          "kind": "expression",
+          "french": "En conclusion",
+          "english": "In conclusion",
+          "example": "En conclusion, le plus important est de construire des repas équilibrés, abordables et adaptés, plutôt que d’imposer un régime unique.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-27",
+          "kind": "phrase-modele",
+          "french": "le plus important est de construire des repas équilibrés, abordables et adaptés",
+          "english": "the most important thing is to create balanced, affordable and suitable meals",
+          "example": "En conclusion, le plus important est de construire des repas équilibrés, abordables et adaptés, plutôt que d’imposer un régime unique.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-28",
+          "kind": "verbe-action",
+          "french": "construire des repas équilibrés",
+          "english": "to create balanced meals",
+          "example": "En conclusion, le plus important est de construire des repas équilibrés, abordables et adaptés, plutôt que d’imposer un régime unique.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-29",
+          "kind": "mot-cle",
+          "french": "un régime unique",
+          "english": "a single diet",
+          "example": "En conclusion, le plus important est de construire des repas équilibrés, abordables et adaptés, plutôt que d’imposer un régime unique.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Alimentation/Santé."
+        },
+        {
+          "id": "E3-MAI-C06-30",
+          "kind": "tournure",
+          "french": "plutôt que d’imposer un régime unique",
+          "english": "rather than imposing a single diet",
+          "example": "En conclusion, le plus important est de construire des repas équilibrés, abordables et adaptés, plutôt que d’imposer un régime unique.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Alimentation/Santé."
+        }
+      ]
+    },
+    {
+      "response_key": "ee-tache3:mai:combinaison-7",
+      "combinaison": "Combinaison 7",
+      "sujet": "La colocation : Pour ou contre ?",
+      "entries": [
+        {
+          "id": "E3-MAI-C07-01",
+          "kind": "phrase-modele",
+          "french": "La colocation est un mode de vie qui présente des avantages et des inconvénients",
+          "english": "Shared housing is a lifestyle with advantages and disadvantages",
+          "example": "La colocation est un mode de vie qui présente des avantages et des inconvénients.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-02",
+          "kind": "mot-cle",
+          "french": "colocation",
+          "english": "shared housing",
+          "example": "La colocation est un mode de vie qui présente des avantages et des inconvénients.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-03",
+          "kind": "collocation",
+          "french": "des avantages et des inconvénients",
+          "english": "advantages and disadvantages",
+          "example": "La colocation est un mode de vie qui présente des avantages et des inconvénients.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-04",
+          "kind": "mot-cle",
+          "french": "les moments d’échange",
+          "english": "moments of interaction",
+          "example": "Ses partisans valorisent les moments d’échange, le partage des tâches, l’entraide et l’ouverture à d’autres habitudes.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-05",
+          "kind": "collocation",
+          "french": "le partage des tâches",
+          "english": "sharing chores",
+          "example": "Ses partisans valorisent les moments d’échange, le partage des tâches, l’entraide et l’ouverture à d’autres habitudes.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-06",
+          "kind": "mot-cle",
+          "french": "l’entraide",
+          "english": "mutual help",
+          "example": "Ses partisans valorisent les moments d’échange, le partage des tâches, l’entraide et l’ouverture à d’autres habitudes.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-07",
+          "kind": "expression",
+          "french": "Toutefois",
+          "english": "However",
+          "example": "Toutefois, ses détracteurs soulignent le manque de calme, les invités imposés et les conflits ménagers, qui exigent beaucoup de diplomatie.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-08",
+          "kind": "reformulation",
+          "french": "ses détracteurs",
+          "english": "its critics",
+          "example": "Toutefois, ses détracteurs soulignent le manque de calme, les invités imposés et les conflits ménagers, qui exigent beaucoup de diplomatie.",
+          "usage": "Reprise lexicale ; accord à adapter au référent ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-09",
+          "kind": "mot-cle",
+          "french": "le manque de calme",
+          "english": "lack of quiet",
+          "example": "Toutefois, ses détracteurs soulignent le manque de calme, les invités imposés et les conflits ménagers, qui exigent beaucoup de diplomatie.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-10",
+          "kind": "collocation",
+          "french": "les conflits ménagers",
+          "english": "household conflicts",
+          "example": "Toutefois, ses détracteurs soulignent le manque de calme, les invités imposés et les conflits ménagers, qui exigent beaucoup de diplomatie.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-11",
+          "kind": "tournure",
+          "french": "exigent beaucoup de diplomatie",
+          "english": "require a great deal of diplomacy",
+          "example": "Toutefois, ses détracteurs soulignent le manque de calme, les invités imposés et les conflits ménagers, qui exigent beaucoup de diplomatie.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-12",
+          "kind": "phrase-modele",
+          "french": "Selon moi, la colocation est enrichissante à condition que les responsabilités et les limites soient définies dès le départ",
+          "english": "In my view, shared housing is rewarding provided responsibilities and limits are defined from the outset",
+          "example": "Selon moi, la colocation est enrichissante à condition que les responsabilités et les limites soient définies dès le départ.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-13",
+          "kind": "tournure",
+          "french": "à condition que les responsabilités et les limites soient définies",
+          "english": "provided responsibilities and limits are defined",
+          "example": "Selon moi, la colocation est enrichissante à condition que les responsabilités et les limites soient définies dès le départ.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-14",
+          "kind": "collocation",
+          "french": "dès le départ",
+          "english": "from the outset",
+          "example": "Selon moi, la colocation est enrichissante à condition que les responsabilités et les limites soient définies dès le départ.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-15",
+          "kind": "verbe-action",
+          "french": "réduit les charges financières",
+          "english": "reduces financial costs",
+          "example": "Tout d’abord, elle réduit les charges financières et rompt l’isolement.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-16",
+          "kind": "mot-cle",
+          "french": "les charges financières",
+          "english": "financial costs",
+          "example": "Tout d’abord, elle réduit les charges financières et rompt l’isolement.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-17",
+          "kind": "verbe-action",
+          "french": "rompt l’isolement",
+          "english": "breaks isolation",
+          "example": "Tout d’abord, elle réduit les charges financières et rompt l’isolement.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-18",
+          "kind": "mot-cle",
+          "french": "les besoins de chacun",
+          "english": "everyone’s needs",
+          "example": "Ensuite, elle apprend à communiquer et à respecter les besoins de chacun.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-19",
+          "kind": "tournure",
+          "french": "apprend à communiquer",
+          "english": "teaches people to communicate",
+          "example": "Ensuite, elle apprend à communiquer et à respecter les besoins de chacun.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-20",
+          "kind": "expression",
+          "french": "Par exemple",
+          "english": "For example",
+          "example": "Par exemple, trois étudiants peuvent établir un calendrier du ménage, fixer des heures calmes et prévenir avant de recevoir des amis.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-21",
+          "kind": "collocation",
+          "french": "un calendrier du ménage",
+          "english": "a housework schedule",
+          "example": "Par exemple, trois étudiants peuvent établir un calendrier du ménage, fixer des heures calmes et prévenir avant de recevoir des amis.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-22",
+          "kind": "verbe-action",
+          "french": "fixer des heures calmes",
+          "english": "to set quiet hours",
+          "example": "Par exemple, trois étudiants peuvent établir un calendrier du ménage, fixer des heures calmes et prévenir avant de recevoir des amis.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-23",
+          "kind": "phrase-modele",
+          "french": "Cependant, il faut aussi reconnaître que des personnalités incompatibles peuvent créer un stress quotidien malgré de bonnes règles",
+          "english": "However, it must also be acknowledged that incompatible personalities can create daily stress despite good rules",
+          "example": "Cependant, il faut aussi reconnaître que des personnalités incompatibles peuvent créer un stress quotidien malgré de bonnes règles.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-24",
+          "kind": "collocation",
+          "french": "des personnalités incompatibles",
+          "english": "incompatible personalities",
+          "example": "Cependant, il faut aussi reconnaître que des personnalités incompatibles peuvent créer un stress quotidien malgré de bonnes règles.",
+          "usage": "Association lexicale figée ou semi-figée ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-25",
+          "kind": "mot-cle",
+          "french": "un stress quotidien",
+          "english": "daily stress",
+          "example": "Cependant, il faut aussi reconnaître que des personnalités incompatibles peuvent créer un stress quotidien malgré de bonnes règles.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-26",
+          "kind": "tournure",
+          "french": "malgré de bonnes règles",
+          "english": "despite good rules",
+          "example": "Cependant, il faut aussi reconnaître que des personnalités incompatibles peuvent créer un stress quotidien malgré de bonnes règles.",
+          "usage": "Structure neutre à adapter grammaticalement ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-27",
+          "kind": "expression",
+          "french": "En définitive",
+          "english": "Ultimately",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de maintenir une communication ouverte, honnête et respectueuse.",
+          "usage": "Connecteur discursif de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-28",
+          "kind": "phrase-modele",
+          "french": "le plus important est de choisir soigneusement ses colocataires",
+          "english": "the most important thing is to choose one’s roommates carefully",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de maintenir une communication ouverte, honnête et respectueuse.",
+          "usage": "Formule argumentative de registre neutre ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-29",
+          "kind": "verbe-action",
+          "french": "choisir soigneusement ses colocataires",
+          "english": "to choose one’s roommates carefully",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de maintenir une communication ouverte, honnête et respectueuse.",
+          "usage": "Groupe verbal ; verbe à conjuguer selon le sujet ; réutilisable en Logement/Société."
+        },
+        {
+          "id": "E3-MAI-C07-30",
+          "kind": "mot-cle",
+          "french": "une communication ouverte, honnête et respectueuse",
+          "english": "open, honest and respectful communication",
+          "example": "En définitive, le plus important est de choisir soigneusement ses colocataires et de maintenir une communication ouverte, honnête et respectueuse.",
+          "usage": "Groupe nominal ; accord à adapter au contexte ; réutilisable en Logement/Société."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "month": {
+    "number": 11,
+    "slug": "novembre",
+    "name": "Novembre"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 12,
+  "sujets": [
+    {
+      "id": 341,
+      "combinaison": "Combinaison 1",
+      "sujet": "Les jeux vidéo : Pour ou contre ?",
+      "document1": "Des études ont montré que certaines zones du cerveau de l’adulte peuvent être développées en jouant aux jeux vidéo. Ainsi, il peut être intéressant de jouer aux jeux vidéo, car ils permettent, par exemple, d’améliorer la capacité d’analyse, la capacité à faire des choix et la rapidité de réaction. C’est une bonne nouvelle, car la répartition des joueurs par âge montre que 83 % des joueurs sont des adultes. Cependant, il convient de rester prudent, car certains jeux vidéo ne favorisent pas ce type d’amélioration sur le cerveau.",
+      "document2": "Pendant trois ans, des enfants âgés de 8 à 17 ans ont participé à une étude sur les jeux vidéo. Les résultats de cette étude montrent que les enfants qui jouent beaucoup aux jeux vidéo sont plus violents, plus nerveux et plus stressés que ceux qui ne jouent pas ou peu. Ceux qui jouent beaucoup ont également moins de bons résultats à l’école. Il est donc conseillé aux parents d’être vigilants et de limiter l’usage de ces jeux par leurs enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 342,
+      "combinaison": "Combinaison 2",
+      "sujet": "le bien-être au travail",
+      "document1": "Nous avons installé, dans votre entreprise, des bureaux réglables qui montent et descendent, ceci pour permettre aux employés de choisir la position qui leur convient le mieux pour travailler. Les employés sont satisfaits et disent qu’ils sont plus productifs et plus efficaces lors des négociations au téléphone par exemple. Même le climat social est plus convivial et la communication verbale entre collègues s’est renforcée. « Lorie, responsable ».",
+      "document2": "De nos jours, les entreprises veulent toujours plus de productivité et d’efficacité, et les employés passent plus de temps sur les lieux de travail. Les entreprises cherchent toujours des moyens ou astuces pour convaincre leurs employés de travailler plus et qu’elles pensent à leur santé. Moi, ce qui m’importe, c’est de faire mon job sur mon temps de travail réel sans être obligé de faire des rallonges en heures supplémentaires. « Florian, ingénieur ».",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 343,
+      "combinaison": "Combinaison 3",
+      "sujet": "Les distributeurs de boissons dans les lycées : Pour ou contre ?",
+      "document1": "Opinion 1 : “Je suis en faveur des distributeurs de boissons dans les lycées. Premièrement, ils offrent une commodité supplémentaire pour les élèves, notamment pour ceux qui n’ont pas le temps de passer à la cafétéria pendant les pauses. Deuxièmement, s’ils sont bien gérés, ces distributeurs peuvent offrir une gamme de boissons saines, comme de l’eau, du jus de fruits pur et des boissons aux fruits sans sucre ajouté. Ces distributeurs peuvent être une source de revenus supplémentaire pour l’école, qui peut être réinvestie dans l’amélioration des infrastructures ou des programmes scolaires.”",
+      "document2": "Opinion 2 : “Je suis contre l’installation de distributeurs de boissons dans les lycées. Ma principale préoccupation est liée à la santé des élèves. Malheureusement, beaucoup de ces distributeurs sont remplis de boissons sucrées et de sodas qui contribuent à l’obésité infantile et à d’autres problèmes de santé comme le diabète. Même les jus de fruits, qui peuvent sembler sains, contiennent souvent beaucoup de sucre. Les écoles devraient être des lieux qui encouragent des habitudes alimentaires saines et je crains que la présence de ces distributeurs n’encourage une consommation excessive de boissons sucrées.”",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 344,
+      "combinaison": "Combinaison 4",
+      "sujet": "La sieste au travail : Pour ou contre ?",
+      "document1": "D’après le site : “siestepourtous.com”, une micro-sieste permettrait d’augmenter la productivité et la créativité des travailleurs de 35 %, ce qui est un avantage considérable pour l’employé et l’employeur. Aussi, la sieste au travail permettrait d’augmenter la mémoire et donc la concentration. Un salarié reposé ne penserait plus à dormir et serait davantage disponible pour ses missions. Grâce à la sieste au bureau, le stress et les risques cardiaques diminueraient.",
+      "document2": "Bien que les effets positifs d’une power nap aient été scientifiquement prouvés, il existe encore des personnes qui s’y opposent et y voient des inconvénients. La sieste au travail est assez difficile en termes de faisabilité. En effet, ce n’est pas dans les moyens de toutes les entreprises de mettre en place des lits et des salles dédiées à cette pratique. Lorsqu’une entreprise veut mettre en place un temps de repos dans son organisation, elle n’est pas tout à fait libre de faire selon son bon vouloir. L’entreprise devra se conformer à certaines règles : la mise à disposition d’un local dédié et de matériel employés lors de la sieste (prévention des situations de harcèlement), l’égalité de traitement entre salariés, l’établissement d’une charte gérant les salariés, etc.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 345,
+      "combinaison": "Combinaison 5",
+      "sujet": "La chasse aux animaux : pour ou contre ?",
+      "document1": "“Je suis de ceux qui n’arrivent pas à comprendre comment l’on peut prendre du plaisir à tuer des animaux. Je suis de ceux qui n’arrivent pas à comprendre comment on peut prétendre aimer la nature alors qu’on la détruit.” Gala, 29 ans",
+      "document2": "“Les gens chassent pour différentes raisons : la subsistance, le commerce, la conservation et l’aménagement de la faune, la protection de la propriété, l’exercice, le loisir et le prestige.” David, journaliste de la FRM",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 346,
+      "combinaison": "Combinaison 6",
+      "sujet": "La Restauration Rapide.",
+      "document1": "Les restaurants rapides se distinguent par leur engagement à proposer une variété de plats équilibrés, respectant strictement les normes d’hygiène. En laissant aux clients la liberté de composer leur propre menu, ces établissements les responsabilisent dans leurs choix alimentaires, tout en satisfaisant leurs préférences gustatives.",
+      "document2": "Les spécialistes affirment que manger régulièrement dans des restaurants de fast-food, qui proposent de la restauration rapide, est dangereux pour la santé. La nourriture servie est souvent la même : frites, hamburgers et boissons sucrées. Ces aliments contiennent une grande quantité de calories, bien trop pour un seul repas. De plus, la plupart des produits dans ces restaurants sont emballés dans du plastique. Par conséquent, manger dans un fast-food augmente la production de déchets plastiques, ce qui est nuisible pour l’environnement",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 347,
+      "combinaison": "Combinaison 7",
+      "sujet": "Faire ses courses alimentaires chez les producteurs locaux ou au supermarché",
+      "document1": "Jean qui vit à la campagne favorise l’achat des produits alimentaires directement à la ferme pour la bonne qualité, quitte à payer un peu plus cher.",
+      "document2": "Camille qui vit dans la ville préfère faire ses courses au supermarché pour la variété qu’il propose et pour les prix abordables.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 348,
+      "combinaison": "Combinaison 8",
+      "sujet": "Les maisons de retraite, pour ou contre ?",
+      "document1": "Les maisons de retraite sont une bonne solution pour les personnes âgées. Elles y reçoivent des soins adaptés et sont entourées de professionnels. De plus, elles peuvent participer à des activités qui les aident à rester socialement actives, ce qui évite l’isolement. Dans certains cas, c’est mieux que de rester seules à la maison.",
+      "document2": "Les maisons de retraite peuvent éloigner les personnes âgées de leur famille et créer un sentiment d’abandon. De plus, les conditions de vie ne sont pas toujours idéales et il arrive que certains établissements manquent de personnel qualifié. Je crois que le soutien à domicile est une meilleure option pour vieillir en famille.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 349,
+      "combinaison": "Combinaison 9",
+      "sujet": "La restauration rapide",
+      "document1": "Je suis tout à fait contre les chaînes de restauration rapide car on ne connaît pas les ingrédients qui sont utilisés dans les plats. Je pense que, dans ce genre de restaurants, la nourriture n’est pas de bonne qualité. La consommation de ce type d’aliments peut causer des maladies, comme cela a été montré dans le film documentaire américain « Supersize Me ». C’est vrai qu’il est très facile de manger des hamburgers, des sandwichs ou des frites parce que c’est très bon marché et rapide. Mais à mon avis, il est nécessaire de faire d’autres choix pour être en bonne santé. Marie",
+      "document2": "Je suis favorable à la restauration rapide. Je travaille pour une chaîne de restaurants très connue et, selon moi, il est possible d’y manger de façon équilibrée. Les menus proposent des plats complets : il y a des légumes, des salades, du pain, de la viande… C’est le client qui est responsable de ce qu’il consomme. S’il choisit deux sandwichs et beaucoup de ketchup, ce n’est pas un repas sain. De plus, les restaurants sont très propres car il y a beaucoup de normes d’hygiène à respecter, et ce sont aussi des lieux pratiques : il est facile d’y venir avec des enfants ou un groupe d’amis.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 350,
+      "combinaison": "Combinaison 10",
+      "sujet": "L'art urbain : Pour ou contre ?",
+      "document1": "Dans les grandes villes, il y a de plus en plus de peintures et de dessins sur les murs des maisons, des écoles et même des églises. Cet art urbain permet à la culture d’avoir une place dans l’espace public. Selon certains maires, il est important que les villes aident les artistes en leur proposant des espaces où ils sont autorisés à peindre. De plus, ces graffitis attirent les touristes qui peuvent participer à des visites thématiques sur cet art. Ils peuvent ainsi découvrir des lieux moins connus du grand public.",
+      "document2": "Certaines villes dépensent chaque année une somme d’argent importante pour lutter contre les peintures de rue. Ces dessins sur les murs, sur les bancs ou dans les stations de métro sont difficiles à enlever. Il est parfois nécessaire de faire appel à des équipes de nettoyage spécialisées. Pour certains habitants, ces peintures donnent une mauvaise image de leurs quartiers. Elles provoquent aussi la colère des propriétaires des murs qui sont parfois obligés de les nettoyer eux-mêmes. Cependant, malgré les interdictions des mairies et les amendes, les graffitis continuent d’apparaître sur les murs des villes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 351,
+      "combinaison": "Combinaison 11",
+      "sujet": "La gratuité des musées : Pour ou contre ?",
+      "document1": "La gratuité est l’une des valeurs fondatrices du musée, elle fait référence à l’idéal de partage de la culture. Tous les professionnels de la culture sont d’accord pour aller vers une démocratisation culturelle et donc réduire les obstacles à la visite d’un musée. À la différence du théâtre ou de l’opéra, il y a une tradition de gratuité depuis la création des musées : un dimanche par mois, l’entrée dans les musées nationaux est gratuite pour tout le monde. Cette mesure a pour objectif d’attirer de nouveaux visiteurs. En effet, le musée est avant tout un lieu d’éducation qui doit accueillir le plus grand nombre. (D’après https://www.ouest-france.fr)",
+      "document2": "La gratuité totale dans les musées est une fausse bonne idée car elle fait croire au public que la culture est gratuite. Or les musées ont besoin d’un financement pour entretenir et développer leurs collections. Par contre, la mise en place de prix réduits pour des publics choisis est une solution plus adaptée. Pour que ce dispositif soit efficace, il faut accompagner les catégories de visiteurs auxquelles s’adressent les réductions, comme par exemple organiser des visites pour les adolescents ou les personnes à mobilité réduite. Ouvrir les portes du musée ne suffit pas : il faut créer une relation active entre le musée et ses publics grâce à des activités spécifiques. (D’après https://www.lesechos.fr)",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 352,
+      "combinaison": "Combinaison 12",
+      "sujet": "Les objets connectés",
+      "document1": "Les objets connectés facilitent notre vie quotidienne. Ce sont des objets ou des équipements pilotés à distance à l’aide d’un téléphone portable ou par Internet, comme le système de chauffage ou la fermeture des portes. De plus, avec une montre ou un bracelet connecté, toutes nos activités peuvent être analysées. Un logiciel va mesurer le nombre de nos pas pour nous inciter à faire davantage d’exercice. Un domaine où l’on comprend mieux leur utilité est celui de la surveillance de la santé. Certains objets agissent comme un carnet de santé, toujours prêts à vous rappeler un rendez-vous chez le médecin ou des médicaments à prendre.",
+      "document2": "Il y aurait 50 milliards d’objets connectés dans le monde : l’alarme, le téléviseur, la caméra de surveillance, les volets, le détecteur de fumée, etc. Face à cette évolution, la question de la sécurité se pose. En effet, un pirate informatique peut prendre le contrôle d’un objet connecté en quelques minutes. Ou encore, un cambrioleur pourrait vérifier grâce aux caméras de surveillance connectées d’une habitation si les occupants sont absents. Il est aussi possible d’entrer dans le système connecté d’une voiture et d’en prendre les commandes à distance.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

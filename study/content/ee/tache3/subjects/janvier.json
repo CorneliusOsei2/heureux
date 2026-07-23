@@ -1,0 +1,212 @@
+{
+  "month": {
+    "number": 1,
+    "slug": "janvier",
+    "name": "Janvier"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 15,
+  "sujets": [
+    {
+      "id": 281,
+      "combinaison": "Combinaison 1",
+      "sujet": "L’utilisation Des Distributeurs Automatiques Au Sein Des Établissements Scolaires, Pour ou Contre ?",
+      "document1": "Je suis en faveur des distributeurs de boissons dans les lycées. Premièrement, ils offrent une commodité supplémentaire pour les élèves, notamment pour ceux qui n’ont pas le temps de passer à la cafétéria pendant les pauses. Deuxièmement, s’ils sont bien gérés, ces distributeurs peuvent offrir une gamme de boissons saines, comme de l’eau, du jus de fruits pur et des boissons aux fruits sans sucre ajouté. Ces distributeurs peuvent être une source de revenus supplémentaire pour l’école, qui peut être réinvestie dans l’amélioration des infrastructures ou des programmes scolaires.",
+      "document2": "Je suis contre l’installation de distributeurs de boissons dans les lycées. Ma principale préoccupation est liée à la santé des élèves. Malheureusement, beaucoup de ces distributeurs sont remplis de boissons sucrées et de sodas qui contribuent à l’obésité infantile et à d’autres problèmes de santé comme le diabète. Même les jus de fruits, qui peuvent sembler sains, contiennent souvent beaucoup de sucre. Les écoles devraient être des lieux qui encouragent des habitudes alimentaires saines et je crains que la présence de ces distributeurs n’encourage une consommation excessive de boissons sucrées.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 282,
+      "combinaison": "Combinaison 2",
+      "sujet": "Cuisinier amateur ou cuisinier professionnel ?",
+      "document1": "Les amateurs ont fait des recettes réussies, mais ils manquent toujours de compétences et de technique, c’est pourquoi la formation et l’expérience sont nécessaires pour être un vrai cuisinier.",
+      "document2": "Il parle des cuisiniers qui ont appris le métier de cuisinier sur internet et qui ont le buzz sur les réseaux sociaux. Il raconte aussi l’histoire d’une amatrice qui est devenue professionnelle et qui a rédigé plusieurs livres sur la cuisine pour les amateurs de cuisine à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 283,
+      "combinaison": "Combinaison 3",
+      "sujet": "Vivre En Colocation : Pour Ou Contre ?",
+      "document1": "La vie en colocation offre de nombreux avantages. Partager un logement avec d’autres personnes permet de réduire les dépenses, que ce soit le loyer, les factures ou les frais généraux. De plus, cela favorise les interactions sociales et les échanges culturels. Vivre avec des colocataires permet de rencontrer des individus de différents horizons, de nouer des amitiés et de partager des expériences enrichissantes.",
+      "document2": "La colocation peut cependant présenter des défis. Les différences de personnalité et de mode de vie entre les colocataires peuvent entraîner des tensions. La gestion des responsabilités et des tâches ménagères peut également être source de conflits. De plus, la colocation peut limiter l’intimité et l’espace personnel. Il est important d’établir une communication ouverte et respectueuse, ainsi que des règles de vie commune, pour favoriser une cohabitation harmonieuse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 284,
+      "combinaison": "Combinaison 4",
+      "sujet": "L’aide aux personnes pauvres",
+      "document1": "Marie, 58 ans : J’ai pris l’habitude, depuis des années maintenant, de donner un peu de mon temps et de mon argent afin d’aider les personnes vivant dans la précarité extrême, surtout ceux qui vivent sans abri en période hivernale. Pour moi, c’est un devoir d’aider et de contribuer afin que ces personnes puissent vivre le plus normalement possible. En assistant des pauvres ou des associations, on se sent utile au sein d’une société qui devient de plus en plus impitoyable.",
+      "document2": "Paul, 63 ans : Pour aider les personnes vivant dans la précarité, on doit s’investir davantage dans des associations caritatives. Personnellement, c’est ce que je fais, je suis bénévole dans une association située dans mon quartier. Elle a pour principal but d’aider les sans-abris à trouver un logement et un travail afin qu’ils vivent le plus normalement possible. Cette action est plus bénéfique à long terme car elle permet de les rendre autonomes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 285,
+      "combinaison": "Combinaison 5",
+      "sujet": "Le Livre Papier ou Le Livre Numérique ?",
+      "document1": "Depuis plusieurs années maintenant, de nombreux lecteurs ont décidé de remplacer la bibliothèque traditionnelle par des livres numériques. Selon eux, l’avantage est avant tout économique. D’une part, le livre numérique permet d’économiser du papier, d’autre part la version numérique d’un livre est généralement moins chère que la version papier. Les livres numériques ont un autre avantage : ils permettent une ouverture sur le monde pour les personnes en situation de handicap. Certaines options, comme la possibilité d’augmenter la taille des lettres, facilitent la lecture pour les personnes malvoyantes.",
+      "document2": "Le livre numérique remplacera-t-il le livre papier ? « Non », répondront la plupart des lecteurs. Le livre papier est un beau support. Quel plaisir de le prêter aux gens qu’on aime ou de l’offrir en glissant un petit mot dedans ! Le livre papier a une histoire, l’odeur du neuf ou de l’ancien… Il transmet beaucoup d’émotions alors que le livre numérique a un côté un peu impersonnel. De plus, les livres numériques demandent de posséder un minimum de connaissances en informatique, ce qui peut être une difficulté pour certaines personnes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 286,
+      "combinaison": "Combinaison 6",
+      "sujet": "L’Utilisation du Plastique, Pour ou Contre",
+      "document1": "Franck soutient l’utilisation limitée du plastique, soulignant son importance dans de nombreux secteurs, notamment les secteurs médical et alimentaire. Pour lui, le plastique est vital pour la conservation des aliments et la stérilisation des équipements médicaux. Il prône une utilisation responsable et le recyclage, mais reconnaît que certains usages du plastique sont indispensables pour la société moderne.",
+      "document2": "Amicha s’oppose fermement à l’utilisation du plastique, mettant en avant son impact environnemental dévastateur. Elle soutient que les déchets plastiques polluent les océans et les écosystèmes, causant des dommages irréparables. Amicha milite pour des alternatives écologiques et durables, insistant sur l’urgence de renoncer au plastique pour protéger l’environnement et la santé publique.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 287,
+      "combinaison": "Combinaison 7",
+      "sujet": "Rôle de la télévision dans l’éducation des enfants.",
+      "document1": "La télévision est un outil de communication et de divertissement largement répandu dans notre société moderne. Son influence est incontestable, tant sur les individus que sur la culture en général. Elle permet de diffuser des informations, d’offrir des divertissements variés et de favoriser la diffusion de la culture. La télévision est présente dans de nombreux foyers et constitue une source d’information et de divertissement accessibles à tous. Grâce à sa portée et à sa capacité à toucher un large public, la télévision joue un rôle important dans la transmission des connaissances et la sensibilisation aux enjeux sociaux.",
+      "document2": "La télévision peut également présenter certains inconvénients. Les émissions télévisées peuvent parfois véhiculer des stéréotypes, des préjugés et des valeurs discutables. De plus, le temps passé devant la télévision peut réduire le temps consacré à d’autres activités plus enrichissantes, telles que la lecture, les interactions sociales ou la pratique d’un sport. Il est important de faire preuve de discernement et de réguler l’exposition à la télévision, en particulier pour les enfants, afin de préserver un équilibre sain entre les différentes formes d’apprentissage et de divertissement.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 288,
+      "combinaison": "Combinaison 8",
+      "sujet": "Livraison des repas au bureau : pour ou contre ?",
+      "document1": "Grâce à la livraison en entreprise, les employés bénéficieront d’un gain de temps notable. Il n’est plus question d’aller sortir loin du lieu de travail pour trouver de quoi manger. En complément, l’argent et l’énergie économisés permettent d’être encore plus efficace au travail. Sans pour autant mettre fin à une session importante liée au travail, le repas sera déjà prêt et pourra attendre la fin d’une conférence, d’une réunion ou d’un rendez-vous. Il s’agit d’une véritable solution dédiée aux entreprises ayant une activité intense et qui requiert la présence continue de leurs employés.",
+      "document2": "Cette pratique révèle souvent des inconvénients à cause de sa notoriété montante. Certains jours, il arrive que les responsables de livraisons peuvent être envahis par un grand nombre de livraisons à faire et cela risque de générer des perturbations liées au stress de l’attente. De même pour les employés, une trop longue heure de travail peut causer un état de fatigue si ce dernier ne quitte pas son bureau pour le repas. Dans tous les cas, il est recommandé de toujours marquer des temps de pause lors des durs labeurs.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 289,
+      "combinaison": "Combinaison 9",
+      "sujet": "Les cours de langues en ligne",
+      "document1": "Apprendre une langue en ligne grâce à Internet, c’est possible et cela donne de bons résultats ! Contrairement aux cours classiques, on peut apprendre quand on veut : les cours sont disponibles tout le temps. Cela permet de mieux organiser sa journée. On n’a pas non plus besoin de faire des kilomètres pour aller dans une école de langues. On peut apprendre de son salon, de son bureau ou même d’un café près de chez soi ! Cela permet aussi de faire des économies.",
+      "document2": "Cela semble facile d’apprendre une langue en ligne, mais ce n’est pas possible pour tout le monde. En effet, il faut avoir une bonne connexion à Internet et un outil numérique adapté (ordinateur, smartphone, tablette) pour apprendre en ligne. De plus, il faut être très autonome pour être capable d’apprendre seul : il est difficile de se mettre au travail chez soi et de rester motivé quand on n’a pas l’aide d’un professeur et de collègues. Dans ces conditions, on peut se décourager et abandonner très vite.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 290,
+      "combinaison": "Combinaison 10",
+      "sujet": "L'impact du plastique : entre pollution et utilité",
+      "document1": "Chaque année, des millions de tonnes de plastiques sont déversées dans les océans, où elles s’accumulent et se fragmentent en petits morceaux. Ces déchets plastiques ont des effets désastreux sur la faune et la flore marines, qui les ingèrent. Les plastiques menacent ainsi la santé des écosystèmes marins, mais aussi la nôtre, car ils peuvent remonter dans la chaîne alimentaire. Il est urgent de réduire notre consommation de plastiques et de les éliminer à la source, avant qu’ils n’atteignent les océans.",
+      "document2": "Le plastique est un matériau indispensable dans le domaine de la santé. Il permet de fabriquer des dispositifs médicaux, tels que des seringues, des cathéters, des prothèses, des implants, des pansements, etc. Ces dispositifs sont souvent jetables, résistants, et adaptés aux besoins des patients. Le plastique contribue ainsi à la prévention des infections, à la réduction des douleurs, à l’amélioration de la qualité de vie, et à la sauvegarde de nombreuses vies. Il est donc un allié de la médecine, qui apporte des solutions innovantes et efficaces.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 292,
+      "combinaison": "Combinaison 12",
+      "sujet": "Manger à l’Extérieur ou Chez Soi ?",
+      "document1": "Aïcha, jeune célibataire française de 28 ans, refuse de prendre ses repas seule chez elle. « Me retrouver avec un plateau repas devant la télé, non merci ! Vivre à Lyon me donne la possibilité de dîner à l’extérieur, où je veux et à n’importe quelle heure. Pourquoi m’en priver ? Je trouve aussi génial de pouvoir partager des moments de convivialité avec tous mes amis, ce qui est impossible dans mon petit appartement. Et puis, c’est vrai, peu de gens de ma génération ont la patience et le talent de préparer des petits plats maison. »",
+      "document2": "Laura, mère de famille de 45 ans, déclare : « Dîner au restaurant est un luxe que je peux rarement m’offrir avec mon salaire de vendeuse. Bien sûr, j’aimerais parfois éviter de faire la cuisine et pouvoir sortir au restaurant, mais pour une famille de cinq personnes, la dépense est énorme ! Et puis je trouve que la qualité des plats servis dans les restaurants est très moyenne. Le rapport qualité-prix n’est pas toujours au rendez-vous. Au moins, en mangeant à la maison, je sais ce qu’il y a dans mon assiette. »",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 296,
+      "combinaison": "Combinaison 16",
+      "sujet": "L’aide aux personnes pauvres",
+      "document1": "Christine, 56 ans : Tous les ans, en hiver, je donne un peu de mon temps et de mon argent pour aider les personnes qui vivent dans la rue et ont froid. Pour moi, c’est important de se soucier de ceux qui sont dans le besoin. Je trouve très important de donner quelques dollars à ces personnes ou aux associations qui peuvent les aider. Et puis, cette action me donne l’impression d’être utile, au moins une fois dans l’année ! C’est un geste de solidarité qui est à la portée de tout le monde.",
+      "document2": "Pierre, 65 ans : Plutôt que de donner de l’argent à des personnes pauvres, il vaudrait mieux revoir notre mode de vie. C’est pourquoi je préfère m’engager au quotidien dans une association de mon quartier, où je suis bénévole. Les sans domicile fixe ont besoin d’un logement et d’un travail et pas seulement d’argent. Il faut les aider à devenir autonomes. C’est le but d’organismes qui aident ceux qui sont dans la rue à trouver un emploi. Donner de l’argent est un acte inutile qui sert seulement à apaiser notre conscience.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 297,
+      "combinaison": "Combinaison 17",
+      "sujet": "Les interdictions de circulation en zones urbaines : avantages et défis",
+      "document1": "Avec des taux de pollution alarmants constatés dans plusieurs endroits dans le monde, plusieurs villes ont réussi leur pari d’interdire la circulation de voitures en zones urbaines. La capitale de la Norvège, Oslo, a récemment opté pour cette solution et s’en félicite, estimant que c’est une décision bénéfique pour tout le monde. Après un certain temps, les accidents diminueront, la dépendance au pétrole baissera et la qualité de l’air sera meilleure.",
+      "document2": "Beaucoup de villes se lancent dans des projets d’interdiction de voitures en zone urbaine sans mettre en place les outils et les infrastructures nécessaires pour réussir cette transition. Certes, en diminuant les voitures, on aura moins d’embouteillages, de stress et surtout un air beaucoup moins pollué, mais en contrepartie, il faut prévoir entre autres de gigantesques parkings pour garer les voitures, opter davantage pour le transport en commun (métros et bus) et prévoir des autorisations de circulation pour certains corps de métiers (comme la police, les urgentistes, les livreurs…).",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 298,
+      "combinaison": "Combinaison 18",
+      "sujet": "Menus sans viande à la cantine scolaire",
+      "document1": "De plus en plus d’écoles décident de mettre en place un menu sans viande dans les cantines, au moins deux fois par semaine. Certaines études ont montré que les enfants consomment trop de protéines animales. C’est donc une question de santé : les écoles ont choisi de remplacer la viande par d’autres produits (soja, céréales, légumes), moins gras et utiles à la croissance des enfants. Ces menus sans viande à la cantine reviennent moins cher aux familles. Cette idée plaît beaucoup aux parents comme aux enfants.",
+      "document2": "La décision de supprimer la viande dans les cantines ne plaît pas à tout le monde. En effet, c’est un produit cher : la cantine est le seul endroit où les enfants de familles en difficulté peuvent manger. Les producteurs locaux de viande sont également mécontents : une partie de leur production est réservée aux cantines, il s’agit donc d’une perte financière. Enfin, beaucoup d’enfants interrogés déclarent tout de même préférer les steaks de boeuf aux steaks de soja qui, selon eux, ont peu de goût.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 299,
+      "combinaison": "Combinaison 19",
+      "sujet": "Les Vols à Bas Prix",
+      "document1": "Je fais souvent mes voyages avec des compagnies aériennes à bas prix. Les compagnies low-cost mettent à disposition des prix inférieurs à ceux proposés par les compagnies aériennes régulières. Cela me coûte des fois moins cher que de voyager en voiture ou en train. Avec ces tarifs-là, vous vous doutez qu’il y a un hic ; en effet, vous n’aurez droit à aucun service à bord (ni aliments, ni boissons). Je dirais donc que le low-cost n’est surtout pas fait pour les vols long-courriers.",
+      "document2": "Récemment, j’ai pris la décision de ne plus voyager avec les compagnies aériennes à bas prix. En effet, j’ai longuement réfléchi afin de prendre ma décision, mais ce choix était évident : des sièges inconfortables, des conditions de travail pénibles et surtout des avions vétustes qui remettent en cause la sécurité ! Dès lors, pour certains voyages, je vais opter pour la voiture ou même le train, ce dernier permet même de découvrir de jolis paysages. Quant aux longs trajets, mieux vaut prendre un vol en compagnie régulière.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

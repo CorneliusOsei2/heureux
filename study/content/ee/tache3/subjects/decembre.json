@@ -1,0 +1,264 @@
+{
+  "month": {
+    "number": 12,
+    "slug": "decembre",
+    "name": "Décembre"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 19,
+  "sujets": [
+    {
+      "id": 277,
+      "combinaison": "Combinaison 1",
+      "sujet": "Que pensez-vous des maisons de retraite?",
+      "document1": "J’habite dans un pays où il y a très peu de maisons de retraite. Ici, quand une personne âgée ne peut plus être autonome, elle habite avec les générations plus jeunes, et dans l’ensemble, cela ne pose pas de problèmes majeurs. Il nous paraît étrange de confier nos parents ou grands-parents à des personnes qu’ils ne connaissent pas.",
+      "document2": "Beaucoup de gens critiquent les maisons de retraite, pourtant c’est une bonne solution d’accueil pour les personnes âgées ! D’abord, pour lutter contre l’isolement puisqu’elles sont entourées de personnes de leur âge à la maison de retraite. Ensuite, pour les soins et les services médicaux offerts dans ce type d’établissement. Enfin, parce que c’est pratique et rassurant pour leurs enfants et petits-enfants. Malheureusement, ce type de logement reste encore trop cher pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 278,
+      "combinaison": "Combinaison 2",
+      "sujet": "Les cours de langue en ligne.",
+      "document1": "Apprendre une langue en ligne grâce à Internet, c’est possible et cela donne de bons résultats ! Contrairement aux cours classiques, on peut apprendre quand on veut : les cours sont disponibles tout le temps. Cela permet de mieux organiser sa journée. On n’a pas non plus besoin de faire des kilomètres pour aller dans une école de langues. On peut apprendre de son salon, de son bureau ou même d’un café près de chez soi ! Cela permet aussi de faire des économies.",
+      "document2": "Cela semble facile d’apprendre une langue en ligne mais ce n’est pas possible pour tout le monde. En effet, il faut avoir une bonne connexion à Internet et un outil numérique adapté (ordinateur, smartphone, tablette) pour apprendre en ligne. De plus, il faut être très autonome pour être capable d’apprendre seul : il est difficile de se mettre au travail chez soi et de rester motivé quand on n’a pas l’aide d’un professeur et de collègues. Dans ces conditions, on peut se décourager et abandonner très vite.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 279,
+      "combinaison": "Combinaison 3",
+      "sujet": "Les animaux de compagnie au travail.",
+      "document1": "Venir au bureau avec son animal de compagnie, c’est à la mode. L’intérêt de cette présence ? C’est simple : diminuer le stress des employés. La présence d’un chien ou d’un chat change l’ambiance générale d’une entreprise : elle réduit les tensions entre collègues, ce qui n’est pas négligeable car chaque année, l’État français dépense entre 2 et 3 milliards d’euros pour soigner les salariés malades du stress. Selon une enquête, un quart des employés pensent aussi que la présence des animaux permet d’être plus motivé au travail. (D’après challenges.fr)",
+      "document2": "« Dans l’entreprise où je travaille, les employés sont autorisés à venir avec leur animal de compagnie, chat ou chien. Personnellement, cela me dérange. Je ne suis pas très à l’aise avec les animaux, qui peuvent avoir des comportements imprévisibles. D’autre part, je trouve que cela peut poser des problèmes de santé. Que faire si un employé est allergique aux chats ? Sera-t-il obligé de rester enfermé dans son bureau ? Et puis c’est aussi une source de distraction. Mes collègues et moi ne serons pas plus productifs grâce à un chien ou un chat ! » — Iris, 34 ans",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 280,
+      "combinaison": "Combinaison 4",
+      "sujet": "Les publicités",
+      "document1": "Certaines personnes trouvent la publicité ennuyeuse, mais, à mon avis, elle est indispensable pour le commerce et les entreprises. Grâce à la publicité, on fait connaître un produit ou un service. Et puis, parfois, elles sont drôles ! J’aime bien les écouter quand je suis en voiture. Cela me permet aussi d’être informé des nouveautés et des promotions. Personnellement, j’adore comparer les articles : je peux ainsi faire beaucoup d’économies sur mes achats. Enfin, beaucoup de personnes jouent à des jeux gratuits sur leur téléphone : sans publicité, ces jeux seraient tous payants. Quentin, 28 ans",
+      "document2": "La publicité est présente partout dans notre vie de tous les jours : journaux, radios, télévision, téléphone, Internet… Par exemple, sur certaines chaînes de télévision, les émissions sont coupées par la publicité et c’est agaçant. Puis, recevoir des dizaines de kilos de papier de publicité par an dans la boîte aux lettres, ce n’est pas très respectueux de l’environnement ! Je pense qu’il est nécessaire de faire voter une loi pour réduire les publicités par courrier et à la télévision. Si la publicité était plus discrète, elle serait plus appréciée. Estelle, 35 ans",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 499,
+      "combinaison": "Combinaison 5",
+      "sujet": "Rôle de la télévision dans l’éducation des enfants.",
+      "document1": "La télévision est un outil de communication et de divertissement largement répandu dans notre société moderne. Son influence est incontestable, tant sur les individus que sur la culture en général. Elle permet de diffuser des informations, d’offrir des divertissements variés et de favoriser la diffusion de la culture. La télévision est présente dans de nombreux foyers et constitue une source d’information et de divertissement accessibles à tous. Grâce à sa portée et à sa capacité à toucher un large public, la télévision joue un rôle important dans la transmission des connaissances et la sensibilisation aux enjeux sociaux.",
+      "document2": "La télévision peut également présenter certains inconvénients. Les émissions télévisées peuvent parfois véhiculer des stéréotypes, des préjugés et des valeurs discutables. De plus, le temps passé devant la télévision peut réduire le temps consacré à d’autres activités plus enrichissantes, telles que la lecture, les interactions sociales ou la pratique d’un sport. Il est important de faire preuve de discernement et de réguler l’exposition à la télévision, en particulier pour les enfants, afin de préserver un équilibre sain entre les différentes formes d’apprentissage et de divertissement.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 500,
+      "combinaison": "Combinaison 6",
+      "sujet": "Vie en colocation entre adultes.",
+      "document1": "Vivre avec d’autres personnes demande d’avoir une bonne entente et de respecter certaines règles. Il n’est pas toujours possible d’écouter sa musique préférée à volume élevé, d’inviter tous ses amis pour faire la fête ou de laisser de la vaisselle sale dans la cuisine. Chaque individu a des habitudes susceptibles d’irriter les autres. C’est pourquoi il est essentiel d’établir des règles de vie en communauté et de les respecter mutuellement. Il est important de communiquer avec ses colocataires chaque fois qu’un problème survient. L’organisation et la discussion sont les clés d’une colocation réussie ou non.",
+      "document2": "Être adulte et vivre en colocation ? C’est un choix qui permet d’accéder facilement à un logement plus spacieux et économique. Il est vrai que vous n’aurez qu’une chambre pour vous et que vous devrez partager la cuisine, le salon et la salle de bain. Toutefois, une colocation peut inclure une maison avec jardin ou un grand appartement en centre-ville ! De plus, en partageant le loyer et les charges avec vos colocataires, vous réduirez considérablement vos dépenses par rapport à un appartement individuel. Alors que vous n’aurez qu’une chambre pour vous et que vous devrez partager les espaces communs, une colocation offre des opportunités de logements bien plus abordables.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 501,
+      "combinaison": "Combinaison 7",
+      "sujet": "Les animaux de compagnie pour les enfants : pour ou contre ?",
+      "document1": "Offrir un animal de compagnie à un enfant présente de nombreux avantages, comme le soulignent beaucoup de psychologues. Pour des enfants qui n’ont pas de frères et/ou de soeurs, l’animal est un compagnon qui leur évitera la solitude. Grâce à lui, un enfant prendra confiance en lui et il apprendra vite qu’un animal est un être vivant qui a besoin d’attention et de respect. En sa présence, l’enfant se sentira en sécurité et pourra agir de manière autonome, sans l’aide de ses parents.",
+      "document2": "Beaucoup d’enfants demandent, un jour ou l’autre, un animal à leurs parents, le plus souvent un chien ou un chat. Mais même si vous avez envie de faire plaisir à votre enfant, il vaut mieux réfléchir sérieusement avant d’acheter un animal domestique. L’animal devient un nouveau membre de la famille et représente un engagement sur de nombreuses années. Or, avoir un animal coûte souvent très cher, et c’est une grande responsabilité. On ne peut pas le traiter comme un jouet que l’on met à la poubelle quand l’enfant s’en désintéresse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 502,
+      "combinaison": "Combinaison 8",
+      "sujet": "La lecture pour les enfants.",
+      "document1": "Avec l’avancée technologique et les produits high-tech qui envahissent de plus en plus notre quotidien, nos enfants oublient la lecture et s’intéressent davantage aux jeux vidéo, aux sports, à la musique… Contrairement à nous, les adultes, dont beaucoup d’entre nous ont lu des milliers de pages, la génération actuelle est toujours occupée par les réseaux sociaux et le gaming ou prend du plaisir à pratiquer du sport qui attire davantage de jeunes grâce aux stars internationales du football, du tennis, de l’athlétisme… alors avec tout ça, pourquoi devons-nous forcer les enfants à lire un bouquin ? Et comme le dit un proverbe, ‘’le goût de la lecture ne peut pas s’imposer’’… il faut laisser l’enfant choisir ce qu’il veut lire et surtout ne pas l’obliger à lire quand il n’a pas envie.",
+      "document2": "L’amour de la lecture se transmet de génération en génération bien que, ces dernières années, on ne trouve plus beaucoup de bouquins entre les mains des enfants, laissant la place aux smartphones et aux tablettes. En apprenant à lire régulièrement, l’enfant acquiert le langage plus aisément tout en développant sa capacité d’audition et de concentration. De plus, et pour prendre du plaisir ensemble, les parents peuvent consacrer quotidiennement 10 minutes à leurs enfants pour lire des bouquins ; une activité qui renforcera à coup sûr la complicité parent/enfant.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 503,
+      "combinaison": "Combinaison 9",
+      "sujet": "Les Vêtements de marque pour les enfants",
+      "document1": "Les vêtements de marques sont très importants pour les enfants et les adolescents. C’est un moyen de s’exprimer et de se rattacher à un groupe social. Cette attirance pour les marques est très présente chez les adolescents qui se cherchent et montrent leur personnalité. Les enfants aiment également porter des vêtements de marques avec des images des dessins animés qu’ils regardent ou des logos qu’ils apprécient.",
+      "document2": "Les enfants grandissent très vite et les vêtements sont portés pendant une courte période. Ainsi, les vêtements deviennent rapidement trop petits. Mais il y a aussi le fait que les enfants usent assez rapidement les vêtements en jouant à l’extérieur avec les copains, en s’amusant dans l’herbe ou à l’aire de jeu. Les habits sont très vite sales ou troués.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 504,
+      "combinaison": "Combinaison 10",
+      "sujet": "L'uniforme scolaire",
+      "document1": "Vous avez étudié dans une université à l'étranger pendant six mois. Vous écrivez un message à vos amis pour raconter votre expérience et vous expliquez ce que vous avez aimé",
+      "document2": "Au Québec, l'uniforme scolaire n'est plus réservé uniquement aux écoles privées: de plus en plus d'écoles publiques font ce choix pour leurs élèves. Mais il représente un problème pour les adolescents qui ne sont pas toujours d'accord avec ce choix. Ils disent souvent que ces uniformes ne sont pas confortables, qu'ils ne sont pas beaux car ils manquent de couleurs et qu'ils tiennent trop chaud en été. De plus, comme tous les élèves de l'école sont habillés de la même manière, les jeunes trouvent que cela ne leur permet pas d'exprimer leur personnalité.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 505,
+      "combinaison": "Combinaison 11",
+      "sujet": "Les caméras de surveillance",
+      "document1": "À Montréal, dans l’école où j’enseigne, des caméras sont présentes un peu partout. L’installation de ces appareils permet de faire comprendre aux jeunes que tout acte de violence sera puni. Ce mode de surveillance est très bien accepté par les parents, les enseignants et la plupart des élèves. Si les parents sont rassurés concernant la sécurité de leurs enfants, les professeurs y voient une garantie de pouvoir exercer leur métier dans les meilleures conditions possibles. Seuls certains élèves critiquent ces caméras en disant qu’elles ne respectent pas leur vie privée.",
+      "document2": "Je suis contre la présence de caméras de surveillance dans nos écoles de Montréal. Dans les pays où ce système a été mis en place, les résultats ne sont pas très positifs. Comme les caméras sont très visibles, les personnes extérieures qui voudraient entrer dans l’école peuvent le faire en passant par des endroits non surveillés. Pour résoudre les problèmes de discipline, il suffit souvent d’améliorer la communication entre les élèves, l’administration et les enseignants. Au lieu de placer des caméras, il suffirait de bien faire comprendre et appliquer le règlement intérieur de l’école par tous.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 506,
+      "combinaison": "Combinaison 12",
+      "sujet": "Utilisation Des Nouvelles Technologies Dans Les Écoles : Pour Ou Contre ?",
+      "document1": "Jean : Je suis fermement convaincu que l’intégration des nouvelles technologies dans les écoles est cruciale pour préparer les élèves à un avenir numérique. Je pense que l’usage des tablettes et des ordinateurs stimule non seulement l’engagement des élèves mais enrichit également leur expérience éducative en leur offrant un accès facile à une variété de ressources, encourageant ainsi leur créativité et autonomie.",
+      "document2": "Sara : Je suis sceptique quant à l’usage intensif des technologies dans l’enseignement. Je crois que cela peut réduire les interactions humaines essentielles et favoriser une dépendance préoccupante aux écrans. À mon avis, les méthodes d’enseignement traditionnelles et le contact direct entre enseignants et élèves restent indispensables pour un développement équilibré et complet des compétences des jeunes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 507,
+      "combinaison": "Combinaison 13",
+      "sujet": "Les produits faits maison : pour ou contre ?",
+      "document1": "Il est aujourd’hui possible de fabriquer soi-même tout type de produits à la maison : des shampooings, des savons, des crèmes, du maquillage mais aussi des produits d’entretien pour faire le ménage. C’est formidable car on peut ainsi contrôler leur composition. Il est préférable de sélectionner des ingrédients et des parfums naturels qui ne contiennent pas d’éléments chimiques. Par ailleurs, la fabrication maison permet de réduire les emballages et donc les déchets. N’hésitez plus : fabriquez vos propres produits !",
+      "document2": "Vous préférez fabriquer vous-même votre savon au lieu de l’acheter ? Attention, il y a des risques pour la santé si vous ne choisissez pas les bons ingrédients ou si les règles d’hygiène ne sont pas respectées. Ainsi, avant de vous lancer, il est nécessaire de bien se renseigner et de suivre les règles strictes de fabrication et de conservation. De plus, même si ces produits coûtent moins cher et représentent une économie d’argent au quotidien, la fabrication « maison » prend souvent beaucoup de temps.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 508,
+      "combinaison": "Combinaison 14",
+      "sujet": "La télévision pour les enfants",
+      "document1": "Aujourd’hui, les chaînes de télévision proposent une grande variété d’émissions pour la jeunesse de bonne qualité. Toutefois, les parents doivent éviter de laisser leurs enfants regarder passivement la télévision. Au contraire, les spécialistes recommandent de les accompagner dans le choix des programmes et également de se mettre d’accord sur le nombre d’heures passées devant la télévision. Il s’agit d’aider les enfants à développer leurs goûts, à comprendre ce qu’ils aiment et à savoir quand éteindre le petit écran. La télévision peut ainsi être bénéfique pour les enfants.",
+      "document2": "Les enfants sont fascinés par la télévision et beaucoup de parents laissent leurs enfants la regarder sans mettre de limites. Le petit écran peut être pratique pour occuper les enfants après une longue journée de travail. Le problème, c’est que la télévision limite la créativité des enfants. En effet, elle leur donne un produit déjà complet (image, son, histoire) et les enfants n’ont plus besoin de développer leur imagination dans le jeu ou la lecture. Or, le jeu et la lecture sont nécessaires au développement des enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 509,
+      "combinaison": "Combinaison 15",
+      "sujet": "Vivre chez ses parents, pour ou contre ?",
+      "document1": "Les avantages : penser à l’avenir, avoir les vêtements propres, être en confort surtout que l’argent n’est pas tjrs suffisant, vivre avec ses parents pendant la période des études permet aux jeunes d’économiser les frais de logement, des plats faits maison et une certaine stabilité psychique, tous les adolescents qui vivent avec leurs parents leur permettent d’économiser leur argent pour des projets de vie (ils ne payent ni le loyer ni la nourriture) (pour ne pas payer le loyer qui coûte cher, le ménage est fait, les vêtements sont propres).",
+      "document2": "Les inconvénients : manque de liberté, vivre seuls leur permet d’être indépendants, les adolescents qui vivent avec leurs parents s’ennuient car leurs parents décident à leur place et sont toujours dépendants des parents […] un avis d’un certain monsieur qui a 25 ans et il a perdu son job, donc il était dans l’obligation de rentrer vivre avec ses parents, et maintenant il a perdu son espace d’intimité… contre la vie des jeunes avec leurs parents, un témoignage d’un jeune qui considère revenir chez ses parents, c’est revenir en arrière.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 510,
+      "combinaison": "Combinaison 16",
+      "sujet": "Le grossissement des villes",
+      "document1": "De nos jours, les villes grossissent toujours plus. Malheureusement, ce phénomène a un impact fort sur l’environnement. Car plus une ville grossit, plus elle a des effets négatifs sur la nature et donc, ensuite, sur l’homme. L’effet négatif le plus visible est la déforestation, qui augmente le végétaux qui retiennent le carbone. Donc, quand on les supprime pour construire des bâtiments ou des rues, on supprime des espaces verts capables de retenir des millions de tonnes de carbone.",
+      "document2": "Plus de la moitié de l’humanité vit en ville (huit habitants sur dix dans les pays riches) ; la vie urbaine est donc le principal enjeu écologique. On entend souvent dire que l’organisation actuelle des villes n’est pas écologique, et que le grossissement des villes ne fait qu’augmenter le problème. Pourtant, il faut se méfier des apparences : les villes ne sont pas toujours aussi antiécologiques qu’on l’imagine. Par exemple, la consommation d’énergie d’un citadin est moins importante que celle d’un habitant de la campagne.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 511,
+      "combinaison": "Combinaison 17",
+      "sujet": "La Restauration Rapide",
+      "document1": "Les restaurants rapides proposent des plats équilibrés et variés, et ils respectent les normes d’hygiène et les variétés de produits qui sont bons, et c’est le client qui compose son menu, donc il en est responsable.",
+      "document2": "Les spécialistes affirment que manger régulièrement dans des restaurants de fast-food, qui proposent de la restauration rapide, est dangereux pour la santé. La nourriture servie est souvent la même : frites, hamburgers et boissons sucrées. Ces aliments contiennent une grande quantité de calories, bien trop pour un seul repas. De plus, la plupart des produits dans ces restaurants sont emballés dans du plastique. Par conséquent, manger dans un fast-food augmente la production de déchets plastiques, ce qui est nuisible pour l’environnement.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 512,
+      "combinaison": "Combinaison 18",
+      "sujet": "Les Jeux Vidéo, Pour ou Contre ?",
+      "document1": "Des études ont montré que certaines zones du cerveau de l’adulte peuvent être développées en jouant aux jeux vidéo. Ainsi, il peut être intéressant de jouer aux jeux vidéo, car ils permettent, par exemple, d’améliorer la capacité d’analyse, la capacité à faire des choix et la rapidité de réaction. C’est une bonne nouvelle car la répartition des joueurs par âge montre que 83 % des joueurs sont des adultes. Cependant, il convient de rester prudent car certains jeux vidéo ne favorisent pas ce type d’amélioration sur le cerveau.",
+      "document2": "Pendant trois ans, des enfants âgés de 8 à 17 ans ont participé à une étude sur les jeux vidéo. Les résultats de cette étude montrent que les enfants qui jouent beaucoup aux jeux vidéo sont plus violents, plus nerveux et plus stressés que ceux qui ne jouent pas ou peu. Ceux qui jouent beaucoup ont également moins de bons résultats à l’école. Il est donc conseillé aux parents d’être vigilants et de limiter l’usage de ces jeux par leurs enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 513,
+      "combinaison": "Combinaison 19",
+      "sujet": "La réduction du temps de travail",
+      "document1": "La réduction du temps de travail permet aux employés de mieux équilibrer leur vie professionnelle et personnelle. En travaillant moins, ils peuvent consacrer plus de temps à leur famille, à leurs loisirs et à leur santé. Cela peut également augmenter leur satisfaction au travail et réduire le stress, améliorant ainsi leur productivité globale.",
+      "document2": "La réduction du temps de travail peut bénéficier aux entreprises en diminuant l’absentéisme et en améliorant la rétention des employés. Avec des horaires plus flexibles, les employés sont souvent plus motivés et engagés. Cependant, cela nécessite une bonne organisation et une adaptation des processus pour maintenir l’efficacité et répondre aux besoins de l’entreprise.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

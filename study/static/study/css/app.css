@@ -5927,6 +5927,36 @@ html[data-collection-view-mode="table"]
   margin-bottom: 0.2rem;
 }
 .spine-text { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.5; }
+.spine-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  text-transform: none;
+}
+.ee-source-docs {
+  display: grid;
+  gap: 0.75rem;
+}
+.ee-source-doc {
+  border-left: 3px solid var(--border-strong);
+  padding: 0.15rem 0 0.15rem 0.9rem;
+}
+.ee-source-doc__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin: 0 0 0.3rem;
+}
+.ee-source-doc p {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  margin: 0 0 0.4rem;
+}
+.ee-source-doc p:last-child { margin-bottom: 0; }
 .arg {
   border-left: 3px solid var(--border-strong);
   padding: 0.1rem 0 0.1rem 0.9rem;

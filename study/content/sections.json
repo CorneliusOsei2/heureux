@@ -72,7 +72,7 @@
           "icon": "scale",
           "color": "#d3263a",
           "order": 3,
-          "available": false
+          "available": true
         }
       ]
     }

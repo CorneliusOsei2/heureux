@@ -72,9 +72,11 @@ class Command(BaseCommand):
             return
 
         subject_months = content.load_tache_two_subject_months()
+        ee_tache3_months = content.load_ee_tache3_months()
         themes = [
             *content.load_themes(),
             *content.tache_two_themes(subject_months),
+            *content.ee_tache3_themes(ee_tache3_months),
         ]
         sections = content.load_sections()
         question_banks = content.load_question_banks()
@@ -82,12 +84,20 @@ class Command(BaseCommand):
         families = [
             *families,
             *content.tache_two_families(subject_months),
+            *content.ee_tache3_families(ee_tache3_months),
         ]
         standard_responses = content.parse_responses()
         tache_two_responses = content.parse_tache_two_responses(
             subject_months
         )
-        responses = [*standard_responses, *tache_two_responses]
+        ee_tache3_responses = content.parse_ee_tache3_responses(
+            ee_tache3_months
+        )
+        responses = [
+            *standard_responses,
+            *tache_two_responses,
+            *ee_tache3_responses,
+        ]
         phrases = content.parse_phrases(standard_responses)
         subject_vocabulary = content.parse_subject_vocabulary(
             standard_responses
@@ -97,6 +107,9 @@ class Command(BaseCommand):
                 tache_two_responses
             )
         )
+        ee_tache3_vocabulary = content.parse_ee_tache3_subject_vocabulary(
+            ee_tache3_responses
+        )
         comprehension_tests = content.load_comprehension_tests()
         comprehension_vocabulary = content.parse_comprehension_vocabulary(
             comprehension_tests
@@ -105,6 +118,7 @@ class Command(BaseCommand):
             *phrases,
             *subject_vocabulary,
             *tache_two_vocabulary,
+            *ee_tache3_vocabulary,
             *(item.phrase for item in comprehension_vocabulary),
         ]
         phrase_id_locations = {}

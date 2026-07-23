@@ -1,0 +1,199 @@
+{
+  "month": {
+    "number": 3,
+    "slug": "mars",
+    "name": "Mars"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 14,
+  "sujets": [
+    {
+      "id": 327,
+      "combinaison": "Combinaison 1",
+      "sujet": "Les Vêtements de Grandes Marques",
+      "document1": "Les vêtements de marque sont très importants pour les enfants et les adolescents. C’est un moyen de s’exprimer et de se rattacher à un groupe social. Cette attirance pour les marques est très présente chez les adolescents qui se cherchent et montrent leur personnalité. Les enfants aiment également porter des vêtements de marque avec des images de dessins animés qu’ils regardent ou des logos qu’ils apprécient.",
+      "document2": "Les enfants grandissent très vite et les vêtements sont portés pendant une courte période. Ainsi, les vêtements deviennent rapidement trop petits. Mais il y a aussi le fait que les enfants usent assez rapidement les vêtements en jouant à l’extérieur avec les copains, en s’amusant dans l’herbe ou à l’aire de jeux. Les habits sont très vite sales ou troués.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 328,
+      "combinaison": "Combinaison 2",
+      "sujet": "Les animaux de compagnie pour les enfants, pour ou contre ?",
+      "document1": "Offrir un animal de compagnie à un enfant présente de nombreux avantages, comme le soulignent beaucoup de psychologues. Pour des enfants qui n’ont pas des frères et/ou des sœurs, l’animal est un compagnon qui leur évitera la solitude. Grâce à lui, un enfant prendra confiance en lui et il apprendra vite qu’un animal est un être vivant qui a besoin d’attention et de respect. En sa présence, l’enfant se sentira en sécurité et pourra agir de manière autonome, sans l’aide de ses parents.",
+      "document2": "Beaucoup d’enfants demandent, un jour ou l’autre, un animal à leurs parents, le plus souvent un chien ou un chat. Mais même si vous avez envie de faire plaisir à votre enfant, il vaut mieux réfléchir sérieusement avant d’acheter un animal domestique. L’animal devient un nouveau membre de la famille et représente un engagement sur de nombreuses années. Or, avoir un animal coûte souvent très cher, et c’est une grande responsabilité. On ne peut pas le traiter comme un jouet que l’on met à la poubelle quand l’enfant s’en désintéresse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 329,
+      "combinaison": "Combinaison 3",
+      "sujet": "La lecture pour les enfants.",
+      "document1": "Avec l’avancée technologique et les produits high-tech qui envahissent de plus en plus notre quotidien, nos enfants oublient la lecture et s’intéressent davantage aux jeux vidéo, aux sports, à la musique… Contrairement à nous les adultes, dont beaucoup d’entre nous ont lu des milliers de pages, la génération actuelle est toujours occupée par les réseaux sociaux et le gaming ou prend du plaisir à pratiquer du sport qui attire davantage de jeunes grâce aux stars internationales du football, du tennis, de l’athlétisme… alors avec tout ça, pourquoi devons-nous forcer les enfants à lire un bouquin ? Et comme le dit un proverbe, « le goût de la lecture ne peut pas s’imposer »… il faut laisser l’enfant choisir ce qu’il veut lire et surtout ne pas l’obliger à lire quand il n’a pas envie.",
+      "document2": "L’amour de la lecture se transmet de génération en génération bien que, ces dernières années, on ne trouve plus beaucoup de bouquins entre les mains des enfants, laissant la place aux smartphones et aux tablettes. En apprenant à lire régulièrement, l’enfant acquiert le langage plus aisément tout en développant sa capacité d’audition et de concentration. De plus, et pour prendre du plaisir ensemble, les parents peuvent consacrer quotidiennement 10 minutes à leurs enfants pour lire des bouquins ; une activité qui renforcera à coup sûr la complicité parent/enfant.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 330,
+      "combinaison": "Combinaison 4",
+      "sujet": "Les Produits Faits Maison : Pour Ou Contre ?",
+      "document1": "Fabriquer vos propres produits biologiques à la maison offre un contrôle total sur les ingrédients, garantissant des options plus saines et personnalisées. Cela contribue également à réduire les déchets plastiques grâce à des emballages réutilisables. De plus, vous économiserez de l’argent à long terme et développerez des compétences créatives, favorisant ainsi un mode de vie plus durable.",
+      "document2": "Cependant, la fabrication de produits biologiques à domicile comporte des risques. Les erreurs de formulation peuvent entraîner des produits inefficaces ou irritants. De plus, le temps et les efforts nécessaires pour trouver et préparer les ingrédients peuvent être contraignants. Il y a également un manque de garantie de sécurité et de stabilité des produits faits maison, avec un risque accru de contamination bactérienne si les produits ne sont pas correctement conservés. Enfin, le coût initial élevé pour l’achat d’ingrédients de qualité peut être dissuasif pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 331,
+      "combinaison": "Combinaison 5",
+      "sujet": "Les Écoles Privées Ou Publiques ?",
+      "document1": "À la rentrée, le nombre d’élèves inscrits dans des écoles privées a augmenté en France. Le succès des établissements privés n’est pas directement lié aux bons résultats scolaires de leurs élèves. C’est la réputation de ces lieux qui explique un tel enthousiasme. Aux yeux de nombreux parents, les élèves y sont mieux encadrés, mieux surveillés et les professeurs sont plus présents. Les parents sont aussi rassurés parce que les classes sont homogènes : elles accueillent généralement des élèves de milieux sociaux favorisés. En effet, les études dans ces établissements sont payantes, ce qui n’est pas le cas dans les écoles publiques.",
+      "document2": "Dans les collèges privés, il y a peu d’élèves de milieux sociaux défavorisés. Comme les études dans ces établissements sont payantes, certaines catégories de population en sont exclues. Ce système qui oppose écoles publiques et écoles privées ne facilite pas la mixité sociale. Ainsi, les élèves du privé ont rarement l’occasion de rencontrer d’autres jeunes issus de milieux sociaux moins favorisés qu’eux et inversement. Ce modèle scolaire reproduit les inégalités sociales et renforce le sentiment d’exclusion de certains jeunes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 332,
+      "combinaison": "Combinaison 6",
+      "sujet": "Les Devoirs à la Maison.",
+      "document1": "Selon des associations de parents d’élèves, les devoirs à la maison sont utiles, car ils permettent aux élèves d’apprendre à organiser leur temps de manière autonome. Pour les parents, les devoirs sont un lien quotidien avec l’école. Même s’il est parfois difficile de suivre les devoirs après une journée de travail fatigante, ils apprécient ce moment partagé avec leurs enfants parce que ceux-ci sont contents que leurs parents s’intéressent à eux. C’est valorisant !",
+      "document2": "Nous protestons depuis longtemps contre les devoirs à la maison pour plusieurs raisons. Personne n’a jamais prouvé leur utilité pour améliorer les résultats des élèves. Beaucoup de parents ont peu de temps pour encadrer les devoirs de leurs enfants et certains parents ne savent pas le faire. Quant aux élèves, ceux qui ont réussi les exercices en classe perdent leur temps à les faire à la maison. Ceux qui ne sont pas aidés à la maison ne réussissent toujours pas, ils sont défavorisés. C’est pourquoi nous pensons qu’il faut supprimer les devoirs à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 333,
+      "combinaison": "Combinaison 7",
+      "sujet": "Utilisation des nouvelles technologies dans les écoles : pour ou contre ?",
+      "document1": "Jean : Je suis fermement convaincu que l’intégration des nouvelles technologies dans les écoles est cruciale pour préparer les élèves à un avenir numérique. Je pense que l’usage des tablettes et des ordinateurs stimule non seulement l’engagement des élèves mais enrichit également leur expérience éducative en leur offrant un accès facile à une variété de ressources, encourageant ainsi leur créativité et autonomie.",
+      "document2": "Sara : Je suis sceptique quant à l’usage intensif des technologies dans l’enseignement. Je crois que cela peut réduire les interactions humaines essentielles et favoriser une dépendance préoccupante aux écrans. À mon avis, les méthodes d’enseignement traditionnelles et le contact direct entre enseignants et élèves restent indispensables pour un développement équilibré et complet des compétences des jeunes.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 334,
+      "combinaison": "Combinaison 8",
+      "sujet": "Les Vols à Bas Prix",
+      "document1": "Je fais souvent mes voyages avec des compagnies aériennes à bas prix. Les compagnies low-cost mettent à disposition des prix inférieurs à ceux proposés par les compagnies aériennes régulières. Cela me coûte des fois moins cher que de voyager en voiture ou en train. Avec ces tarifs-là, vous vous doutez qu’il y a un hic ; en effet, vous n’aurez droit à aucun service à bord (ni aliments, ni boissons). Je dirais donc que le low-cost n’est surtout pas fait pour les vols long-courriers.",
+      "document2": "Récemment, j’ai pris la décision de ne plus voyager avec les compagnies aériennes à bas prix. En effet, j’ai longuement réfléchi afin de prendre ma décision, mais ce choix était évident : des sièges inconfortables, des conditions de travail pénibles et surtout des avions vétustes qui remettent en cause la sécurité ! Dès lors, pour certains voyages, je vais opter pour la voiture ou même le train, ce dernier permet même de découvrir de jolis paysages. Quant aux longs trajets, il vaut mieux prendre un vol en compagnie régulière.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 335,
+      "combinaison": "Combinaison 9",
+      "sujet": "Faut-il faire ses courses dans des petits magasins ou dans des supermarchés ?",
+      "document1": "Le supermarché est très pratique ; on y trouve une grande variété de produits, tous à portée de main. Vous pouvez garer votre voiture dans le parking et faire le tour des rayons pour acheter tout ce dont vous avez besoin : fruits, légumes, fromages, viandes, boissons… De plus, les supermarchés offrent plusieurs marques pour un même produit, tout en proposant régulièrement des promotions et des remises.",
+      "document2": "ASSOCIATION POUR LA SAUVEGARDE DES PETITS COMMERCES Le défi « Février sans supermarché » a été créé pour limiter la superpuissance des supermarchés et, par conséquent, permettre aux petits commerces de survivre et de réaliser des chiffres d’affaires plus conséquents. Ce défi consiste à boycotter les supermarchés pendant une durée d’un mois, en faisant toutes ses courses dans les épiceries de quartier. Le client aura tout à gagner : il bénéficiera non seulement de produits frais de meilleure qualité, mais aura également l’opportunité de papoter avec les voisins.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 336,
+      "combinaison": "Combinaison 10",
+      "sujet": "La sévérité des parents envers les enfants",
+      "document1": "Je vais bientôt avoir 22 ans et j’habite toujours chez mes parents. Mon père et ma mère restent autoritaires avec moi, même si je suis majeure. Quand j’étais mineure, je n’avais pas le droit de dormir dehors, ni même de dépasser 21 h lorsque je sortais avec des amies. Maintenant, peu de choses ont changé ; certes, j’ai le droit de veiller plus tard la nuit, mais ma mère ne cesse de m’appeler sur mon téléphone portable jusqu’à ce que je sois de retour.",
+      "document2": "Les parents ont parfois peur d’être trop sévères avec leurs enfants. Ils craignent qu’à cause d’un excès d’autorité, leurs enfants ne s’épanouissent pas et manquent plus tard de personnalité. Même si les parents acceptent, par amour, tout ce que leurs enfants demandent, cela pourrait avoir des effets négatifs lorsqu’ils passent à l’âge adulte. En effet, pour vivre en communauté, il y a certaines règles à respecter.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 337,
+      "combinaison": "Combinaison 11",
+      "sujet": "L’utilisation des distributeurs automatiques au sein des établissements scolaires, pour ou contre ?",
+      "document1": "Je suis en faveur des distributeurs de boissons dans les lycées. Premièrement, ils offrent une commodité supplémentaire pour les élèves, notamment pour ceux qui n’ont pas le temps de passer à la cafétéria pendant les pauses. Deuxièmement, s’ils sont bien gérés, ces distributeurs peuvent offrir une gamme de boissons saines, comme de l’eau, du jus de fruits pur et des boissons aux fruits sans sucre ajouté. Ces distributeurs peuvent être une source de revenus supplémentaire pour l’école, qui peut être réinvestie dans l’amélioration des infrastructures ou des programmes scolaires.",
+      "document2": "Je suis contre l’installation de distributeurs de boissons dans les lycées. Ma principale préoccupation est liée à la santé des élèves. Malheureusement, beaucoup de ces distributeurs sont remplis de boissons sucrées et de sodas qui contribuent à l’obésité infantile et à d’autres problèmes de santé comme le diabète. Même les jus de fruits, qui peuvent sembler sains, contiennent souvent beaucoup de sucre. Les écoles devraient être des lieux qui encouragent des habitudes alimentaires saines et je crains que la présence de ces distributeurs n’encourage une consommation excessive de boissons sucrées.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 338,
+      "combinaison": "Combinaison 12",
+      "sujet": "Cuisinier amateur ou cuisinier professionnel ?",
+      "document1": "Les amateurs ont fait des recettes réussies, mais ils manquent toujours de compétences et de technique, c’est pourquoi la formation et l’expérience sont nécessaires pour être un vrai cuisinier.",
+      "document2": "Il parle des cuisiniers qui ont appris le métier de cuisinier sur internet et qui font le buzz sur les réseaux sociaux ; il raconte aussi l’histoire d’une amatrice qui est devenue professionnelle et qui a rédigé plusieurs livres sur la cuisine pour les amateurs de cuisine à la maison.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 339,
+      "combinaison": "Combinaison 13",
+      "sujet": "Vivre En Colocation : Pour Ou Contre ?",
+      "document1": "La vie en colocation offre de nombreux avantages. Partager un logement avec d’autres personnes permet de réduire les dépenses, que ce soit le loyer, les factures ou les frais généraux. De plus, cela favorise les interactions sociales et les échanges culturels. Vivre avec des colocataires permet de rencontrer des individus de différents horizons, de nouer des amitiés et de partager des expériences enrichissantes.",
+      "document2": "La colocation peut cependant présenter des défis. Les différences de personnalité et de mode de vie entre les colocataires peuvent entraîner des tensions. La gestion des responsabilités et des tâches ménagères peut également être source de conflits. De plus, la colocation peut limiter l’intimité et l’espace personnel. Il est important d’établir une communication ouverte et respectueuse, ainsi que des règles de vie commune, pour favoriser une cohabitation harmonieuse.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 340,
+      "combinaison": "Combinaison 14",
+      "sujet": "L’aide aux personnes pauvres",
+      "document1": "Christine, 56 ans : Tous les ans, en hiver, je donne un peu de mon temps et de mon argent pour aider les personnes qui vivent dans la rue et ont froid. Pour moi, c’est important de se soucier de ceux qui sont dans le besoin. Je trouve très important de donner quelques dollars à ces personnes ou aux associations qui peuvent les aider. Et puis, cette action me donne l’impression d’être utile, au moins une fois dans l’année ! C’est un geste de solidarité qui est à la portée de tout le monde.",
+      "document2": "Pierre, 65 ans : Plutôt que de donner de l’argent à des personnes pauvres, il vaudrait mieux revoir notre mode de vie. C’est pourquoi je préfère m’engager au quotidien dans une association de mon quartier, où je suis bénévole. Les sans domicile fixe ont besoin d’un logement et d’un travail et pas seulement d’argent. Il faut les aider à devenir autonomes. C’est le but d’organismes qui aident ceux qui sont dans la rue à trouver un emploi. Donner de l’argent est un acte inutile qui sert seulement à apaiser notre conscience.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}

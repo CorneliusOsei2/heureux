@@ -25,6 +25,10 @@
        href="{% url 'study:task_browse' part.slug task.slug %}">Sujets</a>
     <a class="{% if request.resolver_match.url_name == 'task_review_hub' %}is-active{% endif %}"
        href="{% url 'study:task_review_hub' part.slug task.slug %}">Pratiquer</a>
+    {% if task.supports_memoires %}
+      <a class="{% if request.resolver_match.url_name == 'task_memories' or request.resolver_match.url_name == 'task_memory_detail' %}is-active{% endif %}"
+         href="{% url 'study:task_memories' part.slug task.slug %}">Mémoires</a>
+    {% endif %}
   {% endif %}
 </nav>
 {% endif %}

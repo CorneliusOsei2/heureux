@@ -32,6 +32,22 @@ TACHE_TWO_SUBJECTS_DIR = QUESTION_BANK_DIR / "subjects"
 TACHE_TWO_VOCABULARY_DIR = QUESTION_BANK_DIR / "vocabulary"
 QUESTION_BANK_TASK = ("eo", "tache-2")
 
+EE_TACHE3_TASK = ("ee", "tache-3")
+EE_TACHE3_DIR = CONTENT_DIR / "ee" / "tache3"
+EE_TACHE3_RESPONSES_DIR = EE_TACHE3_DIR / "responses"
+EE_TACHE3_SUBJECTS_DIR = EE_TACHE3_DIR / "subjects"
+EE_TACHE3_VOCABULARY_DIR = EE_TACHE3_DIR / "vocabulary"
+EE_TACHE3_MEMOIRES_DIR = EE_TACHE3_DIR / "memoires"
+EE_TACHE3_VOCABULARY_PER_RESPONSE = 30
+
+# Tasks that expose a "Mémoires" question-bank section, mapped to the
+# directory of memoire JSON files and the key namespace used to isolate
+# per-question progress from other tasks (empty namespace = legacy EO T2).
+MEMOIRE_TASKS = {
+    QUESTION_BANK_TASK: (QUESTION_BANK_DIR, ""),
+    EE_TACHE3_TASK: (EE_TACHE3_MEMOIRES_DIR, "ee-tache3"),
+}
+
 EXPECTED_PROMPTS = 167
 EXPECTED_UNIQUE = 130
 EXPECTED_FAMILIES = 17
@@ -86,6 +102,32 @@ COMPREHENSION_VOCABULARY_FIELDS = (
     "usage",
     "questions",
 )
+EE_TACHE3_VOCABULARY_FIELDS = (
+    "id",
+    "kind",
+    "french",
+    "english",
+    "example",
+    "usage",
+)
+EE_TACHE3_VOCABULARY_KINDS = (
+    "mot-cle",
+    "collocation",
+    "expression",
+    "tournure",
+    "phrase-modele",
+    "verbe-action",
+    "reformulation",
+)
+EE_TACHE3_VOCABULARY_CATEGORIES = {
+    "mot-cle": "EE Tâche 3 · Mots clés",
+    "collocation": "EE Tâche 3 · Collocations",
+    "expression": "EE Tâche 3 · Expressions",
+    "tournure": "EE Tâche 3 · Tournures",
+    "phrase-modele": "EE Tâche 3 · Phrases modèles",
+    "verbe-action": "EE Tâche 3 · Verbes et actions",
+    "reformulation": "EE Tâche 3 · Reformulations",
+}
 PHRASE_FIELDS = (
     "id",
     "tier",
@@ -202,6 +244,7 @@ class QuestionBankData:
     icon: str
     subtitle: str
     sections: Tuple[QuestionBankSectionData, ...]
+    key_namespace: str = ""
 
     @property
     def category_count(self) -> int:
@@ -221,9 +264,12 @@ class QuestionBankData:
 
     @property
     def annotation_key_prefix(self) -> str:
+        base = "question-bank"
+        if self.key_namespace:
+            base = f"question-bank:{self.key_namespace}"
         if self.number == 1:
-            return "question-bank"
-        return f"question-bank:memory-{self.number:02d}"
+            return base
+        return f"{base}:memory-{self.number:02d}"
 
 
 @dataclass(frozen=True)
@@ -484,6 +530,7 @@ def load_sections() -> List[SectionData]:
 
 def load_question_bank(
     path: Path = QUESTION_BANK_PATH,
+    key_namespace: str = "",
 ) -> QuestionBankData:
     raw = json.loads(path.read_text(encoding="utf-8"))
     memory_number = raw.get("number")
@@ -526,10 +573,12 @@ def load_question_bank(
                 digest = hashlib.sha256(
                     normalized.encode("utf-8")
                 ).hexdigest()
+                key_prefix = f"{key_namespace}:" if key_namespace else ""
                 questions.append(
                     QuestionBankQuestionData(
                         content_key=(
-                            f"memory:{memory_number}:question:{digest}"
+                            f"memory:{key_prefix}{memory_number}"
+                            f":question:{digest}"
                         ),
                         text=text,
                         note=note,
@@ -573,16 +622,18 @@ def load_question_bank(
         icon=icon,
         subtitle=subtitle,
         sections=tuple(sections),
+        key_namespace=key_namespace,
     )
 
 
 def load_question_banks(
     directory: Path = QUESTION_BANK_DIR,
+    key_namespace: str = "",
 ) -> Tuple[QuestionBankData, ...]:
     banks = tuple(
         sorted(
             (
-                load_question_bank(path)
+                load_question_bank(path, key_namespace=key_namespace)
                 for path in directory.glob("*.json")
             ),
             key=lambda bank: bank.number,
@@ -1115,6 +1166,429 @@ def parse_tache_two_subject_vocabulary(
     if missing:
         raise ValueError(
             "Missing Tâche 2 subject vocabulary for: "
+            + ", ".join(missing)
+        )
+    return phrases
+
+
+@dataclass(frozen=True)
+class EeTacheThreeCombinaison:
+    content_key: str
+    combinaison: str
+    position: int
+    sujet: str
+    heading: str
+    document1: str
+    document2: str
+    synthese: str
+    point_de_vue: str
+
+
+@dataclass(frozen=True)
+class EeTacheThreeMonth:
+    number: int
+    slug: str
+    name: str
+    combinaisons: Tuple[EeTacheThreeCombinaison, ...]
+
+
+def ee_tache3_theme_name(month: EeTacheThreeMonth) -> str:
+    return f"EE · Tâche 3 · {month.name}"
+
+
+def ee_tache3_family_name(month: EeTacheThreeMonth) -> str:
+    return f"EE Tâche 3 · {month.name}"
+
+
+def _ee_tache3_normalize(text: str) -> str:
+    return text.lower().replace("\u2019", "'").replace("\u0153", "oe")
+
+
+def _ee_tache3_parse_essays(md_text: str) -> List[Dict[str, str]]:
+    """Return ordered per-combinaison essay blocks from a responses/*.md file."""
+    text = md_text.replace("\r\n", "\n")
+    blocks = re.split(r"(?m)^## Combinaison ", text)
+    essays: List[Dict[str, str]] = []
+    for block in blocks[1:]:
+        label_line, _, rest = block.partition("\n")
+        label = "Combinaison " + label_line.strip()
+        sujet_match = re.search(r"\*\*Sujet\s*:\*\*\s*(.*)", rest)
+        heading_match = re.search(r"(?m)^###\s+(.*)", rest)
+        synthese_match = re.search(
+            r"\*\*Partie 1[^\n]*\*\*\s*\n+(.+?)(?=\n\*\*Partie 2)",
+            rest,
+            re.S,
+        )
+        point_match = re.search(
+            r"\*\*Partie 2[^\n]*\*\*\s*\n+(.+?)(?=\n\*\*Total)",
+            rest,
+            re.S,
+        )
+        heading = heading_match.group(1).strip() if heading_match else ""
+        synthese = synthese_match.group(1).strip() if synthese_match else ""
+        point_de_vue = point_match.group(1).strip() if point_match else ""
+        if not heading:
+            raise ValueError(f"{label} is missing its '###' heading")
+        if not synthese:
+            raise ValueError(f"{label} is missing its Partie 1 (Synthèse)")
+        if not point_de_vue:
+            raise ValueError(f"{label} is missing its Partie 2 (Point de vue)")
+        essays.append(
+            {
+                "label": label,
+                "sujet": sujet_match.group(1).strip() if sujet_match else "",
+                "heading": heading,
+                "synthese": synthese,
+                "point_de_vue": point_de_vue,
+            }
+        )
+    return essays
+
+
+def load_ee_tache3_months(
+    subjects_dir: Path = EE_TACHE3_SUBJECTS_DIR,
+    responses_dir: Path = EE_TACHE3_RESPONSES_DIR,
+) -> Tuple[EeTacheThreeMonth, ...]:
+    """Load EE Tâche 3 months by zipping subjects, essays and vocab keys.
+
+    Subjects provide the sujet + source documents, the responses/*.md file
+    provides the model essay (heading + Partie 1/2), and the vocabulary file
+    provides the authoritative ``response_key`` used as the content key.
+    All three are verified to be aligned by position for every month.
+    """
+    months: List[EeTacheThreeMonth] = []
+    subject_paths = sorted(subjects_dir.glob("*.json"))
+    if not subject_paths:
+        raise ValueError("No EE Tâche 3 subject JSON files found")
+    for subject_path in subject_paths:
+        slug = subject_path.stem
+        subjects = json.loads(subject_path.read_text(encoding="utf-8"))
+        month_row = subjects.get("month")
+        if not isinstance(month_row, dict):
+            raise ValueError(f"{subject_path.name} is missing its month block")
+        sujets = subjects.get("sujets")
+        if not isinstance(sujets, list) or not sujets:
+            raise ValueError(f"{subject_path.name} must contain a sujets list")
+
+        vocab_path = EE_TACHE3_VOCABULARY_DIR / f"{slug}.json"
+        vocab = json.loads(vocab_path.read_text(encoding="utf-8"))
+        vocab_rows = vocab.get("responses")
+        if not isinstance(vocab_rows, list):
+            raise ValueError(f"{vocab_path.name} must contain a responses list")
+
+        essays = _ee_tache3_parse_essays(
+            (responses_dir / f"{slug}.md").read_text(encoding="utf-8")
+        )
+
+        if not (len(sujets) == len(vocab_rows) == len(essays)):
+            raise ValueError(
+                f"{slug}: misaligned counts — subjects {len(sujets)}, "
+                f"vocab {len(vocab_rows)}, essays {len(essays)}"
+            )
+
+        combinaisons: List[EeTacheThreeCombinaison] = []
+        for position, (subject, vocab_row, essay) in enumerate(
+            zip(sujets, vocab_rows, essays), start=1
+        ):
+            label = subject.get("combinaison", "")
+            if not (label == vocab_row.get("combinaison") == essay["label"]):
+                raise ValueError(
+                    f"{slug} position {position}: combinaison label mismatch "
+                    f"({label!r}, {vocab_row.get('combinaison')!r}, "
+                    f"{essay['label']!r})"
+                )
+            content_key = vocab_row.get("response_key", "")
+            if not content_key.startswith("ee-tache3:"):
+                raise ValueError(
+                    f"{slug} position {position}: bad response_key "
+                    f"{content_key!r}"
+                )
+            heading = essay["heading"]
+            sujet = (subject.get("sujet") or "").strip() or heading
+            combinaisons.append(
+                EeTacheThreeCombinaison(
+                    content_key=content_key,
+                    combinaison=label,
+                    position=position,
+                    sujet=sujet,
+                    heading=heading,
+                    document1=(subject.get("document1") or "").strip(),
+                    document2=(subject.get("document2") or "").strip(),
+                    synthese=essay["synthese"],
+                    point_de_vue=essay["point_de_vue"],
+                )
+            )
+        months.append(
+            EeTacheThreeMonth(
+                number=int(month_row["number"]),
+                slug=month_row.get("slug", slug),
+                name=month_row["name"],
+                combinaisons=tuple(combinaisons),
+            )
+        )
+
+    months.sort(key=lambda month: month.number)
+    numbers = [month.number for month in months]
+    if len(numbers) != len(set(numbers)):
+        raise ValueError("EE Tâche 3 months must have unique numbers")
+    return tuple(months)
+
+
+def ee_tache3_themes(
+    months: Optional[Tuple[EeTacheThreeMonth, ...]] = None,
+) -> List[ThemeData]:
+    months = months or load_ee_tache3_months()
+    return [
+        ThemeData(
+            slug=f"ee-tache-3-{month.slug}",
+            name=ee_tache3_theme_name(month),
+            display=month.name,
+            order=200 + month.number,
+            color="#0f6fc4",
+            icon="pencil",
+            task="ee/tache-3",
+        )
+        for month in months
+    ]
+
+
+def ee_tache3_families(
+    months: Optional[Tuple[EeTacheThreeMonth, ...]] = None,
+) -> List[Tuple[str, int]]:
+    months = months or load_ee_tache3_months()
+    return [
+        (ee_tache3_family_name(month), 2000 + month.number)
+        for month in months
+    ]
+
+
+def _ee_tache3_documents_html(documents: Tuple[str, ...]) -> str:
+    blocks = []
+    for index, doc in enumerate(documents, start=1):
+        text = (doc or "").strip()
+        if not text:
+            continue
+        paragraphs = [
+            part.strip() for part in re.split(r"\n\s*\n", text) if part.strip()
+        ]
+        body = "".join(
+            "<p>" + html.escape(part).replace("\n", "<br>") + "</p>"
+            for part in paragraphs
+        )
+        blocks.append(
+            '<article class="ee-source-doc">'
+            f'<h4 class="ee-source-doc__label">Document {index}</h4>'
+            f"{body}</article>"
+        )
+    return "".join(blocks)
+
+
+def parse_ee_tache3_responses(
+    months: Optional[Tuple[EeTacheThreeMonth, ...]] = None,
+) -> List[ResponseData]:
+    months = months or load_ee_tache3_months()
+    responses: List[ResponseData] = []
+    for month in months:
+        theme = ee_tache3_theme_name(month)
+        family = ee_tache3_family_name(month)
+        for combinaison in month.combinaisons:
+            body_parts = [
+                combinaison.sujet,
+                combinaison.document1,
+                combinaison.document2,
+                combinaison.synthese,
+                combinaison.point_de_vue,
+            ]
+            body = "\n\n".join(part for part in body_parts if part)
+            responses.append(
+                ResponseData(
+                    content_key=combinaison.content_key,
+                    body_hash=hashlib.sha256(
+                        body.encode("utf-8")
+                    ).hexdigest(),
+                    theme=theme,
+                    family=family,
+                    prompt=combinaison.sujet,
+                    reformulation=combinaison.heading,
+                    position=combinaison.synthese,
+                    position_claire=combinaison.point_de_vue,
+                    nuance="",
+                    conclusion="",
+                    body=body,
+                    body_html=_ee_tache3_documents_html(
+                        (combinaison.document1, combinaison.document2)
+                    ),
+                    arguments=[],
+                    prompts=[
+                        PromptData(
+                            content_key=combinaison.content_key,
+                            theme=theme,
+                            number=combinaison.position,
+                            text=combinaison.sujet,
+                            family=family,
+                            is_canonical=True,
+                        )
+                    ],
+                )
+            )
+    return responses
+
+
+def parse_ee_tache3_subject_vocabulary(
+    responses: Optional[List[ResponseData]] = None,
+    directory: Path = EE_TACHE3_VOCABULARY_DIR,
+) -> List[PhraseData]:
+    if responses is None:
+        responses = parse_ee_tache3_responses()
+    response_by_key = {
+        response.content_key: response
+        for response in responses
+        if response.content_key.startswith("ee-tache3:")
+    }
+    if not response_by_key:
+        return []
+
+    paths = sorted(directory.glob("*.json"))
+    if not paths:
+        raise ValueError("No EE Tâche 3 vocabulary JSON files found")
+
+    payloads = []
+    for path in paths:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict) or payload.get("version") != 1:
+            raise ValueError(
+                f"{path.name} must use EE Tâche 3 vocabulary version 1"
+            )
+        month_row = payload.get("month")
+        month_number = (
+            int(month_row["number"])
+            if isinstance(month_row, dict) and "number" in month_row
+            else 0
+        )
+        response_rows = payload.get("responses")
+        if not isinstance(response_rows, list) or not response_rows:
+            raise ValueError(f"{path.name} must contain a responses list")
+        payloads.append((month_number, path.name, path, response_rows))
+
+    seen_response_keys: set = set()
+    seen_ids: Dict[str, str] = {}
+    phrases: List[PhraseData] = []
+    base_order = 900_000
+    for _, file_name, path, response_rows in sorted(
+        payloads, key=lambda item: (item[0], item[1])
+    ):
+        for response_row in response_rows:
+            if not isinstance(response_row, dict):
+                raise ValueError(f"{file_name} has a non-object response")
+            response_key = response_row.get("response_key")
+            if response_key not in response_by_key:
+                raise ValueError(
+                    f"{file_name} references unknown response "
+                    f"{response_key!r}"
+                )
+            if response_key in seen_response_keys:
+                raise ValueError(
+                    f"Duplicate EE Tâche 3 vocabulary for {response_key!r}"
+                )
+            seen_response_keys.add(response_key)
+
+            entries = response_row.get("entries")
+            if not isinstance(entries, list):
+                raise ValueError(
+                    f"{response_key} must contain an entries list"
+                )
+            if len(entries) != EE_TACHE3_VOCABULARY_PER_RESPONSE:
+                raise ValueError(
+                    f"{response_key} must have "
+                    f"{EE_TACHE3_VOCABULARY_PER_RESPONSE} vocabulary entries"
+                )
+
+            response = response_by_key[response_key]
+            sources = tuple(
+                (prompt.theme, prompt.number) for prompt in response.prompts
+            )
+            sources_raw = "; ".join(
+                f"{theme} P{number}" for theme, number in sources
+            )
+            seen_targets: set = set()
+            for entry_index, entry in enumerate(entries, start=1):
+                location = f"{response_key} entry {entry_index}"
+                if not isinstance(entry, dict):
+                    raise ValueError(f"{location} must be an object")
+                if set(entry) != set(EE_TACHE3_VOCABULARY_FIELDS):
+                    raise ValueError(
+                        f"{location} fields must be "
+                        f"{EE_TACHE3_VOCABULARY_FIELDS}"
+                    )
+                values = {}
+                for field_name in EE_TACHE3_VOCABULARY_FIELDS:
+                    value = entry.get(field_name)
+                    if not isinstance(value, str) or not value.strip():
+                        raise ValueError(
+                            f"{location} has an empty {field_name!r} field"
+                        )
+                    values[field_name] = value.strip()
+
+                if values["kind"] not in EE_TACHE3_VOCABULARY_KINDS:
+                    raise ValueError(
+                        f"{location} has an unknown kind {values['kind']!r}"
+                    )
+
+                phrase_id = values["id"]
+                phrase_id_key = phrase_id.casefold()
+                if len(phrase_id) > PHRASE_MAX_LENGTHS["id"]:
+                    raise ValueError(
+                        f"{location} id exceeds "
+                        f"{PHRASE_MAX_LENGTHS['id']} characters"
+                    )
+                if phrase_id_key in seen_ids:
+                    raise ValueError(
+                        f"Duplicate EE Tâche 3 vocabulary id {phrase_id!r} "
+                        f"in {seen_ids[phrase_id_key]} and {location}"
+                    )
+                seen_ids[phrase_id_key] = location
+
+                french = values["french"]
+                english = values["english"]
+                example = values["example"]
+                if len(french) > PHRASE_MAX_LENGTHS["expression"]:
+                    raise ValueError(f"{location} french target is too long")
+                if len(english) > PHRASE_MAX_LENGTHS["english_cue"]:
+                    raise ValueError(f"{location} english cue is too long")
+                target_key = _ee_tache3_normalize(french)
+                if target_key in seen_targets:
+                    raise ValueError(
+                        f"{response_key} repeats french target {french!r}"
+                    )
+                seen_targets.add(target_key)
+                if target_key not in _ee_tache3_normalize(example):
+                    raise ValueError(
+                        f"{location} example must contain its french target "
+                        f"{french!r}"
+                    )
+
+                phrases.append(
+                    PhraseData(
+                        phrase_id=phrase_id,
+                        tier="subject",
+                        category=EE_TACHE3_VOCABULARY_CATEGORIES[
+                            values["kind"]
+                        ],
+                        english_cue=english,
+                        expression=french,
+                        anchor=french,
+                        example=example,
+                        note=values["usage"],
+                        sources_raw=sources_raw,
+                        sources=sources,
+                        order=base_order + len(phrases) + 1,
+                    )
+                )
+
+    missing = sorted(set(response_by_key) - seen_response_keys)
+    if missing:
+        raise ValueError(
+            "Missing EE Tâche 3 subject vocabulary for: "
             + ", ".join(missing)
         )
     return phrases

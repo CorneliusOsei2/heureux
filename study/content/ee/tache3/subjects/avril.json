@@ -1,0 +1,277 @@
+{
+  "month": {
+    "number": 4,
+    "slug": "avril",
+    "name": "Avril"
+  },
+  "year": 2025,
+  "task": "tache_3",
+  "source": "https://www.formation-tcfcanada.com/epreuve/expression-ecrite/sujets-actualites",
+  "epreuve": "Expression écrite — Tâche 3",
+  "annee": 2025,
+  "recupere_le": "2026-07-22",
+  "contenu": "sujets (prompts) et documents sources uniquement — sans réponses ni corrections",
+  "count": 20,
+  "sujets": [
+    {
+      "id": 257,
+      "combinaison": "Combinaison 1",
+      "sujet": "Caméras de surveillance : pour ou contre ?",
+      "document1": "De nos jours, il y a de plus en plus de caméras de surveillance dans les villes. La vidéosurveillance est appréciée par les Français car cela leur donne un sentiment de sécurité. D’après un sondage, 75 % d’entre eux sont pour le développement de la vidéosurveillance. Ils seraient d’accord pour être filmés, mais seulement dans l’espace public : la rue, les magasins ou encore les transports. Cependant, ils refusent d’être surveillés par leur employeur. En France, peu de caméras de vidéosurveillance sont installées sur le lieu de travail.",
+      "document2": "Certaines enquêtes montrent que la vidéosurveillance coûte cher et que ses résultats sont insuffisants. D’une part, la présence des caméras est facile à remarquer. Par conséquent, la vidéosurveillance est inutile pour éviter les vols, la consommation de drogue et la violence dans les villes. D’autre part, l’utilisation de la vidéosurveillance demande beaucoup de personnel. Une étude allemande montre que sept personnes par caméra sont nécessaires pour analyser les informations.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 258,
+      "combinaison": "Combinaison 2",
+      "sujet": "livraison des repas au bureau : pour ou contre ?",
+      "document1": "Grâce à la livraison en entreprise, les employés bénéficieront d’un gain de temps notable. Il n’est plus question d’aller sortir loin du lieu de travail pour trouver de quoi manger. En complément, l’argent et l’énergie économisés permettent d’être encore plus efficace au travail. Sans pour autant mettre fin à une session importante liée au travail, le repas sera déjà prêt et pourra attendre la fin d’une conférence, d’une réunion ou d’un rendez-vous. Il s’agit d’une véritable solution dédiée aux entreprises ayant une activité intense et qui requiert la présence continue de leurs employés.",
+      "document2": "Cette pratique révèle souvent des inconvénients à cause de sa notoriété montante. Certains jours, il arrive que les responsables de livraisons peuvent être envahis par un grand nombre de livraisons à faire, et cela risque de générer des perturbations liées au stress de l’attente. De même pour les employés, une trop longue heure de travail peut causer un état de fatigue si ce dernier ne quittera pas son bureau pour le repas. Dans tous les cas, il est recommandé de toujours marquer des temps de pause lors des durs labeurs.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 259,
+      "combinaison": "Combinaison 3",
+      "sujet": "les produits faits maison : pour ou contre ?",
+      "document1": "Fabriquer vos propres produits biologiques à la maison offre un contrôle total sur les ingrédients, garantissant des options plus saines et personnalisées. Cela contribue également à réduire les déchets plastiques grâce à des emballages réutilisables. De plus, vous économiserez de l’argent à long terme et développerez des compétences créatives, favorisant ainsi un mode de vie plus durable.",
+      "document2": "Cependant, la fabrication de produits biologiques à domicile comporte des risques. Les erreurs de formulation peuvent entraîner des produits inefficaces ou irritants. De plus, le temps et les efforts nécessaires pour trouver et préparer les ingrédients peuvent être contraignants. Il y a également un manque de garantie de sécurité et de stabilité des produits faits maison, avec un risque accru de contamination bactérienne si les produits ne sont pas correctement conservés. Enfin, le coût initial élevé pour l’achat d’ingrédients de qualité peut être dissuasif pour certains.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 260,
+      "combinaison": "Combinaison 4",
+      "sujet": "La chasse aux animaux : pour ou contre ?",
+      "document1": "Je suis de ceux qui n’arrivent pas à comprendre comment l’on peut prendre du plaisir à tuer des animaux. Je suis de ceux qui n’arrivent pas à comprendre comment on peut prétendre aimer la nature alors qu’on la détruit. Gala, 29 ans",
+      "document2": "« Les gens chassent pour différentes raisons : la subsistance, le commerce, la conservation et l’aménagement de la faune, la protection de la propriété, l’exercice, le loisir et le prestige. » David, journaliste de la FRM",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 261,
+      "combinaison": "Combinaison 5",
+      "sujet": "Le Travail : Favorable Ou Défavorable ?",
+      "document1": "Opinion 1 : Stéphane, entrepreneur « Je suis convaincu que le travail est absolument favorable pour l’individu et la société. Le travail permet non seulement d’assurer son propre moyen de subsistance, mais également de contribuer au développement économique de la société. De plus, il favorise l’autonomie et la confiance en soi, encourage le sens des responsabilités et offre une opportunité d’épanouissement personnel et professionnel. Il peut même aider à forger notre identité et notre place dans la société. »",
+      "document2": "Opinion 2 : Laura, sociologue « Le travail, dans sa forme actuelle, peut avoir des aspects défavorables. Dans de nombreux cas, le travail est associé à un stress intense, à des horaires rigides et à un déséquilibre entre la vie professionnelle et la vie privée. Il peut être une source d’épuisement professionnel, surtout lorsque la charge de travail est excessive et que la reconnaissance est faible. De plus, certaines formes de travail peuvent être aliénantes, lorsque les travailleurs ne se sentent pas impliqués ou valorisés dans ce qu’ils font. Il est donc essentiel de repenser nos rapports au travail pour en faire une expérience plus équilibrée et enrichissante. »",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 262,
+      "combinaison": "Combinaison 6",
+      "sujet": "Le travail des étudiants pendant les vacances : pour ou contre ?",
+      "document1": "Opinion 1 : Alexandre, un conseiller d’orientation « Je suis fermement pour le travail des jeunes pendant les vacances. C’est une excellente occasion d’acquérir des compétences pratiques, d’apprendre à travailler en équipe et de découvrir différentes industries. Les jeunes peuvent gagner de l’argent qu’ils peuvent économiser pour l’avenir ou utiliser pour financer des activités ou des loisirs. De plus, le fait d’avoir une expérience de travail sur leur CV peut leur donner un avantage lorsqu’ils postulent pour des emplois ou des stages à l’avenir. Les vacances d’été sont longues et il y a amplement de temps pour se reposer et travailler. »",
+      "document2": "Opinion 2 : Élise, une psychologue pour adolescents « Je suis contre l’idée que les jeunes doivent travailler pendant leurs vacances. Les adolescents sont déjà sous une énorme pression pendant l’année scolaire avec les études, les examens et les activités parascolaires. Les vacances doivent être une période pour eux de se détendre, de se décompresser et de poursuivre des intérêts personnels. Les forcer à travailler pourrait contribuer au stress et à l’épuisement. Il est également important pour les jeunes de disposer de temps non structuré pour explorer leur créativité, passer du temps avec leurs amis et leur famille, et tout simplement être des enfants. Le travail peut attendre. »",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 263,
+      "combinaison": "Combinaison 7",
+      "sujet": "Égalité Homme/Femme En Milieu De Travail.",
+      "document1": "Certains postes sont majoritairement occupés par des hommes. Au Québec, l’égalité entre les femmes et les hommes est respectée, les femmes peuvent exercer les métiers réservés aux hommes tels que les postes de direction.",
+      "document2": "Malgré les efforts pour imposer la parité à tous les postes dans les entreprises et les collectivités, il y a, dans les faits, des métiers où les femmes sont largement majoritaires tels que : les sages-femmes. De plus, les femmes ne doivent pas faire les métiers d’homme, car elles doivent prendre soin de leurs enfants.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 264,
+      "combinaison": "Combinaison 8",
+      "sujet": "Les caméras de surveillance à l’école : pour ou contre ?",
+      "document1": "Dans l’école où j’enseigne à Montréal, les caméras de surveillance sont omniprésentes. Leur présence permet de dissuader les élèves de commettre des actes de violence. Les enseignants, les parents et la majorité des élèves les acceptent volontiers, car ils se sentent rassurés quant à la sécurité des enfants et cela permet aux enseignants de travailler dans de bonnes conditions. Toutefois, certains élèves considèrent que cela porte atteinte à leur vie privée.",
+      "document2": "Je suis opposé à l’installation des caméras de surveillance dans nos écoles à Montréal. Les résultats obtenus dans les pays où ce système est utilisé ne sont pas convaincants. Les personnes mal intentionnées peuvent facilement contourner les caméras, qui sont très visibles. Les problèmes de discipline dans une école peuvent être résolus en améliorant la communication entre les enseignants, l’administration et les élèves. Il est également nécessaire de faire respecter et expliquer les règles de l’école par tous, plutôt que de recourir aux caméras.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 265,
+      "combinaison": "Combinaison 9",
+      "sujet": "",
+      "document1": "Les vêtements de marques sont très importants pour les enfants et les adolescents. C’est un moyen de s’exprimer et de se rattacher à un groupe social. Cette attirance pour les marques est très présente chez les adolescents qui se cherchent et montrent leurs personnalités. Les enfants aiment également porter des vêtements de marques avec des images des dessins animés qu’ils regardent ou des logos qu’ils apprécient.",
+      "document2": "Les enfants grandissent très vite et les vêtements sont portés pendant une courte période. Ainsi, les vêtements deviennent rapidement trop petits. Mais il y a aussi le fait que les enfants usent assez rapidement les vêtements en jouant à l’extérieur avec les copains, en s’amusant dans l’herbe ou à l’aire de jeux. Les habits sont très vite sales ou troués.",
+      "flags": {
+        "title_missing": true,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": "les vêtements de marque chez les enfants et les adolescents"
+      }
+    },
+    {
+      "id": 266,
+      "combinaison": "Combinaison 10",
+      "sujet": "La Réduction Du Temps De Travail",
+      "document1": "La réduction du temps de travail permet aux employés de mieux équilibrer leur vie professionnelle et personnelle. En travaillant moins, ils peuvent consacrer plus de temps à leur famille, à leurs loisirs et à leur santé. Cela peut également augmenter leur satisfaction au travail et réduire le stress, améliorant ainsi leur productivité globale.",
+      "document2": "La réduction du temps de travail peut bénéficier aux entreprises en diminuant l’absentéisme et en améliorant la rétention des employés. Avec des horaires plus flexibles, les employés sont souvent plus motivés et engagés. Cependant, cela nécessite une bonne organisation et une adaptation des processus pour maintenir l’efficacité et répondre aux besoins de l’entreprise.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 267,
+      "combinaison": "Combinaison 11",
+      "sujet": "",
+      "document1": "Des études ont montré que certaines zones du cerveau de l’adulte peuvent être développées en jouant aux jeux vidéo. Ainsi, il peut être intéressant de jouer aux jeux vidéo, car ils permettent, par exemple, d’améliorer la capacité d’analyse, la capacité à faire des choix et la rapidité de réaction. C’est une bonne nouvelle, car la répartition des joueurs par âge montre que 83 % des joueurs sont des adultes. Cependant, il convient de rester prudent, car certains jeux vidéo ne favorisent pas ce type d’amélioration sur le cerveau.",
+      "document2": "Pendant trois ans, des enfants âgés de 8 à 17 ans ont participé à une étude sur les jeux vidéo. Les résultats de cette étude montrent que les enfants qui jouent beaucoup aux jeux vidéo sont plus violents, plus nerveux et plus stressés que ceux qui ne jouent pas ou peu. Ceux qui jouent beaucoup ont également moins de bons résultats à l’école. Il est donc conseillé aux parents d’être vigilants et de limiter l’usage de ces jeux par leurs enfants.",
+      "flags": {
+        "title_missing": true,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": "les effets des jeux vidéo (sur le cerveau et le comportement des enfants)"
+      }
+    },
+    {
+      "id": 268,
+      "combinaison": "Combinaison 12",
+      "sujet": "",
+      "document1": "Le port de l’uniforme étouffe et écrase la personnalité des garçons. Ils ne peuvent s’habiller comme ils veulent, en aucune circonstance. De l’autre côté de l’échelle (chez les pros) il y a des gens qui préféraient pour eux-mêmes et leurs enfants, avoir la possibilité de s’exprimer à travers l’habillement, en décidant eux-mêmes ce qu’ils porteront chaque jour. Ainsi, avec un uniforme, les jeunes qui aiment s’exprimer à travers la mode, se démarquer de la foule grâce à un accessoire ou un vêtement particulier, se retrouveront déçus et emprisonnés dans l’uniforme.",
+      "document2": "Le port de l’uniforme développe un sentiment d’appartenance à son établissement, et à la communauté des élèves. Il nourrit chez le jeune le sens du collectif et engendre souvent la fierté d’appartenir à son établissement. De plus, il réduit la discrimination basée sur le style ou sur la classe sociale de l’élève. En effet, l’uniforme permet aux parents d’économiser beaucoup d’argent, ce ne sont pas tous les parents qui peuvent payer à leurs enfants de beaux vêtements griffés ou de marques populaires. La mise en place d’un code vestimentaire réduit donc les différences entre les classes sociales.",
+      "flags": {
+        "title_missing": true,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": "le port de l'uniforme scolaire"
+      }
+    },
+    {
+      "id": 269,
+      "combinaison": "Combinaison 13",
+      "sujet": "",
+      "document1": "Les restaurants rapides proposent des plats équilibrés et variés, et ils respectent les normes d’hygiène et les variétés de produits qui sont bons, et c’est le client qui compose son menu, donc il en est responsable.",
+      "document2": "La restauration rapide est néfaste à la santé, elle cause des problèmes irréversibles comme l’obésité, etc.",
+      "flags": {
+        "title_missing": true,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": "la restauration rapide et la santé"
+      }
+    },
+    {
+      "id": 270,
+      "combinaison": "Combinaison 14",
+      "sujet": "Vivre en colocation : bonne ou mauvaise idée ?",
+      "document1": "Vivre en colocation aide à créer des liens d’amitié. Emménager avec un ami ou même avec une personne totalement nouvelle, avec qui on s’entend à merveille, offre la possibilité de rentrer le soir en sachant qu’on va rire, passer un bon moment et partager les repas : vous, votre télé et votre pizza. En plus, cela permet de partager les tâches ménagères et de profiter des talents de vos colocataires bricoleurs ou cuisiniers.",
+      "document2": "Vivre en colocation est bien différent de vivre avec ses parents, frères et sœurs. Les rythmes de vie, les personnalités et les priorités peuvent être très variés. Partager une colocation avec la mauvaise personne peut rapidement transformer cette expérience en cauchemar. Le non-respect des tâches ménagères ou des espaces privés fait partie des principales sources de conflits. De plus, le bruit est un autre facteur de gêne. Par exemple, un colocataire passionné de jeux vidéo peut faire du bruit jusqu’à 4 heures du matin.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 271,
+      "combinaison": "Combinaison 15",
+      "sujet": "Faut-il continuer à consommer de la viande ?",
+      "document1": "Daniel : Je suis contre la consommation de viande en raison de préoccupations éthiques, environnementales et sanitaires. Éthiquement, je crois que tous les animaux ont droit à la vie et à la liberté, et que l’élevage industriel implique souvent des traitements inhumains. Environnementalement, l’élevage d’animaux pour la viande est une source majeure de gaz à effet de serre et nécessite une grande quantité de terres et d’eau, ce qui contribue au changement climatique et à la déforestation.",
+      "document2": "Alain : Je suis d’accord avec la consommation de viande, car elle est une source essentielle de protéines, de vitamines B et de minéraux comme le fer et le zinc. Bien que l’on puisse obtenir ces nutriments à partir de sources végétales, ils sont souvent plus accessibles et plus facilement absorbés par le corps lorsqu’ils proviennent de sources animales. De plus, la viande fait partie intégrante de nombreux régimes culturels et traditions culinaires, ce qui ajoute à sa valeur au-delà de la nutrition. Cependant, il est crucial de se procurer de la viande de manière responsable, en soutenant des pratiques d’élevage éthiques et durables.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 272,
+      "combinaison": "Combinaison 16",
+      "sujet": "Le végétarisme en Europe",
+      "document1": "Le végétarisme présente plusieurs avantages importants. Tout d’abord, il favorise la santé : manger des légumes et des fruits réduit les risques de maladies comme les problèmes cardiaques. De plus, le végétarisme aide à protéger l’environnement en diminuant la pollution liée à la production de viande. Enfin, ce choix respecte la vie animale, une valeur partagée par de plus en plus d’Européens.",
+      "document2": "Le végétarisme n’est pas adapté à tous. Certaines personnes ont besoin de la viande pour obtenir des nutriments essentiels comme le fer et les protéines. En Europe, les habitudes alimentaires traditionnelles incluent souvent la viande, et il peut être difficile de changer ces pratiques. De plus, suivre un régime végétarien demande parfois plus de temps et de connaissances pour équilibrer les repas, ce qui n’est pas toujours pratique.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 273,
+      "combinaison": "Combinaison 17",
+      "sujet": "L'organisation des événements sportifs",
+      "document1": "L’État devrait organiser de grands événements sportifs comme les Jeux Olympiques, la Coupe du Monde ou la Coupe d’Afrique. Ces compétitions sont des occasions uniques de mettre en valeur notre culture et d’attirer l’attention du monde entier. Elles favorisent aussi l’économie en créant des emplois et en modernisant les infrastructures, ce qui profite à long terme à toute la population.",
+      "document2": "Il faut dire que ces grands événements sportifs représentent des dépenses considérables pour l’État. Au lieu d’investir dans des compétitions coûteuses, je pense que les fonds publics devraient être prioritairement alloués à des secteurs essentiels comme la santé et l’éducation. De plus, de nombreux pays ayant accueilli ces événements se sont retrouvés endettés, sans bénéfices réels pour leurs citoyens.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 274,
+      "combinaison": "Combinaison 18",
+      "sujet": "l’interdiction des voitures dans les centres-villes",
+      "document1": "Avec des taux de pollution alarmants constatés dans plusieurs endroits dans le monde, plusieurs villes ont réussi leur pari d’interdire la circulation de voitures en zones urbaines. La capitale de la Norvège, Oslo, a récemment opté pour cette solution et s’en félicite, estimant que c’est une décision bénéfique pour tout le monde. Après un certain temps, les accidents diminueront, la dépendance au pétrole baissera et la qualité d’air sera meilleure.",
+      "document2": "Beaucoup de villes se lancent dans des projets d’interdiction de voitures en zone urbaine sans mettre en place les outils et les infrastructures nécessaires pour réussir cette transition. Certes, en diminuant les voitures, on aura moins d’embouteillages, de stress et surtout un air beaucoup moins pollué, mais en contrepartie, il faut prévoir entre autres de gigantesques parkings pour garer les voitures, opter davantage pour le transport en commun (métros et bus) et prévoir des autorisations de circulation pour certains corps de métiers (comme la police, les urgentistes, les livreurs…).",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 275,
+      "combinaison": "Combinaison 19",
+      "sujet": "Menus sans viande à la cantine scolaire",
+      "document1": "De plus en plus d’écoles décident de mettre en place un menu sans viande dans les cantines, au moins deux fois par semaine. Certaines études ont montré que les enfants consomment trop de protéines animales. C’est donc une question de santé : les écoles ont choisi de remplacer la viande par d’autres produits (soja, céréales, légumes), moins gras et utiles à la croissance des enfants. Ces menus sans viande à la cantine reviennent moins cher aux familles. Cette idée plaît beaucoup aux parents comme aux enfants.",
+      "document2": "La décision de supprimer la viande dans les cantines ne plaît pas à tout le monde. En effet, c’est un produit cher : la cantine est le seul endroit où les enfants de familles en difficulté peuvent manger. Les producteurs locaux de viande sont également mécontents : une partie de leur production est réservée aux cantines, il s’agit donc d’une perte financière. Enfin, beaucoup d’enfants interrogés déclarent tout de même préférer les steaks de bœuf aux steaks de soja qui, selon eux, ont peu de goût.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    },
+    {
+      "id": 276,
+      "combinaison": "Combinaison 20",
+      "sujet": "Les Vols à Bas Prix",
+      "document1": "Je fais souvent mes voyages avec des compagnies aériennes à bas prix. Les compagnies low-cost mettent à disposition des prix inférieurs à ceux proposés par les compagnies aériennes régulières. Cela me coûte des fois moins cher que de voyager en voiture ou en train. Avec ces tarifs-là, vous vous doutez qu’il y a un hic ; en effet, vous n’aurez droit à aucun service à bord (ni aliments, ni boissons). Je dirais donc que le low-cost n’est surtout pas fait pour les vols long-courriers.",
+      "document2": "Récemment, j’ai pris la décision de ne plus voyager avec les compagnies aériennes à bas prix. En effet, j’ai longuement réfléchi afin de prendre ma décision, mais ce choix était évident : des sièges inconfortables, des conditions de travail pénibles et surtout des avions vétustes qui remettent en cause la sécurité ! Dès lors, pour certains voyages, je vais opter pour la voiture ou même le train, ce dernier permet même de découvrir de jolis paysages. Quant aux longs trajets, mieux vaut prendre un vol en compagnie régulière.",
+      "flags": {
+        "title_missing": false,
+        "document2_missing": false,
+        "documents_identical": false,
+        "deduced_theme": null
+      }
+    }
+  ]
+}
