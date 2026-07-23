@@ -768,7 +768,7 @@ Memorize the spine; rebuild the full answer out loud using the skeleton. Prompts
 
 - **Position :** À mon avis, les personnes âgées donnent souvent de bons conseils, mais je n'irais pas jusqu'à dire toujours.
 - **Arg 1 :** Leur expérience leur donne un vrai recul
-- **Arg 2 :** Elles aident à éviter certaines erreurs
+- **Arg 2 :** Leur regard est souvent bienveillant et désintéressé
 - **Arg 3 :** Il faut tout de même garder son esprit critique
 - **Nuance :** Cependant, cela ne veut pas dire que les conseils des personnes âgées seraient dépassés.
 

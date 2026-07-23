@@ -849,10 +849,10 @@
         {
           "id": "SVF1-0105",
           "kind": "mot-cle",
-          "french": "générations précédentes",
-          "english": "previous generations",
-          "example": "En effet, beaucoup de difficultés que rencontrent les jeunes adultes ont déjà été vécues par les générations précédentes : gestion de l'argent, choix d'études, premiers emplois, vie de couple ou éducation des enfants.",
-          "usage": "Fem. plural; \"vécues par les générations précédentes\"."
+          "french": "bienveillance",
+          "english": "kindness / benevolence",
+          "example": "Cela montre que la valeur d'un conseil vient aussi de la bienveillance, de la sincérité et de la qualité de la relation.",
+          "usage": "Fem. noun; names the caring intention behind a piece of advice."
         },
         {
           "id": "SVF1-0106",
@@ -913,18 +913,18 @@
         {
           "id": "SVF1-0113",
           "kind": "collocation",
-          "french": "éviter certaines erreurs",
-          "english": "to avoid certain mistakes",
-          "example": "Ensuite, parce qu'elles aident souvent à éviter certaines erreurs et à mieux relativiser.",
-          "usage": "Verb + object; the practical benefit of elders' advice."
+          "french": "regard bienveillant",
+          "english": "caring perspective",
+          "example": "Ensuite, je pense que leurs conseils sont précieux parce qu'ils viennent souvent d'un regard bienveillant et désintéressé.",
+          "usage": "Masc. noun + adjective; describes advice motivated by genuine care."
         },
         {
           "id": "SVF1-0114",
           "kind": "collocation",
-          "french": "soucis financiers",
-          "english": "money worries",
-          "example": "Par exemple, un grand-parent qui rappelle l'importance d'épargner un peu chaque mois donne un conseil simple, mais qui peut éviter beaucoup de soucis financiers plus tard.",
-          "usage": "Masc. plural; \"beaucoup de soucis financiers plus tard\"."
+          "french": "pression sociale",
+          "english": "social pressure",
+          "example": "À l'inverse, la pression sociale peut conduire certaines personnes à conseiller selon les apparences plutôt que selon nos besoins.",
+          "usage": "Fem. noun; contrasts outside pressure with personalised advice."
         },
         {
           "id": "SVF1-0115",
@@ -953,10 +953,10 @@
         {
           "id": "SVF1-0118",
           "kind": "collocation",
-          "french": "gestion de l'argent",
-          "english": "money management",
-          "example": "En effet, beaucoup de difficultés que rencontrent les jeunes adultes ont déjà été vécues par les générations précédentes : gestion de l'argent, choix d'études, premiers emplois, vie de couple ou éducation des enfants.",
-          "usage": "Fem. noun; \"gestion de l'argent\"; concrete life-skill topic."
+          "french": "choix d'études",
+          "english": "choice of studies",
+          "example": "Par exemple, face à un choix d'études, un grand-parent peut encourager un jeune à choisir une voie qui correspond à sa personnalité, plutôt que la plus prestigieuse ou la mieux payée.",
+          "usage": "Masc. noun; \"face à un choix d'études\" introduces the concrete example."
         },
         {
           "id": "SVF1-0119",
@@ -1001,10 +1001,10 @@
         {
           "id": "SVF1-0124",
           "kind": "expression",
-          "french": "par principe",
-          "english": "on principle",
-          "example": "Au contraire, refuser systématiquement leurs conseils par principe peut conduire à des choix qu'on regrette ensuite.",
-          "usage": "Adverbial; \"refuser systématiquement leurs conseils par principe\"."
+          "french": "tirer profit de",
+          "english": "to benefit from / profit from",
+          "example": "En effet, une personne âgée qui nous connaît depuis longtemps ne cherche généralement ni à nous impressionner ni à tirer profit de notre décision.",
+          "usage": "Verb phrase; \"tirer profit de quelque chose\" means to gain a personal advantage from it."
         },
         {
           "id": "SVF1-0125",
@@ -1049,10 +1049,10 @@
         {
           "id": "SVF1-0130",
           "kind": "expression",
-          "french": "gagner du temps",
-          "english": "to save time",
-          "example": "Écouter ce qu'elles ont à dire permet de gagner du temps et d'éviter de répéter les mêmes erreurs.",
-          "usage": "\"gagner du temps\"; benefit of heeding advice."
+          "french": "ce qui compte vraiment pour nous",
+          "english": "what really matters to us",
+          "example": "Elle peut nous rappeler nos qualités, nos limites et ce qui compte vraiment pour nous.",
+          "usage": "Relative clause; useful for identifying personal priorities."
         },
         {
           "id": "SVF1-0131",
@@ -1081,10 +1081,10 @@
         {
           "id": "SVF1-0134",
           "kind": "tournure",
-          "french": "Au contraire, refuser systématiquement leurs conseils par principe peut conduire à des choix qu'on regrette ensuite.",
-          "english": "On the contrary, systematically rejecting their advice on principle can lead to choices one later regrets.",
-          "example": "Au contraire, refuser systématiquement leurs conseils par principe peut conduire à des choix qu'on regrette ensuite.",
-          "usage": "« peut conduire à » signals a plausible consequence and is useful for cautious warnings."
+          "french": "À l'inverse, la pression sociale peut conduire certaines personnes à conseiller selon les apparences plutôt que selon nos besoins.",
+          "english": "Conversely, social pressure can lead some people to advise us according to appearances rather than our needs.",
+          "example": "À l'inverse, la pression sociale peut conduire certaines personnes à conseiller selon les apparences plutôt que selon nos besoins.",
+          "usage": "« plutôt que selon » contrasts a superficial criterion with the relevant one."
         },
         {
           "id": "SVF1-0135",
@@ -1115,7 +1115,7 @@
           "kind": "tournure",
           "french": "je pense que",
           "english": "I think that",
-          "example": "Ensuite, je pense que les personnes âgées peuvent vraiment aider à éviter certaines erreurs.",
+          "example": "Ensuite, je pense que leurs conseils sont précieux parce qu'ils viennent souvent d'un regard bienveillant et désintéressé.",
           "usage": "Opinion frame + indicative."
         },
         {
@@ -1153,10 +1153,10 @@
         {
           "id": "SVF1-0143",
           "kind": "phrase-modele",
-          "french": "elles aident souvent à éviter certaines erreurs et à mieux relativiser",
-          "english": "they often help avoid certain mistakes and put things in perspective",
-          "example": "Ensuite, parce qu'elles aident souvent à éviter certaines erreurs et à mieux relativiser.",
-          "usage": "\"aider à + infinitif\"; benefit statement."
+          "french": "leur regard est souvent bienveillant et désintéressé",
+          "english": "their perspective is often caring and disinterested",
+          "example": "Ensuite, parce que leur regard est souvent bienveillant et désintéressé.",
+          "usage": "Two complementary adjectives explain the motive behind sincere advice."
         },
         {
           "id": "SVF1-0144",
@@ -1169,18 +1169,18 @@
         {
           "id": "SVF1-0145",
           "kind": "phrase-modele",
-          "french": "Écouter ce qu'elles ont à dire permet de gagner du temps et d'éviter de répéter les mêmes erreurs",
-          "english": "listening to what they have to say saves time and avoids repeating the same mistakes",
-          "example": "Écouter ce qu'elles ont à dire permet de gagner du temps et d'éviter de répéter les mêmes erreurs.",
-          "usage": "\"permet de + infinitif\"; double-benefit template."
+          "french": "Elle peut nous rappeler nos qualités, nos limites et ce qui compte vraiment pour nous",
+          "english": "She can remind us of our strengths, our limits and what really matters to us",
+          "example": "Elle peut nous rappeler nos qualités, nos limites et ce qui compte vraiment pour nous.",
+          "usage": "« rappeler quelque chose à quelqu'un » supports personalised advice."
         },
         {
           "id": "SVF1-0146",
           "kind": "phrase-modele",
-          "french": "leurs conseils ne sont pas démodés, mais souvent très concrets",
-          "english": "their advice is not outdated but often very concrete",
-          "example": "Cela permet de comprendre que leurs conseils ne sont pas démodés, mais souvent très concrets.",
-          "usage": "\"ne... pas..., mais...\"; defends the advice."
+          "french": "la valeur d'un conseil vient aussi de la bienveillance, de la sincérité et de la qualité de la relation",
+          "english": "the value of advice also comes from kindness, sincerity and the quality of the relationship",
+          "example": "Cela montre que la valeur d'un conseil vient aussi de la bienveillance, de la sincérité et de la qualité de la relation.",
+          "usage": "Consequence frame showing that good advice depends on motive and relationship, not only experience."
         },
         {
           "id": "SVF1-0147",

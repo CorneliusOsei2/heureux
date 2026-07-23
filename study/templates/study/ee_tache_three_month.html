@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ month.name }} · {{ task.name }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="ee-t3-page ee-t3-month-page">
+  {% include "study/_task_nav.html" %}
+
+  <p class="back-link"><a href="{% url 'study:task_browse' part.slug task.slug %}">← Tous les mois</a></p>
+  <header class="memory-overview-hero">
+    <div class="memory-overview-hero__copy">
+      <p class="eyebrow">Mois {{ month.number_label }} · {{ part.name }} · {{ task.name }}</p>
+      <h1>{{ month.name }}</h1>
+      <p>Choisissez une combinaison pour lire les deux documents, étudier la synthèse et travailler le point de vue personnel.</p>
+    </div>
+    <dl class="memory-overview-hero__metrics" aria-label="Progression de {{ month.name }}">
+      <div><dt>Sujets</dt><dd>{{ month.subject_count }}</dd></div>
+      <div><dt>Vocabs</dt><dd>{{ month.vocabulary_count }}</dd></div>
+      <div><dt>Terminés</dt><dd>{{ month.completed }}/{{ month.total }}</dd></div>
+    </dl>
+  </header>
+
+  <section class="ee-t3-section" aria-labelledby="ee-t3-month-subjects">
+    <div class="ee-t3-section__head">
+      <div>
+        <p class="eyebrow">Combinaisons {{ month.name }}</p>
+        <h2 id="ee-t3-month-subjects">Sujets du mois</h2>
+        <p>{{ month.subject_count }} réponses complètes, chacune accompagnée de deux documents et de son vocabulaire ciblé.</p>
+      </div>
+      <div class="ee-t3-section__actions">
+        {% include "study/partials/tache_two_progress.html" with summary=month unit_label="sujets terminés" compact=True only %}
+        {% include "study/partials/collection_view_toggle.html" %}
+        <a class="btn btn--primary" href="{{ review_url }}">Pratiquer ce mois</a>
+      </div>
+    </div>
+    {% include "study/partials/ee_tache_three_subject_list.html" with subjects=subjects part=part task=task %}
+  </section>
+</div>
+{% endblock %}

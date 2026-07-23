@@ -33,6 +33,7 @@ TACHE_TWO_VOCABULARY_DIR = QUESTION_BANK_DIR / "vocabulary"
 QUESTION_BANK_TASK = ("eo", "tache-2")
 
 EE_TACHE3_TASK = ("ee", "tache-3")
+EE_TACHE3_CONTENT_PREFIX = "ee-tache3:"
 EE_TACHE3_DIR = CONTENT_DIR / "ee" / "tache3"
 EE_TACHE3_RESPONSES_DIR = EE_TACHE3_DIR / "responses"
 EE_TACHE3_SUBJECTS_DIR = EE_TACHE3_DIR / "subjects"
@@ -1298,7 +1299,7 @@ def load_ee_tache3_months(
                     f"{essay['label']!r})"
                 )
             content_key = vocab_row.get("response_key", "")
-            if not content_key.startswith("ee-tache3:"):
+            if not content_key.startswith(EE_TACHE3_CONTENT_PREFIX):
                 raise ValueError(
                     f"{slug} position {position}: bad response_key "
                     f"{content_key!r}"
@@ -1443,7 +1444,7 @@ def parse_ee_tache3_subject_vocabulary(
     response_by_key = {
         response.content_key: response
         for response in responses
-        if response.content_key.startswith("ee-tache3:")
+        if response.content_key.startswith(EE_TACHE3_CONTENT_PREFIX)
     }
     if not response_by_key:
         return []

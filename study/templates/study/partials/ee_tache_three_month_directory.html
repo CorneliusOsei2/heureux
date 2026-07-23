@@ -1,0 +1,47 @@
+<div class="ee-t3-month-directory collection-table collection-table--ee-months" data-collection-view="adaptive" data-ee-tache-three-month-directory>
+  {% include "study/partials/collection_table_header.html" with variant="ee-months" column_1="Mois" column_2="Contenu" column_3="Progression" column_4="Action" only %}
+  {% for month in months %}
+    <section class="ee-t3-month-group" data-collection-item>
+      <div class="ee-t3-month-group__head">
+        <button
+          class="ee-t3-month-group__toggle"
+          id="{{ directory_id }}-ee-month-toggle-{{ month.slug }}"
+          type="button"
+          aria-expanded="false"
+          aria-controls="{{ directory_id }}-ee-month-subjects-{{ month.slug }}"
+          aria-label="Afficher {{ month.name }}"
+          data-tache-two-month-key="ee-tache-three:{{ month.slug }}"
+          data-tache-two-month-name="{{ month.name }}"
+          data-tache-two-month-toggle>
+          <span class="ee-t3-month-group__marker">{{ month.number_label }}</span>
+          <span class="ee-t3-month-group__copy">
+            <strong>{{ month.name }}</strong>
+            <small>{{ month.subject_count }} sujets · {{ month.vocabulary_count }} vocabs</small>
+          </span>
+          <span class="ee-t3-month-group__progress">
+            <span class="progress-status progress-status--{{ month.progress.status }}">{{ month.progress.label }}</span>
+            <small>{{ month.completed }}/{{ month.total }} terminés</small>
+          </span>
+          <span class="ee-t3-month-group__chevron" aria-hidden="true">
+            +
+          </span>
+        </button>
+        <a
+          class="ee-t3-month-group__link"
+          href="{% url 'study:theme_detail' part.slug task.slug month.theme.slug %}"
+          aria-label="Voir tous les sujets de {{ month.name }}">
+          <span>Voir le mois</span>
+          {% include "study/partials/ui_icon.html" with name="arrow-right" only %}
+        </a>
+      </div>
+      <div
+        class="ee-t3-month-group__body is-collapsed"
+        id="{{ directory_id }}-ee-month-subjects-{{ month.slug }}"
+        role="region"
+        aria-labelledby="{{ directory_id }}-ee-month-toggle-{{ month.slug }}"
+        hidden>
+        {% include "study/partials/ee_tache_three_subject_list.html" with subjects=month.subjects part=part task=task %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

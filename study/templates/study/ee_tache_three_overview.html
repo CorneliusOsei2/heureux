@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ task.name }} · {{ part.name }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="ee-t3-page ee-t3-overview">
+  {% include "study/_task_nav.html" %}
+
+  <header class="memory-overview-hero">
+    <div class="memory-overview-hero__copy">
+      <p class="eyebrow">{{ part.name }}</p>
+      <h1>{{ task.name }}</h1>
+      <p>Comparez deux documents, construisez une synthèse fidèle, puis défendez votre point de vue dans une réponse claire et structurée.</p>
+    </div>
+    <dl class="memory-overview-hero__metrics" aria-label="Contenu disponible">
+      <div><dt>Mois</dt><dd>{{ month_count }}</dd></div>
+      <div><dt>Sujets</dt><dd>{{ subject_count }}</dd></div>
+      <div><dt>Mémoires</dt><dd>{{ memory_count }}</dd></div>
+    </dl>
+  </header>
+
+  <section class="ee-t3-section" aria-labelledby="ee-t3-overview-collections">
+    <div class="ee-t3-section__head">
+      <div>
+        <p class="eyebrow">Deux collections</p>
+        <h2 id="ee-t3-overview-collections">Choisir un parcours</h2>
+        <p>Entrez dans les sujets mensuels ou révisez les formulations transversales des mémoires.</p>
+      </div>
+      {% include "study/partials/collection_view_toggle.html" %}
+    </div>
+
+    <div class="ee-t3-overview-collections collection-table collection-table--ee-overview" data-collection-view="adaptive">
+      {% include "study/partials/collection_table_header.html" with variant="ee-overview" column_1="Collection" column_2="Contenu" column_3="Progression" column_4="Action" only %}
+      <a
+        class="ee-t3-overview-entry"
+        data-collection-item
+        data-ee-tache-three-overview-entry
+        href="{% url 'study:task_browse' part.slug task.slug %}"
+        aria-labelledby="ee-t3-subject-entry-title">
+        <span class="ee-t3-overview-entry__identity">
+          <span class="ee-t3-overview-entry__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="file-text" only %}</span>
+          <span class="ee-t3-overview-entry__copy">
+            <strong id="ee-t3-subject-entry-title">Sujets</strong>
+            <small>Les réponses complètes classées par mois.</small>
+          </span>
+        </span>
+        <span class="ee-t3-overview-entry__facts">
+          <span><b>{{ month_count }}</b> mois</span>
+          <span><b>{{ subject_count }}</b> sujets</span>
+          <span><b>{{ vocabulary_count }}</b> vocabs</span>
+        </span>
+        <div class="ee-t3-overview-entry__progress">
+          {% include "study/partials/tache_two_progress.html" with summary=subject_summary unit_label="sujets terminés" compact=True only %}
+        </div>
+        <span class="ee-t3-overview-entry__action">Voir les sujets {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
+      </a>
+
+      <a
+        class="ee-t3-overview-entry"
+        data-collection-item
+        data-ee-tache-three-overview-entry
+        href="{% url 'study:task_memories' part.slug task.slug %}"
+        aria-labelledby="ee-t3-memory-entry-title">
+        <span class="ee-t3-overview-entry__identity">
+          <span class="ee-t3-overview-entry__icon" aria-hidden="true">{% include "study/partials/ui_icon.html" with name="book-open" only %}</span>
+          <span class="ee-t3-overview-entry__copy">
+            <strong id="ee-t3-memory-entry-title">Mémoires</strong>
+            <small>Les formulations à retenir et à réutiliser.</small>
+          </span>
+        </span>
+        <span class="ee-t3-overview-entry__facts">
+          <span><b>{{ memory_count }}</b> mémoires</span>
+          <span><b>{{ category_count }}</b> catégories</span>
+          <span><b>{{ question_count }}</b> questions</span>
+        </span>
+        <div class="ee-t3-overview-entry__progress">
+          {% include "study/partials/tache_two_progress.html" with summary=memory_summary unit_label="questions terminées" compact=True only %}
+        </div>
+        <span class="ee-t3-overview-entry__action">Voir les mémoires {% include "study/partials/ui_icon.html" with name="arrow-right" only %}</span>
+      </a>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 
 from django.db.models import Count, Prefetch, Q
 from django.http import Http404, HttpResponseBadRequest, JsonResponse
@@ -220,6 +222,141 @@ def part_vocabulary(request, part_slug):
     )
 
 
+def _has_ee_tache_three_content(task):
+    return Prompt.objects.filter(
+        content_key__startswith=content_module.EE_TACHE3_CONTENT_PREFIX,
+        theme__task=task,
+        is_active=True,
+        response__is_active=True,
+    ).exists()
+
+
+@lru_cache(maxsize=1)
+def _ee_tache_three_sources_by_key():
+    return {
+        combinaison.content_key: combinaison
+        for month in content_module.load_ee_tache3_months()
+        for combinaison in month.combinaisons
+    }
+
+
+def _ee_tache_three_subject_context(user, task):
+    source_months = content_module.load_ee_tache3_months()
+    source_keys = [
+        combinaison.content_key
+        for month in source_months
+        for combinaison in month.combinaisons
+    ]
+    theme_names = {
+        content_module.ee_tache3_theme_name(month)
+        for month in source_months
+    }
+    themes_by_name = {
+        theme.name: theme
+        for theme in Theme.objects.filter(
+            task=task,
+            is_active=True,
+            name__in=theme_names,
+        )
+    }
+    prompts_by_key = {
+        prompt.content_key: prompt
+        for prompt in Prompt.objects.filter(
+            content_key__in=source_keys,
+            theme__task=task,
+            is_active=True,
+            response__is_active=True,
+        ).select_related("response", "theme", "family")
+    }
+    if (
+        set(source_keys) - prompts_by_key.keys()
+        or theme_names - themes_by_name.keys()
+    ):
+        raise RuntimeError("EE Tâche 3 content is not synchronized")
+
+    progress_by_response = subject_progress_by_response(
+        user,
+        {
+            prompt.response_id
+            for prompt in prompts_by_key.values()
+        },
+    )
+    all_progress = []
+    months = []
+    for source_month in source_months:
+        theme = themes_by_name[
+            content_module.ee_tache3_theme_name(source_month)
+        ]
+        subjects = []
+        month_progress = []
+        for combinaison in source_month.combinaisons:
+            prompt = prompts_by_key[combinaison.content_key]
+            progress = progress_by_response[prompt.response_id]
+            month_progress.append(progress)
+            all_progress.append(progress)
+            subjects.append(
+                {
+                    "position": combinaison.position,
+                    "combination_label": combinaison.combinaison,
+                    "combination_number": (
+                        combinaison.combinaison.removeprefix(
+                            "Combinaison "
+                        ).strip()
+                    ),
+                    "prompt": prompt,
+                    "progress": progress,
+                    "document_count": sum(
+                        bool(document.strip())
+                        for document in (
+                            combinaison.document1,
+                            combinaison.document2,
+                        )
+                    ),
+                    "vocabulary_count": (
+                        content_module.EE_TACHE3_VOCABULARY_PER_RESPONSE
+                    ),
+                }
+            )
+
+        summary = summarize_subject_progress(month_progress)
+        months.append(
+            {
+                "number": source_month.number,
+                "number_label": f"{source_month.number:02d}",
+                "slug": source_month.slug,
+                "name": source_month.name,
+                "theme": theme,
+                "subjects": subjects,
+                "subject_count": len(subjects),
+                "vocabulary_count": (
+                    len(subjects)
+                    * content_module.EE_TACHE3_VOCABULARY_PER_RESPONSE
+                ),
+                "review_url": review_url(
+                    {
+                        "kind": "spine",
+                        "part": task.part.slug,
+                        "task": task.slug,
+                        "theme": theme.slug,
+                    }
+                ),
+                **summary,
+            }
+        )
+
+    summary = summarize_subject_progress(all_progress)
+    return {
+        "months": months,
+        "month_count": len(months),
+        "subject_count": len(all_progress),
+        "vocabulary_count": (
+            len(all_progress)
+            * content_module.EE_TACHE3_VOCABULARY_PER_RESPONSE
+        ),
+        "subject_summary": summary,
+    }
+
+
 def task_detail(request, part_slug, task_slug):
     task = get_object_or_404(
         Task.objects.select_related("part"),
@@ -259,6 +396,24 @@ def task_detail(request, part_slug, task_slug):
                 "subject_batch_count": sum(
                     month["batch_count"] for month in subject_months
                 ),
+                **memory_context,
+            },
+        )
+    if (
+        (task.part.slug, task.slug) == content_module.EE_TACHE3_TASK
+        and _has_ee_tache_three_content(task)
+    ):
+        memory_context = _question_bank_memory_context(
+            request.user,
+            _load_task_memoires(task),
+        )
+        return render(
+            request,
+            "study/ee_tache_three_overview.html",
+            {
+                "part": task.part,
+                "task": task,
+                **_ee_tache_three_subject_context(request.user, task),
                 **memory_context,
             },
         )
@@ -432,6 +587,27 @@ def browse(request, part_slug=None, task_slug=None):
                 ),
             },
         )
+    if (
+        forced_task
+        and (
+            forced_task.part.slug,
+            forced_task.slug,
+        )
+        == content_module.EE_TACHE3_TASK
+        and _has_ee_tache_three_content(forced_task)
+    ):
+        return render(
+            request,
+            "study/ee_tache_three_subjects.html",
+            {
+                "part": forced_task.part,
+                "task": forced_task,
+                **_ee_tache_three_subject_context(
+                    request.user,
+                    forced_task,
+                ),
+            },
+        )
     filters = _scope_filters(request, forced_task)
     scope = filters["scope"]
 
@@ -597,6 +773,70 @@ def theme_detail(request, part_slug, task_slug, slug):
         "task": task.slug,
         "theme": theme.slug,
     }
+    if (task.part.slug, task.slug) == content_module.EE_TACHE3_TASK:
+        source_month = next(
+            (
+                month
+                for month in content_module.load_ee_tache3_months()
+                if content_module.ee_tache3_theme_name(month) == theme.name
+            ),
+            None,
+        )
+        if source_month is not None:
+            source_by_key = {
+                combinaison.content_key: combinaison
+                for combinaison in source_month.combinaisons
+            }
+            for row in rows:
+                source = source_by_key.get(row["prompt"].content_key)
+                if source is None:
+                    raise RuntimeError(
+                        "EE Tâche 3 content is not synchronized"
+                    )
+                row.update(
+                    {
+                        "position": source.position,
+                        "combination_label": source.combinaison,
+                        "combination_number": (
+                            source.combinaison.removeprefix(
+                                "Combinaison "
+                            ).strip()
+                        ),
+                        "document_count": sum(
+                            bool(document.strip())
+                            for document in (
+                                source.document1,
+                                source.document2,
+                            )
+                        ),
+                        "vocabulary_count": (
+                            content_module.EE_TACHE3_VOCABULARY_PER_RESPONSE
+                        ),
+                    }
+                )
+            return render(
+                request,
+                "study/ee_tache_three_month.html",
+                {
+                    "theme": theme,
+                    "task": task,
+                    "part": task.part,
+                    "subjects": rows,
+                    "month": {
+                        "number": source_month.number,
+                        "number_label": f"{source_month.number:02d}",
+                        "slug": source_month.slug,
+                        "name": source_month.name,
+                        "subject_count": len(rows),
+                        "vocabulary_count": (
+                            len(rows)
+                            * content_module.EE_TACHE3_VOCABULARY_PER_RESPONSE
+                        ),
+                        **stats,
+                    },
+                    "review_url": review_url(review_scope),
+                },
+            )
     return render(
         request,
         "study/theme_detail.html",
@@ -1085,6 +1325,22 @@ def family_detail(request, part_slug, task_slug, slug):
         .select_related("response", "theme", "family")
         .order_by("theme__order", "number")
     )
+    if (
+        (task.part.slug, task.slug) == content_module.EE_TACHE3_TASK
+        and prompts
+        and all(
+            prompt.content_key.startswith(
+                content_module.EE_TACHE3_CONTENT_PREFIX
+            )
+            for prompt in prompts
+        )
+    ):
+        return redirect(
+            "study:theme_detail",
+            task.part.slug,
+            task.slug,
+            prompts[0].theme.slug,
+        )
     response_ids = [prompt.response_id for prompt in prompts]
     canonical_numbers = _canonical_numbers_by_response(response_ids)
     subject_progress = subject_progress_by_response(
@@ -1262,6 +1518,21 @@ def response_detail(request, part_slug, task_slug, prompt_id):
         task_scope,
         request.user,
     )
+    ee_response = (
+        (task.part.slug, task.slug)
+        == content_module.EE_TACHE3_TASK
+        and response.content_key.startswith(
+            content_module.EE_TACHE3_CONTENT_PREFIX
+        )
+    )
+    ee_combination_label = ""
+    if ee_response:
+        source = _ee_tache_three_sources_by_key().get(
+            response.content_key
+        )
+        if source is None:
+            raise RuntimeError("EE Tâche 3 content is not synchronized")
+        ee_combination_label = source.combinaison
     return render(
         request,
         "study/response_detail.html",
@@ -1276,10 +1547,8 @@ def response_detail(request, part_slug, task_slug, prompt_id):
             "part": task.part,
             "response_content": response_content,
             "arguments": response_content.arguments,
-            "ee_response": (
-                (task.part.slug, task.slug)
-                == content_module.EE_TACHE3_TASK
-            ),
+            "ee_response": ee_response,
+            "ee_combination_label": ee_combination_label,
             "source_documents_html": response.body_html,
             "prompts": prompts,
             "card": card,

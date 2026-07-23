@@ -54,12 +54,36 @@ def scope_label(scope: dict) -> str:
     if not scope:
         return "Toutes les cartes"
     if scope.get("theme"):
-        theme = Theme.objects.filter(
-            slug=scope["theme"],
-            is_active=True,
-        ).first()
+        theme = (
+            Theme.objects.select_related("task__part")
+            .filter(
+                slug=scope["theme"],
+                is_active=True,
+            )
+            .first()
+        )
         if theme:
-            return with_batch(f"Thème · {theme.display_name}")
+            from . import content as content_module
+
+            is_ee_month = (
+                theme.task is not None
+                and (
+                    theme.task.part.slug,
+                    theme.task.slug,
+                )
+                == content_module.EE_TACHE3_TASK
+                and Response.objects.filter(
+                    content_key__startswith=(
+                        content_module.EE_TACHE3_CONTENT_PREFIX
+                    ),
+                    theme=theme,
+                    is_active=True,
+                ).exists()
+            )
+            scope_name = "Mois" if is_ee_month else "Thème"
+            return with_batch(
+                f"{scope_name} · {theme.display_name}"
+            )
     if scope.get("category"):
         category = PhraseCategory.objects.filter(
             slug=scope["category"],

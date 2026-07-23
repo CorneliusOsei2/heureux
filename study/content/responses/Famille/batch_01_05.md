@@ -178,7 +178,7 @@ La vraie question est de savoir si les conseils donnés par les personnes âgée
 
 ### **1. Position claire**
 
-À mon avis, les personnes âgées donnent souvent de bons conseils, mais pas systématiquement. D'abord, parce que leur expérience leur donne un vrai recul sur la vie. Ensuite, parce qu'elles aident souvent à éviter certaines erreurs et à mieux relativiser. Enfin, parce qu'il faut tout de même garder son esprit critique, car certaines réalités d'aujourd'hui ne sont plus les mêmes qu'avant.
+À mon avis, les personnes âgées donnent souvent de bons conseils, mais pas systématiquement. D'abord, parce que leur expérience leur donne un vrai recul sur la vie. Ensuite, parce que leur regard est souvent bienveillant et désintéressé. Enfin, parce qu'il faut tout de même garder son esprit critique, car certaines réalités d'aujourd'hui ne sont plus les mêmes qu'avant.
 
 ### **2. Argument 1 - Leur expérience leur donne un vrai recul**
 
@@ -198,23 +198,23 @@ Par exemple, devant une déception amoureuse ou un échec professionnel, un pare
 
 Cela montre que leur parole a souvent plus de poids qu'un simple avis donné sur le moment.
 
-### **3. Argument 2 - Elles aident à éviter certaines erreurs**
+### **3. Argument 2 - Leur regard est souvent bienveillant et désintéressé**
 
 **Idée**
 
-Ensuite, je pense que les personnes âgées peuvent vraiment aider à éviter certaines erreurs.
+Ensuite, je pense que leurs conseils sont précieux parce qu'ils viennent souvent d'un regard bienveillant et désintéressé.
 
 **Développement**
 
-En effet, beaucoup de difficultés que rencontrent les jeunes adultes ont déjà été vécues par les générations précédentes : gestion de l'argent, choix d'études, premiers emplois, vie de couple ou éducation des enfants. Écouter ce qu'elles ont à dire permet de gagner du temps et d'éviter de répéter les mêmes erreurs. Au contraire, refuser systématiquement leurs conseils par principe peut conduire à des choix qu'on regrette ensuite.
+En effet, une personne âgée qui nous connaît depuis longtemps ne cherche généralement ni à nous impressionner ni à tirer profit de notre décision. Elle peut nous rappeler nos qualités, nos limites et ce qui compte vraiment pour nous. À l'inverse, la pression sociale peut conduire certaines personnes à conseiller selon les apparences plutôt que selon nos besoins.
 
 **Exemple**
 
-Par exemple, un grand-parent qui rappelle l'importance d'épargner un peu chaque mois donne un conseil simple, mais qui peut éviter beaucoup de soucis financiers plus tard.
+Par exemple, face à un choix d'études, un grand-parent peut encourager un jeune à choisir une voie qui correspond à sa personnalité, plutôt que la plus prestigieuse ou la mieux payée.
 
 **Conséquence**
 
-Cela permet de comprendre que leurs conseils ne sont pas démodés, mais souvent très concrets.
+Cela montre que la valeur d'un conseil vient aussi de la bienveillance, de la sincérité et de la qualité de la relation.
 
 ### **4. Argument 3 - Il faut tout de même garder son esprit critique**
 

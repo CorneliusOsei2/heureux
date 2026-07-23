@@ -16,6 +16,7 @@ from django.test import (
 from django.urls import reverse
 from django.utils import timezone
 
+from study import content as content_module
 from study import srs, views as study_views
 from study.content import load_sections
 from study.management.commands.import_content import Command
@@ -74,8 +75,8 @@ class PWATests(TestCase):
         r = self.client.get("/sw.js")
         self.assertEqual(r.status_code, 200)
         body = r.content.decode()
-        self.assertIn('var CACHE = "heureux-v126"', body)
-        self.assertIn("study/css/app.css?v=117", body)
+        self.assertIn('var CACHE = "heureux-v127"', body)
+        self.assertIn("study/css/app.css?v=118", body)
         self.assertIn("study/js/memory-progress.js?v=2", body)
         self.assertIn("study/js/theme-init.js?v=2", body)
         self.assertIn("study/js/app.js?v=36", body)
@@ -643,6 +644,195 @@ class SmokeTests(TestCase):
         ):
             with self.subTest(path=path):
                 self.assertEqual(self.client.get(path).status_code, 404)
+
+
+class EeTacheThreePageTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        command = Command()
+        cls.months = content_module.load_ee_tache3_months()
+        task_by_slug = command._import_sections(load_sections())
+        theme_by_name = command._import_themes(
+            content_module.ee_tache3_themes(cls.months),
+            task_by_slug,
+        )
+        family_by_name = command._import_families(
+            content_module.ee_tache3_families(cls.months)
+        )
+        responses = content_module.parse_ee_tache3_responses(cls.months)
+        response_by_key = command._import_responses(
+            responses,
+            theme_by_name,
+            family_by_name,
+        )
+        command._import_prompts(
+            responses,
+            response_by_key,
+            theme_by_name,
+            family_by_name,
+        )
+        cls.task = task_by_slug["ee/tache-3"]
+        cls.user = factories.make_user("ee-tache-three-pages")
+
+    def setUp(self):
+        self.client.force_login(self.user)
+
+    def _task_url(self, name):
+        return reverse(name, args=[self.task.part.slug, self.task.slug])
+
+    def _first_prompt(self):
+        return Prompt.objects.select_related(
+            "theme",
+            "family",
+        ).get(content_key=self.months[0].combinaisons[0].content_key)
+
+    def test_overview_uses_one_month_directory_instead_of_duplicate_taxonomies(self):
+        response = self.client.get(self._task_url("study:task_detail"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "study/ee_tache_three_overview.html")
+        self.assertEqual(response.context["month_count"], 11)
+        self.assertEqual(response.context["subject_count"], 138)
+        self.assertEqual(response.context["vocabulary_count"], 4140)
+        self.assertEqual(response.context["memory_count"], 4)
+        self.assertContains(
+            response,
+            "data-ee-tache-three-overview-entry",
+            count=2,
+        )
+        self.assertContains(response, "data-collection-view-toggle")
+        self.assertContains(
+            response,
+            self._task_url("study:task_browse"),
+        )
+        self.assertContains(
+            response,
+            self._task_url("study:task_memories"),
+        )
+        self.assertContains(response, "questions terminées")
+        self.assertNotContains(response, "data-tache-two-month-toggle")
+        self.assertNotContains(
+            response,
+            "data-ee-tache-three-subject-row",
+        )
+        self.assertNotContains(response, "Par thème")
+        self.assertNotContains(response, "Par famille de sujets")
+
+    def test_subject_page_groups_all_combinations_in_collapsible_months(self):
+        response = self.client.get(self._task_url("study:task_browse"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "study/ee_tache_three_subjects.html")
+        self.assertEqual(
+            [month["name"] for month in response.context["months"]],
+            [month.name for month in self.months],
+        )
+        self.assertContains(
+            response,
+            'data-tache-two-month-key="ee-tache-three:',
+            count=11,
+        )
+        self.assertContains(
+            response,
+            "data-ee-tache-three-subject-row",
+            count=138,
+        )
+        self.assertContains(response, "data-collection-view-toggle")
+        self.assertContains(response, "Les mois restent repliés")
+
+    def test_month_page_is_a_focused_subject_directory(self):
+        prompt = self._first_prompt()
+        response = self.client.get(theme_detail_url(prompt.theme))
+        review = self.client.get(response.context["review_url"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "study/ee_tache_three_month.html")
+        self.assertEqual(response.context["month"]["name"], "Janvier")
+        self.assertEqual(
+            response.context["month"]["subject_count"],
+            len(self.months[0].combinaisons),
+        )
+        self.assertContains(
+            response,
+            "data-ee-tache-three-subject-row",
+            count=len(self.months[0].combinaisons),
+        )
+        self.assertContains(response, "Pratiquer ce mois")
+        self.assertContains(response, "data-collection-view-toggle")
+        self.assertNotContains(response, "data-tache-two-month-toggle")
+        self.assertContains(review, "Mois · Janvier")
+        self.assertNotContains(review, "Thème · Janvier")
+
+    def test_response_breadcrumb_uses_month_and_combination_only(self):
+        prompt = self._first_prompt()
+        response = self.client.get(prompt_detail_url(prompt))
+        family_url = reverse(
+            "study:task_family_detail",
+            args=[
+                self.task.part.slug,
+                self.task.slug,
+                prompt.family.slug,
+            ],
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, theme_detail_url(prompt.theme))
+        self.assertContains(response, "Combinaison 1")
+        self.assertContains(response, "Documents sources")
+        self.assertContains(response, "Pratiquer ce mois")
+        self.assertNotContains(response, family_url)
+
+    def test_source_combination_numbers_are_preserved_across_pages(self):
+        july = next(month for month in self.months if month.slug == "juillet")
+        source = july.combinaisons[15]
+        prompt = Prompt.objects.select_related("theme").get(
+            content_key=source.content_key
+        )
+        month_page = self.client.get(theme_detail_url(prompt.theme))
+        detail = self.client.get(prompt_detail_url(prompt))
+
+        self.assertEqual(source.combinaison, "Combinaison 41")
+        self.assertEqual(
+            month_page.context["subjects"][15]["combination_label"],
+            "Combinaison 41",
+        )
+        self.assertContains(detail, "Combinaison 41")
+        self.assertNotContains(detail, "Combinaison 16")
+
+    def test_legacy_family_page_redirects_to_its_month(self):
+        prompt = self._first_prompt()
+        response = self.client.get(
+            reverse(
+                "study:task_family_detail",
+                args=[
+                    self.task.part.slug,
+                    self.task.slug,
+                    prompt.family.slug,
+                ],
+            )
+        )
+
+        self.assertRedirects(
+            response,
+            theme_detail_url(prompt.theme),
+            fetch_redirect_response=False,
+        )
+
+    def test_practice_and_memory_pages_use_ee_task_language(self):
+        practice = self.client.get(
+            self._task_url("study:task_review_hub")
+        )
+        memories = self.client.get(
+            self._task_url("study:task_memories")
+        )
+
+        self.assertEqual(practice.status_code, 200)
+        self.assertContains(practice, "Choisir un mois")
+        self.assertNotContains(practice, "Choisir un thème")
+        self.assertEqual(memories.status_code, 200)
+        self.assertEqual(memories.context["memory_count"], 4)
+        self.assertContains(memories, "Mémoires")
+        self.assertNotContains(memories, "Tâche 2")
 
 
 class TaskOrganizationTests(TestCase):
@@ -1241,6 +1431,14 @@ class TaskOrganizationTests(TestCase):
         )
         self.assertEqual(response.context["content_task"], written_task)
         self.assertContains(response, "Parcours écrit")
+        practice = self.client.get(
+            reverse(
+                "study:task_review_hub",
+                args=[written_task.part.slug, written_task.slug],
+            )
+        )
+        self.assertContains(practice, "Choisir un thème")
+        self.assertNotContains(practice, "Choisir un mois")
 
 
 class CategoryBatchViewsTests(TestCase):

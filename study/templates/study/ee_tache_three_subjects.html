@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Sujets · {{ task.name }} · Heureux{% endblock %}
+
+{% block content %}
+<div class="ee-t3-page ee-t3-subjects-page">
+  {% include "study/_task_nav.html" %}
+
+  <header class="memory-overview-hero">
+    <div class="memory-overview-hero__copy">
+      <p class="eyebrow">{{ part.name }} · {{ task.name }}</p>
+      <h1>Sujets par mois</h1>
+      <p>Chaque mois rassemble les combinaisons de documents, la réponse modèle et 30 vocabs directement liés au sujet.</p>
+    </div>
+    <dl class="memory-overview-hero__metrics" aria-label="Contenu des sujets">
+      <div><dt>Mois</dt><dd>{{ month_count }}</dd></div>
+      <div><dt>Sujets</dt><dd>{{ subject_count }}</dd></div>
+      <div><dt>Vocabulaire</dt><dd>{{ vocabulary_count }}</dd></div>
+    </dl>
+  </header>
+
+  <section class="ee-t3-section" aria-labelledby="ee-t3-subject-directory-title">
+    <div class="ee-t3-section__head">
+      <div>
+        <p class="eyebrow">{{ month_count }} collections mensuelles</p>
+        <h2 id="ee-t3-subject-directory-title">Choisir un sujet</h2>
+        <p>Les mois restent repliés pour garder une vue lisible. Ouvrez uniquement la collection que vous souhaitez travailler.</p>
+      </div>
+      <div class="ee-t3-section__actions">
+        {% include "study/partials/tache_two_progress.html" with summary=subject_summary unit_label="sujets terminés" compact=True only %}
+        {% include "study/partials/collection_view_toggle.html" %}
+      </div>
+    </div>
+    {% include "study/partials/ee_tache_three_month_directory.html" with directory_id="subjects" months=months part=part task=task %}
+  </section>
+</div>
+{% endblock %}

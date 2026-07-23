@@ -7,9 +7,13 @@
 {% if personal_reset %}<div class="notice">La réponse d'origine est de nouveau utilisée.</div>{% endif %}
 <div class="detail-head">
   <p class="eyebrow">
-    <a href="{% url 'study:task_browse' part.slug task.slug %}">Sujets &amp; réponses</a> ·
+    <a href="{% url 'study:task_browse' part.slug task.slug %}">{% if ee_response %}Sujets par mois{% else %}Sujets &amp; réponses{% endif %}</a> ·
     <a class="link-with-icon" style="--icon-accent: {{ selected_prompt.theme.color }};" href="{% url 'study:theme_detail' part.slug task.slug selected_prompt.theme.slug %}">{% include "study/partials/ui_icon.html" with name=selected_prompt.theme.icon only %}<span>{{ selected_prompt.theme.display_name }}</span></a>
-    · <a href="{% url 'study:task_family_detail' part.slug task.slug selected_prompt.family.slug %}">{{ selected_prompt.family.name }}</a>
+    {% if ee_response %}
+      · <span>{{ ee_combination_label }}</span>
+    {% else %}
+      · <a href="{% url 'study:task_family_detail' part.slug task.slug selected_prompt.family.slug %}">{{ selected_prompt.family.name }}</a>
+    {% endif %}
     {% if response_content.is_personal %} · <span class="chip">Version personnelle</span>{% endif %}
   </p>
   <h1 class="detail-prompt">{{ selected_prompt.text }}</h1>
@@ -127,7 +131,7 @@
           <a class="btn btn--block" href="{% url 'study:edit_response' part.slug task.slug selected_prompt.pk %}">{% if response_content.is_personal %}Modifier ma version{% else %}Personnaliser la réponse{% endif %}</a>
         {% endif %}
         <a class="btn btn--primary btn--block" href="{{ response_review_url }}">Pratiquer cette réponse</a>
-        <a class="btn btn--block" href="{{ theme_review_url }}">Pratiquer ce thème</a>
+        <a class="btn btn--block" href="{{ theme_review_url }}">Pratiquer ce {% if ee_response %}mois{% else %}thème{% endif %}</a>
         {% if vocabulary_review_url %}
           <a class="btn btn--block" href="{{ vocabulary_review_url }}">Pratiquer les vocabs</a>
         {% endif %}

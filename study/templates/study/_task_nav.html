@@ -12,7 +12,7 @@
     <strong>{{ task.name }}</strong>
   {% endif %}
 </div>
-<nav class="task-nav{% if memory_task %} task-nav--memories{% endif %}{% if compact %} task-nav--compact{% endif %}" style="--task-accent: {{ task.color }};" aria-label="Navigation de {{ task.name }}">
+<nav class="task-nav{% if memory_task %} task-nav--memories{% endif %}{% if part.slug == 'ee' and task.slug == 'tache-3' %} task-nav--ee-t3{% endif %}{% if compact %} task-nav--compact{% endif %}" style="--task-accent: {{ task.color }};" aria-label="Navigation de {{ task.name }}">
   <a class="{% if request.resolver_match.url_name == 'task_detail' %}is-active{% endif %}"
      href="{% url 'study:task_detail' part.slug task.slug %}">Vue d'ensemble</a>
   {% if memory_task %}

@@ -1,0 +1,31 @@
+<div class="ee-t3-subject-list collection-table collection-table--ee-subjects" data-collection-view="adaptive">
+  <div class="ee-t3-subject-list__columns collection-table-header collection-table-header--ee-subjects" data-collection-table-header aria-hidden="true">
+    <span>Combinaison</span>
+    <span>Sujet</span>
+    <span>Progression</span>
+    <span>Action</span>
+  </div>
+  {% for subject in subjects %}
+    <article class="ee-t3-subject-row" data-collection-item data-ee-tache-three-subject-row>
+      <div class="ee-t3-subject-row__number">
+        <span>{{ subject.combination_number }}</span>
+        <small>Combinaison</small>
+      </div>
+      <div class="ee-t3-subject-row__copy">
+        <a href="{% url 'study:response_detail' part.slug task.slug subject.prompt.pk %}">{{ subject.prompt.text }}</a>
+        <p>{{ subject.document_count }} documents · {{ subject.vocabulary_count }} vocabs</p>
+      </div>
+      <div class="ee-t3-subject-row__progress">
+        <span class="progress-status progress-status--{{ subject.progress.status }}">{{ subject.progress.label }}</span>
+        {% include "study/partials/subject_completion_form.html" with response_id=subject.prompt.response_id progress=subject.progress subject_label=subject.prompt.text part=part task=task refresh=True %}
+      </div>
+      <a
+        class="ee-t3-subject-row__action"
+        href="{% url 'study:response_detail' part.slug task.slug subject.prompt.pk %}"
+        aria-label="Ouvrir {{ subject.combination_label }}">
+        <span>Ouvrir</span>
+        {% include "study/partials/ui_icon.html" with name="arrow-right" only %}
+      </a>
+    </article>
+  {% endfor %}
+</div>

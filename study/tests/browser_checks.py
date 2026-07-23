@@ -106,6 +106,131 @@ class MobileBrowserChecks(StaticLiveServerTestCase):
         )
         self.assertTrue(fits, f"{self.page.url}: {overflowing}")
 
+    def test_ee_tache_three_month_directory_is_collapsible_and_responsive(self):
+        command = Command()
+        months = content.load_ee_tache3_months()
+        task_by_slug = command._import_sections(load_sections())
+        theme_by_name = command._import_themes(
+            content.ee_tache3_themes(months),
+            task_by_slug,
+        )
+        family_by_name = command._import_families(
+            content.ee_tache3_families(months)
+        )
+        responses = content.parse_ee_tache3_responses(months)
+        response_by_key = command._import_responses(
+            responses,
+            theme_by_name,
+            family_by_name,
+        )
+        command._import_prompts(
+            responses,
+            response_by_key,
+            theme_by_name,
+            family_by_name,
+        )
+        task = task_by_slug["ee/tache-3"]
+        overview_url = reverse(
+            "study:task_detail",
+            args=[task.part.slug, task.slug],
+        )
+        subjects_url = reverse(
+            "study:task_browse",
+            args=[task.part.slug, task.slug],
+        )
+
+        self.page.goto(self.live_server_url + overview_url)
+
+        self.assertEqual(
+            self.page.locator(
+                "[data-ee-tache-three-overview-entry]"
+            ).count(),
+            2,
+        )
+        self.assertEqual(
+            self.page.locator(".ee-t3-month-group").count(),
+            0,
+        )
+        self.page.get_by_role("button", name="Tableau").click()
+        self.assertEqual(
+            self.page.locator("html").get_attribute(
+                "data-collection-view-mode"
+            ),
+            "table",
+        )
+
+        self.page.goto(self.live_server_url + subjects_url)
+
+        self.assertEqual(
+            self.page.locator("html").get_attribute(
+                "data-collection-view-mode"
+            ),
+            "table",
+        )
+        self.assertEqual(
+            self.page.locator(".ee-t3-month-group").count(),
+            len(months),
+        )
+        self.assertEqual(
+            self.page.locator(
+                ".ee-t3-month-group__body:visible"
+            ).count(),
+            0,
+        )
+        self.assertEqual(
+            self.page.get_by_text("Par famille de sujets").count(),
+            0,
+        )
+        january_toggle = self.page.locator(
+            "#subjects-ee-month-toggle-janvier"
+        )
+        self.assertEqual(
+            january_toggle.get_attribute("aria-label"),
+            "Afficher Janvier",
+        )
+        january_toggle.click()
+        january_body = self.page.locator(
+            "#subjects-ee-month-subjects-janvier"
+        )
+        january_body.wait_for(state="visible")
+        self.assertEqual(
+            january_toggle.get_attribute("aria-expanded"),
+            "true",
+        )
+        self.assertEqual(
+            january_body.locator(
+                "[data-ee-tache-three-subject-row]"
+            ).count(),
+            len(months[0].combinaisons),
+        )
+        self.assert_no_horizontal_overflow()
+
+        for width in (390, 1024):
+            with self.subTest(width=width):
+                self.page.set_viewport_size(
+                    {"width": width, "height": 844}
+                )
+                self.assert_no_horizontal_overflow()
+                if width == 390:
+                    nav_rows = self.page.locator(
+                        ".task-nav--ee-t3 a"
+                    ).evaluate_all(
+                        "links => new Set("
+                        "links.map(link => Math.round("
+                        "link.getBoundingClientRect().top"
+                        "))).size"
+                    )
+                    self.assertEqual(nav_rows, 1)
+
+        self.page.get_by_role("button", name="Cartes").click()
+        self.assertEqual(
+            self.page.locator("html").get_attribute(
+                "data-collection-view-mode"
+            ),
+            "cards",
+        )
+        self.assert_no_horizontal_overflow()
+
     def test_primary_navigation_is_structured_on_mobile_and_desktop(self):
         self.page.set_viewport_size({"width": 320, "height": 568})
         toggle = self.page.get_by_role("button", name="Ouvrir le menu")
